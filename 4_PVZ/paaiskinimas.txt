@@ -1,0 +1,39 @@
+Tai yra keturi pavyzdziai IS EGZAMINO (ne is namuose kurtu app).
+Pavyzdziai yra be pakeitimu, iskyrus viena: duomenu baziu pavadinimai ir vieta (zr. paskutine pastraipa) 
+Zemiau pasirasiau eiliskuma kaip kuriama spring dalis (kaip matyti 3-iame zingsnyje, tas pacias klases kiekvienas pavadina vis kitaip).  
+
+
+
+1. Sukurti klases su anotacija @Entity (klases Country, Holiday, Year su savo laukais, tusciu ir ne konstruktoriais, geteriais/seteriais).
+
+2. Sukurti klases repositoriju (kaip interfeisus kurie extendina JpaRepository. Itraukti ieskojimo ir istrinimo metodus. 
+Sios repositorijos bus paduodamos i servisus (sukuriami 4-me zingsnyje).
+
+3. Sukurti klases create/return:
+#jongai COMMAND:		#kutas REST:			#kisielius DTO:			
+CreateCountryCommand.java	CountryRest.java		CreateCountryDTO.java
+CountryData.java		CountryRestResponse.java	ReturnCountryDTO.java
+EditCountryCommand.java 
+
+CreateHolidayCommand.java	HolidayRest.java		CreateHolidayDTO.java
+HolidayData.java		HolidayRestResponse.java	ReturnHolidaysDTO.java
+EditHolidayCommand.java
+
+4. Sukurti klases su anotacija @Service (CountryService, HolidayService).
+Autowirinti repositorijas (sukurtos ankstesniame zingsnyje) 
+Sie servisai bus paduodami i controller'ius (sukuriami sekanciame zingsnyje).
+
+5. Sukurti klases su anotacija @RestController.
+paduoti servisus (is 4-ojo zingsnio), paduoti create/return (is 3-ojo zingsnio)
+
+
+
+application.properties
+jdbc:h2:file://tmp/dbjongai.db		jongai
+jdbc:h2:file://tmp/dbkiseilius.db	kisielius
+jdbc:h2:file://tmp/db.kutas.db		kutas
+jdbc:h2:file://tmp/dbjonce.db		jonce
+
+
+ 
+		

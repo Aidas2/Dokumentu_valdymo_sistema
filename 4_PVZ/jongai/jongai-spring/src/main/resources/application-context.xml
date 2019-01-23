@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+ xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:context="http://www.springframework.org/schema/context"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+ http://www.springframework.org/schema/context
+ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+ <context:annotation-config/>
+ <context:component-scan base-package="lt.sventes"/>
+ 
+    <!-- Bean definitions goes there -->
+	
+<!-- 	<bean id="productList" class="lt.itmokymai.spring.ProductListClass"> -->
+		
+<!-- 	</bean> -->
+	
+<!-- 	<bean id="Samsung10" class="it.akademija.Product"> -->
+<!-- 		<property name="title" value="Samsung 10" /> -->
+<!-- 		<property name="image" value="/img/pav.jpg" /> -->
+<!-- 		<property name="description" value="Desc1" /> -->
+<!-- 		<property name="price" value="15.0" /> -->
+<!-- 		<property name="quantity" value="1" /> -->
+<!-- 	</bean> -->
+	
+<!-- 	<bean id="Samsung20" class="it.akademija.Product"> -->
+<!-- 		<property name="title" value="Samsung 20" /> -->
+<!-- 		<property name="image" value="/img/pav.jpg" /> -->
+<!-- 		<property name="description" value="Desc2" /> -->
+<!-- 		<property name="price" value="16.0" /> -->
+<!-- 		<property name="quantity" value="25" /> -->
+<!-- 	</bean> -->
+	
+<!-- 	<bean id="Samsung3" class="lt.itmokymai.spring.Product"> -->
+<!-- 		<property name="title" value="Samsung 3" /> -->
+<!-- 		<property name="image" value="/img/pav.jpg" /> -->
+<!-- 		<property name="description" value="Desc3" /> -->
+<!-- 		<property name="price" value="155.0" /> -->
+<!-- 		<property name="quantity" value="10" /> -->
+<!-- 	</bean> -->
+	
+<!-- 	<bean class="lt.itmokymai.spring.Product"> -->
+<!-- 		<property name="title" value="Samsung 4" /> -->
+<!-- 		<property name="image" value="/img/pav.jpg" /> -->
+<!-- 		<property name="description" value="Desc4" /> -->
+<!-- 		<property name="price" value="15.0" /> -->
+<!-- 		<property name="quantity" value="11" /> -->
+<!-- 	</bean> -->
+	
+	
+<!-- 	<bean id="serviceABean" class="lt.itmokymai.spring.ServiceA"> -->
+<!-- 		<property name="message" value="ServiceA message Jono" /> -->
+<!-- 	</bean> -->
+	
+<!-- 	<bean id="serviceBBean" class="lt.itmokymai.spring.ServiceB"> -->
+<!-- 		<constructor-arg ref="serviceABean"/> -->
+<!-- 	</bean> -->
+	
+<!-- 	<bean id="serviceCBean" class="lt.itmokymai.spring.ServiceC" parent="serviceABean"> -->
+		
+<!-- 	</bean> -->
+
+	
+<!-- 	<bean class="lt.itmokymai.spring.InitHelloWorld"> -->
+<!-- 	</bean> -->
+
+</beans>
