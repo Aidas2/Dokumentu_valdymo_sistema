@@ -30,6 +30,10 @@ public class Document {
     @Column
     private String rejectionReason;
 
+    public Document(Long docId) {
+
+    }
+
     public Document(Long docId, String author, String type, String title, String description, Date uploadDate, Date submitDate, Date confirmationDate, Date rejectionDate, String managedBy, String rejectionReason) {
         this.docId = docId;
         this.author = author;

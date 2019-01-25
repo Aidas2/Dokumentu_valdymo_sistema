@@ -24,6 +24,10 @@ public class User {
     @Column
     private String emailAddress;
 
+    public User(Long userID) {
+        
+    }
+
     public User(Long userID, String firstName, String lastName, Date hireDate, Boolean isAdministrator, String username, String password, String emailAddress) {
         this.userID = userID;
         this.firstName = firstName;
