@@ -1,4 +1,4 @@
-package lt.sventes;
+package lt.akademijait.bronza;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

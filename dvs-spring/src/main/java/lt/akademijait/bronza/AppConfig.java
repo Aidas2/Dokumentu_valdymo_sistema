@@ -1,4 +1,4 @@
-package it.akademija.bronza;
+package lt.akademijait.bronza;
 
 import net.sf.log4jdbc.sql.jdbcapi.DataSourceSpy;
 import org.springframework.beans.factory.annotation.Autowired;

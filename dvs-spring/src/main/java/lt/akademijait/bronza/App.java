@@ -1,4 +1,4 @@
-package it.akademija.bronza;
+package lt.akademijait.bronza;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
