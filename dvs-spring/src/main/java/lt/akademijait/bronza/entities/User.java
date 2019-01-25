@@ -16,16 +16,16 @@ public class User {
     @Column
     private Date hireDate;
     @Column
-    private Boolean isAdministrator;
-    @Column
+    boolean isAdministrator;
+    @Column(unique = true)
     private String username;
     @Column
     private String password;
     @Column
     private String emailAddress;
 
-    public User(Long userID) {
-        
+    public User() {
+
     }
 
     public User(Long userID, String firstName, String lastName, Date hireDate, Boolean isAdministrator, String username, String password, String emailAddress) {

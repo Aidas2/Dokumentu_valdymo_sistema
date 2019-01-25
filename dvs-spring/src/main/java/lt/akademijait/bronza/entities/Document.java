@@ -6,13 +6,14 @@ import java.util.Date;
 @Entity
 @Table(name="documents", uniqueConstraints = {@UniqueConstraint(columnNames = "title")})
 public class Document {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long docId;
+    private Long id;
     @Column(unique = true, nullable = false)
-    private String author;
+    private User author;
     @Column
-    private String type;
+    private DocType docType;
     @Column
     private String title;
     @Column
@@ -30,14 +31,16 @@ public class Document {
     @Column
     private String rejectionReason;
 
-    public Document(Long docId) {
+    private String path;
+
+    public Document() {
 
     }
 
-    public Document(Long docId, String author, String type, String title, String description, Date uploadDate, Date submitDate, Date confirmationDate, Date rejectionDate, String managedBy, String rejectionReason) {
-        this.docId = docId;
+    public Document(Long id, User author, DocType docType, String title, String description, Date uploadDate, Date submitDate, Date confirmationDate, Date rejectionDate, String managedBy, String rejectionReason, String path) {
+        this.id = id;
         this.author = author;
-        this.type = type;
+        this.docType = docType;
         this.title = title;
         this.description = description;
         this.uploadDate = uploadDate;
@@ -49,27 +52,27 @@ public class Document {
     }
 
     public Long getDocId() {
-        return docId;
+        return id;
     }
 
     public void setDocId(Long docId) {
-        this.docId = docId;
+        this.id = docId;
     }
 
-    public String getAuthor() {
+    public User getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(User author) {
         this.author = author;
     }
 
-    public String getType() {
-        return type;
+    public DocType getDocType() {
+        return docType;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setDocType(DocType docType) {
+        this.docType = docType;
     }
 
     public String getTitle() {
@@ -134,5 +137,13 @@ public class Document {
 
     public void setRejectionReason(String rejectionReason) {
         this.rejectionReason = rejectionReason;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 }
