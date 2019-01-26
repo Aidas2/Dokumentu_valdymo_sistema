@@ -1,43 +1,50 @@
 package lt.akademijait.bronza.entities;
 
+
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.List;
 
 @Entity
-@Table(name="documents", uniqueConstraints = {@UniqueConstraint(columnNames = "title")})
+@Table(name="DOCUMENT")
+//, uniqueConstraints = {@UniqueConstraint(columnNames = "title")})
 public class Document {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(unique = true, nullable = false)
+    @ManyToOne
     private User author;
-    @Column
+    @ManyToOne
     private DocType docType;
     @Column
     private String title;
     @Column
     private String description;
     @Column
-    private Date uploadDate;
+    private LocalDate uploadDate;
     @Column
-    private Date submitDate;
+    private LocalDate submitDate;
     @Column
-    private Date confirmationDate;
+    private LocalDate confirmationDate;
     @Column
-    private Date rejectionDate;
-    @Column
-    private String managedBy;
+    private LocalDate rejectionDate;
+
+    @ManyToOne
+    private User reviewer;
+
     @Column
     private String rejectionReason;
 
-    private String path;
+    @OneToMany
+    private List<Attachment> attachments;
 
     public Document() {
 
     }
 
-    public Document(Long id, User author, DocType docType, String title, String description, Date uploadDate, Date submitDate, Date confirmationDate, Date rejectionDate, String managedBy, String rejectionReason, String path) {
+
+    public Document(Long id, User author, DocType docType, String title, String description, LocalDate uploadDate, LocalDate submitDate, LocalDate confirmationDate, LocalDate rejectionDate, User reviewer, String rejectionReason, List<Attachment> attachments) {
         this.id = id;
         this.author = author;
         this.docType = docType;
@@ -47,16 +54,18 @@ public class Document {
         this.submitDate = submitDate;
         this.confirmationDate = confirmationDate;
         this.rejectionDate = rejectionDate;
-        this.managedBy = managedBy;
+        this.reviewer = reviewer;
         this.rejectionReason = rejectionReason;
+        this.attachments = attachments;
     }
 
-    public Long getDocId() {
+
+    public Long getId() {
         return id;
     }
 
-    public void setDocId(Long docId) {
-        this.id = docId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public User getAuthor() {
@@ -91,44 +100,44 @@ public class Document {
         this.description = description;
     }
 
-    public Date getUploadDate() {
+    public LocalDate getUploadDate() {
         return uploadDate;
     }
 
-    public void setUploadDate(Date uploadDate) {
+    public void setUploadDate(LocalDate uploadDate) {
         this.uploadDate = uploadDate;
     }
 
-    public Date getSubmitDate() {
+    public LocalDate getSubmitDate() {
         return submitDate;
     }
 
-    public void setSubmitDate(Date submitDate) {
+    public void setSubmitDate(LocalDate submitDate) {
         this.submitDate = submitDate;
     }
 
-    public Date getConfirmationDate() {
+    public LocalDate getConfirmationDate() {
         return confirmationDate;
     }
 
-    public void setConfirmationDate(Date confirmationDate) {
+    public void setConfirmationDate(LocalDate confirmationDate) {
         this.confirmationDate = confirmationDate;
     }
 
-    public Date getRejectionDate() {
+    public LocalDate getRejectionDate() {
         return rejectionDate;
     }
 
-    public void setRejectionDate(Date rejectionDate) {
+    public void setRejectionDate(LocalDate rejectionDate) {
         this.rejectionDate = rejectionDate;
     }
 
-    public String getManagedBy() {
-        return managedBy;
+    public User getReviewer() {
+        return reviewer;
     }
 
-    public void setManagedBy(String managedBy) {
-        this.managedBy = managedBy;
+    public void setReviewer(User reviewer) {
+        this.reviewer = reviewer;
     }
 
     public String getRejectionReason() {
@@ -139,11 +148,11 @@ public class Document {
         this.rejectionReason = rejectionReason;
     }
 
-    public String getPath() {
-        return path;
+    public List<Attachment> getAttachments() {
+        return attachments;
     }
 
-    public void setPath(String path) {
-        this.path = path;
+    public void setAttachments(List<Attachment> attachments) {
+        this.attachments = attachments;
     }
 }

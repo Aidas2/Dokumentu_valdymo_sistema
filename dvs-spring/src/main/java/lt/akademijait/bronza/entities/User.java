@@ -2,13 +2,15 @@ package lt.akademijait.bronza.entities;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
-@Table(name = "users", uniqueConstraints = {@UniqueConstraint(columnNames = "title")})
+@Table(name = "USER")
+//, uniqueConstraints = {@UniqueConstraint(columnNames = "title")})
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userID;
+    private Long id;
     @Column
     private String firstName;
     @Column
@@ -16,35 +18,53 @@ public class User {
     @Column
     private Date hireDate;
     @Column
-    boolean isAdministrator;
-    @Column(unique = true)
+    private boolean administrator;
+    @Column (unique = true)
     private String username;
     @Column
     private String password;
-    @Column
+    @Column (unique = true)
     private String emailAddress;
 
-    public User() {
+    @ManyToMany
+    private List<UserGroup> userGroups;
+
+    @OneToMany
+    private List<Document> documents;
+
+
+
+
+
+    //@Column
+    //@CollectionTable(name = "USER_ROLE", joinColumns = @JoinColumn(name = "USER_ID"))
+    //@ElementCollection(fetch = FetchType.EAGER, targetClass = UserRole.class)
+    //private Set<UserRole> role;
+
+
+    private User() {
 
     }
 
-    public User(Long userID, String firstName, String lastName, Date hireDate, Boolean isAdministrator, String username, String password, String emailAddress) {
-        this.userID = userID;
+    public User(Long id, String firstName, String lastName, Date hireDate, boolean administrator, String username, String password, String emailAddress, List<UserGroup> userGroups, List<Document> documents) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.hireDate = hireDate;
-        this.isAdministrator = isAdministrator;
+        this.administrator = administrator;
         this.username = username;
         this.password = password;
         this.emailAddress = emailAddress;
+        this.userGroups = userGroups;
+        this.documents = documents;
     }
 
-    public Long getUserID() {
-        return userID;
+    public Long getId() {
+        return id;
     }
 
-    public void setUserID(Long userID) {
-        this.userID = userID;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -71,12 +91,12 @@ public class User {
         this.hireDate = hireDate;
     }
 
-    public Boolean getAdministrator() {
-        return isAdministrator;
+    public boolean isAdministrator() {
+        return administrator;
     }
 
-    public void setAdministrator(Boolean administrator) {
-        isAdministrator = administrator;
+    public void setAdministrator(boolean administrator) {
+        this.administrator = administrator;
     }
 
     public String getUsername() {
@@ -101,5 +121,21 @@ public class User {
 
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
+    }
+
+    public List<UserGroup> getUserGroups() {
+        return userGroups;
+    }
+
+    public void setUserGroups(List<UserGroup> userGroups) {
+        this.userGroups = userGroups;
+    }
+
+    public List<Document> getDocuments() {
+        return documents;
+    }
+
+    public void setDocuments(List<Document> documents) {
+        this.documents = documents;
     }
 }
