@@ -1,28 +1,39 @@
 package lt.akademijait.bronza.entities;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
 @Table(name = "USER")
-//, uniqueConstraints = {@UniqueConstraint(columnNames = "title")})
+//@Table(name = "USER", uniqueConstraints = {@UniqueConstraint(columnNames = "username")})
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column
     private String firstName;
+
     @Column
     private String lastName;
+
     @Column
-    private Date hireDate;
+    private LocalDate hireDate;
+
     @Column
     private boolean administrator;
-    @Column (unique = true)
+
+    @Column (unique = true, nullable=false)
     private String username;
+
     @Column
     private String password;
+
+    //@Column
+    //private byte[] passwordSalt;
+
     @Column (unique = true)
     private String emailAddress;
 
@@ -32,21 +43,16 @@ public class User {
     @OneToMany
     private List<Document> documents;
 
-
-
-
-
     //@Column
     //@CollectionTable(name = "USER_ROLE", joinColumns = @JoinColumn(name = "USER_ID"))
     //@ElementCollection(fetch = FetchType.EAGER, targetClass = UserRole.class)
     //private Set<UserRole> role;
 
-
     private User() {
 
     }
 
-    public User(Long id, String firstName, String lastName, Date hireDate, boolean administrator, String username, String password, String emailAddress, List<UserGroup> userGroups, List<Document> documents) {
+    public User(Long id, String firstName, String lastName, LocalDate hireDate, boolean administrator, String username, String password, String emailAddress, List<UserGroup> userGroups, List<Document> documents) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -83,11 +89,11 @@ public class User {
         this.lastName = lastName;
     }
 
-    public Date getHireDate() {
+    public LocalDate getHireDate() {
         return hireDate;
     }
 
-    public void setHireDate(Date hireDate) {
+    public void setHireDate(LocalDate hireDate) {
         this.hireDate = hireDate;
     }
 

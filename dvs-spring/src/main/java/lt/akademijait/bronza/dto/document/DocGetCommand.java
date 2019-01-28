@@ -1,64 +1,35 @@
-package lt.akademijait.bronza.entities;
+package lt.akademijait.bronza.dto.document;
 
+import lt.akademijait.bronza.entities.Attachment;
+import lt.akademijait.bronza.entities.DocType;
+import lt.akademijait.bronza.entities.User;
 
-import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
-@Entity
-@Table(name="DOCUMENT")
-//@Table(name="DOCUMENT", uniqueConstraints = {@UniqueConstraint(columnNames = "title")})
-public class Document {
+public class DocGetCommand {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @ManyToOne
     private User author;
-
-    @ManyToOne
     private DocType docType;
-
-    //@Column
-    //private DocState docState;
-
-    @Column
+//    private DocState docState;
     private String title;
-
-    @Column
     private String description;
-
-    @Column
     private LocalDate creationDate;
-
-    @Column
     private LocalDate submissionDate;
-
-    @Column
     private LocalDate confirmationDate;
-
-    @Column
     private LocalDate rejectionDate;
-
-    @ManyToOne
     private User reviewer;
-
-    @Column
     private String rejectionReason;
-
-    @OneToMany
     private List<Attachment> attachments;
-
-    //@Column
-    //private String path;
+//    private String path;
 
 
-    public Document() {
+    public DocGetCommand(Long id) {
 
     }
 
-    public Document(Long id, User author, DocType docType, String title, String description, LocalDate creationDate, LocalDate submissionDate, LocalDate confirmationDate, LocalDate rejectionDate, User reviewer, String rejectionReason, List<Attachment> attachments) {
+    public DocGetCommand(Long id, User author, DocType docType, String title, String description, LocalDate creationDate, LocalDate submissionDate, LocalDate confirmationDate, LocalDate rejectionDate, User reviewer, String rejectionReason, List<Attachment> attachments) {
         this.id = id;
         this.author = author;
         this.docType = docType;
@@ -121,12 +92,12 @@ public class Document {
         this.creationDate = creationDate;
     }
 
-    public LocalDate getSubmitionDate() {
+    public LocalDate getSubmissionDate() {
         return submissionDate;
     }
 
-    public void setSubmitionDate(LocalDate submitionDate) {
-        this.submissionDate = submitionDate;
+    public void setSubmissionDate(LocalDate submissionDate) {
+        this.submissionDate = submissionDate;
     }
 
     public LocalDate getConfirmationDate() {

@@ -9,8 +9,10 @@ public class Attachment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column
     private String path;
+
     @ManyToOne
     @JoinColumn (name = "DOCUMENT_ID")
     private Document document;
@@ -24,5 +26,9 @@ public class Attachment {
 
     public String getPath() {
         return path;
+    }
+
+    public Document getDocument() {
+        return document;
     }
 }
