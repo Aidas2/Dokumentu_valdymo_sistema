@@ -14,6 +14,9 @@ public class Document {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    //@Column
+    //private Long documentId;
+
     @ManyToOne
     private User author;
 

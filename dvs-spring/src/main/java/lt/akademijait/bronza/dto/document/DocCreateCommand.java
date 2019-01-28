@@ -22,7 +22,6 @@ public class DocCreateCommand {
 
 
     public DocCreateCommand(User author) {
-
     }
 
     public DocCreateCommand(User author, DocType docType, String title, String description) {

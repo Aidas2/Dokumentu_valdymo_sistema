@@ -25,8 +25,7 @@ public class DocGetCommand {
 //    private String path;
 
 
-    public DocGetCommand(Long id) {
-
+    public DocGetCommand() {
     }
 
     public DocGetCommand(Long id, User author, DocType docType, String title, String description, LocalDate creationDate, LocalDate submissionDate, LocalDate confirmationDate, LocalDate rejectionDate, User reviewer, String rejectionReason, List<Attachment> attachments) {

@@ -1,22 +1,22 @@
 package lt.akademijait.bronza.dto.doctype;
 
 public class DocTypeGetCommand {
-    private String id;
+    private Long id;
     private String title;
 
     public DocTypeGetCommand() {
     }
 
-    public DocTypeGetCommand(String id, String title) {
+    public DocTypeGetCommand(Long id, String title) {
         this.id = id;
         this.title = title;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface UserGroupRepository extends JpaRepository<UserGroup, String> {
+public interface UserGroupRepository extends JpaRepository<UserGroup, Long> {
     List<UserGroup> findAllByTitle(List<String> titleList);
     UserGroup findByTitle(String title);
     void deleteByTitle(String title);
@@ -13,7 +13,7 @@ public interface UserGroupRepository extends JpaRepository<UserGroup, String> {
 
 //alternative (find, delete by userGroupId):
 /*
-public interface UserGroupRepository extends JpaRepository <UserGroup, String> {
+public interface UserGroupRepository extends JpaRepository <UserGroup, Long> {
     List<UserGroup> findAllByUserGroupId(List<String> userGroupIdList);
     UserGroup findByUserGroupId(String userGroupId);
     void deleteByUserGroupId(String userGroupId);
