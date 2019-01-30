@@ -22,12 +22,12 @@ public class UserGetCommand {
     public UserGetCommand() {
     }
 
-    public UserGetCommand(String firstName, String lastName, boolean administrator, String username, String password, String emailAddress) {
+    public UserGetCommand(String firstName, String lastName, boolean administrator, String password, String username, String emailAddress) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.administrator = administrator;
-        this.username = username;
         this.password = password;
+        this.username = username;
         this.emailAddress = emailAddress;
     }
 
