@@ -1,6 +1,6 @@
 package lt.akademijait.bronza.dto.usergroup;
 
-import lt.akademijait.bronza.entities.DocType;
+import lt.akademijait.bronza.entities.DocumentType;
 
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -13,17 +13,17 @@ public class UserGroupCreateCommand {
     @NotNull
     private String title;
 
-    private List<DocType> submissionDocType;
-    private List<DocType> reviewDocType;
+    private List<DocumentType> submissionDocumentType;
+    private List<DocumentType> reviewDocumentType;
 
 
     public UserGroupCreateCommand() {
     }
 
-    public UserGroupCreateCommand(@NotNull String title, List<DocType> submissionDocType, List<DocType> reviewDocType) {
+    public UserGroupCreateCommand(@NotNull String title, List<DocumentType> submissionDocumentType, List<DocumentType> reviewDocumentType) {
         this.title = title;
-        this.submissionDocType = submissionDocType;
-        this.reviewDocType = reviewDocType;
+        this.submissionDocumentType = submissionDocumentType;
+        this.reviewDocumentType = reviewDocumentType;
     }
 
     public String getTitle() {
@@ -34,19 +34,19 @@ public class UserGroupCreateCommand {
         this.title = title;
     }
 
-    public List<DocType> getSubmissionDocType() {
-        return submissionDocType;
+    public List<DocumentType> getSubmissionDocumentType() {
+        return submissionDocumentType;
     }
 
-    public void setSubmissionDocType(List<DocType> submissionDocType) {
-        this.submissionDocType = submissionDocType;
+    public void setSubmissionDocumentType(List<DocumentType> submissionDocumentType) {
+        this.submissionDocumentType = submissionDocumentType;
     }
 
-    public List<DocType> getReviewDocType() {
-        return reviewDocType;
+    public List<DocumentType> getReviewDocumentType() {
+        return reviewDocumentType;
     }
 
-    public void setReviewDocType(List<DocType> reviewDocType) {
-        this.reviewDocType = reviewDocType;
+    public void setReviewDocumentType(List<DocumentType> reviewDocumentType) {
+        this.reviewDocumentType = reviewDocumentType;
     }
 }

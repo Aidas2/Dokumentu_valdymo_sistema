@@ -1,18 +1,20 @@
 package lt.akademijait.bronza.dto.document;
 
+
 import lt.akademijait.bronza.entities.Attachment;
-import lt.akademijait.bronza.entities.DocType;
+import lt.akademijait.bronza.entities.DocumentType;
 import lt.akademijait.bronza.entities.User;
+import lt.akademijait.bronza.enums.DocumentState;
 
 import java.time.LocalDate;
 import java.util.List;
 
-public class DocGetCommand {
+public class DocumentGetCommand {
 
     private Long id;
     private User author;
-    private DocType docType;
-//    private DocState docState;
+    private DocumentType documentType;
+    private DocumentState documentState;
     private String title;
     private String description;
     private LocalDate creationDate;
@@ -22,16 +24,16 @@ public class DocGetCommand {
     private User reviewer;
     private String rejectionReason;
     private List<Attachment> attachments;
-//    private String path;
+    private String path;
 
 
-    public DocGetCommand() {
+    public DocumentGetCommand(Long id, User author, DocumentType documentType, String title, String description, LocalDate creationDate, LocalDate submissionDate, LocalDate confirmationDate, LocalDate rejectionDate, User reviewer, String rejectionReason, List<Attachment> attachments) {
     }
 
-    public DocGetCommand(Long id, User author, DocType docType, String title, String description, LocalDate creationDate, LocalDate submissionDate, LocalDate confirmationDate, LocalDate rejectionDate, User reviewer, String rejectionReason, List<Attachment> attachments) {
-        this.id = id;
+    public DocumentGetCommand(User author, DocumentType documentType, DocumentState documentState, String title, String description, LocalDate creationDate, LocalDate submissionDate, LocalDate confirmationDate, LocalDate rejectionDate, User reviewer, String rejectionReason, List<Attachment> attachments, String path) {
         this.author = author;
-        this.docType = docType;
+        this.documentType = documentType;
+        this.documentState = documentState;
         this.title = title;
         this.description = description;
         this.creationDate = creationDate;
@@ -41,6 +43,7 @@ public class DocGetCommand {
         this.reviewer = reviewer;
         this.rejectionReason = rejectionReason;
         this.attachments = attachments;
+        this.path = path;
     }
 
     public Long getId() {
@@ -59,12 +62,20 @@ public class DocGetCommand {
         this.author = author;
     }
 
-    public DocType getDocType() {
-        return docType;
+    public DocumentType getDocumentType() {
+        return documentType;
     }
 
-    public void setDocType(DocType docType) {
-        this.docType = docType;
+    public void setDocumentType(DocumentType documentType) {
+        this.documentType = documentType;
+    }
+
+    public DocumentState getDocumentState() {
+        return documentState;
+    }
+
+    public void setDocumentState(DocumentState documentState) {
+        this.documentState = documentState;
     }
 
     public String getTitle() {
@@ -137,5 +148,13 @@ public class DocGetCommand {
 
     public void setAttachments(List<Attachment> attachments) {
         this.attachments = attachments;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 }

@@ -1,7 +1,7 @@
 package lt.akademijait.bronza.services;
 
 import lt.akademijait.bronza.dto.usergroup.UserGroupGetCommand;
-import lt.akademijait.bronza.entities.DocType;
+import lt.akademijait.bronza.entities.DocumentType;
 import lt.akademijait.bronza.entities.UserGroup;
 import lt.akademijait.bronza.repositories.UserGroupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +25,8 @@ public class UserGroupService {
 
 
     @Transactional
-    public void createNewGroup (String title, List<DocType> submissionDocType, List<DocType> reviewDocType){
-        UserGroup newGroup = new UserGroup(title, submissionDocType, reviewDocType);
+    public void createNewGroup (String title, List<DocumentType> submissionDocumentType, List<DocumentType> reviewDocumentType){
+        UserGroup newGroup = new UserGroup(title, submissionDocumentType, reviewDocumentType);
         userGroupRepository.save(newGroup);
 
     }

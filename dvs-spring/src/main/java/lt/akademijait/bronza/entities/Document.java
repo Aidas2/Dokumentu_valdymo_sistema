@@ -1,6 +1,8 @@
 package lt.akademijait.bronza.entities;
 
 
+import lt.akademijait.bronza.enums.DocumentState;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
@@ -18,13 +20,15 @@ public class Document {
     //private Long documentId;
 
     @ManyToOne
+    @JoinColumn(name="author_id")
     private User author;
 
-    @ManyToOne
-    private DocType docType;
+    @Column
+    private DocumentState documentState;
 
-    //@Column
-    //private DocState docState;
+    @ManyToOne
+    @JoinColumn(name="doctype_id")
+    private DocumentType documentType;
 
     @Column
     private String title;
@@ -57,14 +61,16 @@ public class Document {
     //private String path;
 
 
+    //Constructors:
+
     public Document() {
 
     }
 
-    public Document(Long id, User author, DocType docType, String title, String description, LocalDate creationDate, LocalDate submissionDate, LocalDate confirmationDate, LocalDate rejectionDate, User reviewer, String rejectionReason, List<Attachment> attachments) {
-        this.id = id;
+    public Document(User author, DocumentState documentState, DocumentType documentType, String title, String description, LocalDate creationDate, LocalDate submissionDate, LocalDate confirmationDate, LocalDate rejectionDate, User reviewer, String rejectionReason, List<Attachment> attachments) {
         this.author = author;
-        this.docType = docType;
+        this.documentState = documentState;
+        this.documentType = documentType;
         this.title = title;
         this.description = description;
         this.creationDate = creationDate;
@@ -75,6 +81,8 @@ public class Document {
         this.rejectionReason = rejectionReason;
         this.attachments = attachments;
     }
+
+    //Getters and Setters:
 
     public Long getId() {
         return id;
@@ -92,12 +100,20 @@ public class Document {
         this.author = author;
     }
 
-    public DocType getDocType() {
-        return docType;
+    public DocumentState getDocumentState() {
+        return documentState;
     }
 
-    public void setDocType(DocType docType) {
-        this.docType = docType;
+    public void setDocumentState(DocumentState documentState) {
+        this.documentState = documentState;
+    }
+
+    public DocumentType getDocumentType() {
+        return documentType;
+    }
+
+    public void setDocumentType(DocumentType documentType) {
+        this.documentType = documentType;
     }
 
     public String getTitle() {
@@ -124,12 +140,12 @@ public class Document {
         this.creationDate = creationDate;
     }
 
-    public LocalDate getSubmitionDate() {
+    public LocalDate getSubmissionDate() {
         return submissionDate;
     }
 
-    public void setSubmitionDate(LocalDate submitionDate) {
-        this.submissionDate = submitionDate;
+    public void setSubmissionDate(LocalDate submissionDate) {
+        this.submissionDate = submissionDate;
     }
 
     public LocalDate getConfirmationDate() {
@@ -171,4 +187,5 @@ public class Document {
     public void setAttachments(List<Attachment> attachments) {
         this.attachments = attachments;
     }
+
 }

@@ -13,12 +13,16 @@ public class Attachment {
     @Column
     private String path;
 
-    @ManyToOne
-    @JoinColumn (name = "DOCUMENT_ID")
+    @ManyToOne//(mappedBy="attachments")
+    //@JoinColumn (name = "DOCUMENT_ID")
     private Document document;
+
+    //Constructors:
 
     protected Attachment() {
     }
+
+    //Getters and Setters:
 
     public Long getId() {
         return id;

@@ -1,5 +1,5 @@
 package lt.akademijait.bronza.enums;
 
-public enum DocState {
+public enum DocumentState {
     CREATED, SUBMITTED, ACCEPTED, REJECTED
 }

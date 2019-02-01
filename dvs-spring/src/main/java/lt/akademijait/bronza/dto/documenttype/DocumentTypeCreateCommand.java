@@ -1,13 +1,13 @@
-package lt.akademijait.bronza.dto.doctype;
+package lt.akademijait.bronza.dto.documenttype;
 
-public class DocTypeCreateCommand {
+public class DocumentTypeCreateCommand {
 //    private Long id;
     private String title;
 
-    public DocTypeCreateCommand() {
+    public DocumentTypeCreateCommand() {
     }
 
-    public DocTypeCreateCommand(String title) {
+    public DocumentTypeCreateCommand(String title) {
         this.title = title;
     }
 

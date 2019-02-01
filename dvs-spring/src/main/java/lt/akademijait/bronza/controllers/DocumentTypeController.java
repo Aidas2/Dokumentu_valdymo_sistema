@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @Api(value = "document types")
 @RequestMapping(value = "api/doctypes")
-public class DocTypeController {
+public class DocumentTypeController {
 
     @Autowired
-    private DocTypeService docTypeService;
+    private DocTypeService documentTypeService;
 
 
 

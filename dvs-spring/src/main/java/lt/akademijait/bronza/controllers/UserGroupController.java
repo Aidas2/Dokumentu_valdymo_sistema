@@ -31,7 +31,7 @@ public class UserGroupController {
     @ResponseStatus(HttpStatus.CREATED)
     @ApiOperation(value = "Create group", notes = "Creates new user group")
     public void createGroup (@ApiParam(value = "Group info", required = true) @Valid @RequestBody final UserGroupCreateCommand ugc){
-        userGroupService.createNewGroup(ugc.getTitle(), ugc.getSubmissionDocType(), ugc.getReviewDocType());
+        userGroupService.createNewGroup(ugc.getTitle(), ugc.getSubmissionDocumentType(), ugc.getReviewDocumentType());
     }
 
 

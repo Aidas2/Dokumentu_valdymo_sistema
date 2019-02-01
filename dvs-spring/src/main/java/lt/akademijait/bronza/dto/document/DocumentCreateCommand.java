@@ -1,14 +1,14 @@
 package lt.akademijait.bronza.dto.document;
 
-import lt.akademijait.bronza.entities.DocType;
+import lt.akademijait.bronza.entities.DocumentType;
 import lt.akademijait.bronza.entities.User;
 
-public class DocCreateCommand {
+public class DocumentCreateCommand {
 
 //    private Long id;
     private User author;
-    private DocType docType;
-//    private DocState docState;
+    private DocumentType documentType;
+//    private DocumentState documentState;
     private String title;
     private String description;
 //    private LocalDate creationDate;
@@ -21,15 +21,16 @@ public class DocCreateCommand {
 //    private String path;
 
 
-    public DocCreateCommand(User author) {
+    public DocumentCreateCommand(User author) {
     }
 
-    public DocCreateCommand(User author, DocType docType, String title, String description) {
+    public DocumentCreateCommand(User author, DocumentType documentType, String title, String description) {
         this.author = author;
-        this.docType = docType;
+        this.documentType = documentType;
         this.title = title;
         this.description = description;
     }
+
 
     public User getAuthor() {
         return author;
@@ -39,12 +40,12 @@ public class DocCreateCommand {
         this.author = author;
     }
 
-    public DocType getDocType() {
-        return docType;
+    public DocumentType getDocumentType() {
+        return documentType;
     }
 
-    public void setDocType(DocType docType) {
-        this.docType = docType;
+    public void setDocumentType(DocumentType documentType) {
+        this.documentType = documentType;
     }
 
     public String getTitle() {

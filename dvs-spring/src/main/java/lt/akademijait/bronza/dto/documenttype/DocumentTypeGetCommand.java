@@ -1,13 +1,14 @@
-package lt.akademijait.bronza.dto.doctype;
+package lt.akademijait.bronza.dto.documenttype;
 
-public class DocTypeGetCommand {
+public class DocumentTypeGetCommand {
+
     private Long id;
     private String title;
 
-    public DocTypeGetCommand() {
+    public DocumentTypeGetCommand() {
     }
 
-    public DocTypeGetCommand(Long id, String title) {
+    public DocumentTypeGetCommand(Long id, String title) {
         this.id = id;
         this.title = title;
     }

@@ -21,23 +21,23 @@ public class UserGroup {
     @ManyToMany
     @JoinTable(name = "submission_type", joinColumns = @JoinColumn(name = "user_group"),
     inverseJoinColumns = @JoinColumn(name="submission_type_id"))
-    private List<DocType> submissionDocType;
+    private List<DocumentType> submissionDocumentType;
 
 
     //Documents types that this group can review
     @ManyToMany
     @JoinTable(name = "review_type", joinColumns = @JoinColumn(name="user_group"),
             inverseJoinColumns = @JoinColumn(name="review_type_id"))
-    private List<DocType> reviewDocType;
+    private List<DocumentType> reviewDocumentType;
 
     public UserGroup() {
 
     }
 
-    public UserGroup(@NotNull String title, List<DocType> submissionDocType, List<DocType> reviewDocType) {
+    public UserGroup(@NotNull String title, List<DocumentType> submissionDocumentType, List<DocumentType> reviewDocumentType) {
         this.title = title;
-        this.submissionDocType = submissionDocType;
-        this.reviewDocType = reviewDocType;
+        this.submissionDocumentType = submissionDocumentType;
+        this.reviewDocumentType = reviewDocumentType;
     }
 
     public Long getId() {
@@ -56,19 +56,19 @@ public class UserGroup {
         this.title = title;
     }
 
-    public List<DocType> getSubmissionDocType() {
-        return submissionDocType;
+    public List<DocumentType> getSubmissionDocumentType() {
+        return submissionDocumentType;
     }
 
-    public void setSubmissionDocType(List<DocType> submissionDocType) {
-        this.submissionDocType = submissionDocType;
+    public void setSubmissionDocumentType(List<DocumentType> submissionDocumentType) {
+        this.submissionDocumentType = submissionDocumentType;
     }
 
-    public List<DocType> getReviewDocType() {
-        return reviewDocType;
+    public List<DocumentType> getReviewDocumentType() {
+        return reviewDocumentType;
     }
 
-    public void setReviewDocType(List<DocType> reviewDocType) {
-        this.reviewDocType = reviewDocType;
+    public void setReviewDocumentType(List<DocumentType> reviewDocumentType) {
+        this.reviewDocumentType = reviewDocumentType;
     }
 }
