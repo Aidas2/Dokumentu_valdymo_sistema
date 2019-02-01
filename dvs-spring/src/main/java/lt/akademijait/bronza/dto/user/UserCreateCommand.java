@@ -1,10 +1,18 @@
 package lt.akademijait.bronza.dto.user;
 
+import lt.akademijait.bronza.entities.Document;
+import lt.akademijait.bronza.entities.UserGroup;
+
+import javax.persistence.Column;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
+import java.util.List;
 
 public class UserCreateCommand {
 
-//    private Long id;
+    private Long id;
 
     @NotNull
     private String firstName;
@@ -12,8 +20,8 @@ public class UserCreateCommand {
     @NotNull
     private String lastName;
 
-//    @Column
-//    private LocalDate hireDate;
+    @Column
+    private LocalDate hireDate;
 
     @NotNull
     private boolean administrator;
@@ -30,23 +38,35 @@ public class UserCreateCommand {
     @NotNull
     private String emailAddress;
 
-//    @ManyToMany
-//    private List<UserGroup> userGroups;
+    @ManyToMany
+    private List<UserGroup> userGroups;
 
-//    @OneToMany
-//    private List<Document> documents;
+    @OneToMany
+    private List<Document> documents;
 
 
     public UserCreateCommand() {
     }
 
-    public UserCreateCommand(@NotNull String firstName, @NotNull String lastName, @NotNull boolean administrator, @NotNull String username, @NotNull String password, @NotNull String emailAddress) {
+    public UserCreateCommand(Long id, @NotNull String firstName, @NotNull String lastName, LocalDate hireDate, @NotNull boolean administrator, @NotNull String username, @NotNull String password, @NotNull String emailAddress, List<UserGroup> userGroups, List<Document> documents) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.hireDate = hireDate;
         this.administrator = administrator;
         this.username = username;
         this.password = password;
         this.emailAddress = emailAddress;
+        this.userGroups = userGroups;
+        this.documents = documents;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -63,6 +83,14 @@ public class UserCreateCommand {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public LocalDate getHireDate() {
+        return hireDate;
+    }
+
+    public void setHireDate(LocalDate hireDate) {
+        this.hireDate = hireDate;
     }
 
     public boolean isAdministrator() {
@@ -95,5 +123,21 @@ public class UserCreateCommand {
 
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
+    }
+
+    public List<UserGroup> getUserGroups() {
+        return userGroups;
+    }
+
+    public void setUserGroups(List<UserGroup> userGroups) {
+        this.userGroups = userGroups;
+    }
+
+    public List<Document> getDocuments() {
+        return documents;
+    }
+
+    public void setDocuments(List<Document> documents) {
+        this.documents = documents;
     }
 }

@@ -23,7 +23,7 @@ public class UserService {
     private UserGroupRepository userGroupRepository;
 
 
-    @Transactional
+    @Transactional (readOnly = true)
     public List<UserGetCommand> getAllUsers (){
         return userRepository.findAll().stream().map(
                 (user) ->
@@ -63,6 +63,8 @@ public class UserService {
     public void deleteUser(String username){
         userRepository.deleteByUsername(username);
     }
+
+
 
 }
 

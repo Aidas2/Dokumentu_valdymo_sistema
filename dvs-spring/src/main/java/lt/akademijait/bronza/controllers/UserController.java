@@ -30,12 +30,13 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-//    @RequestMapping(method = RequestMethod.POST)
-//    @ResponseStatus(HttpStatus.CREATED)
-//    @ApiOperation(value = "Create new user", notes = "Creates new user")
-//    public void createUser (@ApiParam(value = "User data", required = true) @Valid @RequestBody final UserCreateCommand ucc){
-//        userService.createNewUser(ucc.getFirstName(), ucc.getLastName(), ucc.getUsername(), ucc.getPassword(), ucc.getEmailAddress());
-//    }
+    @RequestMapping(method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.CREATED)
+    @ApiOperation(value = "Create new user", notes = "Creates new user")
+    public void createUser (@ApiParam(value = "User data", required = true) @Valid @RequestBody final UserCreateCommand ucc){
+        userService.createNewUser(ucc.getId(), ucc.getFirstName(), ucc.getLastName(), ucc.getHireDate(), ucc.isAdministrator(),
+                ucc.getUsername(), ucc.getPassword(), ucc.getEmailAddress(), ucc.getUserGroups(), ucc.getDocuments());
+    }
 
 
 
