@@ -1,39 +1,38 @@
 package lt.akademijait.bronza.dto.document;
 
 
-import lt.akademijait.bronza.entities.Attachment;
 import lt.akademijait.bronza.entities.DocumentType;
 import lt.akademijait.bronza.entities.User;
 import lt.akademijait.bronza.enums.DocumentState;
 
-import java.time.LocalDate;
-import java.util.List;
+import java.util.Date;
 
 public class DocumentGetCommand {
 
     private Long id;
-    private User author;
-    private DocumentType documentType;
+    //private String prefix;
+    //private List<String> additionalFilePaths = new ArrayList<>();
+    //private List<Attachment> attachments;
+    private User author; // private UserGetCommand author;
     private DocumentState documentState;
+    private DocumentType documentType; //private String documentTypeTitle;
     private String title;
     private String description;
-    private LocalDate creationDate;
-    private LocalDate submissionDate;
-    private LocalDate confirmationDate;
-    private LocalDate rejectionDate;
-    private User reviewer;
+    private Date creationDate;
+    private Date submissionDate;
+    private Date confirmationDate;
+    private Date rejectionDate;
+    private User reviewer; //private UserGetCommand reviewer;
     private String rejectionReason;
-    private List<Attachment> attachments;
     private String path;
 
-
-    public DocumentGetCommand(Long id, User author, DocumentType documentType, String title, String description, LocalDate creationDate, LocalDate submissionDate, LocalDate confirmationDate, LocalDate rejectionDate, User reviewer, String rejectionReason, List<Attachment> attachments) {
+    public DocumentGetCommand() {
     }
 
-    public DocumentGetCommand(User author, DocumentType documentType, DocumentState documentState, String title, String description, LocalDate creationDate, LocalDate submissionDate, LocalDate confirmationDate, LocalDate rejectionDate, User reviewer, String rejectionReason, List<Attachment> attachments, String path) {
+    public DocumentGetCommand(User author, DocumentState documentState, DocumentType documentType, String title, String description, Date creationDate, Date submissionDate, Date confirmationDate, Date rejectionDate, User reviewer, String rejectionReason, String path) {
         this.author = author;
-        this.documentType = documentType;
         this.documentState = documentState;
+        this.documentType = documentType;
         this.title = title;
         this.description = description;
         this.creationDate = creationDate;
@@ -42,7 +41,6 @@ public class DocumentGetCommand {
         this.rejectionDate = rejectionDate;
         this.reviewer = reviewer;
         this.rejectionReason = rejectionReason;
-        this.attachments = attachments;
         this.path = path;
     }
 
@@ -62,20 +60,20 @@ public class DocumentGetCommand {
         this.author = author;
     }
 
-    public DocumentType getDocumentType() {
-        return documentType;
-    }
-
-    public void setDocumentType(DocumentType documentType) {
-        this.documentType = documentType;
-    }
-
     public DocumentState getDocumentState() {
         return documentState;
     }
 
     public void setDocumentState(DocumentState documentState) {
         this.documentState = documentState;
+    }
+
+    public DocumentType getDocumentType() {
+        return documentType;
+    }
+
+    public void setDocumentType(DocumentType documentType) {
+        this.documentType = documentType;
     }
 
     public String getTitle() {
@@ -94,35 +92,35 @@ public class DocumentGetCommand {
         this.description = description;
     }
 
-    public LocalDate getCreationDate() {
+    public Date getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(LocalDate creationDate) {
+    public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
     }
 
-    public LocalDate getSubmissionDate() {
+    public Date getSubmissionDate() {
         return submissionDate;
     }
 
-    public void setSubmissionDate(LocalDate submissionDate) {
+    public void setSubmissionDate(Date submissionDate) {
         this.submissionDate = submissionDate;
     }
 
-    public LocalDate getConfirmationDate() {
+    public Date getConfirmationDate() {
         return confirmationDate;
     }
 
-    public void setConfirmationDate(LocalDate confirmationDate) {
+    public void setConfirmationDate(Date confirmationDate) {
         this.confirmationDate = confirmationDate;
     }
 
-    public LocalDate getRejectionDate() {
+    public Date getRejectionDate() {
         return rejectionDate;
     }
 
-    public void setRejectionDate(LocalDate rejectionDate) {
+    public void setRejectionDate(Date rejectionDate) {
         this.rejectionDate = rejectionDate;
     }
 
@@ -140,14 +138,6 @@ public class DocumentGetCommand {
 
     public void setRejectionReason(String rejectionReason) {
         this.rejectionReason = rejectionReason;
-    }
-
-    public List<Attachment> getAttachments() {
-        return attachments;
-    }
-
-    public void setAttachments(List<Attachment> attachments) {
-        this.attachments = attachments;
     }
 
     public String getPath() {

@@ -5,23 +5,25 @@ import lt.akademijait.bronza.entities.User;
 
 public class DocumentCreateCommand {
 
-//    private Long id;
-    private User author;
-    private DocumentType documentType;
-//    private DocumentState documentState;
+    //private Long id;
+    //private String prefix;
+    //private List<String> additionalFilePaths = new ArrayList<>();
+    //private List<Attachment> attachments;
+    private User author; // private String username;
+    //private DocumentState documentState;
+    private DocumentType documentType; //private String documentTypeTitle;
     private String title;
     private String description;
-//    private LocalDate creationDate;
-//    private LocalDate submissionDate;
-//    private LocalDate confirmationDate;
-//    private LocalDate rejectionDate;
-//    private User reviewer;
-//    private String rejectionReason;
-//    private List<Attachment> attachments;
-//    private String path;
+    //private Date creationDate;
+    //private Date submissionDate;
+    //private Date confirmationDate;
+    //private Date rejectionDate;
+    //private User reviewer;
+    //private String rejectionReason;
+    //private String path;
 
 
-    public DocumentCreateCommand(User author) {
+    public DocumentCreateCommand() {
     }
 
     public DocumentCreateCommand(User author, DocumentType documentType, String title, String description) {
@@ -30,7 +32,6 @@ public class DocumentCreateCommand {
         this.title = title;
         this.description = description;
     }
-
 
     public User getAuthor() {
         return author;

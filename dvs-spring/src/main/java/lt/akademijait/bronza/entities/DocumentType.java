@@ -11,26 +11,50 @@ public class DocumentType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    //private String id;
 
     @Column(unique = true)
     private String title;
 
-    @ManyToMany
+    @ManyToMany//(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    //@JoinTable(name = "submission_type", joinColumns = @JoinColumn(name="doc_type"), inverseJoinColumns = @JoinColumn(name="user_group_id") )
     private Set<UserGroup> submissionUserGroups;
 
-    @ManyToMany
+    @ManyToMany//(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    //@JoinTable(name = "review_type", joinColumns = @JoinColumn(name="doc_type"), inverseJoinColumns = @JoinColumn(name="user_group_id") )
     private Set<UserGroup> reviewUserGroups;
+
 
     //Constructors:
 
     public DocumentType() {
     }
 
-    public DocumentType(String title, Set<UserGroup> submissionUserGroups, Set<UserGroup> reviewUserGroups) {
+    public DocumentType(String title,
+                        Set<UserGroup> submissionUserGroups,
+                        Set<UserGroup> reviewUserGroups) {
         this.title = title;
         this.submissionUserGroups = submissionUserGroups;
         this.reviewUserGroups = reviewUserGroups;
     }
+
+/*
+    //SUBMISSION GROUP - TYPE (ADD REMOVE)
+    public void addSubmissionUserGroup(UserGroup userGroup) {
+        submissionUserGroups.add(userGroup);
+    }
+    public void removeSubmissionUserGroup(UserGroup userGroup) {
+        submissionUserGroups.remove(userGroup);
+    }
+    //REVIEW GROUP - TYPE (ADD REMOVE)
+    public void addReviewUserGroup(UserGroup userGroup) {
+        reviewUserGroups.add(userGroup);
+    }
+
+    public void removeReviewUserGroup(UserGroup userGroup) {
+        reviewUserGroups.remove(userGroup);
+    }
+*/
 
     //Getters and Setters:
 

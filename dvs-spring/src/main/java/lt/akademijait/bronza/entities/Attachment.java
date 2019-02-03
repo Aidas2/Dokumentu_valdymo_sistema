@@ -2,6 +2,8 @@ package lt.akademijait.bronza.entities;
 
 import javax.persistence.*;
 
+//this is experimental class, not necessary
+
 @Entity
 @Table(name="ATTACHMENT")
 public class Attachment {

@@ -4,7 +4,8 @@ package lt.akademijait.bronza.entities;
 import lt.akademijait.bronza.enums.DocumentState;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -15,9 +16,18 @@ public class Document {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    //private String id;
 
-    //@Column
-    //private Long documentId;
+    //@Column(unique = true, nullable = false)
+    //private String prefix;
+
+    @ElementCollection
+    @CollectionTable
+    @Column
+    private List<String> additionalFilePaths = new ArrayList<>();
+
+    //@OneToMany
+    //private List<Attachment> attachments;
 
     @ManyToOne
     @JoinColumn(name="author_id")
@@ -30,23 +40,23 @@ public class Document {
     @JoinColumn(name="doctype_id")
     private DocumentType documentType;
 
-    @Column
+    @Column (nullable = false)
     private String title;
 
-    @Column
+    @Column (nullable = false)
     private String description;
 
     @Column
-    private LocalDate creationDate;
+    private Date creationDate;
 
     @Column
-    private LocalDate submissionDate;
+    private Date submissionDate;
 
     @Column
-    private LocalDate confirmationDate;
+    private Date confirmationDate;
 
     @Column
-    private LocalDate rejectionDate;
+    private Date rejectionDate;
 
     @ManyToOne
     private User reviewer;
@@ -54,20 +64,14 @@ public class Document {
     @Column
     private String rejectionReason;
 
-    @OneToMany
-    private List<Attachment> attachments;
+    @Column
+    private String path;
 
-    //@Column
-    //private String path;
-
-
-    //Constructors:
 
     public Document() {
-
     }
 
-    public Document(User author, DocumentState documentState, DocumentType documentType, String title, String description, LocalDate creationDate, LocalDate submissionDate, LocalDate confirmationDate, LocalDate rejectionDate, User reviewer, String rejectionReason, List<Attachment> attachments) {
+    public Document(User author, DocumentState documentState, DocumentType documentType, String title, String description, Date creationDate, Date submissionDate, Date confirmationDate, Date rejectionDate, User reviewer, String rejectionReason, String path) {
         this.author = author;
         this.documentState = documentState;
         this.documentType = documentType;
@@ -79,10 +83,8 @@ public class Document {
         this.rejectionDate = rejectionDate;
         this.reviewer = reviewer;
         this.rejectionReason = rejectionReason;
-        this.attachments = attachments;
+        this.path = path;
     }
-
-    //Getters and Setters:
 
     public Long getId() {
         return id;
@@ -90,6 +92,14 @@ public class Document {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public List<String> getAdditionalFilePaths() {
+        return additionalFilePaths;
+    }
+
+    public void setAdditionalFilePaths(List<String> additionalFilePaths) {
+        this.additionalFilePaths = additionalFilePaths;
     }
 
     public User getAuthor() {
@@ -132,35 +142,35 @@ public class Document {
         this.description = description;
     }
 
-    public LocalDate getCreationDate() {
+    public Date getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(LocalDate creationDate) {
+    public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
     }
 
-    public LocalDate getSubmissionDate() {
+    public Date getSubmissionDate() {
         return submissionDate;
     }
 
-    public void setSubmissionDate(LocalDate submissionDate) {
+    public void setSubmissionDate(Date submissionDate) {
         this.submissionDate = submissionDate;
     }
 
-    public LocalDate getConfirmationDate() {
+    public Date getConfirmationDate() {
         return confirmationDate;
     }
 
-    public void setConfirmationDate(LocalDate confirmationDate) {
+    public void setConfirmationDate(Date confirmationDate) {
         this.confirmationDate = confirmationDate;
     }
 
-    public LocalDate getRejectionDate() {
+    public Date getRejectionDate() {
         return rejectionDate;
     }
 
-    public void setRejectionDate(LocalDate rejectionDate) {
+    public void setRejectionDate(Date rejectionDate) {
         this.rejectionDate = rejectionDate;
     }
 
@@ -180,12 +190,35 @@ public class Document {
         this.rejectionReason = rejectionReason;
     }
 
-    public List<Attachment> getAttachments() {
-        return attachments;
+    public String getPath() {
+        return path;
     }
 
-    public void setAttachments(List<Attachment> attachments) {
-        this.attachments = attachments;
+    public void setPath(String path) {
+        this.path = path;
     }
 
+    //========================
+    /*
+    public String getPrefix() {
+        return prefix;
+    }
+
+    public void setPrefix(String prefix) {
+        this.prefix = prefix;
+        //this.prefix = "_" + author.getUsername() + "_" + System.currentTimeMillis();
+    }
+
+    public void setReviewDate() {
+        if (this.documentState.equals(DocumentState.CONFIRMED)) {
+            this.confirmationDate = new Date();
+        }
+        else if (this.documentState.equals(DocumentState.REJECTED)) {
+            this.rejectionDate = new Date();
+        }
+    }
+    */
 }
+
+
+
