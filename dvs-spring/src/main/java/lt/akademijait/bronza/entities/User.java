@@ -28,7 +28,7 @@ public class User {
     @Column
     private boolean administrator;
 
-    @Column (unique = true, nullable=false)
+    @Column(unique = true, nullable = false)
     private String username;
 
     @Column
@@ -37,7 +37,7 @@ public class User {
     //@Column
     //private byte[] passwordSalt;
 
-    @Column (unique = true)
+    @Column(unique = true)
     private String emailAddress;
 
     @ManyToMany

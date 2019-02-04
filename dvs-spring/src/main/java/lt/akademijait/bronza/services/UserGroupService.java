@@ -25,8 +25,8 @@ public class UserGroupService {
 
 
     @Transactional
-    public void createNewGroup (String title, List<DocumentType> submissionDocumentType, List<DocumentType> reviewDocumentType){
-        UserGroup newGroup = new UserGroup(title, submissionDocumentType, reviewDocumentType);
+    public void createNewGroup (Long id, String title, List<DocumentType> submissionDocumentType, List<DocumentType> reviewDocumentType){
+        UserGroup newGroup = new UserGroup(id, title, submissionDocumentType, reviewDocumentType);
         userGroupRepository.save(newGroup);
 
     }

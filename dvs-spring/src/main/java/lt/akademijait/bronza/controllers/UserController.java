@@ -38,6 +38,13 @@ public class UserController {
                 ucc.getUsername(), ucc.getPassword(), ucc.getEmailAddress(), ucc.getUserGroups(), ucc.getDocuments());
     }
 
+    @RequestMapping(method = RequestMethod.DELETE)
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @ApiOperation(value = "Delete user", notes = "Deletes an existing user")
+    public void deleteUserByUsername(@ApiParam(value = "User username", required = true) @PathVariable final String username){
+        userService.deleteUser(username);
+    }
+
 
 
 

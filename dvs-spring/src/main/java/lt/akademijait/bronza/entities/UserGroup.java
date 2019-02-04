@@ -14,27 +14,28 @@ public class UserGroup {
     //@Column(unique = true, nullable=false)
     //private Long userGroupId;
 
-    @Column(unique = true, nullable=false)
+    @Column(unique = true, nullable = false)
     private String title;
 
     //Documents types that this group can submit
     @ManyToMany
     @JoinTable(name = "submission_type", joinColumns = @JoinColumn(name = "user_group"),
-    inverseJoinColumns = @JoinColumn(name="submission_type_id"))
+            inverseJoinColumns = @JoinColumn(name = "submission_type_id"))
     private List<DocumentType> submissionDocumentType;
 
 
     //Documents types that this group can review
     @ManyToMany
-    @JoinTable(name = "review_type", joinColumns = @JoinColumn(name="user_group"),
-            inverseJoinColumns = @JoinColumn(name="review_type_id"))
+    @JoinTable(name = "review_type", joinColumns = @JoinColumn(name = "user_group"),
+            inverseJoinColumns = @JoinColumn(name = "review_type_id"))
     private List<DocumentType> reviewDocumentType;
 
     public UserGroup() {
 
     }
 
-    public UserGroup(@NotNull String title, List<DocumentType> submissionDocumentType, List<DocumentType> reviewDocumentType) {
+    public UserGroup(@NotNull Long id, String title, List<DocumentType> submissionDocumentType, List<DocumentType> reviewDocumentType) {
+        this.id = id;
         this.title = title;
         this.submissionDocumentType = submissionDocumentType;
         this.reviewDocumentType = reviewDocumentType;
