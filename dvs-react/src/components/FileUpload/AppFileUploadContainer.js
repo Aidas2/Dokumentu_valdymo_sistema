@@ -35,7 +35,7 @@ class AppFileUploadContainer extends Component {
       formData.append("name", this.state.file[i].name); //2nd parameter was "Paulius cicenas"
 
       axios({
-        url: "http://localhost:8081/files-multi",
+        url: "http://localhost:8081/files",
         method: "post",
         headers: {
           authorisation: "your token"
