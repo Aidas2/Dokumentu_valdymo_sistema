@@ -51,7 +51,7 @@ public class User {
     //@ElementCollection(fetch = FetchType.EAGER, targetClass = UserRole.class)
     //private Set<UserRole> role;
 
-    private User() {
+    public User() {
 
     }
 
