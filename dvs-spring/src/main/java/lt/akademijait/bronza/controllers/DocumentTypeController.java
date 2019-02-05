@@ -4,6 +4,7 @@ package lt.akademijait.bronza.controllers;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import lt.akademijait.bronza.dto.documenttype.DocumentTypeCreateCommand;
 import lt.akademijait.bronza.dto.documenttype.DocumentTypeGetCommand;
 import lt.akademijait.bronza.services.DocumentTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +40,7 @@ public class DocumentTypeController {
         return documentTypeService.getDocumentsTypeById(id);
     }
 
-/*
+
     //CREATE
     @RequestMapping(method = RequestMethod.POST)
     @ApiOperation(value = "Add new document type", notes = "Adds new document type")
@@ -60,7 +61,7 @@ public class DocumentTypeController {
             @PathVariable Long id) {
         documentTypeService.updateDocumentType(id, documentTypeCreateCommand);
     }
-*/
+
 
     //DELETE
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)

@@ -1,17 +1,16 @@
 package lt.akademijait.bronza.dto.document;
 
-import lt.akademijait.bronza.entities.DocumentType;
-import lt.akademijait.bronza.entities.User;
-
 public class DocumentCreateCommand {
 
     //private Long id;
     //private String prefix;
     //private List<String> additionalFilePaths = new ArrayList<>();
     //private List<Attachment> attachments;
-    private User author; // private String username;
+    //private User author; // do not use object, because object sends to swagger all his fields
+    private String usernameId;
     //private DocumentState documentState;
-    private DocumentType documentType; //private String documentTypeTitle;
+    //private DocumentType documentType; // do not use object, because object sends to swagger all his fields
+    private String documentTypeTitle;
     private String title;
     private String description;
     //private Date creationDate;
@@ -26,27 +25,27 @@ public class DocumentCreateCommand {
     public DocumentCreateCommand() {
     }
 
-    public DocumentCreateCommand(User author, DocumentType documentType, String title, String description) {
-        this.author = author;
-        this.documentType = documentType;
+    public DocumentCreateCommand(String usernameId, String documentTypeTitle, String title, String description) {
+        this.usernameId = usernameId;
+        this.documentTypeTitle = documentTypeTitle;
         this.title = title;
         this.description = description;
     }
 
-    public User getAuthor() {
-        return author;
+    public String getUsernameId() {
+        return usernameId;
     }
 
-    public void setAuthor(User author) {
-        this.author = author;
+    public void setUsernameId(String usernameId) {
+        this.usernameId = usernameId;
     }
 
-    public DocumentType getDocumentType() {
-        return documentType;
+    public String getDocumentTypeTitle() {
+        return documentTypeTitle;
     }
 
-    public void setDocumentType(DocumentType documentType) {
-        this.documentType = documentType;
+    public void setDocumentTypeTitle(String documentTypeTitle) {
+        this.documentTypeTitle = documentTypeTitle;
     }
 
     public String getTitle() {

@@ -4,6 +4,7 @@ package lt.akademijait.bronza.controllers;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import lt.akademijait.bronza.dto.document.DocumentCreateCommand;
 import lt.akademijait.bronza.dto.document.DocumentGetCommand;
 import lt.akademijait.bronza.services.DocumentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,7 +55,7 @@ public class DocumentController {
         return documentService.getDocumentsToReview();
     }
 
-/*
+
     //CREATE
     @RequestMapping(method = RequestMethod.POST)
     @ApiOperation(value = "Add new document", notes = "Adds new document")
@@ -76,7 +77,7 @@ public class DocumentController {
         documentService.updateDocument(id, documentCreateCommand);
     }
 
-*/
+
     //DELETE
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     @ApiOperation(value = "Delete document", notes = "Delete document by id")

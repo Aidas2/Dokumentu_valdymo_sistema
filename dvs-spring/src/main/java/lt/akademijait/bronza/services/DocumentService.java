@@ -1,7 +1,10 @@
 package lt.akademijait.bronza.services;
 
+import lt.akademijait.bronza.dto.document.DocumentCreateCommand;
 import lt.akademijait.bronza.dto.document.DocumentGetCommand;
 import lt.akademijait.bronza.entities.Document;
+import lt.akademijait.bronza.entities.DocumentType;
+import lt.akademijait.bronza.entities.User;
 import lt.akademijait.bronza.enums.DocumentState;
 import lt.akademijait.bronza.repositories.DocumentRepository;
 import lt.akademijait.bronza.repositories.DocumentTypeRepository;
@@ -110,8 +113,48 @@ public class DocumentService {
                 document.getPath()
         );
     }
-/*
+
     //CREATE
+    @Transactional
+    public void createDocument(DocumentCreateCommand documentCreateCommand) {
+
+        Document newDocument = new Document();
+
+        //shouldn't set Author directly from Object ir Document Entity, instead use String field from DocumentCreateCommand
+        User user = userRepository.findByUsername(documentCreateCommand.getUsernameId());
+        newDocument.setAuthor(user);
+
+        DocumentType documentType = documentTypeRepository.findByTitle(documentCreateCommand.getDocumentTypeTitle());
+        newDocument.setDocumentType(documentType);
+
+        newDocument.setTitle(documentCreateCommand.getTitle());
+        newDocument.setDescription(documentCreateCommand.getDescription());
+        documentRepository.save(newDocument);
+    }
+
+    //SUBMITT ?
+
+
+
+    //UPDATE
+    @Transactional
+    public void updateDocument (Long id, DocumentCreateCommand documentCreateCommand) {
+        Document documentToUpdate = documentRepository.findById(id).orElse(null);
+
+        User user = userRepository.findByUsername(documentCreateCommand.getUsernameId());
+        documentToUpdate.setAuthor(user);
+
+        DocumentType documentType = documentTypeRepository.findByTitle(documentCreateCommand.getDocumentTypeTitle());
+        documentToUpdate.setDocumentType(documentType);
+
+
+        documentToUpdate.setTitle(documentCreateCommand.getTitle());
+        documentToUpdate.setDescription(documentCreateCommand.getDescription());
+        //documentToUpdate.setId(id);
+        documentRepository.save(documentToUpdate);
+    }
+/*
+    //CREATE (old version, not working)
     @Transactional
     public void createDocument(DocumentCreateCommand documentCreateCommand) {
         documentRepository.save(new Document(
@@ -122,11 +165,8 @@ public class DocumentService {
         ));
     }
 
-    //SUBMITT ?
 
-
-
-    //UPDATE
+    //UPDATE (old version, not working)
     @Transactional
     public void updateDocument (Long id, DocumentCreateCommand documentCreateCommand) {
         Document document = documentRepository.findById(id).orElse(null);

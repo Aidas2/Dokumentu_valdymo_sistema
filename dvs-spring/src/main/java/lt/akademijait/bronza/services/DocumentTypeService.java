@@ -1,5 +1,6 @@
 package lt.akademijait.bronza.services;
 
+import lt.akademijait.bronza.dto.documenttype.DocumentTypeCreateCommand;
 import lt.akademijait.bronza.dto.documenttype.DocumentTypeGetCommand;
 import lt.akademijait.bronza.entities.DocumentType;
 import lt.akademijait.bronza.repositories.DocumentTypeRepository;
@@ -40,8 +41,28 @@ public class DocumentTypeService {
                     documentType.getTitle()
         );
     }
-/*
+
     //CREATE
+    @Transactional
+    public void createDocumentType (DocumentTypeCreateCommand documentTypeCreateCommand) {
+        DocumentType newDocumentType = new DocumentType();
+        newDocumentType.setId(documentTypeCreateCommand.getId());
+        newDocumentType.setTitle(documentTypeCreateCommand.getTitle());
+        documentTypeRepository.save(newDocumentType);
+    }
+
+    //UPDATE
+    @Transactional
+    public void updateDocumentType (Long id, DocumentTypeCreateCommand documentTypeCreateCommand) {
+        DocumentType documentTypeToUpdate = documentTypeRepository.findById(id).orElseThrow(null);
+        documentTypeToUpdate.setId(documentTypeCreateCommand.getId());
+        documentTypeToUpdate.setTitle(documentTypeCreateCommand.getTitle());
+        //documentTypeToUpdate.setId(id);
+        documentTypeRepository.save(documentTypeToUpdate);
+    }
+
+/*
+    //CREATE (old version, not working)
     @Transactional
     public void createDocumentType (DocumentTypeCreateCommand documentTypeCreateCommand) {
         documentTypeRepository.save(new DocumentType (
@@ -51,7 +72,7 @@ public class DocumentTypeService {
     }
 
 
-    //UPDATE
+    //UPDATE (old version, not working)
     @Transactional
     public void updateDocumentType (Long id, DocumentTypeCreateCommand documentTypeCreateCommand) {
         DocumentType documentType = documentTypeRepository.findById(id).orElseThrow(null);
