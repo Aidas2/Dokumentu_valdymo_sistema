@@ -9,6 +9,7 @@ import LandingPage from "./components/LandingPage";
 import App from "./App";
 import CreateUserGroupsContainer from "./components/UserGroups/CreateUserGroupsContainer";
 import CreateUserGroupsForm from "./components/Forms/CreateUserGroupsForm";
+import AppFileUploadContainer from "./components/FileUpload/AppFileUploadContainer";
 
 ReactDOM.render(
   <BrowserRouter>
@@ -18,6 +19,7 @@ ReactDOM.render(
         <Route exact path="/usergroups" component={UserGroupsContainer} />
         <Route exact path="/usergroups/:id" />
         <Route exact path="/admin" component={AdministrationContainer} />
+        <Route exact path="/upload" component={AppFileUploadContainer} />
 
         <Route
           exact
