@@ -43,6 +43,7 @@ public class DocumentTypeService {
     }
 
     //CREATE
+    //galbut nereikia  kurti getId
     @Transactional
     public void createDocumentType (DocumentTypeCreateCommand documentTypeCreateCommand) {
         DocumentType newDocumentType = new DocumentType();

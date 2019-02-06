@@ -31,7 +31,7 @@ public class Document {
 
     @ManyToOne
     @JoinColumn(name="author_id")
-    private User author;
+    private User author;    //autoriu kol kas reikia "uzhardcodinti"
 
     @Column
     private DocumentState documentState;
@@ -106,6 +106,7 @@ public class Document {
         return author;
     }
 
+    //galbut reikia perdaryti i String usernameId
     public void setAuthor(User author) {
         this.author = author;
     }
