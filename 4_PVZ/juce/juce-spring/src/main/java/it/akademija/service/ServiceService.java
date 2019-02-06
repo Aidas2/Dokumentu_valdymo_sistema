@@ -75,7 +75,7 @@ public class ServiceService {
         return convert(serviceRepo.findAll());
     }
 
-    public List<ServiceObject> getByTitleContaining(String title){
+    public List<ServiceObject> getByTitleContaining(String title) {
 
         return convert(serviceRepo.getByTitleContaining(title));
 
@@ -88,8 +88,8 @@ public class ServiceService {
 //                        service.getCategory().ordinal())).collect(Collectors.toList());
     }
 
-    public List<ServiceObject> findBySeacrhTitleDescription(String title, String description){
-        return convert(serviceRepo.findBySeacrhTitleDescription(title,description));
+    public List<ServiceObject> findBySeacrhTitleDescription(String title, String description) {
+        return convert(serviceRepo.findBySeacrhTitleDescription(title, description));
     }
 
     public void updateService(String title, ServiceObject object) {
@@ -136,7 +136,7 @@ public class ServiceService {
         }
     }
 
-    List<ServiceObject> convert(Collection<Service> services){
+    List<ServiceObject> convert(Collection<Service> services) {
         return services.stream().map(service ->
                 new ServiceObject(
                         service.getId(),
