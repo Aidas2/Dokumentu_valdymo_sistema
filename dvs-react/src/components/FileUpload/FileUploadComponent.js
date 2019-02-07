@@ -16,9 +16,10 @@ const FileUploadComponent = props => {
             onChange={props.onDocumentTitle}
           />
           <label className="m-2">Dokumento tipas</label>
-          <DocumentTypesContainer />
+          <DocumentTypesContainer
+            onDocumentTypeChange={props.onDocumentTypeChange}
+          />
           {/* <select
-            //   onLoad={props.onInitialDocumentType}
             onChange={props.onDocumentType}
             className="form-control col-2 m-2"
             id="documentTypeSelect"

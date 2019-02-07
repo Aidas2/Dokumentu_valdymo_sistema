@@ -69,10 +69,17 @@ class AppFileUploadContainer extends Component {
     let documentTitle = e.target.value;
     this.setState({ documentTitle: documentTitle });
   };
+  // handleDocumentType = e => {
+  //   console.log("$$$$$$ DocumentTypeChange occured");
+  //   let documentType = e.target.value;
+  //   this.setState({ documentType: documentType });
+  //   // console.log("$$$$$$ this.state.documentType >>>>>> ", this.state.documentType);
+  // };
+
   handleDocumentType = e => {
-    let documentType = e.target.value;
-    this.setState({ documentType: documentType });
-    // console.log("$$$$$$ this.state.documentType >>>>>> ", this.state.documentType);
+    console.log(
+      "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ DocumentTypeChange occured"
+    );
   };
   // handleInitialDocumentType = (e)=>{
   //   let documentType = e.target.value;
@@ -82,12 +89,11 @@ class AppFileUploadContainer extends Component {
   // };
 
   render() {
-    this.handleDocumentType();
     return (
       <FileUploadComponent
         onUpload={this.handleUpload}
         onFile={this.handleFile}
-        onDocumentType={this.handleDocumentType}
+        onDocumentTypeChange={this.handleDocumentType()}
         onDocumentTitle={this.handleDocumentTitle}
         // onInitialDocumentType={this.handleInitialDocumentType}
       />

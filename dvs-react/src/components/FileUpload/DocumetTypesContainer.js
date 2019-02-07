@@ -31,7 +31,11 @@ class DocumentTypesContainer extends Component {
       return <DocumetTypesComponent key={oneType.id} typeObject={oneType} />;
     });
     return (
-      <select className="form-control col-2 m-2" id="documentTypeSelect">
+      <select
+        onChange={this.props.onDocumentTypeChange}
+        className="form-control col-2 m-2"
+        id="documentTypeSelect"
+      >
         {docTypesArrayToRender}
       </select>
     );
