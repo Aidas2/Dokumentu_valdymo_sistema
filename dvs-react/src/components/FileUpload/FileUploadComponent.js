@@ -33,7 +33,6 @@ class FileUploadComponent extends Component {
             <option>Type5</option>
           </select> */}
           </div>
-
           <div className="input-group mb-3 mt-3 col-3  pl-2">
             <div className="input-group-prepend" />
             <div className="custom-file">
@@ -48,7 +47,7 @@ class FileUploadComponent extends Component {
               </label>
             </div>
           </div>
-
+          <span>{this.props.documentName}</span>
           <div className="input-group mb-3 mt-3 col-3  pl-2">
             <div className="input-group-prepend" />
             <div className="custom-file">
@@ -57,21 +56,19 @@ class FileUploadComponent extends Component {
                 multiple
                 onChange={this.props.onFile}
                 className="custom-file-input "
-                id="inputGroupFile01"
+                id="inputGroupFile02"
               />
               <label className="custom-file-label" form="inputGroupFile01">
                 Pasirinkite paildomus failus{" "}
               </label>
             </div>
           </div>
-
           {/* <div className="m-2">
           <label>Pasirinkite paildomus failus</label>&nbsp;
           <br />
           <input type="file" multiple name="file" onChange={props.onFile} />
         </div>
         <br /> */}
-
           <button
             type="button"
             className="btn btn-info m-2"

@@ -107,6 +107,12 @@ class FileUploadContainer extends Component {
   //   console.log("$$$$$ initial state.type >>>>>>>>", this.state.type);
 
   // };
+  getMainDocumentName = () => {
+    if (this.state.file.length > 0) {
+      return this.state.file[0].name;
+    }
+    return "Nepasirinktas joks failas";
+  };
 
   render() {
     console.log(
@@ -120,6 +126,7 @@ class FileUploadContainer extends Component {
         onDocumentTypeChange={this.handleDocumentType}
         onDocumentTitle={this.handleDocumentTitle}
         documentTypes={this.state.documentTypes}
+        documentName={this.getMainDocumentName()}
         // onInitialDocumentType={this.handleInitialDocumentType}
       />
     );
