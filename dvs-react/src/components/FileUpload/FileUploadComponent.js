@@ -47,7 +47,7 @@ class FileUploadComponent extends Component {
               </label>
             </div>
           </div>
-          <span>{this.props.documentName}</span>
+          <span className="m-2">{this.props.documentName}</span>
           <div className="input-group mb-3 mt-3 col-3  pl-2">
             <div className="input-group-prepend" />
             <div className="custom-file">
@@ -59,7 +59,7 @@ class FileUploadComponent extends Component {
                 id="inputGroupFile02"
               />
               <label className="custom-file-label" form="inputGroupFile01">
-                Pasirinkite paildomus failus{" "}
+                Pasirinkite papildomus failus
               </label>
             </div>
           </div>
