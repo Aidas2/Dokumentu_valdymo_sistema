@@ -88,18 +88,18 @@ class FileUploadContainer extends Component {
     let documentTitle = e.target.value;
     this.setState({ documentTitle: documentTitle });
   };
-  // handleDocumentType = e => {
-  //   console.log("$$$$$$ DocumentTypeChange occured");
-  //   let documentType = e.target.value;
-  //   this.setState({ documentType: documentType });
-  //   // console.log("$$$$$$ this.state.documentType >>>>>> ", this.state.documentType);
-  // };
-
   handleDocumentType = e => {
-    console.log(
-      "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ DocumentTypeChange occured"
-    );
+    console.log("$$$$$$ DocumentTypeChange occured");
+    let documentType = e.target.value;
+    this.setState({ documentType: documentType });
+    // console.log("$$$$$$ this.state.documentType >>>>>> ", this.state.documentType);
   };
+
+  // handleDocumentType = e => {
+  //   console.log(
+  //     "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ DocumentTypeChange occured"
+  //   );
+  // };
   // handleInitialDocumentType = (e)=>{
   //   let documentType = e.target.value;
   //   this.setState({documentType: documentType});
