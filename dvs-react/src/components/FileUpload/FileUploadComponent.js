@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import DocumentTypesContainer from "./DocumetTypesContainer";
 
 const FileUploadComponent = props => {
   return (
@@ -15,7 +16,8 @@ const FileUploadComponent = props => {
             onChange={props.onDocumentTitle}
           />
           <label className="m-2">Dokumento tipas</label>
-          <select
+          <DocumentTypesContainer />
+          {/* <select
             //   onLoad={props.onInitialDocumentType}
             onChange={props.onDocumentType}
             className="form-control col-2 m-2"
@@ -26,7 +28,7 @@ const FileUploadComponent = props => {
             <option>Type3</option>
             <option>Type4</option>
             <option>Type5</option>
-          </select>
+          </select> */}
         </div>
 
         <div className="input-group mb-3 mt-3 col-3  pl-2">
