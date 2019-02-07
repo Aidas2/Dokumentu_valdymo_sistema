@@ -64,6 +64,7 @@ class FileUploadContainer extends Component {
       })
         .then(response => {
           console.log("File " + files.name + " is uploaded");
+          // this.showSuccessfullUploadMessage();
         })
         .catch(function(error) {
           //it works without catch block as well
@@ -83,6 +84,9 @@ class FileUploadContainer extends Component {
       this.setState({ file: fileInStateCleaned });
     }
   };
+  // showSuccessfullUploadMessage() {
+  //   return "Pasirinkti failai sėkmingai įkelti";
+  // }
 
   handleDocumentTitle = e => {
     console.log("$$$$$$$ e.target.value>>>>>>", e.target.value);
@@ -127,6 +131,7 @@ class FileUploadContainer extends Component {
         onDocumentTitle={this.handleDocumentTitle}
         documentTypes={this.state.documentTypes}
         documentName={this.getMainDocumentName()}
+        // uploadMessage={this.showSuccessfullUploadMessage}
         // onInitialDocumentType={this.handleInitialDocumentType}
       />
     );

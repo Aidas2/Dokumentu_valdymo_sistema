@@ -77,6 +77,7 @@ class FileUploadComponent extends Component {
             Įkelti
           </button>
         </form>
+        {/* <h3>{this.props.uploadMessage}</h3> */}
       </div>
     );
   }

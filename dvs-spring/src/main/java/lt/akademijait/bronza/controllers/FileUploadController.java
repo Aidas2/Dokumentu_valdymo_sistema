@@ -14,6 +14,12 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 @Controller
 public class FileUploadController {
@@ -47,7 +53,7 @@ public class FileUploadController {
         //this is used to get the current absolute path. Later the temp file is deleted
         File tempFile = new File("temptest9954332543.txt");
         boolean bool = tempFile.createNewFile();
-        System.out.println("File created: " + bool);
+        System.out.println("TempTestFile created: " + bool);
         String fileSeparator = System.getProperty("file.separator");
         Path currentAbsolutePath = Paths.get("temptest9954332543.txt").toAbsolutePath().getParent();
         tempFile.delete();
@@ -58,9 +64,8 @@ public class FileUploadController {
 
         File userDirectory = new File(currentAbsolutePath + fileSeparator + "uploaded-files" + fileSeparator + userName);
         userDirectory.mkdirs();
-
         for (MultipartFile file : files) {
-            File fileToSave = new File(userDirectory, userID + "-" + file.getOriginalFilename());
+            File fileToSave = new File(userDirectory, userID + "-"+getCurrentLocalDateTimeStamp()+"-" + file.getOriginalFilename());
 //            fileToSave.mkdirs();
 
             try {
@@ -75,4 +80,10 @@ public class FileUploadController {
 
         return null;
     }
+    public String getCurrentLocalDateTimeStamp() {
+        return LocalDateTime.now()
+                .format(DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss-SSS"));
+    }
 }
+
+
