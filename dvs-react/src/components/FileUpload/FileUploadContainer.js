@@ -18,6 +18,7 @@ class FileUploadContainer extends Component {
       .get("http://localhost:8081/api/doctypes")
       .then(response => {
         this.setState({ documentTypes: response.data });
+        this.setState({ documentType: response.data[0].title });
       })
       .catch(error => {
         console.log(error);
