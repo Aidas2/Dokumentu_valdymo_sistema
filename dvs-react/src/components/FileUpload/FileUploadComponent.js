@@ -18,6 +18,7 @@ class FileUploadComponent extends Component {
             />
             <label className="m-2">Dokumento tipas</label>
             <DocumentTypesContainer
+              documentTypes={this.props.documentTypes}
               onDocumentTypeChange={this.props.onDocumentTypeChange}
             />
             {/* <select

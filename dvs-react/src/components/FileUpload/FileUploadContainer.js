@@ -7,12 +7,24 @@ class FileUploadContainer extends Component {
   state = {
     file: [],
     documentTitle: "",
-    documentType: ""
+    //selected document type
+    documentType: "",
+    //all available document types
+    documentTypes: []
   };
 
   componentDidMount() {
+    axios
+      .get("http://localhost:8081/api/doctypes")
+      .then(response => {
+        this.setState({ documentTypes: response.data });
+      })
+      .catch(error => {
+        console.log(error);
+      });
     console.log(
-      "ComponentDidMount inside FileUploadCOntainer*************************************"
+      "ComponentDidMount inside DocumentTYpesCOntainer >>>>>>>>>> this.state.documetTypes>>>>.",
+      this.state.documentTypes
     );
   }
 
@@ -96,12 +108,17 @@ class FileUploadContainer extends Component {
   // };
 
   render() {
+    console.log(
+      "render() inside DocumentTYpesCOntainer >>>>>>>>>> this.state.documetTypes>>>>.",
+      this.state.documentTypes
+    );
     return (
       <FileUploadComponent
         onUpload={this.handleUpload}
         onFile={this.handleFile}
         onDocumentTypeChange={this.handleDocumentType}
         onDocumentTitle={this.handleDocumentTitle}
+        documentTypes={this.state.documentTypes}
         // onInitialDocumentType={this.handleInitialDocumentType}
       />
     );
