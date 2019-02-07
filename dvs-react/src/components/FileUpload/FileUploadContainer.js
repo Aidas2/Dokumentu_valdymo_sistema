@@ -12,7 +12,7 @@ class FileUploadContainer extends Component {
 
   componentDidMount() {
     console.log(
-      "ComponentDidMount inside DocumentTYpesCOntainer*************************************"
+      "ComponentDidMount inside FileUploadCOntainer*************************************"
     );
   }
 
