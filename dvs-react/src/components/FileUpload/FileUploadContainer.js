@@ -118,12 +118,25 @@ class FileUploadContainer extends Component {
     return "Nepasirinktas joks failas";
   };
 
+  // getAttachmentsNames = ()=>{
+  //    var attachmentsNames = [];
+  //         for(let i = 1; i<this.state.file.length; i++){
+  //           attachmentsNames.push(this.state.file[i].name)
+  //         }
+  // }
+
   render() {
     console.log(
       "render() inside DocumentTYpesCOntainer >>>>>>>>>> this.state.documetTypes>>>>.",
       this.state.documentTypes
     );
+           var attachments = this.state.file.filter((file) => file.name!==this.state.file[0].name);
+
+           var attachmentsNames = attachments.map((file) => file.name+" *** ");
+console.log("########### attachments", attachments);
+console.log("########### attachmentsNames", attachmentsNames);
     return (
+      
       <FileUploadComponent
         onUpload={this.handleUpload}
         onFile={this.handleFile}
@@ -131,6 +144,7 @@ class FileUploadContainer extends Component {
         onDocumentTitle={this.handleDocumentTitle}
         documentTypes={this.state.documentTypes}
         documentName={this.getMainDocumentName()}
+        attachmentsNames = {attachmentsNames}
         // uploadMessage={this.showSuccessfullUploadMessage}
         // onInitialDocumentType={this.handleInitialDocumentType}
       />

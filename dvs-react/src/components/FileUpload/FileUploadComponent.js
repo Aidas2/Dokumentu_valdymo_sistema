@@ -63,6 +63,8 @@ class FileUploadComponent extends Component {
               </label>
             </div>
           </div>
+          <span className="m-2">{this.props.attachmentsNames}</span>
+
           {/* <div className="m-2">
           <label>Pasirinkite paildomus failus</label>&nbsp;
           <br />
