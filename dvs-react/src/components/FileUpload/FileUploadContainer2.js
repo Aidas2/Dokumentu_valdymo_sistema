@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import axios from "axios";
 import FileUploadComponent from "./FileUploadComponent";
 
-class FileUploadContainer extends Component {
+class FileUploadContainer2 extends Component {
   state = {
     file: [],
     documentTitle: "",
@@ -108,4 +108,4 @@ class FileUploadContainer extends Component {
   }
 }
 
-export default FileUploadContainer;
+export default FileUploadContainer2;

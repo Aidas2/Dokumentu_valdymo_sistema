@@ -9,7 +9,7 @@ import LandingPage from "./components/LandingPage";
 import App from "./App";
 import CreateUserGroupsContainer from "./components/UserGroups/CreateUserGroupsContainer";
 import CreateUserGroupsForm from "./components/Forms/CreateUserGroupsForm";
-import AppFileUploadContainer from "./components/FileUpload/AppFileUploadContainer";
+import FileUploadContainer from "./components/FileUpload/FileUploadContainer";
 import DocumentTypesContainer from "./components/FileUpload/DocumetTypesContainer";
 
 ReactDOM.render(
@@ -20,7 +20,7 @@ ReactDOM.render(
         <Route exact path="/usergroups" component={UserGroupsContainer} />
         <Route exact path="/usergroups/:id" />
         <Route exact path="/admin" component={AdministrationContainer} />
-        <Route exact path="/upload" component={AppFileUploadContainer} />
+        <Route exact path="/upload" component={FileUploadContainer} />
         <Route
           exact
           path="/api/doctypescontainer"

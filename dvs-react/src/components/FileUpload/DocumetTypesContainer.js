@@ -7,6 +7,7 @@ class DocumentTypesContainer extends Component {
   state = { documentTypes: [] };
 
   componentDidMount() {
+    console.log("ComponentDidMount inside DocumentTYpesCOntainer");
     axios
       .get("http://localhost:8081/api/doctypes")
       .then(response => {
