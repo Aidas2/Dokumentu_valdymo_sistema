@@ -5,7 +5,7 @@ class LandingPage extends Component {
   render() {
     return (
       <div className="container-fluid ">
-        <h1 class="display-6">
+        <h1 className="display-6">
           Sveiki prisijungę prie dokumentų Valdymo sistemos
         </h1>
 
