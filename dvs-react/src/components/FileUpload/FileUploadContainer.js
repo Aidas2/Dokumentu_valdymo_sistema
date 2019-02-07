@@ -44,7 +44,7 @@ class FileUploadContainer extends Component {
     //  this.setState({ file: file });
     console.log("&&&&&&&&&& state.file from handleFile = ", this.state.file);
   };
-
+//  const uploadStatus = "";
   handleUpload = e => {
     console.log(this.state, "THE STATE from handleUpload------$$$$$$");
 
@@ -64,7 +64,9 @@ class FileUploadContainer extends Component {
       })
         .then(response => {
           console.log("File " + files.name + " is uploaded");
-          // this.showSuccessfullUploadMessage();
+        const uploadStatus = "Selected files were uploaded successfully";
+        console.log("upload status >>>>>>>>>> ", uploadStatus);
+
         })
         .catch(function(error) {
           //it works without catch block as well
@@ -84,9 +86,9 @@ class FileUploadContainer extends Component {
       this.setState({ file: fileInStateCleaned });
     }
   };
-  // showSuccessfullUploadMessage() {
-  //   return "Pasirinkti failai sėkmingai įkelti";
-  // }
+  getUploadStatus=()=>  {
+    return this.uploadStatus;
+  }
 
   handleDocumentTitle = e => {
     console.log("$$$$$$$ e.target.value>>>>>>", e.target.value);
@@ -118,12 +120,6 @@ class FileUploadContainer extends Component {
     return "Nepasirinktas joks failas";
   };
 
-  // getAttachmentsNames = ()=>{
-  //    var attachmentsNames = [];
-  //         for(let i = 1; i<this.state.file.length; i++){
-  //           attachmentsNames.push(this.state.file[i].name)
-  //         }
-  // }
 
   render() {
     console.log(
@@ -135,6 +131,7 @@ class FileUploadContainer extends Component {
            var attachmentsNames = attachments.map((file) => file.name+" *** ");
 console.log("########### attachments", attachments);
 console.log("########### attachmentsNames", attachmentsNames);
+console.log("%%%%%%%%%%%%%%%%%%%%% getUploadStatus inside render() >>>", this.uploadStatus);
     return (
       
       <FileUploadComponent
@@ -145,7 +142,7 @@ console.log("########### attachmentsNames", attachmentsNames);
         documentTypes={this.state.documentTypes}
         documentName={this.getMainDocumentName()}
         attachmentsNames = {attachmentsNames}
-        // uploadMessage={this.showSuccessfullUploadMessage}
+        uploadMessage={this.uploadStatus}
         // onInitialDocumentType={this.handleInitialDocumentType}
       />
     );

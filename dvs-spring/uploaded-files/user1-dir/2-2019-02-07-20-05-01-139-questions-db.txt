@@ -1,0 +1,2 @@
+1. How to add a logger if we have no cathc block?
+2. How to send .jar via gmail?
