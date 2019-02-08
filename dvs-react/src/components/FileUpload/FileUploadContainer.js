@@ -42,10 +42,8 @@ class FileUploadContainer extends Component {
     });
 
     this.setState({ file: files });
-    //  this.setState({ file: file });
     console.log("&&&&&&&&&& state.file from handleFile = ", this.state.file);
   };
-  //  const uploadStatus = "";
 
   handleUpload = e => {
     console.log(this.state, "THE STATE from handleUpload------$$$$$$");
@@ -68,9 +66,7 @@ class FileUploadContainer extends Component {
           console.log("File " + files.name + " is uploaded");
           const uploadStatus = "Selected files were uploaded successfully";
           console.log("upload status >>>>>>>>>> ", uploadStatus);
-          console.log("----------- sth before>>> ", this.state.sth);
           this.setState({ sth: true });
-          console.log("----------- sth after>>> ", this.state.sth);
         })
         .catch(function(error) {
           //it works without catch block as well
@@ -106,31 +102,29 @@ class FileUploadContainer extends Component {
     // console.log("$$$$$$ this.state.documentType >>>>>> ", this.state.documentType);
   };
 
-  // handleDocumentType = e => {
-  //   console.log(
-  //     "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ DocumentTypeChange occured"
-  //   );
-  // };
-  // handleInitialDocumentType = (e)=>{
-  //   let documentType = e.target.value;
-  //   this.setState({documentType: documentType});
-  //   console.log("$$$$$ initial state.type >>>>>>>>", this.state.type);
-
-  // };
   getMainDocumentName = () => {
     if (this.state.file.length > 0) {
       return this.state.file[0].name;
     }
     return "Nepasirinktas joks failas";
   };
+  handleCloseAlert = () => {
+    this.setState({ sth: false });
+  };
 
   launchAlert = () => {
     if (this.state.sth) {
       return (
         <div className="alert alert-success alert-dismissible">
-          <a href="#" className="close" data-dismiss="alert" aria-label="close">
+          <button
+            onClick={this.handleCloseAlert}
+            href="#"
+            className="close"
+            data-dismiss="alert"
+            aria-label="close"
+          >
             &times;
-          </a>
+          </button>
           <strong>Success!</strong> Selected files were uploaded successfully
         </div>
       );
