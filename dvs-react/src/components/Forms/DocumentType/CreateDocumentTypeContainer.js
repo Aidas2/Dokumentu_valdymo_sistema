@@ -10,7 +10,7 @@ class CreateDocumentTypeConatainer extends Component {
     axios
       .post("http://localhost:8081/api/doctypes", {
         id: 1,
-        title: "Flintstone"
+        title: "shouldBeID35UI"
       })
       .then(function(response) {
         console.log(response);
