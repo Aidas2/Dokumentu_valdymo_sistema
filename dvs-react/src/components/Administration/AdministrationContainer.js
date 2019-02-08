@@ -19,7 +19,7 @@ class AdministrationContainer extends Component {
 
         <h6 class="display-6">
           2. Kurti dokumentų tipus
-          <Link to="/admin/usergroups" className="btn btn-warning m-2">
+          <Link to="/admin/doctypes" className="btn btn-warning m-2">
             Kurti
           </Link>
         </h6>

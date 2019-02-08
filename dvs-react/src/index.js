@@ -11,6 +11,7 @@ import CreateUserGroupsContainer from "./components/UserGroups/CreateUserGroupsC
 import CreateUserGroupsForm from "./components/Forms/CreateUserGroupsForm";
 import FileUploadContainer from "./components/FileUpload/FileUploadContainer";
 import DocumentTypesContainer from "./components/FileUpload/DocumetTypesContainer";
+import CreateDocumentTypeConatainer from "./components/Forms/DocumentType/CreateDocumentTypeContainer";
 
 ReactDOM.render(
   <BrowserRouter>
@@ -23,8 +24,8 @@ ReactDOM.render(
         <Route exact path="/upload" component={FileUploadContainer} />
         <Route
           exact
-          path="/api/doctypescontainer"
-          component={DocumentTypesContainer}
+          path="/admin/doctypes"
+          component={CreateDocumentTypeConatainer}
         />
 
         <Route
