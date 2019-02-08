@@ -7,7 +7,7 @@ class FileUploadComponent extends Component {
     return (
       <div className="container-fluid">
         <h3>Dokumento įkėlimas</h3>
-                <h5 className = "text-danger">{this.props.uploadMessage}</h5>
+        <h5 className="text-danger">{this.props.uploadMessage}</h5>
 
         <form>
           <div className="">
@@ -81,6 +81,7 @@ class FileUploadComponent extends Component {
             Įkelti
           </button>
         </form>
+        <div className="container">{this.props.launchAlert}</div>
       </div>
     );
   }

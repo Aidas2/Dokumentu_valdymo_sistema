@@ -10,7 +10,8 @@ class FileUploadContainer extends Component {
     //selected document type
     documentType: "",
     //all available document types
-    documentTypes: []
+    documentTypes: [],
+    sth: false
   };
 
   componentDidMount() {
@@ -18,7 +19,7 @@ class FileUploadContainer extends Component {
       .get("http://localhost:8081/api/doctypes")
       .then(response => {
         this.setState({ documentTypes: response.data });
-        this.setState({ documentType: response.data[0].title });
+        // this.setState({ documentType: response.data[0].title });
       })
       .catch(error => {
         console.log(error);
@@ -44,7 +45,8 @@ class FileUploadContainer extends Component {
     //  this.setState({ file: file });
     console.log("&&&&&&&&&& state.file from handleFile = ", this.state.file);
   };
-//  const uploadStatus = "";
+  //  const uploadStatus = "";
+
   handleUpload = e => {
     console.log(this.state, "THE STATE from handleUpload------$$$$$$");
 
@@ -64,9 +66,11 @@ class FileUploadContainer extends Component {
       })
         .then(response => {
           console.log("File " + files.name + " is uploaded");
-        const uploadStatus = "Selected files were uploaded successfully";
-        console.log("upload status >>>>>>>>>> ", uploadStatus);
-
+          const uploadStatus = "Selected files were uploaded successfully";
+          console.log("upload status >>>>>>>>>> ", uploadStatus);
+          console.log("----------- sth before>>> ", this.state.sth);
+          this.setState({ sth: true });
+          console.log("----------- sth after>>> ", this.state.sth);
         })
         .catch(function(error) {
           //it works without catch block as well
@@ -86,9 +90,9 @@ class FileUploadContainer extends Component {
       this.setState({ file: fileInStateCleaned });
     }
   };
-  getUploadStatus=()=>  {
+  getUploadStatus = () => {
     return this.uploadStatus;
-  }
+  };
 
   handleDocumentTitle = e => {
     console.log("$$$$$$$ e.target.value>>>>>>", e.target.value);
@@ -120,20 +124,37 @@ class FileUploadContainer extends Component {
     return "Nepasirinktas joks failas";
   };
 
+  launchAlert = () => {
+    if (this.state.sth) {
+      return (
+        <div className="alert alert-success alert-dismissible">
+          <a href="#" className="close" data-dismiss="alert" aria-label="close">
+            &times;
+          </a>
+          <strong>Success!</strong> Selected files were uploaded successfully
+        </div>
+      );
+    }
+    return null;
+  };
 
   render() {
     console.log(
       "render() inside DocumentTYpesCOntainer >>>>>>>>>> this.state.documetTypes>>>>.",
       this.state.documentTypes
     );
-           var attachments = this.state.file.filter((file) => file.name!==this.state.file[0].name);
+    var attachments = this.state.file.filter(
+      file => file.name !== this.state.file[0].name
+    );
 
-           var attachmentsNames = attachments.map((file) => file.name+" *** ");
-console.log("########### attachments", attachments);
-console.log("########### attachmentsNames", attachmentsNames);
-console.log("%%%%%%%%%%%%%%%%%%%%% getUploadStatus inside render() >>>", this.uploadStatus);
+    var attachmentsNames = attachments.map(file => file.name + " *** ");
+    console.log("########### attachments", attachments);
+    console.log("########### attachmentsNames", attachmentsNames);
+    console.log(
+      "%%%%%%%%%%%%%%%%%%%%% getUploadStatus inside render() >>>",
+      this.uploadStatus
+    );
     return (
-      
       <FileUploadComponent
         onUpload={this.handleUpload}
         onFile={this.handleFile}
@@ -141,9 +162,9 @@ console.log("%%%%%%%%%%%%%%%%%%%%% getUploadStatus inside render() >>>", this.up
         onDocumentTitle={this.handleDocumentTitle}
         documentTypes={this.state.documentTypes}
         documentName={this.getMainDocumentName()}
-        attachmentsNames = {attachmentsNames}
+        attachmentsNames={attachmentsNames}
         uploadMessage={this.uploadStatus}
-        // onInitialDocumentType={this.handleInitialDocumentType}
+        launchAlert={this.launchAlert()}
       />
     );
   }
