@@ -47,7 +47,7 @@ public class DocumentTypeService {
     @Transactional
     public void createDocumentType (DocumentTypeCreateCommand documentTypeCreateCommand) {
         DocumentType newDocumentType = new DocumentType();
-        newDocumentType.setId(documentTypeCreateCommand.getId());
+//        newDocumentType.setId(documentTypeCreateCommand.getId());
         newDocumentType.setTitle(documentTypeCreateCommand.getTitle());
         documentTypeRepository.save(newDocumentType);
     }
@@ -56,7 +56,7 @@ public class DocumentTypeService {
     @Transactional
     public void updateDocumentType (Long id, DocumentTypeCreateCommand documentTypeCreateCommand) {
         DocumentType documentTypeToUpdate = documentTypeRepository.findById(id).orElseThrow(null);
-        documentTypeToUpdate.setId(documentTypeCreateCommand.getId());
+//        documentTypeToUpdate.setId(documentTypeCreateCommand.getId());
         documentTypeToUpdate.setTitle(documentTypeCreateCommand.getTitle());
         //documentTypeToUpdate.setId(id);
         documentTypeRepository.save(documentTypeToUpdate);
