@@ -4,7 +4,8 @@ import PropTypes from "prop-types";
 const CreateDocumentTypeComponent = props => {
   return (
     <div className="container-fluid m-2">
-      <h3 class="display-6 ">Naujo dokumento tipo kūrimas</h3>
+      <h3 className="display-6 ">Naujo dokumento tipo kūrimas</h3>
+      <h5>Dokumento tipo pavadinimas</h5>
       <input
         className="form-control col-4"
         type="text"
@@ -13,8 +14,8 @@ const CreateDocumentTypeComponent = props => {
 
       <div className="form-group" />
 
-      <button type="submit" className="btn btn-info">
-        Kurti naują grupę
+      <button onClick={props.onSubmit} className="btn btn-info">
+        Kurti
       </button>
     </div>
   );
