@@ -4,7 +4,7 @@ import axios from "axios";
 import CreateDocumentTypeComponent from "./CreateDocumentTypeComponent";
 
 class CreateDocumentTypeConatainer extends Component {
-  state = { title: "titleInState" };
+  state = { title: "" };
 
   handleSubmit = () => {
     axios
@@ -18,9 +18,20 @@ class CreateDocumentTypeConatainer extends Component {
         console.log(error);
       });
     console.log(">>>>>>>>>Submit happened");
+    console.log("@@@@@@@@@@@@@@@ this.state.title >>>>>>>> ", this.state.title);
+  };
+
+  handleTitleChange = e => {
+    let documentTypeTitle = e.target.value;
+    this.setState({ title: documentTypeTitle });
   };
   render() {
-    return <CreateDocumentTypeComponent onSubmit={this.handleSubmit} />;
+    return (
+      <CreateDocumentTypeComponent
+        onTitleChange={this.handleTitleChange}
+        onSubmit={this.handleSubmit}
+      />
+    );
   }
 }
 

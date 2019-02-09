@@ -7,6 +7,7 @@ const CreateDocumentTypeComponent = props => {
       <h3 className="display-6 ">Naujo dokumento tipo kūrimas</h3>
       <h5>Dokumento tipo pavadinimas</h5>
       <input
+        onChange={props.onTitleChange}
         className="form-control col-4"
         type="text"
         placeholder="Įveskite dokumento tipo pavadinimą"
