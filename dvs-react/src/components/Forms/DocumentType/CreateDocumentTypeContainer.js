@@ -48,7 +48,10 @@ class CreateDocumentTypeConatainer extends Component {
       });
     console.log(">>>>>>>>>Submit happened");
     console.log("@@@@@@@@@@@@@@@ this.state.title >>>>>>>> ", this.state.title);
-    console.log("@@@@@@@@@@@@@@@56 this.state.msg >>>>>>>> ", this.state.msg);
+    console.log(
+      "@@@@@@@@@@@@@@@ inside handleSubmit this.state.msg >>>>>>>> ",
+      this.state.msg
+    );
   };
 
   handleTitleChange = e => {
@@ -81,6 +84,11 @@ class CreateDocumentTypeConatainer extends Component {
   };
 
   render() {
+    console.log(
+      "@@@@@@@@@@@@@@@ inside render() this.state.msg >>>>>>>> ",
+      this.state.msg
+    );
+
     return (
       <CreateDocumentTypeComponent
         onTitleChange={this.handleTitleChange}

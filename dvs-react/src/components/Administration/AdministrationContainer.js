@@ -10,21 +10,21 @@ class AdministrationContainer extends Component {
   render() {
     return (
       <div className="container-fluid ">
-        <h6 class="display-6">
+        <h6 className="display-6">
           1. Kurti vartotojų grupes
           <Link to="/admin/usergroups" className="btn btn-warning m-2">
             Kurti
           </Link>
         </h6>
 
-        <h6 class="display-6">
+        <h6 className="display-6">
           2. Kurti dokumentų tipus
           <Link to="/admin/doctypes" className="btn btn-warning m-2">
             Kurti
           </Link>
         </h6>
 
-        <h6 class="display-6">
+        <h6 className="display-6">
           3. Registruoti naują vartotoją
           <Link to="/admin/usergroups" className="btn btn-warning m-2">
             Registruoti
