@@ -72,7 +72,7 @@ class CreateDocumentTypeConatainer extends Component {
           >
             &times;
           </button>
-          <strong>Sveikiname!</strong> Dokumento tipas {this.state.title}{" "}
+          Sveikiname! Dokumento tipas <strong>{this.state.title} </strong>
           sukurtas sėkmingai.
         </div>
       );
