@@ -2,15 +2,27 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import DocumentTypesComponent from "./DocumentTypesComponent";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 class DocumentTypesContainer extends Component {
   state = {
-    docTypes: [
-      { id: 1, title: "title1h" },
-      { id: 2, title: "title2h" },
-      { id: 3, title: "title3h" }
-    ]
+    docTypes: []
   };
+
+  componentDidMount() {
+    axios
+      .get("http://localhost:8081/api/doctypes")
+      .then(response => {
+        this.setState({ docTypes: response.data });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    console.log(
+      "ComponentDidMount inside DocumentTYpesCOntainer >>>>>>>>>> this.state.docTypes>>>>.",
+      this.state.docTypes
+    );
+  }
 
   render() {
     var docTypesArrayToRender = this.state.docTypes.map(oneTypeObj => {
