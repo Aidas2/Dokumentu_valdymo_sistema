@@ -4,13 +4,12 @@ import axios from "axios";
 import CreateDocumentTypeComponent from "./CreateDocumentTypeComponent";
 
 class CreateDocumentTypeConatainer extends Component {
-  state = {};
+  state = { title: "titleInState" };
 
   handleSubmit = () => {
     axios
       .post("http://localhost:8081/api/doctypes", {
-        id: 1,
-        title: "shouldBeID35UI"
+        title: this.state.title
       })
       .then(function(response) {
         console.log(response);
