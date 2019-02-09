@@ -10,7 +10,7 @@ public class DocumentCreateCommand {
     private String usernameId;
     //private DocumentState documentState;
     //private DocumentType documentType; // do not use object, because object sends to swagger all his fields
-    private String documentTypeTitle;
+    private Long documentTypeId;
     private String title;
     private String description;
 
@@ -33,9 +33,9 @@ public class DocumentCreateCommand {
     public DocumentCreateCommand() {
     }
 
-    public DocumentCreateCommand(String usernameId, String documentTypeTitle, String title, String description) {
+    public DocumentCreateCommand(String usernameId, Long documentTypeId, String title, String description) {
         this.usernameId = usernameId;
-        this.documentTypeTitle = documentTypeTitle;
+        this.documentTypeId = documentTypeId;
         this.title = title;
         this.description = description;
     }
@@ -48,12 +48,12 @@ public class DocumentCreateCommand {
         this.usernameId = usernameId;
     }
 
-    public String getDocumentTypeTitle() {
-        return documentTypeTitle;
+    public Long getDocumentTypeTitle() {
+        return documentTypeId;
     }
 
-    public void setDocumentTypeTitle(String documentTypeTitle) {
-        this.documentTypeTitle = documentTypeTitle;
+    public void setDocumentTypeTitle(Long documentTypeTitle) {
+        this.documentTypeId = documentTypeTitle;
     }
 
     public String getTitle() {
