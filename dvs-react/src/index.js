@@ -10,7 +10,7 @@ import App from "./App";
 import CreateUserGroupsContainer from "./components/UserGroups/CreateUserGroupsContainer";
 import CreateUserGroupsForm from "./components/Forms/CreateUserGroupsForm";
 import FileUploadContainer from "./components/FileUpload/FileUploadContainer";
-import DocumentTypesContainer from "./components/FileUpload/DocumetTypesContainer";
+import DocumentTypesContainer from "./components/DocumentTypes/DocumentTypesContainer";
 import CreateDocumentTypeConatainer from "./components/Forms/DocumentType/CreateDocumentTypeContainer";
 
 ReactDOM.render(
@@ -24,8 +24,13 @@ ReactDOM.render(
         <Route exact path="/upload" component={FileUploadContainer} />
         <Route
           exact
-          path="/admin/doctypes"
+          path="/admin/newdoctype"
           component={CreateDocumentTypeConatainer}
+        />
+        <Route
+          exact
+          path="/admin/doctypes"
+          component={DocumentTypesContainer}
         />
 
         <Route
