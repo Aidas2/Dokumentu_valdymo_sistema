@@ -45,12 +45,17 @@ class DocumentTypesContainer extends Component {
           <div className="container pl-0 ml-0">
             <div className="row">
               <div className="col-2">
-                <p> Dokumento tipo ID</p>
+                <p>
+                  {" "}
+                  <strong>Dokumento tipo ID</strong>
+                </p>
                 {/* <Link to="">Linkas</Link> */}
               </div>
 
               <div className="col-3">
-                <p>Dokumento tipo pavadinimas</p>
+                <p>
+                  <strong>Dokumento tipo pavadinimas</strong>
+                </p>
               </div>
             </div>
           </div>
