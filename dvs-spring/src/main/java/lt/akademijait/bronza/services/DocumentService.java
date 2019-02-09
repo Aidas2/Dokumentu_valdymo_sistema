@@ -53,7 +53,7 @@ public class DocumentService {
     //GET All SUBMITTED DOCUMENTS (with filter)
     @Transactional(readOnly = true)
     public List<DocumentGetCommand> getSubmittedDocuments() {
-        return  documentRepository.findAll()
+        return documentRepository.findAll()
                 .stream()
                 .filter(document -> !document.getDocumentState().equals(DocumentState.CREATED))
                 .map((document) -> new DocumentGetCommand(
@@ -75,7 +75,7 @@ public class DocumentService {
     //GET All DOCUMENTS TO REVIEW (with filter)
     @Transactional(readOnly = true)
     public List<DocumentGetCommand> getDocumentsToReview() {
-        return  documentRepository.findAll()
+        return documentRepository.findAll()
                 .stream()
                 .filter(document -> document.getDocumentState().equals(DocumentState.SUBMITTED))
                 .map((document) -> new DocumentGetCommand(
@@ -124,8 +124,9 @@ public class DocumentService {
         User user = userRepository.findByUsername(documentCreateCommand.getUsernameId());
         newDocument.setAuthor(user);
 
-        DocumentType documentType = documentTypeRepository.findByTitle(documentCreateCommand.getDocumentTypeTitle());
-        newDocument.setDocumentTypeId(documentType);
+//        DocumentType documentType = documentTypeRepository.findByTitle(documentCreateCommand.getDocumentTypeTitle());
+
+        newDocument.setDocumentTypeId(documentCreateCommand.getDocumentTypeId());
 
         newDocument.setTitle(documentCreateCommand.getTitle());
         newDocument.setDescription(documentCreateCommand.getDescription());
@@ -135,17 +136,16 @@ public class DocumentService {
     //SUBMITT ?
 
 
-
     //UPDATE
     @Transactional
-    public void updateDocument (Long id, DocumentCreateCommand documentCreateCommand) {
+    public void updateDocument(Long id, DocumentCreateCommand documentCreateCommand) {
         Document documentToUpdate = documentRepository.findById(id).orElse(null);
 
         User user = userRepository.findByUsername(documentCreateCommand.getUsernameId());
         documentToUpdate.setAuthor(user);
 
-        DocumentType documentType = documentTypeRepository.findByTitle(documentCreateCommand.getDocumentTypeTitle());
-        documentToUpdate.setDocumentTypeId(documentType);
+//        DocumentType documentType = documentTypeRepository.findByTitle(documentCreateCommand.getDocumentTypeTitle());
+        documentToUpdate.setDocumentTypeId(documentCreateCommand.getDocumentTypeId());
 
 
         documentToUpdate.setTitle(documentCreateCommand.getTitle());

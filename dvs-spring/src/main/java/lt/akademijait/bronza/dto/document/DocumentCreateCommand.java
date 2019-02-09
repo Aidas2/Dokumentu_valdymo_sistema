@@ -48,12 +48,12 @@ public class DocumentCreateCommand {
         this.usernameId = usernameId;
     }
 
-    public Long getDocumentTypeTitle() {
+    public Long getDocumentTypeId() {
         return documentTypeId;
     }
 
-    public void setDocumentTypeTitle(Long documentTypeTitle) {
-        this.documentTypeId = documentTypeTitle;
+    public void setDocumentTypeId(Long documentTypeId) {
+        this.documentTypeId = documentTypeId;
     }
 
     public String getTitle() {
