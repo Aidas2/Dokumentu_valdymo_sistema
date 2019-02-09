@@ -10,3 +10,4 @@ class DocumentTypesContainer extends Component {
 }
 
 export default DocumentTypesContainer;
+ 
