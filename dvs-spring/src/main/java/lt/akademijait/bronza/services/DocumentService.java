@@ -37,7 +37,7 @@ public class DocumentService {
                 .map((document) -> new DocumentGetCommand(
                         document.getAuthor(),
                         document.getDocumentState(),
-                        document.getDocumentType(),
+                        document.getDocumentTypeId(),
                         document.getTitle(),
                         document.getDescription(),
                         document.getCreationDate(),
@@ -59,7 +59,7 @@ public class DocumentService {
                 .map((document) -> new DocumentGetCommand(
                         document.getAuthor(),
                         document.getDocumentState(),
-                        document.getDocumentType(),
+                        document.getDocumentTypeId(),
                         document.getTitle(),
                         document.getDescription(),
                         document.getCreationDate(),
@@ -81,7 +81,7 @@ public class DocumentService {
                 .map((document) -> new DocumentGetCommand(
                         document.getAuthor(),
                         document.getDocumentState(),
-                        document.getDocumentType(),
+                        document.getDocumentTypeId(),
                         document.getTitle(),
                         document.getDescription(),
                         document.getCreationDate(),
@@ -101,7 +101,7 @@ public class DocumentService {
         return new DocumentGetCommand(
                 document.getAuthor(),
                 document.getDocumentState(),
-                document.getDocumentType(),
+                document.getDocumentTypeId(),
                 document.getTitle(),
                 document.getDescription(),
                 document.getCreationDate(),
@@ -125,7 +125,7 @@ public class DocumentService {
         newDocument.setAuthor(user);
 
         DocumentType documentType = documentTypeRepository.findByTitle(documentCreateCommand.getDocumentTypeTitle());
-        newDocument.setDocumentType(documentType);
+        newDocument.setDocumentTypeId(documentType);
 
         newDocument.setTitle(documentCreateCommand.getTitle());
         newDocument.setDescription(documentCreateCommand.getDescription());
@@ -145,7 +145,7 @@ public class DocumentService {
         documentToUpdate.setAuthor(user);
 
         DocumentType documentType = documentTypeRepository.findByTitle(documentCreateCommand.getDocumentTypeTitle());
-        documentToUpdate.setDocumentType(documentType);
+        documentToUpdate.setDocumentTypeId(documentType);
 
 
         documentToUpdate.setTitle(documentCreateCommand.getTitle());
@@ -159,7 +159,7 @@ public class DocumentService {
     public void createDocument(DocumentCreateCommand documentCreateCommand) {
         documentRepository.save(new Document(
            documentCreateCommand.getAuthor(),
-           documentCreateCommand.getDocumentType(),
+           documentCreateCommand.getDocumentTypeId(),
            documentCreateCommand.getTitle(),
            documentCreateCommand.getDescription()
         ));
@@ -172,7 +172,7 @@ public class DocumentService {
         Document document = documentRepository.findById(id).orElse(null);
         Document updatedDocument = new Document(
                 documentCreateCommand.getAuthor(),
-                documentCreateCommand.getDocumentType(),
+                documentCreateCommand.getDocumentTypeId(),
                 documentCreateCommand.getTitle(),
                 documentCreateCommand.getDescription()
         );

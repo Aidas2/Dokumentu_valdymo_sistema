@@ -2,7 +2,7 @@ package lt.akademijait.bronza.dto.document;
 
 public class DocumentCreateCommand {
 
-    //private Long id;
+//    private Long id;
     //private String prefix;
     //private List<String> additionalFilePaths = new ArrayList<>();
     //private List<Attachment> attachments;
@@ -13,7 +13,15 @@ public class DocumentCreateCommand {
     private String documentTypeTitle;
     private String title;
     private String description;
-    //private Date creationDate;
+
+//    public Long getId() {
+//        return id;
+//    }
+//
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
+//private Date creationDate;
     //private Date submissionDate;
     //private Date confirmationDate;
     //private Date rejectionDate;

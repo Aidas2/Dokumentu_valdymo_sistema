@@ -38,7 +38,7 @@ public class Document {
 
     @ManyToOne
     @JoinColumn(name="doctype_id")
-    private DocumentType documentType;
+    private Long documentTypeId;
 
     @Column (nullable = false)
     private String title;
@@ -71,10 +71,10 @@ public class Document {
     public Document() {
     }
 
-    public Document(User author, DocumentState documentState, DocumentType documentType, String title, String description, Date creationDate, Date submissionDate, Date confirmationDate, Date rejectionDate, User reviewer, String rejectionReason, String path) {
+    public Document(User author, DocumentState documentState, Long documentTypeId, String title, String description, Date creationDate, Date submissionDate, Date confirmationDate, Date rejectionDate, User reviewer, String rejectionReason, String path) {
         this.author = author;
         this.documentState = documentState;
-        this.documentType = documentType;
+        this.documentTypeId = documentTypeId;
         this.title = title;
         this.description = description;
         this.creationDate = creationDate;
@@ -119,12 +119,12 @@ public class Document {
         this.documentState = documentState;
     }
 
-    public DocumentType getDocumentType() {
-        return documentType;
+    public Long getDocumentTypeId() {
+        return documentTypeId;
     }
 
-    public void setDocumentType(DocumentType documentType) {
-        this.documentType = documentType;
+    public void setDocumentTypeId(Long documentTypeId) {
+        this.documentTypeId = documentTypeId;
     }
 
     public String getTitle() {
