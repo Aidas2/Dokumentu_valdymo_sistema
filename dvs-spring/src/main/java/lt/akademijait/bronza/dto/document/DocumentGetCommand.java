@@ -15,7 +15,7 @@ public class DocumentGetCommand {
     //private List<Attachment> attachments;
     private User author; // private UserGetCommand author;
     private DocumentState documentState;
-    private DocumentType documentType; //private String documentTypeTitle;
+    private Long documentTypeId; //private String documentTypeTitle;
     private String title;
     private String description;
     private Date creationDate;
@@ -29,10 +29,10 @@ public class DocumentGetCommand {
     public DocumentGetCommand() {
     }
 
-    public DocumentGetCommand(User author, DocumentState documentState, DocumentType documentType, String title, String description, Date creationDate, Date submissionDate, Date confirmationDate, Date rejectionDate, User reviewer, String rejectionReason, String path) {
+    public DocumentGetCommand(User author, DocumentState documentState, Long documentTypeId, String title, String description, Date creationDate, Date submissionDate, Date confirmationDate, Date rejectionDate, User reviewer, String rejectionReason, String path) {
         this.author = author;
         this.documentState = documentState;
-        this.documentType = documentType;
+        this.documentTypeId = documentTypeId;
         this.title = title;
         this.description = description;
         this.creationDate = creationDate;
@@ -68,12 +68,12 @@ public class DocumentGetCommand {
         this.documentState = documentState;
     }
 
-    public DocumentType getDocumentType() {
-        return documentType;
+    public Long getDocumentTypeId() {
+        return documentTypeId;
     }
 
-    public void setDocumentType(DocumentType documentType) {
-        this.documentType = documentType;
+    public void setDocumentTypeId(Long documentTypeId) {
+        this.documentTypeId = documentTypeId;
     }
 
     public String getTitle() {
