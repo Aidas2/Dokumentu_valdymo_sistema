@@ -35,7 +35,7 @@ public class DocumentService {
         return documentRepository.findAll()
                 .stream()
                 .map((document) -> new DocumentGetCommand(
-                        document.getAuthor(),
+                        document.getAuthorId(),
                         document.getDocumentState(),
                         document.getDocumentTypeId(),
                         document.getTitle(),
@@ -57,7 +57,7 @@ public class DocumentService {
                 .stream()
                 .filter(document -> !document.getDocumentState().equals(DocumentState.CREATED))
                 .map((document) -> new DocumentGetCommand(
-                        document.getAuthor(),
+                        document.getAuthorId(),
                         document.getDocumentState(),
                         document.getDocumentTypeId(),
                         document.getTitle(),
@@ -79,7 +79,7 @@ public class DocumentService {
                 .stream()
                 .filter(document -> document.getDocumentState().equals(DocumentState.SUBMITTED))
                 .map((document) -> new DocumentGetCommand(
-                        document.getAuthor(),
+                        document.getAuthorId(),
                         document.getDocumentState(),
                         document.getDocumentTypeId(),
                         document.getTitle(),
@@ -99,7 +99,7 @@ public class DocumentService {
     public DocumentGetCommand getDocumentById(Long id) {
         Document document = documentRepository.findById(id).orElse(null);
         return new DocumentGetCommand(
-                document.getAuthor(),
+                document.getAuthorId(),
                 document.getDocumentState(),
                 document.getDocumentTypeId(),
                 document.getTitle(),
@@ -121,8 +121,8 @@ public class DocumentService {
         Document newDocument = new Document();
 
         //shouldn't set Author directly from Object ir Document Entity, instead use String field from DocumentCreateCommand
-        User user = userRepository.findByUsername(documentCreateCommand.getUsernameId());
-        newDocument.setAuthor(user);
+        User user = userRepository.findByUsername(documentCreateCommand.getAuthoId());
+        newDocument.setAuthorId(user.getId());
 
 //        DocumentType documentType = documentTypeRepository.findByTitle(documentCreateCommand.getDocumentTypeTitle());
 
@@ -141,8 +141,8 @@ public class DocumentService {
     public void updateDocument(Long id, DocumentCreateCommand documentCreateCommand) {
         Document documentToUpdate = documentRepository.findById(id).orElse(null);
 
-        User user = userRepository.findByUsername(documentCreateCommand.getUsernameId());
-        documentToUpdate.setAuthor(user);
+        User user = userRepository.findByUsername(documentCreateCommand.getAuthoId());
+        documentToUpdate.setAuthorId(user.getId());
 
 //        DocumentType documentType = documentTypeRepository.findByTitle(documentCreateCommand.getDocumentTypeTitle());
         documentToUpdate.setDocumentTypeId(documentCreateCommand.getDocumentTypeId());
