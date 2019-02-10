@@ -121,7 +121,7 @@ public class DocumentService {
         Document newDocument = new Document();
 
         //shouldn't set Author directly from Object ir Document Entity, instead use String field from DocumentCreateCommand
-        User user = userRepository.findByUsername(documentCreateCommand.getAuthoId());
+        User user = userRepository.findByUsername(documentCreateCommand.getAuthorId());
         newDocument.setAuthorId(user.getId());
 
 //        DocumentType documentType = documentTypeRepository.findByTitle(documentCreateCommand.getDocumentTypeTitle());
@@ -141,7 +141,7 @@ public class DocumentService {
     public void updateDocument(Long id, DocumentCreateCommand documentCreateCommand) {
         Document documentToUpdate = documentRepository.findById(id).orElse(null);
 
-        User user = userRepository.findByUsername(documentCreateCommand.getAuthoId());
+        User user = userRepository.findByUsername(documentCreateCommand.getAuthorId());
         documentToUpdate.setAuthorId(user.getId());
 
 //        DocumentType documentType = documentTypeRepository.findByTitle(documentCreateCommand.getDocumentTypeTitle());

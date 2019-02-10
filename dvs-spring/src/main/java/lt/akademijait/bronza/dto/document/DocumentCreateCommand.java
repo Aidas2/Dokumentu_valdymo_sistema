@@ -40,11 +40,11 @@ public class DocumentCreateCommand {
         this.description = description;
     }
 
-    public String getAuthoId() {
+    public String getAuthorId() {
         return authorId;
     }
 
-    public void setAuthorIdd(String authorId) {
+    public void setAuthorId(String authorId) {
         this.authorId = authorId;
     }
 
