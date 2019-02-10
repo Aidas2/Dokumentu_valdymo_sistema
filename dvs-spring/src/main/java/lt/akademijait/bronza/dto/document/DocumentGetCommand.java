@@ -13,7 +13,7 @@ public class DocumentGetCommand {
     //private String prefix;
     //private List<String> additionalFilePaths = new ArrayList<>();
     //private List<Attachment> attachments;
-    private User author; // private UserGetCommand author;
+    private Long authorId; // private UserGetCommand author;
     private DocumentState documentState;
     private Long documentTypeId; //private String documentTypeTitle;
     private String title;
@@ -29,8 +29,8 @@ public class DocumentGetCommand {
     public DocumentGetCommand() {
     }
 
-    public DocumentGetCommand(User author, DocumentState documentState, Long documentTypeId, String title, String description, Date creationDate, Date submissionDate, Date confirmationDate, Date rejectionDate, User reviewer, String rejectionReason, String path) {
-        this.author = author;
+    public DocumentGetCommand(Long authorId, DocumentState documentState, Long documentTypeId, String title, String description, Date creationDate, Date submissionDate, Date confirmationDate, Date rejectionDate, User reviewer, String rejectionReason, String path) {
+        this.authorId = authorId;
         this.documentState = documentState;
         this.documentTypeId = documentTypeId;
         this.title = title;
@@ -52,12 +52,12 @@ public class DocumentGetCommand {
         this.id = id;
     }
 
-    public User getAuthor() {
-        return author;
+    public Long getAuthorId() {
+        return authorId;
     }
 
-    public void setAuthor(User author) {
-        this.author = author;
+    public void setAuthorId(Long authorId) {
+        this.authorId = authorId;
     }
 
     public DocumentState getDocumentState() {
