@@ -7,7 +7,7 @@ public class DocumentCreateCommand {
     //private List<String> additionalFilePaths = new ArrayList<>();
     //private List<Attachment> attachments;
     //private User author; // do not use object, because object sends to swagger all his fields
-    private String usernameId;
+    private String authorId;
     //private DocumentState documentState;
     //private DocumentType documentType; // do not use object, because object sends to swagger all his fields
     private Long documentTypeId;
@@ -33,19 +33,19 @@ public class DocumentCreateCommand {
     public DocumentCreateCommand() {
     }
 
-    public DocumentCreateCommand(String usernameId, Long documentTypeId, String title, String description) {
-        this.usernameId = usernameId;
+    public DocumentCreateCommand(String authorId, Long documentTypeId, String title, String description) {
+        this.authorId = authorId;
         this.documentTypeId = documentTypeId;
         this.title = title;
         this.description = description;
     }
 
-    public String getUsernameId() {
-        return usernameId;
+    public String getAuthoId() {
+        return authorId;
     }
 
-    public void setUsernameId(String usernameId) {
-        this.usernameId = usernameId;
+    public void setAuthorIdd(String authorId) {
+        this.authorId = authorId;
     }
 
     public Long getDocumentTypeId() {
