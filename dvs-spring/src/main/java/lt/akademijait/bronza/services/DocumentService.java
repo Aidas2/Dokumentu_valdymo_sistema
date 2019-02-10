@@ -14,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -130,6 +132,7 @@ public class DocumentService {
 
         newDocument.setTitle(documentCreateCommand.getTitle());
         newDocument.setDescription(documentCreateCommand.getDescription());
+//        newDocument.setCreationDate(getCurrentLocalDateTimeStamp());
         documentRepository.save(newDocument);
     }
 
@@ -185,6 +188,11 @@ public class DocumentService {
     @Transactional
     public void deleteDocument(long id) {
         documentRepository.deleteById(id);
+    }
+
+    public String getCurrentLocalDateTimeStamp() {
+        return LocalDateTime.now()
+                .format(DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss-SSS"));
     }
 
 }
