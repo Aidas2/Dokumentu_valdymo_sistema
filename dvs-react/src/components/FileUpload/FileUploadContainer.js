@@ -11,7 +11,13 @@ class FileUploadContainer extends Component {
     documentType: "",
     //all available document types
     documentTypes: [],
-    sth: false
+    sth: false,
+    createDocumentInfo: {
+      description: "testDesc",
+      documentTypeId: 7,
+      title: "testTytle",
+      authorId: 99
+    }
   };
 
   componentDidMount() {
@@ -46,6 +52,51 @@ class FileUploadContainer extends Component {
   };
 
   handleUpload = e => {
+    this.handleFilesUpload();
+    this.createDocumentEntity();
+  };
+
+  createDocumentEntity = () => {
+    console.log("CreateDocumentEntity method was executed");
+    let documentInfoToSend = this.state.createDocumentInfo;
+    // axios
+    //   .post("http://localhost:8081/api/docs", {
+    //     data: documentInfoToSend
+    //   })
+    axios({
+      url: "http://localhost:8081/api/docs",
+      method: "post",
+      headers: {
+        authorisation: "your token"
+      },
+      data: documentInfoToSend
+    })
+      .then(response => {
+        let uploadStatus = "ENtity was created successfully";
+        console.log("upload status >>>>>>>>>> ", uploadStatus);
+      })
+      .catch(function(error) {
+        //it works without catch block as well
+        console.log(error);
+        if (error.response) {
+          //HTTP error happened
+          console.log(
+            "Create Document entity : Upload error. HTTP error/status code=",
+            error.response.status
+          );
+        } else {
+          //some other error happened
+          console.log(
+            "Create Document entity: Upload error. HTTP error/status code=",
+            error.message
+          );
+        }
+      });
+  };
+  getUploadStatus = () => {
+    return this.uploadStatus;
+  };
+  handleFilesUpload = () => {
     console.log(this.state, "THE STATE from handleUpload------$$$$$$");
 
     let files = this.state.file; //was this.state.file before
@@ -85,9 +136,6 @@ class FileUploadContainer extends Component {
       let fileInStateCleaned = [];
       this.setState({ file: fileInStateCleaned });
     }
-  };
-  getUploadStatus = () => {
-    return this.uploadStatus;
   };
 
   handleDocumentTitle = e => {
