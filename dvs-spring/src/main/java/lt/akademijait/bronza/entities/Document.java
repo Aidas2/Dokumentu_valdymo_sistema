@@ -29,8 +29,8 @@ public class Document {
     //@OneToMany
     //private List<Attachment> attachments;
 
-    @ManyToOne
-    @JoinColumn(name="author_id")
+//    @ManyToOne
+//    @JoinColumn(name="author_id")
     private Long authorId;    //autoriu kol kas reikia "uzhardcodinti"
 
     @Column
