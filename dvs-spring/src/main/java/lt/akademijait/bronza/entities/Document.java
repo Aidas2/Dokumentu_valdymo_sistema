@@ -31,7 +31,7 @@ public class Document {
 
     @ManyToOne
     @JoinColumn(name="author_id")
-    private User author;    //autoriu kol kas reikia "uzhardcodinti"
+    private Long authorId;    //autoriu kol kas reikia "uzhardcodinti"
 
     @Column
     private DocumentState documentState;
@@ -71,8 +71,8 @@ public class Document {
     public Document() {
     }
 
-    public Document(User author, DocumentState documentState, Long documentTypeId, String title, String description, Date creationDate, Date submissionDate, Date confirmationDate, Date rejectionDate, User reviewer, String rejectionReason, String path) {
-        this.author = author;
+    public Document(Long authorId, DocumentState documentState, Long documentTypeId, String title, String description, Date creationDate, Date submissionDate, Date confirmationDate, Date rejectionDate, User reviewer, String rejectionReason, String path) {
+        this.authorId = authorId;
         this.documentState = documentState;
         this.documentTypeId = documentTypeId;
         this.title = title;
@@ -102,13 +102,13 @@ public class Document {
         this.additionalFilePaths = additionalFilePaths;
     }
 
-    public User getAuthor() {
-        return author;
+    public Long getAuthorId() {
+        return authorId;
     }
 
     //galbut reikia perdaryti i String usernameId
-    public void setAuthor(User author) {
-        this.author = author;
+    public void setAuthorId(Long authorId) {
+        this.authorId = authorId;
     }
 
     public DocumentState getDocumentState() {
