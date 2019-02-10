@@ -36,8 +36,8 @@ public class Document {
     @Column
     private DocumentState documentState;
 
-    @ManyToOne
-    @JoinColumn(name="doctype_id")
+//    @ManyToOne
+//    @JoinColumn(name="doctype_id")
     private Long documentTypeId;
 
     @Column (nullable = false)
