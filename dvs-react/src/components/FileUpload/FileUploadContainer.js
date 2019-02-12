@@ -14,9 +14,9 @@ class FileUploadContainer extends Component {
     sth: false,
     createDocumentInfo: {
       description: "testDesc",
-      documentTypeId: 7,
+      documentTypeTitle: "type1",
       title: "testTytle",
-      authorId: 99
+      username: "username1"
     }
   };
 
