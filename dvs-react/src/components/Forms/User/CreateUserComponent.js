@@ -15,7 +15,7 @@ const CreateUserComponent = props => {
               className="form-control"
               placeholder="Įveskite vartotojo vardą"
               // value={this.state.value.imageUrl}
-              onChange={props.onImageUrlChange}
+              onChange={props.FirstNameChange}
             />
           </div>
           <div className="col">
@@ -25,7 +25,7 @@ const CreateUserComponent = props => {
               type="text"
               className="form-control"
               placeholder="Įveskite vartotojo pavardę"
-              onChange={props.onDescriptionChange}
+              onChange={props.onLastNameChange}
             />
           </div>
         </div>{" "}
@@ -37,7 +37,7 @@ const CreateUserComponent = props => {
               className="form-control"
               placeholder="Įveskite prisijungimo vardą"
               // value={this.state.value.imageUrl}
-              onChange={props.onImageUrlChange}
+              onChange={props.onUsernameChange}
             />
           </div>
           <div className="col">
@@ -47,7 +47,7 @@ const CreateUserComponent = props => {
               type="text"
               className="form-control"
               placeholder="Įveskite vartotojo el. pašto adresą"
-              onChange={props.onDescriptionChange}
+              onChange={props.onEmailAddressChange}
             />
           </div>
         </div>{" "}
@@ -59,7 +59,7 @@ const CreateUserComponent = props => {
               className="form-control"
               placeholder="Įveskite vartotojo įdarbinimo datą"
               // value={this.state.value.imageUrl}
-              onChange={props.onImageUrlChange}
+              onChange={props.onHireDateChange}
             />
           </div>
           <div className="col">
@@ -69,7 +69,19 @@ const CreateUserComponent = props => {
               type="text"
               className="form-control"
               placeholder="Įveskite vartotojo prisijungimo slaptažodį"
-              onChange={props.onDescriptionChange}
+              onChange={props.onPasswordChange}
+            />
+          </div>
+        </div>
+        <div className="row mt-2 mb-2 ">
+          <div className="col-6 ">
+            <h5>Administratoriaus rolė</h5>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Pasirinkite, ar vartotojas yra admministratorius"
+              // value={this.state.value.imageUrl}
+              onChange={props.onHireDateChange}
             />
           </div>
         </div>
