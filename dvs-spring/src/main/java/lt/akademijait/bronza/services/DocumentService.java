@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -119,9 +120,10 @@ public class DocumentService {
     public void createDocument(DocumentCreateCommand documentCreateCommand) {
 
         Document newDocument = new Document();
+        newDocument.setCreationDate(new Date());
 
         //shouldn't set Author directly from Object ir Document Entity, instead use String field from DocumentCreateCommand
-        User user = userRepository.findByUsername(documentCreateCommand.getUsernameId());
+        User user = userRepository.findByUsername(documentCreateCommand.getUsername());
         newDocument.setAuthor(user);
 
         DocumentType documentType = documentTypeRepository.findByTitle(documentCreateCommand.getDocumentTypeTitle());
@@ -141,7 +143,7 @@ public class DocumentService {
     public void updateDocument (Long id, DocumentCreateCommand documentCreateCommand) {
         Document documentToUpdate = documentRepository.findById(id).orElse(null);
 
-        User user = userRepository.findByUsername(documentCreateCommand.getUsernameId());
+        User user = userRepository.findByUsername(documentCreateCommand.getUsername());
         documentToUpdate.setAuthor(user);
 
         DocumentType documentType = documentTypeRepository.findByTitle(documentCreateCommand.getDocumentTypeTitle());
