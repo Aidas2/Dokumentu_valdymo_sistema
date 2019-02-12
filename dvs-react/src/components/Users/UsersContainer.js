@@ -6,32 +6,28 @@ import axios from "axios";
 
 class UsersContainer extends Component {
   state = {
-    docTypes: []
+    users: []
   };
 
   componentDidMount() {
     axios
-      .get("http://localhost:8081/api/doctypes")
+      .get("http://localhost:8081/api/users")
       .then(response => {
-        this.setState({ docTypes: response.data });
+        this.setState({ users: response.data });
       })
       .catch(error => {
         console.log(error);
       });
-    console.log(
-      "ComponentDidMount inside DocumentTYpesCOntainer >>>>>>>>>> this.state.docTypes>>>>.",
-      this.state.docTypes
-    );
   }
 
   render() {
-    var docTypesArrayToRender = this.state.docTypes.map(oneTypeObj => {
+    console.log(
+      "ComponentDidMount inside render() >>>>>>>>>> this.state>>>>.",
+      this.state
+    );
+    var usersArrayToRender = this.state.users.map(oneUserObj => {
       return (
-        <UsersComponent
-          key={oneTypeObj.id}
-          typeId={oneTypeObj.id}
-          typeTitle={oneTypeObj.title}
-        />
+        <UsersComponent key={oneUserObj.userId} userDetails={oneUserObj} />
       );
     });
 
@@ -39,7 +35,7 @@ class UsersContainer extends Component {
       <div>
         <div className="container-fluid m-2 ">
           <h3 className="display-6">Vartotojai</h3>
-          <Link to={"/admin/newdoctype/"} className="btn btn-warning mb-2">
+          <Link to={"/admin/newuser/"} className="btn btn-warning mb-2">
             Pridėti naują vartotoją
           </Link>
           <div className="container pl-0 ml-0">
@@ -80,7 +76,7 @@ class UsersContainer extends Component {
               </div>
             </div>
           </div>
-          {docTypesArrayToRender}
+          {usersArrayToRender}
         </div>
       </div>
     );
