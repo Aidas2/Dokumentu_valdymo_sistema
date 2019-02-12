@@ -142,7 +142,9 @@ class FileUploadContainer extends Component {
   handleDocumentTitle = e => {
     console.log("$$$$$$$ e.target.value>>>>>>", e.target.value);
     let documentTitle = e.target.value;
-    this.setState({ documentTitle: documentTitle });
+    let createDocumentInfo = this.state.createDocumentInfo;
+    createDocumentInfo.documentTypeTitle = e.target.value;
+    this.setState({ createDocumentInfo: createDocumentInfo });
   };
   handleDocumentDescription = e => {
     let createDocumentInfo = this.state.createDocumentInfo;
