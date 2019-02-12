@@ -81,7 +81,7 @@ const CreateUserComponent = props => {
               className="form-control"
               placeholder="Pasirinkite, ar vartotojas yra admministratorius"
               // value={this.state.value.imageUrl}
-              onChange={props.onHireDateChange}
+              onChange={props.onAdministratorChange}
             />
           </div>
         </div>

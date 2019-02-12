@@ -96,9 +96,13 @@ class CreateUserContainer extends Component {
 
     return (
       <CreateUserComponent
-        onTitleChange={this.handleTitleChange}
-        onSubmit={this.handleSubmit}
-        launchAlert={this.launchAlert()}
+        onAdministratorChange={this.handleAdministratorChange}
+        onEmailAddressChange={this.handleEmailAddressChange}
+        onFirstNameChange={this.handleFirstNameChange}
+        onHireDateChange={this.handleHireDateChange}
+        onLastNameChange={this.handleLastNameChange}
+        onPasswordChange={this.handlePasswordChange}
+        onUsernameChange={this.handleUsernameChange}
       />
     );
   }
