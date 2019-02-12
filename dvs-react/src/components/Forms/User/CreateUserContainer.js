@@ -98,7 +98,7 @@ class CreateUserContainer extends Component {
           >
             &times;
           </button>
-          Sveikiname! Dokumento tipas <strong>{this.state.title} </strong>
+          Sveikiname! Dokumento tipas <strong>{this.state.username} </strong>
           sukurtas sėkmingai.
         </div>
       );
@@ -125,6 +125,7 @@ class CreateUserContainer extends Component {
         onLastNameChange={this.handleLastNameChange}
         onPasswordChange={this.handlePasswordChange}
         onUsernameChange={this.handleUsernameChange}
+        launchAlert={this.launchAlert()}
       />
     );
   }
