@@ -35,7 +35,9 @@ public class UserService {
                                 user.isAdministrator(),
                                 user.getPassword(),
                                 user.getUsername(),
-                                user.getEmailAddress())).collect(Collectors.toList());
+                                user.getEmailAddress(),
+                                user.getHireDate())).collect(Collectors.toList() );
+
     }
 
     @Transactional(readOnly = true)
@@ -49,7 +51,7 @@ public class UserService {
                 user.isAdministrator(),
                 user.getPassword(),
                 user.getUsername(),
-                user.getEmailAddress()
+                user.getEmailAddress(), user.getHireDate()
         );
     }
 

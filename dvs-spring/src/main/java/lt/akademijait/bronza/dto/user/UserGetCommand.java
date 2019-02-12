@@ -1,11 +1,13 @@
 package lt.akademijait.bronza.dto.user;
 
+import java.util.Date;
+
 public class UserGetCommand {
 
     private Long userId;
     private String firstName;
     private String lastName;
-//    private LocalDate hireDate;
+    private Date hireDate;
     private boolean administrator;
     private String username;
     private String password;
@@ -19,10 +21,13 @@ public class UserGetCommand {
 //    private List<Document> documents;
 
 
+
+
     public UserGetCommand() {
     }
 
-    public UserGetCommand(Long userId, String firstName, String lastName, boolean administrator, String password, String username, String emailAddress) {
+    public UserGetCommand(Long userId, String firstName, String lastName, boolean administrator, String password, String username,
+                          String emailAddress, Date hireDate) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.administrator = administrator;
@@ -30,6 +35,7 @@ public class UserGetCommand {
         this.username = username;
         this.emailAddress = emailAddress;
         this.userId = userId;
+        this.hireDate = hireDate;
     }
 
     public String getFirstName() {
@@ -42,6 +48,13 @@ public class UserGetCommand {
 
     public void setUserId(Long userId) {
         this.userId = userId;
+    }
+    public Date getHireDate() {
+        return hireDate;
+    }
+
+    public void setHireDate(Date hireDate) {
+        this.hireDate = hireDate;
     }
 
     public void setFirstName(String firstName) {
