@@ -152,7 +152,10 @@ class FileUploadContainer extends Component {
   handleDocumentType = e => {
     console.log("$$$$$$ DocumentTypeChange occured");
     let documentType = e.target.value;
+    let createDocumentInfo = this.state.createDocumentInfo;
+    createDocumentInfo.documentTypeTitle = e.target.value;
     this.setState({ documentType: documentType });
+    this.setState({ createDocumentInfo: createDocumentInfo });
     // console.log("$$$$$$ this.state.documentType >>>>>> ", this.state.documentType);
   };
 
