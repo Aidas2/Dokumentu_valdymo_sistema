@@ -1,0 +1,247 @@
+///// 1-a uzduotis ///////////////////
+var paruSkaicius = 5;
+var valandos = paruSkaicius * 60;
+var minutes = paruSkaicius * 60 * 24;
+console.log("Valandu kiekis yra " + valandos);
+console.log("Minuciu kiekis yra " + minutes);
+
+///// 2-a uzduotis ///////////////////
+var puodeliuKiekis = 1527;
+var dezutesTalpa = 5;
+var dezuciuKiekis = Math.floor(puodeliuKiekis / dezutesTalpa);
+var likoPuodeliu = puodeliuKiekis - dezuciuKiekis*5;
+console.log("Uzpildytu dezuciu yra " + dezuciuKiekis);
+console.log("Liko nesupakuotu puodeliu " + likoPuodeliu);
+//// arba
+var puodeliuKiekis = 1528;
+var dezutesTalpa = 5;
+var dezuciuKiekis = 0;
+var likoPuodeliu = 0;
+while (puodeliuKiekis >= dezutesTalpa) {
+  puodeliuKiekis -= dezutesTalpa;
+  dezuciuKiekis++;
+}
+console.log("Uzpildytu dezuciu yra " + dezuciuKiekis);
+console.log("Netilpusiu puodeliu kiekis yra " + puodeliuKiekis);
+
+///// 3-ia uzduotis ///////////////////
+var duotaLitu = 5;
+var duotaCentu = 48;
+var moneta50 = 50;
+var moneta20 = 20;
+var moneta10 = 10;
+var moneta5 = 5;
+var moneta2 = 2;
+var moneta1 = 1;
+var count50 = 0;
+var count20 = 0;
+var count10 = 0;
+var count5 = 0;
+var count2 = 0;
+var count1 = 0;
+
+var duotaSumaCentais = duotaLitu * 100 + duotaCentu;
+
+console.log("Pradine suma yra " + duotaSumaCentais + " centu/-ai");
+
+while (duotaSumaCentais >= moneta50) {
+  duotaSumaCentais -= moneta50;
+  count50++;
+} 
+console.log("50 cnt monetu kiekis yra " + count50);
+
+while (duotaSumaCentais >= moneta20) {
+  duotaSumaCentais -= moneta20;
+  count20++;
+} 
+console.log("20 cnt monetu kiekis yra " + count20);
+
+while (duotaSumaCentais >= moneta10) {
+  duotaSumaCentais -= moneta10;
+  count10++;
+} 
+console.log("10 cnt monetu kiekis yra " + count10);
+
+while (duotaSumaCentais >= moneta5) {
+  duotaSumaCentais -= moneta5;
+  count5++;
+} 
+console.log("5 cnt monetu kiekis yra " + count5);
+
+while (duotaSumaCentais >= moneta2) {
+  duotaSumaCentais -= moneta2;
+  count2++;
+} 
+console.log("2 cnt monetu kiekis yra " + count2);
+
+while (duotaSumaCentais >= moneta1) {
+  duotaSumaCentais -= moneta1;
+  count1++;
+} 
+console.log("1 cnt monetu kiekis yra " + count1);
+
+
+///// 4-ta uzduotis ///////////////////
+var duotasSkaicius = 112;
+if (duotasSkaicius%2 === 0) {
+  console.log("Skaicius  " + duotasSkaicius + " yra lyginis");
+} else {
+  console.log("Skaicius  " + duotasSkaicius + " yra nelyginis");
+}
+
+///// 5-ta uzduotis ///////////////////
+var duotasSkaicius1 = 18;
+var duotasSkaicius2 = 11;
+
+//// pirmas variantas
+if (duotasSkaicius1 > duotasSkaicius2) {
+  console.log("Skaicius  " + duotasSkaicius1 + " didesnis uz skaiciu " + duotasSkaicius2);
+} else if (duotasSkaicius1 < duotasSkaicius2){
+  console.log("Skaicius  " + duotasSkaicius1 + " mazesnis uz skaiciu " + duotasSkaicius2);
+} else {
+  console.log("Skaicius  " + duotasSkaicius1 + " yra lygus skaiciui " + duotasSkaicius2);
+}
+//// antras variantas
+var kurisDidesnis = (duotasSkaicius1 > duotasSkaicius2) ?  "Skaicius1 yra didesnis uz Skaiciu2" : "Skaicius1 yra mazesnis uz Skaiciu2";
+console.log(kurisDidesnis);
+//// trecias variantas
+var kurisDidziausias = Math.max(duotasSkaicius1, duotasSkaicius2);
+console.log("Didesnis skaicius yra " + kurisDidziausias);
+
+///// 6-ta uzduotis ///////////////////
+var x = 58;
+var y = 16 * Math.pow(x, 4) + 2 * x;
+console.log(y)
+
+///// 7-ta uzduotis ///////////////////
+var balas = 58;
+if (balas >=0 && balas <= 29) { 
+  vertinimas = "failed";
+     } else if (balas >=30 && balas <= 34) {
+          vertinimas = "1 taskas";
+     } else if (balas >=35 && balas <= 39) {
+          vertinimas = "2 taskai";
+     } else if (balas >=40 && balas <= 44) {
+          vertinimas = "3 taskai";
+     } else if (balas >=45 && balas <= 49) {
+          vertinimas = "4 taskai";
+     } else if (balas >=50 && balas <= 60) {
+          vertinimas = "5 taskai";
+     } else {
+       vertinimas = "Ivestas netinkamas balas";
+     }
+  console.log(vertinimas);
+
+///// 8-ta uzduotis ///////////////////
+var mase = 80;
+var ugis = 1.81;
+
+var kmi = Math.round(mase / Math.pow(ugis, 2)*10)/10;
+console.log("Kuno mases indeksas yra: " + kmi);
+
+if (kmi >=18.5 && kmi <= 24.9) { 
+  vertinimas = "Normalus svoris";
+     } else if (kmi >=25.0 && kmi <= 29.9) {
+          vertinimas = "Antsvoris";
+     } else if (kmi >=30.0 && kmi <= 34.9) {
+          vertinimas = "Io nutukimas";
+     } else if (kmi >=35.0 && kmi <= 39.9) {
+          vertinimas = "IIo nutukimas";
+     } else if (kmi >=40) {
+          vertinimas = "Liguistas nutukimas";
+     } else if (kmi < 18.5) {
+          vertinimas = "Badaujantis zmogus";
+     } else {
+           vertinimas = "neteisingai ivestos reiksmes";
+     }
+  console.log(vertinimas);
+
+///// 9-ta uzduotis ///////////////////
+var kodas = 55;
+        switch (kodas) {
+            case 1:  kodoReiksme = "sauleta";
+                     break;
+            case 2:  kodoReiksme = "lietinga";
+                     break;
+            case 3:  kodoReiksme = "vejuota";
+                     break;
+            case 4:  kodoReiksme = "sniegas";
+                     break;
+                     default: kodoReiksme = "nezinoma";
+                     break;
+        }
+console.log("Kodo reiksme yra: " + kodoReiksme);
+
+///// 10-ta uzduotis ///////////////////
+var menuo = 10;
+console.log("Jus ivedete " + menuo + " menesi.");
+
+if (menuo == 12 || menuo == 1 || menuo == 2) { 
+          vertinimas = "Ziema";
+     } else if (menuo == 3 || menuo == 4 || menuo == 5) {
+          vertinimas = "Pavasaris";
+     } else if (menuo == 6 || menuo == 7 || menuo == 8) {
+          vertinimas = "Vasara";
+     } else if (menuo == 9 || menuo == 10 || menuo == 11) {
+          vertinimas = "Ruduo";
+     } else {
+           vertinimas = "Tokio menesio nera";
+     }
+console.log("Metu laikas yra: " + vertinimas);
+
+///// 11-ta uzduotis ///////////////////
+var masyvas = [];
+
+for (var i = 100; i <= 999; i++) {
+   masyvas.push(i);
+}
+
+for (i = 0; i < masyvas.length; i++) {
+   if (masyvas[i]%5 === 0) {
+     console.log(masyvas[i]);
+        }
+}
+
+///// 12-ta uzduotis ///////////////////
+var masyvas2 = [];
+
+for (var i = 1; i <= 100; i++) {
+   masyvas2.push(i);
+}
+
+ console.log(masyvas2);
+ for (i = 0; i < masyvas2.length; i++) {
+    if (masyvas2[i]%3 === 0 && masyvas2[i]%5 === 0) {
+       masyvas2[i] = "FizzBuzz";
+    } else if (masyvas2[i]%3 === 0){
+      masyvas2[i] = "Fizz";
+    } else if (masyvas2[i]%5 === 0){
+      masyvas2[i] = "Buzz";
+    }
+ }
+    console.log(masyvas2);
+
+///// 13-ta uzduotis ///////////////////
+var masyvas3 = [];
+
+for (var i = -5; i <= 5; i++) {
+   masyvas3.push(i);
+}
+console.log(masyvas3);
+for (var i = 0; i < masyvas3.length; i++) {
+   var funkcija = Math.round((1 / masyvas3[i])*100)/100;
+    console.log(funkcija);
+}
+
+///// 14-ta uzduotis ///////////////////
+var masyvas4 = [];
+var suma = 0;
+for (var i = 1; i <= 10; i++) {
+   masyvas4.push(i);
+}
+console.log(masyvas4);
+for (var i = 0; i < masyvas4.length; i++) {
+   suma += masyvas4[i];
+    }
+console.log(suma);
+
