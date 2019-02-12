@@ -144,6 +144,11 @@ class FileUploadContainer extends Component {
     let documentTitle = e.target.value;
     this.setState({ documentTitle: documentTitle });
   };
+  handleDocumentDescription = e => {
+    let createDocumentInfo = this.state.createDocumentInfo;
+    createDocumentInfo.description = e.target.value;
+    this.setState({ createDocumentInfo: createDocumentInfo });
+  };
   handleDocumentType = e => {
     console.log("$$$$$$ DocumentTypeChange occured");
     let documentType = e.target.value;
@@ -203,6 +208,7 @@ class FileUploadContainer extends Component {
         onFile={this.handleFile}
         onDocumentTypeChange={this.handleDocumentType}
         onDocumentTitle={this.handleDocumentTitle}
+        onDocumentDescription={this.handleDocumentDescription}
         documentTypes={this.state.documentTypes}
         documentName={this.getMainDocumentName()}
         attachmentsNames={attachmentsNames}
