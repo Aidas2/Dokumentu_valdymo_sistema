@@ -76,13 +76,22 @@ const CreateUserComponent = props => {
         <div className="row mt-2 mb-2 ">
           <div className="col-6 ">
             <h5>Administratoriaus rolė</h5>
-            <input
+            {/* <input
               type="text"
               className="form-control"
               placeholder="Pasirinkite, ar vartotojas yra admministratorius"
               // value={this.state.value.imageUrl}
               onChange={props.onAdministratorChange}
-            />
+            /> */}
+
+            <select
+              onChange={props.onAdministratorChange}
+              className="form-control "
+              id="documentTypeSelect"
+            >
+              <option value="false">Ne</option>
+              <option value="true">Taip</option>
+            </select>
           </div>
         </div>
         {/* <div className="form-group" /> */}
