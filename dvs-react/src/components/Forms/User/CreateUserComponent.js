@@ -5,22 +5,88 @@ const CreateUserComponent = props => {
   return (
     <div>
       <div className="container-fluid m-2">
-        <h3 className="display-6 ">Naujo dokumento tipo kūrimas</h3>
-        <h5>Dokumento tipo pavadinimas</h5>
-        <input
-          onChange={props.onTitleChange}
-          className="form-control col-4"
-          type="text"
-          placeholder="Įveskite dokumento tipo pavadinimą"
-        />
+        <h3 className="display-6 ">Naujo vartotojo kūrimas</h3>
+        {/* <h5>Dokumento tipo pavadinimas</h5> */}
+        <div className="row mt-2 mb-2 ">
+          <div className="col ">
+            <h5>Vardas</h5>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Įveskite vartotojo vardą"
+              // value={this.state.value.imageUrl}
+              onChange={props.onImageUrlChange}
+            />
+          </div>
+          <div className="col">
+            <h5>Pavardė</h5>
 
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Įveskite vartotojo pavardę"
+              onChange={props.onDescriptionChange}
+            />
+          </div>
+        </div>{" "}
+        <div className="row mt-2 mb-2 ">
+          <div className="col ">
+            <h5>Unikalus vardas sistemoje</h5>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Įveskite prisijungimo vardą"
+              // value={this.state.value.imageUrl}
+              onChange={props.onImageUrlChange}
+            />
+          </div>
+          <div className="col">
+            <h5>Elektroninoi pašto adresas</h5>
+
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Įveskite vartotojo el. pašto adresą"
+              onChange={props.onDescriptionChange}
+            />
+          </div>
+        </div>{" "}
+        <div className="row mt-2 mb-2 ">
+          <div className="col ">
+            <h5>Įdarbinimo data</h5>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Įveskite vartotojo įdarbinimo datą"
+              // value={this.state.value.imageUrl}
+              onChange={props.onImageUrlChange}
+            />
+          </div>
+          <div className="col">
+            <h5>Prisijungimo slaptažodis</h5>
+
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Įveskite vartotojo prisijungimo slaptažodį"
+              onChange={props.onDescriptionChange}
+            />
+          </div>
+        </div>
         {/* <div className="form-group" /> */}
-
-        <button onClick={props.onSubmit} className="btn btn-info">
+        <button onClick={props.onSubmit} className="btn btn-info mt-2">
           Kurti
         </button>
       </div>
       <div className="container">{props.launchAlert}</div>
+
+      {/* Name{props.propertiesObject.value.title}:
+        <br />
+        <input
+          type="text"
+          value={props.propertiesObject.value.title}
+          onChange={props.onTitleChange}
+        /> */}
     </div>
   );
 };
