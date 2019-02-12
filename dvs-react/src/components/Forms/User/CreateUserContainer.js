@@ -5,8 +5,13 @@ import CreateUserComponent from "./CreateUserComponent";
 
 class CreateUserContainer extends Component {
   state = {
-    title: "",
-    msg: false
+    administrator: false,
+    emailAddress: "",
+    firstName: "",
+    hireDate: "",
+    lastName: "",
+    password: "",
+    username: ""
   };
 
   handleSubmit = () => {
