@@ -26,7 +26,7 @@ class AdministrationContainer extends Component {
 
         <h6 className="display-6">
           3. Registruoti naują vartotoją
-          <Link to="/admin/usergroups" className="btn btn-warning m-2">
+          <Link to="/admin/users" className="btn btn-warning m-2">
             Registruoti
           </Link>
         </h6>
