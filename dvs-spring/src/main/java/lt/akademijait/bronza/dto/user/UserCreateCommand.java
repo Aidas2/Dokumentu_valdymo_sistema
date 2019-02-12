@@ -1,8 +1,14 @@
 package lt.akademijait.bronza.dto.user;
 
+import lt.akademijait.bronza.entities.Document;
+import lt.akademijait.bronza.entities.UserGroup;
+
 import javax.persistence.Column;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.List;
 
 public class UserCreateCommand {
 
@@ -15,7 +21,7 @@ public class UserCreateCommand {
     private String lastName;
 
     @Column
-    private Date hireDate;
+    private LocalDate hireDate;
 
     @NotNull
     private boolean administrator;
@@ -32,17 +38,17 @@ public class UserCreateCommand {
     @NotNull
     private String emailAddress;
 
-    //@ManyToMany
-    //private List<UserGroup> userGroups;
+    @ManyToMany
+    private List<UserGroup> userGroups;
 
-    //@OneToMany
-    //private List<Document> documents;
+    @OneToMany
+    private List<Document> documents;
 
 
     public UserCreateCommand() {
     }
 
-    public UserCreateCommand(Long id, @NotNull String firstName, @NotNull String lastName, Date hireDate, @NotNull boolean administrator, @NotNull String username, @NotNull String password, @NotNull String emailAddress) {
+    public UserCreateCommand(Long id, @NotNull String firstName, @NotNull String lastName, LocalDate hireDate, @NotNull boolean administrator, @NotNull String username, @NotNull String password, @NotNull String emailAddress, List<UserGroup> userGroups, List<Document> documents) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -51,8 +57,8 @@ public class UserCreateCommand {
         this.username = username;
         this.password = password;
         this.emailAddress = emailAddress;
-        //this.userGroups = userGroups;
-        //this.documents = documents;
+        this.userGroups = userGroups;
+        this.documents = documents;
     }
 
     public Long getId() {
@@ -79,11 +85,11 @@ public class UserCreateCommand {
         this.lastName = lastName;
     }
 
-    public Date getHireDate() {
+    public LocalDate getHireDate() {
         return hireDate;
     }
 
-    public void setHireDate(Date hireDate) {
+    public void setHireDate(LocalDate hireDate) {
         this.hireDate = hireDate;
     }
 
@@ -118,7 +124,7 @@ public class UserCreateCommand {
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
     }
-/*
+
     public List<UserGroup> getUserGroups() {
         return userGroups;
     }
@@ -133,5 +139,5 @@ public class UserCreateCommand {
 
     public void setDocuments(List<Document> documents) {
         this.documents = documents;
-    }*/
+    }
 }

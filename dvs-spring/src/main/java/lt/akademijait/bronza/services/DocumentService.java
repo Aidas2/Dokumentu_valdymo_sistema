@@ -14,8 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -37,9 +35,9 @@ public class DocumentService {
         return documentRepository.findAll()
                 .stream()
                 .map((document) -> new DocumentGetCommand(
-                        document.getAuthor().getId(),
+                        document.getAuthor(),
                         document.getDocumentState(),
-                        document.getDocumentType().getId(),
+                        document.getDocumentType(),
                         document.getTitle(),
                         document.getDescription(),
                         document.getCreationDate(),
@@ -55,13 +53,13 @@ public class DocumentService {
     //GET All SUBMITTED DOCUMENTS (with filter)
     @Transactional(readOnly = true)
     public List<DocumentGetCommand> getSubmittedDocuments() {
-        return documentRepository.findAll()
+        return  documentRepository.findAll()
                 .stream()
                 .filter(document -> !document.getDocumentState().equals(DocumentState.CREATED))
                 .map((document) -> new DocumentGetCommand(
-                        document.getAuthor().getId(),
+                        document.getAuthor(),
                         document.getDocumentState(),
-                        document.getDocumentType().getId(),
+                        document.getDocumentType(),
                         document.getTitle(),
                         document.getDescription(),
                         document.getCreationDate(),
@@ -77,13 +75,13 @@ public class DocumentService {
     //GET All DOCUMENTS TO REVIEW (with filter)
     @Transactional(readOnly = true)
     public List<DocumentGetCommand> getDocumentsToReview() {
-        return documentRepository.findAll()
+        return  documentRepository.findAll()
                 .stream()
                 .filter(document -> document.getDocumentState().equals(DocumentState.SUBMITTED))
                 .map((document) -> new DocumentGetCommand(
-                        document.getAuthor().getId(),
+                        document.getAuthor(),
                         document.getDocumentState(),
-                        document.getDocumentType().getId(),
+                        document.getDocumentType(),
                         document.getTitle(),
                         document.getDescription(),
                         document.getCreationDate(),
@@ -101,9 +99,9 @@ public class DocumentService {
     public DocumentGetCommand getDocumentById(Long id) {
         Document document = documentRepository.findById(id).orElse(null);
         return new DocumentGetCommand(
-                document.getAuthor().getId(),
+                document.getAuthor(),
                 document.getDocumentState(),
-                document.getDocumentType().getId(),
+                document.getDocumentType(),
                 document.getTitle(),
                 document.getDescription(),
                 document.getCreationDate(),
@@ -121,36 +119,30 @@ public class DocumentService {
     public void createDocument(DocumentCreateCommand documentCreateCommand) {
 
         Document newDocument = new Document();
-        newDocument.setCreationDate(new Date());
 
         //shouldn't set Author directly from Object ir Document Entity, instead use String field from DocumentCreateCommand
-
-        User user = userRepository.findByUsername(documentCreateCommand.getUsername());
+        User user = userRepository.findByUsername(documentCreateCommand.getUsernameId());
         newDocument.setAuthor(user);
 
-
         DocumentType documentType = documentTypeRepository.findByTitle(documentCreateCommand.getDocumentTypeTitle());
-
         newDocument.setDocumentType(documentType);
 
         newDocument.setTitle(documentCreateCommand.getTitle());
         newDocument.setDescription(documentCreateCommand.getDescription());
-//        newDocument.setCreationDate(getCurrentLocalDateTimeStamp());
         documentRepository.save(newDocument);
     }
 
     //SUBMITT ?
 
 
+
     //UPDATE
     @Transactional
-    public void updateDocument(Long id, DocumentCreateCommand documentCreateCommand) {
+    public void updateDocument (Long id, DocumentCreateCommand documentCreateCommand) {
         Document documentToUpdate = documentRepository.findById(id).orElse(null);
 
-
-        User user = userRepository.findByUsername(documentCreateCommand.getUsername());
+        User user = userRepository.findByUsername(documentCreateCommand.getUsernameId());
         documentToUpdate.setAuthor(user);
-
 
         DocumentType documentType = documentTypeRepository.findByTitle(documentCreateCommand.getDocumentTypeTitle());
         documentToUpdate.setDocumentType(documentType);
@@ -167,7 +159,7 @@ public class DocumentService {
     public void createDocument(DocumentCreateCommand documentCreateCommand) {
         documentRepository.save(new Document(
            documentCreateCommand.getAuthor(),
-           documentCreateCommand.getDocumentTypeId(),
+           documentCreateCommand.getDocumentType(),
            documentCreateCommand.getTitle(),
            documentCreateCommand.getDescription()
         ));
@@ -180,7 +172,7 @@ public class DocumentService {
         Document document = documentRepository.findById(id).orElse(null);
         Document updatedDocument = new Document(
                 documentCreateCommand.getAuthor(),
-                documentCreateCommand.getDocumentTypeId(),
+                documentCreateCommand.getDocumentType(),
                 documentCreateCommand.getTitle(),
                 documentCreateCommand.getDescription()
         );
@@ -194,7 +186,5 @@ public class DocumentService {
     public void deleteDocument(long id) {
         documentRepository.deleteById(id);
     }
-
-
 
 }

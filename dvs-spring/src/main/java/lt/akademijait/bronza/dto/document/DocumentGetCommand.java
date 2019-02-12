@@ -13,9 +13,9 @@ public class DocumentGetCommand {
     //private String prefix;
     //private List<String> additionalFilePaths = new ArrayList<>();
     //private List<Attachment> attachments;
-    private Long authorId; // private UserGetCommand author;
+    private User author; // private UserGetCommand author;
     private DocumentState documentState;
-    private Long documentTypeId; //private String documentTypeTitle;
+    private DocumentType documentType; //private String documentTypeTitle;
     private String title;
     private String description;
     private Date creationDate;
@@ -29,10 +29,10 @@ public class DocumentGetCommand {
     public DocumentGetCommand() {
     }
 
-    public DocumentGetCommand(Long authorId, DocumentState documentState, Long documentTypeId, String title, String description, Date creationDate, Date submissionDate, Date confirmationDate, Date rejectionDate, User reviewer, String rejectionReason, String path) {
-        this.authorId = authorId;
+    public DocumentGetCommand(User author, DocumentState documentState, DocumentType documentType, String title, String description, Date creationDate, Date submissionDate, Date confirmationDate, Date rejectionDate, User reviewer, String rejectionReason, String path) {
+        this.author = author;
         this.documentState = documentState;
-        this.documentTypeId = documentTypeId;
+        this.documentType = documentType;
         this.title = title;
         this.description = description;
         this.creationDate = creationDate;
@@ -52,12 +52,12 @@ public class DocumentGetCommand {
         this.id = id;
     }
 
-    public Long getAuthorId() {
-        return authorId;
+    public User getAuthor() {
+        return author;
     }
 
-    public void setAuthorId(Long authorId) {
-        this.authorId = authorId;
+    public void setAuthor(User author) {
+        this.author = author;
     }
 
     public DocumentState getDocumentState() {
@@ -68,12 +68,12 @@ public class DocumentGetCommand {
         this.documentState = documentState;
     }
 
-    public Long getDocumentTypeId() {
-        return documentTypeId;
+    public DocumentType getDocumentType() {
+        return documentType;
     }
 
-    public void setDocumentTypeId(Long documentTypeId) {
-        this.documentTypeId = documentTypeId;
+    public void setDocumentType(DocumentType documentType) {
+        this.documentType = documentType;
     }
 
     public String getTitle() {

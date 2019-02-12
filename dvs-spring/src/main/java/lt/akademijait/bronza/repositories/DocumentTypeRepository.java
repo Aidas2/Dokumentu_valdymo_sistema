@@ -6,6 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface DocumentTypeRepository extends JpaRepository<DocumentType, Long> {
     DocumentType findByTitle(String title);
-//    DocumentType findById(Long id);
     //void deleteByTitle(String title);
 }
