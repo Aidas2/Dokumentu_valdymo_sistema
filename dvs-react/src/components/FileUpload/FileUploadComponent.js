@@ -14,6 +14,15 @@ class FileUploadComponent extends Component {
             <br />
             <input
               className="m-2 form-control col-2"
+              placeholder="Įveskite dokumento pavadinimą"
+              type="text"
+              onChange={this.props.onDocumentTitle}
+            />
+            <label className="m-2 ">Dokumento aprašymas</label>
+            <br />
+            <input
+              className="m-2 form-control col-2"
+              placeholder="Įveskite dokumento aprašymą"
               type="text"
               onChange={this.props.onDocumentTitle}
             />
