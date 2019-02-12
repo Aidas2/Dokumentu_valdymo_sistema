@@ -13,9 +13,6 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    //@Column
-    //private Long userId
-
     @Column
     private String firstName;
 
@@ -55,8 +52,7 @@ public class User {
 
     }
 
-    public User(Long id, String firstName, String lastName, Date hireDate, boolean administrator, String username, String password, String emailAddress, List<UserGroup> userGroups, List<Document> documents) {
-        this.id = id;
+    public User(String firstName, String lastName, Date hireDate, boolean administrator, String username, String password, String emailAddress, List<UserGroup> userGroups, List<Document> documents) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.hireDate = hireDate;

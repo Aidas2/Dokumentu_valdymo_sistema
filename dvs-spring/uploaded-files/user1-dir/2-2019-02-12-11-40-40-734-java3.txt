@@ -1,0 +1,14 @@
+ have browsed through questions similar to mine already on here, but have not found anything that will work for me.
+
+Essentially what I have to do is read a file full of strings line by line, print them line by line and then word by word. I would like to accomplish this using .split to create an array of each individual string.
+
+For instance, my file reads:
+The fat cat was black
+The cow jumped over the moon
+I came to say hello world
+
+etc.
+
+I have figured out how to read the file and print the file line by line, but I cannot figure out how to print it word by word. Each of these 3 are in their own functions, so I'm not sure if that plays any role in where something is placed.
+
+This is what I have so far in my method:

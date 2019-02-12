@@ -8,11 +8,12 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 public class UserUpdateCommand {
 
-    private Long id;
+//    private Long id;
 
     @NotNull
     private String firstName;
@@ -21,7 +22,7 @@ public class UserUpdateCommand {
     private String lastName;
 
     @Column
-    private LocalDate hireDate;
+    private Date hireDate;
 
     @NotNull
     private boolean administrator;
@@ -35,35 +36,28 @@ public class UserUpdateCommand {
     @NotNull
     private String emailAddress;
 
-    @ManyToMany
-    private List<UserGroup> userGroups;
-
-    @OneToMany
-    private List<Document> documents;
+//    @ManyToMany
+//    private List<UserGroup> userGroups;
+//
+//    @OneToMany
+//    private List<Document> documents;
 
     public UserUpdateCommand() {
     }
 
-//    public UserUpdateCommand(Long id, @NotNull String firstName, @NotNull String lastName, LocalDate hireDate, @NotNull boolean administrator, @NotNull String username, @NotNull String password, @NotNull String emailAddress, List<UserGroup> userGroups, List<Document> documents) {
+    public UserUpdateCommand(@NotNull String firstName, @NotNull String lastName, Date hireDate, @NotNull boolean administrator, @NotNull String username, @NotNull String password, @NotNull String emailAddress) {
 //        this.id = id;
-//        this.firstName = firstName;
-//        this.lastName = lastName;
-//        this.hireDate = hireDate;
-//        this.administrator = administrator;
-//        this.username = username;
-//        this.password = password;
-//        this.emailAddress = emailAddress;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.hireDate = hireDate;
+        this.administrator = administrator;
+        this.username = username;
+        this.password = password;
+        this.emailAddress = emailAddress;
 //        this.userGroups = userGroups;
 //        this.documents = documents;
-//    }
-
-    public Long getId() {
-        return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getFirstName() {
         return firstName;
@@ -81,11 +75,11 @@ public class UserUpdateCommand {
         this.lastName = lastName;
     }
 
-    public LocalDate getHireDate() {
+    public Date getHireDate() {
         return hireDate;
     }
 
-    public void setHireDate(LocalDate hireDate) {
+    public void setHireDate(Date hireDate) {
         this.hireDate = hireDate;
     }
 
@@ -121,19 +115,19 @@ public class UserUpdateCommand {
         this.emailAddress = emailAddress;
     }
 
-    public List<UserGroup> getUserGroups() {
-        return userGroups;
-    }
-
-    public void setUserGroups(List<UserGroup> userGroups) {
-        this.userGroups = userGroups;
-    }
-
-    public List<Document> getDocuments() {
-        return documents;
-    }
-
-    public void setDocuments(List<Document> documents) {
-        this.documents = documents;
-    }
+//    public List<UserGroup> getUserGroups() {
+//        return userGroups;
+//    }
+//
+//    public void setUserGroups(List<UserGroup> userGroups) {
+//        this.userGroups = userGroups;
+//    }
+//
+//    public List<Document> getDocuments() {
+//        return documents;
+//    }
+//
+//    public void setDocuments(List<Document> documents) {
+//        this.documents = documents;
+//    }
 }

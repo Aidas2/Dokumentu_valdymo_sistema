@@ -67,7 +67,6 @@ public class UserService {
     public void createNewUser(UserCreateCommand ucc) {
 
         User newUser = new User(
-                ucc.getId(),
                 ucc.getFirstName(),
                 ucc.getLastName(),
                 ucc.getHireDate(),
@@ -87,9 +86,16 @@ public class UserService {
     }
 
     @Transactional
-    public void updateUsersPassword(String username, String password) {
-        User userToUpdate = userRepository.findByUsername(username);
-        userToUpdate.setPassword(password);
+    public void updateUsersData(UserUpdateCommand uuc) {
+        User userToUpdate = userRepository.findByUsername(uuc.getUsername());
+        userToUpdate.setFirstName(uuc.getFirstName());
+        userToUpdate.setLastName(uuc.getLastName());
+        userToUpdate.setHireDate(uuc.getHireDate());
+        userToUpdate.setAdministrator(uuc.isAdministrator());
+        userToUpdate.setUsername(uuc.getUsername());
+        userToUpdate.setPassword(uuc.getPassword());
+        userToUpdate.setEmailAddress(uuc.getEmailAddress());
+
         userRepository.save(userToUpdate);
     }
 
@@ -101,20 +107,20 @@ public class UserService {
 
     }
 
-    @Transactional
-    public void updateUserInfo(UserUpdateCommand uuc) {
-        User user = userRepository.findByUsername(uuc.getUsername());
-        user.setAdministrator(uuc.isAdministrator());
-        user.setFirstName(uuc.getFirstName());
-        user.setLastName(uuc.getLastName());
-        user.setUsername(uuc.getUsername());
-        user.setEmailAddress(uuc.getEmailAddress());
-        user.setUserGroups(uuc.getUserGroups());
-        user.setDocuments(uuc.getDocuments());
-        userRepository.save(user);
-
-
-    }
+//    @Transactional
+//    public void updateUserInfo(UserUpdateCommand uuc) {
+//        User user = userRepository.findByUsername(uuc.getUsername());
+//        user.setAdministrator(uuc.isAdministrator());
+//        user.setFirstName(uuc.getFirstName());
+//        user.setLastName(uuc.getLastName());
+//        user.setUsername(uuc.getUsername());
+//        user.setEmailAddress(uuc.getEmailAddress());
+//        user.setUserGroups(uuc.getUserGroups());
+//        user.setDocuments(uuc.getDocuments());
+//        userRepository.save(user);
+//
+//
+//    }
 
     @Transactional
     public void deleteUser(String username) {

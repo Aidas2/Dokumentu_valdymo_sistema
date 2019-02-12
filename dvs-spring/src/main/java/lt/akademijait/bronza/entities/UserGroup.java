@@ -34,8 +34,7 @@ public class UserGroup {
 
     }
 
-    public UserGroup(@NotNull Long id, String title, List<DocumentType> submissionDocumentType, List<DocumentType> reviewDocumentType) {
-        this.id = id;
+    public UserGroup(String title, List<DocumentType> submissionDocumentType, List<DocumentType> reviewDocumentType) {
         this.title = title;
         this.submissionDocumentType = submissionDocumentType;
         this.reviewDocumentType = reviewDocumentType;

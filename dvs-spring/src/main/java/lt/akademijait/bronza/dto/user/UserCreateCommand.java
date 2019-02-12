@@ -6,8 +6,6 @@ import java.util.Date;
 
 public class UserCreateCommand {
 
-    private Long id;
-
     @NotNull
     private String firstName;
 
@@ -42,8 +40,7 @@ public class UserCreateCommand {
     public UserCreateCommand() {
     }
 
-    public UserCreateCommand(Long id, @NotNull String firstName, @NotNull String lastName, Date hireDate, @NotNull boolean administrator, @NotNull String username, @NotNull String password, @NotNull String emailAddress) {
-        this.id = id;
+    public UserCreateCommand( @NotNull String firstName, @NotNull String lastName, Date hireDate, @NotNull boolean administrator, @NotNull String username, @NotNull String password, @NotNull String emailAddress) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.hireDate = hireDate;
@@ -55,13 +52,6 @@ public class UserCreateCommand {
         //this.documents = documents;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getFirstName() {
         return firstName;

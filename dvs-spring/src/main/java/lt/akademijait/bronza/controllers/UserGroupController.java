@@ -31,7 +31,14 @@ public class UserGroupController {
     @ResponseStatus(HttpStatus.CREATED)
     @ApiOperation(value = "Create group", notes = "Creates new user group")
     public void createGroup (@ApiParam(value = "Group info", required = true) @Valid @RequestBody final UserGroupCreateCommand ugc){
-        userGroupService.createNewGroup(ugc.getId(), ugc.getTitle(), ugc.getSubmissionDocumentType(), ugc.getReviewDocumentType());
+        userGroupService.createNewGroup(ugc);
+    }
+
+    @RequestMapping(path = "/{title}", method = RequestMethod.DELETE)
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @ApiOperation(value = "Delete group", notes = "Deletes an existing user group")
+    public void deleteUserByUsername(@ApiParam(value = "Usergroup title", required = true) @PathVariable final String title){
+        userGroupService.deleteGroup(title);
     }
 
 

@@ -1,5 +1,6 @@
 package lt.akademijait.bronza.services;
 
+import lt.akademijait.bronza.dto.usergroup.UserGroupCreateCommand;
 import lt.akademijait.bronza.dto.usergroup.UserGroupGetCommand;
 import lt.akademijait.bronza.entities.DocumentType;
 import lt.akademijait.bronza.entities.UserGroup;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,13 +25,25 @@ public class UserGroupService {
                 new UserGroupGetCommand(userGroup.getTitle())).collect(Collectors.toList());
     }
 
+    @Transactional
+    public void createNewGroup(UserGroupCreateCommand ugcc){
+        UserGroup newGroup = new UserGroup(
+                ugcc.getTitle(),
+                Collections.emptyList(),
+                Collections.emptyList());
+ //               ugcc.getSubmissionDocumentType(),
+ //               ugcc.getReviewDocumentType());
+        userGroupRepository.save(newGroup);
+    }
 
     @Transactional
-    public void createNewGroup (Long id, String title, List<DocumentType> submissionDocumentType, List<DocumentType> reviewDocumentType){
-        UserGroup newGroup = new UserGroup(id, title, submissionDocumentType, reviewDocumentType);
-        userGroupRepository.save(newGroup);
+    public void deleteGroup(String title){userGroupRepository.deleteByTitle(title);}
 
-    }
+
+
+
+
+
 
 
 }

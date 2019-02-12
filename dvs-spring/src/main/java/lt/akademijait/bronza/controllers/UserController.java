@@ -46,22 +46,22 @@ public class UserController {
         userService.deleteUser(username);
     }
 
-    @RequestMapping(path = "/{id}", method = RequestMethod.PUT)
-    @ResponseStatus(HttpStatus.OK)
-    @ApiOperation(value = "Update user info", notes = "Updates user by id")
-    public void updateUser(
-            @ApiParam(value = "User id", required = true) @PathVariable final Long id,
-            @ApiParam(value = "User info", required = true) @RequestBody UserUpdateCommand uuc){
-        userService.updateUserInfo(uuc);
-    }
+//    @RequestMapping(path = "/{id}", method = RequestMethod.PUT)
+//    @ResponseStatus(HttpStatus.OK)
+//    @ApiOperation(value = "Update user info", notes = "Updates user by id")
+//    public void updateUser(
+//            @ApiParam(value = "User id", required = true) @PathVariable final Long id,
+//            @ApiParam(value = "User info", required = true) @RequestBody UserUpdateCommand uuc){
+//        userService.updateUserInfo(uuc);
+//    }
 
     @RequestMapping(path = "/{username}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
-    @ApiOperation(value = "Update user password", notes = "Updates user's password")
-    public void updateUserPassword(
+    @ApiOperation(value = "Update user", notes = "Updates user's data")
+    public void updateUserData(
             @ApiParam(value = "Username", required = true) @PathVariable final String username,
-            @ApiParam(value =  "new password", required = true) @RequestBody UserCreateCommand userCreateCommand){
-        userService.updateUsersPassword(username, userCreateCommand.getPassword());
+            @ApiParam(value =  "new data", required = true) @RequestBody UserUpdateCommand uuc){
+        userService.updateUsersData(uuc);
     }
 
     @RequestMapping(path = "/{username}", method = RequestMethod.GET)
