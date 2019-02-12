@@ -11,6 +11,7 @@ import lt.akademijait.bronza.repositories.DocumentTypeRepository;
 import lt.akademijait.bronza.repositories.UserGroupRepository;
 import lt.akademijait.bronza.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -122,11 +123,18 @@ public class DocumentService {
         Document newDocument = new Document();
         newDocument.setCreationDate(new Date());
 
-        //shouldn't set Author directly from Object ir Document Entity, instead use String field from DocumentCreateCommand
         User user = userRepository.findByUsername(documentCreateCommand.getUsername());
-        newDocument.setAuthor(user);
+        if (user == null) {
+            throw new ResourceNotFoundException("You should create that User first (and write him in field username) !");
+        } else {
+            newDocument.setAuthor(user);
+        }
+
 
         DocumentType documentType = documentTypeRepository.findByTitle(documentCreateCommand.getDocumentTypeTitle());
+        if (documentType == null) {
+            throw new ResourceNotFoundException("You should create that DocymentType first (and write him in field documentTypeTitle) !");
+        }
         newDocument.setDocumentType(documentType);
 
         newDocument.setTitle(documentCreateCommand.getTitle());

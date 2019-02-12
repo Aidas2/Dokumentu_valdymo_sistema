@@ -13,7 +13,7 @@ public class DocumentType {
     private Long id;
     //private String id;
 
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String title;
 
     @ManyToMany//(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
