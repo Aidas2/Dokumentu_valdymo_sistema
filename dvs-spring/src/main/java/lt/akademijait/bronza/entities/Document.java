@@ -29,16 +29,16 @@ public class Document {
     //@OneToMany
     //private List<Attachment> attachments;
 
-//    @ManyToOne
-//    @JoinColumn(name="author_id")
-    private Long authorId;    //autoriu kol kas reikia "uzhardcodinti"
+    @ManyToOne
+    @JoinColumn(name="author_id")
+    private User author;    //autoriu kol kas reikia "uzhardcodinti"
 
     @Column
     private DocumentState documentState;
 
-//    @ManyToOne
-//    @JoinColumn(name="doctype_id")
-    private Long documentTypeId;
+    @ManyToOne
+    @JoinColumn(name="doctype_id")
+    private DocumentType documentType;
 
     @Column (nullable = false)
     private String title;
@@ -71,10 +71,10 @@ public class Document {
     public Document() {
     }
 
-    public Document(Long authorId, DocumentState documentState, Long documentTypeId, String title, String description, Date creationDate, Date submissionDate, Date confirmationDate, Date rejectionDate, User reviewer, String rejectionReason, String path) {
-        this.authorId = authorId;
+    public Document(User author, DocumentState documentState, DocumentType documentType, String title, String description, Date creationDate, Date submissionDate, Date confirmationDate, Date rejectionDate, User reviewer, String rejectionReason, String path) {
+        this.author = author;
         this.documentState = documentState;
-        this.documentTypeId = documentTypeId;
+        this.documentType = documentType;
         this.title = title;
         this.description = description;
         this.creationDate = creationDate;
@@ -102,13 +102,13 @@ public class Document {
         this.additionalFilePaths = additionalFilePaths;
     }
 
-    public Long getAuthorId() {
-        return authorId;
+    public User getAuthor() {
+        return author;
     }
 
     //galbut reikia perdaryti i String usernameId
-    public void setAuthorId(Long authorId) {
-        this.authorId = authorId;
+    public void setAuthor(User author) {
+        this.author = author;
     }
 
     public DocumentState getDocumentState() {
@@ -119,12 +119,12 @@ public class Document {
         this.documentState = documentState;
     }
 
-    public Long getDocumentTypeId() {
-        return documentTypeId;
+    public DocumentType getDocumentType() {
+        return documentType;
     }
 
-    public void setDocumentTypeId(Long documentTypeId) {
-        this.documentTypeId = documentTypeId;
+    public void setDocumentType(DocumentType documentType) {
+        this.documentType = documentType;
     }
 
     public String getTitle() {

@@ -3,7 +3,6 @@ package lt.akademijait.bronza.services;
 import lt.akademijait.bronza.dto.user.UserCreateCommand;
 import lt.akademijait.bronza.dto.user.UserGetCommand;
 import lt.akademijait.bronza.dto.user.UserUpdateCommand;
-import lt.akademijait.bronza.entities.Document;
 import lt.akademijait.bronza.entities.User;
 import lt.akademijait.bronza.entities.UserGroup;
 import lt.akademijait.bronza.repositories.UserGroupRepository;
@@ -12,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -61,6 +60,7 @@ public class UserService {
 
     @Transactional
     public void createNewUser(UserCreateCommand ucc){
+
         User newUser = new User(
                 ucc.getId(),
                 ucc.getFirstName(),
@@ -70,8 +70,12 @@ public class UserService {
                 ucc.getUsername(),
                 ucc.getPassword(),
                 ucc.getEmailAddress(),
-                ucc.getUserGroups(),
-                ucc.getDocuments());
+                Collections.emptyList(),
+                Collections.emptyList()
+                //ucc.getUserGroups(),
+                //ucc.getDocuments()
+                );
+        //newUser.getUserGroups().add()
         userRepository.save(newUser);
 
 

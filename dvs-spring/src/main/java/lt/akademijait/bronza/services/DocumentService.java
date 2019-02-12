@@ -14,8 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -37,9 +37,9 @@ public class DocumentService {
         return documentRepository.findAll()
                 .stream()
                 .map((document) -> new DocumentGetCommand(
-                        document.getAuthorId(),
+                        document.getAuthor().getId(),
                         document.getDocumentState(),
-                        document.getDocumentTypeId(),
+                        document.getDocumentType().getId(),
                         document.getTitle(),
                         document.getDescription(),
                         document.getCreationDate(),
@@ -59,9 +59,9 @@ public class DocumentService {
                 .stream()
                 .filter(document -> !document.getDocumentState().equals(DocumentState.CREATED))
                 .map((document) -> new DocumentGetCommand(
-                        document.getAuthorId(),
+                        document.getAuthor().getId(),
                         document.getDocumentState(),
-                        document.getDocumentTypeId(),
+                        document.getDocumentType().getId(),
                         document.getTitle(),
                         document.getDescription(),
                         document.getCreationDate(),
@@ -81,9 +81,9 @@ public class DocumentService {
                 .stream()
                 .filter(document -> document.getDocumentState().equals(DocumentState.SUBMITTED))
                 .map((document) -> new DocumentGetCommand(
-                        document.getAuthorId(),
+                        document.getAuthor().getId(),
                         document.getDocumentState(),
-                        document.getDocumentTypeId(),
+                        document.getDocumentType().getId(),
                         document.getTitle(),
                         document.getDescription(),
                         document.getCreationDate(),
@@ -101,9 +101,9 @@ public class DocumentService {
     public DocumentGetCommand getDocumentById(Long id) {
         Document document = documentRepository.findById(id).orElse(null);
         return new DocumentGetCommand(
-                document.getAuthorId(),
+                document.getAuthor().getId(),
                 document.getDocumentState(),
-                document.getDocumentTypeId(),
+                document.getDocumentType().getId(),
                 document.getTitle(),
                 document.getDescription(),
                 document.getCreationDate(),
@@ -121,14 +121,17 @@ public class DocumentService {
     public void createDocument(DocumentCreateCommand documentCreateCommand) {
 
         Document newDocument = new Document();
+        newDocument.setCreationDate(new Date());
 
         //shouldn't set Author directly from Object ir Document Entity, instead use String field from DocumentCreateCommand
-//        User user = userRepository.findById(documentCreateCommand.getAuthorId());
-        newDocument.setAuthorId(documentCreateCommand.getAuthorId());
 
-//        DocumentType documentType = documentTypeRepository.findByTitle(documentCreateCommand.getDocumentTypeTitle());
+        User user = userRepository.findByUsername(documentCreateCommand.getUsername());
+        newDocument.setAuthor(user);
 
-        newDocument.setDocumentTypeId(documentCreateCommand.getDocumentTypeId());
+
+        DocumentType documentType = documentTypeRepository.findByTitle(documentCreateCommand.getDocumentTypeTitle());
+
+        newDocument.setDocumentType(documentType);
 
         newDocument.setTitle(documentCreateCommand.getTitle());
         newDocument.setDescription(documentCreateCommand.getDescription());
@@ -144,11 +147,13 @@ public class DocumentService {
     public void updateDocument(Long id, DocumentCreateCommand documentCreateCommand) {
         Document documentToUpdate = documentRepository.findById(id).orElse(null);
 
-//        User user = userRepository.findByUsername(documentCreateCommand.getAuthorId());
-        documentToUpdate.setAuthorId(documentCreateCommand.getAuthorId());
 
-//        DocumentType documentType = documentTypeRepository.findByTitle(documentCreateCommand.getDocumentTypeTitle());
-        documentToUpdate.setDocumentTypeId(documentCreateCommand.getDocumentTypeId());
+        User user = userRepository.findByUsername(documentCreateCommand.getUsername());
+        documentToUpdate.setAuthor(user);
+
+
+        DocumentType documentType = documentTypeRepository.findByTitle(documentCreateCommand.getDocumentTypeTitle());
+        documentToUpdate.setDocumentType(documentType);
 
 
         documentToUpdate.setTitle(documentCreateCommand.getTitle());
@@ -190,9 +195,6 @@ public class DocumentService {
         documentRepository.deleteById(id);
     }
 
-    public String getCurrentLocalDateTimeStamp() {
-        return LocalDateTime.now()
-                .format(DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss-SSS"));
-    }
+
 
 }
