@@ -6,10 +6,7 @@ import FileUploadComponent from "./FileUploadComponent";
 class FileUploadContainer extends Component {
   state = {
     file: [],
-    documentTitle: "",
-    //selected document type
-    documentType: "",
-    //all available document types
+
     documentTypes: [],
     sth: false,
     createDocumentInfo: {
@@ -140,10 +137,8 @@ class FileUploadContainer extends Component {
   };
 
   handleDocumentTitle = e => {
-    console.log("$$$$$$$ e.target.value>>>>>>", e.target.value);
-    let documentTitle = e.target.value;
     let createDocumentInfo = this.state.createDocumentInfo;
-    createDocumentInfo.documentTypeTitle = e.target.value;
+    createDocumentInfo.title = e.target.value;
     this.setState({ createDocumentInfo: createDocumentInfo });
   };
   handleDocumentDescription = e => {
@@ -152,11 +147,9 @@ class FileUploadContainer extends Component {
     this.setState({ createDocumentInfo: createDocumentInfo });
   };
   handleDocumentType = e => {
-    console.log("$$$$$$ DocumentTypeChange occured");
-    let documentType = e.target.value;
+    console.log("$$$$$$ DocumentTypeChange occured@@@@@@@@@@@@@@@@@@@@@@");
     let createDocumentInfo = this.state.createDocumentInfo;
     createDocumentInfo.documentTypeTitle = e.target.value;
-    this.setState({ documentType: documentType });
     this.setState({ createDocumentInfo: createDocumentInfo });
     // console.log("$$$$$$ this.state.documentType >>>>>> ", this.state.documentType);
   };
