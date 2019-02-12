@@ -13,6 +13,7 @@ import FileUploadContainer from "./components/FileUpload/FileUploadContainer";
 import DocumentTypesContainer from "./components/DocumentTypes/DocumentTypesContainer";
 import CreateDocumentTypeConatainer from "./components/Forms/DocumentType/CreateDocumentTypeContainer";
 import CreateUserContainer from "./components/Forms/User/CreateUserContainer";
+import UsersContainer from "./components/Users/UsersContainer";
 
 ReactDOM.render(
   <BrowserRouter>
@@ -34,7 +35,7 @@ ReactDOM.render(
           component={DocumentTypesContainer}
         />{" "}
         <Route exact path="/admin/newuser" component={CreateUserContainer} />
-        <Route exact path="/admin/users" component={DocumentTypesContainer} />
+        <Route exact path="/admin/users" component={UsersContainer} />
         <Route
           exact
           path="/admin/usergroups"

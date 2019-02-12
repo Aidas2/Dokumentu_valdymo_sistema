@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import DocumentTypesComponent from "./DocumentTypesComponent";
+import UsersComponent from "./UsersComponent";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
@@ -27,7 +27,7 @@ class UsersContainer extends Component {
   render() {
     var docTypesArrayToRender = this.state.docTypes.map(oneTypeObj => {
       return (
-        <DocumentTypesComponent
+        <UsersComponent
           key={oneTypeObj.id}
           typeId={oneTypeObj.id}
           typeTitle={oneTypeObj.title}
@@ -38,23 +38,44 @@ class UsersContainer extends Component {
     return (
       <div>
         <div className="container-fluid m-2 ">
-          <h3 className="display-6">Dokumentų tipai</h3>
+          <h3 className="display-6">Vartotojai</h3>
           <Link to={"/admin/newdoctype/"} className="btn btn-warning mb-2">
-            Kurti naują dokumento tipą
+            Pridėti naują vartotoją
           </Link>
           <div className="container pl-0 ml-0">
+            <h4 className="display-6">Esami vartotojai</h4>
+
             <div className="row">
               <div className="col-2">
                 <p>
                   {" "}
-                  <strong>Dokumento tipo ID</strong>
+                  <strong>Vartotojo ID</strong>
                 </p>
                 {/* <Link to="">Linkas</Link> */}
               </div>
-
-              <div className="col-3">
+              <div className="col-2">
                 <p>
-                  <strong>Dokumento tipo pavadinimas</strong>
+                  <strong>Prisijungimo vardas</strong>
+                </p>
+              </div>{" "}
+              <div className="col-2">
+                <p>
+                  <strong>Vardas</strong>
+                </p>
+              </div>
+              <div className="col-2">
+                <p>
+                  <strong>Pavardė</strong>
+                </p>
+              </div>
+              <div className="col-2">
+                <p>
+                  <strong>El. pašto adresas</strong>
+                </p>
+              </div>
+              <div className="col-2">
+                <p>
+                  <strong>Įdarbinimo data</strong>
                 </p>
               </div>
             </div>
