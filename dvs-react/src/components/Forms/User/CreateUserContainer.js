@@ -98,7 +98,7 @@ class CreateUserContainer extends Component {
           >
             &times;
           </button>
-          Sveikiname! Dokumento tipas <strong>{this.state.username} </strong>
+          Sveikiname! Vartotojas <strong>{this.state.username} </strong>
           sukurtas sėkmingai.
         </div>
       );
