@@ -11,7 +11,8 @@ class CreateUserContainer extends Component {
     hireDate: "",
     lastName: "",
     password: "",
-    username: ""
+    username: "",
+    msg: false
   };
 
   handleSubmit = () => {
@@ -59,9 +60,26 @@ class CreateUserContainer extends Component {
     );
   };
 
-  handleTitleChange = e => {
-    let documentTypeTitle = e.target.value;
-    this.setState({ title: documentTypeTitle });
+  handleAdministratorChange = e => {
+    this.setState({ administrator: e.target.value });
+  };
+  handleEmailAddressChange = e => {
+    this.setState({ emailAddress: e.target.value });
+  };
+  handleFirstNameChange = e => {
+    this.setState({ firstName: e.target.value });
+  };
+  handleHireDateChange = e => {
+    this.setState({ hireDate: e.target.value });
+  };
+  handleLastNameChange = e => {
+    this.setState({ lastName: e.target.value });
+  };
+  handlePasswordChange = e => {
+    this.setState({ password: e.target.value });
+  };
+  handleUsernameChange = e => {
+    this.setState({ username: e.target.value });
   };
 
   launchAlert = () => {
@@ -90,8 +108,8 @@ class CreateUserContainer extends Component {
 
   render() {
     console.log(
-      "@@@@@@@@@@@@@@@ inside render() this.state.msg >>>>>>>> ",
-      this.state.msg
+      this.state,
+      "-------------@@@@@@@@@@@@@@@ inside render() this.state>>>>>>>> "
     );
 
     return (

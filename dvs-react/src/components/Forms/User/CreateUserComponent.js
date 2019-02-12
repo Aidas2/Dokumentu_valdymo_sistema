@@ -15,7 +15,7 @@ const CreateUserComponent = props => {
               className="form-control"
               placeholder="Įveskite vartotojo vardą"
               // value={this.state.value.imageUrl}
-              onChange={props.FirstNameChange}
+              onChange={props.onFirstNameChange}
             />
           </div>
           <div className="col">
