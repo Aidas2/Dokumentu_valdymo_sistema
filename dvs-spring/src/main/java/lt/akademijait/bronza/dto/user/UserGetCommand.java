@@ -2,7 +2,7 @@ package lt.akademijait.bronza.dto.user;
 
 public class UserGetCommand {
 
-//    private Long id;
+    private Long userId;
     private String firstName;
     private String lastName;
 //    private LocalDate hireDate;
@@ -22,17 +22,26 @@ public class UserGetCommand {
     public UserGetCommand() {
     }
 
-    public UserGetCommand(String firstName, String lastName, boolean administrator, String password, String username, String emailAddress) {
+    public UserGetCommand(Long userId, String firstName, String lastName, boolean administrator, String password, String username, String emailAddress) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.administrator = administrator;
         this.password = password;
         this.username = username;
         this.emailAddress = emailAddress;
+        this.userId = userId;
     }
 
     public String getFirstName() {
         return firstName;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public void setFirstName(String firstName) {

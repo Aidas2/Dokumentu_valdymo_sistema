@@ -24,23 +24,26 @@ public class UserService {
     private UserGroupRepository userGroupRepository;
 
 
-    @Transactional (readOnly = true)
-    public List<UserGetCommand> getAllUsers (){
+    @Transactional(readOnly = true)
+    public List<UserGetCommand> getAllUsers() {
         return userRepository.findAll().stream().map(
                 (user) ->
-                new UserGetCommand(
-                        user.getFirstName(),
-                        user.getLastName(),
-                        user.isAdministrator(),
-                        user.getPassword(),
-                        user.getUsername(),
-                        user.getEmailAddress())).collect(Collectors.toList());
+                        new UserGetCommand(
+                                user.getId(),
+                                user.getFirstName(),
+                                user.getLastName(),
+                                user.isAdministrator(),
+                                user.getPassword(),
+                                user.getUsername(),
+                                user.getEmailAddress())).collect(Collectors.toList());
     }
 
-    @Transactional (readOnly = true)
-    public UserGetCommand getUserByUsername(String username){
+    @Transactional(readOnly = true)
+    public UserGetCommand getUserByUsername(String username) {
         User user = userRepository.findByUsername(username);
         return new UserGetCommand(
+                user.getId(),
+
                 user.getFirstName(),
                 user.getLastName(),
                 user.isAdministrator(),
@@ -59,7 +62,7 @@ public class UserService {
 //    }
 
     @Transactional
-    public void createNewUser(UserCreateCommand ucc){
+    public void createNewUser(UserCreateCommand ucc) {
 
         User newUser = new User(
                 ucc.getId(),
@@ -74,7 +77,7 @@ public class UserService {
                 Collections.emptyList()
                 //ucc.getUserGroups(),
                 //ucc.getDocuments()
-                );
+        );
         //newUser.getUserGroups().add()
         userRepository.save(newUser);
 
@@ -82,14 +85,14 @@ public class UserService {
     }
 
     @Transactional
-    public void updateUsersPassword(String username, String password){
+    public void updateUsersPassword(String username, String password) {
         User userToUpdate = userRepository.findByUsername(username);
         userToUpdate.setPassword(password);
         userRepository.save(userToUpdate);
     }
 
     @Transactional
-    public void addUserToGroup(String username, List<UserGroup> userGroups){
+    public void addUserToGroup(String username, List<UserGroup> userGroups) {
         User addToGroup = userRepository.findByUsername(username);
         addToGroup.setUserGroups(userGroups);
         userRepository.save(addToGroup);
@@ -97,7 +100,7 @@ public class UserService {
     }
 
     @Transactional
-    public void updateUserInfo(UserUpdateCommand uuc){
+    public void updateUserInfo(UserUpdateCommand uuc) {
         User user = userRepository.findByUsername(uuc.getUsername());
         user.setAdministrator(uuc.isAdministrator());
         user.setFirstName(uuc.getFirstName());
@@ -109,16 +112,12 @@ public class UserService {
         userRepository.save(user);
 
 
-
-
-
     }
 
     @Transactional
-    public void deleteUser(String username){
+    public void deleteUser(String username) {
         userRepository.deleteByUsername(username);
     }
-
 
 
 }
