@@ -1,7 +1,7 @@
 package lt.akademijait.bronza.entities;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -23,7 +23,7 @@ public class User {
     private String lastName;
 
     @Column
-    private LocalDate hireDate;
+    private Date hireDate;
 
     @Column
     private boolean administrator;
@@ -55,7 +55,7 @@ public class User {
 
     }
 
-    public User(Long id, String firstName, String lastName, LocalDate hireDate, boolean administrator, String username, String password, String emailAddress, List<UserGroup> userGroups, List<Document> documents) {
+    public User(Long id, String firstName, String lastName, Date hireDate, boolean administrator, String username, String password, String emailAddress, List<UserGroup> userGroups, List<Document> documents) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -92,11 +92,11 @@ public class User {
         this.lastName = lastName;
     }
 
-    public LocalDate getHireDate() {
+    public Date getHireDate() {
         return hireDate;
     }
 
-    public void setHireDate(LocalDate hireDate) {
+    public void setHireDate(Date hireDate) {
         this.hireDate = hireDate;
     }
 
