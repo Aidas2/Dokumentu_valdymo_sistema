@@ -44,7 +44,7 @@ const CreateUserComponent = props => {
             <h5>Elektroninoi pašto adresas</h5>
 
             <input
-              type="text"
+              type="email"
               className="form-control"
               placeholder="Įveskite vartotojo el. pašto adresą"
               onChange={props.onEmailAddressChange}
@@ -55,7 +55,7 @@ const CreateUserComponent = props => {
           <div className="col ">
             <h5>Įdarbinimo data</h5>
             <input
-              type="text"
+              type="date"
               className="form-control"
               placeholder="Įveskite vartotojo įdarbinimo datą"
               // value={this.state.value.imageUrl}

@@ -12,6 +12,7 @@ class CreateUserContainer extends Component {
     lastName: "",
     password: "",
     username: "",
+    id: 4,
     msg: false
   };
 
@@ -28,10 +29,17 @@ class CreateUserContainer extends Component {
     //   .catch(function(error) {
     //     console.log(error);
     //   });
-
+    console.log("========================Submit happened");
     axios
-      .post("http://localhost:8081/api/doctypes", {
-        title: this.state.title
+      .post("http://localhost:8081/api/users", {
+        administrator: this.state.administrator,
+        emailAddress: this.state.emailAddress,
+        firstName: this.state.firstName,
+        hireDate: this.state.hireDate,
+        lastName: this.state.lastName,
+        password: this.state.password,
+        username: this.state.username,
+        id: 4
       })
       .then(response => {
         const uploadStatus = "Type was created successfully";
@@ -53,11 +61,6 @@ class CreateUserContainer extends Component {
         }
       });
     console.log(">>>>>>>>>Submit happened");
-    console.log("@@@@@@@@@@@@@@@ this.state.title >>>>>>>> ", this.state.title);
-    console.log(
-      "@@@@@@@@@@@@@@@ inside handleSubmit this.state.msg >>>>>>>> ",
-      this.state.msg
-    );
   };
 
   handleAdministratorChange = e => {
@@ -114,6 +117,7 @@ class CreateUserContainer extends Component {
 
     return (
       <CreateUserComponent
+        onSubmit={this.handleSubmit}
         onAdministratorChange={this.handleAdministratorChange}
         onEmailAddressChange={this.handleEmailAddressChange}
         onFirstNameChange={this.handleFirstNameChange}
