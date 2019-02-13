@@ -14,6 +14,7 @@ import DocumentTypesContainer from "./components/DocumentTypes/DocumentTypesCont
 import CreateDocumentTypeConatainer from "./components/Forms/DocumentType/CreateDocumentTypeContainer";
 import CreateUserContainer from "./components/Forms/User/CreateUserContainer";
 import UsersContainer from "./components/Users/UsersContainer";
+import FileDownloadConatainer from "./components/FileDownload/FileDownloadContainer";
 
 ReactDOM.render(
   <BrowserRouter>
@@ -24,6 +25,7 @@ ReactDOM.render(
         <Route exact path="/usergroups/:id" />
         <Route exact path="/admin" component={AdministrationContainer} />
         <Route exact path="/upload" component={FileUploadContainer} />
+        <Route exact path="/download" component={FileDownloadConatainer} />
         <Route
           exact
           path="/admin/newdoctype"
