@@ -61,7 +61,7 @@ public class UserController {
     public void updateUserData(
             @ApiParam(value = "Username", required = true) @PathVariable final String username,
             @ApiParam(value =  "new data", required = true) @RequestBody UserUpdateCommand uuc){
-        userService.updateUsersData(uuc);
+        userService.updateUsersData(username, uuc);
     }
 
     @RequestMapping(path = "/{username}", method = RequestMethod.GET)

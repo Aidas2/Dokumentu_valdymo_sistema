@@ -86,8 +86,8 @@ public class UserService {
     }
 
     @Transactional
-    public void updateUsersData(UserUpdateCommand uuc) {
-        User userToUpdate = userRepository.findByUsername(uuc.getUsername());
+    public void updateUsersData(String oldUserName, UserUpdateCommand uuc) {
+        User userToUpdate = userRepository.findByUsername(oldUserName);
         userToUpdate.setFirstName(uuc.getFirstName());
         userToUpdate.setLastName(uuc.getLastName());
         userToUpdate.setHireDate(uuc.getHireDate());
