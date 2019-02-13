@@ -30,7 +30,7 @@ class FileDownloadConatainer extends Component {
     data.append("name", this.state.file.name);
 
     axios({
-      url: "http://localhost:8081/api/docstest",
+      url: "http://localhost:8081/files",
       method: "post",
       headers: {
         authorisation: "your token"
@@ -63,7 +63,7 @@ class FileDownloadConatainer extends Component {
   };
   downloadRandomImage = () => {
     axios
-      .get("http://localhost:8081/api/docstest")
+      .get("http://localhost:8081/files")
       .then(response => {
         const filename = response.headers
           .get("Content-Disposition")
