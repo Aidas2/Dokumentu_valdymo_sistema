@@ -11,6 +11,7 @@ import lt.akademijait.bronza.repositories.DocumentTypeRepository;
 import lt.akademijait.bronza.repositories.UserGroupRepository;
 import lt.akademijait.bronza.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -122,12 +123,20 @@ public class DocumentService {
         Document newDocument = new Document();
         newDocument.setCreationDate(new Date());
 
-        //shouldn't set Author directly from Object ir Document Entity, instead use String field from DocumentCreateCommand
         User user = userRepository.findByUsername(documentCreateCommand.getUsername());
-        newDocument.setAuthor(user);
+        if (user == null) {
+            throw new ResourceNotFoundException("My dear Friend, you entered not existing User (you should create that User first) !");
+        } else {
+            newDocument.setAuthor(user);
+        }
+
 
         DocumentType documentType = documentTypeRepository.findByTitle(documentCreateCommand.getDocumentTypeTitle());
-        newDocument.setDocumentType(documentType);
+        if (documentType == null) {
+            throw new ResourceNotFoundException("My dear Friend, you entered not existing DocumentType (you should create that DocymentType first) !");
+        } else {
+            newDocument.setDocumentType(documentType);
+        }
 
         newDocument.setTitle(documentCreateCommand.getTitle());
         newDocument.setDescription(documentCreateCommand.getDescription());
@@ -188,5 +197,32 @@ public class DocumentService {
     public void deleteDocument(long id) {
         documentRepository.deleteById(id);
     }
+
+    //ASSIGN DOCUMENT_TYPE TO DOCUMENT
+    @Transactional
+    public void assignDocumentTypeToDocument(Long id, String title) {
+        //DocumentType documentType = documentTypeRepository.findById(id).orElseThrow(null);
+        DocumentType documentType = documentTypeRepository.findByTitle(title);
+        Document document = documentRepository.findById(id).orElse(null);
+        if (documentType == null) {
+            throw new ResourceNotFoundException("My dear Friend, you entered not existing DocumentType (you should create that DocymentType first) !");
+        } else {
+            documentType.getDocuments().add(document);
+        }
+    }
+
+    //DE-ASSIGN DOCUMENT_TYPE TO DOCUMENT
+    @Transactional
+    public void deassignDocumentTypeToDocument(Long id, String title) {
+        //DocumentType documentType = documentTypeRepository.findById(id).orElseThrow(null);
+        DocumentType documentType = documentTypeRepository.findByTitle(title);
+        Document document = documentRepository.findById(id).orElse(null);
+        if (documentType == null) {
+            throw new ResourceNotFoundException("My dear Friend, you entered not existing DocumentType (you should create that DocymentType first) !");
+        } else {
+            documentType.getDocuments().remove(document);
+        }
+    }
+
 
 }

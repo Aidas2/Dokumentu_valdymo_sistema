@@ -42,6 +42,17 @@ public class DocumentTypeService {
         );
     }
 
+    //GET BY TITLE
+    @Transactional(readOnly = true)
+    public DocumentTypeGetCommand getDocumentsTypeByTitle(String title) {
+        DocumentType documentType = documentTypeRepository.findByTitle(title);
+        return new DocumentTypeGetCommand(
+                documentType.getId(),
+                documentType.getTitle()
+        );
+    }
+
+
     //CREATE
     //galbut nereikia  kurti getId
     @Transactional
