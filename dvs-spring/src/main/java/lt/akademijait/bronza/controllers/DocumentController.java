@@ -88,4 +88,15 @@ public class DocumentController {
         documentService.deleteDocument(id);
     }
 
+    //ASSIGN DOCUMENT_TYPE TO DOCUMENT
+    @RequestMapping(value = "/{id}/{title}", method = RequestMethod.PUT)
+    @ApiOperation(value = "Assign DocumentType to Document", notes = "Assigns DocumentType to Document")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public void assignDocumentTypeToDocument(
+            @ApiParam(value = "Document id", required = true)
+            @PathVariable Long id, @PathVariable String title) {
+        documentService.assignDocumentTypeToDocument(id, title);
+    }
+
+
 }

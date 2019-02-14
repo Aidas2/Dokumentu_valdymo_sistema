@@ -29,7 +29,7 @@ public class Document {
     //@OneToMany
     //private List<Attachment> attachments;
 
-    //@NotNull //if uncommented doesn't let to create Document with User null
+    //@NotNull //if uncommented doesn't let to create Document with User==null
     @ManyToOne
     @JoinColumn(name="author_id")
     private User author;    //autoriu kol kas reikia "uzhardcodinti"

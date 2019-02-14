@@ -40,6 +40,15 @@ public class DocumentTypeController {
         return documentTypeService.getDocumentsTypeById(id);
     }
 
+    //READ By TITLE
+    @RequestMapping(value="/{title}", method = RequestMethod.GET)
+    @ApiOperation(value = "Get documents type by title", notes = "Returns document type by title")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public DocumentTypeGetCommand getDocumentsTypeByTitle(
+            @ApiParam(value = "Document type title", required = true)
+            @PathVariable String title) {
+        return documentTypeService.getDocumentsTypeByTitle(title);
+    }
 
     //CREATE
     @RequestMapping(method = RequestMethod.POST)

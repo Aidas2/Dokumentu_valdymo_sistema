@@ -1,6 +1,7 @@
 package lt.akademijait.bronza.entities;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -15,6 +16,10 @@ public class DocumentType {
 
     @Column(unique = true, nullable = false)
     private String title;
+
+    @OneToMany //for connecting  DocumentType and Document (one DocumentType may have many Documents)
+    //ATTENTION ! This may be wrong approach ! Perhaps I should connect UserGroup to Document  ???
+    private List<Document> documents;
 
     @ManyToMany//(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     //@JoinTable(name = "submission_type", joinColumns = @JoinColumn(name="doc_type"), inverseJoinColumns = @JoinColumn(name="user_group_id") )
@@ -31,6 +36,7 @@ public class DocumentType {
     }
 
     public DocumentType(String title,
+                        List<Document> documents,
                         Set<UserGroup> submissionUserGroups,
                         Set<UserGroup> reviewUserGroups) {
         this.title = title;
@@ -74,6 +80,14 @@ public class DocumentType {
         this.title = title;
     }
 
+    public List<Document> getDocuments() {
+        return documents;
+    }
+
+    public void setDocuments(List<Document> documents) {
+        this.documents = documents;
+    }
+
     public Set<UserGroup> getSubmissionUserGroups() {
         return submissionUserGroups;
     }
@@ -81,6 +95,8 @@ public class DocumentType {
     public void setSubmissionUserGroups(Set<UserGroup> submissionUserGroups) {
         this.submissionUserGroups = submissionUserGroups;
     }
+
+
 
     public Set<UserGroup> getReviewUserGroups() {
         return reviewUserGroups;
