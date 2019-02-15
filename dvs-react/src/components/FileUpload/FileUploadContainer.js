@@ -65,7 +65,8 @@ class FileUploadContainer extends Component {
       url: "http://localhost:8081/api/docs",
       method: "post",
       headers: {
-        authorisation: "your token"
+        authorisation: "your token",
+        "Content-type": "application/json"
       },
       data: documentInfoToSend
     })

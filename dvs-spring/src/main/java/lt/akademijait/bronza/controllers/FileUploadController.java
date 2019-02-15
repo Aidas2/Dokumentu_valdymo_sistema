@@ -25,24 +25,25 @@ import java.util.Date;
 public class FileUploadController {
 
 
-    //this is for a download. It is still in progress and does not work
-//    @Autowired
-//    private ApplicationContext applicationContext;
-//
-//    @GetMapping(value = "/files-multi/{filename:.+}")
-//    @ResponseBody
-//    public ResponseEntity serveFile(@PathVariable String fileName) {
-//        Resource file = applicationContext.getResource("file:/home/paulius/Desktop/" + fileName);
-//        if (file.exists()) {
-//            HttpHeaders headers = new HttpHeaders();
-//            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"");
-//            headers.add("Access-Control-Expose-Headers", HttpHeaders.CONTENT_DISPOSITION + ","
-//                    + HttpHeaders.CONTENT_LENGTH);
-//            return ResponseEntity.ok().headers(headers).body(file);
-//        }
-//        return ResponseEntity.notFound().build();
-//
-//    }
+    //    this is for a download. It is still in progress and does not work
+    @Autowired
+    private ApplicationContext applicationContext;
+
+    @GetMapping(value = "/files/{filename:.+}")
+    @ResponseBody
+    public ResponseEntity serveFile(@PathVariable String fileName) {
+        Resource file = applicationContext.getResource("file:/home/paulius/Dokumentu_valdymo_sistema/dvs-spring/uploaded-files/user1-dir/java.txt"
+                + fileName);
+        if (file.exists()) {
+            HttpHeaders headers = new HttpHeaders();
+            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"");
+            headers.add("Access-Control-Expose-Headers", HttpHeaders.CONTENT_DISPOSITION + ","
+                    + HttpHeaders.CONTENT_LENGTH);
+            return ResponseEntity.ok().headers(headers).body(file);
+        }
+        return ResponseEntity.notFound().build();
+
+    }
 
 
     @RequestMapping(value = "/files", method = RequestMethod.POST,
@@ -65,7 +66,7 @@ public class FileUploadController {
         File userDirectory = new File(currentAbsolutePath + fileSeparator + "uploaded-files" + fileSeparator + userName);
         userDirectory.mkdirs();
         for (MultipartFile file : files) {
-            File fileToSave = new File(userDirectory, userID + "-"+getCurrentLocalDateTimeStamp()+"-" + file.getOriginalFilename());
+            File fileToSave = new File(userDirectory, userID + "-" + getCurrentLocalDateTimeStamp() + "-" + file.getOriginalFilename());
 //            fileToSave.mkdirs();
 
             try {
@@ -80,6 +81,7 @@ public class FileUploadController {
 
         return null;
     }
+
     public String getCurrentLocalDateTimeStamp() {
         return LocalDateTime.now()
                 .format(DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss-SSS"));

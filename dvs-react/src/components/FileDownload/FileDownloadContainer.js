@@ -34,6 +34,7 @@ class FileDownloadConatainer extends Component {
       method: "post",
       headers: {
         authorisation: "your token"
+        // "Content-type": "multipart/form-data"
       },
       data: data
     })
@@ -62,6 +63,7 @@ class FileDownloadConatainer extends Component {
       });
   };
   downloadRandomImage = () => {
+    console.log("download method happened");
     axios
       .get("http://localhost:8081/files")
       .then(response => {
@@ -80,20 +82,21 @@ class FileDownloadConatainer extends Component {
         console.log(error);
       });
   };
-
-  // downloadRandomImages = () => {
-  //   fetch('http://localhost:8080/api/files')
-  //     .then(response => {
-  //       const filename =  response.headers.get('Content-Disposition').split('filename=')[1];
-  //       response.blob().then(blob => {
-  //         let url = window.URL.createObjectURL(blob);
-  //         let a = document.createElement('a');
-  //         a.href = url;
-  //         a.download = filename;
-  //         a.click();
+  // downloadRandomImage = () => {
+  //   console.log("download method happened");
+  //   fetch("http://localhost:8081/files").then(response => {
+  //     const filename = response.headers
+  //       .get("Content-Disposition")
+  //       .split("filename=")[1];
+  //     response.blob().then(blob => {
+  //       let url = window.URL.createObjectURL(blob);
+  //       let a = document.createElement("a");
+  //       a.href = url;
+  //       a.download = filename;
+  //       a.click();
   //     });
-  //  });
-  // }
+  //   });
+  // };
   render() {
     console.log(
       this.state,
