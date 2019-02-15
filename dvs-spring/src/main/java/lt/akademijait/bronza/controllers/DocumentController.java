@@ -6,6 +6,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lt.akademijait.bronza.dto.document.DocumentCreateCommand;
 import lt.akademijait.bronza.dto.document.DocumentGetCommand;
+import lt.akademijait.bronza.dto.document.DocumentUpdateCommand;
 import lt.akademijait.bronza.services.DocumentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -72,9 +73,9 @@ public class DocumentController {
     @ResponseStatus(HttpStatus.ACCEPTED)
     public void updateDocumentById(
             @ApiParam(value = "Document id", required = true)
-            @RequestBody final DocumentCreateCommand documentCreateCommand,
+            @RequestBody final DocumentUpdateCommand documentUpdateCommand,
             @PathVariable Long id) {
-        documentService.updateDocument(id, documentCreateCommand);
+        documentService.updateDocument(id, documentUpdateCommand);
     }
 
 
@@ -88,6 +89,9 @@ public class DocumentController {
         documentService.deleteDocument(id);
     }
 
+    /*
+    // commented as not necessary;
+
     //ASSIGN DOCUMENT_TYPE TO DOCUMENT
     @RequestMapping(value = "/{id}/{title}", method = RequestMethod.PUT)
     @ApiOperation(value = "Assign DocumentType to Document", notes = "Assigns DocumentType to Document")
@@ -97,6 +101,7 @@ public class DocumentController {
             @PathVariable Long id, @PathVariable String title) {
         documentService.assignDocumentTypeToDocument(id, title);
     }
+    */
 
 
 }

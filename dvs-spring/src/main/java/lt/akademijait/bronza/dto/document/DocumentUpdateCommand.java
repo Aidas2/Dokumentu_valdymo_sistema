@@ -1,32 +1,30 @@
 package lt.akademijait.bronza.dto.document;
 
 
-//this is experimental class, not necessary
-
-import lt.akademijait.bronza.entities.DocumentType;
-
 public class DocumentUpdateCommand {
     //private User author; // private String username;
     //private DocumentState documentState;
-    private DocumentType documentType; //private String documentTypeTitle;
+    //private DocumentType documentType;  // do not use object, because object sends to swagger all his fields
+    private String documentTypeTitle;
+
     private String title;
     private String description;
 
     public DocumentUpdateCommand() {
     }
 
-    public DocumentUpdateCommand(DocumentType documentType, String title, String description) {
-        this.documentType = documentType;
+    public DocumentUpdateCommand(String documentTypeTitle, String title, String description) {
+        this.documentTypeTitle = documentTypeTitle;
         this.title = title;
         this.description = description;
     }
 
-    public DocumentType getDocumentType() {
-        return documentType;
+    public String getDocumentTypeTitle() {
+        return documentTypeTitle;
     }
 
-    public void setDocumentType(DocumentType documentType) {
-        this.documentType = documentType;
+    public void setDocumentTypeTitle(String documentTypeTitle) {
+        this.documentTypeTitle = documentTypeTitle;
     }
 
     public String getTitle() {
