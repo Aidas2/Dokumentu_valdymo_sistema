@@ -2,6 +2,7 @@ package lt.akademijait.bronza.services;
 
 import lt.akademijait.bronza.dto.document.DocumentCreateCommand;
 import lt.akademijait.bronza.dto.document.DocumentGetCommand;
+import lt.akademijait.bronza.dto.document.DocumentUpdateCommand;
 import lt.akademijait.bronza.entities.Document;
 import lt.akademijait.bronza.entities.DocumentType;
 import lt.akademijait.bronza.entities.User;
@@ -144,10 +145,13 @@ public class DocumentService {
     }
 
     //SUBMITT ?
+    //1. Sukurti metoda Document busenos managinimui
+    //2. Itraukti patikrinima ar vartotojas gali daryti ta managinima.
 
 
-
-    //UPDATE
+/*
+    //UPDATE Version_01.
+    // Commented, because tu update username is not logical + it should be DocumentCreateCommand used.
     @Transactional
     public void updateDocument (Long id, DocumentCreateCommand documentCreateCommand) {
         Document documentToUpdate = documentRepository.findById(id).orElse(null);
@@ -164,6 +168,23 @@ public class DocumentService {
         //documentToUpdate.setId(id);
         documentRepository.save(documentToUpdate);
     }
+*/
+
+    //UPDATE Version_02.
+    @Transactional
+    public void updateDocument (Long id, DocumentUpdateCommand documentUpdateCommand) {
+        Document documentToUpdate = documentRepository.findById(id).orElse(null);
+
+        DocumentType documentType = documentTypeRepository.findByTitle(documentUpdateCommand.getDocumentTypeTitle());
+        documentToUpdate.setDocumentType(documentType);
+
+
+        documentToUpdate.setTitle(documentUpdateCommand.getTitle());
+        documentToUpdate.setDescription(documentUpdateCommand.getDescription());
+        documentRepository.save(documentToUpdate);
+    }
+
+
 /*
     //CREATE (old version, not working)
     @Transactional
@@ -198,6 +219,10 @@ public class DocumentService {
         documentRepository.deleteById(id);
     }
 
+    /*
+    // commented as not necessary (?);
+    // dar reikia paduoti username kad patikrinti ar jis turi permission'a
+    // tada paduoti setDocumentState
     //ASSIGN DOCUMENT_TYPE TO DOCUMENT
     @Transactional
     public void assignDocumentTypeToDocument(Long id, String title) {
@@ -207,7 +232,8 @@ public class DocumentService {
         if (documentType == null) {
             throw new ResourceNotFoundException("My dear Friend, you entered not existing DocumentType (you should create that DocymentType first) !");
         } else {
-            documentType.getDocuments().add(document);
+            //documentType.getDocuments().add(document); //
+            document.setDocumentType(documentType);
         }
     }
 
@@ -223,6 +249,6 @@ public class DocumentService {
             documentType.getDocuments().remove(document);
         }
     }
-
+    */
 
 }

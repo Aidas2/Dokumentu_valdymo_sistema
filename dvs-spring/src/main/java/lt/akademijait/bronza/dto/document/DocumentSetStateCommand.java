@@ -5,19 +5,19 @@ import lt.akademijait.bronza.enums.DocumentState;
 
 //this is experimental class, not necessary
 
-public class DocumentReviewCommand {
+public class DocumentSetStateCommand {
 
     private User reviewer; //private String reviewerUsername;
     private String rejectionReason;
     private DocumentState documentState;
 
 
-    public DocumentReviewCommand() {
+    public DocumentSetStateCommand() {
     }
 
     //option 1
     /*
-    public DocumentReviewCommand(User reviewer, String rejectionReason, DocumentState documentState) {
+    public DocumentSetStateCommand(User reviewer, String rejectionReason, DocumentState documentState) {
         this.reviewer = reviewer;
         this.rejectionReason = rejectionReason;
         this.documentState = documentState;
@@ -25,7 +25,7 @@ public class DocumentReviewCommand {
     */
 
     //option 2
-    public DocumentReviewCommand(User reviewer, String rejectionReason, String documentState) {
+    public DocumentSetStateCommand(User reviewer, String rejectionReason, String documentState) {
         this.reviewer = reviewer;
         this.rejectionReason = rejectionReason;
         this.documentState = DocumentState.valueOf(documentState);
