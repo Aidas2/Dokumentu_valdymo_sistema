@@ -2,6 +2,7 @@ package lt.akademijait.bronza.services;
 
 import lt.akademijait.bronza.dto.document.DocumentCreateCommand;
 import lt.akademijait.bronza.dto.document.DocumentGetCommand;
+import lt.akademijait.bronza.dto.document.DocumentSetStateCommand;
 import lt.akademijait.bronza.dto.document.DocumentUpdateCommand;
 import lt.akademijait.bronza.entities.Document;
 import lt.akademijait.bronza.entities.DocumentType;
@@ -145,9 +146,32 @@ public class DocumentService {
     }
 
     //SUBMITT ?
+
+    //SET DOCUMENT STATE
     //1. Sukurti metoda Document busenos managinimui
     //2. Itraukti patikrinima ar vartotojas gali daryti ta managinima.
 
+    @Transactional
+    public void setDocumentState (Long id, DocumentSetStateCommand documentSetStateCommand) {
+
+        Document documentToSetState = documentRepository.findById(id).orElse(null);
+
+        User user = userRepository.findByUsername(documentSetStateCommand.getReviewerUsername());
+        documentToSetState.setReviewer(user);
+
+        if (documentSetStateCommand.getCreationDate() != null) {
+            documentToSetState.setDocumentState(DocumentState.CREATED);
+        } else if (documentSetStateCommand.getSubmissionDate() != null) {
+            documentToSetState.setDocumentState(DocumentState.SUBMITTED);
+        } else if (documentSetStateCommand.getConfirmationDate() != null) {
+            documentToSetState.setDocumentState(DocumentState.CONFIRMED);
+        } else if (documentSetStateCommand.getRejectionDate() != null) {
+            documentToSetState.setDocumentState(DocumentState.REJECTED);
+            documentToSetState.setRejectionReason(documentSetStateCommand.getRejectionReason());
+        }
+
+        documentRepository.save(documentToSetState);
+    }
 
 /*
     //UPDATE Version_01.
