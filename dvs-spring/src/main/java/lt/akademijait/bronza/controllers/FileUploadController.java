@@ -29,14 +29,14 @@ public class FileUploadController {
     @Autowired
     private ApplicationContext applicationContext;
 
-    @GetMapping(value = "/files/{filename:.+}")
+    @GetMapping(value = "/files/{fileName:.+}")
     @ResponseBody
     public ResponseEntity serveFile(@PathVariable String fileName) {
-        Resource file = applicationContext.getResource("file:/home/paulius/Dokumentu_valdymo_sistema/dvs-spring/uploaded-files/user1-dir/java.txt"
+        Resource file = applicationContext.getResource("file:/home/paulius/Dokumentu_valdymo_sistema/dvs-spring/uploaded-files/user1-dir/"
                 + fileName);
         if (file.exists()) {
             HttpHeaders headers = new HttpHeaders();
-            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"");
+            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + file.getFilename() );
             headers.add("Access-Control-Expose-Headers", HttpHeaders.CONTENT_DISPOSITION + ","
                     + HttpHeaders.CONTENT_LENGTH);
             return ResponseEntity.ok().headers(headers).body(file);

@@ -24,28 +24,28 @@ import java.nio.file.Paths;
 import static org.apache.commons.io.filefilter.DirectoryFileFilter.DIRECTORY;
 
 @RestController
-@RequestMapping("/files")
+@RequestMapping("/files/")
 @CrossOrigin(value = {"*"}, exposedHeaders = {"Content-Disposition"})
 public class FileBoundary {
 
-//    static final String DIRECTORY = "/home/paulius/Dokumentu_valdymo_sistema/dvs-spring/uploaded-files/user1-dir";
-//    private static final String DEFAULT_FILE_NAME = "java-tutorial.pdf";
-//
-//    @GetMapping
-//    public ResponseEntity<byte[]> getRandomFile(HttpServletRequest req) throws IOException {
-//
-//        File file = new File(DIRECTORY + "test.txt" );
-//        InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
-//
-//
-//
-//        byte[] array = Files.readAllBytes(file.toPath());
-//
-//        HttpHeaders header = new HttpHeaders();
-//        header.setContentType(MediaType.valueOf(req.getContentType()));
-////        header.setContentLength(req.ge.length);
-//        header.set("Content-Disposition", "attachment; filename=" + file.getName());
-//        return new ResponseEntity<>(array, header, HttpStatus.OK);
-//    }
+    static final String DIRECTORY = "/home/paulius/Dokumentu_valdymo_sistema/dvs-spring/uploaded-files/user1-dir/";
+    private static final String DEFAULT_FILE_NAME = "java.txt";
+
+    @GetMapping
+    public ResponseEntity<byte[]> getFile(HttpServletRequest req) throws IOException {
+
+        File file = new File(DIRECTORY + "java.txt" );
+        InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
+
+
+
+        byte[] array = Files.readAllBytes(file.toPath());
+
+        HttpHeaders header = new HttpHeaders();
+        header.setContentType(MediaType.valueOf(req.getContentType()));
+//        header.setContentLength(req.ge.length);
+        header.set("Content-Disposition", "attachment; filename=" + file.getName());
+        return new ResponseEntity<>(array, header, HttpStatus.OK);
+    }
 
 }
