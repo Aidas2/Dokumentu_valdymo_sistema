@@ -13,6 +13,8 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -33,17 +35,26 @@ public class FileUploadController {
 
     @GetMapping(value = "/files/{fileName:.+}")
     @ResponseBody
-    public ResponseEntity serveFile(@PathVariable String fileName) {
+    public ResponseEntity serveFile(@PathVariable String fileName) throws UnsupportedEncodingException {
         Resource file = applicationContext.getResource("file:/home/paulius/Dokumentu_valdymo_sistema/dvs-spring/uploaded-files/user1-dir/"
                 + fileName);
+
+        String fileNameEncoded = URLEncoder.encode(file.getFilename(), "UTF-8");
+        fileNameEncoded = URLDecoder.decode(fileName, "ISO8859_1");
+//        response.setContentType("application/x-msdownload");
+//        response.setHeader("Content-disposition", "attachment; filename="+ fileNameEncoded);
+
+
         if (file.exists()) {
             HttpHeaders headers = new HttpHeaders();
 //            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment;  filename=\"" + file.getFilename() + "\"");
-            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment;  filename=" + URLEncoder.encode(file.getFilename()));
+//            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment;  filename=" + URLEncoder.encode(file.getFilename(),
+//                    java.nio.charset.StandardCharsets.UTF_8.toString()));
+            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment;  filename=" + fileNameEncoded);
 
             headers.add("Access-Control-Expose-Headers", HttpHeaders.CONTENT_DISPOSITION + ","
                     + HttpHeaders.CONTENT_LENGTH);
-            headers.add(HttpHeaders.CONTENT_TYPE, "application/octetstream; charset=UTF-8");
+            headers.add(HttpHeaders.CONTENT_TYPE, "application/x-msdownload; ");
 //            headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
 
             return ResponseEntity.ok().headers(headers).body(file);
