@@ -39,22 +39,22 @@ public class FileUploadController {
         Resource file = applicationContext.getResource("file:/home/paulius/Dokumentu_valdymo_sistema/dvs-spring/uploaded-files/user1-dir/"
                 + fileName);
 
-        String fileNameEncoded = URLEncoder.encode(file.getFilename(), "UTF-8");
-        fileNameEncoded = URLDecoder.decode(fileName, "ISO8859_1");
+//        String fileNameEncoded = URLEncoder.encode(file.getFilename(), "UTF-8");
+//        fileNameEncoded = URLDecoder.decode(fileName, "ISO8859_1");
 //        response.setContentType("application/x-msdownload");
 //        response.setHeader("Content-disposition", "attachment; filename="+ fileNameEncoded);
 
 
         if (file.exists()) {
             HttpHeaders headers = new HttpHeaders();
-//            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment;  filename=\"" + file.getFilename() + "\"");
+            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment;  filename=\"" + file.getFilename() + "\"");
 //            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment;  filename=" + URLEncoder.encode(file.getFilename(),
 //                    java.nio.charset.StandardCharsets.UTF_8.toString()));
-            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment;  filename=" + fileNameEncoded);
+//            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment;  filename=" + fileNameEncoded);
 
             headers.add("Access-Control-Expose-Headers", HttpHeaders.CONTENT_DISPOSITION + ","
                     + HttpHeaders.CONTENT_LENGTH);
-            headers.add(HttpHeaders.CONTENT_TYPE, "application/x-msdownload; ");
+            headers.add(HttpHeaders.CONTENT_TYPE, "application/octetstream; charset=UTF-8");
 //            headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
 
             return ResponseEntity.ok().headers(headers).body(file);
