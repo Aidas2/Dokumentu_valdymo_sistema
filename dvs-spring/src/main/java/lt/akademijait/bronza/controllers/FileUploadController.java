@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.Timestamp;
@@ -36,10 +38,13 @@ public class FileUploadController {
                 + fileName);
         if (file.exists()) {
             HttpHeaders headers = new HttpHeaders();
-            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + file.getFilename());
+//            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment;  filename=\"" + file.getFilename() + "\"");
+            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment;  filename=" + URLEncoder.encode(file.getFilename()));
+
             headers.add("Access-Control-Expose-Headers", HttpHeaders.CONTENT_DISPOSITION + ","
                     + HttpHeaders.CONTENT_LENGTH);
             headers.add(HttpHeaders.CONTENT_TYPE, "application/octetstream; charset=UTF-8");
+//            headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
 
             return ResponseEntity.ok().headers(headers).body(file);
         }
