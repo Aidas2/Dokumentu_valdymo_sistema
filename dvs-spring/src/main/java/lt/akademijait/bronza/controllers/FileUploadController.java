@@ -36,9 +36,11 @@ public class FileUploadController {
                 + fileName);
         if (file.exists()) {
             HttpHeaders headers = new HttpHeaders();
-            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + file.getFilename() );
+            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + file.getFilename());
             headers.add("Access-Control-Expose-Headers", HttpHeaders.CONTENT_DISPOSITION + ","
                     + HttpHeaders.CONTENT_LENGTH);
+            headers.add(HttpHeaders.CONTENT_TYPE, "application/octetstream; charset=UTF-8");
+
             return ResponseEntity.ok().headers(headers).body(file);
         }
         return ResponseEntity.notFound().build();
