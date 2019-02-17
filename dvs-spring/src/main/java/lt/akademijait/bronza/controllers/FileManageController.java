@@ -98,33 +98,8 @@ public class FileManageController {
     public ResponseEntity mutipleFileUpload(HttpServletRequest req,
                                             @RequestParam(value = "file", required = false) MultipartFile[] files)
             throws IOException {
-        //this is used to get the current absolute path. Later the temp file is deleted
-        File tempFile = new File("temptest9954332543.txt");
-        boolean bool = tempFile.createNewFile();
-        System.out.println("TempTestFile created: " + bool);
-        String fileSeparator = System.getProperty("file.separator");
-        Path currentAbsolutePath = Paths.get("temptest9954332543.txt").toAbsolutePath().getParent();
-        tempFile.delete();
-
-
-        String userName = "/user1-dir";
-        int userID = 2;
-
-        File userDirectory = new File(currentAbsolutePath + fileSeparator + "uploaded-files" + fileSeparator + userName);
-        userDirectory.mkdirs();
-        for (MultipartFile file : files) {
-            File fileToSave = new File(userDirectory, userID + "-" + getCurrentLocalDateTimeStamp() + "-" + file.getOriginalFilename());
-//            fileToSave.mkdirs();
-
-            try {
-                file.transferTo(fileToSave); //Transfer or Saving in local memory
-            } catch (IllegalStateException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
+        FileManageService fileManageService = new FileManageService();
+        fileManageService.uploadFiles(req, files);
 
         return null;
     }
