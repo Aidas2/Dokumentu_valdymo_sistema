@@ -1,5 +1,6 @@
 package lt.akademijait.bronza.controllers;
 
+import lt.akademijait.bronza.services.FileManageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.io.Resource;
@@ -32,6 +33,8 @@ public class FileManageController {
     //    this is for a download. It is still in progress and does not work
     @Autowired
     private ApplicationContext applicationContext;
+    @Autowired
+    private FileManageService fileManageService;
 
     @GetMapping(value = "/files/{fileName:.+}")
     @ResponseBody
