@@ -64,19 +64,32 @@ class FileDownloadConatainer extends Component {
   };
   downloadRandomImage = () => {
     console.log("download method happened");
-    axios
-      .get("http://localhost:8081/files")
+    // axios
+    //   .get("http://localhost:8081/files/java.txt")
+    //   .then(response => {
+    //     var filename = response.headers
+    //       .get("Content-Disposition")
+    //       .split("filename=")[1];
+    //     response.blob().then(blob => {
+    //       let url = window.URL.createObjectURL(blob);
+    //       let a = document.createElement("a");
+    //       a.href = url;
+    //       a.download = filename;
+    //       a.click();
+    //     });
+    //   })
+    axios({
+      url: "http://localhost:8081/files/java.txt",
+      method: "GET",
+      responseType: "blob" // important
+    })
       .then(response => {
-        const filename = response.headers
-          .get("Content-Disposition")
-          .split("filename=")[1];
-        response.blob().then(blob => {
-          let url = window.URL.createObjectURL(blob);
-          let a = document.createElement("a");
-          a.href = url;
-          a.download = filename;
-          a.click();
-        });
+        const url = window.URL.createObjectURL(new Blob([response.data]));
+        const link = document.createElement("a");
+        link.href = url;
+        link.setAttribute("download", "java.txt"); //or any other extension
+        document.body.appendChild(link);
+        link.click();
       })
       .catch(error => {
         console.log(error);
