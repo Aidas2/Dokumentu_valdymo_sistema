@@ -81,7 +81,7 @@ class FileDownloadConatainer extends Component {
 
     //THIS METHOD WORKS
     axios({
-      url: "http://localhost:8081/files/java.txt",
+      url: "http://localhost:8081/files/index.html",
       method: "GET",
       responseType: "blob" // important
     })
@@ -98,24 +98,21 @@ class FileDownloadConatainer extends Component {
         //   }
         //   return filename;
         // };
-        const fileName = response.headers["content-disposition"];
-        console.log("--------------- response >>>>>>>>> ", response);
-        console.log(
-          "--------------- response.headers.content-disposition >>>>>>>>> ",
-          JSON.stringify(response.headers)
+        const fileName = response.headers["content-disposition"].substring(
+          200,
+          22
         );
-        const nameAdjusted = fileName.substring(100, 22);
-        console.log("--------------- fileName >>>>>>>>> ", nameAdjusted);
+        console.log("--------------- response >>>>>>>>> ", response);
 
-        // const url = window.URL.createObjectURL(
-        //   new Blob([response.data], { type: "application/octet-stream" }) //it works withoud a type as well
-        // );
-        // const link = document.createElement("a");
-        // link.href = url;
-        // link.setAttribute("download", fileName); //or any other extension
-        // document.body.appendChild(link);
-        // link.click();
-        // link.remove();
+        const url = window.URL.createObjectURL(
+          new Blob([response.data], { type: "application/octet-stream" }) //it works withoud a type as well
+        );
+        const link = document.createElement("a");
+        link.href = url;
+        link.setAttribute("download", fileName); //or any other extension
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
       })
       .catch(error => {
         console.log(error);
