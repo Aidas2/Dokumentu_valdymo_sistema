@@ -78,18 +78,44 @@ class FileDownloadConatainer extends Component {
     //       a.click();
     //     });
     //   })
+
+    //THIS METHOD WORKS
     axios({
       url: "http://localhost:8081/files/java.txt",
       method: "GET",
       responseType: "blob" // important
     })
       .then(response => {
-        const url = window.URL.createObjectURL(new Blob([response.data]));
-        const link = document.createElement("a");
-        link.href = url;
-        link.setAttribute("download", "java.txt"); //or any other extension
-        document.body.appendChild(link);
-        link.click();
+        // var funkcija = (response, status, xhr) => {
+        //   var filename = "";
+        //   var disposition = xhr.getResponseHeader("Content-Disposition");
+        //   if (disposition && disposition.indexOf("attachment") !== -1) {
+        //     var filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
+        //     var matches = filenameRegex.exec(disposition);
+        //     if (matches != null && matches[1]) {
+        //       filename = matches[1].replace(/['"]/g, "");
+        //     }
+        //   }
+        //   return filename;
+        // };
+        const fileName = response.headers["content-disposition"];
+        console.log("--------------- response >>>>>>>>> ", response);
+        console.log(
+          "--------------- response.headers.content-disposition >>>>>>>>> ",
+          JSON.stringify(response.headers)
+        );
+        const nameAdjusted = fileName.substring(100, 22);
+        console.log("--------------- fileName >>>>>>>>> ", nameAdjusted);
+
+        // const url = window.URL.createObjectURL(
+        //   new Blob([response.data], { type: "application/octet-stream" }) //it works withoud a type as well
+        // );
+        // const link = document.createElement("a");
+        // link.href = url;
+        // link.setAttribute("download", fileName); //or any other extension
+        // document.body.appendChild(link);
+        // link.click();
+        // link.remove();
       })
       .catch(error => {
         console.log(error);
