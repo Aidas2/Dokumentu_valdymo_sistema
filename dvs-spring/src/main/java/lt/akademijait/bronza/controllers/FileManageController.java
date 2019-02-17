@@ -26,7 +26,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 @Controller
-public class FileUploadController {
+public class FileManageController {
 
 
     //    this is for a download. It is still in progress and does not work
