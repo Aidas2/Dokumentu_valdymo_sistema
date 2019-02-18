@@ -9,6 +9,7 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 public class UserUpdateCommand {
 
@@ -36,7 +37,7 @@ public class UserUpdateCommand {
     private String emailAddress;
 
     @ManyToMany
-    private List<UserGroup> userGroups;
+    private Set<UserGroup> userGroups;
 
     @OneToMany
     private List<Document> documents;
@@ -44,7 +45,7 @@ public class UserUpdateCommand {
     public UserUpdateCommand() {
     }
 
-//    public UserUpdateCommand(Long id, @NotNull String firstName, @NotNull String lastName, LocalDate hireDate, @NotNull boolean administrator, @NotNull String username, @NotNull String password, @NotNull String emailAddress, List<UserGroup> userGroups, List<Document> documents) {
+//    public UserUpdateCommand(Long id, @NotNull String firstName, @NotNull String lastName, LocalDate hireDate, @NotNull boolean administrator, @NotNull String username, @NotNull String password, @NotNull String emailAddress, Set<UserGroup> userGroups, List<Document> documents) {
 //        this.id = id;
 //        this.firstName = firstName;
 //        this.lastName = lastName;
@@ -121,11 +122,11 @@ public class UserUpdateCommand {
         this.emailAddress = emailAddress;
     }
 
-    public List<UserGroup> getUserGroups() {
+    public Set<UserGroup> getUserGroups() {
         return userGroups;
     }
 
-    public void setUserGroups(List<UserGroup> userGroups) {
+    public void setUserGroups(Set<UserGroup> userGroups) {
         this.userGroups = userGroups;
     }
 

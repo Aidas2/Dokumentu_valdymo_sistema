@@ -159,6 +159,15 @@ public class DocumentService {
         User user = userRepository.findByUsername(documentSetStateCommand.getReviewerUsername());
         documentToSetState.setReviewer(user);
 
+        /*
+        2. Reikia patikrinti, ar Reviewer turi permission acceptinti arba rejectinti.
+         Tą reikia daryti, tikrinant User reviewer kitamąjį List<UserGroup> userGroup.
+         Reikia eiti per kiekvieną listo elementą ir žiūrėti, ar kuris nors iš elementų
+         turi Liste reviewDocumentTYpe būtent tą tipą, kurį jis bando acceptinti arba rejectinti.
+         Jei turi, tada tik leisti setDocumentStatus(rejectet arba accepted priskirti).
+         Ir tik tada priskirti paciam documentEntičiui reviewerį, jei jam leista pakeisti statą.
+         */
+
         if (documentSetStateCommand.getCreationDate() != null) {
             documentToSetState.setDocumentState(DocumentState.CREATED);
         } else if (documentSetStateCommand.getSubmissionDate() != null) {
@@ -243,7 +252,7 @@ public class DocumentService {
         documentRepository.deleteById(id);
     }
 
-    /*
+
     // commented as not necessary (?);
     // dar reikia paduoti username kad patikrinti ar jis turi permission'a
     // tada paduoti setDocumentState
@@ -273,6 +282,6 @@ public class DocumentService {
             documentType.getDocuments().remove(document);
         }
     }
-    */
+
 
 }

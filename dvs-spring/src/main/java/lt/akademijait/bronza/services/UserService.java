@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -70,7 +71,7 @@ public class UserService {
                 ucc.getUsername(),
                 ucc.getPassword(),
                 ucc.getEmailAddress(),
-                Collections.emptyList(),
+                Collections.emptySet(),
                 Collections.emptyList()
                 //ucc.getUserGroups(),
                 //ucc.getDocuments()
@@ -89,7 +90,7 @@ public class UserService {
     }
 
     @Transactional
-    public void addUserToGroup(String username, List<UserGroup> userGroups){
+    public void addUserToGroup(String username, Set<UserGroup> userGroups){
         User addToGroup = userRepository.findByUsername(username);
         addToGroup.setUserGroups(userGroups);
         userRepository.save(addToGroup);
