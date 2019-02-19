@@ -121,7 +121,7 @@ public class UserCreateCommand {
         return userGroupTitle;
     }
 
-    public void setUserGroupTitle(Set<String > userGroupTitle) {
+    public void setUserGroupTitle(Set<String> userGroupTitle) {
         this.userGroupTitle = userGroupTitle;
     }
 
