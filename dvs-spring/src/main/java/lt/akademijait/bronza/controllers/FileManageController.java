@@ -1,5 +1,6 @@
 package lt.akademijait.bronza.controllers;
 
+import lt.akademijait.bronza.dto.document.DocumentCreateCommand;
 import lt.akademijait.bronza.services.FileManageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -96,10 +97,10 @@ public class FileManageController {
     @RequestMapping(value = "/files", method = RequestMethod.POST,
             consumes = "multipart/form-data", produces = "application/json")
     public ResponseEntity mutipleFileUpload(HttpServletRequest req,
-                                            @RequestParam(value = "file", required = false) MultipartFile[] files)
+                                            @RequestParam(value = "file", required = false) MultipartFile[] files, DocumentCreateCommand dcc)
             throws IOException {
         FileManageService fileManageService = new FileManageService();
-        fileManageService.uploadFiles(req, files);
+        fileManageService.uploadFiles(req, files, dcc);
 
         return null;
     }

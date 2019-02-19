@@ -1,5 +1,7 @@
 package lt.akademijait.bronza.services;
 
+import lt.akademijait.bronza.dto.document.DocumentCreateCommand;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,9 +19,12 @@ import java.time.format.DateTimeFormatter;
 @Service
 public class FileManageService {
 
+    @Autowired
+    private DocumentService documentService;
+
 @Transactional
     public ResponseEntity uploadFiles(HttpServletRequest req,
-                                      MultipartFile[] files){
+                                      MultipartFile[] files, DocumentCreateCommand documentCreateCommand){
 
         //this is used to get the current absolute path. Later the temp file is deleted
         File tempFile = new File("temptest9954332543.txt");
@@ -52,6 +57,8 @@ public class FileManageService {
                 e.printStackTrace();
             }
         }
+
+        documentService.createDocument(documentCreateCommand);
 
 
         return null;
