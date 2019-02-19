@@ -1,8 +1,12 @@
 package lt.akademijait.bronza.dto.user;
 
+import lt.akademijait.bronza.entities.UserGroup;
+
 import javax.persistence.Column;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
+import java.util.List;
 
 public class UserCreateCommand {
 
@@ -30,8 +34,8 @@ public class UserCreateCommand {
     @NotNull
     private String emailAddress;
 
-    //@ManyToMany
-    //private List<UserGroup> userGroups;
+    @ManyToMany
+    private List<UserGroup> userGroups;
 
     //@OneToMany
     //private List<Document> documents;
@@ -40,7 +44,13 @@ public class UserCreateCommand {
     public UserCreateCommand() {
     }
 
-    public UserCreateCommand( @NotNull String firstName, @NotNull String lastName, Date hireDate, @NotNull boolean administrator, @NotNull String username, @NotNull String password, @NotNull String emailAddress) {
+    public UserCreateCommand( @NotNull String firstName,
+                              @NotNull String lastName,
+                              Date hireDate,
+                              @NotNull boolean administrator,
+                              @NotNull String username,
+                              @NotNull String password,
+                              @NotNull String emailAddress) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.hireDate = hireDate;

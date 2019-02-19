@@ -10,6 +10,7 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 public class UserUpdateCommand {
 
@@ -36,16 +37,21 @@ public class UserUpdateCommand {
     @NotNull
     private String emailAddress;
 
-//    @ManyToMany
-//    private List<UserGroup> userGroups;
-//
-//    @OneToMany
-//    private List<Document> documents;
+
+    @ManyToMany
+    private Set<UserGroup> userGroups;
+
+    @OneToMany
+    private List<Document> documents;
 
     public UserUpdateCommand() {
     }
 
+//<<<<<<< HEAD
     public UserUpdateCommand(@NotNull String firstName, @NotNull String lastName, Date hireDate, @NotNull boolean administrator, @NotNull String username, @NotNull String password, @NotNull String emailAddress) {
+//=======
+//    public UserUpdateCommand(Long id, @NotNull String firstName, @NotNull String lastName, LocalDate hireDate, @NotNull boolean administrator, @NotNull String username, @NotNull String password, @NotNull String emailAddress, Set<UserGroup> userGroups, List<Document> documents) {
+//>>>>>>> sleepy
 //        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -115,19 +121,20 @@ public class UserUpdateCommand {
         this.emailAddress = emailAddress;
     }
 
-//    public List<UserGroup> getUserGroups() {
-//        return userGroups;
-//    }
-//
-//    public void setUserGroups(List<UserGroup> userGroups) {
-//        this.userGroups = userGroups;
-//    }
-//
-//    public List<Document> getDocuments() {
-//        return documents;
-//    }
-//
-//    public void setDocuments(List<Document> documents) {
-//        this.documents = documents;
-//    }
+    public Set<UserGroup> getUserGroups() {
+        return userGroups;
+    }
+
+    public void setUserGroups(Set<UserGroup> userGroups) {
+        this.userGroups = userGroups;
+    }
+
+    public List<Document> getDocuments() {
+        return documents;
+    }
+
+    public void setDocuments(List<Document> documents) {
+        this.documents = documents;
+    }
+
 }

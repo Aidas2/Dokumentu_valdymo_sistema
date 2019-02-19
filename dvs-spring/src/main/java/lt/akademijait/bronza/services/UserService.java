@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -74,8 +75,8 @@ public class UserService {
                 ucc.getUsername(),
                 ucc.getPassword(),
                 ucc.getEmailAddress(),
-                Collections.emptyList(),
-                Collections.emptyList()
+                Collections.emptySet()
+                //Collections.emptyList(),
                 //ucc.getUserGroups(),
                 //ucc.getDocuments()
         );
@@ -100,27 +101,26 @@ public class UserService {
     }
 
     @Transactional
-    public void addUserToGroup(String username, List<UserGroup> userGroups) {
+    public void addUserToGroup(String username, Set<UserGroup> userGroups){
         User addToGroup = userRepository.findByUsername(username);
         addToGroup.setUserGroups(userGroups);
         userRepository.save(addToGroup);
 
     }
 
-//    @Transactional
-//    public void updateUserInfo(UserUpdateCommand uuc) {
-//        User user = userRepository.findByUsername(uuc.getUsername());
-//        user.setAdministrator(uuc.isAdministrator());
-//        user.setFirstName(uuc.getFirstName());
-//        user.setLastName(uuc.getLastName());
-//        user.setUsername(uuc.getUsername());
-//        user.setEmailAddress(uuc.getEmailAddress());
-//        user.setUserGroups(uuc.getUserGroups());
-//        user.setDocuments(uuc.getDocuments());
-//        userRepository.save(user);
-//
-//
-//    }
+    @Transactional
+    public void updateUserInfo(UserUpdateCommand uuc){
+        User user = userRepository.findByUsername(uuc.getUsername());
+        user.setAdministrator(uuc.isAdministrator());
+        user.setFirstName(uuc.getFirstName());
+        user.setLastName(uuc.getLastName());
+        user.setUsername(uuc.getUsername());
+        user.setEmailAddress(uuc.getEmailAddress());
+        user.setUserGroups(uuc.getUserGroups());
+        //user.setDocuments(uuc.getDocuments());
+        userRepository.save(user);
+
+    }
 
     @Transactional
     public void deleteUser(String username) {
