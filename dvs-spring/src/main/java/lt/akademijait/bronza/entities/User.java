@@ -2,7 +2,6 @@ package lt.akademijait.bronza.entities;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -44,8 +43,8 @@ public class User {
     @ManyToMany
     private Set<UserGroup> userGroups;
 
-    @OneToMany
-    private List<Document> documents;
+//    @OneToMany
+//    private List<Document> documents; //not necessary, because during Document creation you setting User
 
     //@Column
     //@CollectionTable(name = "USER_ROLE", joinColumns = @JoinColumn(name = "USER_ID"))
@@ -56,7 +55,7 @@ public class User {
 
     }
 
-    public User(Long id, String firstName, String lastName, Date hireDate, boolean administrator, String username, String password, String emailAddress, Set<UserGroup> userGroups, List<Document> documents) {
+    public User(Long id, String firstName, String lastName, Date hireDate, boolean administrator, String username, String password, String emailAddress, Set<UserGroup> userGroups) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -66,7 +65,6 @@ public class User {
         this.password = password;
         this.emailAddress = emailAddress;
         this.userGroups = userGroups;
-        this.documents = documents;
     }
 
     public Long getId() {
@@ -141,11 +139,4 @@ public class User {
         this.userGroups = userGroups;
     }
 
-    public List<Document> getDocuments() {
-        return documents;
-    }
-
-    public void setDocuments(List<Document> documents) {
-        this.documents = documents;
-    }
 }

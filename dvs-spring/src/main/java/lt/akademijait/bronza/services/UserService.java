@@ -71,8 +71,8 @@ public class UserService {
                 ucc.getUsername(),
                 ucc.getPassword(),
                 ucc.getEmailAddress(),
-                Collections.emptySet(),
-                Collections.emptyList()
+                Collections.emptySet()
+                //Collections.emptyList(),
                 //ucc.getUserGroups(),
                 //ucc.getDocuments()
                 );
@@ -106,7 +106,7 @@ public class UserService {
         user.setUsername(uuc.getUsername());
         user.setEmailAddress(uuc.getEmailAddress());
         user.setUserGroups(uuc.getUserGroups());
-        user.setDocuments(uuc.getDocuments());
+        //user.setDocuments(uuc.getDocuments());
         userRepository.save(user);
 
 

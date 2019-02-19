@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class DocumentSetStateCommand {
 
-    //private Long id;
+    private Long documentId; //necessary when choosing which document to manage (in documentRepository you find document by id, therefore you should specify that id)
     //private List<String> additionalFilePaths = new ArrayList<>();
     //private List<Attachment> attachments;
     //private String username;    //private User author;
@@ -24,7 +24,8 @@ public class DocumentSetStateCommand {
     public DocumentSetStateCommand() {
     }
 
-    public DocumentSetStateCommand(DocumentState documentState, Date creationDate, Date submissionDate, Date confirmationDate, Date rejectionDate, String reviewerUsername, String rejectionReason) {
+    public DocumentSetStateCommand(Long documentId, DocumentState documentState, Date creationDate, Date submissionDate, Date confirmationDate, Date rejectionDate, String reviewerUsername, String rejectionReason) {
+        this.documentId = documentId;
         this.documentState = documentState;
         this.creationDate = creationDate;
         this.submissionDate = submissionDate;
@@ -32,6 +33,14 @@ public class DocumentSetStateCommand {
         this.rejectionDate = rejectionDate;
         this.reviewerUsername = reviewerUsername;
         this.rejectionReason = rejectionReason;
+    }
+
+    public Long getDocumentId() {
+        return documentId;
+    }
+
+    public void setDocumentId(Long documentId) {
+        this.documentId = documentId;
     }
 
     public DocumentState getDocumentState() {
