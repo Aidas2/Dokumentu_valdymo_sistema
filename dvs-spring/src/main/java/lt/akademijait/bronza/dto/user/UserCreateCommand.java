@@ -1,8 +1,12 @@
 package lt.akademijait.bronza.dto.user;
 
+import lt.akademijait.bronza.entities.UserGroup;
+
 import javax.persistence.Column;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
+import java.util.Set;
 
 public class UserCreateCommand {
 
@@ -30,17 +34,17 @@ public class UserCreateCommand {
     @NotNull
     private String emailAddress;
 
-    //@ManyToMany
-    //private List<UserGroup> userGroups;
+    @ManyToMany
+    private Set<String> userGroupTitle;
 
-    //@OneToMany
-    //private List<Document> documents;
+//    @OneToMany
+//    private List<Document> documents;
 
 
     public UserCreateCommand() {
     }
 
-    public UserCreateCommand( @NotNull String firstName, @NotNull String lastName, Date hireDate, @NotNull boolean administrator, @NotNull String username, @NotNull String password, @NotNull String emailAddress) {
+    public UserCreateCommand( @NotNull String firstName, @NotNull String lastName, Date hireDate, @NotNull boolean administrator, @NotNull String username, @NotNull String password, @NotNull String emailAddress, Set<String> userGroupTitle) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.hireDate = hireDate;
@@ -48,7 +52,7 @@ public class UserCreateCommand {
         this.username = username;
         this.password = password;
         this.emailAddress = emailAddress;
-        //this.userGroups = userGroups;
+        this.userGroupTitle = userGroupTitle;
         //this.documents = documents;
     }
 
@@ -108,20 +112,20 @@ public class UserCreateCommand {
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
     }
-/*
-    public List<UserGroup> getUserGroups() {
-        return userGroups;
+
+    public Set<String> getUserGroupTitle() {
+        return userGroupTitle;
     }
 
-    public void setUserGroups(List<UserGroup> userGroups) {
-        this.userGroups = userGroups;
+    public void setUserGroupTitle(Set<String > userGroupTitle) {
+        this.userGroupTitle = userGroupTitle;
     }
 
-    public List<Document> getDocuments() {
-        return documents;
-    }
-
-    public void setDocuments(List<Document> documents) {
-        this.documents = documents;
-    }*/
+//    public List<Document> getDocuments() {
+//        return documents;
+//    }
+//
+//    public void setDocuments(List<Document> documents) {
+//        this.documents = documents;
+//    }
 }

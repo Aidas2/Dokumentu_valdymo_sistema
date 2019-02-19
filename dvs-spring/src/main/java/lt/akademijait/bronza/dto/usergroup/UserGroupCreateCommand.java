@@ -10,16 +10,16 @@ public class UserGroupCreateCommand {
 
     @NotNull
     private String title;
-//    private List<DocumentType> submissionDocumentType;
+//    private DocumentType documentType;
 //    private List<DocumentType> reviewDocumentType;
 
 
     public UserGroupCreateCommand() {
     }
 
-    public UserGroupCreateCommand(@NotNull String title) {
+    public UserGroupCreateCommand(@NotNull String title, DocumentType documentType) {
         this.title = title;
-//        this.submissionDocumentType = submissionDocumentType;
+//        this.documentType = documentType;
 //        this.reviewDocumentType = reviewDocumentType;
     }
 
@@ -32,7 +32,15 @@ public class UserGroupCreateCommand {
         this.title = title;
     }
 
-//    public List<DocumentType> getSubmissionDocumentType() {
+//    public DocumentType getDocumentType() {
+//        return documentType;
+//    }
+//
+//    public void setDocumentType(DocumentType documentType) {
+//        this.documentType = documentType;
+//    }
+
+    //    public List<DocumentType> getSubmissionDocumentType() {
 //        return submissionDocumentType;
 //    }
 //

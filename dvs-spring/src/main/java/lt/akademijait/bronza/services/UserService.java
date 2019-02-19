@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -66,6 +67,12 @@ public class UserService {
     @Transactional
     public void createNewUser(UserCreateCommand ucc) {
 
+
+        Set<UserGroup> userGroupsToSet = Collections.emptySet();
+
+        for (String userGroupTitle: ucc.getUserGroupTitle()) {
+            userGroupsToSet.add(userGroupRepository.findByTitle(userGroupTitle));
+        }
         User newUser = new User(
                 ucc.getFirstName(),
                 ucc.getLastName(),
@@ -74,12 +81,15 @@ public class UserService {
                 ucc.getUsername(),
                 ucc.getPassword(),
                 ucc.getEmailAddress(),
-                Collections.emptyList(),
-                Collections.emptyList()
+                userGroupsToSet
+                //Collections.emptyList()
                 //ucc.getUserGroups(),
                 //ucc.getDocuments()
         );
         //newUser.getUserGroups().add()
+
+
+//        newUser.setUserGroups(userGroupsToSet);
         userRepository.save(newUser);
 
 
@@ -99,33 +109,21 @@ public class UserService {
         userRepository.save(userToUpdate);
     }
 
-    @Transactional
-    public void addUserToGroup(String username, List<UserGroup> userGroups) {
-        User addToGroup = userRepository.findByUsername(username);
-        addToGroup.setUserGroups(userGroups);
-        userRepository.save(addToGroup);
-
-    }
-
 //    @Transactional
-//    public void updateUserInfo(UserUpdateCommand uuc) {
-//        User user = userRepository.findByUsername(uuc.getUsername());
-//        user.setAdministrator(uuc.isAdministrator());
-//        user.setFirstName(uuc.getFirstName());
-//        user.setLastName(uuc.getLastName());
-//        user.setUsername(uuc.getUsername());
-//        user.setEmailAddress(uuc.getEmailAddress());
-//        user.setUserGroups(uuc.getUserGroups());
-//        user.setDocuments(uuc.getDocuments());
-//        userRepository.save(user);
-//
+//    public void addUserToGroup(String username, List<UserGroup> userGroups) {
+//        User addToGroup = userRepository.findByUsername(username);
+//        addToGroup.setUserGroups(userGroups);
+//        userRepository.save(addToGroup);
 //
 //    }
+
 
     @Transactional
     public void deleteUser(String username) {
         userRepository.deleteByUsername(username);
     }
+
+
 
 
 }

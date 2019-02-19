@@ -3,6 +3,7 @@ package lt.akademijait.bronza.entities;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "USER")
@@ -38,10 +39,10 @@ public class User {
     private String emailAddress;
 
     @ManyToMany
-    private List<UserGroup> userGroups;
+    private Set<UserGroup> userGroups;
 
-    @OneToMany
-    private List<Document> documents;
+//    @OneToMany
+//    private Set<Document> documents;
 
     //@Column
     //@CollectionTable(name = "USER_ROLE", joinColumns = @JoinColumn(name = "USER_ID"))
@@ -52,7 +53,7 @@ public class User {
 
     }
 
-    public User(String firstName, String lastName, Date hireDate, boolean administrator, String username, String password, String emailAddress, List<UserGroup> userGroups, List<Document> documents) {
+    public User(String firstName, String lastName, Date hireDate, boolean administrator, String username, String password, String emailAddress, Set<UserGroup> userGroups) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.hireDate = hireDate;
@@ -61,7 +62,7 @@ public class User {
         this.password = password;
         this.emailAddress = emailAddress;
         this.userGroups = userGroups;
-        this.documents = documents;
+  //      this.documents = documents;
     }
 
     public Long getId() {
@@ -128,19 +129,19 @@ public class User {
         this.emailAddress = emailAddress;
     }
 
-    public List<UserGroup> getUserGroups() {
+    public Set<UserGroup> getUserGroups() {
         return userGroups;
     }
 
-    public void setUserGroups(List<UserGroup> userGroups) {
+    public void setUserGroups(Set<UserGroup> userGroups) {
         this.userGroups = userGroups;
     }
 
-    public List<Document> getDocuments() {
-        return documents;
-    }
-
-    public void setDocuments(List<Document> documents) {
-        this.documents = documents;
-    }
+//    public List<Document> getDocuments() {
+//        return documents;
+//    }
+//
+//    public void setDocuments(List<Document> documents) {
+//        this.documents = documents;
+//    }
 }

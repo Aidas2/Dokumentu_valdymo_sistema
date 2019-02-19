@@ -5,6 +5,7 @@ import lt.akademijait.bronza.dto.usergroup.UserGroupGetCommand;
 import lt.akademijait.bronza.entities.DocumentType;
 import lt.akademijait.bronza.entities.UserGroup;
 import lt.akademijait.bronza.repositories.UserGroupRepository;
+import lt.akademijait.bronza.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,6 +19,9 @@ public class UserGroupService {
 
     @Autowired
     private UserGroupRepository userGroupRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Transactional
     public List<UserGroupGetCommand> getAllGroups(){
@@ -38,6 +42,8 @@ public class UserGroupService {
 
     @Transactional
     public void deleteGroup(String title){userGroupRepository.deleteByTitle(title);}
+
+
 
 
 
