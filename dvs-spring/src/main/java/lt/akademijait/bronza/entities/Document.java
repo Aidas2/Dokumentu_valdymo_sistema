@@ -71,7 +71,9 @@ public class Document {
     public Document() {
     }
 
-    public Document(User author, DocumentState documentState, DocumentType documentType, String title, String description, Date creationDate, Date submissionDate, Date confirmationDate, Date rejectionDate, User reviewer, String rejectionReason, String path) {
+    public Document(User author, DocumentState documentState, DocumentType documentType, String title,
+                    String description, Date creationDate, Date submissionDate, Date confirmationDate,
+                    Date rejectionDate, User reviewer, String rejectionReason, String path) {
         this.author = author;
         this.documentState = documentState;
         this.documentType = documentType;

@@ -95,12 +95,13 @@ public class FileManageController {
 
 
     @RequestMapping(value = "/files", method = RequestMethod.POST,
-            consumes = "multipart/form-data", produces = "application/json")
+            consumes = {"multipart/form-data","application/json"}, produces = "application/json")
     public ResponseEntity mutipleFileUpload(HttpServletRequest req,
-                                            @RequestParam(value = "file", required = false) MultipartFile[] files, DocumentCreateCommand dcc)
+                                            @RequestParam(value = "file", required = false) MultipartFile[] files,
+                                             DocumentCreateCommand documentCreateCommand)
             throws IOException {
         FileManageService fileManageService = new FileManageService();
-        fileManageService.uploadFiles(req, files, dcc);
+        fileManageService.uploadFiles(req, files, documentCreateCommand);
 
         return null;
     }

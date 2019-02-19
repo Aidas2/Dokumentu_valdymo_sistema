@@ -59,16 +59,21 @@ public class FileManageService {
         String filePath = null;
         File userDirectory = new File(currentAbsolutePath + fileSeparator + "uploaded-files" + fileSeparator + userName);
         userDirectory.mkdirs();
+//        files[0].get
         for (int i=0; i< files.length;i++) {
 
             File fileToSave = new File(userDirectory, userID + "-" + getCurrentLocalDateTimeStamp() + "-" + files[i].getOriginalFilename());
 //            fileToSave.mkdirs();
-            if(i==0){
-                filePath = fileToSave.getAbsolutePath();
-            }
+//            if(i==0){
+//                filePath = fileToSave.getAbsolutePath();
+//            }
+            filePath = fileToSave.getAbsolutePath();
+
 
             try {
                 files[i].transferTo(fileToSave); //Transfer or Saving in local memory
+                System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+
             } catch (IllegalStateException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -89,6 +94,7 @@ public class FileManageService {
         newDocument.setTitle(documentCreateCommand.getTitle());
         newDocument.setDescription(documentCreateCommand.getDescription());
         newDocument.setPath(filePath);
+        System.out.println("file paths is ---------- " + filePath);
         documentRepository.save(newDocument);
 
         return null;
