@@ -83,6 +83,8 @@ public class UserService {
                 ucc.getEmailAddress(),
                 userGroupsToSet
                 //Collections.emptyList()
+
+                //Collections.emptyList(),
                 //ucc.getUserGroups(),
                 //ucc.getDocuments()
         );
@@ -109,6 +111,7 @@ public class UserService {
         userRepository.save(userToUpdate);
     }
 
+
 //    @Transactional
 //    public void addUserToGroup(String username, List<UserGroup> userGroups) {
 //        User addToGroup = userRepository.findByUsername(username);
@@ -116,6 +119,22 @@ public class UserService {
 //        userRepository.save(addToGroup);
 //
 //    }
+
+
+    @Transactional
+    public void updateUserInfo(String currentUsername, UserUpdateCommand uuc){
+        User user = userRepository.findByUsername(currentUsername);
+        user.setAdministrator(uuc.isAdministrator());
+        user.setFirstName(uuc.getFirstName());
+        user.setLastName(uuc.getLastName());
+        user.setUsername(uuc.getUsername());
+        user.setEmailAddress(uuc.getEmailAddress());
+        //user.setUserGroups(uuc.getUserGroups());
+        //user.setDocuments(uuc.getDocuments());
+        userRepository.save(user);
+
+    }
+
 
 
     @Transactional

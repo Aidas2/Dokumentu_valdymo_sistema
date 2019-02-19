@@ -8,6 +8,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.Set;
 
+
 public class UserCreateCommand {
 
     @NotNull
@@ -37,6 +38,7 @@ public class UserCreateCommand {
     @ManyToMany
     private Set<String> userGroupTitle;
 
+
 //    @OneToMany
 //    private List<Document> documents;
 
@@ -44,7 +46,9 @@ public class UserCreateCommand {
     public UserCreateCommand() {
     }
 
+
     public UserCreateCommand( @NotNull String firstName, @NotNull String lastName, Date hireDate, @NotNull boolean administrator, @NotNull String username, @NotNull String password, @NotNull String emailAddress, Set<String> userGroupTitle) {
+
         this.firstName = firstName;
         this.lastName = lastName;
         this.hireDate = hireDate;

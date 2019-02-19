@@ -10,6 +10,7 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 public class UserUpdateCommand {
 
@@ -36,8 +37,9 @@ public class UserUpdateCommand {
     @NotNull
     private String emailAddress;
 
+
 //    @ManyToMany
-//    private List<UserGroup> userGroups;
+//    private Set<UserGroup> userGroups;
 //
 //    @OneToMany
 //    private List<Document> documents;
@@ -45,8 +47,9 @@ public class UserUpdateCommand {
     public UserUpdateCommand() {
     }
 
+
     public UserUpdateCommand(@NotNull String firstName, @NotNull String lastName, Date hireDate, @NotNull boolean administrator, @NotNull String username, @NotNull String password, @NotNull String emailAddress) {
-//        this.id = id;
+
         this.firstName = firstName;
         this.lastName = lastName;
         this.hireDate = hireDate;
@@ -115,11 +118,11 @@ public class UserUpdateCommand {
         this.emailAddress = emailAddress;
     }
 
-//    public List<UserGroup> getUserGroups() {
+//    public Set<UserGroup> getUserGroups() {
 //        return userGroups;
 //    }
 //
-//    public void setUserGroups(List<UserGroup> userGroups) {
+//    public void setUserGroups(Set<UserGroup> userGroups) {
 //        this.userGroups = userGroups;
 //    }
 //
@@ -130,4 +133,5 @@ public class UserUpdateCommand {
 //    public void setDocuments(List<Document> documents) {
 //        this.documents = documents;
 //    }
+
 }

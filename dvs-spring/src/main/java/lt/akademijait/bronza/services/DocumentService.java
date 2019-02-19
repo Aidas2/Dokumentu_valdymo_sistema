@@ -2,10 +2,12 @@ package lt.akademijait.bronza.services;
 
 import lt.akademijait.bronza.dto.document.DocumentCreateCommand;
 import lt.akademijait.bronza.dto.document.DocumentGetCommand;
+import lt.akademijait.bronza.dto.document.DocumentSetStateCommand;
 import lt.akademijait.bronza.dto.document.DocumentUpdateCommand;
 import lt.akademijait.bronza.entities.Document;
 import lt.akademijait.bronza.entities.DocumentType;
 import lt.akademijait.bronza.entities.User;
+import lt.akademijait.bronza.entities.UserGroup;
 import lt.akademijait.bronza.enums.DocumentState;
 import lt.akademijait.bronza.repositories.DocumentRepository;
 import lt.akademijait.bronza.repositories.DocumentTypeRepository;
@@ -18,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -145,9 +148,56 @@ public class DocumentService {
     }
 
     //SUBMITT ?
+
+    //SET DOCUMENT STATE
     //1. Sukurti metoda Document busenos managinimui
     //2. Itraukti patikrinima ar vartotojas gali daryti ta managinima.
 
+    @Transactional
+    public void setDocumentState (Long id, DocumentSetStateCommand documentSetStateCommand) {
+
+        Document documentToSetState = documentRepository.findById(id).orElse(null);
+
+        User user = userRepository.findByUsername(documentSetStateCommand.getReviewerUsername());
+
+
+        Set<UserGroup> userGroupsBelongingToUser = user.getUserGroups();
+        boolean canSetState = false;
+
+        for (UserGroup userGroup : userGroupsBelongingToUser) {
+            if (userGroup.getReviewDocumentType().contains(documentToSetState.getDocumentType())) {
+                canSetState = true;
+                break;
+            }
+        }
+
+        if(canSetState) {
+            documentToSetState.setReviewer(user);
+        }
+        /*
+        2. Reikia patikrinti, ar Reviewer turi permission acceptinti arba rejectinti.
+         Tą reikia daryti, tikrinant User reviewer kitamąjį List<UserGroup> userGroup.
+         Reikia eiti per kiekvieną listo elementą ir žiūrėti, ar kuris nors iš elementų
+         turi Liste reviewDocumentTYpe būtent tą tipą, kurį jis bando acceptinti arba rejectinti.
+         Jei turi, tada tik leisti setDocumentStatus(rejectet arba accepted priskirti).
+         Ir tik tada priskirti paciam documentEntičiui reviewerį, jei jam leista pakeisti statą.
+         */
+
+
+        //papildyti validacija ar DocumentState jau nera toks koki norim suteikti.
+        if (documentSetStateCommand.getCreationDate() != null) {
+            documentToSetState.setDocumentState(DocumentState.CREATED);
+        } else if (documentSetStateCommand.getSubmissionDate() != null) {
+            documentToSetState.setDocumentState(DocumentState.SUBMITTED);
+        } else if (documentSetStateCommand.getConfirmationDate() != null) {
+            documentToSetState.setDocumentState(DocumentState.CONFIRMED);
+        } else if (documentSetStateCommand.getRejectionDate() != null) {
+            documentToSetState.setDocumentState(DocumentState.REJECTED);
+            documentToSetState.setRejectionReason(documentSetStateCommand.getRejectionReason());
+        }
+
+        documentRepository.save(documentToSetState);
+    }
 
 /*
     //UPDATE Version_01.
@@ -219,7 +269,7 @@ public class DocumentService {
         documentRepository.deleteById(id);
     }
 
-    /*
+/*
     // commented as not necessary (?);
     // dar reikia paduoti username kad patikrinti ar jis turi permission'a
     // tada paduoti setDocumentState
@@ -233,7 +283,7 @@ public class DocumentService {
             throw new ResourceNotFoundException("My dear Friend, you entered not existing DocumentType (you should create that DocymentType first) !");
         } else {
             //documentType.getDocuments().add(document); //
-            document.setDocumentType(documentType);
+            document.setDocumentType(documentType); //jei norim pakeisti tai tiesiog settini is naujo (.remove nereikia).
         }
     }
 
@@ -249,6 +299,6 @@ public class DocumentService {
             documentType.getDocuments().remove(document);
         }
     }
-    */
+*/
 
 }
