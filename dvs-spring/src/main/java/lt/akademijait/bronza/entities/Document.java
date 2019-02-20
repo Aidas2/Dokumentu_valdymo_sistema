@@ -36,10 +36,10 @@ public class Document {
 
     /* ATTENTION
     To join Document and DocumentType it's enough to write field only in one of entities:
-    private DocumentType documentType (in Document)
+    private DocumentType documentType   (in Document Entity)
     or
-    private List<Document> documents (in DocumentType)
-    You can find all Documents of specific DocumentType by writing command ir DocumentRepository:
+    private List<Document> documents    (in DocumentType Entity)
+    You can find all Documents of specific DocumentType by writing command in DocumentRepository:
     documentRepository.findByDocumentType(documentType)
 
     ATTENTION
