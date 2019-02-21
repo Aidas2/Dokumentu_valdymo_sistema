@@ -242,7 +242,7 @@ public class DocumentService {
                 documentSetStateCommand.getDocumentState() != DocumentState.SUBMITTED &&
                 documentSetStateCommand.getDocumentState() != DocumentState.CONFIRMED &&
                 documentSetStateCommand.getDocumentState() != DocumentState.REJECTED &&
-                documentToSetState.getRejectionReason() != null
+                documentToSetState.getRejectionReason() == null
         ) {
             documentToSetState.setDocumentState(DocumentState.CREATED);
         } else if (canSetState &&
@@ -250,14 +250,14 @@ public class DocumentService {
                 documentSetStateCommand.getDocumentState() != DocumentState.SUBMITTED &&
                 documentSetStateCommand.getDocumentState() != DocumentState.CONFIRMED &&
                 documentSetStateCommand.getDocumentState() != DocumentState.REJECTED &&
-                documentToSetState.getRejectionReason() != null) {
+                documentToSetState.getRejectionReason() == null) {
             documentToSetState.setDocumentState(DocumentState.SUBMITTED);
         } else if (canSetState &&
                 documentSetStateCommand.getDocumentState() == DocumentState.CREATED &&
                 documentSetStateCommand.getDocumentState() == DocumentState.SUBMITTED &&
                 documentSetStateCommand.getDocumentState() != DocumentState.CONFIRMED &&
                 documentSetStateCommand.getDocumentState() != DocumentState.REJECTED &&
-                documentToSetState.getRejectionReason() != null) {
+                documentToSetState.getRejectionReason() == null) {
             documentToSetState.setDocumentState(DocumentState.CONFIRMED);
         } else if (canSetState &&
                 documentSetStateCommand.getDocumentState() == DocumentState.CREATED &&
@@ -266,6 +266,7 @@ public class DocumentService {
                 documentSetStateCommand.getDocumentState() != DocumentState.REJECTED &&
                 documentToSetState.getRejectionReason() != null) {
             documentToSetState.setDocumentState(DocumentState.REJECTED);
+            //documentToSetState.setDocumentState(documentSetStateCommand.getDocumentState());
             documentToSetState.setRejectionReason(documentSetStateCommand.getRejectionReason());
         }
 
