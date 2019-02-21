@@ -244,29 +244,35 @@ public class DocumentService {
                 documentSetStateCommand.getDocumentState() != DocumentState.REJECTED &&
                 documentToSetState.getRejectionReason() == null
         ) {
-            documentToSetState.setDocumentState(DocumentState.CREATED);
+            documentToSetState.setDocumentState(DocumentState.CREATED);     //version A (hardcoded ?)
+            //documentToSetState.setDocumentState(documentSetStateCommand.getDocumentState()); //version B
         } else if (canSetState &&
-                documentSetStateCommand.getDocumentState() == DocumentState.CREATED &&
-                documentSetStateCommand.getDocumentState() != DocumentState.SUBMITTED &&
-                documentSetStateCommand.getDocumentState() != DocumentState.CONFIRMED &&
-                documentSetStateCommand.getDocumentState() != DocumentState.REJECTED &&
-                documentToSetState.getRejectionReason() == null) {
-            documentToSetState.setDocumentState(DocumentState.SUBMITTED);
+                documentSetStateCommand.getDocumentState() == DocumentState.CREATED //&&
+                //documentSetStateCommand.getDocumentState() != DocumentState.SUBMITTED &&
+                //documentSetStateCommand.getDocumentState() != DocumentState.CONFIRMED &&
+                //documentSetStateCommand.getDocumentState() != DocumentState.REJECTED &&
+                //documentToSetState.getRejectionReason() == null
+                ) {
+            documentToSetState.setDocumentState(DocumentState.SUBMITTED);   //version A
+            //documentToSetState.setDocumentState(documentSetStateCommand.getDocumentState()); //version B
         } else if (canSetState &&
-                documentSetStateCommand.getDocumentState() == DocumentState.CREATED &&
+                //documentSetStateCommand.getDocumentState() == DocumentState.CREATED &&
                 documentSetStateCommand.getDocumentState() == DocumentState.SUBMITTED &&
-                documentSetStateCommand.getDocumentState() != DocumentState.CONFIRMED &&
-                documentSetStateCommand.getDocumentState() != DocumentState.REJECTED &&
-                documentToSetState.getRejectionReason() == null) {
-            documentToSetState.setDocumentState(DocumentState.CONFIRMED);
+                //documentSetStateCommand.getDocumentState() != DocumentState.CONFIRMED &&
+                documentSetStateCommand.getDocumentState() != DocumentState.REJECTED //&&
+                //documentToSetState.getRejectionReason() == null
+            ) {
+            documentToSetState.setDocumentState(DocumentState.CONFIRMED);   //version A
+            //documentToSetState.setDocumentState(documentToSetState.getDocumentState()); //version B
         } else if (canSetState &&
-                documentSetStateCommand.getDocumentState() == DocumentState.CREATED &&
+                //documentSetStateCommand.getDocumentState() == DocumentState.CREATED &&
                 documentSetStateCommand.getDocumentState() == DocumentState.SUBMITTED &&
-                documentSetStateCommand.getDocumentState() != DocumentState.CONFIRMED &&
-                documentSetStateCommand.getDocumentState() != DocumentState.REJECTED &&
-                documentToSetState.getRejectionReason() != null) {
-            documentToSetState.setDocumentState(DocumentState.REJECTED);
-            //documentToSetState.setDocumentState(documentSetStateCommand.getDocumentState());
+                documentSetStateCommand.getDocumentState() != DocumentState.CONFIRMED //&&
+                //documentSetStateCommand.getDocumentState() != DocumentState.REJECTED &&
+                //documentToSetState.getRejectionReason() != null
+        ) {
+            documentToSetState.setDocumentState(DocumentState.REJECTED);    //version A
+            //documentToSetState.setDocumentState(documentSetStateCommand.getDocumentState());  //version B
             documentToSetState.setRejectionReason(documentSetStateCommand.getRejectionReason());
         }
 

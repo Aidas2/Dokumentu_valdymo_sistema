@@ -44,7 +44,7 @@ public class DocumentController {
     }
 
     //READ SUBMITTED
-    @RequestMapping(value = "/submit", method = RequestMethod.GET)  // wtf is value = "/submit" ?
+    @RequestMapping(value = "/submit", method = RequestMethod.GET)
     @ApiOperation(value = "Get all submitted document", notes = "Returns all submitted document")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public List<DocumentGetCommand> getSubmittedDocuments() {
@@ -52,7 +52,7 @@ public class DocumentController {
     }
 
     //READ TO BE REVIEWED
-    @RequestMapping(value = "/review", method = RequestMethod.GET)  // wtf is value = "/review" ?
+    @RequestMapping(value = "/review", method = RequestMethod.GET)
     @ApiOperation(value = "Get all document to review", notes = "Returns all document to review")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public List<DocumentGetCommand> getDocumentsToReview() {
