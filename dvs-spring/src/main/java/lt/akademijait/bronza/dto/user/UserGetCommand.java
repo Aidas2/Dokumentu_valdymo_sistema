@@ -1,6 +1,10 @@
 package lt.akademijait.bronza.dto.user;
 
+import lt.akademijait.bronza.entities.UserGroup;
+
+import javax.persistence.ManyToMany;
 import java.util.Date;
+import java.util.Set;
 
 public class UserGetCommand {
 
@@ -14,8 +18,8 @@ public class UserGetCommand {
     //private byte[] passwordSalt;
     private String emailAddress;
 
-//    @ManyToMany
-//    private List<UserGroup> userGroups;
+    @ManyToMany
+    private Set<UserGroup> userGroups;
 
 //    @OneToMany
 //    private List<Document> documents;
@@ -27,7 +31,7 @@ public class UserGetCommand {
     }
 
     public UserGetCommand(Long userId, String firstName, String lastName, boolean administrator, String password, String username,
-                          String emailAddress, Date hireDate) {
+                          String emailAddress, Date hireDate, Set<UserGroup> userGroups) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.administrator = administrator;
@@ -36,6 +40,7 @@ public class UserGetCommand {
         this.emailAddress = emailAddress;
         this.userId = userId;
         this.hireDate = hireDate;
+        this.userGroups = userGroups;
     }
 
     public String getFirstName() {
@@ -99,5 +104,13 @@ public class UserGetCommand {
 
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
+    }
+
+    public Set<UserGroup> getUserGroups() {
+        return userGroups;
+    }
+
+    public void setUserGroups(Set<UserGroup> userGroups) {
+        this.userGroups = userGroups;
     }
 }

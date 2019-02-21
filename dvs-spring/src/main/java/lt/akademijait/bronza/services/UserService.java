@@ -3,6 +3,7 @@ package lt.akademijait.bronza.services;
 import lt.akademijait.bronza.dto.user.UserCreateCommand;
 import lt.akademijait.bronza.dto.user.UserGetCommand;
 import lt.akademijait.bronza.dto.user.UserUpdateCommand;
+import lt.akademijait.bronza.dto.usergroup.UserGroupGetCommand;
 import lt.akademijait.bronza.entities.User;
 import lt.akademijait.bronza.entities.UserGroup;
 import lt.akademijait.bronza.repositories.UserGroupRepository;
@@ -38,7 +39,8 @@ public class UserService {
                                 user.getPassword(),
                                 user.getUsername(),
                                 user.getEmailAddress(),
-                                user.getHireDate())).collect(Collectors.toList() );
+                                user.getHireDate(),
+                                user.getUserGroups())).collect(Collectors.toList() );
 
     }
 
@@ -53,17 +55,11 @@ public class UserService {
                 user.isAdministrator(),
                 user.getPassword(),
                 user.getUsername(),
-                user.getEmailAddress(), user.getHireDate()
+                user.getEmailAddress(),
+                user.getHireDate(),
+                user.getUserGroups()
         );
     }
-
-//    @Transactional
-//    public void createNewUser(long id, String firstName, String lastName,
-//                              LocalDate hireDate, boolean administrator, String password,
-//                              String username, String emailAddress, List<UserGroup> userGroups, List<Document> documents){
-//        User newUser = new User(id, firstName, lastName, hireDate, administrator, password, username, emailAddress, userGroups, documents);
-//        userRepository.save(newUser);
-//    }
 
     @Transactional
     public void createNewUser(UserCreateCommand ucc) {
@@ -85,9 +81,7 @@ public class UserService {
                 userGroupsToSet
                 //Collections.emptyList()
 
-                //Collections.emptyList(),
-                //ucc.getUserGroups(),
-                //ucc.getDocuments()
+
         );
         //newUser.getUserGroups().add()
 
@@ -100,6 +94,13 @@ public class UserService {
 
     @Transactional
     public void updateUsersData(String oldUserName, UserUpdateCommand uuc) {
+
+        Set<UserGroup> userGroupsToSet = new HashSet<>();
+
+        for (String userGroupTitle: uuc.getUserGroupTitle()) {
+            userGroupsToSet.add(userGroupRepository.findByTitle(userGroupTitle));
+        }
+
         User userToUpdate = userRepository.findByUsername(oldUserName);
         userToUpdate.setFirstName(uuc.getFirstName());
         userToUpdate.setLastName(uuc.getLastName());
@@ -108,34 +109,26 @@ public class UserService {
         userToUpdate.setUsername(uuc.getUsername());
         userToUpdate.setPassword(uuc.getPassword());
         userToUpdate.setEmailAddress(uuc.getEmailAddress());
+        userToUpdate.setUserGroups(userGroupsToSet);
 
         userRepository.save(userToUpdate);
     }
 
-
-//    @Transactional
-//    public void addUserToGroup(String username, List<UserGroup> userGroups) {
-//        User addToGroup = userRepository.findByUsername(username);
-//        addToGroup.setUserGroups(userGroups);
-//        userRepository.save(addToGroup);
-//
-//    }
-
-
     @Transactional
-    public void updateUserInfo(String currentUsername, UserUpdateCommand uuc){
-        User user = userRepository.findByUsername(currentUsername);
-        user.setAdministrator(uuc.isAdministrator());
-        user.setFirstName(uuc.getFirstName());
-        user.setLastName(uuc.getLastName());
-        user.setUsername(uuc.getUsername());
-        user.setEmailAddress(uuc.getEmailAddress());
-        //user.setUserGroups(uuc.getUserGroups());
-        //user.setDocuments(uuc.getDocuments());
-        userRepository.save(user);
+    public void addUserToNewUserGroup(String username, UserGroupGetCommand userGroup){
 
+        User userToUpdate = userRepository.findByUsername(username);
+//        UserGroup userGroupToAdd = userGroupRepository.findAllByTitle().contains(username);
+
+        Set<UserGroup> userGroupsToAdd = new HashSet<>();
+
+//        for (String userGroupTitle: .getUserGroupTitle()) {
+//            if (!userGroupsToAdd.contains(userToUpdate.getUserGroups())){
+//                userGroupsToAdd.add(userGroupRepository.findByTitle(userGroupTitle));
+//            }continue;
+//        }
+        userRepository.save(userToUpdate);
     }
-
 
 
     @Transactional

@@ -46,14 +46,6 @@ public class UserController {
         userService.deleteUser(username);
     }
 
-//    @RequestMapping(path = "/{id}", method = RequestMethod.PUT)
-//    @ResponseStatus(HttpStatus.OK)
-//    @ApiOperation(value = "Update user info", notes = "Updates user by id")
-//    public void updateUser(
-//            @ApiParam(value = "User id", required = true) @PathVariable final Long id,
-//            @ApiParam(value = "User info", required = true) @RequestBody UserUpdateCommand uuc){
-//        userService.updateUserInfo(uuc);
-//    }
 
     @RequestMapping(path = "/{username}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
@@ -70,6 +62,14 @@ public class UserController {
             @ApiParam(value = "username", required = true) @Valid @PathVariable final String username){
         return userService.getUserByUsername(username);
     }
+
+//    @RequestMapping(path = "/group/{username}", method = RequestMethod.PUT)
+//    @ApiOperation(value = "Add user to userGroup", notes = "Adds user to new userGroup")
+//    public void addUserToUserGroup(
+//            @ApiParam(value = "Username", required = true) @PathVariable final String username,
+//            @ApiParam(value = "New usergroup", required = true) @RequestBody String newUserGroup){
+//        userService.addUserToNewUserGroup(username, newUserGroup);
+//    }
 
 
 }

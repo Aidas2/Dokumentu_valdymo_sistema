@@ -3,6 +3,7 @@ package lt.akademijait.bronza.entities;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class UserGroup {
@@ -21,7 +22,7 @@ public class UserGroup {
     @ManyToMany
     @JoinTable(name = "submission_type", joinColumns = @JoinColumn(name = "user_group"),
             inverseJoinColumns = @JoinColumn(name = "submission_type_id"))
-    private List<DocumentType> submissionDocumentType;
+    private Set<DocumentType> submissionDocumentType;
 
 
     //Documents types that this group can review
@@ -34,7 +35,7 @@ public class UserGroup {
 
     }
 
-    public UserGroup(String title, List<DocumentType> submissionDocumentType, List<DocumentType> reviewDocumentType) {
+    public UserGroup(String title, Set<DocumentType> submissionDocumentType, List<DocumentType> reviewDocumentType) {
         this.title = title;
         this.submissionDocumentType = submissionDocumentType;
         this.reviewDocumentType = reviewDocumentType;
@@ -56,11 +57,11 @@ public class UserGroup {
         this.title = title;
     }
 
-    public List<DocumentType> getSubmissionDocumentType() {
+    public Set<DocumentType> getSubmissionDocumentType() {
         return submissionDocumentType;
     }
 
-    public void setSubmissionDocumentType(List<DocumentType> submissionDocumentType) {
+    public void setSubmissionDocumentType(Set<DocumentType> submissionDocumentType) {
         this.submissionDocumentType = submissionDocumentType;
     }
 

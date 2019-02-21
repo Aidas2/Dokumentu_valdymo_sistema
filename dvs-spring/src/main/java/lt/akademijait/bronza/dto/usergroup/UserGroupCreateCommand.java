@@ -4,22 +4,24 @@ import lt.akademijait.bronza.entities.DocumentType;
 
 import javax.validation.constraints.NotNull;
 import java.util.List;
+import java.util.Set;
 
 public class UserGroupCreateCommand {
 
 
     @NotNull
     private String title;
-//    private DocumentType documentType;
+
+    private Set<String> documentType;
 //    private List<DocumentType> reviewDocumentType;
 
 
     public UserGroupCreateCommand() {
     }
 
-    public UserGroupCreateCommand(@NotNull String title, DocumentType documentType) {
+    public UserGroupCreateCommand(@NotNull String title, Set<String> documentType) {
         this.title = title;
-//        this.documentType = documentType;
+        this.documentType = documentType;
 //        this.reviewDocumentType = reviewDocumentType;
     }
 
@@ -32,13 +34,13 @@ public class UserGroupCreateCommand {
         this.title = title;
     }
 
-//    public DocumentType getDocumentType() {
-//        return documentType;
-//    }
-//
-//    public void setDocumentType(DocumentType documentType) {
-//        this.documentType = documentType;
-//    }
+    public Set<String> getDocumentType() {
+        return documentType;
+    }
+
+    public void setDocumentType(Set<String> documentType) {
+        this.documentType = documentType;
+    }
 
     //    public List<DocumentType> getSubmissionDocumentType() {
 //        return submissionDocumentType;

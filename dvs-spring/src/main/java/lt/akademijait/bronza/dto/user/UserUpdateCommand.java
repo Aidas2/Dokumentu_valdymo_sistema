@@ -37,9 +37,10 @@ public class UserUpdateCommand {
     @NotNull
     private String emailAddress;
 
+    @ManyToMany
+    private Set<String> userGroupTitle;
 
-//    @ManyToMany
-//    private Set<UserGroup> userGroups;
+
 //
 //    @OneToMany
 //    private List<Document> documents;
@@ -48,7 +49,10 @@ public class UserUpdateCommand {
     }
 
 
-    public UserUpdateCommand(@NotNull String firstName, @NotNull String lastName, Date hireDate, @NotNull boolean administrator, @NotNull String username, @NotNull String password, @NotNull String emailAddress) {
+    public UserUpdateCommand(@NotNull String firstName, @NotNull String lastName,
+                             Date hireDate, @NotNull boolean administrator,
+                             @NotNull String username, @NotNull String password,
+                             @NotNull String emailAddress, Set<String> userGroupTitle) {
 
         this.firstName = firstName;
         this.lastName = lastName;
@@ -57,7 +61,7 @@ public class UserUpdateCommand {
         this.username = username;
         this.password = password;
         this.emailAddress = emailAddress;
-//        this.userGroups = userGroups;
+        this.userGroupTitle = userGroupTitle;
 //        this.documents = documents;
     }
 
@@ -118,14 +122,15 @@ public class UserUpdateCommand {
         this.emailAddress = emailAddress;
     }
 
-//    public Set<UserGroup> getUserGroups() {
-//        return userGroups;
-//    }
-//
-//    public void setUserGroups(Set<UserGroup> userGroups) {
-//        this.userGroups = userGroups;
-//    }
-//
+    public Set<String> getUserGroupTitle() {
+        return userGroupTitle;
+    }
+
+    public void setUserGroupTitle(Set<String> userGroupTitle) {
+        this.userGroupTitle = userGroupTitle;
+    }
+
+
 //    public List<Document> getDocuments() {
 //        return documents;
 //    }
