@@ -41,13 +41,11 @@ public class UserGroupService {
     public void createNewGroup(UserGroupCreateCommand ugcc){
 
         Set<DocumentType> docTypesToSubmit = new HashSet<>();
-
         for (String submitDocType: ugcc.getSubmitDocumentType()) {
             docTypesToSubmit.add(documentTypeRepository.findByTitle(submitDocType));
         }
 
         Set<DocumentType> docTypesToReview = new HashSet<>();
-
         for (String reviewDocType: ugcc.getReviewDocumentType()) {
             docTypesToReview.add(documentTypeRepository.findByTitle(reviewDocType));
         }

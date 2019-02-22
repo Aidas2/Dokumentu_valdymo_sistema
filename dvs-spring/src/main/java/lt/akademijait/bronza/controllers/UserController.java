@@ -3,6 +3,7 @@ package lt.akademijait.bronza.controllers;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import lt.akademijait.bronza.dto.user.UserAddToGroupCommand;
 import lt.akademijait.bronza.dto.user.UserCreateCommand;
 import lt.akademijait.bronza.dto.user.UserGetCommand;
 import lt.akademijait.bronza.dto.user.UserUpdateCommand;
@@ -63,13 +64,13 @@ public class UserController {
         return userService.getUserByUsername(username);
     }
 
-//    @RequestMapping(path = "/group/{username}", method = RequestMethod.PUT)
-//    @ApiOperation(value = "Add user to userGroup", notes = "Adds user to new userGroup")
-//    public void addUserToUserGroup(
-//            @ApiParam(value = "Username", required = true) @PathVariable final String username,
-//            @ApiParam(value = "New usergroup", required = true) @RequestBody String newUserGroup){
-//        userService.addUserToNewUserGroup(username, newUserGroup);
-//    }
+    @RequestMapping(path = "/group/{username}", method = RequestMethod.PUT)
+    @ApiOperation(value = "Add user to userGroup", notes = "Adds user to new userGroup")
+    public void addUserToUserGroup(
+            @ApiParam(value = "Username", required = true) @PathVariable final String username,
+            @ApiParam(value = "New usergroup", required = true) @RequestBody UserAddToGroupCommand uagc){
+        userService.addUserToNewUserGroup(username, uagc);
+    }
 
 
 }
