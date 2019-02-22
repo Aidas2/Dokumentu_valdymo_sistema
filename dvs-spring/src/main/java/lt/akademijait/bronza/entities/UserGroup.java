@@ -29,13 +29,13 @@ public class UserGroup {
     @ManyToMany
     @JoinTable(name = "review_type", joinColumns = @JoinColumn(name = "user_group"),
             inverseJoinColumns = @JoinColumn(name = "review_type_id"))
-    private List<DocumentType> reviewDocumentType;
+    private Set<DocumentType> reviewDocumentType;
 
     public UserGroup() {
 
     }
 
-    public UserGroup(String title, Set<DocumentType> submissionDocumentType, List<DocumentType> reviewDocumentType) {
+    public UserGroup(String title, Set<DocumentType> submissionDocumentType, Set<DocumentType> reviewDocumentType) {
         this.title = title;
         this.submissionDocumentType = submissionDocumentType;
         this.reviewDocumentType = reviewDocumentType;
@@ -65,11 +65,11 @@ public class UserGroup {
         this.submissionDocumentType = submissionDocumentType;
     }
 
-    public List<DocumentType> getReviewDocumentType() {
+    public Set<DocumentType> getReviewDocumentType() {
         return reviewDocumentType;
     }
 
-    public void setReviewDocumentType(List<DocumentType> reviewDocumentType) {
+    public void setReviewDocumentType(Set<DocumentType> reviewDocumentType) {
         this.reviewDocumentType = reviewDocumentType;
     }
 }

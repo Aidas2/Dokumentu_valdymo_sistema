@@ -12,15 +12,16 @@ public class UserGroupGetCommand {
     private String title;
 
     private Set<DocumentType> submissionDocType;
-//    private List<DocType> reviewDocType;
+    private Set<DocumentType> reviewDocType;
 
 
     public UserGroupGetCommand() {
     }
 
-    public UserGroupGetCommand(String title, Set<DocumentType> submissionDocType) {
+    public UserGroupGetCommand(String title, Set<DocumentType> submissionDocType, Set<DocumentType> reviewDocType) {
         this.title = title;
         this.submissionDocType = submissionDocType;
+        this.reviewDocType = reviewDocType;
     }
 
     public String getTitle() {
@@ -37,5 +38,13 @@ public class UserGroupGetCommand {
 
     public void setSubmissionDocType(Set<DocumentType> submissionDocType) {
         this.submissionDocType = submissionDocType;
+    }
+
+    public Set<DocumentType> getReviewDocType() {
+        return reviewDocType;
+    }
+
+    public void setReviewDocType(Set<DocumentType> reviewDocType) {
+        this.reviewDocType = reviewDocType;
     }
 }

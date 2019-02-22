@@ -12,17 +12,18 @@ public class UserGroupCreateCommand {
     @NotNull
     private String title;
 
-    private Set<String> documentType;
-//    private List<DocumentType> reviewDocumentType;
+    private Set<String> submitDocumentType;
+
+    private Set<String> reviewDocumentType;
 
 
     public UserGroupCreateCommand() {
     }
 
-    public UserGroupCreateCommand(@NotNull String title, Set<String> documentType) {
+    public UserGroupCreateCommand(@NotNull String title, Set<String> submitDocumentType, Set<String> reviewDocumentType) {
         this.title = title;
-        this.documentType = documentType;
-//        this.reviewDocumentType = reviewDocumentType;
+        this.submitDocumentType = submitDocumentType;
+        this.reviewDocumentType = reviewDocumentType;
     }
 
 
@@ -34,28 +35,20 @@ public class UserGroupCreateCommand {
         this.title = title;
     }
 
-    public Set<String> getDocumentType() {
-        return documentType;
+    public Set<String> getSubmitDocumentType() {
+        return submitDocumentType;
     }
 
-    public void setDocumentType(Set<String> documentType) {
-        this.documentType = documentType;
+    public void setSubmitDocumentType(Set<String> submitDocumentType) {
+        this.submitDocumentType = submitDocumentType;
     }
 
-    //    public List<DocumentType> getSubmissionDocumentType() {
-//        return submissionDocumentType;
-//    }
-//
-//    public void setSubmissionDocumentType(List<DocumentType> submissionDocumentType) {
-//        this.submissionDocumentType = submissionDocumentType;
-//    }
-//
-//    public List<DocumentType> getReviewDocumentType() {
-//        return reviewDocumentType;
-//    }
-//
-//    public void setReviewDocumentType(List<DocumentType> reviewDocumentType) {
-//        this.reviewDocumentType = reviewDocumentType;
-//    }
+    public Set<String> getReviewDocumentType() {
+        return reviewDocumentType;
+    }
+
+    public void setReviewDocumentType(Set<String> reviewDocumentType) {
+        this.reviewDocumentType = reviewDocumentType;
+    }
 
 }

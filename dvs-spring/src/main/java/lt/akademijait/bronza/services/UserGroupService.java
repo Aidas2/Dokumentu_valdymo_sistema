@@ -30,23 +30,30 @@ public class UserGroupService {
     @Transactional
     public List<UserGroupGetCommand> getAllGroups(){
         return userGroupRepository.findAll().stream().map((userGroup) ->
-                new UserGroupGetCommand(userGroup.getTitle(),
-                        userGroup.getSubmissionDocumentType())).collect(Collectors.toList());
+                new UserGroupGetCommand(
+                        userGroup.getTitle(),
+                        userGroup.getSubmissionDocumentType(),
+                        userGroup.getReviewDocumentType()))
+                .collect(Collectors.toList());
     }
 
     @Transactional
     public void createNewGroup(UserGroupCreateCommand ugcc){
 
         Set<DocumentType> docTypesToSubmit = new HashSet<>();
-
-        for (String docType: ugcc.getDocumentType()) {
-            docTypesToSubmit.add(documentTypeRepository.findByTitle(docType));
+        for (String submitDocType: ugcc.getSubmitDocumentType()) {
+            docTypesToSubmit.add(documentTypeRepository.findByTitle(submitDocType));
         }
+
+        Set<DocumentType> docTypesToReview = new HashSet<>();
+        for (String reviewDocType: ugcc.getReviewDocumentType()) {
+            docTypesToReview.add(documentTypeRepository.findByTitle(reviewDocType));
+        }
+
         UserGroup newGroup = new UserGroup(
                 ugcc.getTitle(),
                 docTypesToSubmit,
-                Collections.emptyList());
- //               ugcc.getReviewDocumentType());
+                docTypesToReview);
         userGroupRepository.save(newGroup);
     }
 

@@ -1,5 +1,6 @@
 package lt.akademijait.bronza.services;
 
+import lt.akademijait.bronza.dto.user.UserAddToGroupCommand;
 import lt.akademijait.bronza.dto.user.UserCreateCommand;
 import lt.akademijait.bronza.dto.user.UserGetCommand;
 import lt.akademijait.bronza.dto.user.UserUpdateCommand;
@@ -64,7 +65,6 @@ public class UserService {
     @Transactional
     public void createNewUser(UserCreateCommand ucc) {
 
-
         Set<UserGroup> userGroupsToSet = new HashSet<>();
 
         for (String userGroupTitle: ucc.getUserGroupTitle()) {
@@ -80,7 +80,6 @@ public class UserService {
                 ucc.getEmailAddress(),
                 userGroupsToSet
                 //Collections.emptyList()
-
 
         );
         //newUser.getUserGroups().add()
@@ -115,18 +114,17 @@ public class UserService {
     }
 
     @Transactional
-    public void addUserToNewUserGroup(String username, UserGroupGetCommand userGroup){
+    public void addUserToNewUserGroup(String username, UserAddToGroupCommand userAddToGroupCommand){
 
         User userToUpdate = userRepository.findByUsername(username);
-//        UserGroup userGroupToAdd = userGroupRepository.findAllByTitle().contains(username);
 
-        Set<UserGroup> userGroupsToAdd = new HashSet<>();
+//        Set<UserGroup> userGroupsToAdd = new HashSet<>();
 
-//        for (String userGroupTitle: .getUserGroupTitle()) {
-//            if (!userGroupsToAdd.contains(userToUpdate.getUserGroups())){
-//                userGroupsToAdd.add(userGroupRepository.findByTitle(userGroupTitle));
-//            }continue;
-//        }
+        for (String userGroupTitle: userAddToGroupCommand.getUserGroupTitle()) {
+            if (!userToUpdate.getUserGroups().contains(userGroupRepository.findByTitle(userGroupTitle))){
+                userToUpdate.getUserGroups().add(userGroupRepository.findByTitle(userGroupTitle));
+            }
+        }
         userRepository.save(userToUpdate);
     }
 
