@@ -25,7 +25,7 @@ public class DocumentController {
     @Autowired
     private DocumentService documentService;
 
-    //READ
+    //READ =============================================================================================================
     @RequestMapping(method = RequestMethod.GET)
     @ApiOperation(value = "Get all documents", notes = "Returns all documents")
     @ResponseStatus(HttpStatus.ACCEPTED)
@@ -33,7 +33,7 @@ public class DocumentController {
         return documentService.getAllDocuments();
     }
 
-    //READ BY ID
+    //READ BY ID =======================================================================================================
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ApiOperation(value = "Get document by Id", notes = "Returns document info")
     @ResponseStatus(HttpStatus.ACCEPTED)
@@ -43,7 +43,7 @@ public class DocumentController {
         return documentService.getDocumentById(id);
     }
 
-    //READ SUBMITTED
+    //READ SUBMITTED ===================================================================================================
     @RequestMapping(value = "/submit", method = RequestMethod.GET)
     @ApiOperation(value = "Get all submitted document", notes = "Returns all submitted document")
     @ResponseStatus(HttpStatus.ACCEPTED)
@@ -51,7 +51,7 @@ public class DocumentController {
         return documentService.getSubmittedDocuments();
     }
 
-    //READ TO BE REVIEWED
+    //READ TO BE REVIEWED ==============================================================================================
     @RequestMapping(value = "/review", method = RequestMethod.GET)
     @ApiOperation(value = "Get all document to review", notes = "Returns all document to review")
     @ResponseStatus(HttpStatus.ACCEPTED)
@@ -59,7 +59,7 @@ public class DocumentController {
         return documentService.getDocumentsToReview();
     }
 
-    //READ All DOCUMENTS OF SPECIFIC DOCUMENT_STATE
+    //READ All DOCUMENTS OF SPECIFIC DOCUMENT_STATE ====================================================================
     @RequestMapping(value = "/specific_document_state", method = RequestMethod.GET)
     @ApiOperation(value = "Get all document of specified state", notes = "Returns all document of specified state")
     @ResponseStatus(HttpStatus.ACCEPTED)
@@ -70,7 +70,7 @@ public class DocumentController {
         return documentService.getAllDocumentsByDocumentState(documentState);
     }
 
-    //GET All DOCUMENTS OF SPECIFIC DOCUMENT_TYPE
+    //GET All DOCUMENTS OF SPECIFIC DOCUMENT_TYPE ======================================================================
     @RequestMapping(value = "/specific_document_type", method = RequestMethod.GET)
     @ApiOperation(value = "Get all document of specified type", notes = "Returns all document of specified type")
     @ResponseStatus(HttpStatus.ACCEPTED)
@@ -81,7 +81,7 @@ public class DocumentController {
         return documentService.getAllDocumentsByDocumentType(documentType);
     }
 
-    //CREATE
+    //CREATE ===========================================================================================================
     @RequestMapping(method = RequestMethod.POST)
     @ApiOperation(value = "Add new document", notes = "Adds new document")
     @ResponseStatus(HttpStatus.CREATED)
@@ -91,7 +91,7 @@ public class DocumentController {
         documentService.createDocument(documentCreateCommand);
     }
 
-    //UPDATE
+    //UPDATE ===========================================================================================================
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     @ApiOperation(value = "Update document info", notes = "Update document by id")
     @ResponseStatus(HttpStatus.ACCEPTED)
@@ -103,7 +103,7 @@ public class DocumentController {
     }
 
 
-    //DELETE
+    //DELETE ===========================================================================================================
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     @ApiOperation(value = "Delete document", notes = "Delete document by id")
     @ResponseStatus(HttpStatus.ACCEPTED)
@@ -116,7 +116,7 @@ public class DocumentController {
     /*
     // commented as not necessary;
 
-    //ASSIGN DOCUMENT_TYPE TO DOCUMENT
+    //ASSIGN DOCUMENT_TYPE TO DOCUMENT =================================================================================
     @RequestMapping(value = "/{id}/{title}", method = RequestMethod.PUT)
     @ApiOperation(value = "Assign DocumentType to Document", notes = "Assigns DocumentType to Document")
     @ResponseStatus(HttpStatus.ACCEPTED)
@@ -127,8 +127,24 @@ public class DocumentController {
     }
     */
 
-    //SET DOCUMENT STATE
-    //@RequestMapping(value = "/{id}/setState", method = RequestMethod.PUT)
+    //SET DOCUMENT STATE. Version_01 (by my) ===========================================================================
+    @RequestMapping(value = "/{id}/setState", method = RequestMethod.PUT)
+    @ApiOperation(value = "Set document state", notes = "Set document state by id")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public void setDocumentStateById (
+            @ApiParam(value = "Document id", required = true)
+            @RequestBody final DocumentSetStateCommand documentSetStateCommand,
+            @PathVariable Long id,
+
+            @ApiParam(value = "Document state", required = true)
+            @PathVariable DocumentState documentState
+
+    ) {
+        documentService.setDocumentState(id, documentSetStateCommand);
+    }
+
+/*
+    //SET DOCUMENT STATE. Version_02 (by J.C.) =========================================================================
     @RequestMapping(value = "/setState", method = RequestMethod.PUT)
     @ApiOperation(value = "Set document state", notes = "Set document state by id")
     @ResponseStatus(HttpStatus.ACCEPTED)
@@ -141,5 +157,5 @@ public class DocumentController {
     ) {
                 documentService.setDocumentState(documentSetStateCommand);
     }
-
+*/
 }
