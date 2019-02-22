@@ -56,6 +56,26 @@ public class DocumentService {
                 )).collect(Collectors.toList());
     }
 
+    //GET DOCUMENTS BY ID
+    @Transactional(readOnly = true)
+    public DocumentGetCommand getDocumentById(Long id) {
+        Document document = documentRepository.findById(id).orElse(null);
+        return new DocumentGetCommand(
+                document.getAuthor(),
+                document.getDocumentState(),
+                document.getDocumentType(),
+                document.getTitle(),
+                document.getDescription(),
+                document.getCreationDate(),
+                document.getSubmissionDate(),
+                document.getConfirmationDate(),
+                document.getRejectionDate(),
+                document.getReviewer(),
+                document.getRejectionReason(),
+                document.getPath()
+        );
+    }
+
     //GET All SUBMITTED DOCUMENTS (with filter)
     @Transactional(readOnly = true)
     public List<DocumentGetCommand> getSubmittedDocuments() {
@@ -100,25 +120,51 @@ public class DocumentService {
                 )).collect(Collectors.toList());
     }
 
-    //GET DOCUMENTS BY ID
+    //GET All DOCUMENTS OF SPECIFIC DOCUMENT_STATE (with filter)
     @Transactional(readOnly = true)
-    public DocumentGetCommand getDocumentById(Long id) {
-        Document document = documentRepository.findById(id).orElse(null);
-        return new DocumentGetCommand(
-                document.getAuthor(),
-                document.getDocumentState(),
-                document.getDocumentType(),
-                document.getTitle(),
-                document.getDescription(),
-                document.getCreationDate(),
-                document.getSubmissionDate(),
-                document.getConfirmationDate(),
-                document.getRejectionDate(),
-                document.getReviewer(),
-                document.getRejectionReason(),
-                document.getPath()
-        );
+    public List<DocumentGetCommand> getAllDocumentsByDocumentState(DocumentState documentState) {
+        return  documentRepository.findAll()
+                .stream()
+                .filter(document -> document.getDocumentState().equals(documentState))
+                .map((document) -> new DocumentGetCommand(
+                        document.getAuthor(),
+                        document.getDocumentState(),
+                        document.getDocumentType(),
+                        document.getTitle(),
+                        document.getDescription(),
+                        document.getCreationDate(),
+                        document.getSubmissionDate(),
+                        document.getConfirmationDate(),
+                        document.getRejectionDate(),
+                        document.getReviewer(),
+                        document.getRejectionReason(),
+                        document.getPath()
+                )).collect(Collectors.toList());
     }
+
+    //GET All DOCUMENTS OF SPECIFIC DOCUMENT_TYPE (with filter)
+    @Transactional(readOnly = true)
+    public List<DocumentGetCommand> getAllDocumentsByDocumentType(DocumentType documentType) {
+        return  documentRepository.findAll()
+                .stream()
+                .filter(document -> document.getDocumentType().equals(documentType))
+                .map((document) -> new DocumentGetCommand(
+                        document.getAuthor(),
+                        document.getDocumentState(),
+                        document.getDocumentType(),
+                        document.getTitle(),
+                        document.getDescription(),
+                        document.getCreationDate(),
+                        document.getSubmissionDate(),
+                        document.getConfirmationDate(),
+                        document.getRejectionDate(),
+                        document.getReviewer(),
+                        document.getRejectionReason(),
+                        document.getPath()
+                )).collect(Collectors.toList());
+    }
+
+
 
     //CREATE
     @Transactional
@@ -144,6 +190,7 @@ public class DocumentService {
 
         newDocument.setTitle(documentCreateCommand.getTitle());
         newDocument.setDescription(documentCreateCommand.getDescription());
+        newDocument.setDocumentState(DocumentState.CREATED);
         documentRepository.save(newDocument);
     }
 
@@ -185,14 +232,47 @@ public class DocumentService {
 
 
         //papildyti validacija ar DocumentState jau nera toks koki norim suteikti.
-        if (documentSetStateCommand.getCreationDate() != null) {
-            documentToSetState.setDocumentState(DocumentState.CREATED);
-        } else if (documentSetStateCommand.getSubmissionDate() != null) {
-            documentToSetState.setDocumentState(DocumentState.SUBMITTED);
-        } else if (documentSetStateCommand.getConfirmationDate() != null) {
-            documentToSetState.setDocumentState(DocumentState.CONFIRMED);
-        } else if (documentSetStateCommand.getRejectionDate() != null) {
-            documentToSetState.setDocumentState(DocumentState.REJECTED);
+
+        //papildyti kad jeigu neranda DocumentType tai reikia handlint errora
+        // (pvz. iseiti is metodo, arba responseEntity arba ResourceNotFoundException)
+        // nes priesingu atveju programa nulus.
+
+        if (canSetState &&
+                documentSetStateCommand.getDocumentState() != DocumentState.CREATED &&
+                documentSetStateCommand.getDocumentState() != DocumentState.SUBMITTED &&
+                documentSetStateCommand.getDocumentState() != DocumentState.CONFIRMED &&
+                documentSetStateCommand.getDocumentState() != DocumentState.REJECTED &&
+                documentToSetState.getRejectionReason() == null
+        ) {
+            documentToSetState.setDocumentState(DocumentState.CREATED);     //version A (hardcoded ?)
+            //documentToSetState.setDocumentState(documentSetStateCommand.getDocumentState()); //version B
+        } else if (canSetState &&
+                documentSetStateCommand.getDocumentState() == DocumentState.CREATED //&&
+                //documentSetStateCommand.getDocumentState() != DocumentState.SUBMITTED &&
+                //documentSetStateCommand.getDocumentState() != DocumentState.CONFIRMED &&
+                //documentSetStateCommand.getDocumentState() != DocumentState.REJECTED &&
+                //documentToSetState.getRejectionReason() == null
+                ) {
+            documentToSetState.setDocumentState(DocumentState.SUBMITTED);   //version A
+            //documentToSetState.setDocumentState(documentSetStateCommand.getDocumentState()); //version B
+        } else if (canSetState &&
+                //documentSetStateCommand.getDocumentState() == DocumentState.CREATED &&
+                documentSetStateCommand.getDocumentState() == DocumentState.SUBMITTED &&
+                //documentSetStateCommand.getDocumentState() != DocumentState.CONFIRMED &&
+                documentSetStateCommand.getDocumentState() != DocumentState.REJECTED //&&
+                //documentToSetState.getRejectionReason() == null
+            ) {
+            documentToSetState.setDocumentState(DocumentState.CONFIRMED);   //version A
+            //documentToSetState.setDocumentState(documentToSetState.getDocumentState()); //version B
+        } else if (canSetState &&
+                //documentSetStateCommand.getDocumentState() == DocumentState.CREATED &&
+                documentSetStateCommand.getDocumentState() == DocumentState.SUBMITTED &&
+                documentSetStateCommand.getDocumentState() != DocumentState.CONFIRMED //&&
+                //documentSetStateCommand.getDocumentState() != DocumentState.REJECTED &&
+                //documentToSetState.getRejectionReason() != null
+        ) {
+            documentToSetState.setDocumentState(DocumentState.REJECTED);    //version A
+            //documentToSetState.setDocumentState(documentSetStateCommand.getDocumentState());  //version B
             documentToSetState.setRejectionReason(documentSetStateCommand.getRejectionReason());
         }
 
@@ -200,7 +280,7 @@ public class DocumentService {
     }
 
 /*
-    //UPDATE Version_01.
+    //UPDATE. Version_01.
     // Commented, because tu update username is not logical + it should be DocumentCreateCommand used.
     @Transactional
     public void updateDocument (Long id, DocumentCreateCommand documentCreateCommand) {
@@ -220,7 +300,7 @@ public class DocumentService {
     }
 */
 
-    //UPDATE Version_02.
+    //UPDATE. Version_02.
     @Transactional
     public void updateDocument (Long id, DocumentUpdateCommand documentUpdateCommand) {
         Document documentToUpdate = documentRepository.findById(id).orElse(null);

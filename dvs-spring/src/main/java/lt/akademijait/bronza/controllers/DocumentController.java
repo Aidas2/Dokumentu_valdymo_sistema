@@ -6,7 +6,10 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lt.akademijait.bronza.dto.document.DocumentCreateCommand;
 import lt.akademijait.bronza.dto.document.DocumentGetCommand;
+import lt.akademijait.bronza.dto.document.DocumentSetStateCommand;
 import lt.akademijait.bronza.dto.document.DocumentUpdateCommand;
+import lt.akademijait.bronza.entities.DocumentType;
+import lt.akademijait.bronza.enums.DocumentState;
 import lt.akademijait.bronza.services.DocumentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -56,6 +59,27 @@ public class DocumentController {
         return documentService.getDocumentsToReview();
     }
 
+    //READ All DOCUMENTS OF SPECIFIC DOCUMENT_STATE
+    @RequestMapping(value = "/specific_document_state", method = RequestMethod.GET)
+    @ApiOperation(value = "Get all document of specified state", notes = "Returns all document of specified state")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public List<DocumentGetCommand> getAllDocumentsByDocumentState(
+            @ApiParam(value = "Document state", required = true)
+            @PathVariable DocumentState documentState)
+    {
+        return documentService.getAllDocumentsByDocumentState(documentState);
+    }
+
+    //GET All DOCUMENTS OF SPECIFIC DOCUMENT_TYPE
+    @RequestMapping(value = "/specific_document_type", method = RequestMethod.GET)
+    @ApiOperation(value = "Get all document of specified type", notes = "Returns all document of specified type")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public List<DocumentGetCommand> getAllDocumentsByDocumentType(
+            @ApiParam(value = "Document type", required = true)
+            @PathVariable DocumentType documentType)
+    {
+        return documentService.getAllDocumentsByDocumentType(documentType);
+    }
 
     //CREATE
     @RequestMapping(method = RequestMethod.POST)
@@ -103,5 +127,15 @@ public class DocumentController {
     }
     */
 
+    //SET DOCUMENT STATE
+    @RequestMapping(value = "/{id}/setState", method = RequestMethod.PUT) // wtf is value = "/{id}/setState" ?
+    @ApiOperation(value = "Set document state", notes = "Set document state by id")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public void setDocumentStateById (
+            @ApiParam(value = "Document id", required = true)
+            @RequestBody final DocumentSetStateCommand documentSetStateCommand,
+            @PathVariable Long id) {
+                documentService.setDocumentState(id, documentSetStateCommand);
+    }
 
 }
