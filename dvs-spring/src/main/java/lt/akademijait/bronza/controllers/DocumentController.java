@@ -128,14 +128,18 @@ public class DocumentController {
     */
 
     //SET DOCUMENT STATE
-    @RequestMapping(value = "/{id}/setState", method = RequestMethod.PUT) // wtf is value = "/{id}/setState" ?
+    //@RequestMapping(value = "/{id}/setState", method = RequestMethod.PUT)
+    @RequestMapping(value = "/setState", method = RequestMethod.PUT)
     @ApiOperation(value = "Set document state", notes = "Set document state by id")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public void setDocumentStateById (
             @ApiParam(value = "Document id", required = true)
             @RequestBody final DocumentSetStateCommand documentSetStateCommand,
-            @PathVariable Long id) {
-                documentService.setDocumentState(id, documentSetStateCommand);
+            @PathVariable Long id
+            //@ApiParam(value = "Document state", required = true)
+            //@PathVariable DocumentState documentState
+    ) {
+                documentService.setDocumentState(documentSetStateCommand);
     }
 
 }

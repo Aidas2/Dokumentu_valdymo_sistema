@@ -7,7 +7,6 @@ import lt.akademijait.bronza.dto.document.DocumentUpdateCommand;
 import lt.akademijait.bronza.entities.Document;
 import lt.akademijait.bronza.entities.DocumentType;
 import lt.akademijait.bronza.entities.User;
-import lt.akademijait.bronza.entities.UserGroup;
 import lt.akademijait.bronza.enums.DocumentState;
 import lt.akademijait.bronza.repositories.DocumentRepository;
 import lt.akademijait.bronza.repositories.DocumentTypeRepository;
@@ -20,7 +19,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -166,6 +164,13 @@ public class DocumentService {
 
 
 
+    //GET All DOCUMENTS OF SPECIFIC USER_GROUP (with filter and with filter of permissions (which documents this UserGroup can manage)
+
+
+
+
+
+
     //CREATE
     @Transactional
     public void createDocument(DocumentCreateCommand documentCreateCommand) {
@@ -201,26 +206,53 @@ public class DocumentService {
     //2. Itraukti patikrinima ar vartotojas gali daryti ta managinima.
 
     @Transactional
-    public void setDocumentState (Long id, DocumentSetStateCommand documentSetStateCommand) {
+    public void setDocumentState ( DocumentSetStateCommand documentSetStateCommand) {
 
-        Document documentToSetState = documentRepository.findById(id).orElse(null);
+        User user = userRepository.findByUsername(documentSetStateCommand.getAuthorUsername());
+        Document documentToSetState = documentRepository.getOne(documentSetStateCommand.getDocumentId());
+        User reviewerUser = userRepository.findByUsername(documentSetStateCommand.getReviewerUsername());
 
-        User user = userRepository.findByUsername(documentSetStateCommand.getReviewerUsername());
-
-
-        Set<UserGroup> userGroupsBelongingToUser = user.getUserGroups();
-        boolean canSetState = false;
-
-        for (UserGroup userGroup : userGroupsBelongingToUser) {
-            if (userGroup.getReviewDocumentType().contains(documentToSetState.getDocumentType())) {
-                canSetState = true;
+        switch (documentSetStateCommand.getDocumentState()){
+            case "SUBMITTED" :{
+                documentToSetState.setDocumentState(DocumentState.SUBMITTED);
+                documentToSetState.setSubmissionDate(new Date());
                 break;
+
+            }
+            case "REJECTED" :{
+                documentToSetState.setReviewer(reviewerUser);
+                documentToSetState.setDocumentState(DocumentState.REJECTED);
+                documentToSetState.setRejectionDate(new Date());
+                documentToSetState.setRejectionReason(documentSetStateCommand.getRejectionReason());
+
+                break;
+            }
+            case "COMFIRMED" :{
+                documentToSetState.setReviewer(reviewerUser);
+                documentToSetState.setDocumentState(DocumentState.CONFIRMED);
+                documentToSetState.setConfirmationDate(new Date());
             }
         }
 
-        if(canSetState) {
-            documentToSetState.setReviewer(user);
-        }
+       // Document documentToSetState = documentRepository.findById(id).orElse(null);
+
+
+
+//
+//        Set<UserGroup> userGroupsBelongingToUser = user.getUserGroups();
+//        boolean canSetState = false;
+//
+//        for (UserGroup userGroup : userGroupsBelongingToUser) {
+//            if (userGroup.getReviewDocumentType().contains(documentToSetState.getDocumentType())) {
+//                canSetState = true;
+//                break;
+//            }
+//        }
+//
+//        if(canSetState) {
+//            documentToSetState.setReviewer(user);
+//            documentToSetState.setDocumentState();
+//        }
         /*
         2. Reikia patikrinti, ar Reviewer turi permission acceptinti arba rejectinti.
          Tą reikia daryti, tikrinant User reviewer kitamąjį List<UserGroup> userGroup.
@@ -236,47 +268,47 @@ public class DocumentService {
         //papildyti kad jeigu neranda DocumentType tai reikia handlint errora
         // (pvz. iseiti is metodo, arba responseEntity arba ResourceNotFoundException)
         // nes priesingu atveju programa nulus.
-
-        if (canSetState &&
-                documentSetStateCommand.getDocumentState() != DocumentState.CREATED &&
-                documentSetStateCommand.getDocumentState() != DocumentState.SUBMITTED &&
-                documentSetStateCommand.getDocumentState() != DocumentState.CONFIRMED &&
-                documentSetStateCommand.getDocumentState() != DocumentState.REJECTED &&
-                documentToSetState.getRejectionReason() == null
-        ) {
-            documentToSetState.setDocumentState(DocumentState.CREATED);     //version A (hardcoded ?)
-            //documentToSetState.setDocumentState(documentSetStateCommand.getDocumentState()); //version B
-        } else if (canSetState &&
-                documentSetStateCommand.getDocumentState() == DocumentState.CREATED //&&
-                //documentSetStateCommand.getDocumentState() != DocumentState.SUBMITTED &&
-                //documentSetStateCommand.getDocumentState() != DocumentState.CONFIRMED &&
-                //documentSetStateCommand.getDocumentState() != DocumentState.REJECTED &&
-                //documentToSetState.getRejectionReason() == null
-                ) {
-            documentToSetState.setDocumentState(DocumentState.SUBMITTED);   //version A
-            //documentToSetState.setDocumentState(documentSetStateCommand.getDocumentState()); //version B
-        } else if (canSetState &&
-                //documentSetStateCommand.getDocumentState() == DocumentState.CREATED &&
-                documentSetStateCommand.getDocumentState() == DocumentState.SUBMITTED &&
-                //documentSetStateCommand.getDocumentState() != DocumentState.CONFIRMED &&
-                documentSetStateCommand.getDocumentState() != DocumentState.REJECTED //&&
-                //documentToSetState.getRejectionReason() == null
-            ) {
-            documentToSetState.setDocumentState(DocumentState.CONFIRMED);   //version A
-            //documentToSetState.setDocumentState(documentToSetState.getDocumentState()); //version B
-        } else if (canSetState &&
-                //documentSetStateCommand.getDocumentState() == DocumentState.CREATED &&
-                documentSetStateCommand.getDocumentState() == DocumentState.SUBMITTED &&
-                documentSetStateCommand.getDocumentState() != DocumentState.CONFIRMED //&&
-                //documentSetStateCommand.getDocumentState() != DocumentState.REJECTED &&
-                //documentToSetState.getRejectionReason() != null
-        ) {
-            documentToSetState.setDocumentState(DocumentState.REJECTED);    //version A
-            //documentToSetState.setDocumentState(documentSetStateCommand.getDocumentState());  //version B
-            documentToSetState.setRejectionReason(documentSetStateCommand.getRejectionReason());
-        }
-
-        documentRepository.save(documentToSetState);
+//
+//        if (canSetState &&
+//                documentSetStateCommand.getDocumentState() == DocumentState.CREATED //&&
+//                //documentSetStateCommand.getDocumentState() != DocumentState.SUBMITTED &&
+//                //documentSetStateCommand.getDocumentState() != DocumentState.CONFIRMED &&
+//                //documentSetStateCommand.getDocumentState() != DocumentState.REJECTED &&
+//                //documentToSetState.getRejectionReason() == null
+//        ) {
+//            //documentToSetState.setDocumentState(DocumentState.CREATED);     //version A (hardcoded ? Yes, hardcoded because User in UI or swagger cannot choose)
+//            documentToSetState.setDocumentState(documentSetStateCommand.getDocumentState()); //version B
+//        } else if (canSetState &&
+//                documentSetStateCommand.getDocumentState() == DocumentState.CREATED //&&
+//                //documentSetStateCommand.getDocumentState() != DocumentState.SUBMITTED &&
+//                //documentSetStateCommand.getDocumentState() != DocumentState.CONFIRMED &&
+//                //documentSetStateCommand.getDocumentState() != DocumentState.REJECTED &&
+//                //documentToSetState.getRejectionReason() == null
+//                ) {
+//            //documentToSetState.setDocumentState(DocumentState.SUBMITTED);   //version A
+//            documentToSetState.setDocumentState(documentSetStateCommand.getDocumentState()); //version B
+//        } else if (canSetState &&
+//                //documentSetStateCommand.getDocumentState() == DocumentState.CREATED &&
+//                documentSetStateCommand.getDocumentState() == DocumentState.SUBMITTED &&
+//                //documentSetStateCommand.getDocumentState() != DocumentState.CONFIRMED &&
+//                documentSetStateCommand.getDocumentState() != DocumentState.REJECTED //&&
+//                //documentToSetState.getRejectionReason() == null
+//            ) {
+//            //documentToSetState.setDocumentState(DocumentState.CONFIRMED);   //version A
+//            documentToSetState.setDocumentState(documentToSetState.getDocumentState()); //version B
+//        } else if (canSetState &&
+//                //documentSetStateCommand.getDocumentState() == DocumentState.CREATED &&
+//                documentSetStateCommand.getDocumentState() == DocumentState.SUBMITTED &&
+//                documentSetStateCommand.getDocumentState() != DocumentState.CONFIRMED //&&
+//                //documentSetStateCommand.getDocumentState() != DocumentState.REJECTED &&
+//                //documentToSetState.getRejectionReason() != null
+//        ) {
+//            //documentToSetState.setDocumentState(DocumentState.REJECTED);    //version A
+//            documentToSetState.setDocumentState(documentSetStateCommand.getDocumentState());  //version B
+//            documentToSetState.setRejectionReason(documentSetStateCommand.getRejectionReason());
+//        }
+//
+//        documentRepository.save(documentToSetState);
     }
 
 /*
