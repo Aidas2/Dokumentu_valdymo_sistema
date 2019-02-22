@@ -64,7 +64,6 @@ public class UserService {
     @Transactional
     public void createNewUser(UserCreateCommand ucc) {
 
-
         Set<UserGroup> userGroupsToSet = new HashSet<>();
 
         for (String userGroupTitle: ucc.getUserGroupTitle()) {
@@ -80,7 +79,6 @@ public class UserService {
                 ucc.getEmailAddress(),
                 userGroupsToSet
                 //Collections.emptyList()
-
 
         );
         //newUser.getUserGroups().add()
