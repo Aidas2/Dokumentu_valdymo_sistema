@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -41,17 +40,25 @@ public class FileManageService {
         Path currentAbsolutePath = Paths.get("temptest9954332543.txt").toAbsolutePath().getParent();
         tempFile.delete();
 
-
-    ObjectMapper objectMapper = new ObjectMapper();
+ObjectMapper objectMapper2 = new ObjectMapper();
+DocumentCreateCommand dcc = new DocumentCreateCommand();
     try {
-        username = String.valueOf(objectMapper.readTree(docData).get("username"));
+         dcc = objectMapper2.readValue(docData, DocumentCreateCommand.class);
     } catch (IOException e) {
         e.printStackTrace();
     }
+
+
+//    ObjectMapper objectMapper = new ObjectMapper();
+//    try {
+//        username = String.valueOf(objectMapper.readTree(docData).get("username"));
+//    } catch (IOException e) {
+//        e.printStackTrace();
+//    }
 //    String userName = "/user1-dir";
         int userID = 2;
 
-        File userDirectory = new File(currentAbsolutePath + fileSeparator + "uploaded-files" + fileSeparator + username);
+        File userDirectory = new File(currentAbsolutePath + fileSeparator + "uploaded-files" + fileSeparator + dcc.getUsername());
         userDirectory.mkdirs();
         for (MultipartFile file : files) {
             File fileToSave = new File(userDirectory, userID + "-" + getCurrentLocalDateTimeStamp() + "-" + file.getOriginalFilename());
