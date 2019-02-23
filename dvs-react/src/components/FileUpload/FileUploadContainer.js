@@ -11,9 +11,9 @@ class FileUploadContainer extends Component {
     sth: false,
     createDocumentInfo: {
       description: "testDesc",
-      documentTypeTitle: "type1",
+      documentTypeTitle: "type2",
       title: "testTytle",
-      username: "username1"
+      username: ""
     }
   };
 
@@ -22,7 +22,11 @@ class FileUploadContainer extends Component {
       .get("http://localhost:8081/api/doctypes")
       .then(response => {
         this.setState({ documentTypes: response.data });
-        this.setState({ documentType: response.data[0].title });
+        let createDocumentInfo = this.state.createDocumentInfo;
+        createDocumentInfo.documentTypeTitle = response.data[0].title;
+        createDocumentInfo.username = localStorage.getItem("username");
+        this.setState({ createDocumentInfo: createDocumentInfo });
+        // this.setState({ documentType: response.data[0].title });
         // this.setState({ documentType: response.data[0].title });
       })
       .catch(error => {
@@ -103,6 +107,7 @@ class FileUploadContainer extends Component {
       let formData = new FormData();
       formData.append("file", files[i]); //image was originally, I changed it to file
       formData.append("name", this.state.file[i].name); //2nd parameter was "Paulius cicenas"
+      formData.append("docData", JSON.stringify(this.state.createDocumentInfo));
 
       axios({
         url: "http://localhost:8081/files",
