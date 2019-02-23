@@ -37,7 +37,7 @@ public class FileManageService {
 
     @Transactional
     public ResponseEntity uploadFiles(HttpServletRequest req,
-                                      MultipartFile[] files, String docData) {
+                                      MultipartFile file, String docData) {
         String username = null;
 
         //this is used to get the current absolute path. Later the temp file is deleted
@@ -99,24 +99,22 @@ public class FileManageService {
         File userDirectory = new File(currentAbsolutePath + fileSeparator + "uploaded-files" + fileSeparator
                 + documentCreateCommand.getUsername());
         userDirectory.mkdirs();
-
-        for (MultipartFile file : files) {
-            File fileToSave = new File(userDirectory, userID + "-" + getCurrentLocalDateTimeStamp() + "-"
-                    + file.getOriginalFilename());
+        File fileToSave = new File(userDirectory, userID + "-" + getCurrentLocalDateTimeStamp() + "-"
+                + file.getOriginalFilename());
 //            if(i==0){
 //                newDocument.setPath(fileToSave.getAbsolutePath());
 //
 //            }
 //            fileToSave.mkdirs();
 
-            try {
-                file.transferTo(fileToSave); //Transfer or Saving in local memory
-            } catch (IllegalStateException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        try {
+            file.transferTo(fileToSave); //Transfer or Saving in local memory
+        } catch (IllegalStateException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
 
 
 
