@@ -24,7 +24,7 @@ public class FileManageService {
 
 @Transactional
     public ResponseEntity uploadFiles(HttpServletRequest req,
-                                      MultipartFile[] files, DocumentCreateCommand documentCreateCommand){
+                                      MultipartFile[] files){
 
         //this is used to get the current absolute path. Later the temp file is deleted
         File tempFile = new File("temptest9954332543.txt");
@@ -58,7 +58,6 @@ public class FileManageService {
             }
         }
 
-        documentService.createDocument(documentCreateCommand);
 
 
         return null;
