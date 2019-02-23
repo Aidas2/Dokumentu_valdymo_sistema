@@ -61,11 +61,10 @@ public class FileManageService {
             e.printStackTrace();
         }
 
-        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ " + documentCreateCommand.getUsername());
-        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ " + documentCreateCommand.getDescription());
-        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ " + documentCreateCommand.getDocumentTypeTitle());
-        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ " + documentCreateCommand.getTitle());
-        documentService.createDocument(documentCreateCommand);
+//        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ " + documentCreateCommand.getUsername());
+//        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ " + documentCreateCommand.getDescription());
+//        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ " + documentCreateCommand.getDocumentTypeTitle());
+//        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ " + documentCreateCommand.getTitle());
 
 
 //        Document newDocument = new Document();
@@ -88,14 +87,26 @@ public class FileManageService {
 //        e.printStackTrace();
 //    }
 //    String userName = "/user1-dir";
-        int userID = 2;
+        long userID = userRepository.findByUsername(documentCreateCommand.getUsername()).getId();
+        Document newDocument = new Document();
+        newDocument.setCreationDate(new Date());
+        newDocument.setAuthor(userRepository.findByUsername(documentCreateCommand.getUsername()));
+        newDocument.setDocumentType(documentTypeRepository.findByTitle(documentCreateCommand.getDocumentTypeTitle()));
+        newDocument.setTitle(documentCreateCommand.getTitle());
+        newDocument.setDescription(documentCreateCommand.getDescription());
+        documentRepository.save(newDocument);
 
         File userDirectory = new File(currentAbsolutePath + fileSeparator + "uploaded-files" + fileSeparator
                 + documentCreateCommand.getUsername());
         userDirectory.mkdirs();
+
         for (MultipartFile file : files) {
             File fileToSave = new File(userDirectory, userID + "-" + getCurrentLocalDateTimeStamp() + "-"
                     + file.getOriginalFilename());
+//            if(i==0){
+//                newDocument.setPath(fileToSave.getAbsolutePath());
+//
+//            }
 //            fileToSave.mkdirs();
 
             try {
@@ -106,6 +117,12 @@ public class FileManageService {
                 e.printStackTrace();
             }
         }
+
+
+
+
+
+
 
 
         return null;
