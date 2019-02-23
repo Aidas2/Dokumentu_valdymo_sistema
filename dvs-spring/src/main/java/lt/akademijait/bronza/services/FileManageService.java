@@ -2,6 +2,12 @@ package lt.akademijait.bronza.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lt.akademijait.bronza.dto.document.DocumentCreateCommand;
+import lt.akademijait.bronza.entities.Document;
+import lt.akademijait.bronza.entities.DocumentType;
+import lt.akademijait.bronza.entities.User;
+import lt.akademijait.bronza.repositories.DocumentRepository;
+import lt.akademijait.bronza.repositories.DocumentTypeRepository;
+import lt.akademijait.bronza.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -15,17 +21,24 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 @Service
 public class FileManageService {
 
     @Autowired
     private DocumentService documentService;
+    @Autowired
+    private UserRepository userRepository;
+    @Autowired
+    private DocumentTypeRepository documentTypeRepository;
+    @Autowired
+    private DocumentRepository documentRepository;
 
-@Transactional
+    @Transactional
     public ResponseEntity uploadFiles(HttpServletRequest req,
-                                      MultipartFile[] files, String docData){
-     String username = null;
+                                      MultipartFile[] files, String docData) {
+        String username = null;
 
         //this is used to get the current absolute path. Later the temp file is deleted
         File tempFile = new File("temptest9954332543.txt");
@@ -35,33 +48,54 @@ public class FileManageService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("TempTestFile created: " + bool);
+//        System.out.println("TempTestFile created: " + bool);
         String fileSeparator = System.getProperty("file.separator");
         Path currentAbsolutePath = Paths.get("temptest9954332543.txt").toAbsolutePath().getParent();
         tempFile.delete();
 
-ObjectMapper objectMapper2 = new ObjectMapper();
-DocumentCreateCommand dcc = new DocumentCreateCommand();
-    try {
-         dcc = objectMapper2.readValue(docData, DocumentCreateCommand.class);
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
+        ObjectMapper objectMapper = new ObjectMapper();
+        DocumentCreateCommand documentCreateCommand = new DocumentCreateCommand();
+        try {
+            documentCreateCommand = objectMapper.readValue(docData, DocumentCreateCommand.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
+        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ " + documentCreateCommand.getUsername());
+        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ " + documentCreateCommand.getDescription());
+        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ " + documentCreateCommand.getDocumentTypeTitle());
+        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ " + documentCreateCommand.getTitle());
+        documentService.createDocument(documentCreateCommand);
+
+
+//        Document newDocument = new Document();
+//        newDocument.setCreationDate(new Date());
+//
+//        User user = userRepository.findByUsername(documentCreateCommand.getUsername());
+//        newDocument.setAuthor(user);
+//
+//        DocumentType documentType = documentTypeRepository.findByTitle(documentCreateCommand.getDocumentTypeTitle());
+//        newDocument.setDocumentType(documentType);
+//
+//        newDocument.setTitle(documentCreateCommand.getTitle());
+//        newDocument.setDescription(documentCreateCommand.getDescription());
+//        documentRepository.save(newDocument);
 
 //    ObjectMapper objectMapper = new ObjectMapper();
 //    try {
-//        username = String.valueOf(objectMapper.readTree(docData).get("username"));
+//        username = String.valueOf(objectMapper.readTree(docData).get("username").asText());
 //    } catch (IOException e) {
 //        e.printStackTrace();
 //    }
 //    String userName = "/user1-dir";
         int userID = 2;
 
-        File userDirectory = new File(currentAbsolutePath + fileSeparator + "uploaded-files" + fileSeparator + dcc.getUsername());
+        File userDirectory = new File(currentAbsolutePath + fileSeparator + "uploaded-files" + fileSeparator
+                + documentCreateCommand.getUsername());
         userDirectory.mkdirs();
         for (MultipartFile file : files) {
-            File fileToSave = new File(userDirectory, userID + "-" + getCurrentLocalDateTimeStamp() + "-" + file.getOriginalFilename());
+            File fileToSave = new File(userDirectory, userID + "-" + getCurrentLocalDateTimeStamp() + "-"
+                    + file.getOriginalFilename());
 //            fileToSave.mkdirs();
 
             try {
@@ -74,9 +108,9 @@ DocumentCreateCommand dcc = new DocumentCreateCommand();
         }
 
 
-
         return null;
     }
+
     public String getCurrentLocalDateTimeStamp() {
         return LocalDateTime.now()
                 .format(DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss-SSS"));

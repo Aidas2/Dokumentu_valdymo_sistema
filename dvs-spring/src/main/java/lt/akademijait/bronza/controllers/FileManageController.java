@@ -99,7 +99,7 @@ public class FileManageController {
                                             @RequestParam(value = "file", required = false) MultipartFile[] files,
                                             @RequestParam(value = "docData") String docData)
             throws IOException {
-        FileManageService fileManageService = new FileManageService();
+//        FileManageService fileManageService = new FileManageService();
         fileManageService.uploadFiles(req, files, docData);
 
         return null;

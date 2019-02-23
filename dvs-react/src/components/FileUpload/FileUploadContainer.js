@@ -55,7 +55,7 @@ class FileUploadContainer extends Component {
 
   handleUpload = e => {
     this.handleFilesUpload();
-    this.createDocumentEntity();
+    // this.createDocumentEntity();
   };
 
   createDocumentEntity = () => {
