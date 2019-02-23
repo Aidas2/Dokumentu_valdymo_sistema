@@ -1,5 +1,6 @@
 package lt.akademijait.bronza.services;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lt.akademijait.bronza.dto.document.DocumentCreateCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +25,8 @@ public class FileManageService {
 
 @Transactional
     public ResponseEntity uploadFiles(HttpServletRequest req,
-                                      MultipartFile[] files){
+                                      MultipartFile[] files, String docData){
+     String username = null;
 
         //this is used to get the current absolute path. Later the temp file is deleted
         File tempFile = new File("temptest9954332543.txt");
@@ -40,10 +42,16 @@ public class FileManageService {
         tempFile.delete();
 
 
-        String userName = "/user1-dir";
+    ObjectMapper objectMapper = new ObjectMapper();
+    try {
+        username = String.valueOf(objectMapper.readTree(docData).get("username"));
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+//    String userName = "/user1-dir";
         int userID = 2;
 
-        File userDirectory = new File(currentAbsolutePath + fileSeparator + "uploaded-files" + fileSeparator + userName);
+        File userDirectory = new File(currentAbsolutePath + fileSeparator + "uploaded-files" + fileSeparator + username);
         userDirectory.mkdirs();
         for (MultipartFile file : files) {
             File fileToSave = new File(userDirectory, userID + "-" + getCurrentLocalDateTimeStamp() + "-" + file.getOriginalFilename());

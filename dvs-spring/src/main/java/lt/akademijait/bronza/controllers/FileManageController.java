@@ -96,10 +96,11 @@ public class FileManageController {
     @RequestMapping(value = "/files", method = RequestMethod.POST,
             consumes = "multipart/form-data", produces = "application/json")
     public ResponseEntity mutipleFileUpload(HttpServletRequest req,
-                                            @RequestParam(value = "file", required = false) MultipartFile[] files)
+                                            @RequestParam(value = "file", required = false) MultipartFile[] files,
+                                            @RequestParam(value = "docData") String docData)
             throws IOException {
         FileManageService fileManageService = new FileManageService();
-        fileManageService.uploadFiles(req, files);
+        fileManageService.uploadFiles(req, files, docData);
 
         return null;
     }
