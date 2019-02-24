@@ -7,39 +7,39 @@ class DocumentsContainer extends Component {
   state = {
     documents: [
       {
-        id: "",
-        author: "",
-        documentState: "",
-        documentType: "",
-        title: "",
-        description: "",
-        creationDate: "",
-        submissionDate: "",
-        confirmationDate: "",
-        rejectionDate: "",
-        reviewer: "",
-        rejectionReason: "",
-        path: ""
+        id: 1,
+        author: "username1",
+        documentState: "state",
+        documentType: "type",
+        title: "title",
+        description: "desc",
+        creationDate: "creationData",
+        submissionDate: "submissionDate",
+        confirmationDate: "confirmationDate",
+        rejectionDate: "rejectionDate",
+        reviewer: "reviewer",
+        rejectionReason: "rejectionReason",
+        path: "path"
       }
     ]
   };
 
-  componentDidMount() {
-    axios
-      .get("http://localhost:8081/api/docs")
-      .then(response => {
-        this.setState({ documents: response.data });
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }
+  //   componentDidMount() {
+  //     axios
+  //       .get("http://localhost:8081/api/docs")
+  //       .then(response => {
+  //         this.setState({ documents: response.data });
+  //       })
+  //       .catch(error => {
+  //         console.log(error);
+  //       });
+  //   }
   render() {
     var documentsArrayToRender = this.state.documents.map(oneDocumentObj => {
       return (
         <DocumentsComponent
           key={oneDocumentObj.id}
-          userDetails={oneDocumentObj}
+          documentDetails={oneDocumentObj}
         />
       );
     });
@@ -63,27 +63,27 @@ class DocumentsContainer extends Component {
               </div>
               <div className="col-2">
                 <p>
-                  <strong>Prisijungimo vardas</strong>
+                  <strong>Pavadinimas</strong>
                 </p>
               </div>{" "}
               <div className="col-2">
                 <p>
-                  <strong>Vardas</strong>
+                  <strong>Tipas</strong>
                 </p>
               </div>
               <div className="col-2">
                 <p>
-                  <strong>Pavardė</strong>
+                  <strong>Būsena</strong>
                 </p>
               </div>
               <div className="col-2">
                 <p>
-                  <strong>El. pašto adresas</strong>
+                  <strong>Aprašymas</strong>
                 </p>
               </div>
               <div className="col-2">
                 <p>
-                  <strong>Įdarbinimo data</strong>
+                  <strong>sth</strong>
                 </p>
               </div>
             </div>

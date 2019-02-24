@@ -3,28 +3,43 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 const DocumentsComponent = props => {
+  var {
+    id,
+    author,
+    documentState,
+    documentType,
+    title,
+    description,
+    creationDate,
+    submissionDate,
+    confirmationDate,
+    rejectionDate,
+    reviewer,
+    rejectionReason,
+    path
+  } = props.documentDetails;
   return (
     <div className="container pl-0 ml-0">
       <div className="row">
         <div className="col-2">
-          {"userId"}
+          {id}
           {/* <Link to="">Linkas</Link> */}
         </div>
 
         <div className="col-2">
-          <p>{"ername"}</p>
+          <p>{title}</p>
         </div>
         <div className="col-2">
-          <p>{"firstName"}</p>
+          <p>{documentType}</p>
         </div>
         <div className="col-2">
-          <p>{"lastName"}</p>
+          <p>{documentState}</p>
         </div>
         <div className="col-2">
-          <p>{"emailAddress"}</p>
+          <p>{description}</p>
         </div>
         <div className="col-2">
-          <p>{"hireDate"}</p>
+          <p>{"sth"}</p>
         </div>
       </div>
     </div>
