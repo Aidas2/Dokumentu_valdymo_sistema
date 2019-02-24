@@ -3,19 +3,17 @@ package lt.akademijait.bronza.services;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lt.akademijait.bronza.dto.document.DocumentCreateCommand;
 import lt.akademijait.bronza.entities.Document;
-import lt.akademijait.bronza.entities.DocumentType;
-import lt.akademijait.bronza.entities.User;
 import lt.akademijait.bronza.enums.DocumentState;
 import lt.akademijait.bronza.repositories.DocumentRepository;
 import lt.akademijait.bronza.repositories.DocumentTypeRepository;
 import lt.akademijait.bronza.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
@@ -37,7 +35,7 @@ public class FileManageService {
     private DocumentRepository documentRepository;
 
     @Transactional
-    public ResponseEntity uploadFiles(
+    public ResponseEntity<String> uploadFiles(
             MultipartFile[] files, String docData) {
         String username = null;
 
@@ -62,32 +60,7 @@ public class FileManageService {
             e.printStackTrace();
         }
 
-//        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ " + documentCreateCommand.getUsername());
-//        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ " + documentCreateCommand.getDescription());
-//        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ " + documentCreateCommand.getDocumentTypeTitle());
-//        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ " + documentCreateCommand.getTitle());
 
-
-//        Document newDocument = new Document();
-//        newDocument.setCreationDate(new Date());
-//
-//        User user = userRepository.findByUsername(documentCreateCommand.getUsername());
-//        newDocument.setAuthor(user);
-//
-//        DocumentType documentType = documentTypeRepository.findByTitle(documentCreateCommand.getDocumentTypeTitle());
-//        newDocument.setDocumentType(documentType);
-//
-//        newDocument.setTitle(documentCreateCommand.getTitle());
-//        newDocument.setDescription(documentCreateCommand.getDescription());
-//        documentRepository.save(newDocument);
-
-//    ObjectMapper objectMapper = new ObjectMapper();
-//    try {
-//        username = String.valueOf(objectMapper.readTree(docData).get("username").asText());
-//    } catch (IOException e) {
-//        e.printStackTrace();
-//    }
-//    String userName = "/user1-dir";
         long userID = userRepository.findByUsername(documentCreateCommand.getUsername()).getId();
         String documentPath = null;
         Document newDocument = new Document();
@@ -96,7 +69,6 @@ public class FileManageService {
         newDocument.setDocumentType(documentTypeRepository.findByTitle(documentCreateCommand.getDocumentTypeTitle()));
         newDocument.setTitle(documentCreateCommand.getTitle());
         newDocument.setDescription(documentCreateCommand.getDescription());
-        System.out.println("@@@@@@@@@@@@@@@@@@@ befor for loop ");
 
         for (int i = 0; i < files.length; i++) {
             File userDirectory = new File(currentAbsolutePath + fileSeparator + "uploaded-files" + fileSeparator
@@ -109,7 +81,7 @@ public class FileManageService {
             }
 
             try {
-                files[i].transferTo(fileToSave); //Transfer or Saving in local memory
+                files[i].transferTo(fileToSave);
             } catch (IllegalStateException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -122,7 +94,7 @@ public class FileManageService {
         documentRepository.save(newDocument);
 
 
-        return null;
+        return new ResponseEntity<String>("Files were uploaded and a new document was created", HttpStatus.CREATED);
     }
 
     public String getCurrentLocalDateTimeStamp() {

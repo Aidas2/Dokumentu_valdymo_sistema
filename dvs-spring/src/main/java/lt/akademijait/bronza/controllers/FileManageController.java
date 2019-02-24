@@ -100,7 +100,6 @@ public class FileManageController {
             @RequestParam(value = "file", required = false) MultipartFile[] files,
             @RequestParam(value = "docData") String docData)
             throws IOException {
-        System.out.println("*******$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-----------inside @Controller");
         fileManageService.uploadFiles(files, docData);
 
         return new ResponseEntity<String>("Files were uploaded", HttpStatus.CREATED);
