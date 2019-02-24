@@ -16,6 +16,7 @@ import CreateUserContainer from "./components/Forms/User/CreateUserContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import FileDownloadConatainer from "./components/FileDownload/FileDownloadContainer";
 import LandingPageContainer from "./components/LandingPageContainer";
+import DocumentsContainer from "./components/Documents/DocumentsContainer";
 
 ReactDOM.render(
   <BrowserRouter>
@@ -39,6 +40,7 @@ ReactDOM.render(
         />{" "}
         <Route exact path="/admin/newuser" component={CreateUserContainer} />
         <Route exact path="/admin/users" component={UsersContainer} />
+        <Route exact path="/admin/docs" component={DocumentsContainer} />
         <Route
           exact
           path="/admin/usergroups"
