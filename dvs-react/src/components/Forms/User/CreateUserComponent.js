@@ -95,7 +95,10 @@ const CreateUserComponent = props => {
           </div>
         </div>
         {/* <div className="form-group" /> */}
-        <button onClick={props.onSubmit} className="btn btn-info mt-2">
+        <button
+          onClick={props.onSubmit}
+          className="btn btn-outline-success m-2"
+        >
           Kurti
         </button>
       </div>

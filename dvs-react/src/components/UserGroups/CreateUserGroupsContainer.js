@@ -13,7 +13,10 @@ class CreateUserGroupsContainer extends Component {
         <h6 class="display-6">Pirma grupė</h6>
         <h6 class="display-6">Antra grupė</h6>
 
-        <Link to="/admin/usergroups/new" className="btn btn-warning m-2">
+        <Link
+          to="/admin/usergroups/new"
+          className="btn btn-outline-success m-2"
+        >
           Kurti naują grupę
         </Link>
       </div>

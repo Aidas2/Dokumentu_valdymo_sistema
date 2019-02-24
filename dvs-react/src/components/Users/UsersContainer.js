@@ -35,7 +35,7 @@ class UsersContainer extends Component {
       <div>
         <div className="container-fluid m-2 ">
           <h3 className="display-6">Vartotojai</h3>
-          <Link to={"/admin/newuser/"} className="btn btn-warning mb-2">
+          <Link to={"/admin/newuser/"} className="btn btn-outline-success m-2">
             Pridėti naują vartotoją
           </Link>
           <div className="container pl-0 ml-0">

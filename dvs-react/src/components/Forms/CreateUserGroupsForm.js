@@ -62,7 +62,7 @@ class CreateUserGroupsForm extends Component {
           </select>
         </div>
 
-        <button type="submit" className="btn btn-info">
+        <button type="submit" className="btn btn-outline-success m-2">
           Kurti naują grupę
         </button>
       </div>
