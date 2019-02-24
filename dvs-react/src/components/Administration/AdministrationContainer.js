@@ -11,16 +11,17 @@ class AdministrationContainer extends Component {
   render() {
     return (
       <div className="container-fluid ">
-        <h6 className="display-6 normal-padding">
-          Administratoriaus nustatymai
-        </h6>
+        <h6 className="display-6 normal-padding">Administratoriaus rolė</h6>
 
-        <h6 className="display-6 normal-padding gray-collor">
+        <h5 className="display-6 normal-padding gray-collor ">
           <Link to={"/"}>
-            <img src={logo} width="30" height="15" />
+            <img src={logo} width="20" height="10" />
           </Link>
-          / Administratoriaus rolė
-        </h6>
+          &ensp;/ &ensp;
+          <Link to={"/admin"} className="explorer">
+            Administratoriaus rolė
+          </Link>
+        </h5>
 
         <table class="table table-striped">
           <tr>
@@ -40,7 +41,7 @@ class AdministrationContainer extends Component {
 
               <td scope="row">
                 <Link
-                  to="/admin/doctypes"
+                  to="/admin/usergroups"
                   className="btn btn-outline-success btn-sm"
                 >
                   Kurti
@@ -74,7 +75,7 @@ class AdministrationContainer extends Component {
               </td>
               <td scope="row">
                 <Link
-                  to="/admin/doctypes"
+                  to="/admin/users"
                   className="btn btn-outline-success btn-sm "
                 >
                   Kurti

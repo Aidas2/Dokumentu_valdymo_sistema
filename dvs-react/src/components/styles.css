@@ -32,6 +32,15 @@ table {
   padding-top: 5px;
 }
 
+h5,
+.explorer {
+  font-family: Jura;
+  text-transform: uppercase;
+  color: #4d4d33;
+  padding-top: 5px;
+  font-size: 9px;
+}
+
 html {
   background-color: #dcdcdc;
   text-transform: uppercase;
@@ -73,7 +82,7 @@ body {
 }
 
 .table tr {
-  text-align: center;
+  text-align: left;
   vertical-align: middle;
 }
 

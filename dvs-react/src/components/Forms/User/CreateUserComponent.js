@@ -1,10 +1,30 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import logo from "../../../images/home.png";
+import { Link } from "react-router-dom";
 
 const CreateUserComponent = props => {
   return (
     <div>
       <div className="container-fluid m-2">
+        <h6 className="display-6 normal-padding">vartotojai</h6>
+        <h5 className="display-6 normal-padding gray-collor ">
+          <Link to={"/"}>
+            <img src={logo} width="20" height="10" />
+          </Link>
+          &ensp;/ &ensp;
+          <Link to={"/admin"} className="explorer">
+            Administratoriaus rolė
+          </Link>
+          &ensp;/ &ensp;
+          <Link to={"/admin/users"} className="explorer">
+            Vartotojai
+          </Link>
+          &ensp;/ &ensp;
+          <Link to={"/admin/newuser"} className="explorer">
+            Naujo vartotojo kūrimas
+          </Link>
+        </h5>
         <h3 className="display-6 ">Naujo vartotojo kūrimas</h3>
         {/* <h5>Dokumento tipo pavadinimas</h5> */}
         <div className="row mt-2 mb-2 ">

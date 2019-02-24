@@ -14,16 +14,19 @@ import DocumentTypesContainer from "./components/DocumentTypes/DocumentTypesCont
 import CreateDocumentTypeConatainer from "./components/Forms/DocumentType/CreateDocumentTypeContainer";
 import CreateUserContainer from "./components/Forms/User/CreateUserContainer";
 import UsersContainer from "./components/Users/UsersContainer";
+import FileDownloadConatainer from "./components/FileDownload/FileDownloadContainer";
+import LandingPageContainer from "./components/LandingPageContainer";
 
 ReactDOM.render(
   <BrowserRouter>
     <App>
       <Switch>
-        <Route exact path="/" component={LandingPage} />
+        <Route exact path="/" component={LandingPageContainer} />
         <Route exact path="/usergroups" component={UserGroupsContainer} />
         <Route exact path="/usergroups/:id" />
         <Route exact path="/admin" component={AdministrationContainer} />
         <Route exact path="/upload" component={FileUploadContainer} />
+        <Route exact path="/download" component={FileDownloadConatainer} />
         <Route
           exact
           path="/admin/newdoctype"
