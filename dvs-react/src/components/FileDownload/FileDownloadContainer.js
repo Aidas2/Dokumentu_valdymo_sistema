@@ -65,7 +65,7 @@ class FileDownloadConatainer extends Component {
   downloadRandomImage = () => {
     console.log("download method happened");
     // axios
-    //   .get("http://localhost:8081/files/java.txt")
+    //   .get("http://localhost:8081/files/1-2019-02-24-19-27-31-978-app.js")
     //   .then(response => {
     //     var filename = response.headers
     //       .get("Content-Disposition")
@@ -81,7 +81,7 @@ class FileDownloadConatainer extends Component {
 
     //THIS METHOD WORKS
     axios({
-      url: "http://localhost:8081/files/index.html",
+      url: "http://localhost:8081/files/1-2019-02-24-19-27-31-978-app.js",
       method: "GET",
       responseType: "blob" // important
     })

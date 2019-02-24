@@ -41,7 +41,7 @@ public class FileManageController {
     @GetMapping(value = "/files/{fileName:.+}")
     @ResponseBody
     public ResponseEntity serveFile(@PathVariable String fileName) throws UnsupportedEncodingException {
-        Resource file = applicationContext.getResource("file:/home/paulius/Dokumentu_valdymo_sistema/dvs-spring/uploaded-files/user1-dir/"
+        Resource file = applicationContext.getResource("file:/home/paulius/Dokumentu_valdymo_sistema/dvs-spring/uploaded-files/username1/"
                 + fileName);
 
 //        String fileNameEncoded = URLEncoder.encode(file.getFilename(), "UTF-8");
@@ -59,7 +59,7 @@ public class FileManageController {
 
             headers.add("Access-Control-Expose-Headers", HttpHeaders.CONTENT_DISPOSITION + ","
                     + HttpHeaders.CONTENT_LENGTH);
-            headers.add(HttpHeaders.CONTENT_TYPE, "application/octetstream; charset=UTF-8");
+            headers.add(HttpHeaders.CONTENT_TYPE, "application/octet-stream; charset=UTF-8");
 //            headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
 
             return ResponseEntity.ok().headers(headers).body(file);
