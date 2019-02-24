@@ -36,8 +36,8 @@ public class FileManageService {
     private DocumentRepository documentRepository;
 
     @Transactional
-    public ResponseEntity uploadFiles(HttpServletRequest req,
-                                      MultipartFile file, String docData) {
+    public ResponseEntity uploadFiles(
+            MultipartFile[] files, String docData) {
         String username = null;
 
         //this is used to get the current absolute path. Later the temp file is deleted
@@ -88,39 +88,36 @@ public class FileManageService {
 //    }
 //    String userName = "/user1-dir";
         long userID = userRepository.findByUsername(documentCreateCommand.getUsername()).getId();
+        String documentPath = null;
         Document newDocument = new Document();
         newDocument.setCreationDate(new Date());
         newDocument.setAuthor(userRepository.findByUsername(documentCreateCommand.getUsername()));
         newDocument.setDocumentType(documentTypeRepository.findByTitle(documentCreateCommand.getDocumentTypeTitle()));
         newDocument.setTitle(documentCreateCommand.getTitle());
         newDocument.setDescription(documentCreateCommand.getDescription());
-        documentRepository.save(newDocument);
+        System.out.println("@@@@@@@@@@@@@@@@@@@ befor for loop ");
 
-        File userDirectory = new File(currentAbsolutePath + fileSeparator + "uploaded-files" + fileSeparator
-                + documentCreateCommand.getUsername());
-        userDirectory.mkdirs();
-        File fileToSave = new File(userDirectory, userID + "-" + getCurrentLocalDateTimeStamp() + "-"
-                + file.getOriginalFilename());
-//            if(i==0){
-//                newDocument.setPath(fileToSave.getAbsolutePath());
-//
-//            }
-//            fileToSave.mkdirs();
+        for (int i = 0; i < files.length; i++) {
+            File userDirectory = new File(currentAbsolutePath + fileSeparator + "uploaded-files" + fileSeparator
+                    + documentCreateCommand.getUsername());
+            userDirectory.mkdirs();
+            File fileToSave = new File(userDirectory, userID + "-" + getCurrentLocalDateTimeStamp() + "-"
+                    + files[i].getOriginalFilename());
+            if (i == 0) {
+                documentPath = fileToSave.getAbsolutePath();
+            }
 
-        try {
-            file.transferTo(fileToSave); //Transfer or Saving in local memory
-        } catch (IllegalStateException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+            try {
+                files[i].transferTo(fileToSave); //Transfer or Saving in local memory
+            } catch (IllegalStateException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
         }
-
-
-
-
-
-
-
+        newDocument.setPath(documentPath);
+        documentRepository.save(newDocument);
 
 
         return null;

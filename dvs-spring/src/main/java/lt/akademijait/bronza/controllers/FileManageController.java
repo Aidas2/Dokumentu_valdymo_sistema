@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -95,14 +96,14 @@ public class FileManageController {
 
     @RequestMapping(value = "/files", method = RequestMethod.POST,
             consumes = "multipart/form-data", produces = "application/json")
-    public ResponseEntity mutipleFileUpload(HttpServletRequest req,
-                                            @RequestParam(value = "file", required = false) MultipartFile file,
-                                            @RequestParam(value = "docData") String docData)
+    public ResponseEntity<String> mutipleFileUpload(
+            @RequestParam(value = "file", required = false) MultipartFile[] files,
+            @RequestParam(value = "docData") String docData)
             throws IOException {
-//        FileManageService fileManageService = new FileManageService();
-        fileManageService.uploadFiles(req, file, docData);
+        System.out.println("*******$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-----------inside @Controller");
+        fileManageService.uploadFiles(files, docData);
 
-        return null;
+        return new ResponseEntity<String>("Files were uploaded", HttpStatus.CREATED);
     }
 
     public String getCurrentLocalDateTimeStamp() {
