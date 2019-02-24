@@ -5,6 +5,7 @@ import lt.akademijait.bronza.dto.document.DocumentCreateCommand;
 import lt.akademijait.bronza.entities.Document;
 import lt.akademijait.bronza.entities.DocumentType;
 import lt.akademijait.bronza.entities.User;
+import lt.akademijait.bronza.enums.DocumentState;
 import lt.akademijait.bronza.repositories.DocumentRepository;
 import lt.akademijait.bronza.repositories.DocumentTypeRepository;
 import lt.akademijait.bronza.repositories.UserRepository;
@@ -116,6 +117,7 @@ public class FileManageService {
             }
 
         }
+        newDocument.setDocumentState(DocumentState.CREATED);
         newDocument.setPath(documentPath);
         documentRepository.save(newDocument);
 
