@@ -41,9 +41,9 @@ public class DocumentService {
         return documentRepository.findAll()
                 .stream()
                 .map((document) -> new DocumentGetCommand(
-                        document.getAuthor(),
+                        document.getAuthor().getUsername(),
                         document.getDocumentState(),
-                        document.getDocumentType(),
+                        document.getDocumentType().getTitle(),
                         document.getTitle(),
                         document.getDescription(),
                         document.getCreationDate(),
@@ -61,9 +61,9 @@ public class DocumentService {
     public DocumentGetCommand getDocumentById(Long id) {
         Document document = documentRepository.findById(id).orElse(null);
         return new DocumentGetCommand(
-                document.getAuthor(),
+                document.getAuthor().getUsername(),
                 document.getDocumentState(),
-                document.getDocumentType(),
+                document.getDocumentType().getTitle(),
                 document.getTitle(),
                 document.getDescription(),
                 document.getCreationDate(),
@@ -83,9 +83,10 @@ public class DocumentService {
                 .stream()
                 .filter(document -> !document.getDocumentState().equals(DocumentState.CREATED))
                 .map((document) -> new DocumentGetCommand(
-                        document.getAuthor(),
+                        //document.getAuthor(),
+                        document.getAuthor().getUsername(),
                         document.getDocumentState(),
-                        document.getDocumentType(),
+                        document.getDocumentType().getTitle(),
                         document.getTitle(),
                         document.getDescription(),
                         document.getCreationDate(),
@@ -105,9 +106,9 @@ public class DocumentService {
                 .stream()
                 .filter(document -> document.getDocumentState().equals(DocumentState.SUBMITTED))
                 .map((document) -> new DocumentGetCommand(
-                        document.getAuthor(),
+                        document.getAuthor().getUsername(),
                         document.getDocumentState(),
-                        document.getDocumentType(),
+                        document.getDocumentType().getTitle(),
                         document.getTitle(),
                         document.getDescription(),
                         document.getCreationDate(),
@@ -127,9 +128,9 @@ public class DocumentService {
                 .stream()
                 .filter(document -> document.getDocumentState().equals(documentState))
                 .map((document) -> new DocumentGetCommand(
-                        document.getAuthor(),
+                        document.getAuthor().getUsername(),
                         document.getDocumentState(),
-                        document.getDocumentType(),
+                        document.getDocumentType().getTitle(),
                         document.getTitle(),
                         document.getDescription(),
                         document.getCreationDate(),
@@ -149,9 +150,9 @@ public class DocumentService {
                 .stream()
                 .filter(document -> document.getDocumentType().equals(documentType))
                 .map((document) -> new DocumentGetCommand(
-                        document.getAuthor(),
+                        document.getAuthor().getUsername(),
                         document.getDocumentState(),
-                        document.getDocumentType(),
+                        document.getDocumentType().getTitle(),
                         document.getTitle(),
                         document.getDescription(),
                         document.getCreationDate(),
@@ -287,7 +288,7 @@ public class DocumentService {
 
 /*
     //SET DOCUMENT STATE. Version_02 (by J.C.) =========================================================================
-    //to make working, change 'private DocumentState documentState' --> 'private String documentState'
+    //to make working, change 'private DocumentState documentState' --> 'private String documentState' ((DocumentSetStateCommand.java)
     @Transactional
     public void setDocumentState2 ( DocumentSetStateCommand documentSetStateCommand) {
 
