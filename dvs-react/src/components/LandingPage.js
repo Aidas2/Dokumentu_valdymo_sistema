@@ -7,7 +7,7 @@ import main_icon from "../images/main_icon.png";
 
 const LandingPage = props => {
   return (
-    <div className="container-fluid main-container ">
+    <div className="container-fluid main-container  ">
       <div class="row ">
         <div class=" col-md-offset-1 col-md-6 content col-lg-6 ">
           <div>

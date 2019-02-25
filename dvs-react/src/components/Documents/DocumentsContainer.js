@@ -3,6 +3,8 @@ import DocumentsComponent from "./DocumentsComponent";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
+import logo from "../../images/home.png";
+
 class DocumentsContainer extends Component {
   state = {
     documents: [
@@ -50,8 +52,19 @@ class DocumentsContainer extends Component {
     return (
       <div>
         <div className="container-fluid m-2 ">
-          <h3 className="display-6">Dokumentai</h3>
-          <Link to={"/upload"} className="btn btn-warning mb-2">
+          <h6 className="display-6 normal-padding">Dokumentai</h6>
+
+          <h5 className="display-6 normal-padding gray-collor ">
+            <Link to={"/"}>
+              <img src={logo} width="20" height="10" />
+            </Link>
+            &ensp;/ &ensp;
+            <Link to={"/docs"} className="explorer">
+              Dokumentai
+            </Link>
+          </h5>
+
+          <Link to={"/upload"} className="btn btn-outline-success m-2">
             Įketi naują dokumentą
           </Link>
           <div className="container pl-0 ml-0">

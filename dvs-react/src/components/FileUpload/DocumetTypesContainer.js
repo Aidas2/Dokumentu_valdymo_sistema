@@ -34,7 +34,7 @@ class DocumentTypesContainer extends Component {
     return (
       <select
         onChange={this.props.onDocumentTypeChange}
-        className="form-control col-2 m-2"
+        className="form-control form-control-sm col-6 italic-style"
         id="documentTypeSelect"
       >
         {docTypesArrayToRender}
