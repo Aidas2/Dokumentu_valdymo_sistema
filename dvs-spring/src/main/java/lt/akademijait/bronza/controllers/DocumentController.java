@@ -25,7 +25,7 @@ public class DocumentController {
     @Autowired
     private DocumentService documentService;
 
-    //READ =============================================================================================================
+    //READ ALL =========================================================================================================
     @RequestMapping(method = RequestMethod.GET)
     @ApiOperation(value = "Get all documents", notes = "Returns all documents")
     @ResponseStatus(HttpStatus.ACCEPTED)
@@ -70,7 +70,7 @@ public class DocumentController {
         return documentService.getAllDocumentsByDocumentState(documentState);
     }
 
-    //GET All DOCUMENTS OF SPECIFIC DOCUMENT_TYPE ======================================================================
+    //READ All DOCUMENTS OF SPECIFIC DOCUMENT_TYPE =====================================================================
     @RequestMapping(value = "/specific_document_type", method = RequestMethod.GET)
     @ApiOperation(value = "Get all document of specified type", notes = "Returns all document of specified type")
     @ResponseStatus(HttpStatus.ACCEPTED)
@@ -80,6 +80,18 @@ public class DocumentController {
     {
         return documentService.getAllDocumentsByDocumentType(documentType);
     }
+
+    //READ All DOCUMENTS OF SPECIFIC AUTHOR_ID =========================================================================
+    @RequestMapping(value = "/{author_id}/docs", method = RequestMethod.GET)
+    @ApiOperation(value = "Get all document of specified author id", notes = "Returns all document of specified author id")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public List<DocumentGetCommand> getAllDocumentsByAuthorId(
+            @ApiParam(value = "Author ID", required = true)
+            @PathVariable Long authorId)
+    {
+        return documentService.getAllDocumentsByAuthorId(authorId);
+    }
+
 
     //CREATE ===========================================================================================================
     @RequestMapping(method = RequestMethod.POST)

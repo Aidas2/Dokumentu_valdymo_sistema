@@ -27,7 +27,7 @@ public class Document {
     private List<String> additionalFilePaths = new ArrayList<>();
 
     //@OneToMany
-    //private List<Attachment> attachments;
+    //private Set<Attachment> attachments;
 
     //@NotNull //if uncommented doesn't let to create Document with User==null
     @ManyToOne
