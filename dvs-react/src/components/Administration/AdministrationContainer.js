@@ -36,6 +36,22 @@ class AdministrationContainer extends Component {
                 <h6>1</h6>
               </td>
               <td scope="row">
+                <h6>Vartotojai</h6>
+              </td>
+              <td scope="row">
+                <Link
+                  to="/admin/users"
+                  className="btn btn-outline-success btn-sm "
+                >
+                  Kurti
+                </Link>
+              </td>
+            </tr>
+            <tr>
+              <td scope="row">
+                <h6>2</h6>
+              </td>
+              <td scope="row">
                 <h6>Vartotojų grupės</h6>
               </td>
 
@@ -48,10 +64,25 @@ class AdministrationContainer extends Component {
                 </Link>
               </td>
             </tr>
-
             <tr>
               <td scope="row">
-                <h6>2</h6>
+                <h6>3</h6>
+              </td>
+              <td scope="row">
+                <h6>Dokumentai</h6>
+              </td>
+              <td scope="row">
+                <Link
+                  to="/admin/docs"
+                  className="btn btn-outline-success btn-sm"
+                >
+                  Kurti
+                </Link>
+              </td>
+            </tr>
+            <tr>
+              <td scope="row">
+                <h6>4</h6>
               </td>
               <td scope="row">
                 <h6>Dokumentų tipai</h6>
@@ -60,23 +91,6 @@ class AdministrationContainer extends Component {
                 <Link
                   to="/admin/doctypes"
                   className="btn btn-outline-success btn-sm"
-                >
-                  Kurti
-                </Link>
-              </td>
-            </tr>
-
-            <tr>
-              <td scope="row">
-                <h6>3</h6>
-              </td>
-              <td scope="row">
-                <h6>Vartotojai</h6>
-              </td>
-              <td scope="row">
-                <Link
-                  to="/admin/users"
-                  className="btn btn-outline-success btn-sm "
                 >
                   Kurti
                 </Link>
