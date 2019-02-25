@@ -82,7 +82,7 @@ public class DocumentController {
     }
 
     //READ All DOCUMENTS OF SPECIFIC AUTHOR_ID =========================================================================
-    @RequestMapping(value = "/{author_id}/docs", method = RequestMethod.GET)
+    @RequestMapping(value = "/{authorId}/docs", method = RequestMethod.GET)
     @ApiOperation(value = "Get all document of specified author id", notes = "Returns all document of specified author id")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public List<DocumentGetCommand> getAllDocumentsByAuthorId(
