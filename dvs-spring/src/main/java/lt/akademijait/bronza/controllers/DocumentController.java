@@ -65,8 +65,7 @@ public class DocumentController {
     @ResponseStatus(HttpStatus.ACCEPTED)
     public List<DocumentGetCommand> getAllDocumentsByDocumentState(
             @ApiParam(value = "Document state", required = true)
-            @PathVariable DocumentState documentState)
-    {
+            @PathVariable DocumentState documentState) {
         return documentService.getAllDocumentsByDocumentState(documentState);
     }
 
@@ -76,8 +75,7 @@ public class DocumentController {
     @ResponseStatus(HttpStatus.ACCEPTED)
     public List<DocumentGetCommand> getAllDocumentsByDocumentType(
             @ApiParam(value = "Document type", required = true)
-            @PathVariable DocumentType documentType)
-    {
+            @PathVariable DocumentType documentType) {
         return documentService.getAllDocumentsByDocumentType(documentType);
     }
 
@@ -89,8 +87,7 @@ public class DocumentController {
     @ResponseStatus(HttpStatus.ACCEPTED)
     public List<DocumentGetCommand> getAllDocumentsByAuthorId(
             @ApiParam(value = "Author ID", required = true)
-            @PathVariable Long authorId)
-    {
+            @PathVariable Long authorId) {
         return documentService.getAllDocumentsByAuthorId(authorId);
     }
 
@@ -99,7 +96,7 @@ public class DocumentController {
     @RequestMapping(method = RequestMethod.POST)
     @ApiOperation(value = "Add new document", notes = "Adds new document")
     @ResponseStatus(HttpStatus.CREATED)
-    public void createDocument (
+    public void createDocument(
             @ApiParam(value = "Document data", required = true)
             @RequestBody final DocumentCreateCommand documentCreateCommand) {
         documentService.createDocument(documentCreateCommand);
@@ -145,7 +142,7 @@ public class DocumentController {
     @RequestMapping(value = "/{id}/setState", method = RequestMethod.PUT)
     @ApiOperation(value = "Set document state", notes = "Set document state by id")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public void setDocumentStateById (
+    public void setDocumentStateById(
             @ApiParam(value = "Document id", required = true)
             @RequestBody final DocumentSetStateCommand documentSetStateCommand,
             @PathVariable Long id,
