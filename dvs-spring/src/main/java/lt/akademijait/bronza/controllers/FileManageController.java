@@ -1,6 +1,7 @@
 package lt.akademijait.bronza.controllers;
 
 import lt.akademijait.bronza.dto.document.DocumentCreateCommand;
+import lt.akademijait.bronza.repositories.DocumentRepository;
 import lt.akademijait.bronza.services.FileManageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -37,12 +38,13 @@ public class FileManageController {
     private ApplicationContext applicationContext;
     @Autowired
     private FileManageService fileManageService;
+    @Autowired
+    DocumentRepository documentRepository;
 
-    @GetMapping(value = "/files/{fileName:.+}")
+    @GetMapping(value = "/files/download/{documentId:.+}")
     @ResponseBody
-    public ResponseEntity serveFile(@PathVariable String fileName) throws UnsupportedEncodingException {
-        Resource file = applicationContext.getResource("file:/home/paulius/Dokumentu_valdymo_sistema/dvs-spring/uploaded-files/username1/"
-                + fileName);
+    public ResponseEntity serveFile(@PathVariable Long documentId) throws UnsupportedEncodingException {
+        Resource file = applicationContext.getResource("file:" + documentRepository.findById(documentId).orElse(null).getPath());
 
 //        String fileNameEncoded = URLEncoder.encode(file.getFilename(), "UTF-8");
 //        fileNameEncoded = URLDecoder.decode(fileName, "ISO8859_1");
