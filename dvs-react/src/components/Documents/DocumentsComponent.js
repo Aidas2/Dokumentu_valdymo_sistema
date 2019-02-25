@@ -39,10 +39,18 @@ const DocumentsComponent = props => {
         </div>
 
         <div className="col-1">
-          <button className="btn btn-secondary">Peržiūrėti</button>
+          <button
+            onClick={props.onDocumentDownload}
+            className="btn btn-secondary"
+          >
+            Peržiūrėti
+          </button>
         </div>
         <div className="col-1">
-          <button className="btn btn-dark"> Atsisiųsti</button>
+          <button onClick={props.onDocumentDownload} className="btn btn-dark">
+            {" "}
+            Atsisiųsti
+          </button>
         </div>
       </div>
     </div>

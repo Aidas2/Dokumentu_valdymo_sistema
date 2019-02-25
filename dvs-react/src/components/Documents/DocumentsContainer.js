@@ -34,12 +34,16 @@ class DocumentsContainer extends Component {
         console.log(error);
       });
   }
+
+  handleDocumentDownload = () => {};
+  handleDocumentView = () => {};
   render() {
     var documentsArrayToRender = this.state.documents.map(oneDocumentObj => {
       return (
         <DocumentsComponent
           key={oneDocumentObj.id}
           documentDetails={oneDocumentObj}
+          onClick={this.handleDocumentDownload}
         />
       );
     });
