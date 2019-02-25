@@ -41,6 +41,7 @@ public class DocumentService {
         return documentRepository.findAll()
                 .stream()
                 .map((document) -> new DocumentGetCommand(
+                        document.getId(),
                         document.getAuthor().getUsername(),
                         document.getDocumentState(),
                         document.getDocumentType().getTitle(),
@@ -61,6 +62,7 @@ public class DocumentService {
     public DocumentGetCommand getDocumentById(Long id) {
         Document document = documentRepository.findById(id).orElse(null);
         return new DocumentGetCommand(
+                document.getId(),
                 document.getAuthor().getUsername(),
                 document.getDocumentState(),
                 document.getDocumentType().getTitle(),
@@ -83,6 +85,7 @@ public class DocumentService {
                 .stream()
                 .filter(document -> !document.getDocumentState().equals(DocumentState.CREATED))
                 .map((document) -> new DocumentGetCommand(
+                        document.getId(),
                         //document.getAuthor(),
                         document.getAuthor().getUsername(),
                         document.getDocumentState(),
@@ -106,6 +109,7 @@ public class DocumentService {
                 .stream()
                 .filter(document -> document.getDocumentState().equals(DocumentState.SUBMITTED))
                 .map((document) -> new DocumentGetCommand(
+                        document.getId(),
                         document.getAuthor().getUsername(),
                         document.getDocumentState(),
                         document.getDocumentType().getTitle(),
@@ -128,6 +132,7 @@ public class DocumentService {
                 .stream()
                 .filter(document -> document.getDocumentState().equals(documentState))
                 .map((document) -> new DocumentGetCommand(
+                        document.getId(),
                         document.getAuthor().getUsername(),
                         document.getDocumentState(),
                         document.getDocumentType().getTitle(),
@@ -150,6 +155,7 @@ public class DocumentService {
                 .stream()
                 .filter(document -> document.getDocumentType().equals(documentType))
                 .map((document) -> new DocumentGetCommand(
+                        document.getId(),
                         document.getAuthor().getUsername(),
                         document.getDocumentState(),
                         document.getDocumentType().getTitle(),
@@ -177,6 +183,7 @@ public class DocumentService {
                 .stream()
                 .filter(document -> document.getAuthor().getId().equals(authorId))
                 .map((document) -> new DocumentGetCommand(
+                        document.getId(),
                         document.getAuthor().getUsername(),
                         document.getDocumentState(),
                         document.getDocumentType().getTitle(),
