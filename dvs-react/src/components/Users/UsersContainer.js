@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import UsersComponent from "./UsersComponent";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import logo from "../../images/home.png";
 
 class UsersContainer extends Component {
   state = {
@@ -34,8 +35,24 @@ class UsersContainer extends Component {
     return (
       <div>
         <div className="container-fluid m-2 ">
-          <h3 className="display-6">Vartotojai</h3>
-          <Link to={"/admin/newuser/"} className="btn btn-warning mb-2">
+          <h6 className="display-6 normal-padding">vartotojai</h6>
+
+          <h5 className="display-6 normal-padding gray-collor ">
+            <Link to={"/"}>
+              <img src={logo} width="20" height="10" />
+            </Link>
+            &ensp;/ &ensp;
+            <Link to={"/admin"} className="explorer">
+              Administratoriaus rolė
+            </Link>
+            &ensp;/ &ensp;
+            <Link to={"/admin/users"} className="explorer">
+              Vartotojai
+            </Link>
+          </h5>
+
+          {/*    <h3 className="display-6">Vartotojai</h3>  */}
+          <Link to={"/admin/newuser/"} className="btn btn-outline-success m-2">
             Pridėti naują vartotoją
           </Link>
           <div className="container pl-0 ml-0">

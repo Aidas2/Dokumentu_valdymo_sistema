@@ -1,7 +1,6 @@
 package lt.akademijait.bronza.dto.document;
 
 
-import lt.akademijait.bronza.entities.DocumentType;
 import lt.akademijait.bronza.entities.User;
 import lt.akademijait.bronza.enums.DocumentState;
 
@@ -13,9 +12,9 @@ public class DocumentGetCommand {
     //private String prefix;
     //private List<String> additionalFilePaths = new ArrayList<>();
     //private List<Attachment> attachments;
-    private User author; // private UserGetCommand author;
+    private String authorUsername;  //private User author; // private UserGetCommand author;\
     private DocumentState documentState;
-    private DocumentType documentType; //private String documentTypeTitle;
+    private String documentTypeTitle; //    private DocumentType documentType;
     private String title;
     private String description;
     private Date creationDate;
@@ -29,10 +28,10 @@ public class DocumentGetCommand {
     public DocumentGetCommand() {
     }
 
-    public DocumentGetCommand(User author, DocumentState documentState, DocumentType documentType, String title, String description, Date creationDate, Date submissionDate, Date confirmationDate, Date rejectionDate, User reviewer, String rejectionReason, String path) {
-        this.author = author;
+    public DocumentGetCommand(String authorUsername, DocumentState documentState, String documentTypeTitle, String title, String description, Date creationDate, Date submissionDate, Date confirmationDate, Date rejectionDate, User reviewer, String rejectionReason, String path) {
+        this.authorUsername = authorUsername;
         this.documentState = documentState;
-        this.documentType = documentType;
+        this.documentTypeTitle = documentTypeTitle;
         this.title = title;
         this.description = description;
         this.creationDate = creationDate;
@@ -52,12 +51,12 @@ public class DocumentGetCommand {
         this.id = id;
     }
 
-    public User getAuthor() {
-        return author;
+    public String getAuthorUsername() {
+        return authorUsername;
     }
 
-    public void setAuthor(User author) {
-        this.author = author;
+    public void setAuthorUsername(String authorUsername) {
+        this.authorUsername = authorUsername;
     }
 
     public DocumentState getDocumentState() {
@@ -68,12 +67,12 @@ public class DocumentGetCommand {
         this.documentState = documentState;
     }
 
-    public DocumentType getDocumentType() {
-        return documentType;
+    public String getDocumentTypeTitle() {
+        return documentTypeTitle;
     }
 
-    public void setDocumentType(DocumentType documentType) {
-        this.documentType = documentType;
+    public void setDocumentTypeTitle(String documentTypeTitle) {
+        this.documentTypeTitle = documentTypeTitle;
     }
 
     public String getTitle() {

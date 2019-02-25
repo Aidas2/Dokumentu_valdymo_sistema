@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import logo from "../../images/home.png";
 
 class CreateUserGroupsForm extends Component {
   constructor() {
@@ -39,7 +40,27 @@ class CreateUserGroupsForm extends Component {
   render() {
     return (
       <div className="container-fluid ">
-        <h3 class="display-6">Naujos grupės kūrimas</h3>
+        <h6 className="display-6 normal-padding">Naujos grupės kūrimas</h6>
+
+        <h5 className="display-6 normal-padding gray-collor ">
+          <Link to={"/"}>
+            <img src={logo} width="20" height="10" />
+          </Link>
+          &ensp;/ &ensp;
+          <Link to={"/admin"} className="explorer">
+            Administratoriaus rolė
+          </Link>
+          &ensp;/ &ensp;
+          <Link to={"/admin/usergroups"} className="explorer">
+            Grupių sąrašas
+          </Link>
+          &ensp;/ &ensp;
+          <Link to={"/admin/usergroups/new"} className="explorer">
+            Naujos grupės kūrimas
+          </Link>
+        </h5>
+
+        {/*  <h3 class="display-6">Naujos grupės kūrimas</h3>  */}
         <input
           className="form-control"
           type="text"
@@ -62,7 +83,7 @@ class CreateUserGroupsForm extends Component {
           </select>
         </div>
 
-        <button type="submit" className="btn btn-info">
+        <button type="submit" className="btn btn-outline-success m-2">
           Kurti naują grupę
         </button>
       </div>

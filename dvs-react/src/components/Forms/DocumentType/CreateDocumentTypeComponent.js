@@ -16,7 +16,10 @@ const CreateDocumentTypeComponent = props => {
 
         {/* <div className="form-group" /> */}
 
-        <button onClick={props.onSubmit} className="btn btn-info">
+        <button
+          onClick={props.onSubmit}
+          className="btn btn-outline-success m-2"
+        >
           Kurti
         </button>
       </div>
