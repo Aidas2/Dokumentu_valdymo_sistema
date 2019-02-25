@@ -13,8 +13,11 @@ public class DocumentGetCommand {
     //private List<String> additionalFilePaths = new ArrayList<>();
     //private List<Attachment> attachments;
     private String authorUsername;  //private User author; // private UserGetCommand author;\
+
+    //private String documentStateInLithuanian;
     private DocumentState documentState;
-    private String documentTypeTitle; //    private DocumentType documentType;
+
+    private String documentTypeTitleInLithuanian; //private DocumentType documentType;
     private String title;
     private String description;
     private Date creationDate;
@@ -28,10 +31,31 @@ public class DocumentGetCommand {
     public DocumentGetCommand() {
     }
 
-    public DocumentGetCommand(String authorUsername, DocumentState documentState, String documentTypeTitle, String title, String description, Date creationDate, Date submissionDate, Date confirmationDate, Date rejectionDate, User reviewer, String rejectionReason, String path) {
+/*
+// constructior with double Document_State
+    public DocumentGetCommand(Long id, String authorUsername, String documentStateInLithuanian, DocumentState documentState, String documentTypeTitleInLithuanian, String title, String description, Date creationDate, Date submissionDate, Date confirmationDate, Date rejectionDate, User reviewer, String rejectionReason, String path) {
+        this.id = id;
+        this.authorUsername = authorUsername;
+        this.documentStateInLithuanian = documentStateInLithuanian;
+        this.documentState = documentState;
+        this.documentTypeTitleInLithuanian = documentTypeTitleInLithuanian;
+        this.title = title;
+        this.description = description;
+        this.creationDate = creationDate;
+        this.submissionDate = submissionDate;
+        this.confirmationDate = confirmationDate;
+        this.rejectionDate = rejectionDate;
+        this.reviewer = reviewer;
+        this.rejectionReason = rejectionReason;
+        this.path = path;
+    }
+*/
+
+    public DocumentGetCommand(Long id, String authorUsername, DocumentState documentState, String documentTypeTitleInLithuanian, String title, String description, Date creationDate, Date submissionDate, Date confirmationDate, Date rejectionDate, User reviewer, String rejectionReason, String path) {
+        this.id = id;
         this.authorUsername = authorUsername;
         this.documentState = documentState;
-        this.documentTypeTitle = documentTypeTitle;
+        this.documentTypeTitleInLithuanian = documentTypeTitleInLithuanian;
         this.title = title;
         this.description = description;
         this.creationDate = creationDate;
@@ -59,6 +83,8 @@ public class DocumentGetCommand {
         this.authorUsername = authorUsername;
     }
 
+    //=================================================================================================================
+    // DOUBLE DOCUMENT_STATE ;)
     public DocumentState getDocumentState() {
         return documentState;
     }
@@ -67,12 +93,34 @@ public class DocumentGetCommand {
         this.documentState = documentState;
     }
 
-    public String getDocumentTypeTitle() {
-        return documentTypeTitle;
+    /*
+    public String getDocumentStateInLithuanian() {
+        return documentStateInLithuanian;
     }
 
-    public void setDocumentTypeTitle(String documentTypeTitle) {
-        this.documentTypeTitle = documentTypeTitle;
+    public void setDocumentStateInLithuanian(String documentStateInLithuanian) {
+
+        if (documentStateInLithuanian.equals(DocumentState.CREATED)) {
+            this.documentStateInLithuanian = "SUKURTAS";
+        } else if (documentStateInLithuanian.equals(DocumentState.SUBMITTED)) {
+            this.documentStateInLithuanian = "PATEIKTAS";
+        } else if (documentStateInLithuanian.equals(DocumentState.CONFIRMED)) {
+            this.documentStateInLithuanian = "PATVIRTINTAS";
+        } else if (documentStateInLithuanian.equals(DocumentState.REJECTED)) {
+            this.documentStateInLithuanian = "ATMESTAS";
+        } else {
+            this.documentStateInLithuanian = documentStateInLithuanian;
+        }
+    }
+    //==================================================================================================================
+*/
+
+    public String getDocumentTypeTitleInLithuanian() {
+        return documentTypeTitleInLithuanian;
+    }
+
+    public void setDocumentTypeTitleInLithuanian(String documentTypeTitleInLithuanian) {
+        this.documentTypeTitleInLithuanian = documentTypeTitleInLithuanian;
     }
 
     public String getTitle() {
