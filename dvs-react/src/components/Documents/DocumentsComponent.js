@@ -39,16 +39,12 @@ const DocumentsComponent = props => {
         </div>
 
         <div className="col-1">
-          <button
-            onClick={props.onDocumentDownload}
-            className="btn btn-secondary"
-          >
+          <button onClick={props.onDocumentView} className="btn btn-secondary">
             Peržiūrėti
           </button>
         </div>
         <div className="col-1">
           <button onClick={props.onDocumentDownload} className="btn btn-dark">
-            {" "}
             Atsisiųsti
           </button>
         </div>
