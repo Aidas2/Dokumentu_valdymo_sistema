@@ -82,14 +82,14 @@ public class DocumentController {
     }
 
     //READ All DOCUMENTS OF SPECIFIC AUTHOR_ID =========================================================================
-    @RequestMapping(value = "/{authorId}/docs", method = RequestMethod.GET)
+    @RequestMapping(value = "/{authorid}/docs", method = RequestMethod.GET)
     @ApiOperation(value = "Get all document of specified author id", notes = "Returns all document of specified author id")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public List<DocumentGetCommand> getAllDocumentsByAuthorId(
             @ApiParam(value = "Author ID", required = true)
-            @PathVariable Long authorId)
+            @PathVariable Long authorid)
     {
-        return documentService.getAllDocumentsByAuthorId(authorId);
+        return documentService.getAllDocumentsByAuthorId(authorid);
     }
 
 

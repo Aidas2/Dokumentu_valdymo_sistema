@@ -10,7 +10,7 @@ class DocumentsContainer extends Component {
         id: 1,
         author: "username1",
         documentState: "state",
-        documentType: "type",
+        documentTypeTitle: "type",
         title: "title",
         description: "desc",
         creationDate: "creationData",
