@@ -6,24 +6,24 @@ import logo from "../../images/home.png";
 class NavigationComponent extends Component {
   render() {
     return (
-      <nav class="navbar navbar-expand-md navbar-dark bg-dark navigation-style">
-        <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+      <nav className="navbar navbar-expand-md navbar-dark bg-dark navigation-style">
+        <div className="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
           <Link to={"/"} className="nav-link logo">
             <img src={logo} width="40" height="20" />
           </Link>
 
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
+          <ul className="navbar-nav mr-auto">
+            <li className="nav-item">
               <Link to={"/upload"} className="nav-link">
                 Dokumento įkėlimas
               </Link>
             </li>
-            <li class="nav-item">
+            <li className="nav-item">
               <Link to={"/history"} className="nav-link">
                 Istorija
               </Link>
             </li>
-            <li class="nav-item">
+            <li className="nav-item">
               <Link to={"/admin"} className="nav-link">
                 Administratoriaus rolė
               </Link>
@@ -31,9 +31,9 @@ class NavigationComponent extends Component {
           </ul>
         </div>
 
-        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
+        <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
+          <ul className="navbar-nav ml-auto">
+            <li className="nav-item">
               <Link to={"/"} className="nav-link">
                 Prisijungęs vartotojas
               </Link>
