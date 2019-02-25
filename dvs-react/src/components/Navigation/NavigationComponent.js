@@ -14,6 +14,11 @@ class NavigationComponent extends Component {
 
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
+              <Link to={"/docs"} className="nav-link">
+                Dokumentai
+              </Link>
+            </li>{" "}
+            <li className="nav-item">
               <Link to={"/upload"} className="nav-link">
                 Dokumento įkėlimas
               </Link>
