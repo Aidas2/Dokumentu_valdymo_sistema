@@ -21,14 +21,13 @@ const DocumentsComponent = props => {
   return (
     <div className="container pl-0 ml-0">
       <div className="row">
-        <div className="col-2">
+        <div className="col-1">
           <p>{id}</p>
           {/* <Link to="">Linkas</Link> */}
         </div>
         <div className="col-2">
           <p>{title}</p>
         </div>
-
         <div className="col-2">
           <p>{documentTypeTitle}</p>
         </div>
@@ -38,8 +37,12 @@ const DocumentsComponent = props => {
         <div className="col-2">
           <p>{description}</p>
         </div>
-        <div className="col-2">
-          <p>{"sth"}</p>
+
+        <div className="col-1">
+          <button className="btn btn-secondary">Peržiūrėti</button>
+        </div>
+        <div className="col-1">
+          <button className="btn btn-dark"> Atsisiųsti</button>
         </div>
       </div>
     </div>

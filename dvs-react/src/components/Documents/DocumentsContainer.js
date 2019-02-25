@@ -54,36 +54,30 @@ class DocumentsContainer extends Component {
             <h4 className="display-6">Esami dokumentai</h4>
 
             <div className="row">
-              <div className="col-2">
+              <div className="col-1 ">
                 <p>
-                  {" "}
-                  <strong>Dokumento ID</strong>
+                  <strong>ID</strong>
                 </p>
                 {/* <Link to="">Linkas</Link> */}
               </div>
-              <div className="col-2">
+              <div className="col-2 ">
                 <p>
                   <strong>Pavadinimas</strong>
                 </p>
               </div>{" "}
-              <div className="col-2">
+              <div className="col-2 ">
                 <p>
                   <strong>Tipas</strong>
                 </p>
               </div>
-              <div className="col-2">
+              <div className="col-2 ">
                 <p>
                   <strong>Būsena</strong>
                 </p>
               </div>
-              <div className="col-2">
+              <div className="col-2 ">
                 <p>
                   <strong>Aprašymas</strong>
-                </p>
-              </div>
-              <div className="col-2">
-                <p>
-                  <strong>sth</strong>
                 </p>
               </div>
             </div>
