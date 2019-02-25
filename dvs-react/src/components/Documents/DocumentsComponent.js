@@ -7,7 +7,7 @@ const DocumentsComponent = props => {
     id,
     author,
     documentState,
-    documentType,
+    documentTypeTitle,
     title,
     description,
     creationDate,
@@ -22,15 +22,15 @@ const DocumentsComponent = props => {
     <div className="container pl-0 ml-0">
       <div className="row">
         <div className="col-2">
-          {id}
+          <p>{id}</p>
           {/* <Link to="">Linkas</Link> */}
         </div>
-
         <div className="col-2">
           <p>{title}</p>
         </div>
+
         <div className="col-2">
-          <p>{documentType}</p>
+          <p>{documentTypeTitle}</p>
         </div>
         <div className="col-2">
           <p>{documentState}</p>

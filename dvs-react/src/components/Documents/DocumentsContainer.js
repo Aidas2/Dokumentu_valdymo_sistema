@@ -24,16 +24,16 @@ class DocumentsContainer extends Component {
     ]
   };
 
-  //   componentDidMount() {
-  //     axios
-  //       .get("http://localhost:8081/api/docs")
-  //       .then(response => {
-  //         this.setState({ documents: response.data });
-  //       })
-  //       .catch(error => {
-  //         console.log(error);
-  //       });
-  //   }
+  componentDidMount() {
+    axios
+      .get("http://localhost:8081/api/docs")
+      .then(response => {
+        this.setState({ documents: response.data });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
   render() {
     var documentsArrayToRender = this.state.documents.map(oneDocumentObj => {
       return (
