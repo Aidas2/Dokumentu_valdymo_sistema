@@ -56,7 +56,7 @@ public class DocumentService {
                 )).collect(Collectors.toList());
     }
 
-    //GET DOCUMENTS BY ID ==============================================================================================
+    //GET DOCUMENTS BY DOCUMENT_ID =====================================================================================
     @Transactional(readOnly = true)
     public DocumentGetCommand getDocumentById(Long id) {
         Document document = documentRepository.findById(id).orElse(null);
@@ -76,7 +76,7 @@ public class DocumentService {
         );
     }
 
-    //GET All SUBMITTED DOCUMENTS (with filter) ========================================================================
+    //GET SUBMITTED DOCUMENTS (with filter) ============================================================================
     @Transactional(readOnly = true)
     public List<DocumentGetCommand> getSubmittedDocuments() {
         return  documentRepository.findAll()
@@ -99,7 +99,7 @@ public class DocumentService {
                 )).collect(Collectors.toList());
     }
 
-    //GET All DOCUMENTS TO REVIEW (with filter) ========================================================================
+    //GET DOCUMENTS TO REVIEW (with filter) ============================================================================
     @Transactional(readOnly = true)
     public List<DocumentGetCommand> getDocumentsToReview() {
         return  documentRepository.findAll()
@@ -121,7 +121,7 @@ public class DocumentService {
                 )).collect(Collectors.toList());
     }
 
-    //GET All DOCUMENTS OF SPECIFIC DOCUMENT_STATE (with filter) =======================================================
+    //GET DOCUMENTS OF SPECIFIC DOCUMENT_STATE (with filter) ===========================================================
     @Transactional(readOnly = true)
     public List<DocumentGetCommand> getAllDocumentsByDocumentState(DocumentState documentState) {
         return  documentRepository.findAll()
@@ -143,7 +143,7 @@ public class DocumentService {
                 )).collect(Collectors.toList());
     }
 
-    //GET All DOCUMENTS OF SPECIFIC DOCUMENT_TYPE (with filter) ========================================================
+    //GET DOCUMENTS OF SPECIFIC DOCUMENT_TYPE (with filter) ============================================================
     @Transactional(readOnly = true)
     public List<DocumentGetCommand> getAllDocumentsByDocumentType(DocumentType documentType) {
         return  documentRepository.findAll()
@@ -167,15 +167,30 @@ public class DocumentService {
 
 
 
-    //GET All DOCUMENTS OF SPECIFIC USER_GROUP =========================================================================
+    //GET DOCUMENTS OF SPECIFIC USER_GROUP (OR AUTHOR ID ?) ============================================================
     // (with filter and with filter of permissions (which documents this UserGroup can manage)
-
     // attach loggers everywhere !
 
-
-
-
-
+        @Transactional(readOnly = true)
+    public List<DocumentGetCommand> getAllDocumentsByAuthorId(Long authorId) {
+        return  documentRepository.findAll()
+                .stream()
+                .filter(document -> document.getAuthor().getId().equals(authorId))
+                .map((document) -> new DocumentGetCommand(
+                        document.getAuthor().getUsername(),
+                        document.getDocumentState(),
+                        document.getDocumentType().getTitle(),
+                        document.getTitle(),
+                        document.getDescription(),
+                        document.getCreationDate(),
+                        document.getSubmissionDate(),
+                        document.getConfirmationDate(),
+                        document.getRejectionDate(),
+                        document.getReviewer(),
+                        document.getRejectionReason(),
+                        document.getPath()
+                )).collect(Collectors.toList());
+    }
 
     //CREATE ===========================================================================================================
     @Transactional

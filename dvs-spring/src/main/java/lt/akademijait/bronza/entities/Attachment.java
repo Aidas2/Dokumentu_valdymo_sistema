@@ -15,6 +15,9 @@ public class Attachment {
     @Column
     private String path;
 
+    @Column
+    private String title;
+
     @ManyToOne//(mappedBy="attachments")
     //@JoinColumn (name = "DOCUMENT_ID")
     private Document document;
