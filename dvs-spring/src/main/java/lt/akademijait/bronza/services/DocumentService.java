@@ -43,7 +43,7 @@ public class DocumentService {
                 .map((document) -> new DocumentGetCommand(
                         document.getId(),
                         document.getAuthor().getUsername(),
-                        document.getDocumentState(),
+                        document.getDocumentState().toString(),
                         document.getDocumentType().getTitle(),
                         document.getTitle(),
                         document.getDescription(),
@@ -61,10 +61,13 @@ public class DocumentService {
     @Transactional(readOnly = true)
     public DocumentGetCommand getDocumentById(Long id) {
         Document document = documentRepository.findById(id).orElse(null);
+
+
+
         return new DocumentGetCommand(
                 document.getId(),
                 document.getAuthor().getUsername(),
-                document.getDocumentState(),
+                document.getDocumentState().toString(),
                 document.getDocumentType().getTitle(),
                 document.getTitle(),
                 document.getDescription(),
@@ -88,7 +91,7 @@ public class DocumentService {
                         document.getId(),
                         //document.getAuthor(),
                         document.getAuthor().getUsername(),
-                        document.getDocumentState(),
+                        document.getDocumentState().toString(),
                         document.getDocumentType().getTitle(),
                         document.getTitle(),
                         document.getDescription(),
@@ -111,7 +114,7 @@ public class DocumentService {
                 .map((document) -> new DocumentGetCommand(
                         document.getId(),
                         document.getAuthor().getUsername(),
-                        document.getDocumentState(),
+                        document.getDocumentState().toString(),
                         document.getDocumentType().getTitle(),
                         document.getTitle(),
                         document.getDescription(),
@@ -134,7 +137,7 @@ public class DocumentService {
                 .map((document) -> new DocumentGetCommand(
                         document.getId(),
                         document.getAuthor().getUsername(),
-                        document.getDocumentState(),
+                        document.getDocumentState().toString(),
                         document.getDocumentType().getTitle(),
                         document.getTitle(),
                         document.getDescription(),
@@ -147,8 +150,8 @@ public class DocumentService {
                         document.getPath()
                 )).collect(Collectors.toList());
     }
-
-    //GET DOCUMENTS OF SPECIFIC DOCUMENT_TYPE (with filter) ============================================================
+/*
+    //GET DOCUMENTS OF SPECIFIC DOCUMENT_TYPE. Version_01 ==============================================================
     @Transactional(readOnly = true)
     public List<DocumentGetCommand> getAllDocumentsByDocumentType(DocumentType documentType) {
         return  documentRepository.findAll()
@@ -157,7 +160,7 @@ public class DocumentService {
                 .map((document) -> new DocumentGetCommand(
                         document.getId(),
                         document.getAuthor().getUsername(),
-                        document.getDocumentState(),
+                        document.getDocumentState().toString(),
                         document.getDocumentType().getTitle(),
                         document.getTitle(),
                         document.getDescription(),
@@ -170,9 +173,33 @@ public class DocumentService {
                         document.getPath()
                 )).collect(Collectors.toList());
     }
+*/
+
+    //GET DOCUMENTS OF SPECIFIC DOCUMENT_TYPE. Version_02 ==============================================================
+    @Transactional(readOnly = true)
+    public List<DocumentGetCommand> getAllDocumentsByDocumentType(String documentTypeTitle) {
 
 
 
+        return  documentRepository.findAll()
+                .stream()
+                .filter(document -> document.getDocumentType().equals(documentTypeRepository.findByTitle(documentTypeTitle)))
+                .map((document) -> new DocumentGetCommand(
+                        document.getId(),
+                        document.getAuthor().getUsername(),
+                        document.getDocumentState().toString(),
+                        document.getDocumentType().getTitle(),
+                        document.getTitle(),
+                        document.getDescription(),
+                        document.getCreationDate(),
+                        document.getSubmissionDate(),
+                        document.getConfirmationDate(),
+                        document.getRejectionDate(),
+                        document.getReviewer(),
+                        document.getRejectionReason(),
+                        document.getPath()
+                )).collect(Collectors.toList());
+    }
     //GET DOCUMENTS OF SPECIFIC USER_GROUP (OR AUTHOR ID ?) ============================================================
     // (with filter and with filter of permissions (which documents this UserGroup can manage)
     // attach loggers everywhere !
@@ -185,7 +212,7 @@ public class DocumentService {
                 .map((document) -> new DocumentGetCommand(
                         document.getId(),
                         document.getAuthor().getUsername(),
-                        document.getDocumentState(),
+                        document.getDocumentState().toString(),
                         document.getDocumentType().getTitle(),
                         document.getTitle(),
                         document.getDescription(),

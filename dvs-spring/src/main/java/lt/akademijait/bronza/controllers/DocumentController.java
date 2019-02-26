@@ -8,7 +8,6 @@ import lt.akademijait.bronza.dto.document.DocumentCreateCommand;
 import lt.akademijait.bronza.dto.document.DocumentGetCommand;
 import lt.akademijait.bronza.dto.document.DocumentSetStateCommand;
 import lt.akademijait.bronza.dto.document.DocumentUpdateCommand;
-import lt.akademijait.bronza.entities.DocumentType;
 import lt.akademijait.bronza.enums.DocumentState;
 import lt.akademijait.bronza.services.DocumentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,7 +68,8 @@ public class DocumentController {
         return documentService.getAllDocumentsByDocumentState(documentState);
     }
 
-    //READ All DOCUMENTS OF SPECIFIC DOCUMENT_TYPE =====================================================================
+    /*
+    //READ All DOCUMENTS OF SPECIFIC DOCUMENT_TYPE. Version_01 =========================================================
     @RequestMapping(value = "/specific_document_type", method = RequestMethod.GET)
     @ApiOperation(value = "Get all document of specified type", notes = "Returns all document of specified type")
     @ResponseStatus(HttpStatus.ACCEPTED)
@@ -77,6 +77,18 @@ public class DocumentController {
             @ApiParam(value = "Document type", required = true)
             @PathVariable DocumentType documentType) {
         return documentService.getAllDocumentsByDocumentType(documentType);
+    }
+
+*/
+    //READ All DOCUMENTS OF SPECIFIC DOCUMENT_TYPE. Version_02 =========================================================
+    //object --> String; @PathVariable --> @RequestParam
+    @RequestMapping(value = "/documentbytype", method = RequestMethod.GET)
+    @ApiOperation(value = "Get all document of specified type", notes = "Returns all document of specified type")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public List<DocumentGetCommand> getAllDocumentsByDocumentType(
+            @ApiParam(value = "Document type", required = true)
+            @RequestParam String documentTypeTitle) {
+        return documentService.getAllDocumentsByDocumentType(documentTypeTitle);
     }
 
     //READ All DOCUMENTS OF SPECIFIC AUTHOR_ID =========================================================================

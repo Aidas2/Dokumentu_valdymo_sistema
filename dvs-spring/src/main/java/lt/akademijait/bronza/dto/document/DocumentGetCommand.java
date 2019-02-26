@@ -14,8 +14,8 @@ public class DocumentGetCommand {
     //private List<Attachment> attachments;
     private String authorUsername;  //private User author; // private UserGetCommand author;\
 
-    //private String documentStateInLithuanian;
-    private DocumentState documentState;
+    private String documentStateInLithuanian;
+    //private DocumentState documentState;
 
     private String documentTypeTitleInLithuanian; //private DocumentType documentType;
     private String title;
@@ -31,30 +31,12 @@ public class DocumentGetCommand {
     public DocumentGetCommand() {
     }
 
-/*
+
 // constructior with double Document_State
-    public DocumentGetCommand(Long id, String authorUsername, String documentStateInLithuanian, DocumentState documentState, String documentTypeTitleInLithuanian, String title, String description, Date creationDate, Date submissionDate, Date confirmationDate, Date rejectionDate, User reviewer, String rejectionReason, String path) {
+    public DocumentGetCommand(Long id, String authorUsername, String documentStateInLithuanian, String documentTypeTitleInLithuanian, String title, String description, Date creationDate, Date submissionDate, Date confirmationDate, Date rejectionDate, User reviewer, String rejectionReason, String path) {
         this.id = id;
         this.authorUsername = authorUsername;
         this.documentStateInLithuanian = documentStateInLithuanian;
-        this.documentState = documentState;
-        this.documentTypeTitleInLithuanian = documentTypeTitleInLithuanian;
-        this.title = title;
-        this.description = description;
-        this.creationDate = creationDate;
-        this.submissionDate = submissionDate;
-        this.confirmationDate = confirmationDate;
-        this.rejectionDate = rejectionDate;
-        this.reviewer = reviewer;
-        this.rejectionReason = rejectionReason;
-        this.path = path;
-    }
-*/
-
-    public DocumentGetCommand(Long id, String authorUsername, DocumentState documentState, String documentTypeTitleInLithuanian, String title, String description, Date creationDate, Date submissionDate, Date confirmationDate, Date rejectionDate, User reviewer, String rejectionReason, String path) {
-        this.id = id;
-        this.authorUsername = authorUsername;
-        this.documentState = documentState;
         this.documentTypeTitleInLithuanian = documentTypeTitleInLithuanian;
         this.title = title;
         this.description = description;
@@ -83,22 +65,12 @@ public class DocumentGetCommand {
         this.authorUsername = authorUsername;
     }
 
-    //=================================================================================================================
-    // DOUBLE DOCUMENT_STATE ;)
-    public DocumentState getDocumentState() {
-        return documentState;
-    }
-
-    public void setDocumentState(DocumentState documentState) {
-        this.documentState = documentState;
-    }
-
-    /*
     public String getDocumentStateInLithuanian() {
         return documentStateInLithuanian;
     }
 
     public void setDocumentStateInLithuanian(String documentStateInLithuanian) {
+
 
         if (documentStateInLithuanian.equals(DocumentState.CREATED)) {
             this.documentStateInLithuanian = "SUKURTAS";
@@ -112,8 +84,6 @@ public class DocumentGetCommand {
             this.documentStateInLithuanian = documentStateInLithuanian;
         }
     }
-    //==================================================================================================================
-*/
 
     public String getDocumentTypeTitleInLithuanian() {
         return documentTypeTitleInLithuanian;
