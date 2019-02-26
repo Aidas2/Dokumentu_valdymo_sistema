@@ -1,7 +1,7 @@
 package lt.akademijait.bronza.services;
 
 import lt.akademijait.bronza.dto.usergroup.UserGroupCreateCommand;
-import lt.akademijait.bronza.dto.usergroup.UserGroupGetCommand;
+import lt.akademijait.bronza.dto.usergroup.UserGroupUpdateDocTypeCommand;
 import lt.akademijait.bronza.entities.DocumentType;
 import lt.akademijait.bronza.entities.UserGroup;
 import lt.akademijait.bronza.repositories.DocumentTypeRepository;
@@ -11,11 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collections;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
 public class UserGroupService {
@@ -27,15 +24,15 @@ public class UserGroupService {
     @Autowired
     private DocumentTypeRepository documentTypeRepository;
 
-    @Transactional
-    public List<UserGroupGetCommand> getAllGroups(){
-        return userGroupRepository.findAll().stream().map((userGroup) ->
-                new UserGroupGetCommand(
-                        userGroup.getTitle(),
-                        userGroup.getSubmissionDocumentType(),
-                        userGroup.getReviewDocumentType()))
-                .collect(Collectors.toList());
-    }
+//    @Transactional
+//    public List<UserGroupGetCommand> getAllGroups(){
+//        return userGroupRepository.findAll().stream().map((userGroup) ->
+//                new UserGroupGetCommand(
+//                        userGroup.getTitle(),
+//                        userGroup.getSubmissionDocumentType(),
+//                        userGroup.getReviewDocumentType()))
+//                .collect(Collectors.toList());
+//    }
 
     @Transactional
     public void createNewGroup(UserGroupCreateCommand ugcc){
@@ -58,14 +55,55 @@ public class UserGroupService {
     }
 
     @Transactional
+    public void addDocTypeToReview(String userGroup, UserGroupUpdateDocTypeCommand userGroupUpdateDocTypeCommand){
+
+        UserGroup groupToUpdate = userGroupRepository.findByTitle(userGroup);
+        for (String documentType: userGroupUpdateDocTypeCommand.getDocumentType()){
+            if (!groupToUpdate.getReviewDocumentType().contains(documentTypeRepository.findByTitle(documentType))){
+                groupToUpdate.getReviewDocumentType().add(documentTypeRepository.findByTitle(documentType));
+            }
+        }
+        userGroupRepository.save(groupToUpdate);
+    }
+
+    @Transactional
+    public void addDocTypeToSubmit(String userGroup, UserGroupUpdateDocTypeCommand userGroupUpdateDocTypeCommand){
+
+        UserGroup groupToUpdate = userGroupRepository.findByTitle(userGroup);
+        for (String documentType: userGroupUpdateDocTypeCommand.getDocumentType()){
+            if (!groupToUpdate.getSubmissionDocumentType().contains(documentTypeRepository.findByTitle(documentType))){
+                groupToUpdate.getSubmissionDocumentType().add(documentTypeRepository.findByTitle(documentType));
+            }
+        }
+        userGroupRepository.save(groupToUpdate);
+    }
+
+    @Transactional
+    public void removeDocTypeToReview(String userGroup, UserGroupUpdateDocTypeCommand userGroupUpdateDocTypeCommand){
+
+        UserGroup groupToUpdate = userGroupRepository.findByTitle(userGroup);
+        for (String documentType: userGroupUpdateDocTypeCommand.getDocumentType()){
+            if (groupToUpdate.getReviewDocumentType().contains(documentTypeRepository.findByTitle(documentType))){
+                groupToUpdate.getReviewDocumentType().remove(documentTypeRepository.findByTitle(documentType));
+            }
+        }
+        userGroupRepository.save(groupToUpdate);
+    }
+
+    @Transactional
+    public void removeDocTypeToSubmit(String userGroup, UserGroupUpdateDocTypeCommand userGroupUpdateDocTypeCommand){
+
+        UserGroup groupToUpdate = userGroupRepository.findByTitle(userGroup);
+        for (String documentType: userGroupUpdateDocTypeCommand.getDocumentType()){
+            if (groupToUpdate.getSubmissionDocumentType().contains(documentTypeRepository.findByTitle(documentType))){
+                groupToUpdate.getSubmissionDocumentType().remove(documentTypeRepository.findByTitle(documentType));
+            }
+        }
+        userGroupRepository.save(groupToUpdate);
+    }
+
+    @Transactional
     public void deleteGroup(String title){userGroupRepository.deleteByTitle(title);}
-
-
-
-
-
-
-
 
 
 

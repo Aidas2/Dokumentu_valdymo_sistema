@@ -13,10 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -30,27 +27,55 @@ public class UserService {
 
     @Transactional(readOnly = true)
     public List<UserGetCommand> getAllUsers() {
-        return userRepository.findAll().stream().map(
-                (user) ->
-                        new UserGetCommand(
-                                user.getId(),
-                                user.getFirstName(),
-                                user.getLastName(),
-                                user.isAdministrator(),
-                                user.getPassword(),
-                                user.getUsername(),
-                                user.getEmailAddress(),
-                                user.getHireDate(),
-                                user.getUserGroups())).collect(Collectors.toList() );
+        List<UserGetCommand> allUsers = new ArrayList<>();
 
+        for (User user : userRepository.findAll()) {
+            Set<String> userGroupsTitles = new HashSet<>();
+
+            for (UserGroup userGroup : user.getUserGroups()) {
+                userGroupsTitles.add(userGroup.getTitle());
+            }
+
+            UserGetCommand ugc = new UserGetCommand(
+                    user.getId(),
+                    user.getFirstName(),
+                    user.getLastName(),
+                    user.isAdministrator(),
+                    user.getPassword(),
+                    user.getUsername(),
+                    user.getEmailAddress(),
+                    user.getHireDate(),
+                    userGroupsTitles);
+            allUsers.add(ugc);
+        }return allUsers;
     }
+
+//        return userRepository.findAll().stream().map(
+//                (user) ->
+//                    new UserGetCommand(
+//                            user.getId(),
+//                            user.getFirstName(),
+//                            user.getLastName(),
+//                            user.isAdministrator(),
+//                            user.getPassword(),
+//                            user.getUsername(),
+//                            user.getEmailAddress(),
+//                            user.getHireDate(),
+//                            userGroupsTitles))
+//                .collect(Collectors.toList());
+
 
     @Transactional(readOnly = true)
     public UserGetCommand getUserByUsername(String username) {
         User user = userRepository.findByUsername(username);
+        Set<String> userGroupsTitles = new HashSet<>();
+
+        for (UserGroup userGroup: user.getUserGroups()){
+            userGroupsTitles.add(userGroup.getTitle());
+        }
+
         return new UserGetCommand(
                 user.getId(),
-
                 user.getFirstName(),
                 user.getLastName(),
                 user.isAdministrator(),
@@ -58,8 +83,7 @@ public class UserService {
                 user.getUsername(),
                 user.getEmailAddress(),
                 user.getHireDate(),
-                user.getUserGroups()
-        );
+                userGroupsTitles);
     }
 
     @Transactional
@@ -79,9 +103,7 @@ public class UserService {
                 ucc.getPassword(),
                 ucc.getEmailAddress(),
                 userGroupsToSet
-                //Collections.emptyList()
-
-        );
+                        );
         //newUser.getUserGroups().add()
 
 
@@ -117,12 +139,20 @@ public class UserService {
     public void addUserToNewUserGroup(String username, UserAddToGroupCommand userAddToGroupCommand){
 
         User userToUpdate = userRepository.findByUsername(username);
-
-//        Set<UserGroup> userGroupsToAdd = new HashSet<>();
-
         for (String userGroupTitle: userAddToGroupCommand.getUserGroupTitle()) {
             if (!userToUpdate.getUserGroups().contains(userGroupRepository.findByTitle(userGroupTitle))){
                 userToUpdate.getUserGroups().add(userGroupRepository.findByTitle(userGroupTitle));
+            }
+        }
+        userRepository.save(userToUpdate);
+    }
+
+    @Transactional
+    public void removeUserFromUserGroup(String username, UserAddToGroupCommand userAddToGroupCommand){
+        User userToUpdate = userRepository.findByUsername(username);
+        for (String userGroupTitle: userAddToGroupCommand.getUserGroupTitle()){
+            if (userToUpdate.getUserGroups().contains(userGroupRepository.findByTitle(userGroupTitle))){
+                userToUpdate.getUserGroups().remove(userGroupRepository.findByTitle(userGroupTitle));
             }
         }
         userRepository.save(userToUpdate);
@@ -133,7 +163,6 @@ public class UserService {
     public void deleteUser(String username) {
         userRepository.deleteByUsername(username);
     }
-
 
 
 

@@ -1,9 +1,12 @@
 package lt.akademijait.bronza.dto.user;
 
 import lt.akademijait.bronza.entities.UserGroup;
+import lt.akademijait.bronza.repositories.UserGroupRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.ManyToMany;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 public class UserGetCommand {
@@ -18,8 +21,7 @@ public class UserGetCommand {
     //private byte[] passwordSalt;
     private String emailAddress;
 
-    @ManyToMany
-    private Set<UserGroup> userGroups;
+    private Set<String> userGroups;
 
 //    @OneToMany
 //    private List<Document> documents;
@@ -31,7 +33,7 @@ public class UserGetCommand {
     }
 
     public UserGetCommand(Long userId, String firstName, String lastName, boolean administrator, String password, String username,
-                          String emailAddress, Date hireDate, Set<UserGroup> userGroups) {
+                          String emailAddress, Date hireDate, Set<String> userGroups) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.administrator = administrator;
@@ -106,11 +108,11 @@ public class UserGetCommand {
         this.emailAddress = emailAddress;
     }
 
-    public Set<UserGroup> getUserGroups() {
+    public Set<String> getUserGroups() {
         return userGroups;
     }
 
-    public void setUserGroups(Set<UserGroup> userGroups) {
+    public void setUserGroups(Set<String> userGroups) {
         this.userGroups = userGroups;
     }
 }

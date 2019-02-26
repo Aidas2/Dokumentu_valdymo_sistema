@@ -10,15 +10,14 @@ public class UserGroupGetCommand {
 //    private Long userGroupId;
 
     private String title;
-
-    private Set<DocumentType> submissionDocType;
-    private Set<DocumentType> reviewDocType;
+    private Set<String> submissionDocType;
+    private Set<String> reviewDocType;
 
 
     public UserGroupGetCommand() {
     }
 
-    public UserGroupGetCommand(String title, Set<DocumentType> submissionDocType, Set<DocumentType> reviewDocType) {
+    public UserGroupGetCommand(String title, Set<String> submissionDocType, Set<String> reviewDocType) {
         this.title = title;
         this.submissionDocType = submissionDocType;
         this.reviewDocType = reviewDocType;
@@ -32,19 +31,19 @@ public class UserGroupGetCommand {
         this.title = title;
     }
 
-    public Set<DocumentType> getSubmissionDocType() {
+    public Set<String> getSubmissionDocType() {
         return submissionDocType;
     }
 
-    public void setSubmissionDocType(Set<DocumentType> submissionDocType) {
+    public void setSubmissionDocType(Set<String> submissionDocType) {
         this.submissionDocType = submissionDocType;
     }
 
-    public Set<DocumentType> getReviewDocType() {
+    public Set<String> getReviewDocType() {
         return reviewDocType;
     }
 
-    public void setReviewDocType(Set<DocumentType> reviewDocType) {
+    public void setReviewDocType(Set<String> reviewDocType) {
         this.reviewDocType = reviewDocType;
     }
 }

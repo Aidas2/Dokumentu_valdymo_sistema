@@ -5,7 +5,7 @@ import java.util.Set;
 
 public class UserAddToGroupCommand {
 
-    @ManyToMany
+
     private Set<String> userGroupTitle;
 
     public UserAddToGroupCommand(){

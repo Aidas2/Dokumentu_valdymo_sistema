@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @Api(value = "users")
@@ -47,7 +48,6 @@ public class UserController {
         userService.deleteUser(username);
     }
 
-
     @RequestMapping(path = "/{username}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
     @ApiOperation(value = "Update user", notes = "Updates user's data")
@@ -70,6 +70,15 @@ public class UserController {
             @ApiParam(value = "Username", required = true) @PathVariable final String username,
             @ApiParam(value = "New usergroup", required = true) @RequestBody UserAddToGroupCommand uagc){
         userService.addUserToNewUserGroup(username, uagc);
+    }
+
+    @RequestMapping(path = "/group/{username}", method = RequestMethod.DELETE)
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @ApiOperation(value = "Remove user from group", notes = "Removes user from a certain user group")
+    public void removeUserFromUserGroup(
+            @ApiParam(value = "User username", required = true) @PathVariable final String username,
+            @ApiParam(value = "UserGroup", required = true) @RequestBody UserAddToGroupCommand uagc){
+        userService.removeUserFromUserGroup(username, uagc);
     }
 
 

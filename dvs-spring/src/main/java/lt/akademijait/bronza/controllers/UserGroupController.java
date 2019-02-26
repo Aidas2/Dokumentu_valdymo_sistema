@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lt.akademijait.bronza.dto.usergroup.UserGroupCreateCommand;
 import lt.akademijait.bronza.dto.usergroup.UserGroupGetCommand;
+import lt.akademijait.bronza.dto.usergroup.UserGroupUpdateDocTypeCommand;
 import lt.akademijait.bronza.services.UserGroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,11 +22,11 @@ public class UserGroupController {
     @Autowired
     private UserGroupService userGroupService;
 
-    @RequestMapping(method = RequestMethod.GET)
-    @ApiOperation(value = "Get groups", notes = "Returns all groups")
-    public List<UserGroupGetCommand> getAllGroups(){
-        return userGroupService.getAllGroups();
-    }
+//    @RequestMapping(method = RequestMethod.GET)
+//    @ApiOperation(value = "Get groups", notes = "Returns all groups")
+//    public List<UserGroupGetCommand> getAllGroups(){
+//        return userGroupService.getAllGroups();
+//    }
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
@@ -39,6 +40,23 @@ public class UserGroupController {
     @ApiOperation(value = "Delete group", notes = "Deletes an existing user group")
     public void deleteUserByUsername(@ApiParam(value = "Usergroup title", required = true) @PathVariable final String title){
         userGroupService.deleteGroup(title);
+    }
+
+    @RequestMapping(path = "/reviewDocType/{userGroup}", method = RequestMethod.PUT)
+    @ApiOperation(value = "Add doctype to review", notes = "Adds new document type to review to user group")
+    public void addDocTypeToReview(
+            @ApiParam(value = "User Group", required = true) @PathVariable final String userGroup,
+            @ApiParam(value = "New doctype to review", required = true) @RequestBody UserGroupUpdateDocTypeCommand ugu){
+        userGroupService.addDocTypeToReview(userGroup, ugu);
+    }
+
+    @RequestMapping(path = "/reviewDocType/{userGroup}", method = RequestMethod.DELETE)
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @ApiOperation(value = "Remove doctype to review", notes = "Removes document type to review from user group")
+    public void removeDocTypeToReview(
+            @ApiParam(value = "User Group", required = true) @PathVariable final String userGroup,
+            @ApiParam(value = "Doctype to remove", required = true) @RequestBody UserGroupUpdateDocTypeCommand ugu){
+        userGroupService.removeDocTypeToReview(userGroup, ugu);
     }
 
 
