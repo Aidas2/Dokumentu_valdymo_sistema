@@ -91,6 +91,7 @@ const CreateUserComponent = props => {
               className="form-control"
               placeholder="Įveskite vartotojo prisijungimo slaptažodį"
               onChange={props.onPasswordChange}
+              required
             />
           </div>
         </div>
@@ -121,6 +122,9 @@ const CreateUserComponent = props => {
               userGroups={props.userGroups}
               onUserGroupChange={props.onUserGroupChange}
             />
+            <span className="italic-style-small">
+              Pasirinktos grupės: {props.userGroupsTitles}
+            </span>
           </div>
         </div>
         {/* <div className="form-group" /> */}

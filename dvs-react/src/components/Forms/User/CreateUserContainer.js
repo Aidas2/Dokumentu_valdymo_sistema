@@ -5,7 +5,7 @@ import CreateUserComponent from "./CreateUserComponent";
 
 class CreateUserContainer extends Component {
   state = {
-    userGroup: [],
+    userGroups: [],
     administrator: false,
     emailAddress: "",
     firstName: "",
@@ -59,7 +59,7 @@ class CreateUserContainer extends Component {
         lastName: this.state.lastName,
         password: this.state.password,
         username: this.state.username,
-        userGroupTitle: this.state.userGroup
+        userGroupTitle: this.state.userGroups
         // id: 4
       })
       .then(response => {
@@ -106,9 +106,9 @@ class CreateUserContainer extends Component {
     this.setState({ username: e.target.value });
   };
   handleUserGroupChange = e => {
-    let userGroup = this.state.userGroup;
-    userGroup.push(e.target.value);
-    this.setState({ userGroup: userGroup });
+    let userGroups = this.state.userGroups;
+    userGroups.push(e.target.value);
+    this.setState({ userGroup: userGroups });
   };
 
   launchAlert = () => {
@@ -136,6 +136,10 @@ class CreateUserContainer extends Component {
   };
 
   render() {
+    var userGroupsTitlesToDisplay = this.state.userGroups.map(
+      group => group + " *** "
+    );
+
     console.log(
       this.state,
       "-------------@@@@@@@@@@@@@@@ inside render() this.state>>>>>>>> "
@@ -154,6 +158,7 @@ class CreateUserContainer extends Component {
         onUserGroupChange={this.handleUserGroupChange}
         userGroups={this.state.allUserGroups}
         launchAlert={this.launchAlert()}
+        userGroupsTitles={userGroupsTitlesToDisplay}
       />
     );
   }
