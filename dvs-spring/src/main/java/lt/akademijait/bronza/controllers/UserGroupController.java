@@ -22,11 +22,11 @@ public class UserGroupController {
     @Autowired
     private UserGroupService userGroupService;
 
-//    @RequestMapping(method = RequestMethod.GET)
-//    @ApiOperation(value = "Get groups", notes = "Returns all groups")
-//    public List<UserGroupGetCommand> getAllGroups(){
-//        return userGroupService.getAllGroups();
-//    }
+    @RequestMapping(method = RequestMethod.GET)
+    @ApiOperation(value = "Get groups", notes = "Returns all groups")
+    public List<UserGroupGetCommand> getAllGroups(){
+        return userGroupService.getAllGroups();
+    }
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
@@ -57,6 +57,23 @@ public class UserGroupController {
             @ApiParam(value = "User Group", required = true) @PathVariable final String userGroup,
             @ApiParam(value = "Doctype to remove", required = true) @RequestBody UserGroupUpdateDocTypeCommand ugu){
         userGroupService.removeDocTypeToReview(userGroup, ugu);
+    }
+
+    @RequestMapping(path = "/submitDocType/{userGroup}", method = RequestMethod.PUT)
+    @ApiOperation(value = "Add doctype to submit", notes = "Adds new document type to submit to user group")
+    public void addDocTypeToSubmit(
+            @ApiParam(value = "User Group", required = true) @PathVariable final String userGroup,
+            @ApiParam(value = "New doctype to submit", required = true) @RequestBody UserGroupUpdateDocTypeCommand ugu){
+        userGroupService.addDocTypeToSubmit(userGroup, ugu);
+    }
+
+    @RequestMapping(path = "/submitDocType/{userGroup}", method = RequestMethod.DELETE)
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @ApiOperation(value = "Remove doctype to submit", notes = "Removes document type to submit from user group")
+    public void removeDocTypeToSubmit(
+            @ApiParam(value = "User Group", required = true) @PathVariable final String userGroup,
+            @ApiParam(value = "Doctype to remove", required = true) @RequestBody UserGroupUpdateDocTypeCommand ugu){
+        userGroupService.removeDocTypeToSubmit(userGroup, ugu);
     }
 
 

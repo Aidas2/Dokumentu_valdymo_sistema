@@ -1,6 +1,7 @@
 package lt.akademijait.bronza.services;
 
 import lt.akademijait.bronza.dto.usergroup.UserGroupCreateCommand;
+import lt.akademijait.bronza.dto.usergroup.UserGroupGetCommand;
 import lt.akademijait.bronza.dto.usergroup.UserGroupUpdateDocTypeCommand;
 import lt.akademijait.bronza.entities.DocumentType;
 import lt.akademijait.bronza.entities.UserGroup;
@@ -11,7 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -24,15 +27,33 @@ public class UserGroupService {
     @Autowired
     private DocumentTypeRepository documentTypeRepository;
 
-//    @Transactional
-//    public List<UserGroupGetCommand> getAllGroups(){
-//        return userGroupRepository.findAll().stream().map((userGroup) ->
-//                new UserGroupGetCommand(
-//                        userGroup.getTitle(),
-//                        userGroup.getSubmissionDocumentType(),
-//                        userGroup.getReviewDocumentType()))
-//                .collect(Collectors.toList());
-//    }
+    @Transactional
+    public List<UserGroupGetCommand> getAllGroups() {
+
+        List<UserGroupGetCommand> allGroups = new ArrayList<>();
+
+        for (UserGroup userGroup : userGroupRepository.findAll()) {
+
+            Set<String> submitDocTypes = new HashSet<>();
+            for (DocumentType documentType : userGroup.getSubmissionDocumentType()) {
+                submitDocTypes.add(documentType.getTitle());
+            }
+
+            Set<String> reviewDocTypes = new HashSet<>();
+            for (DocumentType documentType : userGroup.getReviewDocumentType()) {
+                reviewDocTypes.add(documentType.getTitle());
+            }
+
+            UserGroupGetCommand uggc = new UserGroupGetCommand(
+                    userGroup.getTitle(),
+                    submitDocTypes,
+                    reviewDocTypes);
+            allGroups.add(uggc);
+        }
+        return allGroups;
+    }
+
+
 
     @Transactional
     public void createNewGroup(UserGroupCreateCommand ugcc){
