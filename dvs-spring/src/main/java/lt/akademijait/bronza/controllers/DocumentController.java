@@ -58,13 +58,26 @@ public class DocumentController {
         return documentService.getDocumentsToReview();
     }
 
-    //READ All DOCUMENTS OF SPECIFIC DOCUMENT_STATE ====================================================================
+    /*
+    //READ All DOCUMENTS OF SPECIFIC DOCUMENT_STATE. Version_01 ========================================================
     @RequestMapping(value = "/specific_document_state", method = RequestMethod.GET)
     @ApiOperation(value = "Get all document of specified state", notes = "Returns all document of specified state")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public List<DocumentGetCommand> getAllDocumentsByDocumentState(
             @ApiParam(value = "Document state", required = true)
             @PathVariable DocumentState documentState) {
+        return documentService.getAllDocumentsByDocumentState(documentState);
+    }
+    */
+
+    //READ All DOCUMENTS OF SPECIFIC DOCUMENT_STATE. Version_02 ========================================================
+    //@PathVariable --> @RequestParam
+    @RequestMapping(value = "/documentbystate", method = RequestMethod.GET)
+    @ApiOperation(value = "Get all document of specified state", notes = "Returns all document of specified state")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public List<DocumentGetCommand> getAllDocumentsByDocumentState(
+            @ApiParam(value = "Document state", required = true)
+            @RequestParam DocumentState documentState) {
         return documentService.getAllDocumentsByDocumentState(documentState);
     }
 
@@ -92,7 +105,6 @@ public class DocumentController {
     }
 
     //READ All DOCUMENTS OF SPECIFIC AUTHOR_ID =========================================================================
-
     @RequestMapping(value = "/{authorId}/docs", method = RequestMethod.GET)
 
     @ApiOperation(value = "Get all document of specified author id", notes = "Returns all document of specified author id")
@@ -102,7 +114,6 @@ public class DocumentController {
             @PathVariable Long authorId) {
         return documentService.getAllDocumentsByAuthorId(authorId);
     }
-
 
     //CREATE ===========================================================================================================
     @RequestMapping(method = RequestMethod.POST)
@@ -150,6 +161,7 @@ public class DocumentController {
     }
     */
 
+    /*
     //SET DOCUMENT STATE. Version_01 (by my) ===========================================================================
     @RequestMapping(value = "/{id}/setState", method = RequestMethod.PUT)
     @ApiOperation(value = "Set document state", notes = "Set document state by id")
@@ -165,8 +177,9 @@ public class DocumentController {
     ) {
         documentService.setDocumentState(id, documentSetStateCommand);
     }
+    */
 
-/*
+
     //SET DOCUMENT STATE. Version_02 (by J.C.) =========================================================================
     @RequestMapping(value = "/setState", method = RequestMethod.PUT)
     @ApiOperation(value = "Set document state", notes = "Set document state by id")
@@ -180,5 +193,5 @@ public class DocumentController {
     ) {
                 documentService.setDocumentState(documentSetStateCommand);
     }
-*/
+
 }

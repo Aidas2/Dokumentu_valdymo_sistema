@@ -22,7 +22,7 @@ public class DocumentTypeController {
     private DocumentTypeService documentTypeService;
 
 
-    //READ
+    //READ =============================================================================================================
     @RequestMapping(method = RequestMethod.GET)
     @ApiOperation(value = "Get all documents types", notes = "Returns all documents types")
     @ResponseStatus(HttpStatus.ACCEPTED)
@@ -30,27 +30,29 @@ public class DocumentTypeController {
         return documentTypeService.getDocumentTypes();
     }
 
-    //READ By ID
+    //READ By ID =======================================================================================================
+    //@PathVariable --> @RequestParam
     @RequestMapping(value="/{id}", method = RequestMethod.GET)
     @ApiOperation(value = "Get documents type by id", notes = "Returns document type by id")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public DocumentTypeGetCommand getDocumentsTypeById(
+    public DocumentTypeGetCommand getDocumentTypeById(
             @ApiParam(value = "Document type id", required = true)
-            @PathVariable Long id) {
-        return documentTypeService.getDocumentsTypeById(id);
+            @RequestParam Long id) {
+        return documentTypeService.getDocumentTypeById(id);
     }
 
-    //READ By TITLE
+    //READ By TITLE ====================================================================================================
+    //@PathVariable --> @RequestParam
     @RequestMapping(value="/{title}", method = RequestMethod.GET)
     @ApiOperation(value = "Get documents type by title", notes = "Returns document type by title")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public DocumentTypeGetCommand getDocumentsTypeByTitle(
             @ApiParam(value = "Document type title", required = true)
-            @PathVariable String title) {
+            @RequestParam String title) {
         return documentTypeService.getDocumentsTypeByTitle(title);
     }
 
-    //CREATE
+    //CREATE ===========================================================================================================
     @RequestMapping(method = RequestMethod.POST)
     @ApiOperation(value = "Add new document type", notes = "Adds new document type")
     @ResponseStatus(HttpStatus.CREATED)
@@ -60,7 +62,7 @@ public class DocumentTypeController {
         documentTypeService.createDocumentType(documentTypeCreateCommand);
     }
 
-    //UPDATE
+    //UPDATE ===========================================================================================================
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     @ApiOperation(value = "Update document type info", notes = "Update document type by id")
     @ResponseStatus(HttpStatus.CREATED)
@@ -72,7 +74,7 @@ public class DocumentTypeController {
     }
 
 
-    //DELETE
+    //DELETE ===========================================================================================================
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     @ApiOperation(value = "Delete document type", notes = "Delete document type by id")
     @ResponseStatus(HttpStatus.ACCEPTED)
