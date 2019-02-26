@@ -87,7 +87,7 @@ const CreateUserComponent = props => {
             <h5>Prisijungimo slaptažodis</h5>
 
             <input
-              type="text"
+              type="password"
               className="form-control"
               placeholder="Įveskite vartotojo prisijungimo slaptažodį"
               onChange={props.onPasswordChange}
