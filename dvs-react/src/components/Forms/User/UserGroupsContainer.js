@@ -4,40 +4,51 @@ import axios from "axios";
 import UserGroupsComponent from "./UserGroupsComponent";
 
 class UserGroupsContainer extends Component {
-  // state = { documentTypes: [] };
+  state = { userGroups: [] };
 
-  // componentDidMount() {
-  //   console.log("ComponentDidMount inside DocumentTYpesCOntainer");
-  //   axios
-  //     .get("http://localhost:8081/api/doctypes")
-  //     .then(response => {
-  //       this.setState({ documentTypes: response.data });
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     });
-  // }
+  componentDidMount() {
+    axios
+      .get("http://localhost:8081/api/groups")
+      .then(response => {
+        this.setState({ userGroups: response.data });
+        // let userGroup = this.state.userGroup;
+        // userGroup = response.data[0].title;
+        // // createDocumentInfo.username = localStorage.getItem("username");
+        // this.setState({ userGroup: userGroup });
+        // this.setState({ documentType: response.data[0].title });
+        // this.setState({ documentType: response.data[0].title });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    console.log(
+      "ComponentDidMount inside DocumentTYpesCOntainer >>>>>>>>>> this.state.userGroups>>>>.",
+      this.state.userGroups
+    );
+  }
 
   render() {
-    console.log("$$$$$$$$$ this.props >>>>>>>>>", this.props);
-    this.props.documentTypes.length > 1
-      ? console.log(
-          "$$$$$$$$$ this.props.documentTypes[1].title >>>>>>>>>",
-          this.props.documentTypes[1].title
-        )
-      : console.log("$$$$$$$$$ Array does not contain at least 2 elements ");
-    console.log("$$$$$$$$$$ docTypesArray >>>>>>>>>");
+    // console.log("$$$$$$$$$ this.props >>>>>>>>>", this.props);
+    // this.props.userGroups.length > 1
+    //   ? console.log(
+    //       "$$$$$$$$$ this.props.documentTypes[1].title >>>>>>>>>",
+    //       this.props.userGroups[1].title
+    //     )
+    //   : console.log("$$$$$$$$$ Array does not contain at least 2 elements ");
+    // console.log("$$$$$$$$$$ docTypesArray >>>>>>>>>");
 
-    const docTypesArrayToRender = this.props.documentTypes.map(oneType => {
-      return <UserGroupsComponent key={oneType.id} typeObject={oneType} />;
+    const UserGroupsArrayToRender = this.state.userGroups.map(oneGroup => {
+      return (
+        <UserGroupsComponent key={oneGroup.title} groupObject={oneGroup} />
+      );
     });
     return (
       <select
-        onChange={this.props.onDocumentTypeChange}
+        onChange={this.props.onUserGroupChange}
         className="form-control form-control-sm col-6 italic-style"
-        id="documentTypeSelect"
+        id="userGroupSelect"
       >
-        {docTypesArrayToRender}
+        {UserGroupsArrayToRender}
       </select>
     );
   }

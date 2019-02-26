@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import logo from "../../../images/home.png";
 import { Link } from "react-router-dom";
+import UserGroupsContainer from "./UserGroupsContainer";
 
 const CreateUserComponent = props => {
   return (
@@ -113,6 +114,20 @@ const CreateUserComponent = props => {
               <option value="true">Taip</option>
             </select>
           </div>
+          <tr>
+            <td scope="row">
+              <h6>3</h6>
+            </td>
+            <td scope="row">
+              <h6>Dokumento tipas</h6>
+            </td>
+            <td scope="row">
+              <UserGroupsContainer
+                userGroups={this.props.userGroups}
+                onUserGroupChange={this.props.onUserGroupChange}
+              />
+            </td>
+          </tr>
         </div>
         {/* <div className="form-group" /> */}
         <button
