@@ -7,7 +7,6 @@ import lt.akademijait.bronza.dto.document.DocumentUpdateCommand;
 import lt.akademijait.bronza.entities.Document;
 import lt.akademijait.bronza.entities.DocumentType;
 import lt.akademijait.bronza.entities.User;
-import lt.akademijait.bronza.entities.UserGroup;
 import lt.akademijait.bronza.enums.DocumentState;
 import lt.akademijait.bronza.repositories.DocumentRepository;
 import lt.akademijait.bronza.repositories.DocumentTypeRepository;
@@ -20,7 +19,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -61,8 +59,6 @@ public class DocumentService {
     @Transactional(readOnly = true)
     public DocumentGetCommand getDocumentById(Long id) {
         Document document = documentRepository.findById(id).orElse(null);
-
-
 
         return new DocumentGetCommand(
                 document.getId(),
@@ -255,6 +251,7 @@ public class DocumentService {
     }
 
 
+    /*
     //SET DOCUMENT STATE. Version_01 (by my) ===========================================================================
     @Transactional
     public void setDocumentState (Long id, DocumentSetStateCommand documentSetStateCommand) {
@@ -277,14 +274,14 @@ public class DocumentService {
         if(canSetState) {
             documentToSetState.setReviewer(user);
         }
-        /*
-        2. Reikia patikrinti, ar Reviewer turi permission acceptinti arba rejectinti.
-         Tą reikia daryti, tikrinant User reviewer kitamąjį List<UserGroup> userGroup.
-         Reikia eiti per kiekvieną listo elementą ir žiūrėti, ar kuris nors iš elementų
-         turi Liste reviewDocumentTYpe būtent tą tipą, kurį jis bando acceptinti arba rejectinti.
-         Jei turi, tada tik leisti setDocumentStatus(rejectet arba accepted priskirti).
-         Ir tik tada priskirti paciam documentEntičiui reviewerį, jei jam leista pakeisti statą.
-         */
+
+//        Reikia patikrinti, ar Reviewer turi permission acceptinti arba rejectinti.
+//         Tą reikia daryti, tikrinant User reviewer kitamąjį List<UserGroup> userGroup.
+//         Reikia eiti per kiekvieną listo elementą ir žiūrėti, ar kuris nors iš elementų
+//         turi Liste reviewDocumentTYpe būtent tą tipą, kurį jis bando acceptinti arba rejectinti.
+//         Jei turi, tada tik leisti setDocumentStatus(rejectet arba accepted priskirti).
+//         Ir tik tada priskirti paciam documentEntičiui reviewerį, jei jam leista pakeisti statą.
+
 
 
         //papildyti validacija ar DocumentState jau nera toks koki norim suteikti.
@@ -334,18 +331,19 @@ public class DocumentService {
 
         documentRepository.save(documentToSetState);
     }
+    */
 
-/*
+
     //SET DOCUMENT STATE. Version_02 (by J.C.) =========================================================================
     //to make working, change 'private DocumentState documentState' --> 'private String documentState' ((DocumentSetStateCommand.java)
     @Transactional
-    public void setDocumentState2 ( DocumentSetStateCommand documentSetStateCommand) {
+    public void setDocumentState ( DocumentSetStateCommand documentSetStateCommand) {
 
         User user = userRepository.findByUsername(documentSetStateCommand.getAuthorUsername());
         Document documentToSetState = documentRepository.getOne(documentSetStateCommand.getDocumentId());
         User reviewerUser = userRepository.findByUsername(documentSetStateCommand.getReviewerUsername());
 
-        switch (documentSetStateCommand.getDocumentState()){
+        switch (documentSetStateCommand.getDocumentState().toString()){
             case "SUBMITTED" :{
                 documentToSetState.setDocumentState(DocumentState.SUBMITTED);
                 documentToSetState.setSubmissionDate(new Date());
@@ -367,7 +365,7 @@ public class DocumentService {
             }
         }
     }
-*/
+
 
 /*
     //UPDATE. Version_01. ==============================================================================================

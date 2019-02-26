@@ -21,7 +21,7 @@ public class DocumentTypeService {
     @Autowired
     private UserGroupRepository userGroupRepository;
 
-    //GET
+    //GET ALL ==========================================================================================================
     @Transactional(readOnly = true)
     public List<DocumentTypeGetCommand> getDocumentTypes() {
         return documentTypeRepository.findAll()
@@ -32,17 +32,17 @@ public class DocumentTypeService {
                 )).collect(Collectors.toList());
     }
 
-    //GET BY ID
+    //GET BY ID ========================================================================================================
     @Transactional(readOnly = true)
-    public DocumentTypeGetCommand getDocumentsTypeById(Long id) {
-        DocumentType documentType = documentTypeRepository.findById(id).orElseThrow(null);
+    public DocumentTypeGetCommand getDocumentTypeById(Long id) {
+        DocumentType documentType = documentTypeRepository.findById(id).orElse(null);
         return new DocumentTypeGetCommand(
                     documentType.getId(),
                     documentType.getTitle()
         );
     }
 
-    //GET BY TITLE
+    //GET BY TITLE =====================================================================================================
     @Transactional(readOnly = true)
     public DocumentTypeGetCommand getDocumentsTypeByTitle(String title) {
         DocumentType documentType = documentTypeRepository.findByTitle(title);
@@ -52,8 +52,7 @@ public class DocumentTypeService {
         );
     }
 
-
-    //CREATE
+    //CREATE ===========================================================================================================
     //galbut nereikia  kurti getId
     @Transactional
     public void createDocumentType (DocumentTypeCreateCommand documentTypeCreateCommand) {
@@ -63,7 +62,7 @@ public class DocumentTypeService {
         documentTypeRepository.save(newDocumentType);
     }
 
-    //UPDATE
+    //UPDATE ===========================================================================================================
     @Transactional
     public void updateDocumentType (Long id, DocumentTypeCreateCommand documentTypeCreateCommand) {
         DocumentType documentTypeToUpdate = documentTypeRepository.findById(id).orElseThrow(null);
@@ -96,7 +95,7 @@ public class DocumentTypeService {
         documentTypeRepository.save(updatedDocumentType);
     }
 */
-    //DELETE
+    //DELETE ===========================================================================================================
     @Transactional
     public void deleteDocumentType (Long id) {
         documentTypeRepository.deleteById(id);
