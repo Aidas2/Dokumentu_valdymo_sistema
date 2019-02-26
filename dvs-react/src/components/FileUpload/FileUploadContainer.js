@@ -38,7 +38,7 @@ class FileUploadContainer extends Component {
     );
   }
 
-  handleFile = e => {
+  handleAttachments = e => {
     // console.log(e.target.files, "$$$$-e.target.files");
     // console.log(e.target.files[0], "$$$$-e.target.files[0]");
     // console.log(e.target.files[1], "$$$$-e.target.files[1]");
@@ -47,6 +47,20 @@ class FileUploadContainer extends Component {
     let files = this.state.file;
     file.forEach(element => {
       files.push(element);
+    });
+
+    this.setState({ file: files });
+    console.log("&&&&&&&&&& state.file from handleFile = ", this.state.file);
+  };
+  handleMainDocument = e => {
+    // console.log(e.target.files, "$$$$-e.target.files");
+    // console.log(e.target.files[0], "$$$$-e.target.files[0]");
+    // console.log(e.target.files[1], "$$$$-e.target.files[1]");
+
+    let file = Array.from(e.target.files); //e.target.files[0] was before
+    let files = this.state.file;
+    file.forEach(element => {
+      files.unshift(element);
     });
 
     this.setState({ file: files });
@@ -165,7 +179,8 @@ class FileUploadContainer extends Component {
     return (
       <FileUploadComponent
         onUpload={this.handleFilesUpload}
-        onFile={this.handleFile}
+        onAttachments={this.handleAttachments}
+        onMainDocument={this.handleMainDocument}
         onDocumentTypeChange={this.handleDocumentType}
         onDocumentTitle={this.handleDocumentTitle}
         onDocumentDescription={this.handleDocumentDescription}

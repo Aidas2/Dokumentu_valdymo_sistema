@@ -92,7 +92,7 @@ class FileUploadComponent extends Component {
                   <div className="custom-file">
                     <input
                       type="file"
-                      onChange={this.props.onFile}
+                      onChange={this.props.onMainDocument}
                       className="custom-file-input "
                       id="inputGroupFile01"
                     />
@@ -125,7 +125,7 @@ class FileUploadComponent extends Component {
                     <input
                       type="file"
                       multiple
-                      onChange={this.props.onFile}
+                      onChange={this.props.onAttachments}
                       className="custom-file-input "
                       id="inputGroupFile02"
                     />
