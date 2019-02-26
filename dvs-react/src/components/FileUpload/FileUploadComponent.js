@@ -22,12 +22,14 @@ class FileUploadComponent extends Component {
           </Link>
         </h5>
 
-        <table class="table table-striped">
-          <tr>
-            <th scope="col-2">#</th>
-            <th scope="col-7">Lauko pavadinimas</th>
-            <th scope="col-3">Įvedimo laukas</th>
-          </tr>
+        <table className="table table-striped">
+          <tbody>
+            <tr>
+              <th scope="col-2">#</th>
+              <th scope="col-7">Lauko pavadinimas</th>
+              <th scope="col-3">Įvedimo laukas</th>
+            </tr>
+          </tbody>
 
           <tbody>
             <tr>

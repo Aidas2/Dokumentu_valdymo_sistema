@@ -23,12 +23,14 @@ class AdministrationContainer extends Component {
           </Link>
         </h5>
 
-        <table class="table table-striped">
-          <tr>
-            <th scope="col-2">#</th>
-            <th scope="col-7">Parametrai</th>
-            <th scope="col-3">Veiksmai</th>
-          </tr>
+        <table className="table table-striped">
+          <tbody>
+            <tr>
+              <th scope="col-2">#</th>
+              <th scope="col-7">Parametrai</th>
+              <th scope="col-3">Veiksmai</th>
+            </tr>
+          </tbody>
 
           <tbody>
             <tr>
