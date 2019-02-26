@@ -1,8 +1,6 @@
 package lt.akademijait.bronza.entities;
 
 import javax.persistence.*;
-import java.util.List;
-import java.util.Set;
 
 @Entity
 //@Table(name="DOCUMENT_TYPE")
@@ -17,6 +15,7 @@ public class DocumentType {
     @Column(unique = true, nullable = false)
     private String title;
 
+    /*
     @OneToMany //for connecting  DocumentType and Document (one DocumentType may have many Documents)
     //ATTENTION ! This may be wrong approach ! Perhaps I should connect UserGroup to Document  ???
     private List<Document> documents;
@@ -28,6 +27,7 @@ public class DocumentType {
     @ManyToMany//(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     //@JoinTable(name = "review_type", joinColumns = @JoinColumn(name="doc_type"), inverseJoinColumns = @JoinColumn(name="user_group_id") )
     private Set<UserGroup> reviewUserGroups;
+    */
 
 
     //Constructors:
@@ -35,6 +35,11 @@ public class DocumentType {
     public DocumentType() {
     }
 
+    public DocumentType(String title) {
+        this.title = title;
+    }
+
+    /*
     public DocumentType(String title,
                         List<Document> documents,
                         Set<UserGroup> submissionUserGroups,
@@ -44,7 +49,7 @@ public class DocumentType {
         this.reviewUserGroups = reviewUserGroups;
     }
 
-/*
+
     //SUBMISSION GROUP - TYPE (ADD REMOVE)
     public void addSubmissionUserGroup(UserGroup userGroup) {
         submissionUserGroups.add(userGroup);
@@ -64,6 +69,7 @@ public class DocumentType {
 
     //Getters and Setters:
 
+
     public Long getId() {
         return id;
     }
@@ -78,31 +84,5 @@ public class DocumentType {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public List<Document> getDocuments() {
-        return documents;
-    }
-
-    public void setDocuments(List<Document> documents) {
-        this.documents = documents;
-    }
-
-    public Set<UserGroup> getSubmissionUserGroups() {
-        return submissionUserGroups;
-    }
-
-    public void setSubmissionUserGroups(Set<UserGroup> submissionUserGroups) {
-        this.submissionUserGroups = submissionUserGroups;
-    }
-
-
-
-    public Set<UserGroup> getReviewUserGroups() {
-        return reviewUserGroups;
-    }
-
-    public void setReviewUserGroups(Set<UserGroup> reviewUserGroups) {
-        this.reviewUserGroups = reviewUserGroups;
     }
 }
