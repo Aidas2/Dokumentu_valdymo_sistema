@@ -5,7 +5,7 @@ import CreateUserComponent from "./CreateUserComponent";
 
 class CreateUserContainer extends Component {
   state = {
-    userGroup: "",
+    userGroup: [],
     administrator: false,
     emailAddress: "",
     firstName: "",
@@ -15,27 +15,24 @@ class CreateUserContainer extends Component {
     username: "",
     id: 4,
     msg: false,
-    userGroups: []
+    allUserGroups: []
   };
 
   componentDidMount() {
     axios
       .get("http://localhost:8081/api/groups")
       .then(response => {
-        this.setState({ userGroups: response.data });
-        let userGroup = this.state.userGroup;
-        userGroup = response.data[0].title;
-        // createDocumentInfo.username = localStorage.getItem("username");
-        this.setState({ userGroup: userGroup });
-        // this.setState({ documentType: response.data[0].title });
-        // this.setState({ documentType: response.data[0].title });
+        this.setState({ allUserGroups: response.data });
+        // let userGroup = this.state.userGroup;
+        // userGroup.push(response.data[0].title);
+        // this.setState({ userGroup: userGroup });
       })
       .catch(error => {
         console.log(error);
       });
     console.log(
       "ComponentDidMount inside DocumentTYpesCOntainer >>>>>>>>>> this.state.userGroups>>>>.",
-      this.state.userGroups
+      this.state.allUserGroups
     );
   }
 
@@ -62,7 +59,8 @@ class CreateUserContainer extends Component {
         lastName: this.state.lastName,
         password: this.state.password,
         username: this.state.username,
-        id: 4
+        userGroupTitle: this.state.userGroup
+        // id: 4
       })
       .then(response => {
         const uploadStatus = "Type was created successfully";
@@ -108,7 +106,9 @@ class CreateUserContainer extends Component {
     this.setState({ username: e.target.value });
   };
   handleUserGroupChange = e => {
-    this.setState({ userGroup: e.target.value });
+    let userGroup = this.state.userGroup;
+    userGroup.push(e.target.value);
+    this.setState({ userGroup: userGroup });
   };
 
   launchAlert = () => {
@@ -152,7 +152,7 @@ class CreateUserContainer extends Component {
         onPasswordChange={this.handlePasswordChange}
         onUsernameChange={this.handleUsernameChange}
         onUserGroupChange={this.handleUserGroupChange}
-        userGroups={this.state.userGroups}
+        userGroups={this.state.allUserGroups}
         launchAlert={this.launchAlert()}
       />
     );
