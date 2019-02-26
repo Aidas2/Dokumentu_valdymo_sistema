@@ -1,26 +1,22 @@
 import React, { Component } from "react";
-import UserGroups from "./UserGroups";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
-class UserGroupsComponent extends Component {
-  render() {
-    let userGroupsList = this.props.userGroupsList.map(userGroups => (
-      <UserGroups
-        id={userGroups.id}
-        key={userGroups.id}
-        title={userGroups.title}
-        description={userGroups.description}
-        imageUrl={userGroups.imageUrl}
-        type={userGroups.type}
-        Management={userGroups.Management}
-      />
-    ));
-    return (
-      <div className="container-fluid">
-        <h1 className="display-2">YOUR userGroupsS</h1>
-        <div className="row">{userGroupsList}</div>;
+const UserGroupsComponent = props => {
+  return (
+    <div className="container pl-0 ml-0">
+      <div className="row">
+        <div className="col-2">
+          {props.groupId}
+          {/* <Link to="">Linkas</Link> */}
+        </div>
+
+        <div className="col-2">
+          <p>{props.groupTitle}</p>
+        </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default UserGroupsComponent;
