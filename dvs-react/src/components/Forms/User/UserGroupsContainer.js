@@ -45,7 +45,7 @@ class UserGroupsContainer extends Component {
     return (
       <select
         onChange={this.props.onUserGroupChange}
-        className="form-control form-control-sm col-6 italic-style"
+        className="form-control "
         id="userGroupSelect"
       >
         {UserGroupsArrayToRender}

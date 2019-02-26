@@ -95,7 +95,7 @@ const CreateUserComponent = props => {
           </div>
         </div>
         <div className="row mt-2 mb-2 ">
-          <div className="col-6 ">
+          <div className="col ">
             <h5>Administratoriaus rolė</h5>
             {/* <input
               type="text"
@@ -114,6 +114,14 @@ const CreateUserComponent = props => {
               <option value="true">Taip</option>
             </select>
           </div>
+          <div className="col">
+            <h5>Vartotojo grupė</h5>
+
+            <UserGroupsContainer
+              userGroups={props.userGroups}
+              onUserGroupChange={props.onUserGroupChange}
+            />
+          </div>
         </div>
         {/* <div className="form-group" /> */}
         <button
@@ -124,11 +132,6 @@ const CreateUserComponent = props => {
         </button>
       </div>
       <div className="container">{props.launchAlert}</div>
-
-      <UserGroupsContainer
-        userGroups={props.userGroups}
-        onUserGroupChange={props.onUserGroupChange}
-      />
 
       {/* Name{props.propertiesObject.value.title}:
         <br />
