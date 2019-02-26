@@ -114,20 +114,6 @@ const CreateUserComponent = props => {
               <option value="true">Taip</option>
             </select>
           </div>
-          <tr>
-            <td scope="row">
-              <h6>3</h6>
-            </td>
-            <td scope="row">
-              <h6>Dokumento tipas</h6>
-            </td>
-            <td scope="row">
-              <UserGroupsContainer
-                userGroups={this.props.userGroups}
-                onUserGroupChange={this.props.onUserGroupChange}
-              />
-            </td>
-          </tr>
         </div>
         {/* <div className="form-group" /> */}
         <button
@@ -138,6 +124,11 @@ const CreateUserComponent = props => {
         </button>
       </div>
       <div className="container">{props.launchAlert}</div>
+
+      <UserGroupsContainer
+        userGroups={props.userGroups}
+        onUserGroupChange={props.onUserGroupChange}
+      />
 
       {/* Name{props.propertiesObject.value.title}:
         <br />
