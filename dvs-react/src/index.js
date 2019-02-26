@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { Switch, Route } from "react-router";
 import { BrowserRouter } from "react-router-dom";
-import UserGroupsContainer from "./components/Forms/User/UserGroupsContainer";
+import UserGroupsContainer from "./components/UserGroups/UserGroupsContainer";
 import AdministrationContainer from "./components/Administration/AdministrationContainer";
 import LandingPage from "./components/LandingPage";
 import App from "./App";
@@ -42,12 +42,7 @@ ReactDOM.render(
         <Route exact path="/admin/users" component={UsersContainer} />
         <Route exact path="/admin/docs" component={DocumentsContainer} />
         <Route exact path="/docs" component={DocumentsContainer} />
-        <Route exact path="/testinggroups" component={UserGroupsContainer} />
-        <Route
-          exact
-          path="/admin/usergroups"
-          component={CreateUserGroupsContainer}
-        />
+        <Route exact path="/admin/usergroups" component={UserGroupsContainer} />
         <Route
           exact
           path="/admin/usergroups/new"

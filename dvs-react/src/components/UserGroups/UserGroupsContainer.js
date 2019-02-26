@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import DocumentTypesComponent from "./UserGroupsComponent";
+import UserGroupsComponent from "./UserGroupsComponent";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import logo from "../../images/home.png";
@@ -24,17 +24,25 @@ class DocumentTypesContainer extends Component {
   }
 
   render() {
-    var docTypesArrayToRenderId = this.state.docTypes.map(oneTypeObj => {
+    var userGroupsArrayToRenderId = this.state.userGroups.map(oneGroupObj => {
       return (
-        <DocumentTypesComponent key={oneTypeObj.id} typeId={oneTypeObj.id} />
+        <UserGroupsComponent
+          key={oneGroupObj.title}
+          groupId={oneGroupObj.title}
+        />
       );
     });
 
-    var docTypesArrayToRenderTitle = this.state.docTypes.map(oneTypeObj => {
-      return (
-        <DocumentTypesComponent key={oneTypeObj.id} typeId={oneTypeObj.title} />
-      );
-    });
+    var userGroupsArrayToRenderTitle = this.state.userGroups.map(
+      oneGroupObj => {
+        return (
+          <UserGroupsComponent
+            key={oneGroupObj.title}
+            groupTitle={oneGroupObj.title}
+          />
+        );
+      }
+    );
 
     return (
       <div>
@@ -57,22 +65,22 @@ class DocumentTypesContainer extends Component {
 
           {/*  <h3 className="display-6">Dokumentų tipai</h3> */}
           <Link
-            to={"/admin/newdoctype/"}
+            to={"/admin//admin/usergroups/new"}
             className="btn btn-outline-success m-2"
           >
-            Kurti naują dokumento tipą
+            Kurti naują vartotojų grupę
           </Link>
-          <table class="table table-active">
-            <thead class="thead-dark">
+          <table className="table table-active">
+            <thead className="thead-dark">
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Dokumento tipo pavadinimas</th>
+                <th scope="col">Vartotojų grupės pavadinimas</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <th scope="row"> {docTypesArrayToRenderId}</th>
-                <td>{docTypesArrayToRenderTitle}</td>
+                <th scope="row"> {userGroupsArrayToRenderId}</th>
+                <td>{userGroupsArrayToRenderTitle}</td>
               </tr>
             </tbody>
           </table>
