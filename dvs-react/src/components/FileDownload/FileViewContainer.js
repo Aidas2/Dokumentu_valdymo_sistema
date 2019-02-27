@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-class FileView extends Component {
+class FileViewContainer extends Component {
   state = {
     documentId: 2145
   };
@@ -14,29 +14,29 @@ class FileView extends Component {
     console.log("download method happened");
 
     axios({
-      url: "http://localhost:8081/files",
+      url: "http://localhost:8081/files/view",
       method: "GET",
       params: {
         documentId: this.state.documentId
-      },
-      responseType: "blob" // important
+      }
+      // responseType: "blob" // important
     })
       .then(response => {
-        const fileName = response.headers["content-disposition"].substring(
-          200,
-          22
-        );
+        // const fileName = response.headers["content-disposition"].substring(
+        //   200,
+        //   22
+        // );
         console.log("--------------- response >>>>>>>>> ", response);
 
-        const url = window.URL.createObjectURL(
-          new Blob([response.data], { type: "application/octet-stream" }) //it works withoud a type as well
-        );
-        const link = document.createElement("a");
-        link.href = url;
-        link.setAttribute("download", fileName); //or any other extension
-        document.body.appendChild(link);
-        link.click();
-        link.remove();
+        // const url = window.URL.createObjectURL(
+        //   new Blob([response.data], { type: "application/octet-stream" }) //it works withoud a type as well
+        // );
+        // const link = document.createElement("a");
+        // link.href = url;
+        // link.setAttribute("download", fileName); //or any other extension
+        // document.body.appendChild(link);
+        // link.click();
+        // link.remove();
       })
       .catch(error => {
         console.log(error);
@@ -50,10 +50,10 @@ class FileView extends Component {
     );
     return (
       <button onClick={this.viewFile} className="btn btn-dark">
-        Atsisiųsti
+        Peržiūrėti
       </button>
     );
   }
 }
 
-export default FileView;
+export default FileViewContainer;

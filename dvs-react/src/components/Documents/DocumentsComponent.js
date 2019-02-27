@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import FileDownloadConatainer from "../FileDownload/FileDownloadContainer";
+import FileViewContainer from "../FileDownload/FileViewContainer";
 
 const DocumentsComponent = props => {
   var {
@@ -40,9 +41,7 @@ const DocumentsComponent = props => {
         </div>
 
         <div className="col-1">
-          <button onClick={props.onDocumentView} className="btn btn-secondary">
-            Peržiūrėti
-          </button>
+          <FileViewContainer documentId={id} />
         </div>
         <div className="col-1">
           <FileDownloadConatainer documentId={id} />
