@@ -28,11 +28,13 @@ class CreateUserGroupsContainer extends Component {
 
   handleSubmit = () => {
     axios
-      .post("http://localhost:8081/api/doctypes", {
-        title: this.state.title
+      .post("http://localhost:8081/api/groups", {
+        title: this.state.title,
+        reviewDocumentType: this.state.reviewDocumentType,
+        submitDocumentType: this.state.submitDocumentType
       })
       .then(response => {
-        const uploadStatus = "Type was created successfully";
+        const uploadStatus = "Group was created successfully";
         console.log("upload status >>>>>>>>>> ", uploadStatus);
         this.setState({ msg: true });
       })
@@ -54,9 +56,9 @@ class CreateUserGroupsContainer extends Component {
   };
 
   handleTitleChange = e => {
-    // this.handleCloseAlert();
-    let documentTypeTitle = e.target.value;
-    this.setState({ title: documentTypeTitle });
+    this.handleCloseAlert();
+    let groupTitle = e.target.value;
+    this.setState({ title: groupTitle });
   };
 
   launchAlert = () => {
@@ -83,14 +85,18 @@ class CreateUserGroupsContainer extends Component {
     this.setState({ msg: false });
   };
   handleSubmitDocumentTypeChange = e => {
+    this.handleCloseAlert();
+
     let submitDocumentType = this.state.submitDocumentType;
     submitDocumentType.push(e.target.value);
     this.setState({ submitDocumentType });
   };
   handleReviewDocumentTypeChange = e => {
-    let reviweDocumentType = this.state.reviewDocumentType;
-    reviweDocumentType.push(e.target.value);
-    this.setState({ reviweDocumentType });
+    this.handleCloseAlert();
+
+    let reviewDocumentType = this.state.reviewDocumentType;
+    reviewDocumentType.push(e.target.value);
+    this.setState({ reviewDocumentType });
   };
 
   render() {
@@ -110,6 +116,7 @@ class CreateUserGroupsContainer extends Component {
         documentTypes={this.state.documentTypes}
         onSubmitTypesChange={this.handleSubmitDocumentTypeChange}
         onReviewTypesChange={this.handleReviewDocumentTypeChange}
+        onTitleChange={this.handleTitleChange}
         onSubmit={this.handleSubmit}
         launchAlert={this.launchAlert()}
         selectedSubmissionTypesTitles={selectedSubmissionTypesTitlesToDisplay}

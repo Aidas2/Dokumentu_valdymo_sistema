@@ -65,7 +65,7 @@ class DocumentTypesContainer extends Component {
 
           {/*  <h3 className="display-6">Dokumentų tipai</h3> */}
           <Link
-            to={"/admin//admin/usergroups/new"}
+            to={"/admin/usergroups/new"}
             className="btn btn-outline-success m-2"
           >
             Kurti naują vartotojų grupę

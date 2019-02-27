@@ -12,7 +12,7 @@ const CreateUserGroupsComponent = props => {
           onChange={props.onTitleChange}
           className="form-control col-4"
           type="text"
-          placeholder="Įveskite dokumento tipo pavadinimą"
+          placeholder="Įveskite vartotojų grupės pavadinimą"
         />
         <h6>Pasirinkite pateikti leidžiamų dokumentų tipus</h6>
         <DocumentTypesContainer
@@ -20,7 +20,8 @@ const CreateUserGroupsComponent = props => {
           onDocumentTypeChange={props.onSubmitTypesChange}
         />
         <span className="italic-style-small">
-          Pasirinktos grupės: {props.selectedSubmissionTypesTitles}
+          Pasirinkti pateikti leidžiami tipai:{" "}
+          {props.selectedSubmissionTypesTitles}
         </span>
         <h6>Pasirinkite peržiūrėti leidžiamų dokumentų tipus</h6>
         <DocumentTypesContainer
@@ -28,7 +29,8 @@ const CreateUserGroupsComponent = props => {
           onDocumentTypeChange={props.onReviewTypesChange}
         />
         <span className="italic-style-small">
-          Pasirinktos grupės: {props.selectedReviewTypesTitles}
+          Pasirinkti leidžiami peržiūrėti tipai:{" "}
+          {props.selectedReviewTypesTitles}
         </span>
         <br />
         <button
