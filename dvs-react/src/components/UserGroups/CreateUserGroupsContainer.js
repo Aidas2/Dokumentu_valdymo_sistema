@@ -7,7 +7,7 @@ class CreateUserGroupsContainer extends Component {
   state = {
     title: "",
     submitDocumentType: [],
-    reviewDocumentTYpe: [],
+    reviewDocumentType: [],
     msg: false,
     documentTypes: []
   };
@@ -82,19 +82,38 @@ class CreateUserGroupsContainer extends Component {
   handleCloseAlert = () => {
     this.setState({ msg: false });
   };
+  handleSubmitDocumentTypeChange = e => {
+    let submitDocumentType = this.state.submitDocumentType;
+    submitDocumentType.push(e.target.value);
+    this.setState({ submitDocumentType });
+  };
+  handleReviewDocumentTypeChange = e => {
+    let reviweDocumentType = this.state.reviewDocumentType;
+    reviweDocumentType.push(e.target.value);
+    this.setState({ reviweDocumentType });
+  };
 
   render() {
     console.log(
       "@@@@@@@@@@@@@@@ inside render() this.state>>>>>>>> ",
       this.state
     );
+    var selectedSubmissionTypesTitlesToDisplay = this.state.submitDocumentType.map(
+      group => group + " *** "
+    );
+    var selectedReviewGroupsTitlesToDisplay = this.state.reviewDocumentType.map(
+      group => group + " *** "
+    );
 
     return (
       <CreateUserGroupsComponent
         documentTypes={this.state.documentTypes}
-        onTitleChange={this.handleTitleChange}
+        onSubmitTypesChange={this.handleSubmitDocumentTypeChange}
+        onReviewTypesChange={this.handleReviewDocumentTypeChange}
         onSubmit={this.handleSubmit}
         launchAlert={this.launchAlert()}
+        selectedSubmissionTypesTitles={selectedSubmissionTypesTitlesToDisplay}
+        selectedReviewTypesTitles={selectedReviewGroupsTitlesToDisplay}
       />
     );
   }
