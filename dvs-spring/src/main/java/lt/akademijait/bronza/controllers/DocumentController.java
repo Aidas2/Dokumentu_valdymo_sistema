@@ -161,37 +161,35 @@ public class DocumentController {
     }
     */
 
-    /*
+
     //SET DOCUMENT STATE. Version_01 (by my) ===========================================================================
     @RequestMapping(value = "/{id}/setState", method = RequestMethod.PUT)
     @ApiOperation(value = "Set document state", notes = "Set document state by id")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public void setDocumentStateById(
-            @ApiParam(value = "Document id", required = true)
-            @RequestBody final DocumentSetStateCommand documentSetStateCommand,
-            @PathVariable Long id,
+            //@ApiParam(value = "Document id", required = true)
+            @RequestBody final DocumentSetStateCommand documentSetStateCommand
+            //@PathVariable Long id
 
-            @ApiParam(value = "Document state", required = true)
-            @PathVariable DocumentState documentState
+//            @ApiParam(value = "Document state", required = true)
+//            @PathVariable DocumentState documentState
 
     ) {
-        documentService.setDocumentState(id, documentSetStateCommand);
+        documentService.setDocumentState(documentSetStateCommand);
     }
-    */
 
 
+/*
     //SET DOCUMENT STATE. Version_02 (by J.C.) =========================================================================
     @RequestMapping(value = "/setState", method = RequestMethod.PUT)
     @ApiOperation(value = "Set document state", notes = "Set document state by id")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public void setDocumentStateById (
-            @ApiParam(value = "Document id", required = true)
-            @RequestBody final DocumentSetStateCommand documentSetStateCommand,
-            @PathVariable Long id
+            @RequestBody final DocumentSetStateCommand documentSetStateCommand
             //@ApiParam(value = "Document state", required = true)
             //@PathVariable DocumentState documentState
     ) {
                 documentService.setDocumentState(documentSetStateCommand);
     }
-
+*/
 }
