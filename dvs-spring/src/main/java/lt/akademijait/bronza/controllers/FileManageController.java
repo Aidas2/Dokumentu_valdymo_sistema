@@ -33,17 +33,16 @@ import java.util.Date;
 public class FileManageController {
 
 
-    //    this is for a download. It is still in progress and does not work
     @Autowired
     private ApplicationContext applicationContext;
     @Autowired
     private FileManageService fileManageService;
     @Autowired
-    DocumentRepository documentRepository;
+    private DocumentRepository documentRepository;
 
-    @GetMapping(value = "/files/download/{documentId:.+}")
+    @GetMapping(value = "/files/{documentId:.+}")
     @ResponseBody
-    public ResponseEntity serveFile(@PathVariable Long documentId) throws UnsupportedEncodingException {
+    public ResponseEntity downloadFile(@PathVariable Long documentId) throws UnsupportedEncodingException {
         Resource file = applicationContext.getResource("file:" + documentRepository.findById(documentId).orElse(null).getPath());
 
 //        String fileNameEncoded = URLEncoder.encode(file.getFilename(), "UTF-8");
