@@ -36,7 +36,8 @@ public class DocumentGetCommand {
     public DocumentGetCommand(Long id, String authorUsername, String documentStateInLithuanian, String documentTypeTitleInLithuanian, String title, String description, Date creationDate, Date submissionDate, Date confirmationDate, Date rejectionDate, User reviewer, String rejectionReason, String path) {
         this.id = id;
         this.authorUsername = authorUsername;
-        this.documentStateInLithuanian = documentStateInLithuanian;
+        //this.documentStateInLithuanian = documentStateInLithuanian; //see remark bellow
+        setDocumentStateInLithuanian(documentStateInLithuanian);//its is not enough to do validation in setter, also this validation must be in constructor
         this.documentTypeTitleInLithuanian = documentTypeTitleInLithuanian;
         this.title = title;
         this.description = description;
@@ -70,8 +71,6 @@ public class DocumentGetCommand {
     }
 
     public void setDocumentStateInLithuanian(String documentStateInLithuanian) {
-
-
         if (documentStateInLithuanian.equals(DocumentState.CREATED)) {
             this.documentStateInLithuanian = "SUKURTAS";
         } else if (documentStateInLithuanian.equals(DocumentState.SUBMITTED)) {

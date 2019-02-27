@@ -42,6 +42,15 @@ public class DocumentUpdateCommand {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    @Override
+    public String toString() {
+        return "DocumentUpdateCommand{" +
+                "documentTypeTitle='" + documentTypeTitle + '\'' +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }
 
 
