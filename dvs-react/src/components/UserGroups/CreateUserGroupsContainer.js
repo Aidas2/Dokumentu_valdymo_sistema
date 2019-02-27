@@ -6,23 +6,27 @@ import CreateUserGroupsComponent from "./CreateUserGroupsComponent";
 class CreateUserGroupsContainer extends Component {
   state = {
     title: "",
-    msg: false
+    submitDocumentType: [],
+    reviewDocumentTYpe: [],
+    msg: false,
+    documentTypes: []
   };
+  componentDidMount() {
+    axios
+      .get("http://localhost:8081/api/doctypes")
+      .then(response => {
+        this.setState({ documentTypes: response.data });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    console.log(
+      "ComponentDidMount inside DocumentTYpesCOntainer >>>>>>>>>> this.state.documetTypes>>>>.",
+      this.state.documentTypes
+    );
+  }
 
   handleSubmit = () => {
-    // axios
-    //   .post("http://localhost:8081/api/doctypes", {
-    //     title: this.state.title
-    //   })
-    //   .then(response => {
-    //     console.log(response);
-    //     console.log("PO sekmingo submito state.sth");
-    //     // this.setState({ msg: true });
-    //   })
-    //   .catch(function(error) {
-    //     console.log(error);
-    //   });
-
     axios
       .post("http://localhost:8081/api/doctypes", {
         title: this.state.title
@@ -47,14 +51,10 @@ class CreateUserGroupsContainer extends Component {
         }
       });
     console.log(">>>>>>>>>Submit happened");
-    console.log("@@@@@@@@@@@@@@@ this.state.title >>>>>>>> ", this.state.title);
-    console.log(
-      "@@@@@@@@@@@@@@@ inside handleSubmit this.state.msg >>>>>>>> ",
-      this.state.msg
-    );
   };
 
   handleTitleChange = e => {
+    // this.handleCloseAlert();
     let documentTypeTitle = e.target.value;
     this.setState({ title: documentTypeTitle });
   };
@@ -72,8 +72,8 @@ class CreateUserGroupsContainer extends Component {
           >
             &times;
           </button>
-          Sveikiname! Dokumento tipas <strong>{this.state.title} </strong>
-          sukurtas sėkmingai.
+          Sveikiname! Vartotojų grupė <strong>{this.state.title} </strong>
+          sukurta sėkmingai.
         </div>
       );
     }
@@ -85,12 +85,13 @@ class CreateUserGroupsContainer extends Component {
 
   render() {
     console.log(
-      "@@@@@@@@@@@@@@@ inside render() this.state.msg >>>>>>>> ",
-      this.state.msg
+      "@@@@@@@@@@@@@@@ inside render() this.state>>>>>>>> ",
+      this.state
     );
 
     return (
       <CreateUserGroupsComponent
+        documentTypes={this.state.documentTypes}
         onTitleChange={this.handleTitleChange}
         onSubmit={this.handleSubmit}
         launchAlert={this.launchAlert()}

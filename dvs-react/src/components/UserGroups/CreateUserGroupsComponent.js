@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import DocumentTypesContainer from "../FileUpload/DocumetTypesContainer";
 
 const CreateUserGroupsComponent = props => {
   return (
@@ -13,8 +14,11 @@ const CreateUserGroupsComponent = props => {
           type="text"
           placeholder="Įveskite dokumento tipo pavadinimą"
         />
-
-        {/* <div className="form-group" /> */}
+        <h6>Dokumento tipas</h6>
+        <DocumentTypesContainer
+          documentTypes={props.documentTypes}
+          onDocumentTypeChange={props.onDocumentTypeChange}
+        />
 
         <button
           onClick={props.onSubmit}
