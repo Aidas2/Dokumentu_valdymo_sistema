@@ -343,7 +343,7 @@ public class DocumentService {
         Document documentToSetState = documentRepository.getOne(documentSetStateCommand.getDocumentId());
         User reviewerUser = userRepository.findByUsername(documentSetStateCommand.getReviewerUsername());
 
-        switch (documentSetStateCommand.getDocumentState().toString()){
+        switch (documentSetStateCommand.getDocumentState()){
             case "SUBMITTED" :{
                 documentToSetState.setDocumentState(DocumentState.SUBMITTED);
                 documentToSetState.setSubmissionDate(new Date());
@@ -355,7 +355,6 @@ public class DocumentService {
                 documentToSetState.setDocumentState(DocumentState.REJECTED);
                 documentToSetState.setRejectionDate(new Date());
                 documentToSetState.setRejectionReason(documentSetStateCommand.getRejectionReason());
-
                 break;
             }
             case "COMFIRMED" :{
@@ -363,7 +362,11 @@ public class DocumentService {
                 documentToSetState.setDocumentState(DocumentState.CONFIRMED);
                 documentToSetState.setConfirmationDate(new Date());
             }
+            default:
+                throw new ResourceNotFoundException("My dear Friend, non of the switch case was proceeded");
+
         }
+        documentRepository.save(documentToSetState);
     }
 
 
