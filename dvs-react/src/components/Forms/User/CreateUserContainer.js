@@ -85,27 +85,43 @@ class CreateUserContainer extends Component {
   };
 
   handleAdministratorChange = e => {
+    this.handleCloseAlert();
+
     this.setState({ administrator: e.target.value });
   };
   handleEmailAddressChange = e => {
+    this.handleCloseAlert();
+
     this.setState({ emailAddress: e.target.value });
   };
   handleFirstNameChange = e => {
+    this.handleCloseAlert();
+
     this.setState({ firstName: e.target.value });
   };
   handleHireDateChange = e => {
+    this.handleCloseAlert();
+
     this.setState({ hireDate: e.target.value });
   };
   handleLastNameChange = e => {
+    this.handleCloseAlert();
+
     this.setState({ lastName: e.target.value });
   };
   handlePasswordChange = e => {
+    this.handleCloseAlert();
+
     this.setState({ password: e.target.value });
   };
   handleUsernameChange = e => {
+    this.handleCloseAlert();
+
     this.setState({ username: e.target.value });
   };
   handleUserGroupChange = e => {
+    this.handleCloseAlert();
+
     let userGroups = this.state.userGroups;
     userGroups.push(e.target.value);
     this.setState({ userGroup: userGroups });

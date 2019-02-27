@@ -71,6 +71,8 @@ class FileUploadContainer extends Component {
     return this.uploadStatus;
   };
   handleFilesUpload = () => {
+    this.handleCloseAlert();
+
     console.log(this.state, "THE STATE from handleUpload------$$$$$$");
     let formData = new FormData();
 
@@ -113,16 +115,22 @@ class FileUploadContainer extends Component {
   };
 
   handleDocumentTitle = e => {
+    this.handleCloseAlert();
+
     let createDocumentInfo = this.state.createDocumentInfo;
     createDocumentInfo.title = e.target.value;
     this.setState({ createDocumentInfo: createDocumentInfo });
   };
   handleDocumentDescription = e => {
+    this.handleCloseAlert();
+
     let createDocumentInfo = this.state.createDocumentInfo;
     createDocumentInfo.description = e.target.value;
     this.setState({ createDocumentInfo: createDocumentInfo });
   };
   handleDocumentType = e => {
+    this.handleCloseAlert();
+
     console.log("$$$$$$ DocumentTypeChange occured@@@@@@@@@@@@@@@@@@@@@@");
     let createDocumentInfo = this.state.createDocumentInfo;
     createDocumentInfo.documentTypeTitle = e.target.value;

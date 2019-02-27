@@ -55,6 +55,7 @@ class CreateDocumentTypeConatainer extends Component {
   };
 
   handleTitleChange = e => {
+    this.handleCloseAlert();
     let documentTypeTitle = e.target.value;
     this.setState({ title: documentTypeTitle });
   };
