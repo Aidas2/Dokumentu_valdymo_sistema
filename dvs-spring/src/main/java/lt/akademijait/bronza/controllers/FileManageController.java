@@ -71,10 +71,9 @@ public class FileManageController {
 
 //    THIS ONE WORKS AS WELL, JUST DISPLAYS, DOES NOT DOWNLOADS
     @GetMapping("/files/view")
-    public ResponseEntity<Resource> downloadFile(@RequestParam String fileName, HttpServletRequest request) {
+    public ResponseEntity<Resource> downloadFile(@RequestParam Long documentId, HttpServletRequest request) {
         // Load file as Resource
-        Resource resource = applicationContext.getResource("file:/home/paulius/Dokumentu_valdymo_sistema/dvs-spring/uploaded-files/username1/"
-                + fileName);
+        Resource resource = applicationContext.getResource("file:" + documentRepository.findById(documentId).orElse(null).getPath());
 
         // Try to determine file's content type
         String contentType = null;
