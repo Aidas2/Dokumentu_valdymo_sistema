@@ -126,6 +126,16 @@ public class UserGroupService {
     @Transactional
     public void deleteGroup(String title){userGroupRepository.deleteByTitle(title);}
 
+    @Transactional
+    public void changeGroupName(String userGroup, UserGroupCreateCommand ugcc){
+        UserGroup userGroupToUpdate = userGroupRepository.findByTitle(userGroup);
+        userGroupToUpdate.setTitle(ugcc.getTitle());
+
+        userGroupRepository.save(userGroupToUpdate);
+
+
+    }
+
 
 
 }

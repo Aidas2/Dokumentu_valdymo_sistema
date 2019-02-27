@@ -76,6 +76,15 @@ public class UserGroupController {
         userGroupService.removeDocTypeToSubmit(userGroup, ugu);
     }
 
+    @RequestMapping(path = "/{usergroup}", method = RequestMethod.PUT)
+    @ResponseStatus(HttpStatus.OK)
+    @ApiOperation(value = "Update usergroup title", notes = "Change titel of a certain usergroup")
+    public void updateUserGroupTitle(
+            @ApiParam(value = "Usergroup", required = true) @PathVariable final String usergroup,
+            @ApiParam(value =  "new title", required = true) @RequestBody UserGroupCreateCommand ugcc){
+        userGroupService.changeGroupName(usergroup,ugcc);
+    }
+
 
 
 
