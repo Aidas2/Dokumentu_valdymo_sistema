@@ -3,7 +3,8 @@ import axios from "axios";
 
 class FileViewContainer extends Component {
   state = {
-    documentId: 2145
+    documentId: null,
+    response: ""
   };
 
   componentDidMount() {
@@ -22,10 +23,12 @@ class FileViewContainer extends Component {
       // responseType: "blob" // important
     })
       .then(response => {
+        this.setState({ response });
         // const fileName = response.headers["content-disposition"].substring(
         //   200,
         //   22
         // );
+
         console.log("--------------- response >>>>>>>>> ", response);
 
         // const url = window.URL.createObjectURL(
@@ -42,6 +45,19 @@ class FileViewContainer extends Component {
         console.log(error);
       });
   };
+
+  // var funkcija = (response, status, xhr) => {
+  //   var filename = "";
+  //   var disposition = xhr.getResponseHeader("Content-Disposition");
+  //   if (disposition && disposition.indexOf("attachment") !== -1) {
+  //     var filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
+  //     var matches = filenameRegex.exec(disposition);
+  //     if (matches != null && matches[1]) {
+  //       filename = matches[1].replace(/['"]/g, "");
+  //     }
+  //   }
+  //   return filename;
+  // };
 
   render() {
     console.log(
