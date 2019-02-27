@@ -1,42 +1,100 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import logo from "../../images/home.png";
+import PropTypes from "prop-types";
+import axios from "axios";
+import CreateUserGroupsComponent from "./CreateUserGroupsComponent";
 
 class CreateUserGroupsContainer extends Component {
-  constructor() {
-    super();
-    this.state = {};
-  }
+  state = {
+    title: "",
+    msg: false
+  };
+
+  handleSubmit = () => {
+    // axios
+    //   .post("http://localhost:8081/api/doctypes", {
+    //     title: this.state.title
+    //   })
+    //   .then(response => {
+    //     console.log(response);
+    //     console.log("PO sekmingo submito state.sth");
+    //     // this.setState({ msg: true });
+    //   })
+    //   .catch(function(error) {
+    //     console.log(error);
+    //   });
+
+    axios
+      .post("http://localhost:8081/api/doctypes", {
+        title: this.state.title
+      })
+      .then(response => {
+        const uploadStatus = "Type was created successfully";
+        console.log("upload status >>>>>>>>>> ", uploadStatus);
+        this.setState({ msg: true });
+      })
+      .catch(function(error) {
+        //it works without catch block as well
+        console.log(error);
+        if (error.response) {
+          //HTTP error happened
+          console.log(
+            "Upload error. HTTP error/status code=",
+            error.response.status
+          );
+        } else {
+          //some other error happened
+          console.log("Upload error. HTTP error/status code=", error.message);
+        }
+      });
+    console.log(">>>>>>>>>Submit happened");
+    console.log("@@@@@@@@@@@@@@@ this.state.title >>>>>>>> ", this.state.title);
+    console.log(
+      "@@@@@@@@@@@@@@@ inside handleSubmit this.state.msg >>>>>>>> ",
+      this.state.msg
+    );
+  };
+
+  handleTitleChange = e => {
+    let documentTypeTitle = e.target.value;
+    this.setState({ title: documentTypeTitle });
+  };
+
+  launchAlert = () => {
+    if (this.state.msg) {
+      return (
+        <div className="alert alert-success alert-dismissible">
+          <button
+            onClick={this.handleCloseAlert}
+            href="#"
+            className="close"
+            data-dismiss="alert"
+            aria-label="close"
+          >
+            &times;
+          </button>
+          Sveikiname! Dokumento tipas <strong>{this.state.title} </strong>
+          sukurtas sėkmingai.
+        </div>
+      );
+    }
+    return null;
+  };
+  handleCloseAlert = () => {
+    this.setState({ msg: false });
+  };
+
   render() {
+    console.log(
+      "@@@@@@@@@@@@@@@ inside render() this.state.msg >>>>>>>> ",
+      this.state.msg
+    );
+
     return (
-      <div className="container-fluid ">
-        <h6 className="display-6 normal-padding">Dokumentų tipai</h6>
-
-        <h5 className="display-6 normal-padding gray-collor ">
-          <Link to={"/"}>
-            <img src={logo} width="20" height="10" />
-          </Link>
-          &ensp;/ &ensp;
-          <Link to={"/admin"} className="explorer">
-            Administratoriaus rolė
-          </Link>
-          &ensp;/ &ensp;
-          <Link to={"/admin/usergroups"} className="explorer">
-            Grupių sąrašas
-          </Link>
-        </h5>
-
-        <h3 class="display-6">Grupių sąrašas</h3>
-        <h6 class="display-6">Pirma grupė</h6>
-        <h6 class="display-6">Antra grupė</h6>
-
-        <Link
-          to="/admin/usergroups/new"
-          className="btn btn-outline-success m-2"
-        >
-          Kurti naują grupę
-        </Link>
-      </div>
+      <CreateUserGroupsComponent
+        onTitleChange={this.handleTitleChange}
+        onSubmit={this.handleSubmit}
+        launchAlert={this.launchAlert()}
+      />
     );
   }
 }
