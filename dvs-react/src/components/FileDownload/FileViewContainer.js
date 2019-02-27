@@ -1,0 +1,59 @@
+import React, { Component } from "react";
+import axios from "axios";
+
+class FileView extends Component {
+  state = {
+    documentId: 2145
+  };
+
+  componentDidMount() {
+    this.setState({ documentId: this.props.documentId });
+  }
+
+  viewFile = () => {
+    console.log("download method happened");
+
+    axios({
+      url: "http://localhost:8081/files",
+      method: "GET",
+      params: {
+        documentId: this.state.documentId
+      },
+      responseType: "blob" // important
+    })
+      .then(response => {
+        const fileName = response.headers["content-disposition"].substring(
+          200,
+          22
+        );
+        console.log("--------------- response >>>>>>>>> ", response);
+
+        const url = window.URL.createObjectURL(
+          new Blob([response.data], { type: "application/octet-stream" }) //it works withoud a type as well
+        );
+        const link = document.createElement("a");
+        link.href = url;
+        link.setAttribute("download", fileName); //or any other extension
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+
+  render() {
+    console.log(
+      this.state,
+      "<<<<<<<<<<<<<<<<<<<,THis.state in render()------------------"
+    );
+    return (
+      <button onClick={this.viewFile} className="btn btn-dark">
+        Atsisiųsti
+      </button>
+    );
+  }
+}
+
+export default FileView;
