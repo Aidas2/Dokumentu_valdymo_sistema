@@ -83,7 +83,9 @@ class FileDownloadConatainer extends Component {
     axios({
       url: "http://localhost:8081/files",
       method: "GET",
-      documentId: 2145,
+      params: {
+        documentId: 2145
+      },
       responseType: "blob" // important
     })
       .then(response => {
