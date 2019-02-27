@@ -40,9 +40,9 @@ public class FileManageController {
     @Autowired
     private DocumentRepository documentRepository;
 
-    @GetMapping(value = "/files/{documentId:.+}")
+    @GetMapping(value = "/files")
     @ResponseBody
-    public ResponseEntity downloadFile(@PathVariable Long documentId) throws UnsupportedEncodingException {
+    public ResponseEntity downloadFile(@RequestParam Long documentId) throws UnsupportedEncodingException {
         Resource file = applicationContext.getResource("file:" + documentRepository.findById(documentId).orElse(null).getPath());
 
 //        String fileNameEncoded = URLEncoder.encode(file.getFilename(), "UTF-8");

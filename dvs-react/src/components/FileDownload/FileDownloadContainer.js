@@ -8,60 +8,60 @@ class FileDownloadConatainer extends Component {
     msg: ""
   };
 
-  handleFileChange = event => {
-    console.log("handleFileChange happened *******************");
-    let fileForState = event.target.files[0];
-    this.setState({ file: fileForState });
-    event.preventDefault();
-    this.setState({ error: "", msg: "" });
-  };
+  // handleFileChange = event => {
+  //   console.log("handleFileChange happened *******************");
+  //   let fileForState = event.target.files[0];
+  //   this.setState({ file: fileForState });
+  //   event.preventDefault();
+  //   this.setState({ error: "", msg: "" });
+  // };
 
-  uploadFile = e => {
-    if (!this.state.file) {
-      this.setState({ error: "Please upload a file" });
-      return;
-    }
-    if (this.state.file.size >= 2000000) {
-      this.setState({ error: "The file exeeds 2MB" });
-      return;
-    }
-    let data = new FormData();
-    data.append("file", this.state.file);
-    data.append("name", this.state.file.name);
+  // uploadFile = e => {
+  //   if (!this.state.file) {
+  //     this.setState({ error: "Please upload a file" });
+  //     return;
+  //   }
+  //   if (this.state.file.size >= 2000000) {
+  //     this.setState({ error: "The file exeeds 2MB" });
+  //     return;
+  //   }
+  //   let data = new FormData();
+  //   data.append("file", this.state.file);
+  //   data.append("name", this.state.file.name);
 
-    axios({
-      url: "http://localhost:8081/files",
-      method: "post",
-      headers: {
-        authorisation: "your token"
-        // "Content-type": "multipart/form-data"
-      },
-      data: data
-    })
-      .then(response => {
-        this.setState({
-          msg: "Successfully upladed the file-----------------from axios.then"
-        });
-        console.log(this.state.msg);
-      })
-      .catch(function(error) {
-        //it works without catch block as well
-        console.log(error);
-        if (error.response) {
-          //HTTP error happened
-          console.log(
-            "Create Document entity : Upload error. HTTP error/status code=",
-            error.response.status
-          );
-        } else {
-          //some other error happened
-          console.log(
-            "Create Document entity: Upload error. HTTP error/status code=",
-            error.message
-          );
-        }
-      });
-  };
+  //   axios({
+  //     url: "http://localhost:8081/files",
+  //     method: "post",
+  //     headers: {
+  //       authorisation: "your token"
+  //       // "Content-type": "multipart/form-data"
+  //     },
+  //     data: data
+  //   })
+  //     .then(response => {
+  //       this.setState({
+  //         msg: "Successfully upladed the file-----------------from axios.then"
+  //       });
+  //       console.log(this.state.msg);
+  //     })
+  //     .catch(function(error) {
+  //       //it works without catch block as well
+  //       console.log(error);
+  //       if (error.response) {
+  //         //HTTP error happened
+  //         console.log(
+  //           "Create Document entity : Upload error. HTTP error/status code=",
+  //           error.response.status
+  //         );
+  //       } else {
+  //         //some other error happened
+  //         console.log(
+  //           "Create Document entity: Upload error. HTTP error/status code=",
+  //           error.message
+  //         );
+  //       }
+  //     });
+  // };
   downloadRandomImage = () => {
     console.log("download method happened");
     // axios
@@ -81,8 +81,9 @@ class FileDownloadConatainer extends Component {
 
     //THIS METHOD WORKS
     axios({
-      url: "http://localhost:8081/files/1-2019-02-24-19-27-31-978-app.js",
+      url: "http://localhost:8081/files",
       method: "GET",
+      documentId: 2145,
       responseType: "blob" // important
     })
       .then(response => {
