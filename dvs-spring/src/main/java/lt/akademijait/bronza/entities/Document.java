@@ -219,6 +219,15 @@ public class Document {
         this.path = path;
     }
 
+    @Override
+    public String toString() {
+        return "Document{" +
+                "documentState=" + documentState +
+                ", documentType=" + documentType +
+                ", title='" + title + '\'' +
+                '}';
+    }
+
     //========================
     /*
     public String getPrefix() {

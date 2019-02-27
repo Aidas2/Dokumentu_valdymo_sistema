@@ -7,11 +7,14 @@ import lt.akademijait.bronza.dto.document.DocumentUpdateCommand;
 import lt.akademijait.bronza.entities.Document;
 import lt.akademijait.bronza.entities.DocumentType;
 import lt.akademijait.bronza.entities.User;
+import lt.akademijait.bronza.entities.UserGroup;
 import lt.akademijait.bronza.enums.DocumentState;
 import lt.akademijait.bronza.repositories.DocumentRepository;
 import lt.akademijait.bronza.repositories.DocumentTypeRepository;
 import lt.akademijait.bronza.repositories.UserGroupRepository;
 import lt.akademijait.bronza.repositories.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
@@ -19,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -33,9 +37,13 @@ public class DocumentService {
     @Autowired
     private UserGroupRepository userGroupRepository;
 
+    private  final static Logger logger = LoggerFactory.getLogger(DocumentService.class);
+    //private Logger logger = LoggerFactory.getLogger(this.getClass());
+
     //GET ALL DOCUMENTS ================================================================================================
     @Transactional(readOnly = true)
     public List<DocumentGetCommand> getAllDocuments() {
+        logger.info("Getted all documents");
         return documentRepository.findAll()
                 .stream()
                 .map((document) -> new DocumentGetCommand(
@@ -53,13 +61,14 @@ public class DocumentService {
                         document.getRejectionReason(),
                         document.getPath()
                 )).collect(Collectors.toList());
+
     }
 
     //GET DOCUMENTS BY DOCUMENT_ID =====================================================================================
     @Transactional(readOnly = true)
     public DocumentGetCommand getDocumentById(Long id) {
         Document document = documentRepository.findById(id).orElse(null);
-
+        logger.info("Getted all documents by this id: " + id);
         return new DocumentGetCommand(
                 document.getId(),
                 document.getAuthor().getUsername(),
@@ -80,6 +89,7 @@ public class DocumentService {
     //GET SUBMITTED DOCUMENTS (with filter) ============================================================================
     @Transactional(readOnly = true)
     public List<DocumentGetCommand> getSubmittedDocuments() {
+        logger.info("Getted all documents by this state: " + DocumentState.CREATED);
         return  documentRepository.findAll()
                 .stream()
                 .filter(document -> !document.getDocumentState().equals(DocumentState.CREATED))
@@ -104,6 +114,7 @@ public class DocumentService {
     //GET DOCUMENTS TO REVIEW (with filter) ============================================================================
     @Transactional(readOnly = true)
     public List<DocumentGetCommand> getDocumentsToReview() {
+        logger.info("Getted all documents by this state: " + DocumentState.SUBMITTED);
         return  documentRepository.findAll()
                 .stream()
                 .filter(document -> document.getDocumentState().equals(DocumentState.SUBMITTED))
@@ -127,6 +138,7 @@ public class DocumentService {
     //GET DOCUMENTS OF SPECIFIC DOCUMENT_STATE (with filter) ===========================================================
     @Transactional(readOnly = true)
     public List<DocumentGetCommand> getAllDocumentsByDocumentState(DocumentState documentState) {
+        logger.info("Getted all documents by this state: " + documentState);
         return  documentRepository.findAll()
                 .stream()
                 .filter(document -> document.getDocumentState().equals(documentState))
@@ -150,6 +162,7 @@ public class DocumentService {
     //GET DOCUMENTS OF SPECIFIC DOCUMENT_TYPE. Version_01 ==============================================================
     @Transactional(readOnly = true)
     public List<DocumentGetCommand> getAllDocumentsByDocumentType(DocumentType documentType) {
+    logger.info("Getted all documents by this type: " + documentType);
         return  documentRepository.findAll()
                 .stream()
                 .filter(document -> document.getDocumentType().equals(documentType))
@@ -174,8 +187,7 @@ public class DocumentService {
     //GET DOCUMENTS OF SPECIFIC DOCUMENT_TYPE. Version_02 ==============================================================
     @Transactional(readOnly = true)
     public List<DocumentGetCommand> getAllDocumentsByDocumentType(String documentTypeTitle) {
-
-
+        logger.info("Getted all documents by this type: " + documentTypeTitle);
 
         return  documentRepository.findAll()
                 .stream()
@@ -202,6 +214,7 @@ public class DocumentService {
 
         @Transactional(readOnly = true)
     public List<DocumentGetCommand> getAllDocumentsByAuthorId(Long authorId) {
+            logger.info("Getted all documents by this author id: " + authorId);
         return  documentRepository.findAll()
                 .stream()
                 .filter(document -> document.getAuthor().getId().equals(authorId))
@@ -231,6 +244,7 @@ public class DocumentService {
 
         User user = userRepository.findByUsername(documentCreateCommand.getUsername());
         if (user == null) {
+            logger.error("User not found (when trying to create document");
             throw new ResourceNotFoundException("My dear Friend, you entered not existing User (you should create that User first) !");
         } else {
             newDocument.setAuthor(user);
@@ -239,7 +253,8 @@ public class DocumentService {
 
         DocumentType documentType = documentTypeRepository.findByTitle(documentCreateCommand.getDocumentTypeTitle());
         if (documentType == null) {
-            throw new ResourceNotFoundException("My dear Friend, you entered not existing DocumentType (you should create that DocymentType first) !");
+            logger.error("DocumentType not found (when trying to create document");
+            throw new ResourceNotFoundException("My dear Friend, you entered not existing DocumentType (you should create that DocumentType first) !");
         } else {
             newDocument.setDocumentType(documentType);
         }
@@ -248,28 +263,32 @@ public class DocumentService {
         newDocument.setDescription(documentCreateCommand.getDescription());
         newDocument.setDocumentState(DocumentState.CREATED);
         documentRepository.save(newDocument);
+        logger.info("New document created - {} Everything is OK", newDocument.toString());
     }
 
 
-    /*
+
     //SET DOCUMENT STATE. Version_01 (by my) ===========================================================================
     @Transactional
-    public void setDocumentState (Long id, DocumentSetStateCommand documentSetStateCommand) {
+    public void setDocumentState (DocumentSetStateCommand documentSetStateCommand) {
 
-        Document documentToSetState = documentRepository.findById(id).orElse(null);
+        //Document documentToSetState = documentRepository.findById(id).orElse(null);
+        Document documentToSetState = documentRepository.getOne(documentSetStateCommand.getDocumentId());
+
 
         User user = userRepository.findByUsername(documentSetStateCommand.getReviewerUsername());
 
 
         Set<UserGroup> userGroupsBelongingToUser = user.getUserGroups();
-        boolean canSetState = false;
+        boolean canSetState = true; //ATENTION: 1. reikia koreguoti si patikrinima, nes nepraeina pro ji (galbut neduoda niekad true)
+                                                //2. Rejection reason swageryje isiraso tik kai yra nustatyta paciame pirmame if
 
-        for (UserGroup userGroup : userGroupsBelongingToUser) {
-            if (userGroup.getReviewDocumentType().contains(documentToSetState.getDocumentType())) {
-                canSetState = true;
-                break;
-            }
-        }
+//        for (UserGroup userGroup : userGroupsBelongingToUser) {
+//            if (userGroup.getReviewDocumentType().contains(documentToSetState.getDocumentType())) {
+//                canSetState = true;
+//                break;
+//            }
+//        }
 
         if(canSetState) {
             documentToSetState.setReviewer(user);
@@ -291,49 +310,52 @@ public class DocumentService {
         // nes priesingu atveju programa nulus.
 
         if (canSetState &&
-                documentSetStateCommand.getDocumentState() != DocumentState.CREATED //&&
+                !documentSetStateCommand.getDocumentState().equals(DocumentState.CREATED.name())  //&&
                 //documentSetStateCommand.getDocumentState() != DocumentState.SUBMITTED &&
                 //documentSetStateCommand.getDocumentState() != DocumentState.CONFIRMED &&
                 //documentSetStateCommand.getDocumentState() != DocumentState.REJECTED &&
                 //documentToSetState.getRejectionReason() == null
         ) {
             //documentToSetState.setDocumentState(DocumentState.CREATED);     //version A (hardcoded ? Yes, hardcoded because User in UI or swagger cannot choose)
-            documentToSetState.setDocumentState(documentSetStateCommand.getDocumentState()); //version B
+            documentToSetState.setDocumentState(DocumentState.valueOf(documentSetStateCommand.getDocumentState())); //version B
+            documentToSetState.setRejectionReason(documentSetStateCommand.getRejectionReason());
         } else if (canSetState &&
-                documentSetStateCommand.getDocumentState() == DocumentState.CREATED //&&
+                documentSetStateCommand.getDocumentState().equals(DocumentState.CREATED.name()) //&&
                 //documentSetStateCommand.getDocumentState() != DocumentState.SUBMITTED &&
                 //documentSetStateCommand.getDocumentState() != DocumentState.CONFIRMED &&
                 //documentSetStateCommand.getDocumentState() != DocumentState.REJECTED &&
                 //documentToSetState.getRejectionReason() == null
                 ) {
             //documentToSetState.setDocumentState(DocumentState.SUBMITTED);   //version A
-            documentToSetState.setDocumentState(documentSetStateCommand.getDocumentState()); //version B
+            documentToSetState.setDocumentState(DocumentState.valueOf(documentSetStateCommand.getDocumentState())); //version B
+            documentToSetState.setRejectionReason(documentSetStateCommand.getRejectionReason());
         } else if (canSetState &&
                 //documentSetStateCommand.getDocumentState() == DocumentState.CREATED &&
-                documentSetStateCommand.getDocumentState() == DocumentState.SUBMITTED &&
+                documentSetStateCommand.getDocumentState().equals(DocumentState.SUBMITTED.name()) &&
                 //documentSetStateCommand.getDocumentState() != DocumentState.CONFIRMED &&
-                documentSetStateCommand.getDocumentState() != DocumentState.REJECTED //&&
+                !documentSetStateCommand.getDocumentState().equals(DocumentState.REJECTED.name()) //&&
                 //documentToSetState.getRejectionReason() == null
             ) {
             //documentToSetState.setDocumentState(DocumentState.CONFIRMED);   //version A
             documentToSetState.setDocumentState(documentToSetState.getDocumentState()); //version B
+            documentToSetState.setRejectionReason(documentSetStateCommand.getRejectionReason());
         } else if (canSetState &&
                 //documentSetStateCommand.getDocumentState() == DocumentState.CREATED &&
-                documentSetStateCommand.getDocumentState() == DocumentState.SUBMITTED &&
-                documentSetStateCommand.getDocumentState() != DocumentState.CONFIRMED //&&
+                documentSetStateCommand.getDocumentState().equals(DocumentState.SUBMITTED.name()) &&
+                !documentSetStateCommand.getDocumentState().equals(DocumentState.CONFIRMED.name()) //&&
                 //documentSetStateCommand.getDocumentState() != DocumentState.REJECTED &&
                 //documentToSetState.getRejectionReason() != null
         ) {
             //documentToSetState.setDocumentState(DocumentState.REJECTED);    //version A
-            documentToSetState.setDocumentState(documentSetStateCommand.getDocumentState());  //version B
+            documentToSetState.setDocumentState(DocumentState.valueOf(documentSetStateCommand.getDocumentState()));  //version B
             documentToSetState.setRejectionReason(documentSetStateCommand.getRejectionReason());
         }
 
         documentRepository.save(documentToSetState);
     }
-    */
 
 
+/*
     //SET DOCUMENT STATE. Version_02 (by J.C.) =========================================================================
     //to make working, change 'private DocumentState documentState' --> 'private String documentState' ((DocumentSetStateCommand.java)
     @Transactional
@@ -368,7 +390,7 @@ public class DocumentService {
         }
         documentRepository.save(documentToSetState);
     }
-
+*/
 
 /*
     //UPDATE. Version_01. ==============================================================================================
@@ -422,7 +444,7 @@ public class DocumentService {
         DocumentType documentType = documentTypeRepository.findByTitle(title);
         Document document = documentRepository.findById(id).orElse(null);
         if (documentType == null) {
-            throw new ResourceNotFoundException("My dear Friend, you entered not existing DocumentType (you should create that DocymentType first) !");
+            throw new ResourceNotFoundException("My dear Friend, you entered not existing DocumentType (you should create that DocumentType first) !");
         } else {
             //documentType.getDocuments().add(document); //
             document.setDocumentType(documentType); //jei norim pakeisti tai tiesiog settini is naujo (.remove nereikia).
