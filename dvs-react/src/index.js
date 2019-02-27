@@ -8,7 +8,6 @@ import AdministrationContainer from "./components/Administration/AdministrationC
 import LandingPage from "./components/LandingPage";
 import App from "./App";
 import CreateUserGroupsContainer from "./components/UserGroups/CreateUserGroupsContainer";
-import CreateUserGroupsForm from "./components/Forms/CreateUserGroupsForm";
 import FileUploadContainer from "./components/FileUpload/FileUploadContainer";
 import DocumentTypesContainer from "./components/DocumentTypes/DocumentTypesContainer";
 import CreateDocumentTypeConatainer from "./components/Forms/DocumentType/CreateDocumentTypeContainer";
@@ -17,6 +16,7 @@ import UsersContainer from "./components/Users/UsersContainer";
 import FileDownloadConatainer from "./components/FileDownload/FileDownloadContainer";
 import LandingPageContainer from "./components/LandingPageContainer";
 import DocumentsContainer from "./components/Documents/DocumentsContainer";
+import CreateUserGroupsComponent from "./components/UserGroups/CreateUserGroupsComponent";
 
 ReactDOM.render(
   <BrowserRouter>
@@ -46,7 +46,7 @@ ReactDOM.render(
         <Route
           exact
           path="/admin/usergroups/new"
-          component={CreateUserGroupsForm}
+          component={CreateUserGroupsContainer}
         />
       </Switch>
     </App>
