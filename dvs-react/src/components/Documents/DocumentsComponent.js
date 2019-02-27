@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import FileDownloadConatainer from "../FileDownload/FileDownloadContainer";
 
 const DocumentsComponent = props => {
   var {
@@ -44,9 +45,7 @@ const DocumentsComponent = props => {
           </button>
         </div>
         <div className="col-1">
-          <button onClick={props.onDocumentDownload} className="btn btn-dark">
-            Atsisiųsti
-          </button>
+          <FileDownloadConatainer documentId={id} />
         </div>
       </div>
     </div>
