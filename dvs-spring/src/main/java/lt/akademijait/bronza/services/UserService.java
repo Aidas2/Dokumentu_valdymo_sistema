@@ -35,7 +35,6 @@ public class UserService {
             for (UserGroup userGroup : user.getUserGroups()) {
                 userGroupsTitles.add(userGroup.getTitle());
             }
-
             UserGetCommand ugc = new UserGetCommand(
                     user.getId(),
                     user.getFirstName(),
@@ -47,7 +46,8 @@ public class UserService {
                     user.getHireDate(),
                     userGroupsTitles);
             allUsers.add(ugc);
-        }return allUsers;
+        }
+        return allUsers;
     }
 
 //        return userRepository.findAll().stream().map(
@@ -70,10 +70,9 @@ public class UserService {
         User user = userRepository.findByUsername(username);
         Set<String> userGroupsTitles = new HashSet<>();
 
-        for (UserGroup userGroup: user.getUserGroups()){
+        for (UserGroup userGroup : user.getUserGroups()) {
             userGroupsTitles.add(userGroup.getTitle());
         }
-
         return new UserGetCommand(
                 user.getId(),
                 user.getFirstName(),
@@ -91,7 +90,7 @@ public class UserService {
 
         Set<UserGroup> userGroupsToSet = new HashSet<>();
 
-        for (String userGroupTitle: ucc.getUserGroupTitle()) {
+        for (String userGroupTitle : ucc.getUserGroupTitle()) {
             userGroupsToSet.add(userGroupRepository.findByTitle(userGroupTitle));
         }
         User newUser = new User(
@@ -103,7 +102,7 @@ public class UserService {
                 ucc.getPassword(),
                 ucc.getEmailAddress(),
                 userGroupsToSet
-                        );
+        );
         //newUser.getUserGroups().add()
 
 
@@ -118,7 +117,7 @@ public class UserService {
 
         Set<UserGroup> userGroupsToSet = new HashSet<>();
 
-        for (String userGroupTitle: uuc.getUserGroupTitle()) {
+        for (String userGroupTitle : uuc.getUserGroupTitle()) {
             userGroupsToSet.add(userGroupRepository.findByTitle(userGroupTitle));
         }
 
@@ -136,11 +135,11 @@ public class UserService {
     }
 
     @Transactional
-    public void addUserToNewUserGroup(String username, UserAddToGroupCommand userAddToGroupCommand){
+    public void addUserToNewUserGroup(String username, UserAddToGroupCommand userAddToGroupCommand) {
 
         User userToUpdate = userRepository.findByUsername(username);
-        for (String userGroupTitle: userAddToGroupCommand.getUserGroupTitle()) {
-            if (!userToUpdate.getUserGroups().contains(userGroupRepository.findByTitle(userGroupTitle))){
+        for (String userGroupTitle : userAddToGroupCommand.getUserGroupTitle()) {
+            if (!userToUpdate.getUserGroups().contains(userGroupRepository.findByTitle(userGroupTitle))) {
                 userToUpdate.getUserGroups().add(userGroupRepository.findByTitle(userGroupTitle));
             }
         }
@@ -148,10 +147,10 @@ public class UserService {
     }
 
     @Transactional
-    public void removeUserFromUserGroup(String username, UserAddToGroupCommand userAddToGroupCommand){
+    public void removeUserFromUserGroup(String username, UserAddToGroupCommand userAddToGroupCommand) {
         User userToUpdate = userRepository.findByUsername(username);
-        for (String userGroupTitle: userAddToGroupCommand.getUserGroupTitle()){
-            if (userToUpdate.getUserGroups().contains(userGroupRepository.findByTitle(userGroupTitle))){
+        for (String userGroupTitle : userAddToGroupCommand.getUserGroupTitle()) {
+            if (userToUpdate.getUserGroups().contains(userGroupRepository.findByTitle(userGroupTitle))) {
                 userToUpdate.getUserGroups().remove(userGroupRepository.findByTitle(userGroupTitle));
             }
         }
@@ -160,10 +159,37 @@ public class UserService {
 
 
     @Transactional
+    public List<UserGetCommand> getUsersByGroup(String groupName){
+        List<UserGetCommand> allUsersInGroup = new ArrayList<>();
+
+        for (User user : userRepository.findAll()) {
+            Set<String> userGroupsTitles = new HashSet<>();
+
+            if (user.getUserGroups().contains(userGroupRepository.findByTitle(groupName))) {
+                for (UserGroup userGroup : user.getUserGroups()) {
+                    userGroupsTitles.add(userGroup.getTitle());
+                }
+                UserGetCommand ugc = new UserGetCommand(
+                        user.getId(),
+                        user.getFirstName(),
+                        user.getLastName(),
+                        user.isAdministrator(),
+                        user.getPassword(),
+                        user.getUsername(),
+                        user.getEmailAddress(),
+                        user.getHireDate(),
+                        userGroupsTitles);
+                allUsersInGroup.add(ugc);
+            }
+        }
+        return allUsersInGroup;
+    }
+
+
+    @Transactional
     public void deleteUser(String username) {
         userRepository.deleteByUsername(username);
     }
-
 
 
 }

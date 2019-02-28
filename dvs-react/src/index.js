@@ -17,6 +17,7 @@ import FileDownloadConatainer from "./components/FileDownload/FileDownloadContai
 import LandingPageContainer from "./components/LandingPageContainer";
 import DocumentsContainer from "./components/Documents/DocumentsContainer";
 import UserDetailsContainer from "./components/Users/UserDetailsContainer";
+import UserGroupDetailsContainer from "./components/UserGroups/UserGroupDetailsContainer";
 
 ReactDOM.render(
   <BrowserRouter>
@@ -43,6 +44,11 @@ ReactDOM.render(
         <Route exact path="/admin/docs" component={DocumentsContainer} />
         <Route exact path="/docs" component={DocumentsContainer} />
         <Route exact path="/admin/usergroups" component={UserGroupsContainer} />
+        <Route
+          exact
+          path="/admin/usergroups/:title"
+          component={UserGroupDetailsContainer}
+        />
         <Route
           exact
           path="/admin/users/:username"

@@ -23,7 +23,7 @@ public class UserGroupController {
     private UserGroupService userGroupService;
 
     @RequestMapping(method = RequestMethod.GET)
-    @ApiOperation(value = "Get groups", notes = "Returns all groups")
+    @ApiOperation(value = "Get all groups", notes = "Returns all user groups")
     public List<UserGroupGetCommand> getAllGroups(){
         return userGroupService.getAllGroups();
     }
@@ -74,6 +74,22 @@ public class UserGroupController {
             @ApiParam(value = "User Group", required = true) @PathVariable final String userGroup,
             @ApiParam(value = "Doctype to remove", required = true) @RequestBody UserGroupUpdateDocTypeCommand ugu){
         userGroupService.removeDocTypeToSubmit(userGroup, ugu);
+    }
+
+    @RequestMapping(path = "/{usergroup}", method = RequestMethod.PUT)
+    @ResponseStatus(HttpStatus.OK)
+    @ApiOperation(value = "Update usergroup title", notes = "Change titel of a certain usergroup")
+    public void updateUserGroupTitle(
+            @ApiParam(value = "Usergroup", required = true) @PathVariable final String usergroup,
+            @ApiParam(value =  "new title", required = true) @RequestBody UserGroupCreateCommand ugcc){
+        userGroupService.changeGroupName(usergroup,ugcc);
+    }
+
+    @RequestMapping(path = "/{usergroup}", method = RequestMethod.GET)
+    @ApiOperation(value = "Get usergroup by title", notes = "Returns certain usergroup ifo by title")
+    public UserGroupGetCommand getUserGroupByTitle(
+            @ApiParam(value = "usergroup", required = true) @Valid @PathVariable final String usergroup){
+        return userGroupService.getUserGroupInfo(usergroup);
     }
 
 
