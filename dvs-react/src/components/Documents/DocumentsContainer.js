@@ -7,7 +7,7 @@ class DocumentsContainer extends Component {
   state = {
     documents: [
       {
-        id: 1,
+        id: "",
         author: "",
         documentState: "",
         documentTypeTitle: "",
