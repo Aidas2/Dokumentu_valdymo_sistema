@@ -36,7 +36,11 @@ const UserDetailsComponent = props => {
           </Link>
         </h5>
         <h3 className="display-6 ">
-          Vartotojo {firstName} {lastName} inforamcija
+          Vartotojo&nbsp;
+          <strong>
+            {firstName} {lastName}
+          </strong>{" "}
+          inforamcija
         </h3>
         <div className="row mt-2 mb-2 ">
           <div className="col ">
