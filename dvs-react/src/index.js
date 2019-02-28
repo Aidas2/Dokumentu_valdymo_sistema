@@ -16,7 +16,6 @@ import UsersContainer from "./components/Users/UsersContainer";
 import FileDownloadConatainer from "./components/FileDownload/FileDownloadContainer";
 import LandingPageContainer from "./components/LandingPageContainer";
 import DocumentsContainer from "./components/Documents/DocumentsContainer";
-import CreateUserGroupsComponent from "./components/UserGroups/CreateUserGroupsComponent";
 import UserDetailsContainer from "./components/Users/UserDetailsContainer";
 
 ReactDOM.render(
