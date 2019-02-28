@@ -30,27 +30,57 @@ public class DocumentTypeController {
         return documentTypeService.getDocumentTypes();
     }
 
-    //READ By ID =======================================================================================================
-    //@PathVariable --> @RequestParam
-    @RequestMapping(value="/{id}", method = RequestMethod.GET)
-    @ApiOperation(value = "Get documents type by id", notes = "Returns document type by id")
+
+
+    //READ By ID Version_01 ============================================================================================
+    //@PathVariable
+    @RequestMapping(value="/byid/{id}", method = RequestMethod.GET)
+    @ApiOperation(value = "Get documents type by id. V_01", notes = "Returns document type by id")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public DocumentTypeGetCommand getDocumentTypeById(
+    public DocumentTypeGetCommand getDocumentTypeByIdV1(
             @ApiParam(value = "Document type id", required = true)
             @RequestParam Long id) {
         return documentTypeService.getDocumentTypeById(id);
     }
 
-    //READ By TITLE ====================================================================================================
+    //READ By ID Version_02 ============================================================================================
     //@PathVariable --> @RequestParam
-    @RequestMapping(value="/{title}", method = RequestMethod.GET)
-    @ApiOperation(value = "Get documents type by title", notes = "Returns document type by title")
+    @RequestMapping(value="/byid", method = RequestMethod.GET)
+    @ApiOperation(value = "Get documents type by id. V_02", notes = "Returns document type by id")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public DocumentTypeGetCommand getDocumentsTypeByTitle(
+    public DocumentTypeGetCommand getDocumentTypeByIdV2(
+            @ApiParam(value = "Document type id", required = true)
+            @RequestParam Long id) {
+        return documentTypeService.getDocumentTypeById(id);
+    }
+
+
+
+
+    //READ By TITLE Version_01 =========================================================================================
+    //@PathVariable. Remark: for some reason caused "ambiguous" with method getDocumentTypeByIdV1 (in //READ By ID Version_01). Fixed by: value="/{id}" --> value="/{id}/byid",
+    @RequestMapping(value="/bytitle/{title}", method = RequestMethod.GET)
+    @ApiOperation(value = "Get documents type by title. V_01", notes = "Returns document type by title")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public DocumentTypeGetCommand getDocumentsTypeByTitleV1(
+            @ApiParam(value = "Document type title", required = true)
+            @PathVariable String title) {
+        return documentTypeService.getDocumentsTypeByTitle(title);
+    }
+
+    //READ By TITLE Version_02 =========================================================================================
+    //@PathVariable --> @RequestParam
+    @RequestMapping(value="/bytitle", method = RequestMethod.GET)
+    @ApiOperation(value = "Get documents type by title. V_02", notes = "Returns document type by title")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public DocumentTypeGetCommand getDocumentsTypeByTitleV2(
             @ApiParam(value = "Document type title", required = true)
             @RequestParam String title) {
         return documentTypeService.getDocumentsTypeByTitle(title);
     }
+
+
+
 
     //CREATE ===========================================================================================================
     @RequestMapping(method = RequestMethod.POST)
@@ -74,16 +104,28 @@ public class DocumentTypeController {
     }
 
 
-    //DELETE ===========================================================================================================
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    @ApiOperation(value = "Delete document type", notes = "Delete document type by id")
+
+
+
+    //DELETE Version_01 ================================================================================================
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+    @ApiOperation(value = "Delete document type. V_01", notes = "Delete document type by id")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public void deleteDocumentTypeById(
+    public void deleteDocumentTypeByIdV1(
             @ApiParam(value = "Document type id", required = true)
             @PathVariable Long id) {
         documentTypeService.deleteDocumentType(id);
     }
 
+    //DELETE Version_02 ================================================================================================
+    @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
+    @ApiOperation(value = "Delete document type. V_02", notes = "Delete document type by id")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public void deleteDocumentTypeByIdV2(
+            @ApiParam(value = "Document type id", required = true)
+            @RequestParam Long id) {
+        documentTypeService.deleteDocumentType(id);
+    }
 
 
 

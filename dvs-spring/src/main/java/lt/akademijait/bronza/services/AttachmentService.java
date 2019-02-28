@@ -3,15 +3,17 @@ package lt.akademijait.bronza.services;
 import lt.akademijait.bronza.dto.attachment.AttachmentCreateCommand;
 import lt.akademijait.bronza.dto.attachment.AttachmentGetCommand;
 import lt.akademijait.bronza.entities.Attachment;
-import lt.akademijait.bronza.repositories.*;
+import lt.akademijait.bronza.repositories.AttachmentRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class AttachmentService {
 
     @Autowired
