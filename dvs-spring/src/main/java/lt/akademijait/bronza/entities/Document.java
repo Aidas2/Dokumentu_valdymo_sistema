@@ -7,6 +7,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name="DOCUMENT")
@@ -26,8 +27,8 @@ public class Document {
     @Column
     private List<String> additionalFilePaths = new ArrayList<>();
 
-    //@OneToMany
-    //private Set<Attachment> attachments;
+    @OneToMany
+    private Set<Attachment> attachments;
 
     //@NotNull //if uncommented doesn't let to create Document with User==null
     @ManyToOne
@@ -51,7 +52,6 @@ public class Document {
     All this logic applies also to User and UserGroup !
 
      */
-
 
     @Column
     private DocumentState documentState;
@@ -91,7 +91,7 @@ public class Document {
     public Document() {
     }
 
-    public Document(User author, DocumentState documentState, DocumentType documentType, String title, String description, Date creationDate, Date submissionDate, Date confirmationDate, Date rejectionDate, User reviewer, String rejectionReason, String path) {
+    public Document(User author, DocumentState documentState, DocumentType documentType, String title, String description, Date creationDate, Date submissionDate, Date confirmationDate, Date rejectionDate, User reviewer, String rejectionReason, String path, Set<Attachment> attachments) {
         this.author = author;
         this.documentState = documentState;
         this.documentType = documentType;
@@ -104,7 +104,10 @@ public class Document {
         this.reviewer = reviewer;
         this.rejectionReason = rejectionReason;
         this.path = path;
+        this.attachments = attachments;
+
     }
+
 
     public Long getId() {
         return id;
@@ -120,6 +123,14 @@ public class Document {
 
     public void setAdditionalFilePaths(List<String> additionalFilePaths) {
         this.additionalFilePaths = additionalFilePaths;
+    }
+
+    public Set<Attachment> getAttachments() {
+        return attachments;
+    }
+
+    public void setAttachments(Set<Attachment> attachments) {
+        this.attachments = attachments;
     }
 
     public User getAuthor() {
@@ -227,6 +238,18 @@ public class Document {
                 ", title='" + title + '\'' +
                 '}';
     }
+
+
+
+
+
+
+
+
+
+
+
+
 
     //========================
     /*

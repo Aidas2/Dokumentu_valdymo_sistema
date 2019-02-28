@@ -13,31 +13,42 @@ public class Attachment {
     private Long id;
 
     @Column
-    private String path;
-
-    @Column
     private String title;
 
+//    @Column
+//    private String path;
+    /*
     @ManyToOne//(mappedBy="attachments")
     //@JoinColumn (name = "DOCUMENT_ID")
     private Document document;
+    */
 
     //Constructors:
 
-    protected Attachment() {
+    public Attachment() {
+    }
+
+    public Attachment(Long id, String title) {
+        this.id = id;
+        this.title = title;
     }
 
     //Getters and Setters:
+
 
     public Long getId() {
         return id;
     }
 
-    public String getPath() {
-        return path;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public Document getDocument() {
-        return document;
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

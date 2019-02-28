@@ -8,6 +8,7 @@ import lt.akademijait.bronza.dto.document.DocumentCreateCommand;
 import lt.akademijait.bronza.dto.document.DocumentGetCommand;
 import lt.akademijait.bronza.dto.document.DocumentSetStateCommand;
 import lt.akademijait.bronza.dto.document.DocumentUpdateCommand;
+import lt.akademijait.bronza.entities.DocumentType;
 import lt.akademijait.bronza.enums.DocumentState;
 import lt.akademijait.bronza.services.DocumentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,6 +60,8 @@ public class DocumentController {
     }
 
 
+
+
     //READ All DOCUMENTS OF SPECIFIC DOCUMENT_STATE. Version_01 ========================================================
     @RequestMapping(value = "/documentbystate/{documentState}", method = RequestMethod.GET)
     @ApiOperation(value = "Get all document of specified state. V_01", notes = "Returns all document of specified state")
@@ -68,7 +71,6 @@ public class DocumentController {
             @PathVariable DocumentState documentState) {
         return documentService.getAllDocumentsByDocumentState(documentState);
     }
-
 
     //READ All DOCUMENTS OF SPECIFIC DOCUMENT_STATE. Version_02 ========================================================
     //@PathVariable --> @RequestParam
@@ -81,7 +83,10 @@ public class DocumentController {
         return documentService.getAllDocumentsByDocumentState(documentState);
     }
 
-/*
+
+
+
+
     //READ All DOCUMENTS OF SPECIFIC DOCUMENT_TYPE. Version_01 =========================================================
     @RequestMapping(value = "/documentbytype/{documentType}", method = RequestMethod.GET)
     @ApiOperation(value = "Get all document of specified type. V_01", notes = "Returns all document of specified type")
@@ -91,7 +96,7 @@ public class DocumentController {
             @PathVariable DocumentType documentType) {
         return documentService.getAllDocumentsByDocumentType1(documentType);
     }
-*/
+
 
     //READ All DOCUMENTS OF SPECIFIC DOCUMENT_TYPE. Version_02.1 =========================================================
     //object --> String; @PathVariable --> @RequestParam
@@ -115,6 +120,10 @@ public class DocumentController {
         return documentService.getAllDocumentsByDocumentType2(title);
     }
 */
+
+
+
+
 
     //READ All DOCUMENTS OF SPECIFIC AUTHOR_ID =========================================================================
     @RequestMapping(value = "/{authorId}/docs", method = RequestMethod.GET)
