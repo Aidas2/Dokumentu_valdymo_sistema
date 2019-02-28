@@ -4,7 +4,7 @@ import logo from "../../images/home.png";
 import { Link } from "react-router-dom";
 
 const UserGroupDetailsComponent = props => {
-  var { title, submissionDocType, reviewDocType } = props.userGroupDetails;
+  var { title, submissionDocTypes, reviewDocTypes } = props;
 
   return (
     <div>
@@ -19,27 +19,27 @@ const UserGroupDetailsComponent = props => {
             Administratoriaus rolė
           </Link>
           &ensp;/ &ensp;
-          <Link to={"/admin/users"} className="explorer">
-            Vartotojai
+          <Link to={"/admin/groups"} className="explorer">
+            Vartotojų grupės
           </Link>
           &ensp;/ &ensp;
-          <Link to={"/admin/newuser"} className="explorer">
+          {/* <Link to={"/admin/newuser"} className="explorer">
             Naujo vartotojo kūrimas
-          </Link>
+          </Link> */}
         </h5>
         <h3 className="display-6 ">
-          Vartotojų grupės &nbsp;
-          <strong>{title}</strong>
+          Vartotojų grupės &nbsp;"
+          <strong>{title}"&nbsp;</strong>
           inforamcija
         </h3>
         <div className="row mt-2 mb-2 ">
           <div className="col ">
             <h5>Pateikti leidžiamų dokumentų tipai</h5>
-            <h4>tipai bus parodyti</h4>
+            <h4>{submissionDocTypes}</h4>
           </div>
           <div className="col">
             <h5>Peržiūrėti leidžiamų dokumentų tipai</h5>
-            <h4>tipai bus parodyti </h4>
+            <h4>{reviewDocTypes} </h4>
           </div>
         </div>
       </div>

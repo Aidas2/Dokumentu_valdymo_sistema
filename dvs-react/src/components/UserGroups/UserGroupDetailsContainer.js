@@ -3,25 +3,24 @@ import UserGroupDetailsComponent from "./UserGroupDetailsComponent";
 import axios from "axios";
 
 class UserGroupDetailsContainer extends Component {
-  state = { userDetails: "" };
+  state = { title: "", submissionDocType: [], reviewDocType: [] };
 
   componentDidMount() {
-    const usernameParam = this.props.match.params.username;
+    const titleParam = this.props.match.params.title;
 
     axios({
-      url: "http://localhost:8081/api/users/" + usernameParam,
+      url: "http://localhost:8081/api/groups/" + titleParam,
       method: "GET"
       //   params: {
       //     username: "username1"
       //   }
     })
       .then(response => {
-        let userDetails = response.data;
-        userDetails.administrator
-          ? (userDetails.administrator = "Taip")
-          : (userDetails.administrator = "Ne");
-
-        this.setState({ userDetails: response.data });
+        this.setState({
+          title: response.data.title,
+          submissionDocType: response.data.submissionDocType,
+          reviewDocType: response.data.reviewDocType
+        });
       })
       .catch(error => {
         console.log(error);
@@ -29,16 +28,23 @@ class UserGroupDetailsContainer extends Component {
   }
 
   render() {
-    var userGroupsTitlesToDisplay = null;
-    if (this.state.userDetails.userGroups) {
-      userGroupsTitlesToDisplay = this.state.userDetails.userGroups.map(
-        group => <li key={group}>{group}</li>
-      );
+    var submissionTypesToDisplay = null;
+    if (this.state.submissionDocType) {
+      submissionTypesToDisplay = this.state.submissionDocType.map(title => (
+        <li key={title}>{title}</li>
+      ));
+    }
+    var reviewTypesToDisplay = null;
+    if (this.state.submissionDocType) {
+      reviewTypesToDisplay = this.state.reviewDocType.map(title => (
+        <li key={title}>{title}</li>
+      ));
     }
     return (
       <UserGroupDetailsComponent
-        userGroupDetails={this.state.userGroupDetails}
-        userGroups={userGroupsTitlesToDisplay}
+        title={this.state.title}
+        submissionDocTypes={submissionTypesToDisplay}
+        reviewDocTypes={reviewTypesToDisplay}
       />
     );
   }
