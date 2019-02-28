@@ -7,7 +7,7 @@ class UserDetailsContainer extends Component {
 
   componentDidMount() {
     axios({
-      url: "http://localhost:8081/api/users" + "/username3",
+      url: "http://localhost:8081/api/users/" + this.props.username,
       method: "GET"
       //   params: {
       //     username: "username1"
