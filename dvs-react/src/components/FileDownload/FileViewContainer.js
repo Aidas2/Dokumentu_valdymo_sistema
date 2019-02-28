@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import RenderResponse from "./RenderResponse";
 
 class FileViewContainer extends Component {
   state = {
@@ -70,6 +71,7 @@ class FileViewContainer extends Component {
         <button onClick={this.viewFile} className="btn btn-dark">
           Peržiūrėti
         </button>
+        {/* <RenderResponse responseToRender={this.state.response} /> */}
       </div>
     );
   }
