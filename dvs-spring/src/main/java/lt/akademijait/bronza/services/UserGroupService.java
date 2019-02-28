@@ -54,6 +54,7 @@ public class UserGroupService {
                     reviewDocTypes);
             allGroups.add(uggc);
         }
+        logger.info("Info about all the user groups was gotten");
         return allGroups;
     }
 
@@ -77,6 +78,7 @@ public class UserGroupService {
                 docTypesToSubmit,
                 docTypesToReview);
         userGroupRepository.save(newGroup);
+        logger.info("New user group " + newGroup.getTitle() + " was created");
     }
 
     @Transactional
@@ -89,6 +91,7 @@ public class UserGroupService {
             }
         }
         userGroupRepository.save(groupToUpdate);
+        logger.info(userGroupUpdateDocTypeCommand.getDocumentType() + "was added for review to the " + userGroup + " group");
     }
 
     @Transactional
@@ -101,6 +104,8 @@ public class UserGroupService {
             }
         }
         userGroupRepository.save(groupToUpdate);
+        logger.info(userGroupUpdateDocTypeCommand.getDocumentType() + "was added for submit to the " + userGroup + " group");
+
     }
 
     @Transactional
@@ -113,6 +118,8 @@ public class UserGroupService {
             }
         }
         userGroupRepository.save(groupToUpdate);
+        logger.info(userGroupUpdateDocTypeCommand.getDocumentType() + "was removed for reviewing for the " + userGroup + " group");
+
     }
 
     @Transactional
@@ -125,16 +132,22 @@ public class UserGroupService {
             }
         }
         userGroupRepository.save(groupToUpdate);
+        logger.info(userGroupUpdateDocTypeCommand.getDocumentType() + "was removed for submitting for to the " + userGroup + " group");
+
     }
 
     @Transactional
-    public void deleteGroup(String title){userGroupRepository.deleteByTitle(title);}
+    public void deleteGroup(String title){
+        userGroupRepository.deleteByTitle(title);
+        logger.info("The user group " + title + " was deleted");
+    }
 
     @Transactional
     public void changeGroupName(String userGroup, UserGroupCreateCommand ugcc){
         UserGroup userGroupToUpdate = userGroupRepository.findByTitle(userGroup);
         userGroupToUpdate.setTitle(ugcc.getTitle());
         userGroupRepository.save(userGroupToUpdate);
+        logger.info("The name of the group " + userGroup + " was changed to the name " + ugcc.getTitle());
     }
 
     @Transactional
@@ -150,7 +163,7 @@ public class UserGroupService {
         for (DocumentType documentType: userGroup.getSubmissionDocumentType()) {
             submitDocType.add(documentType.getTitle());
         }
-
+        logger.info("Info about the group " + groupName + " was gotten");
         return new UserGroupGetCommand(
                 userGroup.getTitle(),
                 reviewDocType,

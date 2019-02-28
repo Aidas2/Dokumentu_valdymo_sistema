@@ -54,7 +54,7 @@ public class UserService {
         logger.info("Got all the users");
         return allUsers;
     }
-    
+
     @Transactional(readOnly = true)
     public UserGetCommand getUserByUsername(String username) {
         User user = userRepository.findByUsername(username);
