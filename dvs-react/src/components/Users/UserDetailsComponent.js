@@ -17,7 +17,7 @@ const UserDetailsComponent = props => {
   return (
     <div>
       <div className="container-fluid m-2">
-        <h6 className="display-6 normal-padding">vartotojai</h6>
+        <h6 className="display-6 normal-padding">Vartotojai</h6>
         <h5 className="display-6 normal-padding gray-collor ">
           <Link to={"/"}>
             <img src={logo} width="20" height="10" />
@@ -40,7 +40,7 @@ const UserDetailsComponent = props => {
           <strong>
             {firstName} {lastName}
           </strong>{" "}
-          inforamcija
+          informacija
         </h3>
         <div className="row mt-2 mb-2 ">
           <div className="col ">

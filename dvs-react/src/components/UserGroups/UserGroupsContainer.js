@@ -38,7 +38,7 @@ class DocumentTypesContainer extends Component {
         return (
           <UserGroupsComponent
             key={oneGroupObj.title}
-            groupTitle={oneGroupObj.title}
+            groupId={oneGroupObj.title}
           />
         );
       }
@@ -58,8 +58,8 @@ class DocumentTypesContainer extends Component {
               Administratoriaus rolė
             </Link>
             &ensp;/ &ensp;
-            <Link to={"/admin/doctypes"} className="explorer">
-              Dokumentų tipai
+            <Link to={"/admin/usergroups"} className="explorer">
+              Vartotojų grupės
             </Link>
           </h5>
 
