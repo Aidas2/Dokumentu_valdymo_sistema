@@ -58,51 +58,63 @@ public class DocumentController {
         return documentService.getDocumentsToReview();
     }
 
-    /*
+
     //READ All DOCUMENTS OF SPECIFIC DOCUMENT_STATE. Version_01 ========================================================
-    @RequestMapping(value = "/specific_document_state", method = RequestMethod.GET)
-    @ApiOperation(value = "Get all document of specified state", notes = "Returns all document of specified state")
+    @RequestMapping(value = "/documentbystate/{documentState}", method = RequestMethod.GET)
+    @ApiOperation(value = "Get all document of specified state. V_01", notes = "Returns all document of specified state")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public List<DocumentGetCommand> getAllDocumentsByDocumentState(
+    public List<DocumentGetCommand> getAllDocumentsByDocumentStateV1(
             @ApiParam(value = "Document state", required = true)
             @PathVariable DocumentState documentState) {
         return documentService.getAllDocumentsByDocumentState(documentState);
     }
-    */
+
 
     //READ All DOCUMENTS OF SPECIFIC DOCUMENT_STATE. Version_02 ========================================================
     //@PathVariable --> @RequestParam
     @RequestMapping(value = "/documentbystate", method = RequestMethod.GET)
-    @ApiOperation(value = "Get all document of specified state", notes = "Returns all document of specified state")
+    @ApiOperation(value = "Get all document of specified state. V_02", notes = "Returns all document of specified state")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public List<DocumentGetCommand> getAllDocumentsByDocumentState(
+    public List<DocumentGetCommand> getAllDocumentsByDocumentStateV2(
             @ApiParam(value = "Document state", required = true)
             @RequestParam DocumentState documentState) {
         return documentService.getAllDocumentsByDocumentState(documentState);
     }
 
-    /*
+/*
     //READ All DOCUMENTS OF SPECIFIC DOCUMENT_TYPE. Version_01 =========================================================
-    @RequestMapping(value = "/specific_document_type", method = RequestMethod.GET)
-    @ApiOperation(value = "Get all document of specified type", notes = "Returns all document of specified type")
+    @RequestMapping(value = "/documentbytype/{documentType}", method = RequestMethod.GET)
+    @ApiOperation(value = "Get all document of specified type. V_01", notes = "Returns all document of specified type")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public List<DocumentGetCommand> getAllDocumentsByDocumentType(
+    public List<DocumentGetCommand> getAllDocumentsByDocumentTypeV1(
             @ApiParam(value = "Document type", required = true)
             @PathVariable DocumentType documentType) {
-        return documentService.getAllDocumentsByDocumentType(documentType);
+        return documentService.getAllDocumentsByDocumentType1(documentType);
     }
-
 */
-    //READ All DOCUMENTS OF SPECIFIC DOCUMENT_TYPE. Version_02 =========================================================
+
+    //READ All DOCUMENTS OF SPECIFIC DOCUMENT_TYPE. Version_02.1 =========================================================
     //object --> String; @PathVariable --> @RequestParam
     @RequestMapping(value = "/documentbytype", method = RequestMethod.GET)
-    @ApiOperation(value = "Get all document of specified type", notes = "Returns all document of specified type")
+    @ApiOperation(value = "Get all document of specified type. V_02.1", notes = "Returns all document of specified type")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public List<DocumentGetCommand> getAllDocumentsByDocumentType(
+    public List<DocumentGetCommand> getAllDocumentsByDocumentTypeV21(
             @ApiParam(value = "Document type", required = true)
             @RequestParam String documentTypeTitle) {
-        return documentService.getAllDocumentsByDocumentType(documentTypeTitle);
+        return documentService.getAllDocumentsByDocumentType2(documentTypeTitle);
     }
+/* temporaly commented as cause "ambiguous" with Version_01
+    //READ All DOCUMENTS OF SPECIFIC DOCUMENT_TYPE. Version_02.2 (by J.C.) ===============================================
+    //@PathVariable comes back :) Together mandatory comes and {} in first line (@RequestMapping) !!!
+    @RequestMapping(value = "/documentbytype/{title}", method = RequestMethod.GET)
+    @ApiOperation(value = "Get all document of specified type. V_02.2", notes = "Returns all document of specified type")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public List<DocumentGetCommand> getAllDocumentsByDocumentTypeV22(
+            @ApiParam(value = "Document type", required = true)
+            @PathVariable String title) {
+        return documentService.getAllDocumentsByDocumentType2(title);
+    }
+*/
 
     //READ All DOCUMENTS OF SPECIFIC AUTHOR_ID =========================================================================
     @RequestMapping(value = "/{authorId}/docs", method = RequestMethod.GET)
@@ -164,9 +176,9 @@ public class DocumentController {
 
     //SET DOCUMENT STATE. Version_01 (by my) ===========================================================================
     @RequestMapping(value = "/{id}/setState", method = RequestMethod.PUT)
-    @ApiOperation(value = "Set document state", notes = "Set document state by id")
+    @ApiOperation(value = "Set document state V_01", notes = "Set document state by id")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public void setDocumentStateById(
+    public void setDocumentStateByIdV1(
             //@ApiParam(value = "Document id", required = true)
             @RequestBody final DocumentSetStateCommand documentSetStateCommand
             //@PathVariable Long id
@@ -175,21 +187,20 @@ public class DocumentController {
 //            @PathVariable DocumentState documentState
 
     ) {
-        documentService.setDocumentState(documentSetStateCommand);
+        documentService.setDocumentStateV1(documentSetStateCommand);
     }
 
 
-/*
     //SET DOCUMENT STATE. Version_02 (by J.C.) =========================================================================
     @RequestMapping(value = "/setState", method = RequestMethod.PUT)
-    @ApiOperation(value = "Set document state", notes = "Set document state by id")
+    @ApiOperation(value = "Set document state. V_02", notes = "Set document state by id")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public void setDocumentStateById (
+    public void setDocumentStateByIdV2 (
             @RequestBody final DocumentSetStateCommand documentSetStateCommand
             //@ApiParam(value = "Document state", required = true)
             //@PathVariable DocumentState documentState
     ) {
-                documentService.setDocumentState(documentSetStateCommand);
+                documentService.setDocumentStateV2(documentSetStateCommand);
     }
-*/
+
 }
