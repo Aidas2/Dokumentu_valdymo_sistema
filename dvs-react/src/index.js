@@ -43,7 +43,11 @@ ReactDOM.render(
         <Route exact path="/admin/docs" component={DocumentsContainer} />
         <Route exact path="/docs" component={DocumentsContainer} />
         <Route exact path="/admin/usergroups" component={UserGroupsContainer} />
-        <Route exact path="/testing" component={UserDetailsContainer} />
+        <Route
+          exact
+          path="/admin/users/:username"
+          component={UserDetailsContainer}
+        />
         <Route
           exact
           path="/admin/usergroups/new"
