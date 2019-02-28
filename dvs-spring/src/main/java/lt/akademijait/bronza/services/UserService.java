@@ -35,7 +35,6 @@ public class UserService {
             for (UserGroup userGroup : user.getUserGroups()) {
                 userGroupsTitles.add(userGroup.getTitle());
             }
-
             UserGetCommand ugc = new UserGetCommand(
                     user.getId(),
                     user.getFirstName(),
@@ -74,7 +73,6 @@ public class UserService {
         for (UserGroup userGroup : user.getUserGroups()) {
             userGroupsTitles.add(userGroup.getTitle());
         }
-
         return new UserGetCommand(
                 user.getId(),
                 user.getFirstName(),
@@ -157,6 +155,34 @@ public class UserService {
             }
         }
         userRepository.save(userToUpdate);
+    }
+
+
+    @Transactional
+    public List<UserGetCommand> getUsersByGroup(String groupName){
+        List<UserGetCommand> allUsersInGroup = new ArrayList<>();
+
+        for (User user : userRepository.findAll()) {
+            Set<String> userGroupsTitles = new HashSet<>();
+
+            if (user.getUserGroups().contains(userGroupRepository.findByTitle(groupName))) {
+                for (UserGroup userGroup : user.getUserGroups()) {
+                    userGroupsTitles.add(userGroup.getTitle());
+                }
+                UserGetCommand ugc = new UserGetCommand(
+                        user.getId(),
+                        user.getFirstName(),
+                        user.getLastName(),
+                        user.isAdministrator(),
+                        user.getPassword(),
+                        user.getUsername(),
+                        user.getEmailAddress(),
+                        user.getHireDate(),
+                        userGroupsTitles);
+                allUsersInGroup.add(ugc);
+            }
+        }
+        return allUsersInGroup;
     }
 
 
