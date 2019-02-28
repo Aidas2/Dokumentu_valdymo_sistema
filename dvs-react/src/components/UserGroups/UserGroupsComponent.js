@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 const UserGroupsComponent = props => {
+  var linkToUserGroupDetails = "/admin/usergroups/" + props.groupTitle;
   return (
     <div className="container pl-0 ml-0">
       <div className="row">
@@ -12,7 +13,7 @@ const UserGroupsComponent = props => {
         </div>
 
         <div className="col-2">
-          <p>{props.groupTitle}</p>
+          <Link to={linkToUserGroupDetails}>{props.groupTitle}</Link>
         </div>
       </div>
     </div>

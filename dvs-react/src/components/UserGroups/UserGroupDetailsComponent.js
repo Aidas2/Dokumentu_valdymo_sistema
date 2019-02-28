@@ -19,7 +19,7 @@ const UserGroupDetailsComponent = props => {
             Administratoriaus rolė
           </Link>
           &ensp;/ &ensp;
-          <Link to={"/admin/groups"} className="explorer">
+          <Link to={"/admin/usergroups"} className="explorer">
             Vartotojų grupės
           </Link>
           &ensp;/ &ensp;
