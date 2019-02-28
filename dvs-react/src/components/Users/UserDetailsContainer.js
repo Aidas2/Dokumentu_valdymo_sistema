@@ -30,7 +30,6 @@ class UserDetailsContainer extends Component {
     var userGroupsTitlesToDisplay = this.state.userDetails.userGroups.map(
       group => <li key={group}>{group}</li>
     );
-    console.log("STATE -------------- > ", this.state);
 
     return (
       <UserDetailsComponent
