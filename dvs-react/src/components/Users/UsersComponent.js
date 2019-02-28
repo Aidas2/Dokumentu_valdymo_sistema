@@ -22,7 +22,7 @@ const UsersComponent = props => {
         </div>
 
         <div className="col-2">
-          <p>{username}</p>
+          <Link to="/testing">{username}</Link>
         </div>
         <div className="col-2">
           <p>{firstName}</p>

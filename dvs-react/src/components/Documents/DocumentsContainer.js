@@ -43,8 +43,8 @@ class DocumentsContainer extends Component {
         <DocumentsComponent
           key={oneDocumentObj.id}
           documentDetails={oneDocumentObj}
-          onDocumentDownload={this.handleDocumentDownload}
-          onDocumentView={this.handleDocumentView}
+          // onDocumentDownload={this.handleDocumentDownload}
+          // onDocumentView={this.handleDocumentView}
         />
       );
     });

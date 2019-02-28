@@ -70,29 +70,28 @@ public class FileManageController {
     }
 
 //    THIS ONE WORKS AS WELL, JUST DISPLAYS, DOES NOT DOWNLOADS
-//    @GetMapping("/downloadFile/{fileName:.+}")
-//    public ResponseEntity<Resource> downloadFile(@PathVariable String fileName, HttpServletRequest request) {
-//        // Load file as Resource
-//        Resource resource = applicationContext.getResource("file:/home/paulius/Dokumentu_valdymo_sistema/dvs-spring/uploaded-files/user1-dir/"
-//                + fileName);
-//
-//        // Try to determine file's content type
-//        String contentType = null;
-//        try {
-//            contentType = request.getServletContext().getMimeType(resource.getFile().getAbsolutePath());
-//        } catch (IOException ex) {
-//        }
-//
-//        // Fallback to the default content type if type could not be determined
-//        if(contentType == null) {
-//            contentType = "application/octet-stream";
-//        }
-//
-//        return ResponseEntity.ok()
-//                .contentType(MediaType.parseMediaType(contentType))
-//                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
-//                .body(resource);
-//    }
+    @GetMapping("/files/view")
+    public ResponseEntity<Resource> downloadFile(@RequestParam Long documentId, HttpServletRequest request) {
+        // Load file as Resource
+        Resource resource = applicationContext.getResource("file:" + documentRepository.findById(documentId).orElse(null).getPath());
+
+        // Try to determine file's content type
+        String contentType = null;
+        try {
+            contentType = request.getServletContext().getMimeType(resource.getFile().getAbsolutePath());
+        } catch (IOException ex) {
+        }
+
+        // Fallback to the default content type if type could not be determined
+        if(contentType == null) {
+            contentType = "application/octet-stream";
+        }
+
+        return ResponseEntity.ok()
+                .contentType(MediaType.parseMediaType(contentType))
+                .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=\"" + resource.getFilename() + "\"")
+                .body(resource);
+    }
 
 
     @RequestMapping(value = "/files", method = RequestMethod.POST,
