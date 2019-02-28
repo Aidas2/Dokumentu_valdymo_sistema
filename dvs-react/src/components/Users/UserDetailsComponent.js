@@ -10,8 +10,8 @@ const UserDetailsComponent = props => {
     firstName,
     hireDate,
     lastName,
-    username,
-    userGroups
+    username
+    // userGroups
   } = props.userDetails;
 
   return (
@@ -71,12 +71,7 @@ const UserDetailsComponent = props => {
           </div>
           <div className="col">
             <h5>Vartotojo grupė</h5>
-            <h4>{userGroups}</h4>
-
-            <span className="italic-style-small">
-              Pasirinktos grupės:
-              {userGroups}{" "}
-            </span>
+            <h4>{props.userGroups}</h4>
           </div>
         </div>
       </div>

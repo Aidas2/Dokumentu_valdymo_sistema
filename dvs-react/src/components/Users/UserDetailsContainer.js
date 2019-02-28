@@ -3,7 +3,7 @@ import UserDetailsComponent from "./UserDetailsComponent";
 import axios from "axios";
 
 class UserDetailsContainer extends Component {
-  state = { userDetails: "" };
+  state = { userDetails: { userGroups: [] } };
 
   componentDidMount() {
     axios({
@@ -27,15 +27,15 @@ class UserDetailsContainer extends Component {
   }
 
   render() {
+    var userGroupsTitlesToDisplay = this.state.userDetails.userGroups.map(
+      group => <li key={group}>{group}</li>
+    );
     console.log("STATE -------------- > ", this.state);
-    // var userGroupsTitlesToDisplay = this.state.userDetails.userGroups.map(
-    //   group => group + " *** "
-    // );
 
     return (
       <UserDetailsComponent
         userDetails={this.state.userDetails}
-        // userGroups={userGroupsTitlesToDisplay}
+        userGroups={userGroupsTitlesToDisplay}
       />
     );
   }
