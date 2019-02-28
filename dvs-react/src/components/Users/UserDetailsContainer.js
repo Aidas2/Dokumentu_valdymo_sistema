@@ -6,8 +6,10 @@ class UserDetailsContainer extends Component {
   state = { userDetails: "" };
 
   componentDidMount() {
+    const usernameParam = this.props.match.params.username;
+
     axios({
-      url: "http://localhost:8081/api/users/" + this.props.username,
+      url: "http://localhost:8081/api/users/" + usernameParam,
       method: "GET"
       //   params: {
       //     username: "username1"
