@@ -13,6 +13,8 @@ const UsersComponent = props => {
     username,
     userId
   } = props.userDetails;
+
+  var linkToIndividualUserDetails = "/admin/users/" + username;
   return (
     <div className="container pl-0 ml-0">
       <div className="row">
@@ -22,7 +24,7 @@ const UsersComponent = props => {
         </div>
 
         <div className="col-2">
-          <p>{username}</p>
+          <Link to={linkToIndividualUserDetails}>{username}</Link>
         </div>
         <div className="col-2">
           <p>{firstName}</p>

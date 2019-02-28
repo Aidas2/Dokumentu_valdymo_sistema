@@ -3,7 +3,7 @@ import axios from "axios";
 
 class FileDownloadConatainer extends Component {
   state = {
-    documentId: 2145
+    documentId: null
   };
 
   componentDidMount() {
