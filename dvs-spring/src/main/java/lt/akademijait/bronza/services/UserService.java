@@ -9,6 +9,8 @@ import lt.akademijait.bronza.entities.User;
 import lt.akademijait.bronza.entities.UserGroup;
 import lt.akademijait.bronza.repositories.UserGroupRepository;
 import lt.akademijait.bronza.repositories.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,6 +20,8 @@ import java.util.stream.Collectors;
 
 @Service
 public class UserService {
+
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private UserRepository userRepository;
@@ -47,24 +51,10 @@ public class UserService {
                     userGroupsTitles);
             allUsers.add(ugc);
         }
+        logger.info("Got all the users");
         return allUsers;
     }
-
-//        return userRepository.findAll().stream().map(
-//                (user) ->
-//                    new UserGetCommand(
-//                            user.getId(),
-//                            user.getFirstName(),
-//                            user.getLastName(),
-//                            user.isAdministrator(),
-//                            user.getPassword(),
-//                            user.getUsername(),
-//                            user.getEmailAddress(),
-//                            user.getHireDate(),
-//                            userGroupsTitles))
-//                .collect(Collectors.toList());
-
-
+    
     @Transactional(readOnly = true)
     public UserGetCommand getUserByUsername(String username) {
         User user = userRepository.findByUsername(username);
@@ -73,6 +63,7 @@ public class UserService {
         for (UserGroup userGroup : user.getUserGroups()) {
             userGroupsTitles.add(userGroup.getTitle());
         }
+        logger.info("The user's " + username + " info was gotten");
         return new UserGetCommand(
                 user.getId(),
                 user.getFirstName(),
@@ -103,13 +94,24 @@ public class UserService {
                 ucc.getEmailAddress(),
                 userGroupsToSet
         );
-        //newUser.getUserGroups().add()
+        if (ucc.getFirstName() == null){
+            throw new NullPointerException("User has to have a name");
+        }
+        if (ucc.getLastName() == null){
+            throw new NullPointerException("User has to have a surname");
+        }
 
-
-//        newUser.setUserGroups(userGroupsToSet);
+        if (ucc.getUsername() == null){
+            throw new NullPointerException("User Has to have a username");
+        }
+        if (ucc.getPassword() == null){
+            throw new NullPointerException("User Has to have a password to log in");
+        }
+        if (ucc.getEmailAddress() == null){
+            throw new NullPointerException("User Has to have a valid email address");
+        }
         userRepository.save(newUser);
-
-
+        logger.info("New user " + newUser.getUsername() + " was created");
     }
 
     @Transactional
@@ -132,6 +134,7 @@ public class UserService {
         userToUpdate.setUserGroups(userGroupsToSet);
 
         userRepository.save(userToUpdate);
+        logger.info("Info about the user " + oldUserName + " was updated");
     }
 
     @Transactional
@@ -144,6 +147,7 @@ public class UserService {
             }
         }
         userRepository.save(userToUpdate);
+        logger.info("The user " + username + " was added to the group" + userAddToGroupCommand.getUserGroupTitle());
     }
 
     @Transactional
@@ -155,6 +159,7 @@ public class UserService {
             }
         }
         userRepository.save(userToUpdate);
+        logger.info("The user " + username + " was removed from the group " + userAddToGroupCommand.getUserGroupTitle());
     }
 
 
@@ -182,6 +187,7 @@ public class UserService {
                 allUsersInGroup.add(ugc);
             }
         }
+        logger.info("Users who belong to the group " + groupName + " was gotten");
         return allUsersInGroup;
     }
 
@@ -189,6 +195,7 @@ public class UserService {
     @Transactional
     public void deleteUser(String username) {
         userRepository.deleteByUsername(username);
+        logger.info("The user " + username + " was deleted");
     }
 
 
