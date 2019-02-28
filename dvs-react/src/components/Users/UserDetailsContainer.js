@@ -3,26 +3,41 @@ import UserDetailsComponent from "./UserDetailsComponent";
 import axios from "axios";
 
 class UserDetailsContainer extends Component {
-  state = {};
+  state = { userDetails: "" };
 
   componentDidMount() {
     axios({
-      url: "http://localhost:8081/api/users",
-      method: "GET",
-      params: {
-        username: "username1"
-      }
+      url: "http://localhost:8081/api/users" + "/username3",
+      method: "GET"
+      //   params: {
+      //     username: "username1"
+      //   }
     })
       .then(response => {
-        // this.setState({ users: response.data });
-        console.log("response -------------- > ", response);
+        let userDetails = response.data;
+        userDetails.administrator
+          ? (userDetails.administrator = "Taip")
+          : (userDetails.administrator = "Ne");
+
+        this.setState({ userDetails: response.data });
       })
       .catch(error => {
         console.log(error);
       });
   }
+
   render() {
-    return <UserDetailsComponent />;
+    console.log("STATE -------------- > ", this.state);
+    // var userGroupsTitlesToDisplay = this.state.userDetails.userGroups.map(
+    //   group => group + " *** "
+    // );
+
+    return (
+      <UserDetailsComponent
+        userDetails={this.state.userDetails}
+        // userGroups={userGroupsTitlesToDisplay}
+      />
+    );
   }
 }
 
