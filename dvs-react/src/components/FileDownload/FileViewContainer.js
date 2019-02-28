@@ -65,9 +65,12 @@ class FileViewContainer extends Component {
       "<<<<<<<<<<<<<<<<<<<,THis.state in render()------------------"
     );
     return (
-      <button onClick={this.viewFile} className="btn btn-dark">
-        Peržiūrėti
-      </button>
+      <div>
+        {/* <object data={this.state.response} type="application/pdf" /> */}
+        <button onClick={this.viewFile} className="btn btn-dark">
+          Peržiūrėti
+        </button>
+      </div>
     );
   }
 }
