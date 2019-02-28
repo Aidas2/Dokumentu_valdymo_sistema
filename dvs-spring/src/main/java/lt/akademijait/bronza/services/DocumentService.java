@@ -43,7 +43,7 @@ public class DocumentService {
     //GET ALL DOCUMENTS ================================================================================================
     @Transactional(readOnly = true)
     public List<DocumentGetCommand> getAllDocuments() {
-        logger.info("Getted all documents");
+        logger.info("Geted all documents");
         return documentRepository.findAll()
                 .stream()
                 .map((document) -> new DocumentGetCommand(
@@ -158,14 +158,15 @@ public class DocumentService {
                         document.getPath()
                 )).collect(Collectors.toList());
     }
-/*
-    //GET DOCUMENTS OF SPECIFIC DOCUMENT_TYPE. Version_01 ==============================================================
+
+    //GET DOCUMENTS OF SPECIFIC DOCUMENT_TYPE. Version_01 (passing object) ================================================
     @Transactional(readOnly = true)
-    public List<DocumentGetCommand> getAllDocumentsByDocumentType(DocumentType documentType) {
+    public List<DocumentGetCommand> getAllDocumentsByDocumentType1(DocumentType documentType) {
     logger.info("Getted all documents by this type: " + documentType);
         return  documentRepository.findAll()
                 .stream()
                 .filter(document -> document.getDocumentType().equals(documentType))
+                //.filter(document -> document.getDocumentType().getTitle().equals(documentType.getTitle()))
                 .map((document) -> new DocumentGetCommand(
                         document.getId(),
                         document.getAuthor().getUsername(),
@@ -182,13 +183,12 @@ public class DocumentService {
                         document.getPath()
                 )).collect(Collectors.toList());
     }
-*/
 
-    //GET DOCUMENTS OF SPECIFIC DOCUMENT_TYPE. Version_02 ==============================================================
+
+    //GET DOCUMENTS OF SPECIFIC DOCUMENT_TYPE. Version_02 (passing String) ====================================================
     @Transactional(readOnly = true)
-    public List<DocumentGetCommand> getAllDocumentsByDocumentType(String documentTypeTitle) {
+    public List<DocumentGetCommand> getAllDocumentsByDocumentType2(String documentTypeTitle) {
         logger.info("Getted all documents by this type: " + documentTypeTitle);
-
         return  documentRepository.findAll()
                 .stream()
                 .filter(document -> document.getDocumentType().equals(documentTypeRepository.findByTitle(documentTypeTitle)))
@@ -210,7 +210,6 @@ public class DocumentService {
     }
     //GET DOCUMENTS OF SPECIFIC USER_GROUP (OR AUTHOR ID ?) ============================================================
     // (with filter and with filter of permissions (which documents this UserGroup can manage)
-    // attach loggers everywhere !
 
         @Transactional(readOnly = true)
     public List<DocumentGetCommand> getAllDocumentsByAuthorId(Long authorId) {
@@ -270,7 +269,8 @@ public class DocumentService {
 
     //SET DOCUMENT STATE. Version_01 (by my) ===========================================================================
     @Transactional
-    public void setDocumentState (DocumentSetStateCommand documentSetStateCommand) {
+    public void setDocumentStateV1 (DocumentSetStateCommand documentSetStateCommand) {
+
 
         //Document documentToSetState = documentRepository.findById(id).orElse(null);
         Document documentToSetState = documentRepository.getOne(documentSetStateCommand.getDocumentId());
@@ -352,14 +352,15 @@ public class DocumentService {
         }
 
         documentRepository.save(documentToSetState);
+        logger.info("Document state set to: " + DocumentState.valueOf(documentSetStateCommand.getDocumentState()));
+
     }
 
 
-/*
     //SET DOCUMENT STATE. Version_02 (by J.C.) =========================================================================
     //to make working, change 'private DocumentState documentState' --> 'private String documentState' ((DocumentSetStateCommand.java)
     @Transactional
-    public void setDocumentState ( DocumentSetStateCommand documentSetStateCommand) {
+    public void setDocumentStateV2 ( DocumentSetStateCommand documentSetStateCommand) {
 
         User user = userRepository.findByUsername(documentSetStateCommand.getAuthorUsername());
         Document documentToSetState = documentRepository.getOne(documentSetStateCommand.getDocumentId());
@@ -389,8 +390,9 @@ public class DocumentService {
 
         }
         documentRepository.save(documentToSetState);
+        logger.info("Document state set to: " + documentSetStateCommand.getDocumentState());
     }
-*/
+
 
 /*
     //UPDATE. Version_01. ==============================================================================================
@@ -425,12 +427,14 @@ public class DocumentService {
         documentToUpdate.setTitle(documentUpdateCommand.getTitle());
         documentToUpdate.setDescription(documentUpdateCommand.getDescription());
         documentRepository.save(documentToUpdate);
+        logger.info("Document data updated - {} Everything is OK" + documentToUpdate.toString());
     }
 
     //DELETE ===========================================================================================================
     @Transactional
     public void deleteDocument(long id) {
         documentRepository.deleteById(id);
+        logger.info("Document with id = " + id + " was deleted");
     }
 
 /*
