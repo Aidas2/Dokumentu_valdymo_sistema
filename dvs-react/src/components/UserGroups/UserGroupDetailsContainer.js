@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import UserDetailsComponent from "./UserDetailsComponent";
+import UserGroupDetailsComponent from "./UserGroupDetailsComponent";
 import axios from "axios";
 
 class UserGroupDetailsContainer extends Component {
@@ -36,8 +36,8 @@ class UserGroupDetailsContainer extends Component {
       );
     }
     return (
-      <UserDetailsComponent
-        userDetails={this.state.userDetails}
+      <UserGroupDetailsComponent
+        userGroupDetails={this.state.userGroupDetails}
         userGroups={userGroupsTitlesToDisplay}
       />
     );
