@@ -126,6 +126,35 @@ public class UserGroupService {
     @Transactional
     public void deleteGroup(String title){userGroupRepository.deleteByTitle(title);}
 
+    @Transactional
+    public void changeGroupName(String userGroup, UserGroupCreateCommand ugcc){
+        UserGroup userGroupToUpdate = userGroupRepository.findByTitle(userGroup);
+        userGroupToUpdate.setTitle(ugcc.getTitle());
+        userGroupRepository.save(userGroupToUpdate);
+    }
+
+    @Transactional
+    public UserGroupGetCommand getUserGroupInfo (String groupName){
+        UserGroup userGroup = userGroupRepository.findByTitle(groupName);
+
+        Set<String> reviewDocType = new HashSet<>();
+        for (DocumentType documentType: userGroup.getReviewDocumentType()) {
+            reviewDocType.add(documentType.getTitle());
+        }
+
+        Set<String> submitDocType = new HashSet<>();
+        for (DocumentType documentType: userGroup.getSubmissionDocumentType()) {
+            submitDocType.add(documentType.getTitle());
+        }
+
+        return new UserGroupGetCommand(
+                userGroup.getTitle(),
+                reviewDocType,
+                submitDocType
+                );
+    }
+
+
 
 
 }

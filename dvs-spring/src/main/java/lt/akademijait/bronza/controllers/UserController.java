@@ -64,7 +64,7 @@ public class UserController {
         return userService.getUserByUsername(username);
     }
 
-    @RequestMapping(path = "/group/{username}", method = RequestMethod.PUT)
+    @RequestMapping(path = "/groups/{username}", method = RequestMethod.PUT)
     @ApiOperation(value = "Add user to userGroup", notes = "Adds user to new userGroup")
     public void addUserToUserGroup(
             @ApiParam(value = "Username", required = true) @PathVariable final String username,
@@ -72,13 +72,20 @@ public class UserController {
         userService.addUserToNewUserGroup(username, uagc);
     }
 
-    @RequestMapping(path = "/group/{username}", method = RequestMethod.DELETE)
+    @RequestMapping(path = "/groups/{username}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.ACCEPTED)
     @ApiOperation(value = "Remove user from group", notes = "Removes user from a certain user group")
     public void removeUserFromUserGroup(
             @ApiParam(value = "User username", required = true) @PathVariable final String username,
             @ApiParam(value = "UserGroup", required = true) @RequestBody UserAddToGroupCommand uagc){
         userService.removeUserFromUserGroup(username, uagc);
+    }
+
+    @RequestMapping(path = "/groups/{usergroup}", method = RequestMethod.GET)
+    @ApiOperation(value = "Get users from group", notes = "Returns users who belong to a certain user group")
+    public List<UserGetCommand> getUsersByUserGroup(
+            @ApiParam(value = "usergroup", required = true) @Valid @PathVariable final String usergroup){
+        return userService.getUsersByGroup(usergroup);
     }
 
 
