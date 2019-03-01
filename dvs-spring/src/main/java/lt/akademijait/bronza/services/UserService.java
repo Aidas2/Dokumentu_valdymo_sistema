@@ -94,22 +94,6 @@ public class UserService {
                 ucc.getEmailAddress(),
                 userGroupsToSet
         );
-        if (ucc.getFirstName() == null){
-            throw new NullPointerException("User has to have a name");
-        }
-        if (ucc.getLastName() == null){
-            throw new NullPointerException("User has to have a surname");
-        }
-
-        if (ucc.getUsername() == null){
-            throw new NullPointerException("User Has to have a username");
-        }
-        if (ucc.getPassword() == null){
-            throw new NullPointerException("User Has to have a password to log in");
-        }
-        if (ucc.getEmailAddress() == null){
-            throw new NullPointerException("User Has to have a valid email address");
-        }
         userRepository.save(newUser);
         logger.info("New user " + newUser.getUsername() + " was created");
     }

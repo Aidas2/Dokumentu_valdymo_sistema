@@ -29,18 +29,11 @@ public class UserCreateCommand {
     @NotNull
     private String password;
 
-    //@Column
-    //private byte[] passwordSalt;
-
     @NotNull
     private String emailAddress;
 
     @ManyToMany
     private Set<String> userGroupTitle;
-
-
-//    @OneToMany
-//    private List<Document> documents;
 
 
     public UserCreateCommand() {
@@ -57,7 +50,6 @@ public class UserCreateCommand {
         this.password = password;
         this.emailAddress = emailAddress;
         this.userGroupTitle = userGroupTitle;
-        //this.documents = documents;
     }
 
 
@@ -124,12 +116,4 @@ public class UserCreateCommand {
     public void setUserGroupTitle(Set<String> userGroupTitle) {
         this.userGroupTitle = userGroupTitle;
     }
-
-//    public List<Document> getDocuments() {
-//        return documents;
-//    }
-//
-//    public void setDocuments(List<Document> documents) {
-//        this.documents = documents;
-//    }
 }

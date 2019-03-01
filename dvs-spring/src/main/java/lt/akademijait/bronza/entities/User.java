@@ -32,9 +32,6 @@ public class User {
     @Column
     private String password;
 
-    //@Column
-    //private byte[] passwordSalt;
-
     @Column(unique = true)
     private String emailAddress;
 
@@ -62,7 +59,6 @@ public class User {
         this.password = password;
         this.emailAddress = emailAddress;
         this.userGroups = userGroups;
-  //      this.documents = documents;
     }
 
     public Long getId() {
