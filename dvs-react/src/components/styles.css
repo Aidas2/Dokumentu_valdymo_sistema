@@ -12,28 +12,28 @@
 /* h1 text style */
 
 h1 {
-  display: inline-block;
   font-family: sans serif;
   letter-spacing: -0.5px;
   color: #525f64;
-
+  text-align: center;
   font-size: 1.1em;
   font-weight: 1000;
   margin-bottom: 1.4em;
-  line-height: 1.55;
 }
 
 /* Login style */
 
 .login-style {
-  margin-top: 200px;
+  margin-top: 130px;
   margin-right: 0px;
   margin-left: 50px;
-  margin-bottom: 50px;
+  margin-bottom: 100px;
   display: block;
   margin-left: auto;
   margin-right: auto;
   display: inline-block;
+  padding: 30px;
+  border: #e2e2e2 1px solid;
 }
 
 .login-form-style {
@@ -51,17 +51,13 @@ h1 {
 
 /* Login-Buttons */
 .login-button {
-  width: 100%;
+  width: 50%;
   font-weight: 600;
   font-size: 14px;
   font-family: sans serif;
-  text-align: left;
-}
-/* login-icon */
-
-.login-icon {
-  float: right;
-  margin-top: 5px;
+  width: 60%;
+  margin-left: 20%;
+  margin-right: 20%;
 }
 
 /* all buttons */

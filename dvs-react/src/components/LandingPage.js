@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 import styles from "./styles.css";
-import logo from "../images/home.png";
+
 import main_icon from "../images/main_icon.png";
 
 const LandingPage = props => {
@@ -15,7 +15,7 @@ const LandingPage = props => {
           </div>
         </div>
         <div
-          class=" col-lg-4 col-xl-4 col-md-4
+          class=" col-lg-4 col-xl-4 col-md-5
            login-style"
         >
           <h1 className="display-6 ">Įveskite prisijungimo informaciją</h1>
@@ -36,7 +36,6 @@ const LandingPage = props => {
             className="btn btn-outline-success login-button"
           >
             Prisijungti
-            <img src={logo} width="20" height="10" className="login-icon" />
           </button>
         </div>
       </div>
