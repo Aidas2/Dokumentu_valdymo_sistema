@@ -7,24 +7,24 @@ const CreateDocumentTypeComponent = props => {
   return (
     <div>
       <div className="container-fluid m-2">
-        <h6 className="display-6 normal-padding">
+        <h2 className="display-6 normal-padding">
           Naujo dokumento tipo kūrimas
-        </h6>
+        </h2>
 
         <h5 className="display-6 normal-padding gray-collor ">
           <Link to={"/"}>
             <img src={logo} width="20" height="10" />
           </Link>
           &ensp;/ &ensp;
-          <Link to={"/admin"} className="explorer">
+          <Link to={"/admin"} className="second-navigation">
             Administratoriaus rolė
           </Link>
           &ensp;/ &ensp;
-          <Link to={"/admin/doctypes"} className="explorer">
+          <Link to={"/admin/doctypes"} className="second-navigation">
             Dokumentų tipai
           </Link>
           &ensp;/ &ensp;
-          <Link to={"/admin/newdoctype"} className="explorer">
+          <Link to={"/admin/newdoctype"} className="second-navigation">
             Naujo dokumento tipo kūrimas
           </Link>
         </h5>

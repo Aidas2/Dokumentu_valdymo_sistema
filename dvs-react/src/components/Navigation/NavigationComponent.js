@@ -9,7 +9,7 @@ class NavigationComponent extends Component {
       <nav className="navbar navbar-expand-md navbar-dark bg-dark navigation-style">
         <div className="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
           <Link to={"/"} className="nav-link logo">
-            <img src={logo} width="40" height="20" />
+            <img src={logo} width="40" height="20" alt="home" />
           </Link>
 
           <ul className="navbar-nav mr-auto">

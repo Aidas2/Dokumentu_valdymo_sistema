@@ -10,14 +10,14 @@ class FileUploadComponent extends Component {
   render() {
     return (
       <div className="container-fluid">
-        <h6 className="display-6 normal-padding">Dokumento įkėlimas</h6>
+        <h2 className="display-6 normal-padding">Dokumento įkėlimas</h2>
 
         <h5 className="display-6 normal-padding gray-collor ">
           <Link to={"/"}>
             <img src={logo} width="20" height="10" />
           </Link>
           &ensp;/ &ensp;
-          <Link to={"/upload"} className="explorer">
+          <Link to={"/upload"} className="second-navigation">
             Dokumento įkėlimas
           </Link>
         </h5>

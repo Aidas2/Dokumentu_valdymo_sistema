@@ -40,22 +40,22 @@ class CreateUserGroupsForm extends Component {
   render() {
     return (
       <div className="container-fluid ">
-        <h6 className="display-6 normal-padding">Naujos grupės kūrimas</h6>
+        <h2 className="display-6 normal-padding">Naujos grupės kūrimas</h2>
 
         <h5 className="display-6 normal-padding gray-collor ">
           <Link to={"/"}>
             <img src={logo} width="20" height="10" />
           </Link>
           &ensp;/ &ensp;
-          <Link to={"/admin"} className="explorer">
+          <Link to={"/admin"} className="second-navigation">
             Administratoriaus rolė
           </Link>
           &ensp;/ &ensp;
-          <Link to={"/admin/usergroups"} className="explorer">
+          <Link to={"/admin/usergroups"} className="second-navigation">
             Grupių sąrašas
           </Link>
           &ensp;/ &ensp;
-          <Link to={"/admin/usergroups/new"} className="explorer">
+          <Link to={"/admin/usergroups/new"} className="second-navigation">
             Naujos grupės kūrimas
           </Link>
         </h5>

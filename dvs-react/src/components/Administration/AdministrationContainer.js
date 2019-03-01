@@ -11,14 +11,14 @@ class AdministrationContainer extends Component {
   render() {
     return (
       <div className="container-fluid ">
-        <h6 className="display-6 normal-padding">Administratoriaus rolė</h6>
+        <h2 className="display-6 normal-padding">Administratoriaus rolė</h2>
 
         <h5 className="display-6 normal-padding gray-collor ">
           <Link to={"/"}>
             <img src={logo} width="20" height="10" />
           </Link>
           &ensp;/ &ensp;
-          <Link to={"/admin"} className="explorer">
+          <Link to={"/admin"} className="second-navigation">
             Administratoriaus rolė
           </Link>
         </h5>

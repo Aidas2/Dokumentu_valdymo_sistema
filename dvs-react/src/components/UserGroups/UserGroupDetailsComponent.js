@@ -9,21 +9,21 @@ const UserGroupDetailsComponent = props => {
   return (
     <div>
       <div className="container-fluid m-2">
-        <h6 className="display-6 normal-padding">vartotojai</h6>
+        <h2 className="display-6 normal-padding">vartotojai</h2>
         <h5 className="display-6 normal-padding gray-collor ">
           <Link to={"/"}>
             <img src={logo} width="20" height="10" />
           </Link>
           &ensp;/ &ensp;
-          <Link to={"/admin"} className="explorer">
+          <Link to={"/admin"} className="second-navigation">
             Administratoriaus rolė
           </Link>
           &ensp;/ &ensp;
-          <Link to={"/admin/usergroups"} className="explorer">
+          <Link to={"/admin/usergroups"} className="second-navigation">
             Vartotojų grupės
           </Link>
           &ensp;/ &ensp;
-          {/* <Link to={"/admin/newuser"} className="explorer">
+          {/* <Link to={"/admin/newuser"} className="second-navigation">
             Naujo vartotojo kūrimas
           </Link> */}
         </h5>

@@ -1,7 +1,7 @@
 /* Navigation (position TOP) style */
 .navigation-style {
   margin-left: 0px;
-  font-size: 11px;
+  font-size: 13px;
   line-height: 1;
   font-family: sans serif;
   padding: 5px;
@@ -19,6 +19,14 @@ h1 {
   font-size: 1.1em;
   font-weight: 1000;
   margin-bottom: 1.4em;
+}
+
+h2 {
+  font-family: sans serif;
+  letter-spacing: -0.5px;
+  color: #525f64;
+  font-size: 25px;
+  font-weight: 1000;
 }
 
 /* Login style */
@@ -47,6 +55,16 @@ h1 {
   font-size: 14px;
   font-family: sans serif;
   display: inline-block;
+  opacity: 0.8;
+}
+
+input {
+  color: black;
+}
+
+.login-form-style:hover {
+  opacity: 1;
+  background: rgba(145, 145, 145, 0.2);
 }
 
 /* Login-Buttons */
@@ -78,12 +96,12 @@ h6 {
 }
 
 h5,
-.explorer {
+.second-navigation {
   font-family: sans serif;
 
   color: #4d4d33;
   padding-top: 5px;
-  font-size: 9px;
+  font-size: 10px;
 }
 
 html {
@@ -91,7 +109,6 @@ html {
 
   font-family: sans serif;
 
-  color: rgba(0, 0, 0, 0.5);
   padding-left: 60px;
   padding-right: 60px;
   padding-top: 15px;
@@ -99,7 +116,11 @@ html {
 }
 
 .logo {
-  filter: brightness(0) invert(1);
+  filter: brightness(0) invert(0.5);
+}
+
+.logo:hover {
+  filter: brightness(0) invert(0.8);
 }
 
 .picture-padding {
@@ -113,6 +134,32 @@ html {
   padding-bottom: 30px;
 }
 
+/*
+.picture-padding:hover {
+  opacity: 1;
+  -webkit-animation: flash 1.5s;
+  animation: flash 1.5s;
+}
+
+
+
+@-webkit-keyframes flash {
+  0% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes flash {
+  0% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+*/
 .table tr {
   text-align: left;
   vertical-align: middle;

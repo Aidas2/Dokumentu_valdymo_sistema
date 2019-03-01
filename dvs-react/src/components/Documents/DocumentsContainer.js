@@ -52,13 +52,13 @@ class DocumentsContainer extends Component {
     return (
       <div>
         <div className="container-fluid m-2 ">
-          <h6 className="display-6 normal-padding">Dokumentai</h6>
+          <h2 className="display-6 normal-padding">Dokumentai</h2>
           <h5 className="display-6 normal-padding gray-collor ">
             <Link to={"/"}>
               <img src={logo} width="20" height="10" />
             </Link>
             &ensp;/ &ensp;
-            <Link to={"/docs"} className="explorer">
+            <Link to={"/docs"} className="second-navigation">
               Dokumentai
             </Link>
           </h5>
