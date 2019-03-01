@@ -41,10 +41,6 @@ public class UserUpdateCommand {
     private Set<String> userGroupTitle;
 
 
-//
-//    @OneToMany
-//    private List<Document> documents;
-
     public UserUpdateCommand() {
     }
 
@@ -129,14 +125,5 @@ public class UserUpdateCommand {
     public void setUserGroupTitle(Set<String> userGroupTitle) {
         this.userGroupTitle = userGroupTitle;
     }
-
-
-//    public List<Document> getDocuments() {
-//        return documents;
-//    }
-//
-//    public void setDocuments(List<Document> documents) {
-//        this.documents = documents;
-//    }
 
 }

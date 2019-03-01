@@ -18,13 +18,9 @@ public class UserGetCommand {
     private boolean administrator;
     private String username;
     private String password;
-    //private byte[] passwordSalt;
     private String emailAddress;
-
     private Set<String> userGroups;
 
-//    @OneToMany
-//    private List<Document> documents;
 
 
 
