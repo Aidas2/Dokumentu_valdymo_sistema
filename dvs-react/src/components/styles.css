@@ -1,18 +1,66 @@
+/* Navigation (position TOP) style */
 .navigation-style {
   margin-left: 0px;
   font-size: 11px;
   line-height: 1;
-
-  font-family: Jura;
+  font-family: sans serif;
   padding: 5px;
   padding-left: 50px;
   padding-right: 50px;
 }
 
+/* h1 text style */
+
+h1 {
+  display: inline-block;
+  font-family: sans serif;
+  letter-spacing: -0.5px;
+  color: #525f64;
+
+  font-size: 1.1em;
+  font-weight: 1000;
+  margin-bottom: 1.4em;
+  line-height: 1.55;
+}
+
+/* Login style */
+
+.login-style {
+  margin-top: 200px;
+  margin-right: 0px;
+  margin-left: 50px;
+  margin-bottom: 50px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-block;
+}
+
+.login-form-style {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-top: 0px;
+  margin-bottom: 15px;
+  width: 70%;
+  border: #e2e2e2 1px solid;
+  font-weight: 400;
+  font-size: 14px;
+  font-family: sans serif;
+  display: inline-block;
+}
+
+/* Buttons */
+button {
+  width: 35%;
+  border-color: rgb(204, 204, 204);
+  font-size: 14px;
+  font-family: sans serif;
+}
+
 h3,
-h6,
-table {
-  font-family: Jura;
+table,
+h6 {
+  font-family: sans serif;
 
   color: #4d4d33;
   padding-top: 5px;
@@ -20,7 +68,7 @@ table {
 
 h5,
 .explorer {
-  font-family: Jura;
+  font-family: sans serif;
 
   color: #4d4d33;
   padding-top: 5px;
@@ -28,29 +76,19 @@ h5,
 }
 
 html {
-  background-color: #dcdcdc;
+  background-color: #e6e6e6;
 
-  font-family: Jura;
+  font-family: sans serif;
 
   color: rgba(0, 0, 0, 0.5);
-  padding-left: 100px;
-  padding-right: 100px;
-  padding-top: 10px;
+  padding-left: 60px;
+  padding-right: 60px;
+  padding-top: 15px;
   padding-bottom: 0px;
 }
 
 .logo {
   filter: brightness(0) invert(1);
-}
-
-.login-style {
-  padding-top: 200px;
-  padding-right: 150px;
-  padding-left: 50px;
-  padding-bottom: 50px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .picture-padding {
@@ -80,15 +118,15 @@ html {
 }
 
 .italic-style-small {
-  font-family: Jura;
+  font-family: sans serif;
   font-size: 11px;
   color: #4d4d33;
   padding-top: 5px;
   font-style: italic;
 }
-.italic-style,
-input {
-  font-family: Jura;
+
+.italic-style {
+  font-family: sans serif;
   font-size: 12px;
   color: #4d4d33;
   padding-top: 5px;
@@ -105,7 +143,7 @@ input {
   width: 100%;
   transition: 0.33s linear;
   height: 40px;
-  font-family: Jura;
+  font-family: sans serif;
   font-size: 11px;
   font-style: italic;
   display: table;

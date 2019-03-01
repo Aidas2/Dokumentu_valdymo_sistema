@@ -9,30 +9,30 @@ const LandingPage = props => {
   return (
     <div className="container-fluid main-container  ">
       <div class="row ">
-        <div class=" col-md-offset-1 col-md-6 content col-lg-6 ">
+        <div class=" col-lg-6 col-xl-6 col-md-6 ">
           <div>
             <img src={main_icon} class=" center-block picture-padding" />
           </div>
         </div>
         <div
-          class="col-md-offset-1 col-md-6 content col-lg-6
+          class=" col-lg-6 col-xl-6 col-md-6
            login-style"
         >
-          <h6 className="display-6 ">Prisijungimas</h6>
+          <h1 className="display-6 ">Įveskite prisijungimo informaciją</h1>
           <input
-            className="form-control "
+            className="form-control login-form-style "
             type="text"
             onChange={props.onReadUsername}
-            placeholder="prisijungimo vardas"
+            placeholder="Įveskite prisijungimo vardą"
           />
           <input
-            className="form-control"
+            className="form-control login-form-style"
             type="password"
-            placeholder="slaptažodis"
+            placeholder="Jūsų slaptažodis"
           />
           <button
             onClick={props.onSaveUsername}
-            className="btn btn-outline-success m-2 "
+            className="btn btn-outline-success "
           >
             Prisijungti
           </button>

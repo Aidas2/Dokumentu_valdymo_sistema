@@ -29,9 +29,6 @@ class FileUploadComponent extends Component {
               <th scope="col-7">Lauko pavadinimas</th>
               <th scope="col-3">Įvedimo laukas</th>
             </tr>
-          </tbody>
-
-          <tbody>
             <tr>
               <td scope="row">
                 <h6>1</h6>
