@@ -38,7 +38,7 @@ class DocumentTypesContainer extends Component {
         return (
           <UserGroupsComponent
             key={oneGroupObj.title}
-            groupId={oneGroupObj.title}
+            groupTitle={oneGroupObj.title}
           />
         );
       }
