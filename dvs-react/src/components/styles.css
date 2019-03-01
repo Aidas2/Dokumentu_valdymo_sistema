@@ -41,7 +41,7 @@ h1 {
   padding-bottom: 20px;
   margin-top: 0px;
   margin-bottom: 15px;
-  width: 70%;
+  width: 100%;
   border: #e2e2e2 1px solid;
   font-weight: 400;
   font-size: 14px;
@@ -49,11 +49,26 @@ h1 {
   display: inline-block;
 }
 
-/* Buttons */
-button {
-  width: 35%;
-  border-color: rgb(204, 204, 204);
+/* Login-Buttons */
+.login-button {
+  width: 100%;
+  font-weight: 600;
   font-size: 14px;
+  font-family: sans serif;
+  text-align: left;
+}
+/* login-icon */
+
+.login-icon {
+  float: right;
+  margin-top: 5px;
+}
+
+/* all buttons */
+
+button {
+  font-size: 14px;
+  font-weight: 600;
   font-family: sans serif;
 }
 
@@ -169,23 +184,3 @@ body::after {
   display: block;
   height: 100px;
 }
-
-/* html {
-  background: url(../images/fire.jpg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  opacity: 1;
-  margin-top: 10px;
-  margin-bottom: 100px;
-  margin-right: 50px;
-  margin-left: 50px;
-}
-
-body {
-  height: 100%;
-}
-
-
-*/
