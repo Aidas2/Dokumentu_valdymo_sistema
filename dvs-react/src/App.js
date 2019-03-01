@@ -1,12 +1,20 @@
 import React, { Component } from "react";
 import NavigationComponent from "./components/Navigation/NavigationComponent";
 import FooterComponent from "./components/Footer/FooterComponent";
+import SideBarComponent from "./components/SideBar/SideBarComponent";
 
 const App = props => {
   return (
     <React.Fragment>
       <NavigationComponent />
-      {props.children}
+      <div className="container-fluid main-container  ">
+        <div class="row justify-content-between">
+          <div class=" col-lg-2 col-xl-2 col-md-2 sb-style">
+            <SideBarComponent />
+          </div>
+          <div class=" col-lg-10 col-xl-10 col-md-10 ">{props.children}</div>
+        </div>
+      </div>
       <FooterComponent />
     </React.Fragment>
   );

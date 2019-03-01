@@ -123,6 +123,36 @@ html {
   filter: brightness(0) invert(0.8);
 }
 
+.logo-info {
+  position: relative;
+  display: inline-block;
+}
+
+.logo-info .tooltiptext {
+  font-size: 10px;
+  visibility: hidden;
+  width: 200px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 10px;
+  text-align: justify;
+  text-justify: inter-word;
+  opacity: 0.5;
+
+  position: absolute;
+  z-index: 1;
+  transition: 0.5s ease;
+}
+
+.logo-info:hover .tooltiptext {
+  visibility: visible;
+}
+
+/*
+
+
 .picture-padding {
   max-width: 100%;
   height: auto;
@@ -132,34 +162,21 @@ html {
   margin-right: auto;
   padding-top: 60px;
   padding-bottom: 30px;
+
+  -webkit-transition: 1.3s ease-in-out;
+  transition: 1.5s ease;
+  transition-delay: 0.5s;
 }
 
-/*
 .picture-padding:hover {
-  opacity: 1;
-  -webkit-animation: flash 1.5s;
-  animation: flash 1.5s;
+  -webkit-transform: scale(0.7);
+  transform: scale(0.7);
+  transition: 1.5s ease;
+  transition-delay: 0.5s;
 }
 
-
-
-@-webkit-keyframes flash {
-  0% {
-    opacity: 0.6;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@keyframes flash {
-  0% {
-    opacity: 0.4;
-  }
-  100% {
-    opacity: 1;
-  }
-}
 */
+
 .table tr {
   text-align: left;
   vertical-align: middle;
@@ -215,6 +232,7 @@ html {
 html {
   height: 100%;
 }
+
 body {
   min-height: 100%;
   padding: 0;
@@ -226,4 +244,66 @@ body::after {
   content: "";
   display: block;
   height: 100px;
+}
+
+/* ----------------------------------- 
+
+#sidebar {
+  border-top: 1px solid black;
+
+  padding: 30px;
+
+  background: #343434;
+
+  position: absolute;
+
+  top: 0;
+
+  left: 0;
+
+  bottom: 0;
+
+  height: 100%;
+}
+
+.sidebar-style {
+  padding-left: 0px;
+  margin-left: 0px;
+}
+
+
+#container {
+  display: table;
+}
+
+#main {
+  display: table-cell;
+  vertical-align: top;
+}
+*/
+#sidebar {
+  display: table-cell;
+  vertical-align: top;
+}
+
+.sidebar-style a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 12px;
+  color: #a3a3a3;
+  display: block;
+  transition: 0.3s;
+  padding-bottom: 25px;
+}
+
+.sidebar-style a:hover {
+  color: #f1f1f1;
+}
+
+.sb-style {
+  padding-left: 0px;
+  padding-bottom: 0px;
+  margin: 0px;
+
+  background-color: #000000;
 }
