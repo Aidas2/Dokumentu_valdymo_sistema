@@ -20,6 +20,8 @@ const DocumentsComponent = props => {
     rejectionReason,
     path
   } = props.documentDetails;
+
+  const linkToDOcumentDetails = "/admin/docs/" + id;
   return (
     <div className="container pl-0 ml-0">
       <div className="row">
@@ -28,7 +30,7 @@ const DocumentsComponent = props => {
           {/* <Link to="">Linkas</Link> */}
         </div>
         <div className="col-2">
-          <Link to="/admin/docs/:id">{title}</Link>
+          <Link to={linkToDOcumentDetails}>{title}</Link>
         </div>
         <div className="col-2">
           <p>{documentTypeTitle}</p>

@@ -3,23 +3,18 @@ import UserGroupDetailsComponent from "./DocumentDetailsComponent";
 import axios from "axios";
 
 class DocumentDetailsContainer extends Component {
-  state = { title: "", submissionDocType: [], reviewDocType: [] };
+  state = { id: "" };
 
   componentDidMount() {
-    const titleParam = this.props.match.params.title;
+    const idParam = this.props.match.params.id;
 
     axios({
-      url: "http://localhost:8081/api/groups/" + titleParam,
+      url: "http://localhost:8081/api/docs/" + idParam,
       method: "GET"
-      //   params: {
-      //     username: "username1"
-      //   }
     })
       .then(response => {
         this.setState({
-          title: response.data.title,
-          submissionDocType: response.data.submissionDocType,
-          reviewDocType: response.data.reviewDocType
+          id: response.data.id
         });
       })
       .catch(error => {

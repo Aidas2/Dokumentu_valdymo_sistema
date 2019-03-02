@@ -9,7 +9,7 @@ const UserGroupDetailsComponent = props => {
   return (
     <div>
       <div className="container-fluid m-2">
-        <h6 className="display-6 normal-padding">vartotojai</h6>
+        <h6 className="display-6 normal-padding" />
         <h5 className="display-6 normal-padding gray-collor ">
           <Link to={"/"}>
             <img src={logo} width="20" height="10" />
@@ -19,8 +19,8 @@ const UserGroupDetailsComponent = props => {
             Administratoriaus rolė
           </Link>
           &ensp;/ &ensp;
-          <Link to={"/admin/usergroups"} className="explorer">
-            Vartotojų grupės
+          <Link to={"/admin/docs"} className="explorer">
+            Dokumentai
           </Link>
           &ensp;/ &ensp;
           {/* <Link to={"/admin/newuser"} className="explorer">
@@ -28,7 +28,7 @@ const UserGroupDetailsComponent = props => {
           </Link> */}
         </h5>
         <h3 className="display-6 ">
-          Vartotojų grupės &nbsp;"
+          Dokumento &nbsp;"
           <strong>{title}"&nbsp;</strong>
           inforamcija
         </h3>
