@@ -1,11 +1,19 @@
 package lt.akademijait.bronza.dto.document;
 
+import javax.persistence.OneToMany;
+import java.util.Set;
+
 public class DocumentCreateCommand {
 
     //private Long id;
     //private String prefix;
     //private List<String> additionalFilePaths = new ArrayList<>();
-    //private List<Attachment> attachments;
+
+    //private Set<Attachment> attachments;
+    @OneToMany
+    private Set<String> attachmentTitle;
+
+
     //private User author; // do not use object, because object sends to swagger all his fields
     private String username;
     //private DocumentState documentState;
@@ -20,6 +28,7 @@ public class DocumentCreateCommand {
     //private User reviewer;
     //private String rejectionReason;
     //private String path;
+
 
 
     public DocumentCreateCommand() {
