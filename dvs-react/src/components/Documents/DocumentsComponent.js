@@ -28,7 +28,7 @@ const DocumentsComponent = props => {
           {/* <Link to="">Linkas</Link> */}
         </div>
         <div className="col-2">
-          <p>{title}</p>
+          <Link to="/admin/docs/:id">{title}</Link>
         </div>
         <div className="col-2">
           <p>{documentTypeTitle}</p>

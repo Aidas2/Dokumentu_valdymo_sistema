@@ -46,7 +46,7 @@ ReactDOM.render(
         <Route exact path="/admin/docs" component={DocumentsContainer} />
         <Route
           exact
-          path="/admin/docs:/id"
+          path="/admin/docs/:id"
           component={DocumentDetailsContainer}
         />
         <Route exact path="/docs" component={DocumentsContainer} />
