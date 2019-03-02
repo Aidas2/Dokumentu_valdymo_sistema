@@ -4,8 +4,21 @@ import logo from "../../images/home.png";
 import { Link } from "react-router-dom";
 
 const UserGroupDetailsComponent = props => {
-  var { title, submissionDocTypes, reviewDocTypes } = props;
-
+  var {
+    id,
+    author,
+    documentState,
+    documentTypeTitle,
+    title,
+    description,
+    creationDate,
+    submissionDate,
+    confirmationDate,
+    rejectionDate,
+    reviewer,
+    rejectionReason,
+    path
+  } = props.documentDetails;
   return (
     <div>
       <div className="container-fluid m-2">
@@ -35,11 +48,11 @@ const UserGroupDetailsComponent = props => {
         <div className="row mt-2 mb-2 ">
           <div className="col ">
             <h5>Pateikti leidžiamų dokumentų tipai</h5>
-            <h4>{submissionDocTypes}</h4>
+            <h4>{}</h4>
           </div>
           <div className="col">
             <h5>Peržiūrėti leidžiamų dokumentų tipai</h5>
-            <h4>{reviewDocTypes} </h4>
+            <h4>{} </h4>
           </div>
         </div>
       </div>

@@ -3,7 +3,23 @@ import UserGroupDetailsComponent from "./DocumentDetailsComponent";
 import axios from "axios";
 
 class DocumentDetailsContainer extends Component {
-  state = { id: "" };
+  state = {
+    documentDetails: {
+      id: "",
+      author: "",
+      documentState: "",
+      documentTypeTitle: "",
+      title: "",
+      description: "",
+      creationDate: "",
+      submissionDate: "nepateiktas",
+      confirmationDate: "nepatvirtintas",
+      rejectionDate: "neatmestas",
+      reviewer: "neperžiūrėtas",
+      rejectionReason: "priežastis nepaeikta",
+      path: ""
+    }
+  };
 
   componentDidMount() {
     const idParam = this.props.match.params.id;
@@ -14,7 +30,7 @@ class DocumentDetailsContainer extends Component {
     })
       .then(response => {
         this.setState({
-          id: response.data.id
+          documentDetails: response.data
         });
       })
       .catch(error => {
@@ -23,24 +39,26 @@ class DocumentDetailsContainer extends Component {
   }
 
   render() {
-    var submissionTypesToDisplay = null;
-    if (this.state.submissionDocType) {
-      submissionTypesToDisplay = this.state.submissionDocType.map(title => (
-        <li key={title}>{title}</li>
-      ));
-    }
-    var reviewTypesToDisplay = null;
-    if (this.state.submissionDocType) {
-      reviewTypesToDisplay = this.state.reviewDocType.map(title => (
-        <li key={title}>{title}</li>
-      ));
-    }
+    // var submissionTypesToDisplay = null;
+    // if (this.state.submissionDocType) {
+    //   submissionTypesToDisplay = this.state.submissionDocType.map(title => (
+    //     <li key={title}>{title}</li>
+    //   ));
+    // }
+    // var reviewTypesToDisplay = null;
+    // if (this.state.submissionDocType) {
+    //   reviewTypesToDisplay = this.state.reviewDocType.map(title => (
+    //     <li key={title}>{title}</li>
+    //   ));
+    // }
+    console.log(
+      "render() _--------------------- >>>> ",
+      this.state.documentDetails
+    );
     return (
-      <UserGroupDetailsComponent
-        title={this.state.title}
-        submissionDocTypes={submissionTypesToDisplay}
-        reviewDocTypes={reviewTypesToDisplay}
-      />
+      <div>
+        <p>labas</p>
+      </div>
     );
   }
 }
