@@ -5,7 +5,8 @@ import RenderResponse from "./RenderResponse";
 class FileViewContainer extends Component {
   state = {
     documentId: null,
-    response: ""
+    response: "",
+    file: ""
   };
 
   componentDidMount() {
@@ -20,11 +21,13 @@ class FileViewContainer extends Component {
       method: "GET",
       params: {
         documentId: this.state.documentId
-      }
-      // responseType: "blob" // important
+      },
+      responseType: "blob" // important
     })
       .then(response => {
         this.setState({ response });
+        const file = new Blob([response.data], { type: "application/pdf" });
+        this.setState({ file });
         // const fileName = response.headers["content-disposition"].substring(
         //   200,
         //   22
@@ -45,6 +48,9 @@ class FileViewContainer extends Component {
       .catch(error => {
         console.log(error);
       });
+    // const fileURL = URL.createObjectURL(this.state.file);
+    const obj = this.state.file;
+    window.open(obj);
   };
 
   // var funkcija = (response, status, xhr) => {
@@ -65,12 +71,15 @@ class FileViewContainer extends Component {
       this.state,
       "<<<<<<<<<<<<<<<<<<<,THis.state in render()------------------"
     );
+    console.log("file ---------- ", this.state.file);
+
     return (
       <div>
         {/* <object data={this.state.response} type="application/pdf" /> */}
         <button onClick={this.viewFile} className="btn btn-dark">
           Peržiūrėti
         </button>
+
         {/* <RenderResponse responseToRender={this.state.response} /> */}
       </div>
     );
