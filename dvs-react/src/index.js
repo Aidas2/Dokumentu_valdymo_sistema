@@ -19,6 +19,7 @@ import DocumentsContainer from "./components/Documents/DocumentsContainer";
 import UserDetailsContainer from "./components/Users/UserDetailsContainer";
 import UserGroupDetailsContainer from "./components/UserGroups/UserGroupDetailsContainer";
 import RenderResponse from "./components/FileDownload/RenderResponse";
+import DocumentDetailsContainer from "./components/Documents/DocumentDetailsContainer";
 
 ReactDOM.render(
   <BrowserRouter>
@@ -43,6 +44,11 @@ ReactDOM.render(
         <Route exact path="/admin/newuser" component={CreateUserContainer} />
         <Route exact path="/admin/users" component={UsersContainer} />
         <Route exact path="/admin/docs" component={DocumentsContainer} />
+        <Route
+          exact
+          path="/admin/docs:/id"
+          component={DocumentDetailsContainer}
+        />
         <Route exact path="/docs" component={DocumentsContainer} />
         <Route exact path="/testing" component={RenderResponse} />
         <Route exact path="/admin/usergroups" component={UserGroupsContainer} />
