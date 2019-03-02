@@ -18,6 +18,7 @@ import LandingPageContainer from "./components/LandingPageContainer";
 import DocumentsContainer from "./components/Documents/DocumentsContainer";
 import UserDetailsContainer from "./components/Users/UserDetailsContainer";
 import UserGroupDetailsContainer from "./components/UserGroups/UserGroupDetailsContainer";
+import styles from "./styles.css";
 
 ReactDOM.render(
   <BrowserRouter>

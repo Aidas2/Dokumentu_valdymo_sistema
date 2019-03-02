@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-import styles from "./styles.css";
-
 import main_icon from "../images/main_icon.png";
 
 const LandingPage = props => {
