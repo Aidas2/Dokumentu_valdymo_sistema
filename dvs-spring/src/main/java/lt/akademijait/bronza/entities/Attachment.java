@@ -52,3 +52,17 @@ public class Attachment {
         this.title = title;
     }
 }
+
+
+/* TODO LIST:
+nevalina metodas: READ All DOCUMENTS OF SPECIFIC DOCUMENT_TYPE. Version_01 (object; @PathVariable)
+Pakoreguoti metoda: SET DOCUMENT STATE. Version_01 (by my)  ir SET DOCUMENT STATE. Version_02 (by J.C.)
+
+Validacija laukams (@Valid)
+Klaidu handlinimas  + loggeriai klaidoms
+Loggeriai su data + kad irasytu i faila
+
+Attachmentai Documentuose + ar turi buti isiuti visur visur ?
+
+
+ */

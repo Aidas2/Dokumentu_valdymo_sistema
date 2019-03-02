@@ -43,7 +43,7 @@ public class DocumentService {
     //GET ALL DOCUMENTS ================================================================================================
     @Transactional(readOnly = true)
     public List<DocumentGetCommand> getAllDocuments() {
-        logger.info("Geted all documents");
+        logger.info("Gotten all documents");
         return documentRepository.findAll()
                 .stream()
                 .map((document) -> new DocumentGetCommand(
@@ -62,13 +62,15 @@ public class DocumentService {
                         document.getPath()
                 )).collect(Collectors.toList());
 
+
     }
 
     //GET DOCUMENTS BY DOCUMENT_ID =====================================================================================
     @Transactional(readOnly = true)
     public DocumentGetCommand getDocumentById(Long id) {
         Document document = documentRepository.findById(id).orElse(null);
-        logger.info("Getted all documents by this id: " + id);
+        logger.info("Gotten all documents by this id: " + id);
+        //logger.error("null "); try/catch; luzimo pvz: skirtingi duomenu tipai (Long ir string)
         return new DocumentGetCommand(
                 document.getId(),
                 document.getAuthor().getUsername(),
@@ -89,10 +91,10 @@ public class DocumentService {
     //GET SUBMITTED DOCUMENTS (with filter) ============================================================================
     @Transactional(readOnly = true)
     public List<DocumentGetCommand> getSubmittedDocuments() {
-        logger.info("Getted all documents by this state: " + DocumentState.CREATED);
+        logger.info("Gotten all documents by this state: " + DocumentState.SUBMITTED);
         return  documentRepository.findAll()
                 .stream()
-                .filter(document -> !document.getDocumentState().equals(DocumentState.CREATED))
+                .filter(document -> document.getDocumentState().equals(DocumentState.SUBMITTED))
                 .map((document) -> new DocumentGetCommand(
                         document.getId(),
                         //document.getAuthor(),
@@ -111,13 +113,13 @@ public class DocumentService {
                 )).collect(Collectors.toList());
     }
 
-    //GET DOCUMENTS TO REVIEW (with filter) ============================================================================
+    //GET CONFIRMED DOCUMENTS (with filter) ============================================================================
     @Transactional(readOnly = true)
-    public List<DocumentGetCommand> getDocumentsToReview() {
-        logger.info("Getted all documents by this state: " + DocumentState.SUBMITTED);
+    public List<DocumentGetCommand> getConfirmedDocuments() {
+        logger.info("Gotten all documents by this state: " + DocumentState.CONFIRMED);
         return  documentRepository.findAll()
                 .stream()
-                .filter(document -> document.getDocumentState().equals(DocumentState.SUBMITTED))
+                .filter(document -> document.getDocumentState().equals(DocumentState.CONFIRMED))
                 .map((document) -> new DocumentGetCommand(
                         document.getId(),
                         document.getAuthor().getUsername(),
@@ -135,10 +137,35 @@ public class DocumentService {
                 )).collect(Collectors.toList());
     }
 
-    //GET DOCUMENTS OF SPECIFIC DOCUMENT_STATE (with filter) ===========================================================
+    //GET REJECTED DOCUMENTS (with filter) ============================================================================
+    @Transactional(readOnly = true)
+    public List<DocumentGetCommand> getRejectedDocuments() {
+        logger.info("Gotten all documents by this state: " + DocumentState.REJECTED);
+        return  documentRepository.findAll()
+                .stream()
+                .filter(document -> document.getDocumentState().equals(DocumentState.REJECTED))
+                .map((document) -> new DocumentGetCommand(
+                        document.getId(),
+                        document.getAuthor().getUsername(),
+                        document.getDocumentState().toString(),
+                        document.getDocumentType().getTitle(),
+                        document.getTitle(),
+                        document.getDescription(),
+                        document.getCreationDate(),
+                        document.getSubmissionDate(),
+                        document.getConfirmationDate(),
+                        document.getRejectionDate(),
+                        document.getReviewer(),
+                        document.getRejectionReason(),
+                        document.getPath()
+                )).collect(Collectors.toList());
+    }
+
+
+    //GET DOCUMENTS BY SPECIFIED STATE (with filter) ===========================================================
     @Transactional(readOnly = true)
     public List<DocumentGetCommand> getAllDocumentsByDocumentState(DocumentState documentState) {
-        logger.info("Getted all documents by this state: " + documentState);
+        logger.info("Gotten all documents by this state: " + documentState);
         return  documentRepository.findAll()
                 .stream()
                 .filter(document -> document.getDocumentState().equals(documentState))
@@ -162,7 +189,7 @@ public class DocumentService {
     //GET DOCUMENTS OF SPECIFIC DOCUMENT_TYPE. Version_01 (passing object) ================================================
     @Transactional(readOnly = true)
     public List<DocumentGetCommand> getAllDocumentsByDocumentType1(DocumentType documentType) {
-    logger.info("Getted all documents by this type: " + documentType);
+    logger.info("Gotten all documents by this type: " + documentType);
         return  documentRepository.findAll()
                 .stream()
                 .filter(document -> document.getDocumentType().equals(documentType))
@@ -188,7 +215,7 @@ public class DocumentService {
     //GET DOCUMENTS OF SPECIFIC DOCUMENT_TYPE. Version_02 (passing String) ====================================================
     @Transactional(readOnly = true)
     public List<DocumentGetCommand> getAllDocumentsByDocumentType2(String documentTypeTitle) {
-        logger.info("Getted all documents by this type: " + documentTypeTitle);
+        logger.info("Gotten all documents by this type: " + documentTypeTitle);
         return  documentRepository.findAll()
                 .stream()
                 .filter(document -> document.getDocumentType().equals(documentTypeRepository.findByTitle(documentTypeTitle)))
@@ -213,7 +240,7 @@ public class DocumentService {
 
         @Transactional(readOnly = true)
     public List<DocumentGetCommand> getAllDocumentsByAuthorId(Long authorId) {
-            logger.info("Getted all documents by this author id: " + authorId);
+            logger.info("Gotten all documents by this author id: " + authorId);
         return  documentRepository.findAll()
                 .stream()
                 .filter(document -> document.getAuthor().getId().equals(authorId))
