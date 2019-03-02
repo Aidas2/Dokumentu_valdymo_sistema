@@ -5,6 +5,7 @@ class RenderResponse extends Component {
   render() {
     return (
       <div>
+        <p>Labas</p>
         <object data={this.props.responseToRender} type="application/pdf" />
       </div>
     );

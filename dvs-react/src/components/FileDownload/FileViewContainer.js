@@ -6,7 +6,8 @@ class FileViewContainer extends Component {
   state = {
     documentId: null,
     response: "",
-    file: ""
+    file: "",
+    fileURL: ""
   };
 
   componentDidMount() {
@@ -26,7 +27,7 @@ class FileViewContainer extends Component {
     })
       .then(response => {
         this.setState({ response });
-        const file = new Blob([response.data], { type: "application/pdf" });
+        const file = new Blob([response.data], { type: "" });
         this.setState({ file });
         // const fileName = response.headers["content-disposition"].substring(
         //   200,
@@ -48,9 +49,10 @@ class FileViewContainer extends Component {
       .catch(error => {
         console.log(error);
       });
-    // const fileURL = URL.createObjectURL(this.state.file);
-    const obj = this.state.file;
-    window.open(obj);
+    // const testUrl = URL.createObjectURL("Labas");
+
+    // const obj = this.state.file;
+    window.open("testing");
   };
 
   // var funkcija = (response, status, xhr) => {
@@ -79,6 +81,7 @@ class FileViewContainer extends Component {
         <button onClick={this.viewFile} className="btn btn-dark">
           Peržiūrėti
         </button>
+        <img src={this.state.fileURL} />
 
         {/* <RenderResponse responseToRender={this.state.response} /> */}
       </div>
