@@ -17,38 +17,38 @@ class FileViewContainer extends Component {
   viewFile = () => {
     console.log("download method happened");
 
-    axios({
-      url: "http://localhost:8081/files/view",
-      method: "GET",
-      params: {
-        documentId: this.state.documentId
-      },
-      responseType: "blob" // important
-    })
-      .then(response => {
-        this.setState({ response });
-        const file = new Blob([response.data], { type: "" });
-        this.setState({ file });
-        // const fileName = response.headers["content-disposition"].substring(
-        //   200,
-        //   22
-        // );
+    // axios({
+    //   url: "http://localhost:8081/files/view",
+    //   method: "GET",
+    //   params: {
+    //     documentId: this.state.documentId
+    //   },
+    //   responseType: "blob" // important
+    // })
+    //   .then(response => {
+    //     this.setState({ response });
+    //     const file = new Blob([response.data], { type: "" });
+    //     this.setState({ file });
+    //     // const fileName = response.headers["content-disposition"].substring(
+    //     //   200,
+    //     //   22
+    //     // );
 
-        console.log("--------------- response >>>>>>>>> ", response);
+    //     console.log("--------------- response >>>>>>>>> ", response);
 
-        // const url = window.URL.createObjectURL(
-        //   new Blob([response.data], { type: "application/octet-stream" }) //it works withoud a type as well
-        // );
-        // const link = document.createElement("a");
-        // link.href = url;
-        // link.setAttribute("download", fileName); //or any other extension
-        // document.body.appendChild(link);
-        // link.click();
-        // link.remove();
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    //     // const url = window.URL.createObjectURL(
+    //     //   new Blob([response.data], { type: "application/octet-stream" }) //it works withoud a type as well
+    //     // );
+    //     // const link = document.createElement("a");
+    //     // link.href = url;
+    //     // link.setAttribute("download", fileName); //or any other extension
+    //     // document.body.appendChild(link);
+    //     // link.click();
+    //     // link.remove();
+    //   })
+    //   .catch(error => {
+    //     console.log(error);
+    //   });
     // const testUrl = URL.createObjectURL("Labas");
 
     // const obj = this.state.file;
@@ -73,7 +73,7 @@ class FileViewContainer extends Component {
       this.state,
       "<<<<<<<<<<<<<<<<<<<,THis.state in render()------------------"
     );
-    console.log("file ---------- ", this.state.file);
+    // console.log("file ---------- ", this.state.file);
 
     return (
       <div>
@@ -81,7 +81,7 @@ class FileViewContainer extends Component {
         <button onClick={this.viewFile} className="btn btn-dark">
           Peržiūrėti
         </button>
-        <img src={this.state.fileURL} />
+        {/* <img src={this.state.fileURL} /> */}
 
         {/* <RenderResponse responseToRender={this.state.response} /> */}
       </div>
