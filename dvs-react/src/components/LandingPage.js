@@ -13,7 +13,7 @@ const LandingPage = props => {
           </div>
         </div>
         <div
-          class=" col-lg-4 col-xl-4 col-md-5
+          class=" col-lg-6 col-xl-5 col-md-6
            login-style"
         >
           <h1 className="display-6 ">Įveskite prisijungimo informaciją</h1>

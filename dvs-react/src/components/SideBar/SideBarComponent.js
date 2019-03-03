@@ -8,39 +8,34 @@ class SideBarComponent extends Component {
     return (
       <div className="sidebar-style">
         <nav>
-          <input type="checkbox" id="box" />
-          <label id="container" for="box">
-            <div id="button" className="vl">
-              <ul id="login" className="navbar-nav mr-auto">
+          <input type="checkbox" id="side-bar-box" />
+          <label id="side-bar-container" for="side-bar-box">
+            <div id="button" className="navigation-bar-press-line">
+              <img
+                src={logo}
+                width="150"
+                height="10"
+                className="side-bar-logo"
+              />
+
+              <ul id="side-bar-appear" className="navbar-nav mr-auto">
                 <li className="nav-item ">
-                  <Link
-                    to={"/docs"}
-                    className="nav-link side-bar-navigation-style"
-                  >
+                  <Link to={"/docs"} className="nav-link ">
                     Dokumentai
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link
-                    to={"/upload"}
-                    className="nav-link side-bar-navigation-style"
-                  >
+                  <Link to={"/upload"} className="nav-link ">
                     Dokumento įkėlimas
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link
-                    to={"/history"}
-                    className="nav-link side-bar-navigation-style"
-                  >
+                  <Link to={"/history"} className="nav-link ">
                     Istorija
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link
-                    to={"/admin"}
-                    className="nav-link side-bar-navigation-style"
-                  >
+                  <Link to={"/admin"} className="nav-link ">
                     Administratoriaus rolė
                   </Link>
                 </li>
