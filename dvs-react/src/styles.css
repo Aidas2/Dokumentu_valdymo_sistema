@@ -35,7 +35,7 @@ h1 {
 
 h2 {
   font-family: sans serif;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.9px;
   color: #525f64;
   font-size: 25px;
   font-weight: 1000;
@@ -98,6 +98,10 @@ button {
   width: 160px;
 }
 
+.document-button-style {
+  width: 160px;
+}
+
 h3,
 table,
 h6 {
@@ -114,6 +118,13 @@ h5,
   color: #4d4d33;
   padding-top: 5px;
   font-size: 10px;
+}
+
+.admin-table-style {
+  border-collapse: collapse;
+  border-radius: 8px;
+  border-style: hidden; /* hide standard table (collapsed) border */
+  box-shadow: 7px 0 0px -3px rgb(94, 94, 94); /* this draws the table border  */
 }
 
 .logo {

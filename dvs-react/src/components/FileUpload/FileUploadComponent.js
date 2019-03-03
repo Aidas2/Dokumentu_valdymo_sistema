@@ -149,7 +149,7 @@ class FileUploadComponent extends Component {
               <td scope="row">
                 <button
                   type="button"
-                  className="btn btn-outline-success btn-sm"
+                  className="btn btn-outline-success btn-sm document-button-style"
                   onClick={this.props.onUpload}
                 >
                   Įkelti
