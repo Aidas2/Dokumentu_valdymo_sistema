@@ -1,6 +1,6 @@
 /* Style for all html page */
 html {
-  background-color: #e6e6e6;
+  background-color: #eeeeee;
   font-family: sans serif;
   padding-left: 20px;
   padding-right: 20px;
@@ -17,6 +17,8 @@ html {
   padding: 5px;
   padding-left: 20px;
   padding-right: 20px;
+  margin-bottom: 5px;
+  border-radius: 5px;
 }
 
 /* h1 text style */
@@ -217,6 +219,7 @@ h5,
   font-style: italic;
   display: table;
   padding-top: 13px;
+  border-radius: 5px;
 }
 
 .footer:hover {
@@ -282,19 +285,26 @@ body::after {
 }
 */
 .sidebar-style a {
-  padding: 8px 8px 8px 32px;
+  /*padding: 8px 8px 8px 32px; */
+
   text-decoration: none;
   font-size: 12px;
-  color: #000000;
+  color: #383838;
   display: block;
-  transition: 0.5s;
+  /*transition: 0.6s; */
   padding-bottom: 25px;
   font-family: sans serif;
-  width: 170px;
+  width: 150px;
 }
 
 .sidebar-style a:hover {
-  color: #f1f1f1;
+  color: rgb(17, 17, 17);
+
+  border-radius: 10px;
+  /*padding-left: 10px; */
+  background-color: rgb(238, 238, 238);
+  border-radius: 5px;
+  border-right: 2px solid rgb(172, 172, 172);
 }
 
 .sb-style {
@@ -312,18 +322,16 @@ body::after {
   display: none;
 }
 #side-bar-box:checked + #side-bar-container #side-bar-appear {
-  background-color: #9eaebe;
+  background-color: #e2e2e2;
   display: block;
-
-  width: 160px;
+  padding-left: 20px;
+  padding-top: 20px;
+  width: 180px;
   height: 500px;
+  border-radius: 5px;
+  border-right: 5px solid rgb(94, 94, 94);
 }
 
-.sidebar-style a:hover {
-  color: red !important;
-
-  padding-left: 10px;
-}
 /*
 .navigation-bar-press-line {
   
@@ -331,3 +339,13 @@ body::after {
   height: 500px; 
 }
 */
+
+.side-bar-logo {
+  width: 100px;
+  height: 40px;
+}
+
+.side-bar-logo:hover {
+  background-color: rgb(241, 241, 241);
+  border-radius: 5px;
+}

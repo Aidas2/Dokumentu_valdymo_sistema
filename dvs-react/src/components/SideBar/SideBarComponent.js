@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-
+import collapse_icon from "../../images/collapse-icon.png";
 import logo from "../../images/home.png";
 
 class SideBarComponent extends Component {
@@ -10,13 +10,8 @@ class SideBarComponent extends Component {
         <nav>
           <input type="checkbox" id="side-bar-box" />
           <label id="side-bar-container" for="side-bar-box">
-            <div id="button" className="navigation-bar-press-line">
-              <img
-                src={logo}
-                width="150"
-                height="10"
-                className="side-bar-logo"
-              />
+            <div id="button">
+              <img src={collapse_icon} className="side-bar-logo" />
 
               <ul id="side-bar-appear" className="navbar-nav mr-auto">
                 <li className="nav-item ">
