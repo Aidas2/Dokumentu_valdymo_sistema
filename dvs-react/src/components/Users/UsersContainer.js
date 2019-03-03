@@ -32,6 +32,15 @@ class UsersContainer extends Component {
       );
     });
 
+    var usersArrayToRenderID = this.state.users.map(oneUserObj => {
+      return (
+        <UsersComponent
+          key={oneUserObj.userId}
+          userDetails={oneUserObj.userId}
+        />
+      );
+    });
+
     return (
       <div>
         <div className="container-fluid m-2 ">
@@ -55,45 +64,36 @@ class UsersContainer extends Component {
           <Link to={"/admin/newuser/"} className="btn btn-outline-success m-2">
             Pridėti naują vartotoją
           </Link>
-          <div className="container pl-0 ml-0">
-            <h4 className="display-6">Esami vartotojai</h4>
+          <p />
 
-            <div className="row">
-              <div className="col-2">
-                <p>
-                  {" "}
-                  <strong>Vartotojo ID</strong>
-                </p>
-                {/* <Link to="">Linkas</Link> */}
-              </div>
-              <div className="col-2">
-                <p>
-                  <strong>Prisijungimo vardas</strong>
-                </p>
-              </div>{" "}
-              <div className="col-2">
-                <p>
-                  <strong>Vardas</strong>
-                </p>
-              </div>
-              <div className="col-2">
-                <p>
-                  <strong>Pavardė</strong>
-                </p>
-              </div>
-              <div className="col-2">
-                <p>
-                  <strong>El. pašto adresas</strong>
-                </p>
-              </div>
-              <div className="col-2">
-                <p>
-                  <strong>Įdarbinimo data</strong>
-                </p>
-              </div>
+          <input type="checkbox" id="Document-type-box" />
+          <label id="Document-type-container" for="Document-type-box">
+            <div id="button" className="collapsed-style">
+              Paspauskite ant šio teksto, tam kad būtų galima peržiūrėti/
+              paslėpti sukurtus vartotojus:
+              <ul id="Document-type-bar-appear" className="navbar-nav mr-auto">
+                <table className="table table-active table-style-rounded">
+                  <div className="container ">
+                    <div className="row table-active table-style-rounded">
+                      <div className="col-1  Table-number-style ">ID</div>
+                      <div className="col-2   table-middle-style">
+                        Prisijungimo vardas
+                      </div>
+                      <div className=" col-2 table-middle-style">Vardas</div>
+                      <div className="col-2   table-middle-style">Pavardė</div>
+                      <div className="col-2  table-middle-style">
+                        El. pašto adresas
+                      </div>
+                      <div className="col-3   Table-action-style table-action-styl2">
+                        Įdarbinimo data
+                      </div>
+                    </div>
+                    {usersArrayToRender}
+                  </div>
+                </table>
+              </ul>
             </div>
-          </div>
-          {usersArrayToRender}
+          </label>
         </div>
       </div>
     );

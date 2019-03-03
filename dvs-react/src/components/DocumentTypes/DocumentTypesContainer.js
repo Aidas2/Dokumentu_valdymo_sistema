@@ -100,8 +100,12 @@ class DocumentTypesContainer extends Component {
 
                   <tbody>
                     <tr>
-                      <td scope="row"> {docTypesArrayToRenderId}</td>
-                      <td>{docTypesArrayToRenderTitle}</td>
+                      <td scope="row" className="table-action-size">
+                        {docTypesArrayToRenderId}
+                      </td>
+                      <td className="table-action-size">
+                        {docTypesArrayToRenderTitle}
+                      </td>
                     </tr>
                   </tbody>
                 </table>

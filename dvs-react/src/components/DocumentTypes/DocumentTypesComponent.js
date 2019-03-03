@@ -6,12 +6,12 @@ const DocumentTypesComponent = props => {
   return (
     <div className="container pl-0 ml-0">
       <div className="row">
-        <div className="col-2">
+        <div className="col-2 padding-normal">
           {props.typeId}
           {/* <Link to="">Linkas</Link> */}
         </div>
 
-        <div className="col-2">
+        <div className="col-2 padding-normal">
           <p>{props.typeTitle}</p>
         </div>
       </div>

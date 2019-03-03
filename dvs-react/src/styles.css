@@ -146,6 +146,20 @@ h5,
   color: white;
 }
 
+.table-middle-style {
+  background-color: rgb(56, 56, 56);
+
+  color: white;
+}
+
+.table-action-size {
+  font-size: 14px;
+}
+
+.padding-normal {
+  padding-bottom: 15px;
+}
+
 .logo:hover {
   filter: brightness(0) invert(0.8);
 }
@@ -401,6 +415,19 @@ body::after {
   padding: 20px;
   min-width: 1000px;
   font-family: sans serif;
+}
+
+.collapsed-style2 {
+  background-color: rgb(238, 238, 238);
+  border-radius: 5px;
+  border-right: 5px solid rgb(202, 202, 202);
+
+  min-width: 1000px;
+  font-family: sans serif;
+}
+
+.table-action-styl2 {
+  width: 10px;
 }
 
 /*
