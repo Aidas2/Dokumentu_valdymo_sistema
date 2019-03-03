@@ -13,7 +13,7 @@ class AdministrationContainer extends Component {
       <div className="container-fluid ">
         <h2 className="display-6 normal-padding">Administratoriaus rolė</h2>
 
-        <h5 className="display-6 normal-padding gray-collor ">
+        <h5 className="display-6 normal-padding second-navigation-style ">
           <Link to={"/"}>
             <img src={logo} width="20" height="10" />
           </Link>

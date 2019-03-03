@@ -214,10 +214,11 @@ h5,
   padding-left: 20px;
 }
 
-.gray-collor {
+.second-navigation-style {
   background-color: #dcdcdc;
   border-radius: 5px;
   border-right: 4px solid rgb(94, 94, 94);
+  margin-bottom: 20px;
 }
 
 .italic-style-small {
@@ -381,17 +382,20 @@ body::after {
   border-right: 5px solid rgb(94, 94, 94);
 }
 
-#side-bar-box2 {
+#Document-type-box {
+  display: none;
+  color: white;
+}
+#Document-type-container #Document-type-bar-appear {
   display: none;
 }
-#side-bar-container2 #side-bar-appear2 {
-  display: none;
-}
-#side-bar-box2:checked + #side-bar-container2 #side-bar-appear2 {
+#Document-type-box:checked
+  + #Document-type-container
+  #Document-type-bar-appear {
   display: block;
 }
 
-.red {
+.collapsed-style {
   background-color: rgb(238, 238, 238);
   border-radius: 5px;
   border-right: 5px solid rgb(202, 202, 202);

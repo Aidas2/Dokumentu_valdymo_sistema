@@ -44,7 +44,7 @@ class DocumentTypesContainer extends Component {
         <div className="container-fluid m-2 ">
           <h2 className="display-6 normal-padding">Dokumentų tipai</h2>
 
-          <h5 className="display-6 normal-padding gray-collor ">
+          <h5 className="display-6 normal-padding second-navigation-style ">
             <Link to={"/"}>
               <img src={logo} width="20" height="10" />
             </Link>
@@ -84,12 +84,12 @@ class DocumentTypesContainer extends Component {
 
          */}
 
-          <input type="checkbox" id="side-bar-box2" />
-          <label id="side-bar-container2" for="side-bar-box2">
-            <div id="button " className="red">
+          <input type="checkbox" id="Document-type-box" />
+          <label id="Document-type-container" for="Document-type-box">
+            <div id="button " className="collapsed-style">
               Paspauskite ant šio teksto, tam kad būtų galima peržiūrėti/
               paslėpti sukurtus dokumentų tipus:
-              <ul id="side-bar-appear2" className="navbar-nav mr-auto">
+              <ul id="Document-type-bar-appear" className="navbar-nav mr-auto">
                 <table className="table table-active table-style-rounded">
                   <tr>
                     <th className="col-2 Table-number-style">#</th>
