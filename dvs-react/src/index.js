@@ -64,7 +64,7 @@ ReactDOM.render(
         />
         <Route
           exact
-          path="/admin/usergroups/new"
+          path="/admin/newusergroup"
           component={CreateUserGroupsContainer}
         />
       </Switch>
