@@ -23,7 +23,7 @@ class AdministrationContainer extends Component {
           </Link>
         </h5>
 
-        <table className="table table-striped admin-table-style">
+        <table className="table table-striped table-style-rounded">
           <tbody>
             <tr>
               <th scope="col-2">#</th>

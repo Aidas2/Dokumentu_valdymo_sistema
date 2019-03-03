@@ -4,6 +4,7 @@ import DocumentTypesComponent from "./DocumentTypesComponent";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import logo from "../../images/home.png";
+import collapse_icon from "../../images/collapse-icon.png";
 
 class DocumentTypesContainer extends Component {
   state = {
@@ -57,27 +58,56 @@ class DocumentTypesContainer extends Component {
             </Link>
           </h5>
 
-          {/*  <h3 className="display-6">Dokumentų tipai</h3> */}
           <Link
             to={"/admin/newdoctype/"}
             className="btn btn-outline-success m-2"
           >
             Kurti naują dokumento tipą
           </Link>
-          <table class="table table-active">
-            <thead class="thead-dark">
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Dokumento tipo pavadinimas</th>
-              </tr>
-            </thead>
+          <p />
+          {/* ----------------------------- OLD table type
+          <table className="table table-active table-style-rounded">
+            <tr>
+              <th className=" col-6 Table-number-style">#</th>
+              <th className=" col-6 Table-action-style">
+                Dokumento tipo pavadinimas
+              </th>
+            </tr>
+
             <tbody>
               <tr>
-                <th scope="row"> {docTypesArrayToRenderId}</th>
+                <td scope="row"> {docTypesArrayToRenderId}</td>
                 <td>{docTypesArrayToRenderTitle}</td>
               </tr>
             </tbody>
           </table>
+
+         */}
+
+          <input type="checkbox" id="side-bar-box2" />
+          <label id="side-bar-container2" for="side-bar-box2">
+            <div id="button " className="red">
+              Paspauskite ant šio teksto, tam kad būtų galima peržiūrėti/
+              paslėpti sukurtus dokumentų tipus:
+              <ul id="side-bar-appear2" className="navbar-nav mr-auto">
+                <table className="table table-active table-style-rounded">
+                  <tr>
+                    <th className="col-2 Table-number-style">#</th>
+                    <th className="col-10 Table-action-style">
+                      Dokumento tipo pavadinimas
+                    </th>
+                  </tr>
+
+                  <tbody>
+                    <tr>
+                      <td scope="row"> {docTypesArrayToRenderId}</td>
+                      <td>{docTypesArrayToRenderTitle}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </ul>
+            </div>
+          </label>
         </div>
       </div>
     );

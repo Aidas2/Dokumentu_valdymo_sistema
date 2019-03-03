@@ -28,23 +28,49 @@ const CreateDocumentTypeComponent = props => {
             Naujo dokumento tipo kūrimas
           </Link>
         </h5>
-        <h3 className="display-6 ">Naujo dokumento tipo kūrimas</h3>
-        <h5>Dokumento tipo pavadinimas</h5>
-        <input
-          onChange={props.onTitleChange}
-          className="form-control col-4"
-          type="text"
-          placeholder="Įveskite dokumento tipo pavadinimą"
-        />
 
-        {/* <div className="form-group" /> */}
-
-        <button
-          onClick={props.onSubmit}
-          className="btn btn-outline-success m-2"
-        >
-          Kurti
-        </button>
+        <table className="table table-striped table-style-rounded">
+          <tbody>
+            <tr>
+              <th scope="col-2">#</th>
+              <th scope="col-5">Parametrai</th>
+              <th scope="col-3">Veiksmai</th>
+            </tr>
+            <tr>
+              <td scope="row">
+                <h6>1</h6>
+              </td>
+              <td scope="row">
+                <h6>Dokumento tipo pavadinimas</h6>
+              </td>
+              <td scope="row">
+                <input
+                  onChange={props.onTitleChange}
+                  className="form-control form-control-sm italic-style"
+                  type="text"
+                  placeholder="Įveskite dokumento tipo pavadinimą"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td scope="row">
+                <h6 />
+              </td>
+              <td scope="row">
+                <h6 />
+              </td>
+              <td scope="row">
+                <button
+                  type="button"
+                  className="btn btn-outline-success btn-sm document-button-style"
+                  onClick={props.onSubmit}
+                >
+                  Kurti
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
       <div className="container">{props.launchAlert}</div>
     </div>
