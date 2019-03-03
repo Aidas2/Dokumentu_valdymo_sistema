@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import UserGroupDetailsComponent from "./DocumentDetailsComponent";
 import axios from "axios";
+import DocumentDetailsComponent from "./DocumentDetailsComponent";
 
 class DocumentDetailsContainer extends Component {
   state = {
@@ -58,6 +59,9 @@ class DocumentDetailsContainer extends Component {
     return (
       <div>
         <p>labas</p>
+        <DocumentDetailsComponent
+          documentDetails={this.state.documentDetails}
+        />
       </div>
     );
   }

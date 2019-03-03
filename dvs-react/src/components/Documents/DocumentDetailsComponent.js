@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import logo from "../../images/home.png";
 import { Link } from "react-router-dom";
 
-const UserGroupDetailsComponent = props => {
+const DocumentDetailsComponent = props => {
   var {
     id,
     author,
@@ -47,11 +47,31 @@ const UserGroupDetailsComponent = props => {
         </h3>
         <div className="row mt-2 mb-2 ">
           <div className="col ">
-            <h5>Pateikti leidžiamų dokumentų tipai</h5>
+            <h5>Pavadinimas</h5>
             <h4>{}</h4>
           </div>
           <div className="col">
-            <h5>Peržiūrėti leidžiamų dokumentų tipai</h5>
+            <h5>Autorius</h5>
+            <h4>{} </h4>
+          </div>
+        </div>
+        <div className="row mt-2 mb-2 ">
+          <div className="col ">
+            <h5>Tipas</h5>
+            <h4>{}</h4>
+          </div>
+          <div className="col">
+            <h5>Aprašymas</h5>
+            <h4>{} </h4>
+          </div>
+        </div>
+        <div className="row mt-2 mb-2 ">
+          <div className="col ">
+            <h5>Būsena</h5>
+            <h4>{}</h4>
+          </div>
+          <div className="col">
+            <h5>Priedai</h5>
             <h4>{} </h4>
           </div>
         </div>
@@ -60,4 +80,4 @@ const UserGroupDetailsComponent = props => {
   );
 };
 
-export default UserGroupDetailsComponent;
+export default DocumentDetailsComponent;
