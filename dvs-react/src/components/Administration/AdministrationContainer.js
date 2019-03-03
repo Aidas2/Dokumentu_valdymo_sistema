@@ -40,9 +40,9 @@ class AdministrationContainer extends Component {
               <td scope="row">
                 <Link
                   to="/admin/users"
-                  className="btn btn-outline-success btn-sm "
+                  className="btn btn-outline-success btn-sm admin-button-style"
                 >
-                  Kurti
+                  Kurti / Peržiūrėti
                 </Link>
               </td>
             </tr>
@@ -57,9 +57,9 @@ class AdministrationContainer extends Component {
               <td scope="row">
                 <Link
                   to="/admin/usergroups"
-                  className="btn btn-outline-success btn-sm"
+                  className="btn btn-outline-success btn-sm admin-button-style"
                 >
-                  Kurti
+                  Kurti / Peržiūrėti
                 </Link>
               </td>
             </tr>
@@ -73,9 +73,9 @@ class AdministrationContainer extends Component {
               <td scope="row">
                 <Link
                   to="/admin/docs"
-                  className="btn btn-outline-success btn-sm"
+                  className="btn btn-outline-success btn-sm admin-button-style"
                 >
-                  Kurti
+                  Kurti / Peržiūrėti
                 </Link>
               </td>
             </tr>
@@ -89,9 +89,9 @@ class AdministrationContainer extends Component {
               <td scope="row">
                 <Link
                   to="/admin/doctypes"
-                  className="btn btn-outline-success btn-sm"
+                  className="btn btn-outline-success btn-sm admin-button-style"
                 >
-                  Kurti
+                  Kurti / Peržiūrėti
                 </Link>
               </td>
             </tr>

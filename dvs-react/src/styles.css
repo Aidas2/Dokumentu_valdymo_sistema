@@ -94,6 +94,10 @@ button {
   font-family: sans serif;
 }
 
+.admin-button-style {
+  width: 160px;
+}
+
 h3,
 table,
 h6 {
@@ -186,6 +190,8 @@ h5,
 
 .gray-collor {
   background-color: #dcdcdc;
+  border-radius: 5px;
+  border-right: 4px solid rgb(94, 94, 94);
 }
 
 .italic-style-small {
