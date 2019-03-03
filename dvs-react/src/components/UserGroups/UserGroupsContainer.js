@@ -47,7 +47,7 @@ class DocumentTypesContainer extends Component {
     return (
       <div>
         <div className="container-fluid m-2 ">
-          <h2 className="display-6 normal-padding">Dokumentų tipai</h2>
+          <h2 className="display-6 normal-padding">Vartotojų grupės</h2>
 
           <h5 className="display-6 normal-padding second-navigation-style ">
             <Link to={"/"}>
@@ -78,7 +78,7 @@ class DocumentTypesContainer extends Component {
             </thead>
             <tbody>
               <tr>
-                <th scope="row"> {userGroupsArrayToRenderId}</th>
+                <td scope="row"> {userGroupsArrayToRenderId}</td>
                 <td>{userGroupsArrayToRenderTitle}</td>
               </tr>
             </tbody>

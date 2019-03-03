@@ -384,7 +384,6 @@ body::after {
 
 #Document-type-box {
   display: none;
-  color: white;
 }
 #Document-type-container #Document-type-bar-appear {
   display: none;
