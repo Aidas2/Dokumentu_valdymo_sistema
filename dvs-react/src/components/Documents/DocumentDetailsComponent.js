@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const DocumentDetailsComponent = props => {
   var {
     id,
-    author,
+    authorUsername,
     documentState,
     documentTypeTitle,
     title,
@@ -48,27 +48,47 @@ const DocumentDetailsComponent = props => {
         <div className="row mt-2 mb-2 ">
           <div className="col ">
             <h5>Pavadinimas</h5>
-            <h4>{}</h4>
+            <h4>{title}</h4>
           </div>
           <div className="col">
             <h5>Autorius</h5>
-            <h4>{} </h4>
+            <h4>{authorUsername} </h4>
           </div>
         </div>
         <div className="row mt-2 mb-2 ">
           <div className="col ">
             <h5>Tipas</h5>
-            <h4>{}</h4>
+            <h4>{documentTypeTitle}</h4>
           </div>
           <div className="col">
             <h5>Aprašymas</h5>
+            <h4>{description} </h4>
+          </div>
+        </div>
+        <div className="row mt-2 mb-2 ">
+          <div className="col ">
+            <h5>Būsena</h5>
+            <h4>{documentState}</h4>
+          </div>
+          <div className="col">
+            <h5>Priedai</h5>
             <h4>{} </h4>
           </div>
         </div>
         <div className="row mt-2 mb-2 ">
           <div className="col ">
             <h5>Būsena</h5>
-            <h4>{}</h4>
+            <h4>{documentState}</h4>
+          </div>
+          <div className="col">
+            <h5>Priedai</h5>
+            <h4>{} </h4>
+          </div>
+        </div>
+        <div className="row mt-2 mb-2 ">
+          <div className="col ">
+            <h5>Būsena</h5>
+            <h4>{documentState}</h4>
           </div>
           <div className="col">
             <h5>Priedai</h5>
