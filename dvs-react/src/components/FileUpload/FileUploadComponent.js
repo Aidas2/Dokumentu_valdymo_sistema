@@ -3,14 +3,23 @@ import PropTypes from "prop-types";
 import DocumentTypesContainer from "./DocumetTypesContainer";
 
 import { Link } from "react-router-dom";
-
+import infoIcon from "../../images/info-icon.png";
 import logo from "../../images/home.png";
 
 class FileUploadComponent extends Component {
   render() {
     return (
       <div className="container-fluid m-2">
-        <h2 className="display-6 normal-padding">Dokumento įkėlimas</h2>
+        <h2 className="display-6 normal-padding">
+          Dokumento įkėlimas
+          <div className="logo-info">
+            <img src={infoIcon} className="info-icon-style" />
+            <span class="tooltiptext">
+              Šiame meniu pasirinkus norimus parametrus ir dokumentus, galima
+              įkelti dokumentus.
+            </span>
+          </div>
+        </h2>
 
         <h5 className="display-6 normal-padding second-navigation-style ">
           <Link to={"/"}>

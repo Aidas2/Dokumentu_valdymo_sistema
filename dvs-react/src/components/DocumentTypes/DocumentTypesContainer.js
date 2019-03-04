@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import logo from "../../images/home.png";
 import collapse_icon from "../../images/collapse-icon.png";
+import infoIcon from "../../images/info-icon.png";
 
 class DocumentTypesContainer extends Component {
   state = {
@@ -42,7 +43,15 @@ class DocumentTypesContainer extends Component {
     return (
       <div>
         <div className="container-fluid m-2 ">
-          <h2 className="display-6 normal-padding">Dokumentų tipai</h2>
+          <h2 className="display-6 normal-padding">
+            Dokumentų tipai
+            <div className="logo-info">
+              <img src={infoIcon} className="info-icon-style" />
+              <span class="tooltiptext">
+                Šiame meniu galima sukurti ir peržiūrėti dokumentų tipus.
+              </span>
+            </div>
+          </h2>
 
           <h5 className="display-6 normal-padding second-navigation-style ">
             <Link to={"/"}>

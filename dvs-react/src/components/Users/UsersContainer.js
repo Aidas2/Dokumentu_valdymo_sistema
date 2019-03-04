@@ -4,7 +4,7 @@ import UsersComponent from "./UsersComponent";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import logo from "../../images/home.png";
-
+import infoIcon from "../../images/info-icon.png";
 class UsersContainer extends Component {
   state = {
     users: []
@@ -44,7 +44,15 @@ class UsersContainer extends Component {
     return (
       <div>
         <div className="container-fluid m-2 ">
-          <h2 className="display-6 normal-padding">Vartotojai</h2>
+          <h2 className="display-6 normal-padding">
+            Vartotojai
+            <div className="logo-info">
+              <img src={infoIcon} className="info-icon-style" />
+              <span class="tooltiptext">
+                Šiame meniu galima kurti ir peržiūrėti vartotojus.
+              </span>
+            </div>
+          </h2>
           <h5 className="display-6 normal-padding second-navigation-style ">
             <Link to={"/"}>
               <img src={logo} width="20" height="10" />

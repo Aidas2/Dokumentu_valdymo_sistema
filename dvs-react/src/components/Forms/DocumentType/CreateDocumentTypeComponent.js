@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-
+import infoIcon from "../../../images/info-icon.png";
 import logo from "../../../images/home.png";
 const CreateDocumentTypeComponent = props => {
   return (
@@ -9,6 +9,12 @@ const CreateDocumentTypeComponent = props => {
       <div className="container-fluid m-2">
         <h2 className="display-6 normal-padding">
           Naujo dokumento tipo kūrimas
+          <div className="logo-info">
+            <img src={infoIcon} className="info-icon-style" />
+            <span class="tooltiptext">
+              Šiame meniu galima kurti naujus dokumentų tipus.
+            </span>
+          </div>
         </h2>
 
         <h5 className="display-6 normal-padding second-navigation-style ">

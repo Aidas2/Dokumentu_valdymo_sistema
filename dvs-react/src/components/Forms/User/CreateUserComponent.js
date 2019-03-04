@@ -3,12 +3,20 @@ import PropTypes from "prop-types";
 import logo from "../../../images/home.png";
 import { Link } from "react-router-dom";
 import UserGroupsContainer from "./UserGroupsContainer";
-
+import infoIcon from "../../../images/info-icon.png";
 const CreateUserComponent = props => {
   return (
     <div>
       <div className="container-fluid m-2">
-        <h2 className="display-6 normal-padding">Naujo vartotojo kūrimas</h2>
+        <h2 className="display-6 normal-padding">
+          Naujo vartotojo kūrimas
+          <div className="logo-info">
+            <img src={infoIcon} className="info-icon-style" />
+            <span class="tooltiptext">
+              Šiame meniu galima kurti naujus vartotojus.
+            </span>
+          </div>
+        </h2>
         <h5 className="display-6 normal-padding second-navigation-style ">
           <Link to={"/"}>
             <img src={logo} width="20" height="10" />

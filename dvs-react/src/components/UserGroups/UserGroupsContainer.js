@@ -4,6 +4,7 @@ import UserGroupsComponent from "./UserGroupsComponent";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import logo from "../../images/home.png";
+import infoIcon from "../../images/info-icon.png";
 
 class DocumentTypesContainer extends Component {
   state = { userGroups: [] };
@@ -47,7 +48,15 @@ class DocumentTypesContainer extends Component {
     return (
       <div>
         <div className="container-fluid m-2 ">
-          <h2 className="display-6 normal-padding">Vartotojų grupės</h2>
+          <h2 className="display-6 normal-padding">
+            Vartotojų grupės
+            <div className="logo-info">
+              <img src={infoIcon} className="info-icon-style" />
+              <span class="tooltiptext">
+                Šiame meniu galima kurti ir peržiūrėti vartotojų grupes.
+              </span>
+            </div>
+          </h2>
 
           <h5 className="display-6 normal-padding second-navigation-style ">
             <Link to={"/"}>

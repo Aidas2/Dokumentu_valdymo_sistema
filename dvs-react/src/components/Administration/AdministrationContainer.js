@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../images/home.png";
+import infoIcon from "../../images/info-icon.png";
 
 class AdministrationContainer extends Component {
   constructor() {
@@ -11,7 +12,17 @@ class AdministrationContainer extends Component {
   render() {
     return (
       <div className="container-fluid m-2">
-        <h2 className="display-6 normal-padding">Administratoriaus rolė</h2>
+        <h2 className="display-6 normal-padding">
+          Administratoriaus rolė
+          <div className="logo-info">
+            <img src={infoIcon} className="info-icon-style" />
+            <span class="tooltiptext">
+              Šiame meniu yra pateiktos administratoriaus rolės. Čia galima
+              kurti ir peržiūrėti vartotojus ir jų grupes, dokumentus ir jų
+              tipus.
+            </span>
+          </div>
+        </h2>
 
         <h5 className="display-6 normal-padding second-navigation-style ">
           <Link to={"/"}>
