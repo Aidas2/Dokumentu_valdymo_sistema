@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import DocumentsComponent from "./DocumentsComponent";
 import { Link } from "react-router-dom";
 import axios from "axios";
+
 import logo from "../../images/home.png";
 
 class DocumentsContainer extends Component {
@@ -97,10 +98,10 @@ class DocumentsContainer extends Component {
                       <div className="col-2   users-table-middle-style ">
                         Būsena
                       </div>
-                      <div className="col-2  users-table-middle-style ">
+                      <div className="col-3  users-table-middle-style ">
                         Aprašymas
                       </div>
-                      <div className="col-3   users-table-action-style ">
+                      <div className="col-2   users-table-action-style ">
                         Veiksmai
                       </div>
                     </div>

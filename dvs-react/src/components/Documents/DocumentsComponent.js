@@ -29,7 +29,7 @@ const DocumentsComponent = props => {
       <div className="col-2 documents-table-size">{title}</div>
       <div className="col-2 documents-table-size">{documentTypeTitle}</div>
       <div className="col-2 documents-table-size">{documentState}</div>
-      <div className="col-2 documents-table-size">{description}</div>
+      <div className="col-3 documents-table-size">{description}</div>
 
       <div className="col-1 documents-table-size">
         <FileViewContainer documentId={id} />

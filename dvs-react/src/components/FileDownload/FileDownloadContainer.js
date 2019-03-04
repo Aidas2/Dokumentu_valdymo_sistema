@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import downloadIcon from "../../images/download-icon.png";
 
 class FileDownloadConatainer extends Component {
   state = {
@@ -49,8 +50,12 @@ class FileDownloadConatainer extends Component {
       "<<<<<<<<<<<<<<<<<<<,THis.state in render()------------------"
     );
     return (
-      <button onClick={this.downloadFile} className="btn btn-outline-success">
-        Atsiųst. logo
+      <button
+        onClick={this.downloadFile}
+        className="btn btn-outline-success button-info"
+      >
+        <img src={downloadIcon} width="20" height="20" />
+        <span class="tooltiptext">Atsisiųsti</span>
       </button>
     );
   }

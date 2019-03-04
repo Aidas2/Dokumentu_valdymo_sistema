@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import RenderResponse from "./RenderResponse";
+import reviewIcon from "../../images/review-icon.png";
 
 class FileViewContainer extends Component {
   state = {
@@ -68,8 +69,12 @@ class FileViewContainer extends Component {
     return (
       <div>
         {/* <object data={this.state.response} type="application/pdf" /> */}
-        <button onClick={this.viewFile} className="btn btn-outline-success">
-          Perž. logo
+        <button
+          onClick={this.viewFile}
+          className="btn btn-outline-success button-info"
+        >
+          <img src={reviewIcon} width="20" height="20" />
+          <span class="tooltiptext">Peržiūrėti</span>
         </button>
         {/* <RenderResponse responseToRender={this.state.response} /> */}
       </div>

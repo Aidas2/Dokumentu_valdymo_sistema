@@ -239,6 +239,30 @@ h5,
   visibility: visible;
 }
 
+.button-info .tooltiptext {
+  font-size: 10px;
+  visibility: hidden;
+  width: 70px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 10px;
+  margin-left: 20px;
+
+  text-align: justify;
+  text-justify: inter-word;
+  opacity: 0.9;
+
+  position: absolute;
+  z-index: 1;
+  transition: 0.1s ease;
+}
+
+.button-info:hover .tooltiptext {
+  visibility: visible;
+}
+
 .picture-padding {
   max-width: 100%;
   height: auto;
