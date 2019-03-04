@@ -139,6 +139,43 @@ h5,
   color: white;
 }
 
+.users-table-number-style {
+  background-color: rgb(56, 56, 56);
+  border-top-left-radius: 8px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: white;
+
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.users-padding-bottom {
+  padding-bottom: 15px;
+}
+
+.users-table-middle-style {
+  background-color: rgb(56, 56, 56);
+
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: white;
+
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.users-table-action-style {
+  background-color: rgb(56, 56, 56);
+  border-top-right-radius: 8px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: white;
+
+  font-weight: 600;
+  line-height: 1.5;
+}
+
 .Table-action-style {
   background-color: rgb(56, 56, 56);
   border-top-right-radius: 8px;
@@ -149,11 +186,16 @@ h5,
 .table-middle-style {
   background-color: rgb(56, 56, 56);
 
-  color: white;
+  color: red;
 }
 
 .table-action-size {
   font-size: 14px;
+}
+
+.username-table-action-size {
+  font-size: 14px;
+  padding-top: 10px;
 }
 
 .padding-normal {

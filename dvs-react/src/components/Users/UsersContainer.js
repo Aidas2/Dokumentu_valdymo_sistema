@@ -44,7 +44,7 @@ class UsersContainer extends Component {
     return (
       <div>
         <div className="container-fluid m-2 ">
-          <h2 className="display-6 normal-padding">vartotojai</h2>
+          <h2 className="display-6 normal-padding">Vartotojai</h2>
           <h5 className="display-6 normal-padding second-navigation-style ">
             <Link to={"/"}>
               <img src={logo} width="20" height="10" />
@@ -71,18 +71,22 @@ class UsersContainer extends Component {
               paslėpti sukurtus vartotojus:
               <ul id="Document-type-bar-appear" className="navbar-nav mr-auto">
                 <table className="table table-active table-style-rounded">
-                  <div className="container-fluid ">
-                    <div className="row table-active table-style-rounded">
-                      <div className="col-1  Table-number-style ">ID</div>
-                      <div className="col-2   table-middle-style">
+                  <div className="container-fluid users-padding-bottom">
+                    <div className="row table-active table-style-rounded ">
+                      <div className="col-1  users-table-number-style ">ID</div>
+                      <div className="col-2   users-table-middle-style">
                         Prisijungimo vardas
                       </div>
-                      <div className=" col-2 table-middle-style">Vardas</div>
-                      <div className="col-2   table-middle-style">Pavardė</div>
-                      <div className="col-2  table-middle-style">
+                      <div className=" col-2 users-table-middle-style">
+                        Vardas
+                      </div>
+                      <div className="col-2   users-table-middle-style ">
+                        Pavardė
+                      </div>
+                      <div className="col-2  users-table-middle-style ">
                         El. pašto adresas
                       </div>
-                      <div className="col-3   Table-action-style table-action-styl2">
+                      <div className="col-3   users-table-action-style ">
                         Įdarbinimo data
                       </div>
                     </div>
