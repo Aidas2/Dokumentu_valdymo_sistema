@@ -10,7 +10,7 @@ class AdministrationContainer extends Component {
 
   render() {
     return (
-      <div className="container-fluid ">
+      <div className="container-fluid m-2">
         <h2 className="display-6 normal-padding">Administratoriaus rolė</h2>
 
         <h5 className="display-6 normal-padding second-navigation-style ">
