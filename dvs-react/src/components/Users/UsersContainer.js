@@ -71,7 +71,7 @@ class UsersContainer extends Component {
               paslėpti sukurtus vartotojus:
               <ul id="Document-type-bar-appear" className="navbar-nav mr-auto">
                 <table className="table table-active table-style-rounded">
-                  <div className="container ">
+                  <div className="container-fluid ">
                     <div className="row table-active table-style-rounded">
                       <div className="col-1  Table-number-style ">ID</div>
                       <div className="col-2   table-middle-style">

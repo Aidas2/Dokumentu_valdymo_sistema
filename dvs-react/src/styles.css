@@ -413,6 +413,11 @@ body::after {
   width: 100%;
 }
 
+.container {
+  width: 100%;
+  display: block;
+}
+
 .collapsed-style {
   background-color: rgb(238, 238, 238);
   border-radius: 5px;
