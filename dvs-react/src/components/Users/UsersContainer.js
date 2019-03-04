@@ -45,7 +45,6 @@ class UsersContainer extends Component {
       <div>
         <div className="container-fluid m-2 ">
           <h2 className="display-6 normal-padding">vartotojai</h2>
-
           <h5 className="display-6 normal-padding second-navigation-style ">
             <Link to={"/"}>
               <img src={logo} width="20" height="10" />
@@ -59,14 +58,13 @@ class UsersContainer extends Component {
               Vartotojai
             </Link>
           </h5>
-
           {/*    <h3 className="display-6">Vartotojai</h3>  */}
           <Link to={"/admin/newuser/"} className="btn btn-outline-success m-2">
             Pridėti naują vartotoją
           </Link>
           <p />
-
           <input type="checkbox" id="Document-type-box" />
+
           <label id="Document-type-container" for="Document-type-box">
             <div id="button" className="collapsed-style">
               Paspauskite ant šio teksto, tam kad būtų galima peržiūrėti/

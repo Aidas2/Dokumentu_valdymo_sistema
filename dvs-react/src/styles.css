@@ -299,6 +299,7 @@ body {
   padding: 0;
   margin: 0;
   position: relative;
+  word-wrap: break-word;
 }
 
 body::after {
@@ -408,12 +409,16 @@ body::after {
   display: block;
 }
 
+#Document-type-container {
+  width: 100%;
+}
+
 .collapsed-style {
   background-color: rgb(238, 238, 238);
   border-radius: 5px;
   border-right: 5px solid rgb(202, 202, 202);
   padding: 20px;
-  min-width: 1000px;
+
   font-family: sans serif;
 }
 
