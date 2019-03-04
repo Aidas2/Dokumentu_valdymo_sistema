@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 import logo from "../../images/home.png";
+import infoIcon from "../../images/info-icon.png";
 
 class DocumentsContainer extends Component {
   state = {
@@ -55,13 +56,13 @@ class DocumentsContainer extends Component {
         <div className="container-fluid m-2 ">
           <h2 className="display-6 normal-padding">
             Dokumentai
-            <Link to={"/"} className="logo-info">
-              <img src={logo} width="20" height="10" />
+            <div className="logo-info">
+              <img src={infoIcon} className="info-icon-style" />
               <span class="tooltiptext">
                 Šiame meniu galima įkelti naujus dokumentus ir peržiūrėti jau
                 esamus dokumentus.
               </span>
-            </Link>
+            </div>
           </h2>
           <h5 className="display-6 normal-padding second-navigation-style ">
             <Link to={"/"}>
