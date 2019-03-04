@@ -75,6 +75,52 @@ class DocumentsContainer extends Component {
           <Link to={"/upload"} className="btn btn-outline-success m-2">
             Įketi naują dokumentą
           </Link>
+
+          <p />
+          <input type="checkbox" id="Document-type-box" />
+
+          <label id="Document-type-container" for="Document-type-box">
+            <div id="button" className="collapsed-style">
+              Paspauskite ant šio teksto, tam kad būtų galima peržiūrėti/
+              paslėpti dokumentus:
+              <ul id="Document-type-bar-appear" className="navbar-nav mr-auto">
+                <table className="table table-active table-style-rounded">
+                  <div className="container-fluid users-padding-bottom">
+                    <div className="row table-active table-style-rounded ">
+                      <div className="col-1  users-table-number-style ">ID</div>
+                      <div className="col-2   users-table-middle-style">
+                        Pavadinimas
+                      </div>
+                      <div className=" col-2 users-table-middle-style">
+                        Tipas
+                      </div>
+                      <div className="col-2   users-table-middle-style ">
+                        Būsena
+                      </div>
+                      <div className="col-2  users-table-middle-style ">
+                        Aprašymas
+                      </div>
+                      <div className="col-3   users-table-action-style ">
+                        Veiksmai
+                      </div>
+                    </div>
+                    {documentsArrayToRender}
+                  </div>
+                </table>
+              </ul>
+            </div>
+          </label>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default DocumentsContainer;
+
+{
+  /*
+
           <div className="container pl-0 ml-0">
             <h4 className="display-6">Esami dokumentai</h4>
 
@@ -83,7 +129,7 @@ class DocumentsContainer extends Component {
                 <p>
                   <strong>ID</strong>
                 </p>
-                {/* <Link to="">Linkas</Link> */}
+               
               </div>
               <div className="col-2 ">
                 <p>
@@ -108,10 +154,5 @@ class DocumentsContainer extends Component {
             </div>
           </div>
           {documentsArrayToRender}
-        </div>
-      </div>
-    );
-  }
+          */
 }
-
-export default DocumentsContainer;

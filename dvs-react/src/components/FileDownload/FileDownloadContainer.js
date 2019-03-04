@@ -49,8 +49,8 @@ class FileDownloadConatainer extends Component {
       "<<<<<<<<<<<<<<<<<<<,THis.state in render()------------------"
     );
     return (
-      <button onClick={this.downloadFile} className="btn btn-dark">
-        Atsisiųsti
+      <button onClick={this.downloadFile} className="btn btn-outline-success">
+        Atsiųst. logo
       </button>
     );
   }

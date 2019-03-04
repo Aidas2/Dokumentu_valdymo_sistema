@@ -21,11 +21,35 @@ const DocumentsComponent = props => {
     path
   } = props.documentDetails;
   return (
-    <div className="container pl-0 ml-0">
+    <div className="row">
+      <div className="col-1 documents-table-size">
+        {id}
+        {/* <Link to="">Linkas</Link> */}
+      </div>
+      <div className="col-2 documents-table-size">{title}</div>
+      <div className="col-2 documents-table-size">{documentTypeTitle}</div>
+      <div className="col-2 documents-table-size">{documentState}</div>
+      <div className="col-2 documents-table-size">{description}</div>
+
+      <div className="col-1 documents-table-size">
+        <FileViewContainer documentId={id} />
+      </div>
+      <div className="col-1 documents-table-size">
+        <FileDownloadConatainer documentId={id} />
+      </div>
+    </div>
+  );
+};
+
+export default DocumentsComponent;
+
+{
+  /* 
+<div className="container pl-0 ml-0">
       <div className="row">
         <div className="col-1">
           <p>{id}</p>
-          {/* <Link to="">Linkas</Link> */}
+          
         </div>
         <div className="col-2">
           <p>{title}</p>
@@ -48,7 +72,5 @@ const DocumentsComponent = props => {
         </div>
       </div>
     </div>
-  );
-};
-
-export default DocumentsComponent;
+*/
+}

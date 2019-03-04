@@ -69,20 +69,22 @@ class DocumentTypesContainer extends Component {
           >
             Kurti naują vartotojų grupę
           </Link>
-          <table className="table table-active">
-            <thead className="thead-dark">
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Vartotojų grupės pavadinimas</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td scope="row"> {userGroupsArrayToRenderId}</td>
-                <td>{userGroupsArrayToRenderTitle}</td>
-              </tr>
-            </tbody>
-          </table>
+          <div className="container pl-0 ml-0">
+            <table className="table table-active">
+              <thead className="thead-dark">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Vartotojų grupės pavadinimas</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td scope="row"> {userGroupsArrayToRenderId}</td>
+                  <td>{userGroupsArrayToRenderTitle}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     );
