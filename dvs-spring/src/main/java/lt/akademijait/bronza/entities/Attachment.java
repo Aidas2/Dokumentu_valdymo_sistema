@@ -62,7 +62,6 @@ Validacija laukams (@Valid)
 Klaidu handlinimas  + loggeriai klaidoms
 Loggeriai su data + kad irasytu i faila
 
-Attachmentai Documentuose + ar turi buti isiuti visur visur ?
-
+lithuanian enum doesn't works correctly
 
  */
