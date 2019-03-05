@@ -8,8 +8,8 @@ class DocumentDetailsContainer extends Component {
     documentDetails: {
       id: "",
       author: "",
-      documentState: "",
-      documentTypeTitle: "",
+      documentTypeTitleInLithuanian: "",
+      documentStateInLithuanian: "",
       title: "",
       description: "",
       creationDate: "",
