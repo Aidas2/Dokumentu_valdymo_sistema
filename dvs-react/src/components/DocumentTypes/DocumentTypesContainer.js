@@ -82,14 +82,14 @@ class DocumentTypesContainer extends Component {
               paslėpti sukurtus dokumentų tipus:
               <ul id="Document-type-bar-appear" className="navbar-nav mr-auto">
                 <table className="table table-active table-style-rounded">
-                  <tr>
-                    <th className="col-1 Table-number-style">#</th>
-                    <th className="col-11 Table-action-style">
-                      Dokumento tipo pavadinimas
-                    </th>
-                  </tr>
-
                   <tbody>
+                    <tr>
+                      <th className="col-1 Table-number-style">#</th>
+                      <th className="col-11 Table-action-style">
+                        Dokumento tipo pavadinimas
+                      </th>
+                    </tr>
+
                     <tr>
                       <td className="table-action-size">
                         {docTypesArrayToRenderId}
