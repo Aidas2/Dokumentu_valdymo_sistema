@@ -30,7 +30,8 @@ public class AttachmentService {
                 .stream()
                 .map((attachment) -> new AttachmentGetCommand(
                         attachment.getId(),
-                        attachment.getTitle()
+                        attachment.getTitle(),
+                        attachment.getPath()
                 )).collect(Collectors.toList());
     }
 
@@ -41,7 +42,8 @@ public class AttachmentService {
         logger.info("Geted all attachments by this id: " + id);
         return new AttachmentGetCommand(
                 attachment.getId(),
-                attachment.getTitle()
+                attachment.getTitle(),
+                attachment.getPath()
         );
     }
 
@@ -52,7 +54,8 @@ public class AttachmentService {
         logger.info("Geted all attachments by this title: " + title);
         return new AttachmentGetCommand(
                 attachment.getId(),
-                attachment.getTitle()
+                attachment.getTitle(),
+                attachment.getPath()
         );
     }
 

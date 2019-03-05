@@ -59,7 +59,8 @@ public class DocumentService {
                         document.getRejectionDate(),
                         document.getReviewer(),
                         document.getRejectionReason(),
-                        document.getPath()
+                        document.getPath(),
+                        document.getAttachments()
                 )).collect(Collectors.toList());
 
 
@@ -84,7 +85,8 @@ public class DocumentService {
                 document.getRejectionDate(),
                 document.getReviewer(),
                 document.getRejectionReason(),
-                document.getPath()
+                document.getPath(),
+                document.getAttachments()
         );
     }
 
@@ -109,7 +111,8 @@ public class DocumentService {
                         document.getRejectionDate(),
                         document.getReviewer(),
                         document.getRejectionReason(),
-                        document.getPath()
+                        document.getPath(),
+                        document.getAttachments()
                 )).collect(Collectors.toList());
     }
 
@@ -133,7 +136,8 @@ public class DocumentService {
                         document.getRejectionDate(),
                         document.getReviewer(),
                         document.getRejectionReason(),
-                        document.getPath()
+                        document.getPath(),
+                        document.getAttachments()
                 )).collect(Collectors.toList());
     }
 
@@ -157,7 +161,8 @@ public class DocumentService {
                         document.getRejectionDate(),
                         document.getReviewer(),
                         document.getRejectionReason(),
-                        document.getPath()
+                        document.getPath(),
+                        document.getAttachments()
                 )).collect(Collectors.toList());
     }
 
@@ -182,7 +187,8 @@ public class DocumentService {
                         document.getRejectionDate(),
                         document.getReviewer(),
                         document.getRejectionReason(),
-                        document.getPath()
+                        document.getPath(),
+                        document.getAttachments()
                 )).collect(Collectors.toList());
     }
 
@@ -207,7 +213,8 @@ public class DocumentService {
                         document.getRejectionDate(),
                         document.getReviewer(),
                         document.getRejectionReason(),
-                        document.getPath()
+                        document.getPath(),
+                        document.getAttachments()
                 )).collect(Collectors.toList());
     }
 
@@ -232,7 +239,8 @@ public class DocumentService {
                         document.getRejectionDate(),
                         document.getReviewer(),
                         document.getRejectionReason(),
-                        document.getPath()
+                        document.getPath(),
+                        document.getAttachments()
                 )).collect(Collectors.toList());
     }
     //GET DOCUMENTS OF SPECIFIC USER_GROUP (OR AUTHOR ID ?) ============================================================
@@ -257,7 +265,8 @@ public class DocumentService {
                         document.getRejectionDate(),
                         document.getReviewer(),
                         document.getRejectionReason(),
-                        document.getPath()
+                        document.getPath(),
+                        document.getAttachments()
                 )).collect(Collectors.toList());
     }
 
@@ -307,15 +316,18 @@ public class DocumentService {
 
 
         Set<UserGroup> userGroupsBelongingToUser = user.getUserGroups();
-        boolean canSetState = true; //ATENTION: 1. reikia koreguoti si patikrinima, nes nepraeina pro ji (galbut neduoda niekad true)
+        boolean canSetState = false; //ATENTION: 1. reikia koreguoti si patikrinima, nes nepraeina pro ji (galbut neduoda niekad true)
                                                 //2. Rejection reason swageryje isiraso tik kai yra nustatyta paciame pirmame if
 
-//        for (UserGroup userGroup : userGroupsBelongingToUser) {
-//            if (userGroup.getReviewDocumentType().contains(documentToSetState.getDocumentType())) {
-//                canSetState = true;
-//                break;
-//            }
-//        }
+        for (UserGroup userGroup : userGroupsBelongingToUser) {
+            if (userGroup.getReviewDocumentType().contains(documentToSetState.getDocumentType())) {
+                canSetState = true;
+                logger.info("From BOOLEAN. User belongs to the group, which can review. OK");
+                //break;
+            } else {
+                logger.info("From BOOLEAN. User doesn't belong to the group, which can review. No good");
+            }
+        }
 
         if(canSetState) {
             documentToSetState.setReviewer(user);
@@ -328,15 +340,17 @@ public class DocumentService {
 //         Jei turi, tada tik leisti setDocumentStatus(rejectet arba accepted priskirti).
 //         Ir tik tada priskirti paciam documentEntičiui reviewerį, jei jam leista pakeisti statą.
 
-
-
         //papildyti validacija ar DocumentState jau nera toks koki norim suteikti.
 
         //papildyti kad jeigu neranda DocumentType tai reikia handlint errora
         // (pvz. iseiti is metodo, arba responseEntity arba ResourceNotFoundException)
         // nes priesingu atveju programa nulus.
 
-        if (canSetState &&
+        if (canSetState) {
+            logger.info("From IF. User belongs to the group, which can review. OK");
+        } else if (canSetState == false) {
+            logger.info("From IF. User doesn't belong to the group, which can review. No good");
+        } else if (canSetState &&
                 !documentSetStateCommand.getDocumentState().equals(DocumentState.CREATED.name())  //&&
                 //documentSetStateCommand.getDocumentState() != DocumentState.SUBMITTED &&
                 //documentSetStateCommand.getDocumentState() != DocumentState.CONFIRMED &&
@@ -345,7 +359,7 @@ public class DocumentService {
         ) {
             //documentToSetState.setDocumentState(DocumentState.CREATED);     //version A (hardcoded ? Yes, hardcoded because User in UI or swagger cannot choose)
             documentToSetState.setDocumentState(DocumentState.valueOf(documentSetStateCommand.getDocumentState())); //version B
-            documentToSetState.setRejectionReason(documentSetStateCommand.getRejectionReason());
+            //documentToSetState.setRejectionReason(documentSetStateCommand.getRejectionReason());
         } else if (canSetState &&
                 documentSetStateCommand.getDocumentState().equals(DocumentState.CREATED.name()) //&&
                 //documentSetStateCommand.getDocumentState() != DocumentState.SUBMITTED &&
@@ -355,7 +369,7 @@ public class DocumentService {
                 ) {
             //documentToSetState.setDocumentState(DocumentState.SUBMITTED);   //version A
             documentToSetState.setDocumentState(DocumentState.valueOf(documentSetStateCommand.getDocumentState())); //version B
-            documentToSetState.setRejectionReason(documentSetStateCommand.getRejectionReason());
+            //documentToSetState.setRejectionReason(documentSetStateCommand.getRejectionReason());
         } else if (canSetState &&
                 //documentSetStateCommand.getDocumentState() == DocumentState.CREATED &&
                 documentSetStateCommand.getDocumentState().equals(DocumentState.SUBMITTED.name()) &&
@@ -376,6 +390,8 @@ public class DocumentService {
             //documentToSetState.setDocumentState(DocumentState.REJECTED);    //version A
             documentToSetState.setDocumentState(DocumentState.valueOf(documentSetStateCommand.getDocumentState()));  //version B
             documentToSetState.setRejectionReason(documentSetStateCommand.getRejectionReason());
+        } else {
+            throw new ResourceNotFoundException("My dear Friend, non of the IF case was proceeded.");
         }
 
         documentRepository.save(documentToSetState);
@@ -394,11 +410,14 @@ public class DocumentService {
         User reviewerUser = userRepository.findByUsername(documentSetStateCommand.getReviewerUsername());
 
         switch (documentSetStateCommand.getDocumentState()){
+            case "CREATED":{
+                logger.info("User tried to set document state to CREATED");
+                throw new ResourceNotFoundException("There is no need to set state to CREATED (this state is already set during document creation).");
+            }
             case "SUBMITTED" :{
                 documentToSetState.setDocumentState(DocumentState.SUBMITTED);
                 documentToSetState.setSubmissionDate(new Date());
                 break;
-
             }
             case "REJECTED" :{
                 documentToSetState.setReviewer(reviewerUser);
@@ -407,13 +426,14 @@ public class DocumentService {
                 documentToSetState.setRejectionReason(documentSetStateCommand.getRejectionReason());
                 break;
             }
-            case "COMFIRMED" :{
+            case "CONFIRMED" :{
                 documentToSetState.setReviewer(reviewerUser);
                 documentToSetState.setDocumentState(DocumentState.CONFIRMED);
                 documentToSetState.setConfirmationDate(new Date());
+                break;
             }
             default:
-                throw new ResourceNotFoundException("My dear Friend, non of the switch case was proceeded");
+                throw new ResourceNotFoundException("My dear Friend, non of the SWITCH case was proceeded.");
 
         }
         documentRepository.save(documentToSetState);
