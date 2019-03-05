@@ -8,8 +8,8 @@ const DocumentsComponent = props => {
   var {
     id,
     author,
-    documentState,
-    documentTypeTitle,
+    documentStateInLithuanian,
+    documentTypeTitleInLithuanian,
     title,
     description,
     creationDate,
@@ -31,8 +31,12 @@ const DocumentsComponent = props => {
       <div className="col-2 documents-table-size">
         <Link to={linkToDOcumentDetails}>{title}</Link>
       </div>
-      <div className="col-2 documents-table-size">{documentTypeTitle}</div>
-      <div className="col-2 documents-table-size">{documentState}</div>
+      <div className="col-2 documents-table-size">
+        {documentTypeTitleInLithuanian}
+      </div>
+      <div className="col-2 documents-table-size">
+        {documentStateInLithuanian}
+      </div>
       <div className="col-3 documents-table-size">{description}</div>
 
       <div className="col-1 documents-table-size">
