@@ -26,6 +26,8 @@ class FileUploadContainer extends Component {
         createDocumentInfo.documentTypeTitle = response.data[0].title;
         createDocumentInfo.username = localStorage.getItem("username");
         this.setState({ createDocumentInfo: createDocumentInfo });
+        let username = localStorage.getItem("username");
+        this.setState({ username });
         // this.setState({ documentType: response.data[0].title });
         // this.setState({ documentType: response.data[0].title });
       })
