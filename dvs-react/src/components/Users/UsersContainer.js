@@ -69,7 +69,7 @@ class UsersContainer extends Component {
               Paspauskite ant šio teksto, tam kad būtų galima peržiūrėti/
               paslėpti sukurtus vartotojus:
               <ul id="Document-type-bar-appear" className="navbar-nav mr-auto">
-                <table className="table table-active table-style-rounded">
+                <div className="table table-active table-style-rounded">
                   <div className="container-fluid users-padding-bottom">
                     <div className="row table-active table-style-rounded ">
                       <div className="col-1  users-table-number-style ">ID</div>
@@ -91,7 +91,7 @@ class UsersContainer extends Component {
                     </div>
                     {usersArrayToRender}
                   </div>
-                </table>
+                </div>
               </ul>
             </div>
           </label>
