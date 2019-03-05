@@ -124,8 +124,10 @@ h5,
 .table-style-rounded {
   border-collapse: collapse;
   border-radius: 8px;
-  border-style: hidden; /* hide standard table (collapsed) border */
+  /*border-style: hidden;  hide standard table (collapsed) border */
   box-shadow: 5px 0 0px -1px rgb(94, 94, 94); /* this draws the table border  */
+
+  border-bottom: #d8d8d8 1px solid;
 }
 
 .logo {
@@ -506,8 +508,16 @@ body::after {
   border-radius: 5px;
   border-right: 5px solid rgb(202, 202, 202);
   padding: 20px;
-
+  border-top: #d8d8d8 1px solid;
+  border-bottom: #d8d8d8 1px solid;
+  border-left: #d8d8d8 1px solid;
   font-family: sans serif;
+}
+
+.top-left-bottom-border {
+  border-top: #d8d8d8 1px solid;
+  border-bottom: #d8d8d8 1px solid;
+  border-left: #d8d8d8 1px solid;
 }
 
 .collapsed-style2 {
