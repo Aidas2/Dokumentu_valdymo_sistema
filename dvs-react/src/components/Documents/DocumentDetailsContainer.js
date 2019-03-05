@@ -8,8 +8,8 @@ class DocumentDetailsContainer extends Component {
     documentDetails: {
       id: "",
       author: "",
-      documentState: "",
-      documentTypeTitle: "",
+      documentTypeTitleInLithuanian: "",
+      documentStateInLithuanian: "",
       title: "",
       description: "",
       creationDate: "",
@@ -58,7 +58,6 @@ class DocumentDetailsContainer extends Component {
     );
     return (
       <div>
-        <p>labas</p>
         <DocumentDetailsComponent
           documentDetails={this.state.documentDetails}
         />
