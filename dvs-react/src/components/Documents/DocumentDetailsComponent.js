@@ -7,8 +7,8 @@ const DocumentDetailsComponent = props => {
   var {
     id,
     authorUsername,
-    documentState,
-    documentTypeTitle,
+    documentStateInLithuanian,
+    documentTypeTitleInLithuanian,
     title,
     description,
     creationDate,
@@ -58,7 +58,7 @@ const DocumentDetailsComponent = props => {
         <div className="row mt-2 mb-2 ">
           <div className="col ">
             <h5>Tipas</h5>
-            <h4>{documentTypeTitle}</h4>
+            <h4>{documentTypeTitleInLithuanian}</h4>
           </div>
           <div className="col">
             <h5>Aprašymas</h5>
@@ -68,27 +68,38 @@ const DocumentDetailsComponent = props => {
         <div className="row mt-2 mb-2 ">
           <div className="col ">
             <h5>Būsena</h5>
-            <h4>{documentState}</h4>
+            <h4>{documentStateInLithuanian}</h4>
           </div>
           <div className="col">
-            <h5>Priedai</h5>
+            <h5 />
             <h4>{} </h4>
           </div>
         </div>
         <div className="row mt-2 mb-2 ">
           <div className="col ">
-            <h5>Būsena</h5>
-            <h4>{documentState}</h4>
+            <h5>Sukūrimo data</h5>
+            <h4>{creationDate}</h4>
           </div>
           <div className="col">
-            <h5>Priedai</h5>
-            <h4>{} </h4>
+            <h5>Peržiūrėjo</h5>
+            <h4>{reviewer} </h4>
+          </div>
+        </div>
+
+        <div className="row mt-2 mb-2 ">
+          <div className="col ">
+            <h5>Priėmimo data</h5>
+            <h4>{confirmationDate}</h4>
+          </div>
+          <div className="col">
+            <h5>Atmetimo priežastis</h5>
+            <h4>{rejectionReason} </h4>
           </div>
         </div>
         <div className="row mt-2 mb-2 ">
           <div className="col ">
-            <h5>Būsena</h5>
-            <h4>{documentState}</h4>
+            <h5>Atmetimo data</h5>
+            <h4>{rejectionDate}</h4>
           </div>
           <div className="col">
             <h5>Priedai</h5>
