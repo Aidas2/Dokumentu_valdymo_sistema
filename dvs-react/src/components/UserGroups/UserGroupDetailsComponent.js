@@ -14,7 +14,7 @@ const UserGroupDetailsComponent = props => {
         <h2 className="display-6 normal-padding">
           {title}
           <div className="logo-info">
-            <img src={infoIcon} className="info-icon-style" />
+            <img src={infoIcon} className="info-icon-style" alt="info icon" />
             <span className="tooltiptext">
               Šiame meniu galima peržiūrėti vartotojų grupės leidžiamų pateikti
               ir peržiūrėti dokumentų tipus.
@@ -23,7 +23,7 @@ const UserGroupDetailsComponent = props => {
         </h2>
         <h5 className="display-6 normal-padding second-navigation-style ">
           <Link to={"/"}>
-            <img src={logo} width="20" height="10" />
+            <img src={logo} width="20" height="10" alt="logo icon"/>
           </Link>
           &ensp;/ &ensp;
           <Link to={"/admin"} className="second-navigation">

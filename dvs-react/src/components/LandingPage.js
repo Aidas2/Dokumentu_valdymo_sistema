@@ -9,7 +9,11 @@ const LandingPage = props => {
       <div className="row justify-content-between">
         <div className=" col-lg-6 col-xl-6 col-md-6 ">
           <div>
-            <img src={main_icon} className=" center-block picture-padding" />
+            <img
+              src={main_icon}
+              className=" center-block picture-padding"
+              alt="main icon"
+            />
           </div>
         </div>
         <div

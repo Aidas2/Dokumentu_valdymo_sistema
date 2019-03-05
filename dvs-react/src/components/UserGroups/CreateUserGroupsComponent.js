@@ -12,7 +12,7 @@ const CreateUserGroupsComponent = props => {
         <h2 className="display-6 normal-padding">
           Naujos vartotojų grupės kūrimas
           <div className="logo-info">
-            <img src={infoIcon} className="info-icon-style" />
+            <img src={infoIcon} className="info-icon-style" alt="info icon" />
             <span className="tooltiptext">
               Šiame meniu galima kurti naujas vartotojų grupes.
             </span>
@@ -21,7 +21,7 @@ const CreateUserGroupsComponent = props => {
 
         <h5 className="display-6 normal-padding second-navigation-style ">
           <Link to={"/"}>
-            <img src={logo} width="20" height="10" />
+            <img src={logo} width="20" height="10" alt="logo icon"/>
           </Link>
           &ensp;/ &ensp;
           <Link to={"/admin"} className="second-navigation">

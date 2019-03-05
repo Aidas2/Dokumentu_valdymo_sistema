@@ -10,7 +10,7 @@ const CreateDocumentTypeComponent = props => {
         <h2 className="display-6 normal-padding">
           Naujo dokumento tipo kūrimas
           <div className="logo-info">
-            <img src={infoIcon} className="info-icon-style" />
+            <img src={infoIcon} className="info-icon-style" alt="info icon" />
             <span className="tooltiptext">
               Šiame meniu galima kurti naujus dokumentų tipus.
             </span>
@@ -19,7 +19,7 @@ const CreateDocumentTypeComponent = props => {
 
         <h5 className="display-6 normal-padding second-navigation-style ">
           <Link to={"/"}>
-            <img src={logo} width="20" height="10" />
+            <img src={logo} width="20" height="10" alt="logo icon"/>
           </Link>
           &ensp;/ &ensp;
           <Link to={"/admin"} className="second-navigation">
