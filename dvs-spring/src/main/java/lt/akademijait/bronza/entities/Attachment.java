@@ -15,8 +15,9 @@ public class Attachment {
     @Column
     private String title;
 
-//    @Column
-//    private String path;
+    @Column
+    private String path;
+
     /*
     @ManyToOne//(mappedBy="attachments")
     //@JoinColumn (name = "DOCUMENT_ID")
@@ -28,9 +29,10 @@ public class Attachment {
     public Attachment() {
     }
 
-    public Attachment(Long id, String title) {
+    public Attachment(Long id, String title, String path) {
         this.id = id;
         this.title = title;
+        this.path = path;
     }
 
     //Getters and Setters:
@@ -50,6 +52,14 @@ public class Attachment {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 }
 

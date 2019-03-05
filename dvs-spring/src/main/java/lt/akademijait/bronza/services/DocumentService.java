@@ -59,7 +59,8 @@ public class DocumentService {
                         document.getRejectionDate(),
                         document.getReviewer(),
                         document.getRejectionReason(),
-                        document.getPath()
+                        document.getPath(),
+                        document.getAttachments()
                 )).collect(Collectors.toList());
 
 
@@ -84,7 +85,8 @@ public class DocumentService {
                 document.getRejectionDate(),
                 document.getReviewer(),
                 document.getRejectionReason(),
-                document.getPath()
+                document.getPath(),
+                document.getAttachments()
         );
     }
 
@@ -109,7 +111,8 @@ public class DocumentService {
                         document.getRejectionDate(),
                         document.getReviewer(),
                         document.getRejectionReason(),
-                        document.getPath()
+                        document.getPath(),
+                        document.getAttachments()
                 )).collect(Collectors.toList());
     }
 
@@ -133,7 +136,8 @@ public class DocumentService {
                         document.getRejectionDate(),
                         document.getReviewer(),
                         document.getRejectionReason(),
-                        document.getPath()
+                        document.getPath(),
+                        document.getAttachments()
                 )).collect(Collectors.toList());
     }
 
@@ -157,7 +161,8 @@ public class DocumentService {
                         document.getRejectionDate(),
                         document.getReviewer(),
                         document.getRejectionReason(),
-                        document.getPath()
+                        document.getPath(),
+                        document.getAttachments()
                 )).collect(Collectors.toList());
     }
 
@@ -182,7 +187,8 @@ public class DocumentService {
                         document.getRejectionDate(),
                         document.getReviewer(),
                         document.getRejectionReason(),
-                        document.getPath()
+                        document.getPath(),
+                        document.getAttachments()
                 )).collect(Collectors.toList());
     }
 
@@ -207,7 +213,8 @@ public class DocumentService {
                         document.getRejectionDate(),
                         document.getReviewer(),
                         document.getRejectionReason(),
-                        document.getPath()
+                        document.getPath(),
+                        document.getAttachments()
                 )).collect(Collectors.toList());
     }
 
@@ -232,7 +239,8 @@ public class DocumentService {
                         document.getRejectionDate(),
                         document.getReviewer(),
                         document.getRejectionReason(),
-                        document.getPath()
+                        document.getPath(),
+                        document.getAttachments()
                 )).collect(Collectors.toList());
     }
     //GET DOCUMENTS OF SPECIFIC USER_GROUP (OR AUTHOR ID ?) ============================================================
@@ -257,7 +265,8 @@ public class DocumentService {
                         document.getRejectionDate(),
                         document.getReviewer(),
                         document.getRejectionReason(),
-                        document.getPath()
+                        document.getPath(),
+                        document.getAttachments()
                 )).collect(Collectors.toList());
     }
 
