@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React from "react";
+
 import logo from "../../../images/home.png";
 import { Link } from "react-router-dom";
 import UserGroupsContainer from "./UserGroupsContainer";
@@ -19,7 +19,7 @@ const CreateUserComponent = props => {
         </h2>
         <h5 className="display-6 normal-padding second-navigation-style ">
           <Link to={"/"}>
-            <img src={logo} width="20" height="10" alt="logo icon"/>
+            <img src={logo} width="20" height="10" alt="logo icon" />
           </Link>
           &ensp;/ &ensp;
           <Link to={"/admin"} className="second-navigation">
@@ -181,10 +181,10 @@ const CreateUserComponent = props => {
             </tr>
             <tr>
               <td>
-                <h6 />
+                <h6> </h6>
               </td>
               <td>
-                <h6 />
+                <h6> </h6>
               </td>
               <td>
                 <button

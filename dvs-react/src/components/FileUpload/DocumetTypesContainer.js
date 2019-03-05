@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import axios from "axios";
+
 import DocumetTypesComponent from "./DocumentTypesComponent";
 
 class DocumentTypesContainer extends Component {

@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+
 import DocumentTypesContainer from "../FileUpload/DocumetTypesContainer";
 import { Link } from "react-router-dom";
 import infoIcon from "../../images/info-icon.png";

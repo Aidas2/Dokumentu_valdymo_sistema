@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
+
 import DocumentTypesComponent from "./DocumentTypesComponent";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import logo from "../../images/home.png";
-import collapse_icon from "../../images/collapse-icon.png";
+
 import infoIcon from "../../images/info-icon.png";
 
 class DocumentTypesContainer extends Component {
@@ -55,7 +55,7 @@ class DocumentTypesContainer extends Component {
 
           <h5 className="display-6 normal-padding second-navigation-style ">
             <Link to={"/"}>
-              <img src={logo} width="20" height="10" alt="logo icon"/>
+              <img src={logo} width="20" height="10" alt="logo icon" />
             </Link>
             &ensp;/ &ensp;
             <Link to={"/admin"} className="second-navigation">
@@ -109,7 +109,7 @@ class DocumentTypesContainer extends Component {
 
                   <tbody>
                     <tr>
-                      <td scope="row" className="table-action-size">
+                      <td className="table-action-size">
                         {docTypesArrayToRenderId}
                       </td>
                       <td className="table-action-size">

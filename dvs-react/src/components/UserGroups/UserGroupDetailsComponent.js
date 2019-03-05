@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React from "react";
+
 import logo from "../../images/home.png";
 import { Link } from "react-router-dom";
 import infoIcon from "../../images/info-icon.png";
@@ -23,7 +23,7 @@ const UserGroupDetailsComponent = props => {
         </h2>
         <h5 className="display-6 normal-padding second-navigation-style ">
           <Link to={"/"}>
-            <img src={logo} width="20" height="10" alt="logo icon"/>
+            <img src={logo} width="20" height="10" alt="logo icon" />
           </Link>
           &ensp;/ &ensp;
           <Link to={"/admin"} className="second-navigation">
@@ -50,10 +50,10 @@ const UserGroupDetailsComponent = props => {
               <th scope="col-6">Peržiūrėti leidžiamų dokumentų tipai</th>
             </tr>
             <tr>
-              <td scope="row" className="list-style ">
+              <td className="list-style ">
                 <h6>{submissionDocTypes}</h6>
               </td>
-              <td scope="row" className="list-style ">
+              <td className="list-style ">
                 <h6>{reviewDocTypes}</h6>
               </td>
             </tr>

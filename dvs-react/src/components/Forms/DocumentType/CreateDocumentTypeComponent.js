@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React from "react";
+
 import { Link } from "react-router-dom";
 import infoIcon from "../../../images/info-icon.png";
 import logo from "../../../images/home.png";
@@ -19,7 +19,7 @@ const CreateDocumentTypeComponent = props => {
 
         <h5 className="display-6 normal-padding second-navigation-style ">
           <Link to={"/"}>
-            <img src={logo} width="20" height="10" alt="logo icon"/>
+            <img src={logo} width="20" height="10" alt="logo icon" />
           </Link>
           &ensp;/ &ensp;
           <Link to={"/admin"} className="second-navigation">

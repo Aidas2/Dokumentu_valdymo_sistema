@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import UserGroupDetailsComponent from "./DocumentDetailsComponent";
+
 import axios from "axios";
 import DocumentDetailsComponent from "./DocumentDetailsComponent";
 

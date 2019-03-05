@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React from "react";
+
 import { Link } from "react-router-dom";
 
 const UserGroupsComponent = props => {
@@ -9,7 +9,6 @@ const UserGroupsComponent = props => {
       <div className="row">
         <div className="col-12 padding-normal">
           {props.groupId}
-          {/* <Link to="">Linkas</Link> */}
 
           <Link to={linkToUserGroupDetails}>{props.groupTitle}</Link>
         </div>
