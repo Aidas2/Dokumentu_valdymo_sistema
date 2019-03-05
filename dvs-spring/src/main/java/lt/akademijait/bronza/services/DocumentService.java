@@ -313,10 +313,10 @@ public class DocumentService {
         for (UserGroup userGroup : userGroupsBelongingToUser) {
             if (userGroup.getReviewDocumentType().contains(documentToSetState.getDocumentType())) {
                 canSetState = true;
-                logger.info("User belongs to the group, which can set document state. OK");
+                logger.info("From BOOLEAN. User belongs to the group, which can review. OK");
                 //break;
             } else {
-                logger.info("User doesn't belong to the group, which can set document state. No good");
+                logger.info("From BOOLEAN. User doesn't belong to the group, which can review. No good");
             }
         }
 
@@ -331,8 +331,6 @@ public class DocumentService {
 //         Jei turi, tada tik leisti setDocumentStatus(rejectet arba accepted priskirti).
 //         Ir tik tada priskirti paciam documentEntičiui reviewerį, jei jam leista pakeisti statą.
 
-
-
         //papildyti validacija ar DocumentState jau nera toks koki norim suteikti.
 
         //papildyti kad jeigu neranda DocumentType tai reikia handlint errora
@@ -340,9 +338,9 @@ public class DocumentService {
         // nes priesingu atveju programa nulus.
 
         if (canSetState) {
-            logger.info("User belongs to the group, which can set document state. OK");
+            logger.info("From IF. User belongs to the group, which can review. OK");
         } else if (canSetState == false) {
-            logger.info("User doesn't belong to the group, which can set document state. No good");
+            logger.info("From IF. User doesn't belong to the group, which can review. No good");
         } else if (canSetState &&
                 !documentSetStateCommand.getDocumentState().equals(DocumentState.CREATED.name())  //&&
                 //documentSetStateCommand.getDocumentState() != DocumentState.SUBMITTED &&
