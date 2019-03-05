@@ -101,8 +101,8 @@ class DocumentTypesContainer extends Component {
               <ul id="Document-type-bar-appear" className="navbar-nav mr-auto">
                 <table className="table table-active table-style-rounded">
                   <tr>
-                    <th className="col-2 Table-number-style">#</th>
-                    <th className="col-10 Table-action-style">
+                    <th className="col-1 Table-number-style">#</th>
+                    <th className="col-11 Table-action-style">
                       Dokumento tipo pavadinimas
                     </th>
                   </tr>

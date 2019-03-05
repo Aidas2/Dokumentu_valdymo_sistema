@@ -79,6 +79,38 @@ class DocumentTypesContainer extends Component {
             Kurti naują vartotojų grupę
           </Link>
           <div className="container pl-0 ml-0">
+            <input type="checkbox" id="Document-type-box" />
+            <label id="Document-type-container" for="Document-type-box">
+              <div id="button " className="collapsed-style">
+                Paspauskite ant šio teksto, tam kad būtų galima peržiūrėti/
+                paslėpti sukurtas vartotojų grupes:
+                <ul
+                  id="Document-type-bar-appear"
+                  className="navbar-nav mr-auto"
+                >
+                  <table className="table table-active table-style-rounded">
+                    <tr>
+                      <th className="col-1 Table-number-style">#</th>
+                      <th className="col-11 Table-action-style">
+                        Dokumento tipo pavadinimas
+                      </th>
+                    </tr>
+
+                    <tbody>
+                      <tr>
+                        <td scope="row" className="table-action-size">
+                          {userGroupsArrayToRenderId}
+                        </td>
+                        <td className="table-action-size">
+                          {userGroupsArrayToRenderTitle}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </ul>
+              </div>
+            </label>
+            {/*
             <table className="table table-active">
               <thead className="thead-dark">
                 <tr>
@@ -93,6 +125,7 @@ class DocumentTypesContainer extends Component {
                 </tr>
               </tbody>
             </table>
+*/}
           </div>
         </div>
       </div>
