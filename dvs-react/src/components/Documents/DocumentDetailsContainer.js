@@ -58,7 +58,6 @@ class DocumentDetailsContainer extends Component {
     );
     return (
       <div>
-        <p>labas</p>
         <DocumentDetailsComponent
           documentDetails={this.state.documentDetails}
         />
