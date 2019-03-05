@@ -85,7 +85,7 @@ class DocumentTypesContainer extends Component {
 
             <tbody>
               <tr>
-                <td scope="row"> {docTypesArrayToRenderId}</td>
+                <td> {docTypesArrayToRenderId}</td>
                 <td>{docTypesArrayToRenderTitle}</td>
               </tr>
             </tbody>

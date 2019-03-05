@@ -39,13 +39,13 @@ class FileUploadComponent extends Component {
               <th className="col-6">Įvedimo laukas</th>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>1</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Dokumento pavadinimas</h6>
               </td>
-              <td scope="row">
+              <td>
                 <input
                   className=" form-control form-control-sm italic-style"
                   placeholder="Įveskite dokumento pavadinimą"
@@ -55,14 +55,14 @@ class FileUploadComponent extends Component {
               </td>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>2</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Dokumento aprašymas</h6>
               </td>
 
-              <td scope="row">
+              <td>
                 <input
                   className="form-control form-control-sm italic-style"
                   placeholder="Įveskite dokumento aprašymą"
@@ -72,13 +72,13 @@ class FileUploadComponent extends Component {
               </td>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>3</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Dokumento tipas</h6>
               </td>
-              <td scope="row">
+              <td>
                 <DocumentTypesContainer
                   documentTypes={this.props.documentTypes}
                   onDocumentTypeChange={this.props.onDocumentTypeChange}
@@ -86,13 +86,13 @@ class FileUploadComponent extends Component {
               </td>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>4</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Pagrindinis dokumentas</h6>
               </td>
-              <td scope="row">
+              <td>
                 <div className="input-group   ">
                   <div className="input-group-prepend" />
                   <div className="custom-file">
@@ -117,14 +117,14 @@ class FileUploadComponent extends Component {
             </tr>
 
             <tr>
-              <td scope="row">
+              <td>
                 <h6>5</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Priedai</h6>
               </td>
 
-              <td scope="row">
+              <td>
                 <div className="input-group ">
                   <div className="input-group-prepend" />
                   <div className="custom-file">
@@ -149,13 +149,13 @@ class FileUploadComponent extends Component {
               </td>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6 />
               </td>
-              <td scope="row">
+              <td>
                 <h6 />
               </td>
-              <td scope="row">
+              <td>
                 <button
                   type="button"
                   className="btn btn-outline-success btn-sm document-button-style"

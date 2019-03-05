@@ -42,13 +42,13 @@ const CreateUserComponent = props => {
               <th className="col-6">Įvedimo laukas</th>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>1</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Vardas</h6>
               </td>
-              <td scope="row">
+              <td>
                 <input
                   className=" form-control form-control-sm italic-style"
                   placeholder="Įveskite vartotojo vardą"
@@ -58,14 +58,14 @@ const CreateUserComponent = props => {
               </td>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>2</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Pavardė</h6>
               </td>
 
-              <td scope="row">
+              <td>
                 <input
                   className="form-control form-control-sm italic-style"
                   placeholder="Įveskite vartotojo pavardę"
@@ -75,13 +75,13 @@ const CreateUserComponent = props => {
               </td>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>3</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Unikalus vardas sistemoje</h6>
               </td>
-              <td scope="row">
+              <td>
                 <input
                   className="form-control form-control-sm italic-style"
                   placeholder="Įveskite prisijungimo vardą"
@@ -91,13 +91,13 @@ const CreateUserComponent = props => {
               </td>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>4</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Elektroninio pašto adresas</h6>
               </td>
-              <td scope="row">
+              <td>
                 <input
                   className="form-control form-control-sm italic-style"
                   placeholder="Įveskite vartotojo el. pašto adresą"
@@ -108,14 +108,14 @@ const CreateUserComponent = props => {
             </tr>
 
             <tr>
-              <td scope="row">
+              <td>
                 <h6>5</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Įdarbinimo data</h6>
               </td>
 
-              <td scope="row">
+              <td>
                 <input
                   className="form-control form-control-sm italic-style"
                   placeholder="Įveskite vartotojo įdarbinimo datą"
@@ -125,14 +125,14 @@ const CreateUserComponent = props => {
               </td>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>6</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Prisijungimo slaptažodis</h6>
               </td>
 
-              <td scope="row">
+              <td>
                 <input
                   className="form-control form-control-sm italic-style"
                   placeholder="Įveskite vartotojo prisijungimo slaptažodį"
@@ -143,14 +143,14 @@ const CreateUserComponent = props => {
               </td>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>7</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Administratoriaus rolė</h6>
               </td>
 
-              <td scope="row">
+              <td>
                 <select
                   onChange={props.onAdministratorChange}
                   className="col-6 form-control form-control-sm italic-style "
@@ -162,14 +162,14 @@ const CreateUserComponent = props => {
               </td>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>8</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Vartotojo grupė</h6>
               </td>
 
-              <td scope="row">
+              <td>
                 <UserGroupsContainer
                   userGroups={props.userGroups}
                   onUserGroupChange={props.onUserGroupChange}
@@ -180,13 +180,13 @@ const CreateUserComponent = props => {
               </td>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6 />
               </td>
-              <td scope="row">
+              <td>
                 <h6 />
               </td>
-              <td scope="row">
+              <td>
                 <button
                   type="button"
                   className="btn btn-outline-success btn-sm document-button-style"

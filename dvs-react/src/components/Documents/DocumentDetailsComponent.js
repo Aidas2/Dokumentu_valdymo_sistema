@@ -64,123 +64,123 @@ const DocumentDetailsComponent = props => {
               <th scope="col-6">Reikšmė</th>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>1</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Pavadinimas</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>{title}</h6>
               </td>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>2</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Autorius</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>{authorUsername}</h6>
               </td>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>3</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Tipas</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>{documentTypeTitleInLithuanian}</h6>
               </td>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>4</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Aprašymas</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>{description}</h6>
               </td>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>5</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Būsena</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>{documentStateInLithuanian}</h6>
               </td>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>6</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Sukūrimo data</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>{creationDate}</h6>
               </td>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>7</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Peržiūrėjo</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>{reviewer}</h6>
               </td>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>8</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Priėmimo data</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>{confirmationDate}</h6>
               </td>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>9</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Atmetimo priežastis</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>{rejectionReason}</h6>
               </td>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>10</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Atmetimo data</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>{rejectionDate}</h6>
               </td>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>11</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Priedai</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>{}</h6>
               </td>
             </tr>

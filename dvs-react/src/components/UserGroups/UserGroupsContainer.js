@@ -120,7 +120,7 @@ class DocumentTypesContainer extends Component {
               </thead>
               <tbody>
                 <tr>
-                  <td scope="row"> {userGroupsArrayToRenderId}</td>
+                  <td> {userGroupsArrayToRenderId}</td>
                   <td>{userGroupsArrayToRenderTitle}</td>
                 </tr>
               </tbody>

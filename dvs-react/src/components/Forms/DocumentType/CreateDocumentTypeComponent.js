@@ -43,13 +43,13 @@ const CreateDocumentTypeComponent = props => {
               <th scope="col-3">Veiksmai</th>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>1</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Dokumento tipo pavadinimas</h6>
               </td>
-              <td scope="row">
+              <td>
                 <input
                   onChange={props.onTitleChange}
                   className="form-control form-control-sm italic-style"
@@ -59,13 +59,13 @@ const CreateDocumentTypeComponent = props => {
               </td>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6 />
               </td>
-              <td scope="row">
+              <td>
                 <h6 />
               </td>
-              <td scope="row">
+              <td>
                 <button
                   type="button"
                   className="btn btn-outline-success btn-sm document-button-style"

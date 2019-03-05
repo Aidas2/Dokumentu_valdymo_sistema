@@ -42,13 +42,13 @@ class AdministrationContainer extends Component {
               <th scope="col-3">Veiksmai</th>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>1</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Vartotojai</h6>
               </td>
-              <td scope="row">
+              <td>
                 <Link
                   to="/admin/users"
                   className="btn btn-outline-success btn-sm admin-button-style"
@@ -58,14 +58,14 @@ class AdministrationContainer extends Component {
               </td>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>2</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Vartotojų grupės</h6>
               </td>
 
-              <td scope="row">
+              <td>
                 <Link
                   to="/admin/usergroups"
                   className="btn btn-outline-success btn-sm admin-button-style"
@@ -75,13 +75,13 @@ class AdministrationContainer extends Component {
               </td>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>3</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Dokumentai</h6>
               </td>
-              <td scope="row">
+              <td>
                 <Link
                   to="/admin/docs"
                   className="btn btn-outline-success btn-sm admin-button-style"
@@ -91,13 +91,13 @@ class AdministrationContainer extends Component {
               </td>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>4</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Dokumentų tipai</h6>
               </td>
-              <td scope="row">
+              <td>
                 <Link
                   to="/admin/doctypes"
                   className="btn btn-outline-success btn-sm admin-button-style"

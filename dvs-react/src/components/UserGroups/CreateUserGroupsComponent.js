@@ -45,13 +45,13 @@ const CreateUserGroupsComponent = props => {
               <th className="col-6">Įvedimo laukas</th>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>1</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Vartotojų grupės pavadinimas</h6>
               </td>
-              <td scope="row">
+              <td>
                 <input
                   className=" form-control form-control-sm italic-style"
                   placeholder="Įveskite vartotojų grupės pavadinimą"
@@ -61,14 +61,14 @@ const CreateUserGroupsComponent = props => {
               </td>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>2</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Pasirinkite pateikti leidžiamų dokumentų tipus</h6>
               </td>
 
-              <td scope="row">
+              <td>
                 <DocumentTypesContainer
                   documentTypes={props.documentTypes}
                   onDocumentTypeChange={props.onSubmitTypesChange}
@@ -81,13 +81,13 @@ const CreateUserGroupsComponent = props => {
               </td>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>3</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Pasirinkite peržiūrėti leidžiamų dokumentų tipus</h6>
               </td>
-              <td scope="row">
+              <td>
                 <DocumentTypesContainer
                   documentTypes={props.documentTypes}
                   onDocumentTypeChange={props.onReviewTypesChange}
@@ -100,13 +100,13 @@ const CreateUserGroupsComponent = props => {
             </tr>
 
             <tr>
-              <td scope="row">
+              <td>
                 <h6 />
               </td>
-              <td scope="row">
+              <td>
                 <h6 />
               </td>
-              <td scope="row">
+              <td>
                 <button
                   type="button"
                   className="btn btn-outline-success btn-sm document-button-style"

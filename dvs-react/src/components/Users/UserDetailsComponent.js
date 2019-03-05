@@ -55,79 +55,79 @@ const UserDetailsComponent = props => {
               <th scope="col-6">Reikšmė</th>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>1</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Vardas</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>{firstName}</h6>
               </td>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>2</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Pavardė</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>{lastName}</h6>
               </td>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>3</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Unikalus vardas sistemoje</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>{username}</h6>
               </td>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>4</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Elektroninio pašto adresas</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>{emailAddress}</h6>
               </td>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>5</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Įdarbinimo data</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>{hireDate}</h6>
               </td>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>6</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Ar šis klientas turi dministratoriaus rolę?</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>{administrator}</h6>
               </td>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>7</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Vartotojo grupės</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6 className="list-style">{props.userGroups}</h6>
               </td>
             </tr>
