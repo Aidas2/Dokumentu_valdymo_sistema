@@ -10,19 +10,19 @@ class DocumentsContainer extends Component {
   state = {
     documents: [
       {
-        id: 1,
-        author: "username1",
-        documentState: "state",
-        documentTypeTitle: "type",
-        title: "title",
-        description: "desc",
-        creationDate: "creationData",
-        submissionDate: "submissionDate",
-        confirmationDate: "confirmationDate",
-        rejectionDate: "rejectionDate",
-        reviewer: "reviewer",
-        rejectionReason: "rejectionReason",
-        path: "path"
+        id: "",
+        author: "",
+        documentState: "",
+        documentTypeTitle: "",
+        title: "",
+        description: "",
+        creationDate: "",
+        submissionDate: "",
+        confirmationDate: "",
+        rejectionDate: "",
+        reviewer: "",
+        rejectionReason: "",
+        path: ""
       }
     ]
   };

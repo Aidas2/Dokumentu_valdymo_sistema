@@ -20,6 +20,8 @@ const DocumentsComponent = props => {
     rejectionReason,
     path
   } = props.documentDetails;
+
+  const linkToDOcumentDetails = "/admin/docs/" + id;
   return (
     <div className="row">
       <div className="col-1 documents-table-size">
@@ -52,7 +54,7 @@ export default DocumentsComponent;
           
         </div>
         <div className="col-2">
-          <p>{title}</p>
+          <Link to={linkToDOcumentDetails}>{title}</Link>
         </div>
         <div className="col-2">
           <p>{documentTypeTitle}</p>
