@@ -169,6 +169,11 @@ class FileUploadContainer extends Component {
     }
     return null;
   };
+  handleAttachmentRemoval = fileName => {
+    let files = this.state.file;
+    var filteredFiles = files.filter(file => file.name !== fileName);
+    this.setState({ file: filteredFiles });
+  };
 
   render() {
     console.log(
@@ -179,7 +184,19 @@ class FileUploadContainer extends Component {
       file => file.name !== this.state.file[0].name
     );
 
-    var attachmentsNames = attachments.map(file => file.name + " *** ");
+    var attachmentsNames = attachments.map(oneFile => {
+      return (
+        <spam>
+          {oneFile.name}
+          <button
+            // onClick={this.handleAttachmentRemoval(oneFile.name)}
+            className="btn btn-danger btn-sm"
+          >
+            x
+          </button>
+        </spam>
+      );
+    });
     console.log("########### attachments", attachments);
     console.log("########### attachmentsNames", attachmentsNames);
     console.log(
