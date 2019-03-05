@@ -32,12 +32,15 @@ public class DocumentGetCommand {
     }
 
 
-// constructior with double Document_State
-    public DocumentGetCommand(Long id, String authorUsername, String documentStateInLithuanian, String documentTypeTitleInLithuanian, String title, String description, Date creationDate, Date submissionDate, Date confirmationDate, Date rejectionDate, User reviewer, String rejectionReason, String path) {
+    // constructior with double Document_State
+    public DocumentGetCommand(Long id, String authorUsername, String documentState,
+                              String documentTypeTitleInLithuanian, String title, String description,
+                              Date creationDate, Date submissionDate, Date confirmationDate, Date rejectionDate,
+                              User reviewer, String rejectionReason, String path) {
         this.id = id;
         this.authorUsername = authorUsername;
         //this.documentStateInLithuanian = documentStateInLithuanian; //see remark bellow
-        setDocumentStateInLithuanian(documentStateInLithuanian);//its is not enough to do validation in setter, also this validation must be in constructor
+        this.documentStateInLithuanian = setDocumentStateInLithuanian(documentState);//its is not enough to do validation in setter, also this validation must be in constructor
         this.documentTypeTitleInLithuanian = documentTypeTitleInLithuanian;
         this.title = title;
         this.description = description;
@@ -70,17 +73,19 @@ public class DocumentGetCommand {
         return documentStateInLithuanian;
     }
 
-    public void setDocumentStateInLithuanian(String documentStateInLithuanian) {
-        if (documentStateInLithuanian.equals(DocumentState.CREATED)) {
-            this.documentStateInLithuanian = "SUKURTAS";
-        } else if (documentStateInLithuanian.equals(DocumentState.SUBMITTED)) {
-            this.documentStateInLithuanian = "PATEIKTAS";
-        } else if (documentStateInLithuanian.equals(DocumentState.CONFIRMED)) {
-            this.documentStateInLithuanian = "PATVIRTINTAS";
-        } else if (documentStateInLithuanian.equals(DocumentState.REJECTED)) {
-            this.documentStateInLithuanian = "ATMESTAS";
+    public String setDocumentStateInLithuanian(String documentState) {
+
+
+        if (documentState.equals(DocumentState.CREATED.toString())) {
+            return "SUKURTAS";
+        } else if (documentState.equals(DocumentState.SUBMITTED.toString())) {
+            return "PATEIKTAS";
+        } else if (documentState.equals(DocumentState.CONFIRMED.toString())) {
+            return "PATVIRTINTAS";
+        } else if (documentState.equals(DocumentState.REJECTED.toString())) {
+            return "ATMESTAS";
         } else {
-            this.documentStateInLithuanian = documentStateInLithuanian;
+            return documentState.toString();
         }
     }
 
