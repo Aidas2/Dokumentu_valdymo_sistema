@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import DocumentTypesContainer from "../FileUpload/DocumetTypesContainer";
 import { Link } from "react-router-dom";
@@ -21,7 +21,7 @@ const CreateUserGroupsComponent = props => {
 
         <h5 className="display-6 normal-padding second-navigation-style ">
           <Link to={"/"}>
-            <img src={logo} width="20" height="10" alt="logo icon"/>
+            <img src={logo} width="20" height="10" alt="logo icon" />
           </Link>
           &ensp;/ &ensp;
           <Link to={"/admin"} className="second-navigation">

@@ -66,7 +66,7 @@ class DocumentsContainer extends Component {
           </h2>
           <h5 className="display-6 normal-padding second-navigation-style ">
             <Link to={"/"}>
-              <img src={logo} width="20" height="10" alt="logo icon"/>
+              <img src={logo} width="20" height="10" alt="logo icon" />
             </Link>
             &ensp;/ &ensp;
             <Link to={"/docs"} className="second-navigation">
@@ -119,42 +119,3 @@ class DocumentsContainer extends Component {
 }
 
 export default DocumentsContainer;
-
-{
-  /*
-
-          <div className="container pl-0 ml-0">
-            <h4 className="display-6">Esami dokumentai</h4>
-
-            <div className="row">
-              <div className="col-1 ">
-                <p>
-                  <strong>ID</strong>
-                </p>
-               
-              </div>
-              <div className="col-2 ">
-                <p>
-                  <strong>Pavadinimas</strong>
-                </p>
-              </div>{" "}
-              <div className="col-2 ">
-                <p>
-                  <strong>Tipas</strong>
-                </p>
-              </div>
-              <div className="col-2 ">
-                <p>
-                  <strong>Būsena</strong>
-                </p>
-              </div>
-              <div className="col-2 ">
-                <p>
-                  <strong>Aprašymas</strong>
-                </p>
-              </div>
-            </div>
-          </div>
-          {documentsArrayToRender}
-          */
-}
