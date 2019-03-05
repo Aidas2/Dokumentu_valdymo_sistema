@@ -32,15 +32,6 @@ class UsersContainer extends Component {
       );
     });
 
-    var usersArrayToRenderID = this.state.users.map(oneUserObj => {
-      return (
-        <UsersComponent
-          key={oneUserObj.userId}
-          userDetails={oneUserObj.userId}
-        />
-      );
-    });
-
     return (
       <div>
         <div className="container-fluid m-2 ">

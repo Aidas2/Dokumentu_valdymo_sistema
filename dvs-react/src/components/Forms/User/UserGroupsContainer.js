@@ -45,7 +45,7 @@ class UserGroupsContainer extends Component {
     return (
       <select
         onChange={this.props.onUserGroupChange}
-        className="form-control col-6"
+        className="form-control col-6 pop-up-style"
         id="userGroupSelect"
       >
         {UserGroupsArrayToRender}

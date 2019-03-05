@@ -124,8 +124,10 @@ h5,
 .table-style-rounded {
   border-collapse: collapse;
   border-radius: 8px;
-  border-style: hidden; /* hide standard table (collapsed) border */
+  /*border-style: hidden;  hide standard table (collapsed) border */
   box-shadow: 5px 0 0px -1px rgb(94, 94, 94); /* this draws the table border  */
+
+  border-bottom: #d8d8d8 1px solid;
 }
 
 .logo {
@@ -215,6 +217,16 @@ h5,
 .logo-info {
   position: relative;
   display: inline-block;
+}
+
+.pop-up-style {
+  color: #4d4d33;
+  padding-top: 5px;
+  font-size: 14px;
+  font-family: sans serif;
+
+  border: #e2e2e2 1px solid;
+  font-weight: 400;
 }
 
 .logo-info .tooltiptext {
@@ -496,8 +508,16 @@ body::after {
   border-radius: 5px;
   border-right: 5px solid rgb(202, 202, 202);
   padding: 20px;
-
+  border-top: #d8d8d8 1px solid;
+  border-bottom: #d8d8d8 1px solid;
+  border-left: #d8d8d8 1px solid;
   font-family: sans serif;
+}
+
+.top-left-bottom-border {
+  border-top: #d8d8d8 1px solid;
+  border-bottom: #d8d8d8 1px solid;
+  border-left: #d8d8d8 1px solid;
 }
 
 .collapsed-style2 {
@@ -520,6 +540,10 @@ body::after {
   height: 500px; 
 }
 */
+
+.list-style {
+  list-style-type: none;
+}
 
 .side-bar-logo {
   width: 40px;

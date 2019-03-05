@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import DocumentTypesContainer from "../FileUpload/DocumetTypesContainer";
 import { Link } from "react-router-dom";
-
+import infoIcon from "../../images/info-icon.png";
 import logo from "../../images/home.png";
 
 const CreateUserGroupsComponent = props => {
@@ -11,6 +11,12 @@ const CreateUserGroupsComponent = props => {
       <div className="container-fluid m-2">
         <h2 className="display-6 normal-padding">
           Naujos vartotojų grupės kūrimas
+          <div className="logo-info">
+            <img src={infoIcon} className="info-icon-style" />
+            <span class="tooltiptext">
+              Šiame meniu galima kurti naujas vartotojų grupes.
+            </span>
+          </div>
         </h2>
 
         <h5 className="display-6 normal-padding second-navigation-style ">
@@ -31,8 +37,98 @@ const CreateUserGroupsComponent = props => {
           </Link>
         </h5>
 
-        <h3 className="display-6 ">Naujos vartotojų grupės kūrimas</h3>
-        <h5>Vartotojų grupės pavadinimas</h5>
+        <table className="table table-striped table-style-rounded">
+          <tbody>
+            <tr>
+              <th className="col-1">#</th>
+              <th className="col-5">Lauko pavadinimas</th>
+              <th className="col-6">Įvedimo laukas</th>
+            </tr>
+            <tr>
+              <td scope="row">
+                <h6>1</h6>
+              </td>
+              <td scope="row">
+                <h6>Vartotojų grupės pavadinimas</h6>
+              </td>
+              <td scope="row">
+                <input
+                  className=" form-control form-control-sm italic-style"
+                  placeholder="Įveskite vartotojų grupės pavadinimą"
+                  type="text"
+                  onChange={props.onTitleChange}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td scope="row">
+                <h6>2</h6>
+              </td>
+              <td scope="row">
+                <h6>Pasirinkite pateikti leidžiamų dokumentų tipus</h6>
+              </td>
+
+              <td scope="row">
+                <DocumentTypesContainer
+                  documentTypes={props.documentTypes}
+                  onDocumentTypeChange={props.onSubmitTypesChange}
+                />
+
+                <span className="italic-style-small">
+                  Pasirinkti pateikti leidžiami tipai:
+                  {props.selectedSubmissionTypesTitles}
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td scope="row">
+                <h6>3</h6>
+              </td>
+              <td scope="row">
+                <h6>Pasirinkite peržiūrėti leidžiamų dokumentų tipus</h6>
+              </td>
+              <td scope="row">
+                <DocumentTypesContainer
+                  documentTypes={props.documentTypes}
+                  onDocumentTypeChange={props.onReviewTypesChange}
+                />
+                <span className="italic-style-small">
+                  Pasirinkti leidžiami peržiūrėti tipai:{" "}
+                  {props.selectedReviewTypesTitles}
+                </span>
+              </td>
+            </tr>
+
+            <tr>
+              <td scope="row">
+                <h6 />
+              </td>
+              <td scope="row">
+                <h6 />
+              </td>
+              <td scope="row">
+                <button
+                  type="button"
+                  className="btn btn-outline-success btn-sm document-button-style"
+                  onClick={props.onSubmit}
+                >
+                  Kurti
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div className="container">{props.launchAlert}</div>
+    </div>
+  );
+};
+
+export default CreateUserGroupsComponent;
+
+{
+  /*
+ <h5>Vartotojų grupės pavadinimas</h5>
         <input
           onChange={props.onTitleChange}
           className="form-control col-4"
@@ -64,10 +160,5 @@ const CreateUserGroupsComponent = props => {
         >
           Kurti
         </button>
-      </div>
-      <div className="container">{props.launchAlert}</div>
-    </div>
-  );
-};
-
-export default CreateUserGroupsComponent;
+*/
+}
