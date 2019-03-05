@@ -12,8 +12,8 @@ class DocumentsContainer extends Component {
       {
         id: "",
         author: "",
-        documentState: "",
-        documentTypeTitle: "",
+        documentStateInLithuanian: "",
+        documentTypeTitleInLithuanian: "",
         title: "",
         description: "",
         creationDate: "",
