@@ -108,32 +108,6 @@ class AdministrationContainer extends Component {
             </tr>
           </tbody>
         </table>
-
-        {/*
-
-
-        <h6 className="display-6">
-          1. Kurti vartotojų grupes
-          <Link to="/admin/usergroups" className="btn btn-outline-success m-2">
-            Kurti
-          </Link>
-        </h6>
-
-        <h6 className="display-6">
-          2. Kurti dokumentų tipus
-          <Link to="/admin/doctypes" className="btn btn-outline-success m-2">
-            Kurti
-          </Link>
-        </h6>
-
-        <h6 className="display-6">
-          3. Registruoti naują vartotoją
-          <Link to="/admin/users" className="btn btn-outline-success m-2">
-            Registruoti
-          </Link>
-        </h6>
-
-*/}
       </div>
     );
   }

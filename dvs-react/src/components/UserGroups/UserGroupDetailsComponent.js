@@ -37,10 +37,6 @@ const UserGroupDetailsComponent = props => {
           <Link to={linkToUserGroupDetails} className="second-navigation">
             {title}
           </Link>
-          {/*/ &ensp;
-           <Link to={"/admin/newuser"} className="second-navigation">
-            Naujo vartotojo kūrimas
-          </Link> */}
         </h5>
 
         <table className="table table-striped table-style-rounded">
@@ -65,23 +61,3 @@ const UserGroupDetailsComponent = props => {
 };
 
 export default UserGroupDetailsComponent;
-
-{
-  /* 
-<h3 className="display-6 ">
-          Vartotojų grupėssss &nbsp;"
-          <strong>{title}"&nbsp;</strong>
-          inforamcija
-        </h3>
-        <div className="row mt-2 mb-2 ">
-          <div className="col ">
-            <h5>Pateikti leidžiamų dokumentų tipai</h5>
-            <h4>{submissionDocTypes}</h4>
-          </div>
-          <div className="col">
-            <h5>Peržiūrėti leidžiamų dokumentų tipai</h5>
-            <h4>{reviewDocTypes} </h4>
-          </div>
-        </div>
-*/
-}

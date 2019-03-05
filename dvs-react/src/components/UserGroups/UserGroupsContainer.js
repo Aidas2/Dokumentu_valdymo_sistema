@@ -98,7 +98,7 @@ class DocumentTypesContainer extends Component {
 
                     <tbody>
                       <tr>
-                        <td scope="row" className="table-action-size">
+                        <td className="table-action-size">
                           {userGroupsArrayToRenderId}
                         </td>
                         <td className="table-action-size">
@@ -110,22 +110,6 @@ class DocumentTypesContainer extends Component {
                 </ul>
               </div>
             </label>
-            {/*
-            <table className="table table-active">
-              <thead className="thead-dark">
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Vartotojų grupės pavadinimas</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td> {userGroupsArrayToRenderId}</td>
-                  <td>{userGroupsArrayToRenderTitle}</td>
-                </tr>
-              </tbody>
-            </table>
-*/}
           </div>
         </div>
       </div>

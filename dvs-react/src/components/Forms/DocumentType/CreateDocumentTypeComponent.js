@@ -60,10 +60,10 @@ const CreateDocumentTypeComponent = props => {
             </tr>
             <tr>
               <td>
-                <h6 />
+                <h6> </h6>
               </td>
               <td>
-                <h6 />
+                <h6> </h6>
               </td>
               <td>
                 <button

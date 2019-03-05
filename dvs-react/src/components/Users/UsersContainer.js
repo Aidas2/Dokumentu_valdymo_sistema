@@ -57,7 +57,7 @@ class UsersContainer extends Component {
               Vartotojai
             </Link>
           </h5>
-          {/*    <h3 className="display-6">Vartotojai</h3>  */}
+
           <Link to={"/admin/newuser/"} className="btn btn-outline-success m-2">
             Pridėti naują vartotoją
           </Link>

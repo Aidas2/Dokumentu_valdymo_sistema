@@ -74,24 +74,6 @@ class DocumentTypesContainer extends Component {
             Kurti naują dokumento tipą
           </Link>
           <p />
-          {/* ----------------------------- OLD table type
-          <table className="table table-active table-style-rounded">
-            <tr>
-              <th className=" col-6 Table-number-style">#</th>
-              <th className=" col-6 Table-action-style">
-                Dokumento tipo pavadinimas
-              </th>
-            </tr>
-
-            <tbody>
-              <tr>
-                <td> {docTypesArrayToRenderId}</td>
-                <td>{docTypesArrayToRenderTitle}</td>
-              </tr>
-            </tbody>
-          </table>
-
-         */}
 
           <input type="checkbox" id="Document-type-box" />
           <label id="Document-type-container" htmlFor="Document-type-box">
