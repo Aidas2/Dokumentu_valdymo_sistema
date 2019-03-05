@@ -217,6 +217,16 @@ h5,
   display: inline-block;
 }
 
+.pop-up-style {
+  color: #4d4d33;
+  padding-top: 5px;
+  font-size: 14px;
+  font-family: sans serif;
+
+  border: #e2e2e2 1px solid;
+  font-weight: 400;
+}
+
 .logo-info .tooltiptext {
   font-size: 10px;
   visibility: hidden;
