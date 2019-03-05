@@ -30,7 +30,7 @@ const DocumentDetailsComponent = props => {
           {title}
           <div className="logo-info">
             <img src={infoIcon} className="info-icon-style" />
-            <span class="tooltiptext">
+            <span className="tooltiptext">
               Šiame lange yra pateikta vartotojo informacija.
             </span>
           </div>

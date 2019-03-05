@@ -15,7 +15,7 @@ const UserGroupDetailsComponent = props => {
           {title}
           <div className="logo-info">
             <img src={infoIcon} className="info-icon-style" />
-            <span class="tooltiptext">
+            <span className="tooltiptext">
               Šiame meniu galima peržiūrėti vartotojų grupės leidžiamų pateikti
               ir peržiūrėti dokumentų tipus.
             </span>

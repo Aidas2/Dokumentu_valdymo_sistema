@@ -84,7 +84,7 @@ class FileViewContainer extends Component {
           className="btn btn-outline-success button-info"
         >
           <img src={reviewIcon} width="20" height="20" />
-          <span class="tooltiptext">Peržiūrėti</span>
+          <span className="tooltiptext">Peržiūrėti</span>
         </button>
         {/* <img src={this.state.fileURL} /> */}
 

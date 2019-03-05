@@ -12,7 +12,7 @@ const CreateUserComponent = props => {
           Naujo vartotojo kūrimas
           <div className="logo-info">
             <img src={infoIcon} className="info-icon-style" />
-            <span class="tooltiptext">
+            <span className="tooltiptext">
               Šiame meniu galima kurti naujus vartotojus.
             </span>
           </div>

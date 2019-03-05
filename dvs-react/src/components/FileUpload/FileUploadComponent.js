@@ -14,7 +14,7 @@ class FileUploadComponent extends Component {
           Dokumento įkėlimas
           <div className="logo-info">
             <img src={infoIcon} className="info-icon-style" />
-            <span class="tooltiptext">
+            <span className="tooltiptext">
               Šiame meniu pasirinkus norimus parametrus ir dokumentus, galima
               įkelti dokumentus.
             </span>

@@ -15,8 +15,8 @@ class AdministrationContainer extends Component {
         <h2 className="display-6 normal-padding">
           Administratoriaus rolė
           <div className="logo-info">
-            <img src={infoIcon} className="info-icon-style" />
-            <span class="tooltiptext">
+            <img src={infoIcon} className="info-icon-style" alt="image icon" />
+            <span className="tooltiptext">
               Šiame meniu yra pateiktos administratoriaus rolės. Čia galima
               kurti ir peržiūrėti vartotojus ir jų grupes, dokumentus ir jų
               tipus.

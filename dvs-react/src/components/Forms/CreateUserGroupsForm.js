@@ -60,7 +60,6 @@ class CreateUserGroupsForm extends Component {
           </Link>
         </h5>
 
-        {/*  <h3 class="display-6">Naujos grupės kūrimas</h3>  */}
         <input
           className="form-control"
           type="text"

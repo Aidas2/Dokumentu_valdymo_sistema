@@ -6,14 +6,14 @@ import main_icon from "../images/main_icon.png";
 const LandingPage = props => {
   return (
     <div className="container-fluid main-container  ">
-      <div class="row justify-content-between">
-        <div class=" col-lg-6 col-xl-6 col-md-6 ">
+      <div className="row justify-content-between">
+        <div className=" col-lg-6 col-xl-6 col-md-6 ">
           <div>
-            <img src={main_icon} class=" center-block picture-padding" />
+            <img src={main_icon} className=" center-block picture-padding" />
           </div>
         </div>
         <div
-          class=" col-lg-6 col-xl-5 col-md-6
+          className=" col-lg-6 col-xl-5 col-md-6
            login-style"
         >
           <h1 className="display-6 ">Įveskite prisijungimo informaciją</h1>

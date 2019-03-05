@@ -13,7 +13,7 @@ const CreateUserGroupsComponent = props => {
           Naujos vartotojų grupės kūrimas
           <div className="logo-info">
             <img src={infoIcon} className="info-icon-style" />
-            <span class="tooltiptext">
+            <span className="tooltiptext">
               Šiame meniu galima kurti naujas vartotojų grupes.
             </span>
           </div>

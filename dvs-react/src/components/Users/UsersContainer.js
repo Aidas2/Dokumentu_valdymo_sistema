@@ -39,7 +39,7 @@ class UsersContainer extends Component {
             Vartotojai
             <div className="logo-info">
               <img src={infoIcon} className="info-icon-style" />
-              <span class="tooltiptext">
+              <span className="tooltiptext">
                 Šiame meniu galima kurti ir peržiūrėti vartotojus.
               </span>
             </div>
@@ -64,7 +64,7 @@ class UsersContainer extends Component {
           <p />
           <input type="checkbox" id="Document-type-box" />
 
-          <label id="Document-type-container" for="Document-type-box">
+          <label id="Document-type-container" htmlFor="Document-type-box">
             <div id="button" className="collapsed-style">
               Paspauskite ant šio teksto, tam kad būtų galima peržiūrėti/
               paslėpti sukurtus vartotojus:

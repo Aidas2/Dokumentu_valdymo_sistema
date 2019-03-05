@@ -52,7 +52,7 @@ class DocumentTypesContainer extends Component {
             Vartotojų grupės
             <div className="logo-info">
               <img src={infoIcon} className="info-icon-style" />
-              <span class="tooltiptext">
+              <span className="tooltiptext">
                 Šiame meniu galima kurti ir peržiūrėti vartotojų grupes.
               </span>
             </div>
@@ -80,7 +80,7 @@ class DocumentTypesContainer extends Component {
           </Link>
           <div className="container pl-0 ml-0">
             <input type="checkbox" id="Document-type-box" />
-            <label id="Document-type-container" for="Document-type-box">
+            <label id="Document-type-container" htmlFor="Document-type-box">
               <div id="button " className="collapsed-style">
                 Paspauskite ant šio teksto, tam kad būtų galima peržiūrėti/
                 paslėpti sukurtas vartotojų grupes:

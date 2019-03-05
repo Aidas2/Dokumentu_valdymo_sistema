@@ -55,7 +55,7 @@ class FileDownloadConatainer extends Component {
         className="btn btn-outline-success button-info"
       >
         <img src={downloadIcon} width="20" height="20" />
-        <span class="tooltiptext">Atsisiųsti</span>
+        <span className="tooltiptext">Atsisiųsti</span>
       </button>
     );
   }
