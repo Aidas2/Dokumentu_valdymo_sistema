@@ -128,7 +128,7 @@ const UserDetailsComponent = props => {
                 <h6>Vartotojo grupės</h6>
               </td>
               <td scope="row">
-                <h6 className="userGroupsPadding">{props.userGroups}</h6>
+                <h6 className="list-style">{props.userGroups}</h6>
               </td>
             </tr>
           </tbody>
