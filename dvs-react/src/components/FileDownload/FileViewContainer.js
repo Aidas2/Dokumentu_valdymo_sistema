@@ -52,7 +52,13 @@ class FileViewContainer extends Component {
     // const testUrl = URL.createObjectURL("Labas");
 
     // const obj = this.state.file;
-    window.open("testing");
+    // window.open("testing");
+    const link = document.createElement("a");
+    link.href =
+      "http://localhost:8081/files/view?documentId=" + this.props.documentId;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
   };
 
   // var funkcija = (response, status, xhr) => {
