@@ -25,14 +25,13 @@ class DocumentTypesContainer extends Component {
   }
 
   render() {
-    var userGroupsArrayToRenderId = this.state.userGroups.map(oneGroupObj => {
-      return (
-        <UserGroupsComponent
-          key={oneGroupObj.title}
-          groupId={oneGroupObj.title}
-        />
-      );
-    });
+    var userGroupsArrayToRenderId = this.state.userGroups.map(
+      (oneGroupObj, index) => {
+        return (
+          <UserGroupsComponent key={oneGroupObj.title} groupId={index + 1} />
+        );
+      }
+    );
 
     var userGroupsArrayToRenderTitle = this.state.userGroups.map(
       oneGroupObj => {
