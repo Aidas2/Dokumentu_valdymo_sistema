@@ -88,14 +88,18 @@ class CreateUserGroupsContainer extends Component {
     this.handleCloseAlert();
 
     let submitDocumentType = this.state.submitDocumentType;
-    submitDocumentType.push(e.target.value);
+    submitDocumentType.includes(e.target.value)
+      ? console.log("This type has already been selected")
+      : submitDocumentType.push(e.target.value);
     this.setState({ submitDocumentType });
   };
   handleReviewDocumentTypeChange = e => {
     this.handleCloseAlert();
 
     let reviewDocumentType = this.state.reviewDocumentType;
-    reviewDocumentType.push(e.target.value);
+    reviewDocumentType.includes(e.target.value)
+      ? console.log("This type has already been selected")
+      : reviewDocumentType.push(e.target.value);
     this.setState({ reviewDocumentType });
   };
   handleSubmitTypeRemoval = type => {
