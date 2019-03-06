@@ -174,8 +174,19 @@ class FileUploadContainer extends Component {
     var filteredFiles = files.filter(file => file.name !== fileName);
     this.setState({ file: filteredFiles });
   };
+  // withHandlers = () => ({
+  //   handleClick: props => (value1, value2) => event => {
+  //     console.log(event);
+  //     alert(value1 + " was clicked!");
+  //     props.doSomething(value2);
+  //   }
+  // });
 
+  // static propTypes = {
+  //   handleClick: PropTypes.func
+  // };
   render() {
+    const { handleClick } = this.props;
     console.log(
       "render() inside DocumentTYpesCOntainer >>>>>>>>>> this.state.documetTypes>>>>.",
       this.state.documentTypes
@@ -186,10 +197,10 @@ class FileUploadContainer extends Component {
 
     var attachmentsNames = attachments.map(oneFile => {
       return (
-        <spam>
+        <spam key={oneFile.name}>
           {oneFile.name}
           <button
-            // onClick={this.handleAttachmentRemoval(oneFile.name)}
+            onClick={() => this.handleAttachmentRemoval(oneFile.name)}
             className="btn btn-danger btn-sm"
           >
             x
