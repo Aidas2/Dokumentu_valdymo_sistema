@@ -41,16 +41,19 @@ class DocumentsContainer extends Component {
   handleDocumentDownload = () => {};
   handleDocumentView = () => {};
   render() {
-    var documentsArrayToRender = this.state.documents.map(oneDocumentObj => {
-      return (
-        <DocumentsComponent
-          key={oneDocumentObj.id}
-          documentDetails={oneDocumentObj}
-          // onDocumentDownload={this.handleDocumentDownload}
-          // onDocumentView={this.handleDocumentView}
-        />
-      );
-    });
+    var documentsArrayToRender = this.state.documents.map(
+      (oneDocumentObj, index) => {
+        return (
+          <DocumentsComponent
+            key={oneDocumentObj.id}
+            documentDetails={oneDocumentObj}
+            index={index + 1}
+            // onDocumentDownload={this.handleDocumentDownload}
+            // onDocumentView={this.handleDocumentView}
+          />
+        );
+      }
+    );
     return (
       <div>
         <div className="container-fluid m-2 ">
@@ -67,6 +70,10 @@ class DocumentsContainer extends Component {
           <h5 className="display-6 normal-padding second-navigation-style ">
             <Link to={"/"}>
               <img src={logo} width="20" height="10" alt="logo icon" />
+            </Link>
+            &ensp;/ &ensp;
+            <Link to={"/admin"} className="second-navigation">
+              Administratoriaus rolė
             </Link>
             &ensp;/ &ensp;
             <Link to={"/docs"} className="second-navigation">
@@ -89,7 +96,7 @@ class DocumentsContainer extends Component {
                 <div className="table table-active table-style-rounded">
                   <div className="container-fluid users-padding-bottom">
                     <div className="row table-active table-style-rounded ">
-                      <div className="col-1  users-table-number-style ">ID</div>
+                      <div className="col-1  users-table-number-style ">#</div>
                       <div className="col-2   users-table-middle-style">
                         Pavadinimas
                       </div>
