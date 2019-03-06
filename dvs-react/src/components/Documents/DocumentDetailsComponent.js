@@ -4,6 +4,7 @@ import logo from "../../images/home.png";
 import { Link } from "react-router-dom";
 import infoIcon from "../../images/info-icon.png";
 import FileDownloadConatainer from "../FileDownload/FileDownloadContainer";
+import FileViewContainer from "../FileDownload/FileViewContainer";
 
 const DocumentDetailsComponent = props => {
   var {
@@ -187,7 +188,11 @@ const DocumentDetailsComponent = props => {
             </tr>
             <tr>
               <td>
-                <h6 />
+                <h6>
+                  <FileViewContainer documentId={id} />
+                  &ensp;
+                  <FileDownloadConatainer documentId={id} />
+                </h6>
               </td>
               <td>
                 <h6>
@@ -196,19 +201,7 @@ const DocumentDetailsComponent = props => {
                 </h6>
               </td>
               <td>
-                <h6>{}</h6>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <h6 />
-              </td>
-              <td>
-                <h6>
-                  <button className="btn btn-secondary ">Peržiūrėti</button>
-                  &ensp;
-                  <FileDownloadConatainer documentId={id} />
-                </h6>
+                <h6>{/* &ensp; */}</h6>
               </td>
               <td>
                 <h6>{}</h6>

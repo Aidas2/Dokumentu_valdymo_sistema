@@ -82,13 +82,20 @@ class FileViewContainer extends Component {
     // console.log("file ---------- ", this.state.file);
 
     return (
-      <div>
+      <div style={{ display: "inline" }}>
         {/* <object data={this.state.response} type="application/pdf" /> */}
         <button
+          // style={{ display: "inline" }}
           onClick={this.viewFile}
-          className="btn btn-outline-success button-info"
+          className="btn btn-outline-success button-info "
         >
-          <img src={reviewIcon} width="20" height="20" alt="review icon" />
+          <img
+            src={reviewIcon}
+            width="20"
+            height="20"
+            alt="review icon"
+            // style={{ display: "inline" }}
+          />
           <span className="tooltiptext">Peržiūrėti</span>
         </button>
         {/* <img src={this.state.fileURL} /> */}

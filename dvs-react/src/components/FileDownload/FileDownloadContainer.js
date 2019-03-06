@@ -51,10 +51,17 @@ class FileDownloadConatainer extends Component {
     );
     return (
       <button
+        style={{ display: "inline" }}
         onClick={this.downloadFile}
-        className="btn btn-outline-success button-info"
+        className="btn btn-outline-success button-info "
       >
-        <img src={downloadIcon} width="20" height="20" alt="download icon" />
+        <img
+          src={downloadIcon}
+          width="20"
+          height="20"
+          alt="download icon"
+          // style={{ display: "inline" }}
+        />
         <span className="tooltiptext">Atsisiųsti</span>
       </button>
     );
