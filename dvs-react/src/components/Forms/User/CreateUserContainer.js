@@ -107,7 +107,9 @@ class CreateUserContainer extends Component {
     this.handleCloseAlert();
 
     let userGroups = this.state.userGroups;
-    userGroups.push(e.target.value);
+    userGroups.includes(e.target.value)
+      ? console.log("This userGroup has already been selected")
+      : userGroups.push(e.target.value);
     this.setState({ userGroups: userGroups });
   };
 
