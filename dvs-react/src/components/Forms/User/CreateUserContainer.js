@@ -37,19 +37,6 @@ class CreateUserContainer extends Component {
   }
 
   handleSubmit = () => {
-    // axios
-    //   .post("http://localhost:8081/api/doctypes", {
-    //     title: this.state.title
-    //   })
-    //   .then(response => {
-    //     console.log(response);
-    //     console.log("PO sekmingo submito state.sth");
-    //     // this.setState({ msg: true });
-    //   })
-    //   .catch(function(error) {
-    //     console.log(error);
-    //   });
-    console.log("========================Submit happened");
     axios
       .post("http://localhost:8081/api/users", {
         administrator: this.state.administrator,
@@ -60,15 +47,13 @@ class CreateUserContainer extends Component {
         password: this.state.password,
         username: this.state.username,
         userGroupTitle: this.state.userGroups
-        // id: 4
       })
       .then(response => {
-        const uploadStatus = "Type was created successfully";
+        const uploadStatus = "User was created successfully";
         console.log("upload status >>>>>>>>>> ", uploadStatus);
         this.setState({ msg: true });
       })
       .catch(function(error) {
-        //it works without catch block as well
         console.log(error);
         if (error.response) {
           //HTTP error happened
@@ -81,7 +66,6 @@ class CreateUserContainer extends Component {
           console.log("Upload error. HTTP error/status code=", error.message);
         }
       });
-    console.log(">>>>>>>>>Submit happened");
   };
 
   handleAdministratorChange = e => {
@@ -124,7 +108,7 @@ class CreateUserContainer extends Component {
 
     let userGroups = this.state.userGroups;
     userGroups.push(e.target.value);
-    this.setState({ userGroup: userGroups });
+    this.setState({ userGroups: userGroups });
   };
 
   launchAlert = () => {
@@ -150,11 +134,29 @@ class CreateUserContainer extends Component {
   handleCloseAlert = () => {
     this.setState({ msg: false });
   };
+  handleUserGroupRemoval = group => {
+    let userGroups = this.state.userGroups;
+    var filteredUserGroups = userGroups.filter(oneGroup => oneGroup !== group);
+    this.setState({ userGroups: filteredUserGroups });
+  };
 
   render() {
-    var userGroupsTitlesToDisplay = this.state.userGroups.map(
-      group => group + " *** "
-    );
+    // var userGroupsTitlesToDisplay = this.state.userGroups.map(
+    //   group => group + " *** "
+    // );
+    var userGroupsTitlesToDisplay = this.state.userGroups.map(group => {
+      return (
+        <span key={group}>
+          &nbsp;{group}&nbsp;
+          <button
+            onClick={() => this.handleUserGroupRemoval(group)}
+            className="btn btn-danger btn-sm"
+          >
+            x
+          </button>
+        </span>
+      );
+    });
 
     console.log(
       this.state,
