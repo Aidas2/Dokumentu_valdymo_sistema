@@ -199,7 +199,7 @@ class FileUploadContainer extends Component {
 
     var attachmentsNames = attachments.map(oneFile => {
       return (
-        <spam key={oneFile.name}>
+        <span key={oneFile.name}>
           &nbsp;{oneFile.name}&nbsp;
           <button
             onClick={() => this.handleAttachmentRemoval(oneFile.name)}
@@ -207,7 +207,7 @@ class FileUploadContainer extends Component {
           >
             x
           </button>
-        </spam>
+        </span>
       );
     });
     console.log("########### attachments", attachments);
