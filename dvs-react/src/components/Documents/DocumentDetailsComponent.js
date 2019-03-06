@@ -184,6 +184,35 @@ const DocumentDetailsComponent = props => {
                 <h6>{}</h6>
               </td>
             </tr>
+            <tr>
+              <td>
+                <h6 />
+              </td>
+              <td>
+                <h6>
+                  <button className="btn btn-success ">Priimti</button>&ensp;
+                  <button className="btn btn-danger">Atmesti</button>&ensp;
+                </h6>
+              </td>
+              <td>
+                <h6>{}</h6>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h6 />
+              </td>
+              <td>
+                <h6>
+                  <button className="btn btn-secondary ">Peržiūrėti</button>
+                  &ensp;
+                  <button className="btn btn-dark">Atsisųsti</button>&ensp;
+                </h6>
+              </td>
+              <td>
+                <h6>{}</h6>
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
