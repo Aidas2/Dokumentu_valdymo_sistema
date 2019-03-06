@@ -201,10 +201,18 @@ const DocumentDetailsComponent = props => {
                 </h6>
               </td>
               <td>
-                <h6>{/* &ensp; */}</h6>
-              </td>
-              <td>
-                <h6>{}</h6>
+                <h6>
+                  <div>
+                    Atmetimo priežastis&ensp;
+                    <br />
+                    <textarea
+                      // rows="3"
+                      type="textarea"
+                      style={{ width: "700px", height: "50px" }}
+                      placeholder="Įveskite atmetimo priežastį"
+                    />
+                  </div>
+                </h6>
               </td>
             </tr>
           </tbody>
