@@ -26,9 +26,13 @@ class UsersContainer extends Component {
       "ComponentDidMount inside render() >>>>>>>>>> this.state>>>>.",
       this.state
     );
-    var usersArrayToRender = this.state.users.map(oneUserObj => {
+    var usersArrayToRender = this.state.users.map((oneUserObj, index) => {
       return (
-        <UsersComponent key={oneUserObj.userId} userDetails={oneUserObj} />
+        <UsersComponent
+          key={oneUserObj.userId}
+          userDetails={oneUserObj}
+          index={index + 1}
+        />
       );
     });
 
@@ -72,7 +76,7 @@ class UsersContainer extends Component {
                 <div className="table table-active table-style-rounded">
                   <div className="container-fluid users-padding-bottom">
                     <div className="row table-active table-style-rounded ">
-                      <div className="col-1  users-table-number-style ">ID</div>
+                      <div className="col-1  users-table-number-style ">#</div>
                       <div className="col-2   users-table-middle-style">
                         Prisijungimo vardas
                       </div>

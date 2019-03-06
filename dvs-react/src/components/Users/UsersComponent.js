@@ -18,7 +18,7 @@ const UsersComponent = props => {
 
   return (
     <div className="row">
-      <div className="col-1  username-table-action-size  ">{userId}</div>
+      <div className="col-1  username-table-action-size  ">{props.index}</div>
 
       <div className="col-2  col-width username-table-action-size">
         <Link to={linkToIndividualUserDetails}>{username}</Link>
