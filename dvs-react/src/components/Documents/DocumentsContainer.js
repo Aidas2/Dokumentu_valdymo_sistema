@@ -57,8 +57,8 @@ class DocumentsContainer extends Component {
           <h2 className="display-6 normal-padding">
             Dokumentai
             <div className="logo-info">
-              <img src={infoIcon} className="info-icon-style" />
-              <span class="tooltiptext">
+              <img src={infoIcon} className="info-icon-style" alt="info icon" />
+              <span className="tooltiptext">
                 Šiame meniu galima įkelti naujus dokumentus ir peržiūrėti jau
                 esamus dokumentus.
               </span>
@@ -66,7 +66,7 @@ class DocumentsContainer extends Component {
           </h2>
           <h5 className="display-6 normal-padding second-navigation-style ">
             <Link to={"/"}>
-              <img src={logo} width="20" height="10" />
+              <img src={logo} width="20" height="10" alt="logo icon" />
             </Link>
             &ensp;/ &ensp;
             <Link to={"/docs"} className="second-navigation">
@@ -81,12 +81,12 @@ class DocumentsContainer extends Component {
           <p />
           <input type="checkbox" id="Document-type-box" />
 
-          <label id="Document-type-container" for="Document-type-box">
+          <label id="Document-type-container" htmlFor="Document-type-box">
             <div id="button" className="collapsed-style">
               Paspauskite ant šio teksto, tam kad būtų galima peržiūrėti/
               paslėpti dokumentus:
               <ul id="Document-type-bar-appear" className="navbar-nav mr-auto">
-                <table className="table table-active table-style-rounded">
+                <div className="table table-active table-style-rounded">
                   <div className="container-fluid users-padding-bottom">
                     <div className="row table-active table-style-rounded ">
                       <div className="col-1  users-table-number-style ">ID</div>
@@ -108,7 +108,7 @@ class DocumentsContainer extends Component {
                     </div>
                     {documentsArrayToRender}
                   </div>
-                </table>
+                </div>
               </ul>
             </div>
           </label>
@@ -119,42 +119,3 @@ class DocumentsContainer extends Component {
 }
 
 export default DocumentsContainer;
-
-{
-  /*
-
-          <div className="container pl-0 ml-0">
-            <h4 className="display-6">Esami dokumentai</h4>
-
-            <div className="row">
-              <div className="col-1 ">
-                <p>
-                  <strong>ID</strong>
-                </p>
-               
-              </div>
-              <div className="col-2 ">
-                <p>
-                  <strong>Pavadinimas</strong>
-                </p>
-              </div>{" "}
-              <div className="col-2 ">
-                <p>
-                  <strong>Tipas</strong>
-                </p>
-              </div>
-              <div className="col-2 ">
-                <p>
-                  <strong>Būsena</strong>
-                </p>
-              </div>
-              <div className="col-2 ">
-                <p>
-                  <strong>Aprašymas</strong>
-                </p>
-              </div>
-            </div>
-          </div>
-          {documentsArrayToRender}
-          */
-}

@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React from "react";
 
 const DocumetTypesComponent = props => {
   return <option> {props.typeObject.title} </option>;

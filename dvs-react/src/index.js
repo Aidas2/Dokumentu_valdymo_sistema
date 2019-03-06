@@ -5,7 +5,7 @@ import { Switch, Route } from "react-router";
 import { BrowserRouter } from "react-router-dom";
 import UserGroupsContainer from "./components/UserGroups/UserGroupsContainer";
 import AdministrationContainer from "./components/Administration/AdministrationContainer";
-import LandingPage from "./components/LandingPage";
+//import LandingPage from "./components/LandingPage";
 import App from "./App";
 import CreateUserGroupsContainer from "./components/UserGroups/CreateUserGroupsContainer";
 import FileUploadContainer from "./components/FileUpload/FileUploadContainer";
@@ -18,7 +18,7 @@ import LandingPageContainer from "./components/LandingPageContainer";
 import DocumentsContainer from "./components/Documents/DocumentsContainer";
 import UserDetailsContainer from "./components/Users/UserDetailsContainer";
 import UserGroupDetailsContainer from "./components/UserGroups/UserGroupDetailsContainer";
-import styles from "./styles.css";
+import "./styles.css";
 import RenderResponse from "./components/FileDownload/RenderResponse";
 import DocumentDetailsContainer from "./components/Documents/DocumentDetailsContainer";
 

@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React from "react";
+
 import logo from "../../../images/home.png";
 import { Link } from "react-router-dom";
 import UserGroupsContainer from "./UserGroupsContainer";
@@ -11,15 +11,15 @@ const CreateUserComponent = props => {
         <h2 className="display-6 normal-padding">
           Naujo vartotojo kūrimas
           <div className="logo-info">
-            <img src={infoIcon} className="info-icon-style" />
-            <span class="tooltiptext">
+            <img src={infoIcon} className="info-icon-style" alt="info icon" />
+            <span className="tooltiptext">
               Šiame meniu galima kurti naujus vartotojus.
             </span>
           </div>
         </h2>
         <h5 className="display-6 normal-padding second-navigation-style ">
           <Link to={"/"}>
-            <img src={logo} width="20" height="10" />
+            <img src={logo} width="20" height="10" alt="logo icon" />
           </Link>
           &ensp;/ &ensp;
           <Link to={"/admin"} className="second-navigation">
@@ -42,13 +42,13 @@ const CreateUserComponent = props => {
               <th className="col-6">Įvedimo laukas</th>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>1</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Vardas</h6>
               </td>
-              <td scope="row">
+              <td>
                 <input
                   className=" form-control form-control-sm italic-style"
                   placeholder="Įveskite vartotojo vardą"
@@ -58,14 +58,14 @@ const CreateUserComponent = props => {
               </td>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>2</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Pavardė</h6>
               </td>
 
-              <td scope="row">
+              <td>
                 <input
                   className="form-control form-control-sm italic-style"
                   placeholder="Įveskite vartotojo pavardę"
@@ -75,13 +75,13 @@ const CreateUserComponent = props => {
               </td>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>3</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Unikalus vardas sistemoje</h6>
               </td>
-              <td scope="row">
+              <td>
                 <input
                   className="form-control form-control-sm italic-style"
                   placeholder="Įveskite prisijungimo vardą"
@@ -91,13 +91,13 @@ const CreateUserComponent = props => {
               </td>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>4</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Elektroninio pašto adresas</h6>
               </td>
-              <td scope="row">
+              <td>
                 <input
                   className="form-control form-control-sm italic-style"
                   placeholder="Įveskite vartotojo el. pašto adresą"
@@ -108,14 +108,14 @@ const CreateUserComponent = props => {
             </tr>
 
             <tr>
-              <td scope="row">
+              <td>
                 <h6>5</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Įdarbinimo data</h6>
               </td>
 
-              <td scope="row">
+              <td>
                 <input
                   className="form-control form-control-sm italic-style"
                   placeholder="Įveskite vartotojo įdarbinimo datą"
@@ -125,14 +125,14 @@ const CreateUserComponent = props => {
               </td>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>6</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Prisijungimo slaptažodis</h6>
               </td>
 
-              <td scope="row">
+              <td>
                 <input
                   className="form-control form-control-sm italic-style"
                   placeholder="Įveskite vartotojo prisijungimo slaptažodį"
@@ -143,14 +143,14 @@ const CreateUserComponent = props => {
               </td>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>7</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Administratoriaus rolė</h6>
               </td>
 
-              <td scope="row">
+              <td>
                 <select
                   onChange={props.onAdministratorChange}
                   className="col-6 form-control form-control-sm italic-style "
@@ -162,14 +162,14 @@ const CreateUserComponent = props => {
               </td>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>8</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Vartotojo grupė</h6>
               </td>
 
-              <td scope="row">
+              <td>
                 <UserGroupsContainer
                   userGroups={props.userGroups}
                   onUserGroupChange={props.onUserGroupChange}
@@ -180,13 +180,13 @@ const CreateUserComponent = props => {
               </td>
             </tr>
             <tr>
-              <td scope="row">
-                <h6 />
+              <td>
+                <h6> </h6>
               </td>
-              <td scope="row">
-                <h6 />
+              <td>
+                <h6> </h6>
               </td>
-              <td scope="row">
+              <td>
                 <button
                   type="button"
                   className="btn btn-outline-success btn-sm document-button-style"
@@ -205,111 +205,3 @@ const CreateUserComponent = props => {
 };
 
 export default CreateUserComponent;
-
-{
-  /* 
-
-<div className="row mt-2 mb-2 ">
-<div className="col ">
-  Vardas
-  <input
-    type="text"
-    className="form-control"
-    placeholder="Įveskite vartotojo vardą"
-    
-    onChange={props.onFirstNameChange}
-  />
-</div>
-<div className="col">
-  <h5>Pavardė</h5>
-
-  <input
-    type="text"
-    className="form-control"
-    placeholder="Įveskite vartotojo pavardę"
-    onChange={props.onLastNameChange}
-  />
-</div>
-</div>{" "}
-<div className="row mt-2 mb-2 ">
-<div className="col ">
-  <h5>Unikalus vardas sistemoje</h5>
-  <input
-    type="text"
-    className="form-control"
-    placeholder="Įveskite prisijungimo vardą"
-    
-    onChange={props.onUsernameChange}
-  />
-</div>
-<div className="col">
-  <h5>Elektroninoi pašto adresas</h5>
-
-  <input
-    type="email"
-    className="form-control"
-    placeholder="Įveskite vartotojo el. pašto adresą"
-    onChange={props.onEmailAddressChange}
-  />
-</div>
-</div>{" "}
-<div className="row mt-2 mb-2 ">
-<div className="col ">
-  <h5>Įdarbinimo data</h5>
-  <input
-    type="date"
-    className="form-control"
-    placeholder="Įveskite vartotojo įdarbinimo datą"
-    
-    onChange={props.onHireDateChange}
-  />
-</div>
-<div className="col">
-  <h5>Prisijungimo slaptažodis</h5>
-
-  <input
-    type="password"
-    className="form-control"
-    placeholder="Įveskite vartotojo prisijungimo slaptažodį"
-    onChange={props.onPasswordChange}
-    required
-  />
-</div>
-</div>
-<div className="row mt-2 mb-2 ">
-<div className="col ">
-  <h5>Administratoriaus rolė</h5>
- 
-
-  <select
-    onChange={props.onAdministratorChange}
-    className="form-control "
-    id="documentTypeSelect"
-  >
-    <option value="false">Ne</option>
-    <option value="true">Taip</option>
-  </select>
-</div>
-<div className="col">
-  <h5>Vartotojo grupė</h5>
-
-  <UserGroupsContainer
-    userGroups={props.userGroups}
-    onUserGroupChange={props.onUserGroupChange}
-  />
-  <span className="italic-style-small">
-    Pasirinktos grupės: {props.userGroupsTitles}
-  </span>
-</div>
-</div>
-
-<button
-onClick={props.onSubmit}
-className="btn btn-outline-success m-2"
->
-Kurti
-</button>
-
-
-*/
-}

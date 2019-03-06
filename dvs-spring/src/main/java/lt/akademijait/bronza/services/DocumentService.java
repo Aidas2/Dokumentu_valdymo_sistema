@@ -1,5 +1,6 @@
 package lt.akademijait.bronza.services;
 
+import lombok.extern.slf4j.Slf4j;
 import lt.akademijait.bronza.dto.document.DocumentCreateCommand;
 import lt.akademijait.bronza.dto.document.DocumentGetCommand;
 import lt.akademijait.bronza.dto.document.DocumentSetStateCommand;
@@ -13,8 +14,6 @@ import lt.akademijait.bronza.repositories.DocumentRepository;
 import lt.akademijait.bronza.repositories.DocumentTypeRepository;
 import lt.akademijait.bronza.repositories.UserGroupRepository;
 import lt.akademijait.bronza.repositories.UserRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
@@ -26,6 +25,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
+@Slf4j
 public class DocumentService {
 
     @Autowired
@@ -37,13 +37,13 @@ public class DocumentService {
     @Autowired
     private UserGroupRepository userGroupRepository;
 
-    private  final static Logger logger = LoggerFactory.getLogger(DocumentService.class);
+    //private  final static Logger logger = LoggerFactory.getLogger(DocumentService.class);
     //private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     //GET ALL DOCUMENTS ================================================================================================
     @Transactional(readOnly = true)
     public List<DocumentGetCommand> getAllDocuments() {
-        logger.info("Gotten all documents");
+        log.info("Gotten all documents");
         return documentRepository.findAll()
                 .stream()
                 .map((document) -> new DocumentGetCommand(
@@ -59,7 +59,8 @@ public class DocumentService {
                         document.getRejectionDate(),
                         document.getReviewer(),
                         document.getRejectionReason(),
-                        document.getPath()
+                        document.getPath(),
+                        document.getAttachments()
                 )).collect(Collectors.toList());
 
 
@@ -69,7 +70,7 @@ public class DocumentService {
     @Transactional(readOnly = true)
     public DocumentGetCommand getDocumentById(Long id) {
         Document document = documentRepository.findById(id).orElse(null);
-        logger.info("Gotten all documents by this id: " + id);
+        log.info("Gotten all documents by this id: " + id);
         //logger.error("null "); try/catch; luzimo pvz: skirtingi duomenu tipai (Long ir string)
         return new DocumentGetCommand(
                 document.getId(),
@@ -84,14 +85,15 @@ public class DocumentService {
                 document.getRejectionDate(),
                 document.getReviewer(),
                 document.getRejectionReason(),
-                document.getPath()
+                document.getPath(),
+                document.getAttachments()
         );
     }
 
     //GET SUBMITTED DOCUMENTS (with filter) ============================================================================
     @Transactional(readOnly = true)
     public List<DocumentGetCommand> getSubmittedDocuments() {
-        logger.info("Gotten all documents by this state: " + DocumentState.SUBMITTED);
+        log.info("Gotten all documents by this state: " + DocumentState.SUBMITTED);
         return  documentRepository.findAll()
                 .stream()
                 .filter(document -> document.getDocumentState().equals(DocumentState.SUBMITTED))
@@ -109,14 +111,15 @@ public class DocumentService {
                         document.getRejectionDate(),
                         document.getReviewer(),
                         document.getRejectionReason(),
-                        document.getPath()
+                        document.getPath(),
+                        document.getAttachments()
                 )).collect(Collectors.toList());
     }
 
     //GET CONFIRMED DOCUMENTS (with filter) ============================================================================
     @Transactional(readOnly = true)
     public List<DocumentGetCommand> getConfirmedDocuments() {
-        logger.info("Gotten all documents by this state: " + DocumentState.CONFIRMED);
+        log.info("Gotten all documents by this state: " + DocumentState.CONFIRMED);
         return  documentRepository.findAll()
                 .stream()
                 .filter(document -> document.getDocumentState().equals(DocumentState.CONFIRMED))
@@ -133,14 +136,15 @@ public class DocumentService {
                         document.getRejectionDate(),
                         document.getReviewer(),
                         document.getRejectionReason(),
-                        document.getPath()
+                        document.getPath(),
+                        document.getAttachments()
                 )).collect(Collectors.toList());
     }
 
     //GET REJECTED DOCUMENTS (with filter) ============================================================================
     @Transactional(readOnly = true)
     public List<DocumentGetCommand> getRejectedDocuments() {
-        logger.info("Gotten all documents by this state: " + DocumentState.REJECTED);
+        log.info("Gotten all documents by this state: " + DocumentState.REJECTED);
         return  documentRepository.findAll()
                 .stream()
                 .filter(document -> document.getDocumentState().equals(DocumentState.REJECTED))
@@ -157,7 +161,8 @@ public class DocumentService {
                         document.getRejectionDate(),
                         document.getReviewer(),
                         document.getRejectionReason(),
-                        document.getPath()
+                        document.getPath(),
+                        document.getAttachments()
                 )).collect(Collectors.toList());
     }
 
@@ -165,7 +170,7 @@ public class DocumentService {
     //GET DOCUMENTS BY SPECIFIED STATE (with filter) ===========================================================
     @Transactional(readOnly = true)
     public List<DocumentGetCommand> getAllDocumentsByDocumentState(DocumentState documentState) {
-        logger.info("Gotten all documents by this state: " + documentState);
+        log.info("Gotten all documents by this state: " + documentState);
         return  documentRepository.findAll()
                 .stream()
                 .filter(document -> document.getDocumentState().equals(documentState))
@@ -182,14 +187,15 @@ public class DocumentService {
                         document.getRejectionDate(),
                         document.getReviewer(),
                         document.getRejectionReason(),
-                        document.getPath()
+                        document.getPath(),
+                        document.getAttachments()
                 )).collect(Collectors.toList());
     }
 
     //GET DOCUMENTS OF SPECIFIC DOCUMENT_TYPE. Version_01 (passing object) ================================================
     @Transactional(readOnly = true)
     public List<DocumentGetCommand> getAllDocumentsByDocumentType1(DocumentType documentType) {
-    logger.info("Gotten all documents by this type: " + documentType);
+    log.info("Gotten all documents by this type: " + documentType);
         return  documentRepository.findAll()
                 .stream()
                 .filter(document -> document.getDocumentType().equals(documentType))
@@ -207,7 +213,8 @@ public class DocumentService {
                         document.getRejectionDate(),
                         document.getReviewer(),
                         document.getRejectionReason(),
-                        document.getPath()
+                        document.getPath(),
+                        document.getAttachments()
                 )).collect(Collectors.toList());
     }
 
@@ -215,7 +222,7 @@ public class DocumentService {
     //GET DOCUMENTS OF SPECIFIC DOCUMENT_TYPE. Version_02 (passing String) ====================================================
     @Transactional(readOnly = true)
     public List<DocumentGetCommand> getAllDocumentsByDocumentType2(String documentTypeTitle) {
-        logger.info("Gotten all documents by this type: " + documentTypeTitle);
+        log.info("Gotten all documents by this type: " + documentTypeTitle);
         return  documentRepository.findAll()
                 .stream()
                 .filter(document -> document.getDocumentType().equals(documentTypeRepository.findByTitle(documentTypeTitle)))
@@ -232,7 +239,8 @@ public class DocumentService {
                         document.getRejectionDate(),
                         document.getReviewer(),
                         document.getRejectionReason(),
-                        document.getPath()
+                        document.getPath(),
+                        document.getAttachments()
                 )).collect(Collectors.toList());
     }
     //GET DOCUMENTS OF SPECIFIC USER_GROUP (OR AUTHOR ID ?) ============================================================
@@ -240,7 +248,7 @@ public class DocumentService {
 
         @Transactional(readOnly = true)
     public List<DocumentGetCommand> getAllDocumentsByAuthorId(Long authorId) {
-            logger.info("Gotten all documents by this author id: " + authorId);
+            log.info("Gotten all documents by this author id: " + authorId);
         return  documentRepository.findAll()
                 .stream()
                 .filter(document -> document.getAuthor().getId().equals(authorId))
@@ -257,7 +265,8 @@ public class DocumentService {
                         document.getRejectionDate(),
                         document.getReviewer(),
                         document.getRejectionReason(),
-                        document.getPath()
+                        document.getPath(),
+                        document.getAttachments()
                 )).collect(Collectors.toList());
     }
 
@@ -270,7 +279,7 @@ public class DocumentService {
 
         User user = userRepository.findByUsername(documentCreateCommand.getUsername());
         if (user == null) {
-            logger.error("User not found (when trying to create document");
+            log.error("User not found (when trying to create document");
             throw new ResourceNotFoundException("My dear Friend, you entered not existing User (you should create that User first) !");
         } else {
             newDocument.setAuthor(user);
@@ -279,7 +288,7 @@ public class DocumentService {
 
         DocumentType documentType = documentTypeRepository.findByTitle(documentCreateCommand.getDocumentTypeTitle());
         if (documentType == null) {
-            logger.error("DocumentType not found (when trying to create document");
+            log.error("DocumentType not found (when trying to create document");
             throw new ResourceNotFoundException("My dear Friend, you entered not existing DocumentType (you should create that DocumentType first) !");
         } else {
             newDocument.setDocumentType(documentType);
@@ -289,7 +298,7 @@ public class DocumentService {
         newDocument.setDescription(documentCreateCommand.getDescription());
         newDocument.setDocumentState(DocumentState.CREATED);
         documentRepository.save(newDocument);
-        logger.info("New document created - {} Everything is OK", newDocument.toString());
+        log.info("New document created - {} Everything is OK", newDocument.toString());
     }
 
 
@@ -302,24 +311,30 @@ public class DocumentService {
         //Document documentToSetState = documentRepository.findById(id).orElse(null);
         Document documentToSetState = documentRepository.getOne(documentSetStateCommand.getDocumentId());
 
-
         User user = userRepository.findByUsername(documentSetStateCommand.getReviewerUsername());
 
-
         Set<UserGroup> userGroupsBelongingToUser = user.getUserGroups();
-        boolean canSetState = true; //ATENTION: 1. reikia koreguoti si patikrinima, nes nepraeina pro ji (galbut neduoda niekad true)
-                                                //2. Rejection reason swageryje isiraso tik kai yra nustatyta paciame pirmame if
 
-//        for (UserGroup userGroup : userGroupsBelongingToUser) {
-//            if (userGroup.getReviewDocumentType().contains(documentToSetState.getDocumentType())) {
-//                canSetState = true;
-//                break;
-//            }
-//        }
+        // checking if user can set state:
+        boolean canSetState = false; //ATENTION: 1. reikia koreguoti si patikrinima, nes nepraeina pro ji (galbut neduoda niekad true)
+                                                //2. Rejection reason swageryje isiraso tik kai yra nustatyta paciame pirmame if
+        for (UserGroup userGroup : userGroupsBelongingToUser) {
+            if (userGroup.getReviewDocumentType().contains(documentToSetState.getDocumentType())) {
+                canSetState = true;
+                log.info("From BOOLEAN. User belongs to the group, which can review. OK");
+                //break;
+            } else {
+                log.info("From BOOLEAN. User doesn't belong to the group, which can review. No good");
+            }
+        }
 
         if(canSetState) {
             documentToSetState.setReviewer(user);
+            log.info("Checked if user can review document. Positive (yes, he can).");
+        } else {
+            log.info("Checked if user can review document. Negative (No, he can't).");
         }
+
 
 //        Reikia patikrinti, ar Reviewer turi permission acceptinti arba rejectinti.
 //         Tą reikia daryti, tikrinant User reviewer kitamąjį List<UserGroup> userGroup.
@@ -328,13 +343,12 @@ public class DocumentService {
 //         Jei turi, tada tik leisti setDocumentStatus(rejectet arba accepted priskirti).
 //         Ir tik tada priskirti paciam documentEntičiui reviewerį, jei jam leista pakeisti statą.
 
-
-
         //papildyti validacija ar DocumentState jau nera toks koki norim suteikti.
 
         //papildyti kad jeigu neranda DocumentType tai reikia handlint errora
         // (pvz. iseiti is metodo, arba responseEntity arba ResourceNotFoundException)
         // nes priesingu atveju programa nulus.
+
 
         if (canSetState &&
                 !documentSetStateCommand.getDocumentState().equals(DocumentState.CREATED.name())  //&&
@@ -345,7 +359,8 @@ public class DocumentService {
         ) {
             //documentToSetState.setDocumentState(DocumentState.CREATED);     //version A (hardcoded ? Yes, hardcoded because User in UI or swagger cannot choose)
             documentToSetState.setDocumentState(DocumentState.valueOf(documentSetStateCommand.getDocumentState())); //version B
-            documentToSetState.setRejectionReason(documentSetStateCommand.getRejectionReason());
+            //documentToSetState.setRejectionReason(documentSetStateCommand.getRejectionReason());
+            log.info("1-st IF: Document state set to: " + DocumentState.valueOf(documentSetStateCommand.getDocumentState()));
         } else if (canSetState &&
                 documentSetStateCommand.getDocumentState().equals(DocumentState.CREATED.name()) //&&
                 //documentSetStateCommand.getDocumentState() != DocumentState.SUBMITTED &&
@@ -355,7 +370,8 @@ public class DocumentService {
                 ) {
             //documentToSetState.setDocumentState(DocumentState.SUBMITTED);   //version A
             documentToSetState.setDocumentState(DocumentState.valueOf(documentSetStateCommand.getDocumentState())); //version B
-            documentToSetState.setRejectionReason(documentSetStateCommand.getRejectionReason());
+            //documentToSetState.setRejectionReason(documentSetStateCommand.getRejectionReason());
+            log.info("2-nd IF: Document state set to: " + DocumentState.valueOf(documentSetStateCommand.getDocumentState()));
         } else if (canSetState &&
                 //documentSetStateCommand.getDocumentState() == DocumentState.CREATED &&
                 documentSetStateCommand.getDocumentState().equals(DocumentState.SUBMITTED.name()) &&
@@ -366,6 +382,7 @@ public class DocumentService {
             //documentToSetState.setDocumentState(DocumentState.CONFIRMED);   //version A
             documentToSetState.setDocumentState(documentToSetState.getDocumentState()); //version B
             documentToSetState.setRejectionReason(documentSetStateCommand.getRejectionReason());
+            log.info("3rd IF: Document state set to: " + DocumentState.valueOf(documentSetStateCommand.getDocumentState()));
         } else if (canSetState &&
                 //documentSetStateCommand.getDocumentState() == DocumentState.CREATED &&
                 documentSetStateCommand.getDocumentState().equals(DocumentState.SUBMITTED.name()) &&
@@ -376,10 +393,15 @@ public class DocumentService {
             //documentToSetState.setDocumentState(DocumentState.REJECTED);    //version A
             documentToSetState.setDocumentState(DocumentState.valueOf(documentSetStateCommand.getDocumentState()));  //version B
             documentToSetState.setRejectionReason(documentSetStateCommand.getRejectionReason());
+            log.info("4th IF: Document state set to: " + DocumentState.valueOf(documentSetStateCommand.getDocumentState()));
+        } else {
+            log.info("5th IF: non of the IF case was proceeded.");
+            throw new ResourceNotFoundException("My dear Friend, non of the IF case was proceeded.");
+
         }
 
         documentRepository.save(documentToSetState);
-        logger.info("Document state set to: " + DocumentState.valueOf(documentSetStateCommand.getDocumentState()));
+        log.info("Last logger: Document state set to: " + DocumentState.valueOf(documentSetStateCommand.getDocumentState()));
 
     }
 
@@ -394,11 +416,14 @@ public class DocumentService {
         User reviewerUser = userRepository.findByUsername(documentSetStateCommand.getReviewerUsername());
 
         switch (documentSetStateCommand.getDocumentState()){
+            case "CREATED":{
+                log.info("User tried to set document state to CREATED");
+                throw new ResourceNotFoundException("There is no need to set state to CREATED (this state is already set during document creation).");
+            }
             case "SUBMITTED" :{
                 documentToSetState.setDocumentState(DocumentState.SUBMITTED);
                 documentToSetState.setSubmissionDate(new Date());
                 break;
-
             }
             case "REJECTED" :{
                 documentToSetState.setReviewer(reviewerUser);
@@ -407,17 +432,18 @@ public class DocumentService {
                 documentToSetState.setRejectionReason(documentSetStateCommand.getRejectionReason());
                 break;
             }
-            case "COMFIRMED" :{
+            case "CONFIRMED" :{
                 documentToSetState.setReviewer(reviewerUser);
                 documentToSetState.setDocumentState(DocumentState.CONFIRMED);
                 documentToSetState.setConfirmationDate(new Date());
+                break;
             }
             default:
-                throw new ResourceNotFoundException("My dear Friend, non of the switch case was proceeded");
+                throw new ResourceNotFoundException("My dear Friend, non of the SWITCH case was proceeded.");
 
         }
         documentRepository.save(documentToSetState);
-        logger.info("Document state set to: " + documentSetStateCommand.getDocumentState());
+        log.info("Document state set to: " + documentSetStateCommand.getDocumentState());
     }
 
 
@@ -454,14 +480,14 @@ public class DocumentService {
         documentToUpdate.setTitle(documentUpdateCommand.getTitle());
         documentToUpdate.setDescription(documentUpdateCommand.getDescription());
         documentRepository.save(documentToUpdate);
-        logger.info("Document data updated - {} Everything is OK" + documentToUpdate.toString());
+        log.info("Document data updated - {} Everything is OK" + documentToUpdate.toString());
     }
 
     //DELETE ===========================================================================================================
     @Transactional
     public void deleteDocument(long id) {
         documentRepository.deleteById(id);
-        logger.info("Document with id = " + id + " was deleted");
+        log.info("Document with id = " + id + " was deleted");
     }
 
 /*

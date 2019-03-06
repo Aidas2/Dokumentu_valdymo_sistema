@@ -51,25 +51,3 @@ class NavigationComponent extends Component {
 }
 
 export default NavigationComponent;
-
-{
-  /*      <nav className="navbar navbar-expand-md navbar-dark bg-dark">
-          <Link to={"/"} className="nav-link">
-            Pradinis puslapis
-          </Link>
-
-          <Link to={"/upload"} className="nav-link">
-            Dokumento įkėlimas
-          </Link>
-
-          <Link to={"/history"} className="nav-link">
-            Istorija
-          </Link>
-
-          <Link to={"/admin"} className="nav-link">
-            Administratoriaus prisijungimas
-          </Link>
-        </nav>
-     
-    */
-}

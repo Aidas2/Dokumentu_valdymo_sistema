@@ -44,7 +44,7 @@ class CreateUserGroupsForm extends Component {
 
         <h5 className="display-6 normal-padding second-navigation-style ">
           <Link to={"/"}>
-            <img src={logo} width="20" height="10" />
+            <img src={logo} width="20" height="10" alt="logo icon"/>
           </Link>
           &ensp;/ &ensp;
           <Link to={"/admin"} className="second-navigation">
@@ -60,7 +60,6 @@ class CreateUserGroupsForm extends Component {
           </Link>
         </h5>
 
-        {/*  <h3 class="display-6">Naujos grupės kūrimas</h3>  */}
         <input
           className="form-control"
           type="text"

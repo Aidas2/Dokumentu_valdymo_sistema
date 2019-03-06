@@ -1,18 +1,13 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import React from "react";
 
 const DocumentTypesComponent = props => {
   return (
     <div className="container pl-0 ml-0">
       <div className="row">
-        <div className="col-2 padding-normal">
+        <div className="col-12 padding-normal">
           {props.typeId}
-          {/* <Link to="">Linkas</Link> */}
-        </div>
 
-        <div className="col-2 padding-normal">
-          <p>{props.typeTitle}</p>
+          {props.typeTitle}
         </div>
       </div>
     </div>

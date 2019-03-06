@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import axios from "axios";
-import RenderResponse from "./RenderResponse";
+
 import reviewIcon from "../../images/review-icon.png";
 
 class FileViewContainer extends Component {
@@ -83,8 +82,8 @@ class FileViewContainer extends Component {
           onClick={this.viewFile}
           className="btn btn-outline-success button-info"
         >
-          <img src={reviewIcon} width="20" height="20" />
-          <span class="tooltiptext">Peržiūrėti</span>
+          <img src={reviewIcon} width="20" height="20" alt="review icon" />
+          <span className="tooltiptext">Peržiūrėti</span>
         </button>
         {/* <img src={this.state.fileURL} /> */}
 

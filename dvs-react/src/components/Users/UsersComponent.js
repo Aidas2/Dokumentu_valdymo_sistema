@@ -1,15 +1,15 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React from "react";
+
 import { Link } from "react-router-dom";
 
 const UsersComponent = props => {
   var {
-    administrator,
+    // administrator,
     emailAddress,
     firstName,
     hireDate,
     lastName,
-    password,
+    // password,
     username,
     userId
   } = props.userDetails;
@@ -18,10 +18,7 @@ const UsersComponent = props => {
 
   return (
     <div className="row">
-      <div className="col-1  username-table-action-size  ">
-        {userId}
-        {/* <Link to="">Linkas</Link> */}
-      </div>
+      <div className="col-1  username-table-action-size  ">{userId}</div>
 
       <div className="col-2  col-width username-table-action-size">
         <Link to={linkToIndividualUserDetails}>{username}</Link>

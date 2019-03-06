@@ -1,17 +1,19 @@
 package lt.akademijait.bronza.dto.document;
 
 
+import lt.akademijait.bronza.entities.Attachment;
 import lt.akademijait.bronza.entities.User;
 import lt.akademijait.bronza.enums.DocumentState;
 
 import java.util.Date;
+import java.util.Set;
 
 public class DocumentGetCommand {
 
     private Long id;
     //private String prefix;
     //private List<String> additionalFilePaths = new ArrayList<>();
-    //private List<Attachment> attachments;
+
     private String authorUsername;  //private User author; // private UserGetCommand author;\
 
     private String documentStateInLithuanian;
@@ -28,15 +30,16 @@ public class DocumentGetCommand {
     private String rejectionReason;
     private String path;
 
+    private Set<Attachment> attachments;
+
+
     public DocumentGetCommand() {
     }
 
-
-    // constructior with double Document_State
     public DocumentGetCommand(Long id, String authorUsername, String documentState,
                               String documentTypeTitleInLithuanian, String title, String description,
                               Date creationDate, Date submissionDate, Date confirmationDate, Date rejectionDate,
-                              User reviewer, String rejectionReason, String path) {
+                              User reviewer, String rejectionReason, String path, Set<Attachment> attachments) {
         this.id = id;
         this.authorUsername = authorUsername;
         //this.documentStateInLithuanian = documentStateInLithuanian; //see remark bellow
@@ -51,9 +54,12 @@ public class DocumentGetCommand {
         this.reviewer = reviewer;
         this.rejectionReason = rejectionReason;
         this.path = path;
+        this.attachments = attachments;
     }
 
-    public Long getId() {
+
+
+     public Long getId() {
         return id;
     }
 

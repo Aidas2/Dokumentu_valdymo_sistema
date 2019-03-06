@@ -15,8 +15,8 @@ class AdministrationContainer extends Component {
         <h2 className="display-6 normal-padding">
           Administratoriaus rolė
           <div className="logo-info">
-            <img src={infoIcon} className="info-icon-style" />
-            <span class="tooltiptext">
+            <img src={infoIcon} className="info-icon-style" alt="" />
+            <span className="tooltiptext">
               Šiame meniu yra pateiktos administratoriaus rolės. Čia galima
               kurti ir peržiūrėti vartotojus ir jų grupes, dokumentus ir jų
               tipus.
@@ -26,7 +26,7 @@ class AdministrationContainer extends Component {
 
         <h5 className="display-6 normal-padding second-navigation-style ">
           <Link to={"/"}>
-            <img src={logo} width="20" height="10" />
+            <img src={logo} width="20" height="10" alt="logo icon" />
           </Link>
           &ensp;/ &ensp;
           <Link to={"/admin"} className="second-navigation">
@@ -42,13 +42,13 @@ class AdministrationContainer extends Component {
               <th scope="col-3">Veiksmai</th>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>1</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Vartotojai</h6>
               </td>
-              <td scope="row">
+              <td>
                 <Link
                   to="/admin/users"
                   className="btn btn-outline-success btn-sm admin-button-style"
@@ -58,14 +58,14 @@ class AdministrationContainer extends Component {
               </td>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>2</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Vartotojų grupės</h6>
               </td>
 
-              <td scope="row">
+              <td>
                 <Link
                   to="/admin/usergroups"
                   className="btn btn-outline-success btn-sm admin-button-style"
@@ -75,13 +75,13 @@ class AdministrationContainer extends Component {
               </td>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>3</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Dokumentai</h6>
               </td>
-              <td scope="row">
+              <td>
                 <Link
                   to="/admin/docs"
                   className="btn btn-outline-success btn-sm admin-button-style"
@@ -91,13 +91,13 @@ class AdministrationContainer extends Component {
               </td>
             </tr>
             <tr>
-              <td scope="row">
+              <td>
                 <h6>4</h6>
               </td>
-              <td scope="row">
+              <td>
                 <h6>Dokumentų tipai</h6>
               </td>
-              <td scope="row">
+              <td>
                 <Link
                   to="/admin/doctypes"
                   className="btn btn-outline-success btn-sm admin-button-style"
@@ -108,32 +108,6 @@ class AdministrationContainer extends Component {
             </tr>
           </tbody>
         </table>
-
-        {/*
-
-
-        <h6 className="display-6">
-          1. Kurti vartotojų grupes
-          <Link to="/admin/usergroups" className="btn btn-outline-success m-2">
-            Kurti
-          </Link>
-        </h6>
-
-        <h6 className="display-6">
-          2. Kurti dokumentų tipus
-          <Link to="/admin/doctypes" className="btn btn-outline-success m-2">
-            Kurti
-          </Link>
-        </h6>
-
-        <h6 className="display-6">
-          3. Registruoti naują vartotoją
-          <Link to="/admin/users" className="btn btn-outline-success m-2">
-            Registruoti
-          </Link>
-        </h6>
-
-*/}
       </div>
     );
   }

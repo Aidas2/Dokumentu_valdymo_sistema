@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
+
 import DocumentTypesComponent from "./DocumentTypesComponent";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import logo from "../../images/home.png";
-import collapse_icon from "../../images/collapse-icon.png";
+
 import infoIcon from "../../images/info-icon.png";
 
 class DocumentTypesContainer extends Component {
@@ -46,8 +46,8 @@ class DocumentTypesContainer extends Component {
           <h2 className="display-6 normal-padding">
             Dokumentų tipai
             <div className="logo-info">
-              <img src={infoIcon} className="info-icon-style" />
-              <span class="tooltiptext">
+              <img src={infoIcon} className="info-icon-style" alt="info icon" />
+              <span className="tooltiptext">
                 Šiame meniu galima sukurti ir peržiūrėti dokumentų tipus.
               </span>
             </div>
@@ -55,7 +55,7 @@ class DocumentTypesContainer extends Component {
 
           <h5 className="display-6 normal-padding second-navigation-style ">
             <Link to={"/"}>
-              <img src={logo} width="20" height="10" />
+              <img src={logo} width="20" height="10" alt="logo icon" />
             </Link>
             &ensp;/ &ensp;
             <Link to={"/admin"} className="second-navigation">
@@ -74,42 +74,24 @@ class DocumentTypesContainer extends Component {
             Kurti naują dokumento tipą
           </Link>
           <p />
-          {/* ----------------------------- OLD table type
-          <table className="table table-active table-style-rounded">
-            <tr>
-              <th className=" col-6 Table-number-style">#</th>
-              <th className=" col-6 Table-action-style">
-                Dokumento tipo pavadinimas
-              </th>
-            </tr>
-
-            <tbody>
-              <tr>
-                <td scope="row"> {docTypesArrayToRenderId}</td>
-                <td>{docTypesArrayToRenderTitle}</td>
-              </tr>
-            </tbody>
-          </table>
-
-         */}
 
           <input type="checkbox" id="Document-type-box" />
-          <label id="Document-type-container" for="Document-type-box">
+          <label id="Document-type-container" htmlFor="Document-type-box">
             <div id="button " className="collapsed-style">
               Paspauskite ant šio teksto, tam kad būtų galima peržiūrėti/
               paslėpti sukurtus dokumentų tipus:
               <ul id="Document-type-bar-appear" className="navbar-nav mr-auto">
                 <table className="table table-active table-style-rounded">
-                  <tr>
-                    <th className="col-2 Table-number-style">#</th>
-                    <th className="col-10 Table-action-style">
-                      Dokumento tipo pavadinimas
-                    </th>
-                  </tr>
-
                   <tbody>
                     <tr>
-                      <td scope="row" className="table-action-size">
+                      <th className="col-1 Table-number-style">#</th>
+                      <th className="col-11 Table-action-style">
+                        Dokumento tipo pavadinimas
+                      </th>
+                    </tr>
+
+                    <tr>
+                      <td className="table-action-size">
                         {docTypesArrayToRenderId}
                       </td>
                       <td className="table-action-size">

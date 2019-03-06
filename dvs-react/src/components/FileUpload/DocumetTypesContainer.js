@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import axios from "axios";
+
 import DocumetTypesComponent from "./DocumentTypesComponent";
 
 class DocumentTypesContainer extends Component {
@@ -34,7 +33,7 @@ class DocumentTypesContainer extends Component {
     return (
       <select
         onChange={this.props.onDocumentTypeChange}
-        className="form-control form-control-sm col-6 italic-style"
+        className="form-control col-6 pop-up-style"
         id="documentTypeSelect"
       >
         {docTypesArrayToRender}
