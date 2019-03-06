@@ -70,8 +70,16 @@ Pakoreguoti metoda: SET DOCUMENT STATE. Version_01 (by my)  ir SET DOCUMENT STAT
 
 Validacija laukams (@Valid)
 Klaidu handlinimas  + loggeriai klaidoms
-Loggeriai su data + kad irasytu i faila
+Loggeriai su data + kad irasytu i faila - COMPLEETED
 
-lithuanian enum doesn't works correctly
+lithuanian enum doesn't works correctly - COMPLEETED
+
+
+        //papildyti kad jeigu neranda DocumentType tai reikia handlint errora
+        // (pvz. iseiti is metodo, arba responseEntity arba ResourceNotFoundException)
+        // nes priesingu atveju programa nulus.
+
+
+
 
  */

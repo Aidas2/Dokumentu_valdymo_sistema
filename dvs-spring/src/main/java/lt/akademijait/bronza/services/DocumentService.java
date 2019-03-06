@@ -307,49 +307,48 @@ public class DocumentService {
     @Transactional
     public void setDocumentStateV1 (DocumentSetStateCommand documentSetStateCommand) {
 
-
         //Document documentToSetState = documentRepository.findById(id).orElse(null);
         Document documentToSetState = documentRepository.getOne(documentSetStateCommand.getDocumentId());
+        User reviewerUser = userRepository.findByUsername(documentSetStateCommand.getReviewerUsername());
 
-        User user = userRepository.findByUsername(documentSetStateCommand.getReviewerUsername());
-
-        Set<UserGroup> userGroupsBelongingToUser = user.getUserGroups();
-
-        // checking if user can set state:
-        boolean canSetState = false; //ATENTION: 1. reikia koreguoti si patikrinima, nes nepraeina pro ji (galbut neduoda niekad true)
-                                                //2. Rejection reason swageryje isiraso tik kai yra nustatyta paciame pirmame if
-        for (UserGroup userGroup : userGroupsBelongingToUser) {
-            if (userGroup.getReviewDocumentType().contains(documentToSetState.getDocumentType())) {
-                canSetState = true;
-                log.info("From BOOLEAN. User belongs to the group, which can review. OK");
-                //break;
-            } else {
-                log.info("From BOOLEAN. User doesn't belong to the group, which can review. No good");
-            }
-        }
-
-        if(canSetState) {
-            documentToSetState.setReviewer(user);
-            log.info("Checked if user can review document. Positive (yes, he can).");
-        } else {
-            log.info("Checked if user can review document. Negative (No, he can't).");
-        }
-
-
-//        Reikia patikrinti, ar Reviewer turi permission acceptinti arba rejectinti.
+//          Reikia patikrinti, ar Reviewer turi permission acceptinti arba rejectinti.
 //         Tą reikia daryti, tikrinant User reviewer kitamąjį List<UserGroup> userGroup.
 //         Reikia eiti per kiekvieną listo elementą ir žiūrėti, ar kuris nors iš elementų
 //         turi Liste reviewDocumentTYpe būtent tą tipą, kurį jis bando acceptinti arba rejectinti.
 //         Jei turi, tada tik leisti setDocumentStatus(rejectet arba accepted priskirti).
 //         Ir tik tada priskirti paciam documentEntičiui reviewerį, jei jam leista pakeisti statą.
 
-        //papildyti validacija ar DocumentState jau nera toks koki norim suteikti.
+        // checking if user can set state:
+        Set<UserGroup> userGroupsBelongingToUser = reviewerUser.getUserGroups();
+        boolean canSetState = false;
+        for (UserGroup userGroup : userGroupsBelongingToUser) {
+            if (userGroup.getReviewDocumentType().contains(documentToSetState.getDocumentType())) {
+                canSetState = true;
+            }
+        }
 
-        //papildyti kad jeigu neranda DocumentType tai reikia handlint errora
-        // (pvz. iseiti is metodo, arba responseEntity arba ResourceNotFoundException)
-        // nes priesingu atveju programa nulus.
+        // setting checked user as reviewer:
+        if(canSetState) {
+            documentToSetState.setReviewer(reviewerUser);
+            log.info("Checked if user can review document. Positive (yes, he can).");
+        } else {
+            log.info("Checked if user can review document. Negative (No, he can't).");
+        }
 
+        //checking if document already have that state, which we want to set:
+        if (canSetState &&
+                !documentSetStateCommand.getDocumentState().equals(documentToSetState.getDocumentState().toString())) {
+            documentToSetState.setDocumentState(DocumentState.valueOf(documentSetStateCommand.getDocumentState())); //version B
+            documentToSetState.setRejectionReason(documentSetStateCommand.getRejectionReason());
+            log.info("Document state set to: " + DocumentState.valueOf(documentSetStateCommand.getDocumentState()));
+            documentRepository.save(documentToSetState);
+            log.info("Document with new state saved to repository");
+        } else {
+            log.info("Document already have this state. Operation not proceeded.");
+            throw new ResourceNotFoundException("My dear Friend, Document already have this state.");
+        }
 
+        /*  //old version, do not use (working not corectly)
         if (canSetState &&
                 !documentSetStateCommand.getDocumentState().equals(DocumentState.CREATED.name())  //&&
                 //documentSetStateCommand.getDocumentState() != DocumentState.SUBMITTED &&
@@ -403,13 +402,13 @@ public class DocumentService {
         documentRepository.save(documentToSetState);
         log.info("Last logger: Document state set to: " + DocumentState.valueOf(documentSetStateCommand.getDocumentState()));
 
+        */
     }
 
 
     //SET DOCUMENT STATE. Version_02 (by J.C.) =========================================================================
-    //to make working, change 'private DocumentState documentState' --> 'private String documentState' ((DocumentSetStateCommand.java)
     @Transactional
-    public void setDocumentStateV2 ( DocumentSetStateCommand documentSetStateCommand) {
+    public void setDocumentStateV2 (DocumentSetStateCommand documentSetStateCommand) {
 
         User user = userRepository.findByUsername(documentSetStateCommand.getAuthorUsername());
         Document documentToSetState = documentRepository.getOne(documentSetStateCommand.getDocumentId());
