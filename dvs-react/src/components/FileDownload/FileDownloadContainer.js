@@ -18,7 +18,7 @@ class FileDownloadConatainer extends Component {
       url: "http://localhost:8081/files",
       method: "GET",
       params: {
-        documentId: this.state.documentId
+        documentId: this.props.documentId
       },
       responseType: "blob" // important
     })

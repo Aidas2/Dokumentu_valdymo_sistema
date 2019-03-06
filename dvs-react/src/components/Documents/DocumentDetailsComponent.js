@@ -3,6 +3,7 @@ import React from "react";
 import logo from "../../images/home.png";
 import { Link } from "react-router-dom";
 import infoIcon from "../../images/info-icon.png";
+import FileDownloadConatainer from "../FileDownload/FileDownloadContainer";
 
 const DocumentDetailsComponent = props => {
   var {
@@ -206,7 +207,7 @@ const DocumentDetailsComponent = props => {
                 <h6>
                   <button className="btn btn-secondary ">Peržiūrėti</button>
                   &ensp;
-                  <button className="btn btn-dark">Atsisųsti</button>&ensp;
+                  <FileDownloadConatainer documentId={id} />
                 </h6>
               </td>
               <td>
