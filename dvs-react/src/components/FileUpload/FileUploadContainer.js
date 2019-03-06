@@ -200,7 +200,7 @@ class FileUploadContainer extends Component {
     var attachmentsNames = attachments.map(oneFile => {
       return (
         <spam key={oneFile.name}>
-          {oneFile.name}
+          &nbsp;{oneFile.name}&nbsp;
           <button
             onClick={() => this.handleAttachmentRemoval(oneFile.name)}
             className="btn btn-danger btn-sm"
