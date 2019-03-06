@@ -98,18 +98,61 @@ class CreateUserGroupsContainer extends Component {
     reviewDocumentType.push(e.target.value);
     this.setState({ reviewDocumentType });
   };
+  handleSubmitTypeRemoval = type => {
+    let submitDocumentType = this.state.submitDocumentType;
+    var filteredSubmitDocumentTypes = submitDocumentType.filter(
+      oneType => oneType !== type
+    );
+    this.setState({ submitDocumentType: filteredSubmitDocumentTypes });
+  };
+  handleReviewTypeRemoval = type => {
+    let reviewDocumentType = this.state.reviewDocumentType;
+    var filteredReviewDocumentTypes = reviewDocumentType.filter(
+      oneType => oneType !== type
+    );
+    this.setState({ reviewDocumentType: filteredReviewDocumentTypes });
+  };
 
   render() {
     console.log(
       "@@@@@@@@@@@@@@@ inside render() this.state>>>>>>>> ",
       this.state
     );
+
     var selectedSubmissionTypesTitlesToDisplay = this.state.submitDocumentType.map(
-      group => group + " *** "
+      type => {
+        return (
+          <span key={type}>
+            &nbsp;{type}&nbsp;
+            <button
+              onClick={() => this.handleSubmitTypeRemoval(type)}
+              className="btn btn-danger btn-sm"
+            >
+              x
+            </button>
+          </span>
+        );
+      }
     );
-    var selectedReviewGroupsTitlesToDisplay = this.state.reviewDocumentType.map(
-      group => group + " *** "
+    var selectedReviewTypesTitlesToDisplay = this.state.reviewDocumentType.map(
+      type => {
+        return (
+          <span key={type}>
+            &nbsp;{type}&nbsp;
+            <button
+              onClick={() => this.handleReviewTypeRemoval(type)}
+              className="btn btn-danger btn-sm"
+            >
+              x
+            </button>
+          </span>
+        );
+      }
     );
+
+    // var selectedReviewGroupsTitlesToDisplay = this.state.reviewDocumentType.map(
+    //   group => group + " *** "
+    // );
 
     return (
       <CreateUserGroupsComponent
@@ -120,7 +163,7 @@ class CreateUserGroupsContainer extends Component {
         onSubmit={this.handleSubmit}
         launchAlert={this.launchAlert()}
         selectedSubmissionTypesTitles={selectedSubmissionTypesTitlesToDisplay}
-        selectedReviewTypesTitles={selectedReviewGroupsTitlesToDisplay}
+        selectedReviewTypesTitles={selectedReviewTypesTitlesToDisplay}
       />
     );
   }
