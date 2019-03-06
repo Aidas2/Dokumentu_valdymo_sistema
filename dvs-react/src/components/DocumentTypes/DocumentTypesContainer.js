@@ -28,11 +28,13 @@ class DocumentTypesContainer extends Component {
   }
 
   render() {
-    var docTypesArrayToRenderId = this.state.docTypes.map(oneTypeObj => {
-      return (
-        <DocumentTypesComponent key={oneTypeObj.id} typeId={oneTypeObj.id} />
-      );
-    });
+    var docTypesArrayToRenderId = this.state.docTypes.map(
+      (oneTypeObj, index) => {
+        return (
+          <DocumentTypesComponent key={oneTypeObj.id} typeId={index + 1} />
+        );
+      }
+    );
 
     var docTypesArrayToRenderTitle = this.state.docTypes.map(oneTypeObj => {
       return (
