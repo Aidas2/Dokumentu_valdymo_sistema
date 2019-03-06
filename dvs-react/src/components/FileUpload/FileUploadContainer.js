@@ -44,6 +44,7 @@ class FileUploadContainer extends Component {
     // console.log(e.target.files, "$$$$-e.target.files");
     // console.log(e.target.files[0], "$$$$-e.target.files[0]");
     // console.log(e.target.files[1], "$$$$-e.target.files[1]");
+    this.handleCloseAlert();
 
     let file = Array.from(e.target.files); //e.target.files[0] was before
     let files = this.state.file;
@@ -58,6 +59,7 @@ class FileUploadContainer extends Component {
     // console.log(e.target.files, "$$$$-e.target.files");
     // console.log(e.target.files[0], "$$$$-e.target.files[0]");
     // console.log(e.target.files[1], "$$$$-e.target.files[1]");
+    this.handleCloseAlert();
 
     let file = Array.from(e.target.files); //e.target.files[0] was before
     let files = this.state.file;
