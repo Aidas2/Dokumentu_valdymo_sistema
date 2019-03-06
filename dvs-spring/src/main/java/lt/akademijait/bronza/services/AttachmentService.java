@@ -1,11 +1,10 @@
 package lt.akademijait.bronza.services;
 
+import lombok.extern.slf4j.Slf4j;
 import lt.akademijait.bronza.dto.attachment.AttachmentCreateCommand;
 import lt.akademijait.bronza.dto.attachment.AttachmentGetCommand;
 import lt.akademijait.bronza.entities.Attachment;
 import lt.akademijait.bronza.repositories.AttachmentRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,18 +13,19 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Slf4j
 public class AttachmentService {
 
     @Autowired
    private AttachmentRepository attachmentRepository;
 
 
-    private  final static Logger logger = LoggerFactory.getLogger(AttachmentService.class);
+    //private  final static Logger logger = LoggerFactory.getLogger(AttachmentService.class);
 
     //GET ALL ==========================================================================================================
     @Transactional(readOnly = true)
     public List<AttachmentGetCommand> getAttachments() {
-        logger.info("Geted all attachments");
+        log.info("Geted all attachments");
         return attachmentRepository.findAll()
                 .stream()
                 .map((attachment) -> new AttachmentGetCommand(
@@ -39,7 +39,7 @@ public class AttachmentService {
     @Transactional(readOnly = true)
     public AttachmentGetCommand getAttachmentById(Long id) {
         Attachment attachment = attachmentRepository.findById(id).orElse(null);
-        logger.info("Geted all attachments by this id: " + id);
+        log.info("Geted all attachments by this id: " + id);
         return new AttachmentGetCommand(
                 attachment.getId(),
                 attachment.getTitle(),
@@ -51,7 +51,7 @@ public class AttachmentService {
     @Transactional(readOnly = true)
     public AttachmentGetCommand getAttachmentsByTitle(String title) {
         Attachment attachment = attachmentRepository.findByTitle(title);
-        logger.info("Geted all attachments by this title: " + title);
+        log.info("Geted all attachments by this title: " + title);
         return new AttachmentGetCommand(
                 attachment.getId(),
                 attachment.getTitle(),
@@ -65,7 +65,7 @@ public class AttachmentService {
         Attachment newAttachment = new Attachment();
         newAttachment.setTitle(attachmentCreateCommand.getTitle());
         attachmentRepository.save(newAttachment);
-        logger.info("New attachment created - {} Everything is OK", attachmentCreateCommand.getTitle());
+        log.info("New attachment created - {} Everything is OK", attachmentCreateCommand.getTitle());
     }
 
     //UPDATE ===========================================================================================================
@@ -75,7 +75,7 @@ public class AttachmentService {
     @Transactional
     public void deleteAttachment(Long id) {
         attachmentRepository.deleteById(id);
-        logger.info("Attachment with id = " + id + " was deleted");
+        log.info("Attachment with id = " + id + " was deleted");
     }
 }
 
