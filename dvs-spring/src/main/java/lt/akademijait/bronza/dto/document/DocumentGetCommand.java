@@ -2,7 +2,6 @@ package lt.akademijait.bronza.dto.document;
 
 
 import lt.akademijait.bronza.entities.Attachment;
-import lt.akademijait.bronza.entities.User;
 import lt.akademijait.bronza.enums.DocumentState;
 
 import java.util.Date;
@@ -26,7 +25,7 @@ public class DocumentGetCommand {
     private Date submissionDate;
     private Date confirmationDate;
     private Date rejectionDate;
-    private User reviewer; //private UserGetCommand reviewer;
+    private String reviewerUsername;    //private User reviewer; //private UserGetCommand reviewer;
     private String rejectionReason;
     private String path;
 
@@ -39,7 +38,7 @@ public class DocumentGetCommand {
     public DocumentGetCommand(Long id, String authorUsername, String documentState,
                               String documentTypeTitleInLithuanian, String title, String description,
                               Date creationDate, Date submissionDate, Date confirmationDate, Date rejectionDate,
-                              User reviewer, String rejectionReason, String path, Set<Attachment> attachments) {
+                              String reviewerUsername, String rejectionReason, String path, Set<Attachment> attachments) {
         this.id = id;
         this.authorUsername = authorUsername;
         //this.documentStateInLithuanian = documentStateInLithuanian; //see remark bellow
@@ -51,7 +50,7 @@ public class DocumentGetCommand {
         this.submissionDate = submissionDate;
         this.confirmationDate = confirmationDate;
         this.rejectionDate = rejectionDate;
-        this.reviewer = reviewer;
+        this.reviewerUsername = reviewerUsername;
         this.rejectionReason = rejectionReason;
         this.path = path;
         this.attachments = attachments;
@@ -151,12 +150,12 @@ public class DocumentGetCommand {
         this.rejectionDate = rejectionDate;
     }
 
-    public User getReviewer() {
-        return reviewer;
+    public String getReviewerUsername() {
+        return reviewerUsername;
     }
 
-    public void setReviewer(User reviewer) {
-        this.reviewer = reviewer;
+    public void setReviewerUsername(String reviewerUsername) {
+        this.reviewerUsername = reviewerUsername;
     }
 
     public String getRejectionReason() {
@@ -173,5 +172,13 @@ public class DocumentGetCommand {
 
     public void setPath(String path) {
         this.path = path;
+    }
+
+    public Set<Attachment> getAttachments() {
+        return attachments;
+    }
+
+    public void setAttachments(Set<Attachment> attachments) {
+        this.attachments = attachments;
     }
 }

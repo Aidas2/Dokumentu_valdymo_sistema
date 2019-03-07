@@ -57,7 +57,7 @@ public class DocumentService {
                         document.getSubmissionDate(),
                         document.getConfirmationDate(),
                         document.getRejectionDate(),
-                        document.getReviewer(),
+                        document.getReviewer().getUsername(),
                         document.getRejectionReason(),
                         document.getPath(),
                         document.getAttachments()
@@ -83,7 +83,7 @@ public class DocumentService {
                 document.getSubmissionDate(),
                 document.getConfirmationDate(),
                 document.getRejectionDate(),
-                document.getReviewer(),
+                document.getReviewer().getUsername(),
                 document.getRejectionReason(),
                 document.getPath(),
                 document.getAttachments()
@@ -94,7 +94,7 @@ public class DocumentService {
     @Transactional(readOnly = true)
     public List<DocumentGetCommand> getSubmittedDocuments() {
         log.info("Gotten all documents by this state: " + DocumentState.SUBMITTED);
-        return  documentRepository.findAll()
+        return documentRepository.findAll()
                 .stream()
                 .filter(document -> document.getDocumentState().equals(DocumentState.SUBMITTED))
                 .map((document) -> new DocumentGetCommand(
@@ -109,7 +109,7 @@ public class DocumentService {
                         document.getSubmissionDate(),
                         document.getConfirmationDate(),
                         document.getRejectionDate(),
-                        document.getReviewer(),
+                        document.getReviewer().getUsername(),
                         document.getRejectionReason(),
                         document.getPath(),
                         document.getAttachments()
@@ -120,7 +120,7 @@ public class DocumentService {
     @Transactional(readOnly = true)
     public List<DocumentGetCommand> getConfirmedDocuments() {
         log.info("Gotten all documents by this state: " + DocumentState.CONFIRMED);
-        return  documentRepository.findAll()
+        return documentRepository.findAll()
                 .stream()
                 .filter(document -> document.getDocumentState().equals(DocumentState.CONFIRMED))
                 .map((document) -> new DocumentGetCommand(
@@ -134,7 +134,7 @@ public class DocumentService {
                         document.getSubmissionDate(),
                         document.getConfirmationDate(),
                         document.getRejectionDate(),
-                        document.getReviewer(),
+                        document.getReviewer().getUsername(),
                         document.getRejectionReason(),
                         document.getPath(),
                         document.getAttachments()
@@ -145,7 +145,7 @@ public class DocumentService {
     @Transactional(readOnly = true)
     public List<DocumentGetCommand> getRejectedDocuments() {
         log.info("Gotten all documents by this state: " + DocumentState.REJECTED);
-        return  documentRepository.findAll()
+        return documentRepository.findAll()
                 .stream()
                 .filter(document -> document.getDocumentState().equals(DocumentState.REJECTED))
                 .map((document) -> new DocumentGetCommand(
@@ -159,7 +159,7 @@ public class DocumentService {
                         document.getSubmissionDate(),
                         document.getConfirmationDate(),
                         document.getRejectionDate(),
-                        document.getReviewer(),
+                        document.getReviewer().getUsername(),
                         document.getRejectionReason(),
                         document.getPath(),
                         document.getAttachments()
@@ -171,7 +171,7 @@ public class DocumentService {
     @Transactional(readOnly = true)
     public List<DocumentGetCommand> getAllDocumentsByDocumentState(DocumentState documentState) {
         log.info("Gotten all documents by this state: " + documentState);
-        return  documentRepository.findAll()
+        return documentRepository.findAll()
                 .stream()
                 .filter(document -> document.getDocumentState().equals(documentState))
                 .map((document) -> new DocumentGetCommand(
@@ -185,7 +185,7 @@ public class DocumentService {
                         document.getSubmissionDate(),
                         document.getConfirmationDate(),
                         document.getRejectionDate(),
-                        document.getReviewer(),
+                        document.getReviewer().getUsername(),
                         document.getRejectionReason(),
                         document.getPath(),
                         document.getAttachments()
@@ -195,8 +195,8 @@ public class DocumentService {
     //GET DOCUMENTS OF SPECIFIC DOCUMENT_TYPE. Version_01 (passing object) ================================================
     @Transactional(readOnly = true)
     public List<DocumentGetCommand> getAllDocumentsByDocumentType1(DocumentType documentType) {
-    log.info("Gotten all documents by this type: " + documentType);
-        return  documentRepository.findAll()
+        log.info("Gotten all documents by this type: " + documentType);
+        return documentRepository.findAll()
                 .stream()
                 .filter(document -> document.getDocumentType().equals(documentType))
                 //.filter(document -> document.getDocumentType().getTitle().equals(documentType.getTitle()))
@@ -211,7 +211,7 @@ public class DocumentService {
                         document.getSubmissionDate(),
                         document.getConfirmationDate(),
                         document.getRejectionDate(),
-                        document.getReviewer(),
+                        document.getReviewer().getUsername(),
                         document.getRejectionReason(),
                         document.getPath(),
                         document.getAttachments()
@@ -223,7 +223,7 @@ public class DocumentService {
     @Transactional(readOnly = true)
     public List<DocumentGetCommand> getAllDocumentsByDocumentType2(String documentTypeTitle) {
         log.info("Gotten all documents by this type: " + documentTypeTitle);
-        return  documentRepository.findAll()
+        return documentRepository.findAll()
                 .stream()
                 .filter(document -> document.getDocumentType().equals(documentTypeRepository.findByTitle(documentTypeTitle)))
                 .map((document) -> new DocumentGetCommand(
@@ -237,7 +237,7 @@ public class DocumentService {
                         document.getSubmissionDate(),
                         document.getConfirmationDate(),
                         document.getRejectionDate(),
-                        document.getReviewer(),
+                        document.getReviewer().getUsername(),
                         document.getRejectionReason(),
                         document.getPath(),
                         document.getAttachments()
@@ -246,10 +246,10 @@ public class DocumentService {
     //GET DOCUMENTS OF SPECIFIC USER_GROUP (OR AUTHOR ID ?) ============================================================
     // (with filter and with filter of permissions (which documents this UserGroup can manage)
 
-        @Transactional(readOnly = true)
+    @Transactional(readOnly = true)
     public List<DocumentGetCommand> getAllDocumentsByAuthorId(Long authorId) {
-            log.info("Gotten all documents by this author id: " + authorId);
-        return  documentRepository.findAll()
+        log.info("Gotten all documents by this author id: " + authorId);
+        return documentRepository.findAll()
                 .stream()
                 .filter(document -> document.getAuthor().getId().equals(authorId))
                 .map((document) -> new DocumentGetCommand(
@@ -263,7 +263,7 @@ public class DocumentService {
                         document.getSubmissionDate(),
                         document.getConfirmationDate(),
                         document.getRejectionDate(),
-                        document.getReviewer(),
+                        document.getReviewer().getUsername(),
                         document.getRejectionReason(),
                         document.getPath(),
                         document.getAttachments()
@@ -302,54 +302,56 @@ public class DocumentService {
     }
 
 
-
     //SET DOCUMENT STATE. Version_01 (by my) ===========================================================================
     @Transactional
-    public void setDocumentStateV1 (DocumentSetStateCommand documentSetStateCommand) {
-
+    public void setDocumentStateV1(DocumentSetStateCommand documentSetStateCommand) {
 
         //Document documentToSetState = documentRepository.findById(id).orElse(null);
         Document documentToSetState = documentRepository.getOne(documentSetStateCommand.getDocumentId());
+        User reviewerUser = userRepository.findByUsername(documentSetStateCommand.getReviewerUsername());
 
-        User user = userRepository.findByUsername(documentSetStateCommand.getReviewerUsername());
-
-        Set<UserGroup> userGroupsBelongingToUser = user.getUserGroups();
-
-        // checking if user can set state:
-        boolean canSetState = false; //ATENTION: 1. reikia koreguoti si patikrinima, nes nepraeina pro ji (galbut neduoda niekad true)
-                                                //2. Rejection reason swageryje isiraso tik kai yra nustatyta paciame pirmame if
-        for (UserGroup userGroup : userGroupsBelongingToUser) {
-            if (userGroup.getReviewDocumentType().contains(documentToSetState.getDocumentType())) {
-                canSetState = true;
-                log.info("From BOOLEAN. User belongs to the group, which can review. OK");
-                //break;
-            } else {
-                log.info("From BOOLEAN. User doesn't belong to the group, which can review. No good");
-            }
-        }
-
-        if(canSetState) {
-            documentToSetState.setReviewer(user);
-            log.info("Checked if user can review document. Positive (yes, he can).");
-        } else {
-            log.info("Checked if user can review document. Negative (No, he can't).");
-        }
-
-
-//        Reikia patikrinti, ar Reviewer turi permission acceptinti arba rejectinti.
+//          Reikia patikrinti, ar Reviewer turi permission acceptinti arba rejectinti.
 //         Tą reikia daryti, tikrinant User reviewer kitamąjį List<UserGroup> userGroup.
 //         Reikia eiti per kiekvieną listo elementą ir žiūrėti, ar kuris nors iš elementų
 //         turi Liste reviewDocumentTYpe būtent tą tipą, kurį jis bando acceptinti arba rejectinti.
 //         Jei turi, tada tik leisti setDocumentStatus(rejectet arba accepted priskirti).
 //         Ir tik tada priskirti paciam documentEntičiui reviewerį, jei jam leista pakeisti statą.
 
-        //papildyti validacija ar DocumentState jau nera toks koki norim suteikti.
+        // checking if user have permission to set state:
+        Set<UserGroup> userGroupsBelongingToUser = reviewerUser.getUserGroups();
+        boolean canSetState = false;
+        for (UserGroup userGroup : userGroupsBelongingToUser) {
+            if (userGroup.getReviewDocumentType().contains(documentToSetState.getDocumentType())) {
+                canSetState = true;
+                log.info("Checked if user can review document. Positive (yes, he can).");
+            }
+        }
 
-        //papildyti kad jeigu neranda DocumentType tai reikia handlint errora
-        // (pvz. iseiti is metodo, arba responseEntity arba ResourceNotFoundException)
-        // nes priesingu atveju programa nulus.
+        // setting checked user as reviewer:
+//        if(canSetState) {
+//            documentToSetState.setReviewer(reviewerUser);
+//            log.info("Checked if user can review document. Positive (yes, he can).");
+//        } else {
+//            log.info("Checked if user can review document. Negative (No, he can't).");
+//        }
 
+        //checking if document already have that state, which we want to set:
+        if (canSetState &&
+                !documentSetStateCommand.getDocumentState().equals(documentToSetState.getDocumentState().toString())) {
+            log.info("Document new state differs from old state. Operation wil bee proceeded.");
+            documentToSetState.setReviewer(reviewerUser);
+            log.info("Checked if user can review document. Positive (yes, he can).");
+            documentToSetState.setDocumentState(DocumentState.valueOf(documentSetStateCommand.getDocumentState())); //version B
+            documentToSetState.setRejectionReason(documentSetStateCommand.getRejectionReason());
+            log.info("Document state set to: " + DocumentState.valueOf(documentSetStateCommand.getDocumentState()));
+            documentRepository.save(documentToSetState);
+            log.info("Document with new state saved to repository");
+        } else {
+            log.info("Document already have this state. Operation not proceeded.");
+            throw new ResourceNotFoundException("My dear Friend, Document already have this state.");
+        }
 
+        /*  //old version, do not use (working not corectly)
         if (canSetState &&
                 !documentSetStateCommand.getDocumentState().equals(DocumentState.CREATED.name())  //&&
                 //documentSetStateCommand.getDocumentState() != DocumentState.SUBMITTED &&
@@ -403,47 +405,78 @@ public class DocumentService {
         documentRepository.save(documentToSetState);
         log.info("Last logger: Document state set to: " + DocumentState.valueOf(documentSetStateCommand.getDocumentState()));
 
+        */
     }
 
 
     //SET DOCUMENT STATE. Version_02 (by J.C.) =========================================================================
-    //to make working, change 'private DocumentState documentState' --> 'private String documentState' ((DocumentSetStateCommand.java)
     @Transactional
-    public void setDocumentStateV2 ( DocumentSetStateCommand documentSetStateCommand) {
+    public void setDocumentStateV2(DocumentSetStateCommand documentSetStateCommand) {
 
         User user = userRepository.findByUsername(documentSetStateCommand.getAuthorUsername());
         Document documentToSetState = documentRepository.getOne(documentSetStateCommand.getDocumentId());
         User reviewerUser = userRepository.findByUsername(documentSetStateCommand.getReviewerUsername());
 
-        switch (documentSetStateCommand.getDocumentState()){
-            case "CREATED":{
-                log.info("User tried to set document state to CREATED");
-                throw new ResourceNotFoundException("There is no need to set state to CREATED (this state is already set during document creation).");
+        // checking if user can set state:
+        Set<UserGroup> userGroupsBelongingToUser = reviewerUser.getUserGroups();
+        boolean canSetState = false;
+        for (UserGroup userGroup : userGroupsBelongingToUser) {
+            if (userGroup.getReviewDocumentType().contains(documentToSetState.getDocumentType())) {
+                canSetState = true;
             }
-            case "SUBMITTED" :{
-                documentToSetState.setDocumentState(DocumentState.SUBMITTED);
-                documentToSetState.setSubmissionDate(new Date());
-                break;
-            }
-            case "REJECTED" :{
-                documentToSetState.setReviewer(reviewerUser);
-                documentToSetState.setDocumentState(DocumentState.REJECTED);
-                documentToSetState.setRejectionDate(new Date());
-                documentToSetState.setRejectionReason(documentSetStateCommand.getRejectionReason());
-                break;
-            }
-            case "CONFIRMED" :{
-                documentToSetState.setReviewer(reviewerUser);
-                documentToSetState.setDocumentState(DocumentState.CONFIRMED);
-                documentToSetState.setConfirmationDate(new Date());
-                break;
-            }
-            default:
-                throw new ResourceNotFoundException("My dear Friend, non of the SWITCH case was proceeded.");
-
         }
-        documentRepository.save(documentToSetState);
-        log.info("Document state set to: " + documentSetStateCommand.getDocumentState());
+
+        //jei esama state yra REJECTED arba ACCEPTED  tai nustatyti kad keisti bukles nebegalima (pvz. iseiti is metodo)
+        //arba nustatyti kad galima keisti tik jei esama bukle yra CONFIRMED
+
+        //jei esama state yra CREATED, o siuloma bukle nera SUBMITED tai nustatyti kad keisti bukles nebegalima (pvz. iseiti is metodo)
+        ///arba nustatyti kad galima keisti tik jei siuloma bukle yra CONFIRMED
+
+        //jei yra SUBMITED, o siuloma bukle nera REJECTED || CONFIRMED tai nustatyti kad keisti bukles nebegalima (pvz. iseiti is metodo;
+
+
+        // setting checked user as reviewer:
+        if (canSetState) {
+
+            switch (documentSetStateCommand.getDocumentState()) {
+                case "CREATED": {
+                    log.info("User tried to set document state to CREATED");
+                    throw new ResourceNotFoundException("There is no need to set state to CREATED (this state is already set during document creation).");
+                }
+                case "SUBMITTED": {
+                    if (documentToSetState.getDocumentState().equals(DocumentState.CREATED.toString())) {
+                        documentToSetState.setDocumentState(DocumentState.SUBMITTED);
+                        documentToSetState.setSubmissionDate(new Date());
+                        break;
+                    }
+                    break;
+                }
+                case "REJECTED": {
+                    if (documentToSetState.getDocumentState().equals(DocumentState.SUBMITTED.toString())) {
+                        documentToSetState.setReviewer(reviewerUser);
+                        documentToSetState.setDocumentState(DocumentState.REJECTED);
+                        documentToSetState.setRejectionDate(new Date());
+                        documentToSetState.setRejectionReason(documentSetStateCommand.getRejectionReason());
+                        break;
+                    } else
+                        break;
+                }
+                case "CONFIRMED": {
+                    if (documentToSetState.getDocumentState().equals(DocumentState.SUBMITTED.toString())) {
+                        documentToSetState.setReviewer(reviewerUser);
+                        documentToSetState.setDocumentState(DocumentState.CONFIRMED);
+                        documentToSetState.setConfirmationDate(new Date());
+                        break;
+                    } else
+                        break;
+                }
+                default:
+                    throw new ResourceNotFoundException("My dear Friend, non of the SWITCH case was proceeded.");
+
+            }
+            documentRepository.save(documentToSetState);
+            log.info("Document state set to: " + documentSetStateCommand.getDocumentState());
+        }
     }
 
 
@@ -470,7 +503,7 @@ public class DocumentService {
 
     //UPDATE. Version_02. ==============================================================================================
     @Transactional
-    public void updateDocument (Long id, DocumentUpdateCommand documentUpdateCommand) {
+    public void updateDocument(Long id, DocumentUpdateCommand documentUpdateCommand) {
         Document documentToUpdate = documentRepository.findById(id).orElse(null);
 
         DocumentType documentType = documentTypeRepository.findByTitle(documentUpdateCommand.getDocumentTypeTitle());
