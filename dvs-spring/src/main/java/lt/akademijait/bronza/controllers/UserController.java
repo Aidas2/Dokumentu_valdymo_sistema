@@ -53,7 +53,7 @@ public class UserController {
     @ApiOperation(value = "Update user", notes = "Updates user's data")
     public void updateUserData(
             @ApiParam(value = "Username", required = true) @PathVariable final String username,
-            @ApiParam(value =  "new data", required = true) @RequestBody UserUpdateCommand uuc){
+            @Valid @ApiParam(value =  "new data", required = true) @RequestBody UserUpdateCommand uuc){
         userService.updateUsersData(username, uuc);
     }
 
