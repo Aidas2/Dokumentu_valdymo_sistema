@@ -179,6 +179,9 @@ public class Document {
     }
 
     public void setCreationDate(Date creationDate) {
+//        SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd-MM-yy:HH:mm:SS");
+//        this.creationDate = DATE_FORMAT.format(creationDate); // incompatible types (String and object)
+
         this.creationDate = creationDate;
     }
 

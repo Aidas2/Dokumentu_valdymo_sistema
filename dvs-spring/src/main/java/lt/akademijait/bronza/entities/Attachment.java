@@ -68,10 +68,20 @@ public class Attachment {
 nevalina metodas: READ All DOCUMENTS OF SPECIFIC DOCUMENT_TYPE. Version_01 (object; @PathVariable)
 Pakoreguoti metoda: SET DOCUMENT STATE. Version_01 (by my)  ir SET DOCUMENT STATE. Version_02 (by J.C.)
 
-Validacija laukams (@Valid)
-Klaidu handlinimas  + loggeriai klaidoms
-Loggeriai su data + kad irasytu i faila
+Validacija laukams @Valid,   @NotNull, @Length(min = 1, max = 30)
 
-lithuanian enum doesn't works correctly
+Loggeriai su data + kad irasytu i faila - COMPLETED
+
+lithuanian enum doesn't works correctly - COMPLETED
+
+Klaidu handlinimas  + loggeriai klaidoms
+papildyti kad jeigu neranda DocumentType tai reikia handlint errora
+(pvz. iseiti is metodo, arba responseEntity arba ResourceNotFoundException)
+nes priesingu atveju programa nulus.
+
+GetDocumentById dabar grąžina reviewer as an object. Reiktų tiesiog String rewiewer grąžinti, kuriame būtų username to reviewer  - COMPLETED
+
+kai sukuriam Date() objektą, tai jis grąžiną datą hujovu formatu - ten yra raidė T iškarto po dienos
+
 
  */

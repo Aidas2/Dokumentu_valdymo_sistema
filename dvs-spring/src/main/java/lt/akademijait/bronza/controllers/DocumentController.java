@@ -90,9 +90,10 @@ public class DocumentController {
     @ResponseStatus(HttpStatus.ACCEPTED)
     public List<DocumentGetCommand> getAllDocumentsByDocumentStateV2(
             @ApiParam(value = "Document state", required = true)
-            @RequestParam DocumentState documentState) {
+            @RequestParam("state") DocumentState documentState) {
         return documentService.getAllDocumentsByDocumentState(documentState);
     }
+
 
     /* // Doesn't work :( !
     //READ BY TYPE. Version_01 =========================================================
