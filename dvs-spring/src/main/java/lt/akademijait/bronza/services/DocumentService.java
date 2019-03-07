@@ -19,6 +19,7 @@ import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -44,24 +45,51 @@ public class DocumentService {
     @Transactional(readOnly = true)
     public List<DocumentGetCommand> getAllDocuments() {
         log.info("Gotten all documents");
-        return documentRepository.findAll()
-                .stream()
-                .map((document) -> new DocumentGetCommand(
-                        document.getId(),
-                        document.getAuthor().getUsername(),
-                        document.getDocumentState().toString(),
-                        document.getDocumentType().getTitle(),
-                        document.getTitle(),
-                        document.getDescription(),
-                        document.getCreationDate(),
-                        document.getSubmissionDate(),
-                        document.getConfirmationDate(),
-                        document.getRejectionDate(),
-                        document.getReviewer().getUsername(),
-                        document.getRejectionReason(),
-                        document.getPath(),
-                        document.getAttachments()
-                )).collect(Collectors.toList());
+
+        List<DocumentGetCommand> allDocuments = new ArrayList<>();
+        for (Document document : documentRepository.findAll()) {
+            String reviewerUsername = null;
+            if (document.getReviewer() != null) {
+                reviewerUsername = document.getReviewer().getUsername();
+            }
+            allDocuments.add(new DocumentGetCommand(
+                    document.getId(),
+                    document.getAuthor().getUsername(),
+                    document.getDocumentState().toString(),
+                    document.getDocumentType().getTitle(),
+                    document.getTitle(),
+                    document.getDescription(),
+                    document.getCreationDate(),
+                    document.getSubmissionDate(),
+                    document.getConfirmationDate(),
+                    document.getRejectionDate(),
+                    reviewerUsername,
+                    document.getRejectionReason(),
+                    document.getPath(),
+                    document.getAttachments()));
+        }
+
+
+//        return documentRepository.findAll()
+//                .stream()
+//                .map((document) -> new DocumentGetCommand(
+//                        document.getId(),
+//                        document.getAuthor().getUsername(),
+//                        document.getDocumentState().toString(),
+//                        document.getDocumentType().getTitle(),
+//                        document.getTitle(),
+//                        document.getDescription(),
+//                        document.getCreationDate(),
+//                        document.getSubmissionDate(),
+//                        document.getConfirmationDate(),
+//                        document.getRejectionDate(),
+//
+//                        document.getReviewer().getUsername(),
+//                        document.getRejectionReason(),
+//                        document.getPath(),
+//                        document.getAttachments()
+//                )).collect(Collectors.toList());
+        return allDocuments;
 
 
     }
