@@ -493,7 +493,7 @@ public class DocumentService {
                         break;
                 }
                 case "CONFIRMED": {
-                    if (documentToSetState.getDocumentState().toString().equals(DocumentState.SUBMITTED)) {
+                    if (documentToSetState.getDocumentState().equals(DocumentState.SUBMITTED)) {
                         documentToSetState.setReviewer(reviewerUser);
                         documentToSetState.setDocumentState(DocumentState.CONFIRMED);
                         documentToSetState.setConfirmationDate(new Date());

@@ -57,7 +57,7 @@ class DocumentDetailsContainer extends Component {
 
     axios({
       url: "http://localhost:8081/api/docs/setstate2",
-      method: "PUT",
+      method: "put",
       headers: {
         authorisation: "your token"
       },
