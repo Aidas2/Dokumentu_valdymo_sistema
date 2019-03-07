@@ -45,10 +45,10 @@ class FileDownloadConatainer extends Component {
   };
 
   render() {
-    console.log(
-      this.state,
-      "<<<<<<<<<<<<<<<<<<<,THis.state in render()------------------"
-    );
+    // console.log(
+    //   this.state,
+    //   "<<<<<<<<<<<<<<<<<<<,THis.state in render()------------------"
+    // );
     return (
       <button
         style={{ display: "inline" }}

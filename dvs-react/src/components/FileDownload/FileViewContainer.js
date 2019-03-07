@@ -75,10 +75,6 @@ class FileViewContainer extends Component {
   // };
 
   render() {
-    console.log(
-      this.state,
-      "<<<<<<<<<<<<<<<<<<<,THis.state in render()------------------"
-    );
     // console.log("file ---------- ", this.state.file);
 
     return (

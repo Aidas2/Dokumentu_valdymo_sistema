@@ -7,7 +7,7 @@ class DocumentDetailsContainer extends Component {
   state = {
     documentDetails: {
       id: "",
-      author: "",
+      authorUsername: "",
       documentTypeTitleInLithuanian: "",
       documentStateInLithuanian: "",
       title: "",
@@ -44,14 +44,16 @@ class DocumentDetailsContainer extends Component {
         console.log(error);
       });
   }
+
   handleAcceptDocument = () => {
     console.log("Accept happened");
     // this.state.documentDetails.state==="PATEIKTAS"
     let setStateInfo = this.state.setStateInfo;
-    setStateInfo.documentState = "ACCEPTED";
-    this.state.setStateInfo.documentState === ""
-      ? this.setState({ setStateInfo })
-      : console.log("Document has already been managed");
+    setStateInfo.documentState = "CONFIRMED";
+    this.setState({ setStateInfo });
+    // this.state.setStateInfo.documentState === "PATEIKTAS"
+    //   ? this.setState({ setStateInfo })
+    //   : console.log("Document has already been managed");
 
     axios({
       url: "http://localhost:8081/api/docs/setstate2",
@@ -60,7 +62,7 @@ class DocumentDetailsContainer extends Component {
         authorisation: "your token"
       },
       data: {
-        authorUsername: this.state.author,
+        authorUsername: this.state.documentDetails.authorUsername,
         documentId: this.state.documentDetails.id,
         documentState: this.state.setStateInfo.documentState,
         rejectionReason: this.state.setStateInfo.rejectionReason,
@@ -69,6 +71,19 @@ class DocumentDetailsContainer extends Component {
     })
       .then(response => {
         this.setState({ sth: true });
+        // console.log(
+        //   "data to put @@@@@@@@@@@@@ ",
+        //   "authorUsername: ",
+        //   this.state.documentDetails.authorUsername,
+        //   "documentId: ",
+        //   this.state.documentDetails.id,
+        //   "documentState: ",
+        //   this.state.setStateInfo.documentState,
+        //   "rejectionReason: ",
+        //   this.state.setStateInfo.rejectionReason,
+        //   "reviewerUsername: ",
+        //   localStorage.getItem("username")
+        // );
       })
       .catch(function(error) {
         //it works without catch block as well
@@ -84,6 +99,23 @@ class DocumentDetailsContainer extends Component {
           console.log("Update error. HTTP error/status code=", error.message);
         }
       });
+    console.log(
+      "data to put @@@@@@@@@@@@@ ",
+      "authorUsername: ",
+      this.state.documentDetails.authorUsername,
+      "documentId: ",
+      this.state.documentDetails.id,
+      "documentState: ",
+      this.state.setStateInfo.documentState,
+      "rejectionReason: ",
+      this.state.setStateInfo.rejectionReason,
+      "reviewerUsername: ",
+      localStorage.getItem("username")
+    );
+    console.log(
+      "this.state.documentDetails.authorUsername-------in handleAcceptDocument--------> ",
+      this.state.documentDetails.authorUsername
+    );
   };
   handleRejectDocument = () => {};
   handleRejectionReason = e => {
@@ -105,10 +137,7 @@ class DocumentDetailsContainer extends Component {
     //     <li key={title}>{title}</li>
     //   ));
     // }
-    console.log(
-      "render() _--------------------- >>>> ",
-      this.state.documentDetails
-    );
+    console.log("render() _----------this.state----------- >>>> ", this.state);
     return (
       <div>
         <DocumentDetailsComponent
