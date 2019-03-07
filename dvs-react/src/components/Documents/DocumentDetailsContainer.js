@@ -57,7 +57,7 @@ class DocumentDetailsContainer extends Component {
 
     axios({
       url: "http://localhost:8081/api/docs/setstate2",
-      method: "put",
+      method: "PUT",
       headers: {
         authorisation: "your token"
       },
@@ -68,6 +68,15 @@ class DocumentDetailsContainer extends Component {
         rejectionReason: this.state.setStateInfo.rejectionReason,
         reviewerUsername: localStorage.getItem("username")
       }
+
+      // { request body ===>
+      // /api/docs/setstate2
+      //   "authorUsername": "username1",
+      //   "documentId": 161,
+      //   "documentState": "SUBMITTED",
+      //   "rejectionReason": "string",
+      //   "reviewerUsername": "username1"
+      // }
     })
       .then(response => {
         this.setState({ sth: true });
