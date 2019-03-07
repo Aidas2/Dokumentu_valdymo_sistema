@@ -196,8 +196,20 @@ const DocumentDetailsComponent = props => {
               </td>
               <td>
                 <h6>
-                  <button className="btn btn-success ">Priimti</button>&ensp;
-                  <button className="btn btn-danger">Atmesti</button>&ensp;
+                  <button
+                    onClick={props.onAcceptDocument}
+                    className="btn btn-success "
+                  >
+                    Priimti
+                  </button>
+                  &ensp;
+                  <button
+                    onClick={props.onRejectDocument}
+                    className="btn btn-danger"
+                  >
+                    Atmesti
+                  </button>
+                  &ensp;
                 </h6>
               </td>
               <td>
@@ -207,6 +219,7 @@ const DocumentDetailsComponent = props => {
                     <br />
                     <textarea
                       // rows="3"
+                      onChange={props.onRejectionReasonChange}
                       type="textarea"
                       style={{ width: "700px", height: "50px" }}
                       placeholder="Įveskite atmetimo priežastį"

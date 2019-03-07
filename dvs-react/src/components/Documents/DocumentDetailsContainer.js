@@ -38,6 +38,16 @@ class DocumentDetailsContainer extends Component {
         console.log(error);
       });
   }
+  handleAcceptDocument = () => {
+    console.log("Accept happened");
+  };
+  handleRejectDocument = () => {
+    console.log("Reject happened");
+  };
+  handleRejectionReason = e => {
+    let rejectionReason = e.target.value;
+    console.log("Rejection reason: ", rejectionReason);
+  };
 
   render() {
     // var submissionTypesToDisplay = null;
@@ -60,6 +70,9 @@ class DocumentDetailsContainer extends Component {
       <div>
         <DocumentDetailsComponent
           documentDetails={this.state.documentDetails}
+          onRejectionReasonChange={this.handleRejectionReason}
+          onAcceptDocument={this.handleAcceptDocument}
+          onRejectDocument={this.handleRejectDocument}
         />
       </div>
     );
