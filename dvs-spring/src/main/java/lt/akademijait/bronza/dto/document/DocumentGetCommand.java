@@ -50,8 +50,8 @@ public class DocumentGetCommand {
         this.submissionDate = submissionDate;
         this.confirmationDate = confirmationDate;
         this.rejectionDate = rejectionDate;
-        this.reviewerUsername = reviewerUsername;
-        this.rejectionReason = rejectionReason;
+        this.reviewerUsername = setReviewerUsername(reviewerUsername);
+        this.rejectionReason = setRejectionReason(rejectionReason);
         this.path = path;
         this.attachments = attachments;
     }
@@ -154,16 +154,26 @@ public class DocumentGetCommand {
         return reviewerUsername;
     }
 
-    public void setReviewerUsername(String reviewerUsername) {
-        this.reviewerUsername = reviewerUsername;
+    public String setReviewerUsername(String reviewerUsername) {
+        if(reviewerUsername == null) {
+            this.reviewerUsername = "";
+        } else {
+            this.reviewerUsername = reviewerUsername;
+        }
+        return this.reviewerUsername;
     }
 
     public String getRejectionReason() {
         return rejectionReason;
     }
 
-    public void setRejectionReason(String rejectionReason) {
-        this.rejectionReason = rejectionReason;
+    public String setRejectionReason(String rejectionReason) {
+        if(rejectionReason == null) {
+            this.rejectionReason = "";
+        } else {
+            this.rejectionReason = rejectionReason;
+        }
+        return this.rejectionReason;
     }
 
     public String getPath() {

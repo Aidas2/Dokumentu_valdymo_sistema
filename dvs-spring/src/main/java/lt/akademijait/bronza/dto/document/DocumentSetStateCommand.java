@@ -13,7 +13,7 @@ public class DocumentSetStateCommand {
     private String documentState;         //version_02 (by J.C.)
 
     //private DocumentType documentType;
-    //private String title;
+    private String title;
     //private String description;
     //private Date creationDate;
     //private Date submissionDate;
@@ -26,10 +26,9 @@ public class DocumentSetStateCommand {
     public DocumentSetStateCommand() {
     }
 
-    public DocumentSetStateCommand(Long documentId, String documentState, String authorUsername, String reviewerUsername, String rejectionReason) {
+    public DocumentSetStateCommand(Long documentId, String documentState, String reviewerUsername, String rejectionReason) {
         this.documentId = documentId;
         this.documentState = documentState;
-        this.authorUsername = authorUsername;
         this.reviewerUsername = reviewerUsername;
         this.rejectionReason = rejectionReason;
     }
