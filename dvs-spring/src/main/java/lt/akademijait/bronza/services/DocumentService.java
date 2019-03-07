@@ -475,15 +475,15 @@ public class DocumentService {
                     throw new ResourceNotFoundException("There is no need to set state to CREATED (this state is already set during document creation).");
                 }
                 case "SUBMITTED": {
-                    if (documentToSetState.getDocumentState().equals(DocumentState.CREATED.toString())) {
+                    if (documentToSetState.getDocumentState().equals(DocumentState.CREATED)) {
                         documentToSetState.setDocumentState(DocumentState.SUBMITTED);
                         documentToSetState.setSubmissionDate(new Date());
                         break;
-                    }
+                    } else
                     break;
                 }
                 case "REJECTED": {
-                    if (documentToSetState.getDocumentState().equals(DocumentState.SUBMITTED.toString())) {
+                    if (documentToSetState.getDocumentState().equals(DocumentState.SUBMITTED)) {
                         documentToSetState.setReviewer(reviewerUser);
                         documentToSetState.setDocumentState(DocumentState.REJECTED);
                         documentToSetState.setRejectionDate(new Date());
@@ -493,7 +493,7 @@ public class DocumentService {
                         break;
                 }
                 case "CONFIRMED": {
-                    if (documentToSetState.getDocumentState().equals(DocumentState.SUBMITTED.toString())) {
+                    if (documentToSetState.getDocumentState().toString().equals(DocumentState.SUBMITTED)) {
                         documentToSetState.setReviewer(reviewerUser);
                         documentToSetState.setDocumentState(DocumentState.CONFIRMED);
                         documentToSetState.setConfirmationDate(new Date());
