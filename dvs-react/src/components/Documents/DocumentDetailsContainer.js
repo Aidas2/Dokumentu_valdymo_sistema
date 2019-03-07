@@ -45,11 +45,11 @@ class DocumentDetailsContainer extends Component {
       });
   }
 
-  handleAcceptDocument = () => {
+  handleAcceptDocument = stateToSet => {
     console.log("Accept happened");
     // this.state.documentDetails.state==="PATEIKTAS"
     let setStateInfo = this.state.setStateInfo;
-    setStateInfo.documentState = "CONFIRMED";
+    setStateInfo.documentState = stateToSet;
     this.setState({ setStateInfo });
     // this.state.setStateInfo.documentState === "PATEIKTAS"
     //   ? this.setState({ setStateInfo })
@@ -126,68 +126,68 @@ class DocumentDetailsContainer extends Component {
       this.state.documentDetails.authorUsername
     );
   };
-  handleRejectDocument = () => {
-    let setStateInfo = this.state.setStateInfo;
-    setStateInfo.documentState = "REJECTED";
-    this.setState({ setStateInfo });
-    // this.state.setStateInfo.documentState === "PATEIKTAS"
-    //   ? this.setState({ setStateInfo })
-    //   : console.log("Document has already been managed");
+  // handleRejectDocument = () => {
+  //   let setStateInfo = this.state.setStateInfo;
+  //   setStateInfo.documentState = "REJECTED";
+  //   this.setState({ setStateInfo });
+  //   // this.state.setStateInfo.documentState === "PATEIKTAS"
+  //   //   ? this.setState({ setStateInfo })
+  //   //   : console.log("Document has already been managed");
 
-    axios({
-      url: "http://localhost:8081/api/docs/setstate2",
-      method: "put",
-      headers: {
-        authorisation: "your token"
-      },
-      data: {
-        authorUsername: this.state.documentDetails.authorUsername,
-        documentId: this.state.documentDetails.id,
-        documentState: this.state.setStateInfo.documentState,
-        rejectionReason: this.state.setStateInfo.rejectionReason,
-        reviewerUsername: localStorage.getItem("username")
-      }
-    })
-      .then(response => {
-        this.setState({ sth: true });
-      })
-      .catch(function(error) {
-        //it works without catch block as well
-        console.log(error);
-        if (error.response) {
-          //HTTP error happened
-          console.log(
-            "Update error. HTTP error/status code=",
-            error.response.status
-          );
-        } else {
-          //some other error happened
-          console.log("Update error. HTTP error/status code=", error.message);
-        }
-      });
-    console.log(
-      "data to put @@@@@@@@@@@@@ ",
-      "authorUsername: ",
-      this.state.documentDetails.authorUsername,
-      "documentId: ",
-      this.state.documentDetails.id,
-      "documentState: ",
-      this.state.setStateInfo.documentState,
-      "rejectionReason: ",
-      this.state.setStateInfo.rejectionReason,
-      "reviewerUsername: ",
-      localStorage.getItem("username")
-    );
-    console.log(
-      "this.state.documentDetails.authorUsername-------in handleAcceptDocument--------> ",
-      this.state.documentDetails.authorUsername
-    );
-  };
-  handleRejectionReason = e => {
-    let setStateInfo = this.state.setStateInfo;
-    setStateInfo.rejectionReason = e.target.value;
-    this.setState({ setStateInfo });
-  };
+  //   axios({
+  //     url: "http://localhost:8081/api/docs/setstate2",
+  //     method: "put",
+  //     headers: {
+  //       authorisation: "your token"
+  //     },
+  //     data: {
+  //       authorUsername: this.state.documentDetails.authorUsername,
+  //       documentId: this.state.documentDetails.id,
+  //       documentState: this.state.setStateInfo.documentState,
+  //       rejectionReason: this.state.setStateInfo.rejectionReason,
+  //       reviewerUsername: localStorage.getItem("username")
+  //     }
+  //   })
+  //     .then(response => {
+  //       this.setState({ sth: true });
+  //     })
+  //     .catch(function(error) {
+  //       //it works without catch block as well
+  //       console.log(error);
+  //       if (error.response) {
+  //         //HTTP error happened
+  //         console.log(
+  //           "Update error. HTTP error/status code=",
+  //           error.response.status
+  //         );
+  //       } else {
+  //         //some other error happened
+  //         console.log("Update error. HTTP error/status code=", error.message);
+  //       }
+  //     });
+  //   console.log(
+  //     "data to put @@@@@@@@@@@@@ ",
+  //     "authorUsername: ",
+  //     this.state.documentDetails.authorUsername,
+  //     "documentId: ",
+  //     this.state.documentDetails.id,
+  //     "documentState: ",
+  //     this.state.setStateInfo.documentState,
+  //     "rejectionReason: ",
+  //     this.state.setStateInfo.rejectionReason,
+  //     "reviewerUsername: ",
+  //     localStorage.getItem("username")
+  //   );
+  //   console.log(
+  //     "this.state.documentDetails.authorUsername-------in handleAcceptDocument--------> ",
+  //     this.state.documentDetails.authorUsername
+  //   );
+  // };
+  // handleRejectionReason = e => {
+  //   let setStateInfo = this.state.setStateInfo;
+  //   setStateInfo.rejectionReason = e.target.value;
+  //   this.setState({ setStateInfo });
+  // };
 
   render() {
     // var submissionTypesToDisplay = null;
@@ -208,8 +208,8 @@ class DocumentDetailsContainer extends Component {
         <DocumentDetailsComponent
           documentDetails={this.state.documentDetails}
           onRejectionReasonChange={this.handleRejectionReason}
-          onAcceptDocument={this.handleAcceptDocument}
-          onRejectDocument={this.handleRejectDocument}
+          onAcceptDocument={() => this.handleAcceptDocument("CONFIRMED")}
+          onRejectDocument={() => this.handleAcceptDocument("REJECTED")}
         />
       </div>
     );
