@@ -13,13 +13,19 @@ class DocumentDetailsContainer extends Component {
       title: "",
       description: "",
       creationDate: "",
-      submissionDate: "nepateiktas",
-      confirmationDate: "nepatvirtintas",
-      rejectionDate: "neatmestas",
-      reviewer: "neperžiūrėtas",
-      rejectionReason: "priežastis nepaeikta",
+      submissionDate: "",
+      confirmationDate: "",
+      rejectionDate: "",
+      reviewer: "",
+      rejectionReason: "",
       path: ""
-    }
+    },
+    setStateInfo: {
+      documentState: "",
+      rejectionReason: ""
+      // reviewerUsername: ""
+    },
+    sth: false
   };
 
   componentDidMount() {
@@ -40,13 +46,50 @@ class DocumentDetailsContainer extends Component {
   }
   handleAcceptDocument = () => {
     console.log("Accept happened");
+    // this.state.documentDetails.state==="PATEIKTAS"
+    let setStateInfo = this.state.setStateInfo;
+    setStateInfo.documentState = "ACCEPTED";
+    this.state.setStateInfo.documentState === ""
+      ? this.setState({ setStateInfo })
+      : console.log("Document has already been managed");
+
+    axios({
+      url: "http://localhost:8081/api/docs/setstate2",
+      method: "put",
+      headers: {
+        authorisation: "your token"
+      },
+      data: {
+        authorUsername: this.state.author,
+        documentId: this.state.documentDetails.id,
+        documentState: this.state.setStateInfo.documentState,
+        rejectionReason: this.state.setStateInfo.rejectionReason,
+        reviewerUsername: localStorage.getItem("username")
+      }
+    })
+      .then(response => {
+        this.setState({ sth: true });
+      })
+      .catch(function(error) {
+        //it works without catch block as well
+        console.log(error);
+        if (error.response) {
+          //HTTP error happened
+          console.log(
+            "Update error. HTTP error/status code=",
+            error.response.status
+          );
+        } else {
+          //some other error happened
+          console.log("Update error. HTTP error/status code=", error.message);
+        }
+      });
   };
-  handleRejectDocument = () => {
-    console.log("Reject happened");
-  };
+  handleRejectDocument = () => {};
   handleRejectionReason = e => {
-    let rejectionReason = e.target.value;
-    console.log("Rejection reason: ", rejectionReason);
+    let setStateInfo = this.state.setStateInfo;
+    setStateInfo.rejectionReason = e.target.value;
+    this.setState({ setStateInfo });
   };
 
   render() {
