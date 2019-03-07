@@ -1,5 +1,6 @@
 package lt.akademijait.bronza.services;
 
+import lombok.extern.slf4j.Slf4j;
 import lt.akademijait.bronza.dto.user.UserAddToGroupCommand;
 import lt.akademijait.bronza.dto.user.UserCreateCommand;
 import lt.akademijait.bronza.dto.user.UserGetCommand;
@@ -19,9 +20,10 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
+@Slf4j
 public class UserService {
 
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+//    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private UserRepository userRepository;
@@ -51,7 +53,7 @@ public class UserService {
                     userGroupsTitles);
             allUsers.add(ugc);
         }
-        logger.info("Got all the users");
+        log.info("Got all the users");
         return allUsers;
     }
 
@@ -63,7 +65,7 @@ public class UserService {
         for (UserGroup userGroup : user.getUserGroups()) {
             userGroupsTitles.add(userGroup.getTitle());
         }
-        logger.info("The user's " + username + " info was gotten");
+        log.info("The user's " + username + " info was gotten");
         return new UserGetCommand(
                 user.getId(),
                 user.getFirstName(),
@@ -95,7 +97,7 @@ public class UserService {
                 userGroupsToSet
         );
         userRepository.save(newUser);
-        logger.info("New user " + newUser.getUsername() + " was created");
+        log.info("New user " + newUser.getUsername() + " was created");
     }
 
     @Transactional
@@ -118,7 +120,7 @@ public class UserService {
         userToUpdate.setUserGroups(userGroupsToSet);
 
         userRepository.save(userToUpdate);
-        logger.info("Info about the user " + oldUserName + " was updated");
+        log.info("Info about the user " + oldUserName + " was updated");
     }
 
     @Transactional
@@ -131,7 +133,7 @@ public class UserService {
             }
         }
         userRepository.save(userToUpdate);
-        logger.info("The user " + username + " was added to the group" + userAddToGroupCommand.getUserGroupTitle());
+        log.info("The user " + username + " was added to the group" + userAddToGroupCommand.getUserGroupTitle());
     }
 
     @Transactional
@@ -143,7 +145,7 @@ public class UserService {
             }
         }
         userRepository.save(userToUpdate);
-        logger.info("The user " + username + " was removed from the group " + userAddToGroupCommand.getUserGroupTitle());
+        log.info("The user " + username + " was removed from the group " + userAddToGroupCommand.getUserGroupTitle());
     }
 
 
@@ -171,7 +173,7 @@ public class UserService {
                 allUsersInGroup.add(ugc);
             }
         }
-        logger.info("Users who belong to the group " + groupName + " was gotten");
+        log.info("Users who belong to the group " + groupName + " was gotten");
         return allUsersInGroup;
     }
 
@@ -179,7 +181,7 @@ public class UserService {
     @Transactional
     public void deleteUser(String username) {
         userRepository.deleteByUsername(username);
-        logger.info("The user " + username + " was deleted");
+        log.info("The user " + username + " was deleted");
     }
 
 
