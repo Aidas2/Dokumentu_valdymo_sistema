@@ -100,6 +100,10 @@ public class DocumentService {
         Document document = documentRepository.findById(id).orElse(null);
         log.info("Gotten all documents by this id: " + id);
         //logger.error("null "); try/catch; luzimo pvz: skirtingi duomenu tipai (Long ir string)
+        String reviewerUsername = null;
+        if (document.getReviewer() != null) {
+            reviewerUsername = document.getReviewer().getUsername();
+        }
         return new DocumentGetCommand(
                 document.getId(),
                 document.getAuthor().getUsername(),
@@ -111,8 +115,7 @@ public class DocumentService {
                 document.getSubmissionDate(),
                 document.getConfirmationDate(),
                 document.getRejectionDate(),
-                document.getReviewer().getUsername(),
-                document.getRejectionReason(),
+                reviewerUsername, document.getRejectionReason(),
                 document.getPath(),
                 document.getAttachments()
         );

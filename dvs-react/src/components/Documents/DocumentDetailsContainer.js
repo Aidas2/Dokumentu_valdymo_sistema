@@ -16,7 +16,7 @@ class DocumentDetailsContainer extends Component {
       submissionDate: "",
       confirmationDate: "",
       rejectionDate: "",
-      reviewer: "",
+      reviewerUsername: "",
       rejectionReason: "",
       path: ""
     },

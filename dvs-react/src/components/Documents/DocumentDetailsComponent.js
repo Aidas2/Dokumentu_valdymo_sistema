@@ -18,7 +18,7 @@ const DocumentDetailsComponent = props => {
     //submissionDate,
     confirmationDate,
     rejectionDate,
-    reviewer,
+    reviewerUsername,
     rejectionReason
     //path
   } = props.documentDetails;
@@ -139,7 +139,7 @@ const DocumentDetailsComponent = props => {
                 <h6>Peržiūrėjo</h6>
               </td>
               <td>
-                <h6>{reviewer}</h6>
+                <h6>{reviewerUsername}</h6>
               </td>
             </tr>
             <tr>
