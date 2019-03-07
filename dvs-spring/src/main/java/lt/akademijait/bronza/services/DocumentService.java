@@ -57,7 +57,7 @@ public class DocumentService {
                         document.getSubmissionDate(),
                         document.getConfirmationDate(),
                         document.getRejectionDate(),
-                        document.getReviewer(),
+                        document.getReviewer().getUsername(),
                         document.getRejectionReason(),
                         document.getPath(),
                         document.getAttachments()
@@ -83,7 +83,7 @@ public class DocumentService {
                 document.getSubmissionDate(),
                 document.getConfirmationDate(),
                 document.getRejectionDate(),
-                document.getReviewer(),
+                document.getReviewer().getUsername(),
                 document.getRejectionReason(),
                 document.getPath(),
                 document.getAttachments()
@@ -109,7 +109,7 @@ public class DocumentService {
                         document.getSubmissionDate(),
                         document.getConfirmationDate(),
                         document.getRejectionDate(),
-                        document.getReviewer(),
+                        document.getReviewer().getUsername(),
                         document.getRejectionReason(),
                         document.getPath(),
                         document.getAttachments()
@@ -134,7 +134,7 @@ public class DocumentService {
                         document.getSubmissionDate(),
                         document.getConfirmationDate(),
                         document.getRejectionDate(),
-                        document.getReviewer(),
+                        document.getReviewer().getUsername(),
                         document.getRejectionReason(),
                         document.getPath(),
                         document.getAttachments()
@@ -159,7 +159,7 @@ public class DocumentService {
                         document.getSubmissionDate(),
                         document.getConfirmationDate(),
                         document.getRejectionDate(),
-                        document.getReviewer(),
+                        document.getReviewer().getUsername(),
                         document.getRejectionReason(),
                         document.getPath(),
                         document.getAttachments()
@@ -185,7 +185,7 @@ public class DocumentService {
                         document.getSubmissionDate(),
                         document.getConfirmationDate(),
                         document.getRejectionDate(),
-                        document.getReviewer(),
+                        document.getReviewer().getUsername(),
                         document.getRejectionReason(),
                         document.getPath(),
                         document.getAttachments()
@@ -211,7 +211,7 @@ public class DocumentService {
                         document.getSubmissionDate(),
                         document.getConfirmationDate(),
                         document.getRejectionDate(),
-                        document.getReviewer(),
+                        document.getReviewer().getUsername(),
                         document.getRejectionReason(),
                         document.getPath(),
                         document.getAttachments()
@@ -237,7 +237,7 @@ public class DocumentService {
                         document.getSubmissionDate(),
                         document.getConfirmationDate(),
                         document.getRejectionDate(),
-                        document.getReviewer(),
+                        document.getReviewer().getUsername(),
                         document.getRejectionReason(),
                         document.getPath(),
                         document.getAttachments()
@@ -263,7 +263,7 @@ public class DocumentService {
                         document.getSubmissionDate(),
                         document.getConfirmationDate(),
                         document.getRejectionDate(),
-                        document.getReviewer(),
+                        document.getReviewer().getUsername(),
                         document.getRejectionReason(),
                         document.getPath(),
                         document.getAttachments()

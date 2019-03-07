@@ -79,7 +79,7 @@ lithuanian enum doesn't works correctly - COMPLEETED
         // (pvz. iseiti is metodo, arba responseEntity arba ResourceNotFoundException)
         // nes priesingu atveju programa nulus.
 
-
+GetDocumentById dabar grąžina reviewer as an object. Reiktų tiesiog String rewiewer grąžinti, kuriame būtų username to reviewer  - COMPLEETED
 
 
  */
