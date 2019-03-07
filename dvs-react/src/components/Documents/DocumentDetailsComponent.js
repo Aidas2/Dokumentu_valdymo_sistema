@@ -197,8 +197,15 @@ const DocumentDetailsComponent = props => {
               <td>
                 <h6>
                   <button
+                    onClick={props.onSubmitDocument}
+                    className="btn btn-warning "
+                  >
+                    Pateikti
+                  </button>
+                  &ensp;
+                  <button
                     onClick={props.onAcceptDocument}
-                    className="btn btn-success "
+                    className="btn btn-success"
                   >
                     Priimti
                   </button>
