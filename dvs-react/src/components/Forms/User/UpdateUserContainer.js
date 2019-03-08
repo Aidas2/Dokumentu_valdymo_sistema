@@ -100,7 +100,9 @@ class UpdateUserContainer extends Component {
     //     }
     //   )
     axios({
-      url: "http://localhost:8081/api/users/username45",
+      url:
+        "http://localhost:8081/api/users/" +
+        this.state.userDetailsBeforeUpdate.username,
       method: "put",
       headers: {
         authorisation: "your token"
