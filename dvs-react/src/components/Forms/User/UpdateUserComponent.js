@@ -204,7 +204,7 @@ const UpdateUserComponent = props => {
                   className="btn btn-outline-success btn-sm document-button-style"
                   onClick={props.onSubmit}
                 >
-                  Kurti
+                  Atnaujinti
                 </button>
               </td>
             </tr>

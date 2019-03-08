@@ -7,7 +7,7 @@ import UpdateUserComponent from "./UpdateUserComponent";
 class UpdateUserContainer extends Component {
   state = {
     updatedUserInfo: {
-      userGroups: [],
+      userGroupTitle: [],
       administrator: false,
       emailAddress: "",
       firstName: "",
@@ -53,7 +53,7 @@ class UpdateUserContainer extends Component {
 
         this.setState({ userDetailsBeforeUpdate: response.data });
         const updatedUserInfo = this.state.updatedUserInfo;
-        updatedUserInfo.userGroups = response.data.userGroups;
+        updatedUserInfo.userGroupTitle = response.data.userGroups;
         response.data.administrator
           ? (updatedUserInfo.administrator = true)
           : (updatedUserInfo.administrator = false);
@@ -70,8 +70,13 @@ class UpdateUserContainer extends Component {
 
   handleSubmit = () => {
     const updatedUserInfo = this.state.updatedUserInfo;
+    console.log(
+      "******************* username, updatedUserInfo >> ",
+      this.state.userDetailsBeforeUpdate.username,
+      updatedUserInfo
+    );
     axios
-      .post(
+      .put(
         "http://localhost:8081/api/users/" +
           this.state.userDetailsBeforeUpdate.username,
         {
@@ -176,10 +181,10 @@ class UpdateUserContainer extends Component {
     this.setState({ msg: false });
   };
   handleUserGroupRemoval = group => {
-    let userGroups = this.state.updatedUserInfo.userGroups;
+    let userGroups = this.state.updatedUserInfo.userGroupTitle;
     var filteredUserGroups = userGroups.filter(oneGroup => oneGroup !== group);
     const updatedUserInfo = this.state.updatedUserInfo;
-    updatedUserInfo.userGroups = filteredUserGroups;
+    updatedUserInfo.userGroupTitle = filteredUserGroups;
     this.setState({ updatedUserInfo });
   };
 
@@ -191,8 +196,8 @@ class UpdateUserContainer extends Component {
     //   .userGroups;
     var userGroupsTitlesToDisplay = null;
 
-    if (this.state.updatedUserInfo.userGroups) {
-      userGroupsTitlesToDisplay = this.state.updatedUserInfo.userGroups.map(
+    if (this.state.updatedUserInfo.userGroupTitle) {
+      userGroupsTitlesToDisplay = this.state.updatedUserInfo.userGroupTitle.map(
         group => {
           return (
             <span key={group}>
