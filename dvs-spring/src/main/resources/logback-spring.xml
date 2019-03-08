@@ -168,7 +168,7 @@
         <appender-ref ref="STDOUT" />
     </logger>
 
-    <logger name="${BASEPCKG}.controllers.UserService" level="info" additivity="false">
+    <logger name="${BASEPCKG}.services.UserService" level="info" additivity="false">
         <appender-ref ref="USERFILE" />
         <appender-ref ref="STDOUT" />
     </logger>
