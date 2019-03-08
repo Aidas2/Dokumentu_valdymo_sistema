@@ -75,22 +75,40 @@ class UpdateUserContainer extends Component {
       this.state.userDetailsBeforeUpdate.username,
       updatedUserInfo
     );
-    axios
-      .put(
-        "http://localhost:8081/api/users/" +
-          this.state.userDetailsBeforeUpdate.username,
-        {
-          updatedUserInfo
-          // administrator: this.state.administrator,
-          // emailAddress: this.state.emailAddress,
-          // firstName: this.state.firstName,
-          // hireDate: this.state.hireDate,
-          // lastName: this.state.lastName,
-          // password: this.state.password,
-          // username: this.state.username,
-          // userGroupTitle: this.state.userGroups
-        }
-      )
+    // axios
+    //   .put(
+    //     "http://localhost:8081/api/users/" +
+    //       this.state.userDetailsBeforeUpdate.username,
+    //     {
+    //       // administrator: true,
+    //       // emailAddress: "string@str.str",
+    //       // firstName: "Vilius",
+    //       // hireDate: "2019-03-08T13:18:15.781Z",
+    //       // lastName: "Viliauskas",
+    //       // password: "jopass",
+    //       // userGroupTitle: ["group1"]
+
+    //       updatedUserInfo
+    //       // administrator: this.state.administrator,
+    //       // emailAddress: this.state.emailAddress,
+    //       // firstName: this.state.firstName,
+    //       // hireDate: this.state.hireDate,
+    //       // lastName: this.state.lastName,
+    //       // password: this.state.password,
+    //       // username: this.state.username,
+    //       // userGroupTitle: this.state.userGroups
+    //     }
+    //   )
+    axios({
+      url: "http://localhost:8081/api/users/username45",
+      method: "put",
+      headers: {
+        authorisation: "your token"
+      },
+      data: {
+        updatedUserInfo
+      }
+    })
       .then(response => {
         const uploadStatus = "User was updated successfully";
         console.log("upload status >>>>>>>>>> ", uploadStatus);
@@ -149,11 +167,13 @@ class UpdateUserContainer extends Component {
   handleUserGroupChange = e => {
     this.handleCloseAlert();
 
-    let userGroups = this.state.userGroups;
+    let userGroups = this.state.updatedUserInfo.userGroupTitle;
     userGroups.includes(e.target.value)
       ? console.log("This userGroup has already been selected")
       : userGroups.push(e.target.value);
-    this.setState({ userGroups: userGroups });
+    const updatedUserInfo = this.state.updatedUserInfo;
+    updatedUserInfo.userGroupTitle = userGroups;
+    this.setState({ updatedUserInfo });
   };
 
   launchAlert = () => {
