@@ -8,7 +8,7 @@ class UpdateUserContainer extends Component {
   state = {
     updatedUserInfo: {
       userGroupTitle: [],
-      administrator: false,
+      administrator: "",
       emailAddress: "",
       firstName: "",
       hireDate: "",
@@ -16,7 +16,7 @@ class UpdateUserContainer extends Component {
       password: ""
     },
     temporalUserInfo: {
-      administrator: false,
+      administrator: "",
       emailAddress: "",
       firstName: "",
       hireDate: "",
@@ -90,16 +90,19 @@ class UpdateUserContainer extends Component {
       : console.log("Email address was not changed");
     temporalUserInfo.firstName
       ? (updatedUserInfo.firstName = temporalUserInfo.firstName)
-      : console.log("Email address was not changed");
+      : console.log("First name was not changed");
     temporalUserInfo.lastName
       ? (updatedUserInfo.lastName = temporalUserInfo.lastName)
-      : console.log("LastName address was not changed");
+      : console.log("LastName  was not changed");
     temporalUserInfo.hireDate
       ? (updatedUserInfo.hireDate = temporalUserInfo.hireDate)
-      : console.log("Email address was not changed");
+      : console.log("Hire date was not changed");
     temporalUserInfo.password
       ? (updatedUserInfo.password = temporalUserInfo.password)
-      : console.log("Email address was not changed");
+      : console.log("Password was not changed");
+    temporalUserInfo.administrator
+      ? (updatedUserInfo.administrator = temporalUserInfo.administrator)
+      : console.log("Administrator was not changed");
 
     // axios
     //   .put(
@@ -171,44 +174,35 @@ class UpdateUserContainer extends Component {
   };
   handleEmailAddressChange = e => {
     this.handleCloseAlert();
-
     const temporalUserInfo = this.state.temporalUserInfo;
     temporalUserInfo.emailAddress = e.target.value;
     this.setState({ temporalUserInfo });
   };
   handleFirstNameChange = e => {
     this.handleCloseAlert();
-
     const temporalUserInfo = this.state.temporalUserInfo;
     temporalUserInfo.firstName = e.target.value;
     this.setState({ temporalUserInfo });
   };
   handleHireDateChange = e => {
     this.handleCloseAlert();
-
     const temporalUserInfo = this.state.temporalUserInfo;
     temporalUserInfo.hireDate = e.target.value;
     this.setState({ temporalUserInfo });
   };
   handleLastNameChange = e => {
     this.handleCloseAlert();
-
     const temporalUserInfo = this.state.temporalUserInfo;
     temporalUserInfo.lastName = e.target.value;
     this.setState({ temporalUserInfo });
   };
   handlePasswordChange = e => {
     this.handleCloseAlert();
-
     const temporalUserInfo = this.state.temporalUserInfo;
     temporalUserInfo.password = e.target.value;
     this.setState({ temporalUserInfo });
   };
-  // handleUsernameChange = e => {
-  //   this.handleCloseAlert();
 
-  //   this.setState({ username: e.target.value });
-  // };
   handleUserGroupChange = e => {
     this.handleCloseAlert();
 
