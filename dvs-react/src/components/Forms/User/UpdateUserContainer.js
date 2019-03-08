@@ -6,15 +6,15 @@ import UpdateUserComponent from "./UpdateUserComponent";
 
 class UpdateUserContainer extends Component {
   state = {
-    userGroups: [],
-    administrator: false,
-    emailAddress: "",
-    firstName: "",
-    hireDate: "",
-    lastName: "",
-    password: "",
-    username: "",
-    id: 4,
+    updatedUserInfo: {
+      userGroups: [],
+      administrator: false,
+      emailAddress: "",
+      firstName: "",
+      hireDate: "",
+      lastName: "",
+      password: ""
+    },
     msg: false,
     allUserGroups: [],
     userDetailsBeforeUpdate: ""
@@ -59,17 +59,23 @@ class UpdateUserContainer extends Component {
   }
 
   handleSubmit = () => {
+    const updatedUserInfo = this.state.updatedUserInfo;
     axios
-      .post("http://localhost:8081/api/users", {
-        administrator: this.state.administrator,
-        emailAddress: this.state.emailAddress,
-        firstName: this.state.firstName,
-        hireDate: this.state.hireDate,
-        lastName: this.state.lastName,
-        password: this.state.password,
-        username: this.state.username,
-        userGroupTitle: this.state.userGroups
-      })
+      .post(
+        "http://localhost:8081/api/users" +
+          this.state.userDetailsBeforeUpdate.username,
+        {
+          updatedUserInfo
+          // administrator: this.state.administrator,
+          // emailAddress: this.state.emailAddress,
+          // firstName: this.state.firstName,
+          // hireDate: this.state.hireDate,
+          // lastName: this.state.lastName,
+          // password: this.state.password,
+          // username: this.state.username,
+          // userGroupTitle: this.state.userGroups
+        }
+      )
       .then(response => {
         const uploadStatus = "User was created successfully";
         console.log("upload status >>>>>>>>>> ", uploadStatus);

@@ -61,7 +61,7 @@ const UpdateUserComponent = props => {
               </td>
               <td>
                 <input
-                  value={firstName}
+                  // value={firstName}
                   className=" form-control form-control-sm italic-style"
                   placeholder={firstName}
                   type="text"
