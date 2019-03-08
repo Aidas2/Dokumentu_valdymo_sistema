@@ -5,6 +5,15 @@ import { Link } from "react-router-dom";
 import UserGroupsContainer from "./UserGroupsContainer";
 import infoIcon from "../../../images/info-icon.png";
 const UpdateUserComponent = props => {
+  const {
+    userGroups: [],
+    administrator,
+    emailAddress,
+    firstName,
+    hireDate,
+    lastName,
+    password
+  } = props.userDetailsBeforeUpdate;
   return (
     <div>
       <div className="container-fluid m-2">

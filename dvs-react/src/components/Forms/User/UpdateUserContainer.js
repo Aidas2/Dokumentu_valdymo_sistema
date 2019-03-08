@@ -16,7 +16,8 @@ class UpdateUserContainer extends Component {
     username: "",
     id: 4,
     msg: false,
-    allUserGroups: []
+    allUserGroups: [],
+    userDetailsBeforeUpdate: ""
   };
 
   componentDidMount() {
@@ -35,6 +36,26 @@ class UpdateUserContainer extends Component {
       "ComponentDidMount inside DocumentTYpesCOntainer >>>>>>>>>> this.state.userGroups>>>>.",
       this.state.allUserGroups
     );
+    const usernameParam = this.props.match.params.username;
+
+    axios({
+      url: "http://localhost:8081/api/users/" + usernameParam,
+      method: "GET"
+      //   params: {
+      //     username: "username1"
+      //   }
+    })
+      .then(response => {
+        let userDetails = response.data;
+        userDetails.administrator
+          ? (userDetails.administrator = "Taip")
+          : (userDetails.administrator = "Ne");
+
+        this.setState({ userDetails: response.data });
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   handleSubmit = () => {
@@ -180,6 +201,7 @@ class UpdateUserContainer extends Component {
         userGroups={this.state.allUserGroups}
         launchAlert={this.launchAlert()}
         userGroupsTitles={userGroupsTitlesToDisplay}
+        userDetailsBeforeUpdate={this.state.userDetailsBeforeUpdate}
       />
     );
   }
