@@ -19,25 +19,28 @@ public class UserUpdateCommand {
 
 //    private Long id;
 
-//    @NotNull
-    @Length(min = 1, max = 50)
+    @NotNull
+    @Length(min = 1, max = 30)
     private String firstName;
 
-    @Length(min = 1, max = 50)
+
+    @Length(min = 1, max = 30)
     private String lastName;
 
     @PastOrPresent
     private Date hireDate;
 
-//    @NotNull
+    @NotNull
     private boolean administrator;
 
-    @Length(min = 6, max = 20)
-    private String username;
-
 //    @NotNull
+//    @Length(min = 6, max = 20)
+//    private String username;
+
+    @NotNull
     private String password;
 
+    @NotNull
     @Email
     private String emailAddress;
 
@@ -50,13 +53,13 @@ public class UserUpdateCommand {
 
     public UserUpdateCommand(@Length(min = 1, max = 50) String firstName,
                              @Length(min = 1, max = 50) String lastName, @PastOrPresent Date hireDate,
-                             boolean administrator, @Length(min = 6, max = 20) String username,
-                             String password, @Email String emailAddress, Set<String> userGroupTitle) {
+                             boolean administrator, String password,
+                             @Email String emailAddress, Set<String> userGroupTitle) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.hireDate = hireDate;
         this.administrator = administrator;
-        this.username = username;
+//        this.username = username;
         this.password = password;
         this.emailAddress = emailAddress;
         this.userGroupTitle = userGroupTitle;
@@ -111,13 +114,13 @@ public class UserUpdateCommand {
         this.administrator = administrator;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
+//    public String getUsername() {
+//        return username;
+//    }
+//
+//    public void setUsername(String username) {
+//        this.username = username;
+//    }
 
     public String getPassword() {
         return password;

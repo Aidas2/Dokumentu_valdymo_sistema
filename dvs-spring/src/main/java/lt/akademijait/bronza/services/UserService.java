@@ -111,33 +111,33 @@ public class UserService {
 
         User userToUpdate = userRepository.findByUsername(oldUserName);
 
-        if (uuc.getFirstName() != null){
-            userToUpdate.setFirstName(uuc.getFirstName());
-        }
-        if (uuc.getLastName() != null){
-            userToUpdate.setLastName(uuc.getLastName());
-        }
-        userToUpdate.setAdministrator(uuc.isAdministrator());
-
-        if (uuc.getUsername() != null){
-            userToUpdate.setUsername(uuc.getUsername());
-        }
-        if (uuc.getPassword() != null){
-            userToUpdate.setPassword(uuc.getPassword());
-        }
-        if (!uuc.getEmailAddress().equals("") || uuc.getEmailAddress() != null){
-            userToUpdate.setEmailAddress(uuc.getEmailAddress());
-        }
-        userToUpdate.setUserGroups(userGroupsToSet);
-
-//        userToUpdate.setFirstName(uuc.getFirstName());
-//        userToUpdate.setLastName(uuc.getLastName());
-//        userToUpdate.setHireDate(uuc.getHireDate());
+//        if (uuc.getFirstName() != null){
+//            userToUpdate.setFirstName(uuc.getFirstName());
+//        }
+//        if (uuc.getLastName() != null){
+//            userToUpdate.setLastName(uuc.getLastName());
+//        }
 //        userToUpdate.setAdministrator(uuc.isAdministrator());
-//        userToUpdate.setUsername(uuc.getUsername());
-//        userToUpdate.setPassword(uuc.getPassword());
-//        userToUpdate.setEmailAddress(uuc.getEmailAddress());
+//
+//        if (uuc.getUsername() != null){
+//            userToUpdate.setUsername(uuc.getUsername());
+//        }
+//        if (uuc.getPassword() != null){
+//            userToUpdate.setPassword(uuc.getPassword());
+//        }
+//        if (!uuc.getEmailAddress().equals("") || uuc.getEmailAddress() != null){
+//            userToUpdate.setEmailAddress(uuc.getEmailAddress());
+//        }
 //        userToUpdate.setUserGroups(userGroupsToSet);
+
+        userToUpdate.setFirstName(uuc.getFirstName());
+        userToUpdate.setLastName(uuc.getLastName());
+        userToUpdate.setHireDate(uuc.getHireDate());
+        userToUpdate.setAdministrator(uuc.isAdministrator());
+//        userToUpdate.setUsername(uuc.getUsername());
+        userToUpdate.setPassword(uuc.getPassword());
+        userToUpdate.setEmailAddress(uuc.getEmailAddress());
+        userToUpdate.setUserGroups(userGroupsToSet);
 
         userRepository.save(userToUpdate);
         log.info("Info about the user " + oldUserName + " was updated");
