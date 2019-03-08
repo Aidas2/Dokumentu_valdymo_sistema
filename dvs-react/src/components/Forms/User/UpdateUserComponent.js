@@ -6,7 +6,7 @@ import UserGroupsContainer from "./UserGroupsContainer";
 import infoIcon from "../../../images/info-icon.png";
 const UpdateUserComponent = props => {
   const {
-    userGroups: [],
+    userGroups,
     administrator,
     emailAddress,
     firstName,
@@ -59,8 +59,9 @@ const UpdateUserComponent = props => {
               </td>
               <td>
                 <input
+                  value={firstName}
                   className=" form-control form-control-sm italic-style"
-                  placeholder="Įveskite vartotojo vardą"
+                  placeholder={firstName}
                   type="text"
                   onChange={props.onFirstNameChange}
                 />
