@@ -88,6 +88,18 @@ class UpdateUserContainer extends Component {
     temporalUserInfo.emailAddress
       ? (updatedUserInfo.emailAddress = temporalUserInfo.emailAddress)
       : console.log("Email address was not changed");
+    temporalUserInfo.firstName
+      ? (updatedUserInfo.firstName = temporalUserInfo.firstName)
+      : console.log("Email address was not changed");
+    temporalUserInfo.lastName
+      ? (updatedUserInfo.lastName = temporalUserInfo.lastName)
+      : console.log("LastName address was not changed");
+    temporalUserInfo.hireDate
+      ? (updatedUserInfo.hireDate = temporalUserInfo.hireDate)
+      : console.log("Email address was not changed");
+    temporalUserInfo.password
+      ? (updatedUserInfo.password = temporalUserInfo.password)
+      : console.log("Email address was not changed");
 
     // axios
     //   .put(
@@ -167,22 +179,30 @@ class UpdateUserContainer extends Component {
   handleFirstNameChange = e => {
     this.handleCloseAlert();
 
-    this.setState({ firstName: e.target.value });
+    const temporalUserInfo = this.state.temporalUserInfo;
+    temporalUserInfo.firstName = e.target.value;
+    this.setState({ temporalUserInfo });
   };
   handleHireDateChange = e => {
     this.handleCloseAlert();
 
-    this.setState({ hireDate: e.target.value });
+    const temporalUserInfo = this.state.temporalUserInfo;
+    temporalUserInfo.hireDate = e.target.value;
+    this.setState({ temporalUserInfo });
   };
   handleLastNameChange = e => {
     this.handleCloseAlert();
 
-    this.setState({ lastName: e.target.value });
+    const temporalUserInfo = this.state.temporalUserInfo;
+    temporalUserInfo.lastName = e.target.value;
+    this.setState({ temporalUserInfo });
   };
   handlePasswordChange = e => {
     this.handleCloseAlert();
 
-    this.setState({ password: e.target.value });
+    const temporalUserInfo = this.state.temporalUserInfo;
+    temporalUserInfo.password = e.target.value;
+    this.setState({ temporalUserInfo });
   };
   // handleUsernameChange = e => {
   //   this.handleCloseAlert();

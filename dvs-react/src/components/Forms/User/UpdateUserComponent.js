@@ -81,7 +81,7 @@ const UpdateUserComponent = props => {
               <td>
                 <input
                   className="form-control form-control-sm italic-style"
-                  placeholder="Įveskite vartotojo pavardę"
+                  placeholder={lastName}
                   type="text"
                   onChange={props.onLastNameChange}
                 />
@@ -113,7 +113,7 @@ const UpdateUserComponent = props => {
               <td>
                 <input
                   className="form-control form-control-sm italic-style"
-                  placeholder="Įveskite vartotojo el. pašto adresą"
+                  placeholder={emailAddress}
                   type="email"
                   onChange={props.onEmailAddressChange}
                 />
@@ -131,7 +131,7 @@ const UpdateUserComponent = props => {
               <td>
                 <input
                   className="form-control form-control-sm italic-style"
-                  placeholder="Įveskite vartotojo įdarbinimo datą"
+                  placeholder={hireDate}
                   type="date"
                   onChange={props.onHireDateChange}
                 />
@@ -148,7 +148,8 @@ const UpdateUserComponent = props => {
               <td>
                 <input
                   className="form-control form-control-sm italic-style"
-                  placeholder="Įveskite vartotojo prisijungimo slaptažodį"
+                  placeholder={password}
+                  p
                   type="password"
                   onChange={props.onPasswordChange}
                   required
