@@ -83,6 +83,12 @@ class UpdateUserContainer extends Component {
       this.state.userDetailsBeforeUpdate.username,
       updatedUserInfo
     );
+    const temporalUserInfo = this.state.temporalUserInfo;
+
+    temporalUserInfo.emailAddress
+      ? (updatedUserInfo.emailAddress = temporalUserInfo.emailAddress)
+      : console.log("Email address was not changed");
+
     // axios
     //   .put(
     //     "http://localhost:8081/api/users/" +
@@ -147,16 +153,16 @@ class UpdateUserContainer extends Component {
 
   handleAdministratorChange = e => {
     this.handleCloseAlert();
-    const updatedUserInfo = this.state.updatedUserInfo;
-    updatedUserInfo.administrator = e.target.value;
-    this.setState({ updatedUserInfo });
+    const temporalUserInfo = this.state.temporalUserInfo;
+    temporalUserInfo.administrator = e.target.value;
+    this.setState({ temporalUserInfo });
   };
   handleEmailAddressChange = e => {
     this.handleCloseAlert();
 
-    const updatedUserInfo = this.state.updatedUserInfo;
-    updatedUserInfo.emailAddress = e.target.value;
-    this.setState({ updatedUserInfo });
+    const temporalUserInfo = this.state.temporalUserInfo;
+    temporalUserInfo.emailAddress = e.target.value;
+    this.setState({ temporalUserInfo });
   };
   handleFirstNameChange = e => {
     this.handleCloseAlert();
