@@ -15,6 +15,14 @@ class UpdateUserContainer extends Component {
       lastName: "",
       password: ""
     },
+    temporalUserInfo: {
+      administrator: false,
+      emailAddress: "",
+      firstName: "",
+      hireDate: "",
+      lastName: "",
+      password: ""
+    },
     msg: false,
     allUserGroups: [],
     userDetailsBeforeUpdate: ""
@@ -139,13 +147,16 @@ class UpdateUserContainer extends Component {
 
   handleAdministratorChange = e => {
     this.handleCloseAlert();
-
-    this.setState({ administrator: e.target.value });
+    const updatedUserInfo = this.state.updatedUserInfo;
+    updatedUserInfo.administrator = e.target.value;
+    this.setState({ updatedUserInfo });
   };
   handleEmailAddressChange = e => {
     this.handleCloseAlert();
 
-    this.setState({ emailAddress: e.target.value });
+    const updatedUserInfo = this.state.updatedUserInfo;
+    updatedUserInfo.emailAddress = e.target.value;
+    this.setState({ updatedUserInfo });
   };
   handleFirstNameChange = e => {
     this.handleCloseAlert();
