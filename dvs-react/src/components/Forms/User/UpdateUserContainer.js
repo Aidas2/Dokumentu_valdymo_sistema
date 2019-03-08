@@ -13,7 +13,7 @@ class CreateUserContainer extends Component {
     lastName: "",
     password: "",
     username: "",
-    id: "",
+    id: 4,
     msg: false,
     allUserGroups: []
   };
