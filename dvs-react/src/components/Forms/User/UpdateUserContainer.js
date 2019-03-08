@@ -176,7 +176,7 @@ class UpdateUserContainer extends Component {
     this.setState({ msg: false });
   };
   handleUserGroupRemoval = group => {
-    let userGroups = this.state.userDetailsBeforeUpdate.userGroups;
+    let userGroups = this.state.updatedUserInfo.userGroups;
     var filteredUserGroups = userGroups.filter(oneGroup => oneGroup !== group);
     const updatedUserInfo = this.state.updatedUserInfo;
     updatedUserInfo.userGroups = filteredUserGroups;
