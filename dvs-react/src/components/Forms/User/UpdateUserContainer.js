@@ -62,7 +62,7 @@ class UpdateUserContainer extends Component {
     const updatedUserInfo = this.state.updatedUserInfo;
     axios
       .post(
-        "http://localhost:8081/api/users" +
+        "http://localhost:8081/api/users/" +
           this.state.userDetailsBeforeUpdate.username,
         {
           updatedUserInfo
@@ -77,7 +77,7 @@ class UpdateUserContainer extends Component {
         }
       )
       .then(response => {
-        const uploadStatus = "User was created successfully";
+        const uploadStatus = "User was updated successfully";
         console.log("upload status >>>>>>>>>> ", uploadStatus);
         this.setState({ msg: true });
       })
@@ -154,7 +154,8 @@ class UpdateUserContainer extends Component {
           >
             &times;
           </button>
-          Sveikiname! Vartotojas <strong>{this.state.username} </strong>
+          Sveikiname! Vartotojas{" "}
+          <strong>{this.state.userDetailsBeforeUpdate.username} </strong>
           sukurtas sėkmingai.
         </div>
       );
@@ -165,28 +166,42 @@ class UpdateUserContainer extends Component {
     this.setState({ msg: false });
   };
   handleUserGroupRemoval = group => {
-    let userGroups = this.state.userGroups;
+    let userGroups = this.state.userDetailsBeforeUpdate.userGroups;
     var filteredUserGroups = userGroups.filter(oneGroup => oneGroup !== group);
-    this.setState({ userGroups: filteredUserGroups });
+    const updatedUserInfo = this.state.updatedUserInfo;
+    updatedUserInfo.userGroups = filteredUserGroups;
+    this.setState({ updatedUserInfo });
   };
 
   render() {
     // var userGroupsTitlesToDisplay = this.state.userGroups.map(
     //   group => group + " *** "
     // );
-    var userGroupsTitlesToDisplay = this.state.userGroups.map(group => {
-      return (
-        <span key={group}>
-          &nbsp;{group}&nbsp;
-          <button
-            onClick={() => this.handleUserGroupRemoval(group)}
-            className="btn btn-danger btn-sm"
-          >
-            x
-          </button>
-        </span>
+    // const userGroupsBeforeUpdate = this.state.userDetailsBeforeUpdate
+    //   .userGroups;
+    var userGroupsTitlesToDisplay = null;
+
+    if (userGroupsTitlesToDisplay) {
+      userGroupsTitlesToDisplay = this.state.userDetailsBeforeUpdate.userGroups.map(
+        group => {
+          return (
+            <span key={group}>
+              &nbsp;{group}&nbsp;
+              <button
+                onClick={() => this.handleUserGroupRemoval(group)}
+                className="btn btn-danger btn-sm"
+              >
+                x
+              </button>
+            </span>
+          );
+        }
       );
-    });
+    }
+    console.log(
+      ">>>>>>>>>>>>>>>>>>>> this.state.userDetailsBeforeUpdate.userGroups>>>>>>>>>>..",
+      this.state.userDetailsBeforeUpdate.userGroups
+    );
 
     console.log(
       "-------------@@@@@@@@@@@@@@@ UpdateUserContainer inside render() this.state>>>>>>>> ",
