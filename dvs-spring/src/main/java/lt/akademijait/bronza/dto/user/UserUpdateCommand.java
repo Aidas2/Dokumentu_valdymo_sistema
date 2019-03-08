@@ -2,11 +2,14 @@ package lt.akademijait.bronza.dto.user;
 
 import lt.akademijait.bronza.entities.Document;
 import lt.akademijait.bronza.entities.UserGroup;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.Column;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
@@ -17,24 +20,28 @@ public class UserUpdateCommand {
 //    private Long id;
 
     @NotNull
+    @Length(min = 1, max = 30)
     private String firstName;
 
-    @NotNull
+
+    @Length(min = 1, max = 30)
     private String lastName;
 
-    @Column
+    @PastOrPresent
     private Date hireDate;
 
     @NotNull
     private boolean administrator;
 
-    @NotNull
-    private String username;
+//    @NotNull
+//    @Length(min = 6, max = 20)
+//    private String username;
 
     @NotNull
     private String password;
 
     @NotNull
+    @Email
     private String emailAddress;
 
     @ManyToMany
@@ -44,22 +51,35 @@ public class UserUpdateCommand {
     public UserUpdateCommand() {
     }
 
-
-    public UserUpdateCommand(@NotNull String firstName, @NotNull String lastName,
-                             Date hireDate, @NotNull boolean administrator,
-                             @NotNull String username, @NotNull String password,
-                             @NotNull String emailAddress, Set<String> userGroupTitle) {
-
+    public UserUpdateCommand(@Length(min = 1, max = 50) String firstName,
+                             @Length(min = 1, max = 50) String lastName, @PastOrPresent Date hireDate,
+                             boolean administrator, String password,
+                             @Email String emailAddress, Set<String> userGroupTitle) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.hireDate = hireDate;
         this.administrator = administrator;
-        this.username = username;
+//        this.username = username;
         this.password = password;
         this.emailAddress = emailAddress;
         this.userGroupTitle = userGroupTitle;
-//        this.documents = documents;
     }
+
+    //    public UserUpdateCommand(String firstName, @NotNull String lastName,
+//                             Date hireDate, @NotNull boolean administrator,
+//                             @NotNull String username, @NotNull String password,
+//                             @NotNull String emailAddress, Set<String> userGroupTitle) {
+//
+//        this.firstName = firstName;
+//        this.lastName = lastName;
+//        this.hireDate = hireDate;
+//        this.administrator = administrator;
+//        this.username = username;
+//        this.password = password;
+//        this.emailAddress = emailAddress;
+//        this.userGroupTitle = userGroupTitle;
+////        this.documents = documents;
+//    }
 
 
     public String getFirstName() {
@@ -94,13 +114,13 @@ public class UserUpdateCommand {
         this.administrator = administrator;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
+//    public String getUsername() {
+//        return username;
+//    }
+//
+//    public void setUsername(String username) {
+//        this.username = username;
+//    }
 
     public String getPassword() {
         return password;

@@ -94,6 +94,12 @@ public class DocumentService {
 
     }
 
+    //if there is a need to filter:
+    // version A: insert if (username == current userName) --> then do some action
+    // version B: allDocuments.filter()
+
+
+
     //GET DOCUMENTS BY DOCUMENT_ID =====================================================================================
     @Transactional(readOnly = true)
     public DocumentGetCommand getDocumentById(Long id) {
@@ -146,6 +152,8 @@ public class DocumentService {
                         document.getAttachments()
                 )).collect(Collectors.toList());
     }
+
+    //
 
     //GET CONFIRMED DOCUMENTS (with filter) ============================================================================
     @Transactional(readOnly = true)

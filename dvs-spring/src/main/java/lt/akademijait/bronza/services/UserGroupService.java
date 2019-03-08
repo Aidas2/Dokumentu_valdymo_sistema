@@ -1,5 +1,6 @@
 package lt.akademijait.bronza.services;
 
+import lombok.extern.slf4j.Slf4j;
 import lt.akademijait.bronza.dto.usergroup.UserGroupCreateCommand;
 import lt.akademijait.bronza.dto.usergroup.UserGroupGetCommand;
 import lt.akademijait.bronza.dto.usergroup.UserGroupUpdateDocTypeCommand;
@@ -20,9 +21,10 @@ import java.util.List;
 import java.util.Set;
 
 @Service
+@Slf4j
 public class UserGroupService {
 
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+//    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private UserGroupRepository userGroupRepository;
@@ -54,7 +56,7 @@ public class UserGroupService {
                     reviewDocTypes);
             allGroups.add(uggc);
         }
-        logger.info("Info about all the user groups was gotten");
+        log.info("Info about all the user groups was gotten");
         return allGroups;
     }
 
@@ -78,7 +80,7 @@ public class UserGroupService {
                 docTypesToSubmit,
                 docTypesToReview);
         userGroupRepository.save(newGroup);
-        logger.info("New user group " + newGroup.getTitle() + " was created");
+        log.info("New user group " + newGroup.getTitle() + " was created");
     }
 
     @Transactional
@@ -91,7 +93,7 @@ public class UserGroupService {
             }
         }
         userGroupRepository.save(groupToUpdate);
-        logger.info(userGroupUpdateDocTypeCommand.getDocumentType() + "was added for review to the " + userGroup + " group");
+        log.info(userGroupUpdateDocTypeCommand.getDocumentType() + "was added for review to the " + userGroup + " group");
     }
 
     @Transactional
@@ -104,7 +106,7 @@ public class UserGroupService {
             }
         }
         userGroupRepository.save(groupToUpdate);
-        logger.info(userGroupUpdateDocTypeCommand.getDocumentType() + "was added for submit to the " + userGroup + " group");
+        log.info(userGroupUpdateDocTypeCommand.getDocumentType() + "was added for submit to the " + userGroup + " group");
 
     }
 
@@ -118,7 +120,7 @@ public class UserGroupService {
             }
         }
         userGroupRepository.save(groupToUpdate);
-        logger.info(userGroupUpdateDocTypeCommand.getDocumentType() + "was removed for reviewing for the " + userGroup + " group");
+        log.info(userGroupUpdateDocTypeCommand.getDocumentType() + "was removed for reviewing for the " + userGroup + " group");
 
     }
 
@@ -132,14 +134,14 @@ public class UserGroupService {
             }
         }
         userGroupRepository.save(groupToUpdate);
-        logger.info(userGroupUpdateDocTypeCommand.getDocumentType() + "was removed for submitting for to the " + userGroup + " group");
+        log.info(userGroupUpdateDocTypeCommand.getDocumentType() + "was removed for submitting for to the " + userGroup + " group");
 
     }
 
     @Transactional
     public void deleteGroup(String title){
         userGroupRepository.deleteByTitle(title);
-        logger.info("The user group " + title + " was deleted");
+        log.info("The user group " + title + " was deleted");
     }
 
     @Transactional
@@ -147,7 +149,7 @@ public class UserGroupService {
         UserGroup userGroupToUpdate = userGroupRepository.findByTitle(userGroup);
         userGroupToUpdate.setTitle(ugcc.getTitle());
         userGroupRepository.save(userGroupToUpdate);
-        logger.info("The name of the group " + userGroup + " was changed to the name " + ugcc.getTitle());
+        log.info("The name of the group " + userGroup + " was changed to the name " + ugcc.getTitle());
     }
 
     @Transactional
@@ -163,7 +165,7 @@ public class UserGroupService {
         for (DocumentType documentType: userGroup.getSubmissionDocumentType()) {
             submitDocType.add(documentType.getTitle());
         }
-        logger.info("Info about the group " + groupName + " was gotten");
+        log.info("Info about the group " + groupName + " was gotten");
         return new UserGroupGetCommand(
                 userGroup.getTitle(),
                 reviewDocType,

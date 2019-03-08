@@ -1,10 +1,14 @@
 package lt.akademijait.bronza.dto.user;
 
 import lt.akademijait.bronza.entities.UserGroup;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.Column;
 import javax.persistence.ManyToMany;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.PastOrPresent;
 import java.util.Date;
 import java.util.Set;
 
@@ -12,24 +16,29 @@ import java.util.Set;
 public class UserCreateCommand {
 
     @NotNull
+    @Length(min = 1, max = 50)
     private String firstName;
 
     @NotNull
+    @Length(min = 1, max = 50)
     private String lastName;
 
     @Column
+    @PastOrPresent
     private Date hireDate;
 
     @NotNull
     private boolean administrator;
 
     @NotNull
+    @Length(min = 6, max = 20)
     private String username;
 
     @NotNull
     private String password;
 
     @NotNull
+    @Email
     private String emailAddress;
 
     @ManyToMany
@@ -39,9 +48,10 @@ public class UserCreateCommand {
     public UserCreateCommand() {
     }
 
-
-    public UserCreateCommand( @NotNull String firstName, @NotNull String lastName, Date hireDate, @NotNull boolean administrator, @NotNull String username, @NotNull String password, @NotNull String emailAddress, Set<String> userGroupTitle) {
-
+    public UserCreateCommand(@NotNull @Length(min = 1, max = 50) String firstName,
+                             @NotNull @Length(min = 1, max = 50) String lastName, Date hireDate,
+                             @NotNull boolean administrator, @NotNull @Length(min = 6, max = 20) String username,
+                             @NotNull String password, @NotNull @Email String emailAddress, Set<String> userGroupTitle) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.hireDate = hireDate;

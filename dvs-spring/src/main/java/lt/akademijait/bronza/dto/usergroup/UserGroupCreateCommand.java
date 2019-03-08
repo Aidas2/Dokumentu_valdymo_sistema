@@ -1,6 +1,7 @@
 package lt.akademijait.bronza.dto.usergroup;
 
 import lt.akademijait.bronza.entities.DocumentType;
+import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -10,6 +11,7 @@ public class UserGroupCreateCommand {
 
 
     @NotNull
+    @Length(min = 4)
     private String title;
 
     private Set<String> submitDocumentType;
@@ -20,7 +22,7 @@ public class UserGroupCreateCommand {
     public UserGroupCreateCommand() {
     }
 
-    public UserGroupCreateCommand(@NotNull String title, Set<String> submitDocumentType, Set<String> reviewDocumentType) {
+    public UserGroupCreateCommand(@NotNull @Length(min = 4) String title, Set<String> submitDocumentType, Set<String> reviewDocumentType) {
         this.title = title;
         this.submitDocumentType = submitDocumentType;
         this.reviewDocumentType = reviewDocumentType;
