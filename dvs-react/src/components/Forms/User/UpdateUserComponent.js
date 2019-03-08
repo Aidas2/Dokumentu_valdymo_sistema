@@ -16,7 +16,7 @@ const UpdateUserComponent = props => {
     username
   } = props.userDetailsBeforeUpdate;
   console.log("Props inside UserUpdateCOmponent----------------", props);
-  const administratorValue = "";
+  // const administratorValue = "";
   // administrator ? (administratorValue = "Taip") : (administratorValue = "Ne");
 
   return (
@@ -178,7 +178,7 @@ const UpdateUserComponent = props => {
                 <br />
                 <span>
                   Po atnaujinimo vartotojui bus priskirta ši reikšmė:&ensp;
-                  <strong> {administrator}</strong>
+                  <strong> {props.mostRecentAdmintValue}</strong>
                 </span>
               </td>
             </tr>

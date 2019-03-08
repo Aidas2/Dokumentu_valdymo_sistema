@@ -25,7 +25,8 @@ class UpdateUserContainer extends Component {
     },
     msg: false,
     allUserGroups: [],
-    userDetailsBeforeUpdate: ""
+    userDetailsBeforeUpdate: "",
+    mostRecentAdmintValue: ""
   };
 
   componentDidMount() {
@@ -60,6 +61,8 @@ class UpdateUserContainer extends Component {
           : (userDetailsBeforeUpdate.administrator = "Ne");
 
         this.setState({ userDetailsBeforeUpdate: response.data });
+        this.setState({ mostRecentAdmintValue: response.data.administrator });
+
         const updatedUserInfo = this.state.updatedUserInfo;
         updatedUserInfo.userGroupTitle = response.data.userGroups;
         response.data.administrator
@@ -297,6 +300,7 @@ class UpdateUserContainer extends Component {
         launchAlert={this.launchAlert()}
         selectedUserGroupsTitles={userGroupsTitlesToDisplay}
         userDetailsBeforeUpdate={this.state.userDetailsBeforeUpdate}
+        mostRecentAdmintValue={this.state.mostRecentAdmintValue}
       />
     );
   }
