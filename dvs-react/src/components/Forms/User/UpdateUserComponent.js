@@ -16,6 +16,8 @@ const UpdateUserComponent = props => {
     username
   } = props.userDetailsBeforeUpdate;
   console.log("Props inside UserUpdateCOmponent----------------", props);
+  const administratorValue = "";
+  // administrator ? (administratorValue = "Taip") : (administratorValue = "Ne");
 
   return (
     <div>
@@ -173,6 +175,11 @@ const UpdateUserComponent = props => {
                   <option value="false">Ne</option>
                   <option value="true">Taip</option>
                 </select>
+                <br />
+                <span>
+                  Po atnaujinimo vartotojui bus priskirta ši reikšmė:&ensp;
+                  <strong> {administrator}</strong>
+                </span>
               </td>
             </tr>
             <tr>
