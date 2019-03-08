@@ -108,7 +108,15 @@ class UpdateUserContainer extends Component {
         authorisation: "your token"
       },
       data: {
-        updatedUserInfo
+        // updatedUserInfo
+
+        administrator: true,
+        emailAddress: "string@str.str",
+        firstName: "ar pasikeisi dar karta",
+        hireDate: "2019-03-08T13:18:15.781Z",
+        lastName: "urldynamic",
+        password: "haha",
+        userGroupTitle: ["group1"]
       }
     })
       .then(response => {
