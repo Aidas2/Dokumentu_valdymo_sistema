@@ -16,6 +16,7 @@ const UserDetailsComponent = props => {
   } = props.userDetails;
 
   var linkToIndividualUserDetails = "/admin/users/" + username;
+  const linkToIndividualUsserUpdateContainer = "/admin/updateuser/" + username;
 
   return (
     <div>
@@ -129,6 +130,24 @@ const UserDetailsComponent = props => {
               </td>
               <td>
                 <h6 className="list-style">{props.userGroups}</h6>
+              </td>
+            </tr>{" "}
+            <tr>
+              <td>
+                <h6 />
+              </td>
+              <td>
+                <h6>
+                  <Link
+                    to={linkToIndividualUsserUpdateContainer}
+                    className="btn btn-secondary"
+                  >
+                    Redaguoti vartotoją
+                  </Link>
+                </h6>
+              </td>
+              <td>
+                <h6 className="list-style" />
               </td>
             </tr>
           </tbody>
