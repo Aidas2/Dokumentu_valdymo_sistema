@@ -2,8 +2,9 @@ import React, { Component } from "react";
 
 import axios from "axios";
 import CreateUserComponent from "./CreateUserComponent";
+import UpdateUserComponent from "./UpdateUserComponent";
 
-class CreateUserContainer extends Component {
+class UpdateUserContainer extends Component {
   state = {
     userGroups: [],
     administrator: false,
@@ -166,7 +167,7 @@ class CreateUserContainer extends Component {
     );
 
     return (
-      <CreateUserComponent
+      <UpdateUserComponent
         onSubmit={this.handleSubmit}
         onAdministratorChange={this.handleAdministratorChange}
         onEmailAddressChange={this.handleEmailAddressChange}
@@ -184,4 +185,4 @@ class CreateUserContainer extends Component {
   }
 }
 
-export default CreateUserContainer;
+export default UpdateUserContainer;

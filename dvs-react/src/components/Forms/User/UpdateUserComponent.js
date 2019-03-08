@@ -9,7 +9,7 @@ const UpdateUserComponent = props => {
     <div>
       <div className="container-fluid m-2">
         <h2 className="display-6 normal-padding">
-          Naujo vartotojo kūrimas
+          Vartotojo informacijos atnaujinimas
           <div className="logo-info">
             <img src={infoIcon} className="info-icon-style" alt="info icon" />
             <span className="tooltiptext">
