@@ -187,7 +187,7 @@ const UpdateUserComponent = props => {
                   onUserGroupChange={props.onUserGroupChange}
                 />
                 <span className="italic-style-small">
-                  Pasirinktos grupės: {props.userGroupsTitles}
+                  Pasirinktos grupės: {props.selectedUserGroupsTitles}
                 </span>
               </td>
             </tr>

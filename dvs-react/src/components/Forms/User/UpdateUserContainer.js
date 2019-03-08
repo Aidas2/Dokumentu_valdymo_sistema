@@ -52,6 +52,16 @@ class UpdateUserContainer extends Component {
           : (userDetailsBeforeUpdate.administrator = "Ne");
 
         this.setState({ userDetailsBeforeUpdate: response.data });
+        const updatedUserInfo = this.state.updatedUserInfo;
+        updatedUserInfo.userGroups = response.data.userGroups;
+        response.data.administrator
+          ? (updatedUserInfo.administrator = true)
+          : (updatedUserInfo.administrator = false);
+        updatedUserInfo.emailAddress = response.data.emailAddress;
+        updatedUserInfo.firstName = response.data.firstName;
+        updatedUserInfo.hireDate = response.data.hireDate;
+        updatedUserInfo.lastName = response.data.lastName;
+        updatedUserInfo.password = response.data.password;
       })
       .catch(error => {
         console.log(error);
@@ -181,8 +191,8 @@ class UpdateUserContainer extends Component {
     //   .userGroups;
     var userGroupsTitlesToDisplay = null;
 
-    if (userGroupsTitlesToDisplay) {
-      userGroupsTitlesToDisplay = this.state.userDetailsBeforeUpdate.userGroups.map(
+    if (this.state.updatedUserInfo.userGroups) {
+      userGroupsTitlesToDisplay = this.state.updatedUserInfo.userGroups.map(
         group => {
           return (
             <span key={group}>
@@ -221,7 +231,7 @@ class UpdateUserContainer extends Component {
         onUserGroupChange={this.handleUserGroupChange}
         userGroups={this.state.allUserGroups}
         launchAlert={this.launchAlert()}
-        userGroupsTitles={userGroupsTitlesToDisplay}
+        selectedUserGroupsTitles={userGroupsTitlesToDisplay}
         userDetailsBeforeUpdate={this.state.userDetailsBeforeUpdate}
       />
     );
