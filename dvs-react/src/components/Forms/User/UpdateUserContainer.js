@@ -46,12 +46,12 @@ class UpdateUserContainer extends Component {
       //   }
     })
       .then(response => {
-        let userDetails = response.data;
-        userDetails.administrator
-          ? (userDetails.administrator = "Taip")
-          : (userDetails.administrator = "Ne");
+        let userDetailsBeforeUpdate = response.data;
+        userDetailsBeforeUpdate.administrator
+          ? (userDetailsBeforeUpdate.administrator = "Taip")
+          : (userDetailsBeforeUpdate.administrator = "Ne");
 
-        this.setState({ userDetails: response.data });
+        this.setState({ userDetailsBeforeUpdate: response.data });
       })
       .catch(error => {
         console.log(error);
@@ -183,8 +183,8 @@ class UpdateUserContainer extends Component {
     });
 
     console.log(
-      this.state,
-      "-------------@@@@@@@@@@@@@@@ inside render() this.state>>>>>>>> "
+      "-------------@@@@@@@@@@@@@@@ UpdateUserContainer inside render() this.state>>>>>>>> ",
+      this.state
     );
 
     return (

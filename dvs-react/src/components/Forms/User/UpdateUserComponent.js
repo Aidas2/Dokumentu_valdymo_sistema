@@ -14,6 +14,8 @@ const UpdateUserComponent = props => {
     lastName,
     password
   } = props.userDetailsBeforeUpdate;
+  console.log("Props inside UserUpdateCOmponent----------------", props);
+
   return (
     <div>
       <div className="container-fluid m-2">
