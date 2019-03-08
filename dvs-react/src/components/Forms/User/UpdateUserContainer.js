@@ -136,11 +136,11 @@ class UpdateUserContainer extends Component {
 
     this.setState({ password: e.target.value });
   };
-  handleUsernameChange = e => {
-    this.handleCloseAlert();
+  // handleUsernameChange = e => {
+  //   this.handleCloseAlert();
 
-    this.setState({ username: e.target.value });
-  };
+  //   this.setState({ username: e.target.value });
+  // };
   handleUserGroupChange = e => {
     this.handleCloseAlert();
 
@@ -227,7 +227,7 @@ class UpdateUserContainer extends Component {
         onHireDateChange={this.handleHireDateChange}
         onLastNameChange={this.handleLastNameChange}
         onPasswordChange={this.handlePasswordChange}
-        onUsernameChange={this.handleUsernameChange}
+        // onUsernameChange={this.handleUsernameChange}
         onUserGroupChange={this.handleUserGroupChange}
         userGroups={this.state.allUserGroups}
         launchAlert={this.launchAlert()}

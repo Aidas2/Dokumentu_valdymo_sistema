@@ -86,7 +86,7 @@ const UpdateUserComponent = props => {
                 />
               </td>
             </tr>
-            <tr>
+            {/* <tr>
               <td>
                 <h6>3</h6>
               </td>
@@ -101,10 +101,10 @@ const UpdateUserComponent = props => {
                   onChange={props.onUsernameChange}
                 />
               </td>
-            </tr>
+            </tr> */}
             <tr>
               <td>
-                <h6>4</h6>
+                <h6>3</h6>
               </td>
               <td>
                 <h6>Elektroninio pašto adresas</h6>
@@ -121,7 +121,7 @@ const UpdateUserComponent = props => {
 
             <tr>
               <td>
-                <h6>5</h6>
+                <h6>4</h6>
               </td>
               <td>
                 <h6>Įdarbinimo data</h6>
@@ -138,7 +138,7 @@ const UpdateUserComponent = props => {
             </tr>
             <tr>
               <td>
-                <h6>6</h6>
+                <h6>5</h6>
               </td>
               <td>
                 <h6>Prisijungimo slaptažodis</h6>
@@ -156,7 +156,7 @@ const UpdateUserComponent = props => {
             </tr>
             <tr>
               <td>
-                <h6>7</h6>
+                <h6>6</h6>
               </td>
               <td>
                 <h6>Administratoriaus rolė</h6>
@@ -175,7 +175,7 @@ const UpdateUserComponent = props => {
             </tr>
             <tr>
               <td>
-                <h6>8</h6>
+                <h6>7</h6>
               </td>
               <td>
                 <h6>Vartotojo grupė</h6>
