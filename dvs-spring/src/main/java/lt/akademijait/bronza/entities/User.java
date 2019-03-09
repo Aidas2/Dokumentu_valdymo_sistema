@@ -1,6 +1,7 @@
 package lt.akademijait.bronza.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -30,6 +31,7 @@ public class User {
     private String username;
 
     @Column
+    @NotBlank
     private String password;
 
     @Column(unique = true)
