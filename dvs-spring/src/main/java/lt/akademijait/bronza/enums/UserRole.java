@@ -2,7 +2,7 @@ package lt.akademijait.bronza.enums;
 
 //this is experimental class, not necessary
 
-public enum Role {
+public enum UserRole {
     USER, APPROVER, HR, ADMINISTRATOR
 }
 

@@ -1,11 +1,10 @@
 package lt.akademijait.bronza.entities;
 
-import lt.akademijait.bronza.enums.Role;
+import lt.akademijait.bronza.enums.UserRole;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -57,8 +56,8 @@ public class User {
 
     //@Column
     //@CollectionTable(name = "USER_ROLE", joinColumns = @JoinColumn(name = "USER_ID"))
-    //@ElementCollection(fetch = FetchType.EAGER, targetClass = Role.class)
-    //private Set<Role> role;
+    //@ElementCollection(fetch = FetchType.EAGER, targetClass = UserRole.class)
+    //private Set<UserRole> role;
 
     public User() {
 
