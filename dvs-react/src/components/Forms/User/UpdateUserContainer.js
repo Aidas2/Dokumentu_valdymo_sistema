@@ -236,9 +236,9 @@ class UpdateUserContainer extends Component {
           >
             &times;
           </button>
-          Sveikiname! Vartotojas{" "}
+          Sveikiname! Vartotojo{" "}
           <strong>{this.state.userDetailsBeforeUpdate.username} </strong>
-          sukurtas sėkmingai.
+          informacija atnaujinta sėkmingai.
         </div>
       );
     }
