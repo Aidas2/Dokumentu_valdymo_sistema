@@ -189,6 +189,7 @@ public class DocumentController {
     }
     */
 
+    /*
     //SET DOCUMENT STATE. Version_01 (by my) ===========================================================================
     @RequestMapping(value = "/setstate1", method = RequestMethod.PUT)
     @ApiOperation(value = "Set document state by id. V_01", notes = "Set document state by id")
@@ -207,6 +208,7 @@ public class DocumentController {
         documentService.setDocumentStateV1(documentSetStateCommand);
     }
 
+*/
     //SUGGESTION: pass not Body, but only state (because we want change only state, not others fields
 
     //SET DOCUMENT STATE. Version_02 (by J.C.) =========================================================================

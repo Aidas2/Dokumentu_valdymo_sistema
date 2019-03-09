@@ -19,7 +19,6 @@ import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -41,7 +40,8 @@ public class DocumentService {
     //private  final static Logger logger = LoggerFactory.getLogger(DocumentService.class);
     //private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    //GET ALL DOCUMENTS ================================================================================================
+    /*
+    //GET ALL DOCUMENTS V1 (by P.C.) ====================================================================================
     @Transactional(readOnly = true)
     public List<DocumentGetCommand> getAllDocuments() {
         log.info("Gotten all documents");
@@ -93,14 +93,42 @@ public class DocumentService {
 
 
     }
-
+*/
     //if there is a need to filter:
     // version A: insert if (username == current userName) --> then do some action
     // version B: allDocuments.filter()
+    // version C: use ternary if operator (line 151) and optional use
+    // look in DocumentGetCommand, line 59-63 (separate method getReviewer() );
 
 
+    //GET ALL DOCUMENTS V2 (by G.G.) ===================================================================================
+    @Transactional(readOnly = true)
+    public List<DocumentGetCommand> getAllDocuments() {
+        log.info("Gotten all documents");
+        return documentRepository.findAll()
+                .stream()
+                .map((document) -> new DocumentGetCommand(
+                        document.getId(),
+                        document.getAuthor().getUsername(),
+                        document.getDocumentState().toString(),
+                        document.getDocumentType().getTitle(),
+                        document.getTitle(),
+                        document.getDescription(),
+                        document.getCreationDate(),
+                        document.getSubmissionDate(),
+                        document.getConfirmationDate(),
+                        document.getRejectionDate(),
+                        document.getReviewer() != null ? document.getReviewer().getUsername() : null,
+                        document.getRejectionReason(),
+                        document.getPath(),
+                        document.getAttachments()
+                )).collect(Collectors.toList());
 
-    //GET DOCUMENTS BY DOCUMENT_ID =====================================================================================
+
+    }
+
+    /*
+    //GET DOCUMENTS BY DOCUMENT_ID V1 (by P.C.) ========================================================================
     @Transactional(readOnly = true)
     public DocumentGetCommand getDocumentById(Long id) {
         Document document = documentRepository.findById(id).orElse(null);
@@ -126,6 +154,32 @@ public class DocumentService {
                 document.getAttachments()
         );
     }
+*/
+
+    //GET DOCUMENTS BY DOCUMENT_ID V2 (by G.G.) ========================================================================
+    @Transactional(readOnly = true)
+    public DocumentGetCommand getDocumentById(Long id) {
+        Document document = documentRepository.findById(id).orElse(null);
+        log.info("Gotten all documents by this id: " + id);
+        //logger.error("null "); try/catch; luzimo pvz: skirtingi duomenu tipai (Long ir string)
+        return new DocumentGetCommand(
+                document.getId(),
+                document.getAuthor().getUsername(),
+                document.getDocumentState().toString(),
+                document.getDocumentType().getTitle(),
+                document.getTitle(),
+                document.getDescription(),
+                document.getCreationDate(),
+                document.getSubmissionDate(),
+                document.getConfirmationDate(),
+                document.getRejectionDate(),
+                document.getReviewer() != null ? document.getReviewer().getUsername() : null,
+                document.getRejectionReason(),
+                document.getPath(),
+                document.getAttachments()
+        );
+    }
+
 
     //GET SUBMITTED DOCUMENTS (with filter) ============================================================================
     @Transactional(readOnly = true)
@@ -146,7 +200,7 @@ public class DocumentService {
                         document.getSubmissionDate(),
                         document.getConfirmationDate(),
                         document.getRejectionDate(),
-                        document.getReviewer().getUsername(),
+                        document.getReviewer() != null ? document.getReviewer().getUsername() : null,
                         document.getRejectionReason(),
                         document.getPath(),
                         document.getAttachments()
@@ -173,7 +227,7 @@ public class DocumentService {
                         document.getSubmissionDate(),
                         document.getConfirmationDate(),
                         document.getRejectionDate(),
-                        document.getReviewer().getUsername(),
+                        document.getReviewer() != null ? document.getReviewer().getUsername() : null,
                         document.getRejectionReason(),
                         document.getPath(),
                         document.getAttachments()
@@ -198,7 +252,7 @@ public class DocumentService {
                         document.getSubmissionDate(),
                         document.getConfirmationDate(),
                         document.getRejectionDate(),
-                        document.getReviewer().getUsername(),
+                        document.getReviewer() != null ? document.getReviewer().getUsername() : null,
                         document.getRejectionReason(),
                         document.getPath(),
                         document.getAttachments()
@@ -224,7 +278,7 @@ public class DocumentService {
                         document.getSubmissionDate(),
                         document.getConfirmationDate(),
                         document.getRejectionDate(),
-                        document.getReviewer().getUsername(),
+                        document.getReviewer() != null ? document.getReviewer().getUsername() : null,
                         document.getRejectionReason(),
                         document.getPath(),
                         document.getAttachments()
@@ -250,7 +304,7 @@ public class DocumentService {
                         document.getSubmissionDate(),
                         document.getConfirmationDate(),
                         document.getRejectionDate(),
-                        document.getReviewer().getUsername(),
+                        document.getReviewer() != null ? document.getReviewer().getUsername() : null,
                         document.getRejectionReason(),
                         document.getPath(),
                         document.getAttachments()
@@ -276,7 +330,7 @@ public class DocumentService {
                         document.getSubmissionDate(),
                         document.getConfirmationDate(),
                         document.getRejectionDate(),
-                        document.getReviewer().getUsername(),
+                        document.getReviewer() != null ? document.getReviewer().getUsername() : null,
                         document.getRejectionReason(),
                         document.getPath(),
                         document.getAttachments()
@@ -302,7 +356,7 @@ public class DocumentService {
                         document.getSubmissionDate(),
                         document.getConfirmationDate(),
                         document.getRejectionDate(),
-                        document.getReviewer().getUsername(),
+                        document.getReviewer() != null ? document.getReviewer().getUsername() : null,
                         document.getRejectionReason(),
                         document.getPath(),
                         document.getAttachments()
@@ -340,7 +394,7 @@ public class DocumentService {
         log.info("New document created - {} Everything is OK", newDocument.toString());
     }
 
-
+/*
     //SET DOCUMENT STATE. Version_01 (by my) ===========================================================================
     @Transactional
     public void setDocumentStateV1(DocumentSetStateCommand documentSetStateCommand) {
@@ -444,23 +498,33 @@ public class DocumentService {
         documentRepository.save(documentToSetState);
         log.info("Last logger: Document state set to: " + DocumentState.valueOf(documentSetStateCommand.getDocumentState()));
 
-        */
-    }
 
+    }
+*/
 
     //SET DOCUMENT STATE. Version_02 (by J.C.) =========================================================================
     @Transactional
     public void setDocumentStateV2(DocumentSetStateCommand documentSetStateCommand) {
 
-        User user = userRepository.findByUsername(documentSetStateCommand.getAuthorUsername());
+        //User user = userRepository.findByUsername(documentSetStateCommand.getAuthorUsername());
         Document documentToSetState = documentRepository.getOne(documentSetStateCommand.getDocumentId());
         User reviewerUser = userRepository.findByUsername(documentSetStateCommand.getReviewerUsername());
 
         // checking if user can set state:
         Set<UserGroup> userGroupsBelongingToUser = reviewerUser.getUserGroups();
+
         boolean canSetState = false;
         for (UserGroup userGroup : userGroupsBelongingToUser) {
-            if (userGroup.getReviewDocumentType().contains(documentToSetState.getDocumentType())) {
+
+            // patikrinimas ar useris nurodytas/ivestas, nifiga nepagauna :(
+            if (reviewerUser == null) {
+                log.info("My dear Friend, you haven't entered valid username");
+                throw new ResourceNotFoundException("My dear Friend, you haven't entered valid username");
+
+                //patikrinimas ar grupei yra priskirtas tas dokumento tipas, kuriam planuojama keisti bukle. Su || leidzia accepinti/rejectinti bet kam :(
+            } else if (userGroup.getReviewDocumentType().contains(documentToSetState.getDocumentType()) ||
+                    userGroup.getSubmissionDocumentType().contains(documentToSetState.getDocumentType())) {
+                log.info("Yes, this UserGroup can submit/review this type of document");
                 canSetState = true;
             }
         }
@@ -479,16 +543,18 @@ public class DocumentService {
 
             switch (documentSetStateCommand.getDocumentState()) {
                 case "CREATED": {
-                    log.info("User tried to set document state to CREATED");
-                    throw new ResourceNotFoundException("There is no need to set state to CREATED (this state is already set during document creation).");
+                    log.info("C1. Not proceeded. User tried to set document state to CREATED");
+                    throw new ResourceNotFoundException("C1. User tried to set document state to CREATED");
                 }
                 case "SUBMITTED": {
                     if (documentToSetState.getDocumentState().equals(DocumentState.CREATED)) {
                         documentToSetState.setDocumentState(DocumentState.SUBMITTED);
                         documentToSetState.setSubmissionDate(new Date());
                         break;
-                    } else
-                    break;
+                    } else {
+                        log.info("C2. Not proceeded. Document state must be CREATED");
+                        throw new ResourceNotFoundException("C2. Not proceeded. Document state must be CREATED");
+                    }
                 }
                 case "REJECTED": {
                     if (documentToSetState.getDocumentState().equals(DocumentState.SUBMITTED)) {
@@ -497,8 +563,10 @@ public class DocumentService {
                         documentToSetState.setRejectionDate(new Date());
                         documentToSetState.setRejectionReason(documentSetStateCommand.getRejectionReason());
                         break;
-                    } else
-                        break;
+                    } else {
+                        log.info("C3. Not proceeded. Document state must be SUBMITTED (plus CONFIRMED document can't become REJECTED)");
+                        throw new ResourceNotFoundException("C3. Not proceeded. Document state must be SUBMITTED (plus CONFIRMED document can't become REJECTED)");
+                    }
                 }
                 case "CONFIRMED": {
                     if (documentToSetState.getDocumentState().equals(DocumentState.SUBMITTED)) {
@@ -506,8 +574,10 @@ public class DocumentService {
                         documentToSetState.setDocumentState(DocumentState.CONFIRMED);
                         documentToSetState.setConfirmationDate(new Date());
                         break;
-                    } else
-                        break;
+                    } else {
+                        log.info("C4. Not proceeded. Document state must be SUBMITTED (plus REJECTED document can't become CONFIRMED)");
+                        throw new ResourceNotFoundException("C4. Not proceeded. Document state must be SUBMITTED (plus REJECTED document can't become CONFIRMED)");
+                    }
                 }
                 default:
                     throw new ResourceNotFoundException("My dear Friend, non of the SWITCH case was proceeded.");

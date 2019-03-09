@@ -79,9 +79,11 @@ papildyti kad jeigu neranda DocumentType tai reikia handlint errora
 (pvz. iseiti is metodo, arba responseEntity arba ResourceNotFoundException)
 nes priesingu atveju programa nulus.
 
-GetDocumentById dabar grąžina reviewer as an object. Reiktų tiesiog String rewiewer grąžinti, kuriame būtų username to reviewer  - COMPLETED
+GetDocumentById dabar grąžina reviewer as an object. Reiktų tiesiog String rewiewer grąžinti, kuriame būtų username to reviewer  - COMPLETED, but...
+new ishue: NullPointerException then getting reviewerUsername form null object (case CREATED and case SUBMITTED)
 
 kai sukuriam Date() objektą, tai jis grąžiną datą hujovu formatu - ten yra raidė T iškarto po dienos
 
-
+sukurti dokumentacija vartotojui (app paleidimas, konfiguravimas (TomCat ir pan.));
+ikelti Reacto turini i springo public folderi (kad nereiketu reacto atskirai paleisti)
  */
