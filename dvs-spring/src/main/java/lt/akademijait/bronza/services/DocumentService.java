@@ -513,81 +513,105 @@ public class DocumentService {
         // checking if user can set state:
         Set<UserGroup> userGroupsBelongingToUser = reviewerUser.getUserGroups();
 
-        boolean canSetState = false;
+        boolean canSubmit = false;
+        boolean canReview = false;
         for (UserGroup userGroup : userGroupsBelongingToUser) {
 
-            // patikrinimas ar useris nurodytas/ivestas, nifiga nepagauna :(
-            if (reviewerUser == null) {
-                log.info("My dear Friend, you haven't entered valid username");
-                throw new ResourceNotFoundException("My dear Friend, you haven't entered valid username");
+            //patikrinimas ar grupei yra priskirtas tas dokumento tipas, kuriam planuojama keisti bukle
+            if (userGroup.getReviewDocumentType().contains(documentToSetState.getDocumentType())) {
+                log.info("Yes, this UserGroup can REVIEW this type of document");
+                canReview = true;
+            } else if (userGroup.getSubmissionDocumentType().contains(documentToSetState.getDocumentType()) &&
+            reviewerUser.getUsername().equals(documentToSetState.getAuthor().getUsername())) {
+                log.info("Yes, this UserGroup can (only) SUBMITT this type of document");
+                canSubmit = true;
 
-                //patikrinimas ar grupei yra priskirtas tas dokumento tipas, kuriam planuojama keisti bukle. Su || leidzia accepinti/rejectinti bet kam :(
-            } else if (userGroup.getReviewDocumentType().contains(documentToSetState.getDocumentType()) ||
-                    userGroup.getSubmissionDocumentType().contains(documentToSetState.getDocumentType())) {
-                log.info("Yes, this UserGroup can submit/review this type of document");
-                canSetState = true;
+                //patikrinimas ar Revieweris egzistuoja apskritai (neveikia kazkodel)
+            } else {
+                log.info("Document can be submitted only by its Author. Also by Reviewer");
+                throw new ResourceNotFoundException("Document can be submitted only by its Author. Also by Reviewer)");
             }
-        }
-
-        //jei esama state yra REJECTED arba ACCEPTED  tai nustatyti kad keisti bukles nebegalima (pvz. iseiti is metodo)
-        //arba nustatyti kad galima keisti tik jei esama bukle yra CONFIRMED
-
-        //jei esama state yra CREATED, o siuloma bukle nera SUBMITED tai nustatyti kad keisti bukles nebegalima (pvz. iseiti is metodo)
-        ///arba nustatyti kad galima keisti tik jei siuloma bukle yra CONFIRMED
-
-        //jei yra SUBMITED, o siuloma bukle nera REJECTED || CONFIRMED tai nustatyti kad keisti bukles nebegalima (pvz. iseiti is metodo;
 
 
-        // setting checked user as reviewer:
-        if (canSetState) {
+            //jei esama state yra REJECTED arba ACCEPTED  tai nustatyti kad keisti bukles nebegalima (pvz. iseiti is metodo)
+            //arba nustatyti kad galima keisti tik jei esama bukle yra CONFIRMED
 
-            switch (documentSetStateCommand.getDocumentState()) {
-                case "CREATED": {
-                    log.info("C1. Not proceeded. User tried to set document state to CREATED");
-                    throw new ResourceNotFoundException("C1. User tried to set document state to CREATED");
-                }
-                case "SUBMITTED": {
-                    if (documentToSetState.getDocumentState().equals(DocumentState.CREATED)) {
-                        documentToSetState.setDocumentState(DocumentState.SUBMITTED);
-                        documentToSetState.setSubmissionDate(new Date());
-                        break;
-                    } else {
-                        log.info("C2. Not proceeded. Document state must be CREATED");
-                        throw new ResourceNotFoundException("C2. Not proceeded. Document state must be CREATED");
+            //jei esama state yra CREATED, o siuloma bukle nera SUBMITED tai nustatyti kad keisti bukles nebegalima (pvz. iseiti is metodo)
+            ///arba nustatyti kad galima keisti tik jei siuloma bukle yra CONFIRMED
+
+            //jei yra SUBMITED, o siuloma bukle nera REJECTED || CONFIRMED tai nustatyti kad keisti bukles nebegalima (pvz. iseiti is metodo;
+
+
+            // setting checked user as reviewer:
+            if (canSubmit) {
+                switch (documentSetStateCommand.getDocumentState()) {
+                    case "CREATED": {
+                        log.info("Case1. Not proceeded. State CREATED already set during document creation");
+                        throw new ResourceNotFoundException("Case1. Not proceeded. State CREATED already set during document creation");
                     }
-                }
-                case "REJECTED": {
-                    if (documentToSetState.getDocumentState().equals(DocumentState.SUBMITTED)) {
-                        documentToSetState.setReviewer(reviewerUser);
-                        documentToSetState.setDocumentState(DocumentState.REJECTED);
-                        documentToSetState.setRejectionDate(new Date());
-                        documentToSetState.setRejectionReason(documentSetStateCommand.getRejectionReason());
-                        break;
-                    } else {
-                        log.info("C3. Not proceeded. Document state must be SUBMITTED (plus CONFIRMED document can't become REJECTED)");
-                        throw new ResourceNotFoundException("C3. Not proceeded. Document state must be SUBMITTED (plus CONFIRMED document can't become REJECTED)");
+                    case "SUBMITTED": {
+                        if (documentToSetState.getDocumentState().equals(DocumentState.CREATED)) {
+                            documentToSetState.setDocumentState(DocumentState.SUBMITTED);
+                            documentToSetState.setSubmissionDate(new Date());
+                            break;
+                        } else {
+                            log.info("Case2. Not proceeded. Only CREATED document can be set to SUBMITTED");
+                            throw new ResourceNotFoundException("C2. Not proceeded. Only CREATED document can be set to SUBMITTED");
+                        }
                     }
+                    default:
+                        throw new ResourceNotFoundException("Not proceeded. Only CREATED, SUBMITTED allowed.");
                 }
-                case "CONFIRMED": {
-                    if (documentToSetState.getDocumentState().equals(DocumentState.SUBMITTED)) {
-                        documentToSetState.setReviewer(reviewerUser);
-                        documentToSetState.setDocumentState(DocumentState.CONFIRMED);
-                        documentToSetState.setConfirmationDate(new Date());
-                        break;
-                    } else {
-                        log.info("C4. Not proceeded. Document state must be SUBMITTED (plus REJECTED document can't become CONFIRMED)");
-                        throw new ResourceNotFoundException("C4. Not proceeded. Document state must be SUBMITTED (plus REJECTED document can't become CONFIRMED)");
-                    }
-                }
-                default:
-                    throw new ResourceNotFoundException("My dear Friend, non of the SWITCH case was proceeded.");
+                documentRepository.save(documentToSetState);
+                log.info("Document state set to: " + documentSetStateCommand.getDocumentState());
 
+            } else if (canReview) {
+                switch (documentSetStateCommand.getDocumentState()) {
+                    case "CREATED": {
+                        log.info("Case3. Not proceeded. State CREATED already set during document creation");
+                        throw new ResourceNotFoundException("Case3. Not proceeded. State CREATED already set during document creation");
+                    }
+                    case "SUBMITTED": {
+                        if (documentToSetState.getDocumentState().equals(DocumentState.CREATED)) {
+                            documentToSetState.setDocumentState(DocumentState.SUBMITTED);
+                            documentToSetState.setSubmissionDate(new Date());
+                            break;
+                        } else {
+                            log.info("Case4. Not proceeded. Only CREATED document can be set to SUBMITTED");
+                            throw new ResourceNotFoundException("Case4. Not proceeded. Only CREATED document can be set to SUBMITTED");
+                        }
+                    }
+                    case "REJECTED": {
+                        if (documentToSetState.getDocumentState().equals(DocumentState.SUBMITTED)) {
+                            documentToSetState.setReviewer(reviewerUser);
+                            documentToSetState.setDocumentState(DocumentState.REJECTED);
+                            documentToSetState.setRejectionDate(new Date());
+                            documentToSetState.setRejectionReason(documentSetStateCommand.getRejectionReason());
+                            break;
+                        } else {
+                            log.info("Case5. Not proceeded. Only SUBMITTED document can be reviewed");
+                            throw new ResourceNotFoundException("Case5. Not proceeded. Only SUBMITTED document can be reviewed");
+                        }
+                    }
+                    case "CONFIRMED": {
+                        if (documentToSetState.getDocumentState().equals(DocumentState.SUBMITTED)) {
+                            documentToSetState.setReviewer(reviewerUser);
+                            documentToSetState.setDocumentState(DocumentState.CONFIRMED);
+                            documentToSetState.setConfirmationDate(new Date());
+                            break;
+                        } else {
+                            log.info("Case6. Not proceeded. Only SUBMITTED document can be reviewed");
+                            throw new ResourceNotFoundException("Case6. Not proceeded. Only SUBMITTED document can be reviewed");
+                        }
+                    }
+                    default:
+                        throw new ResourceNotFoundException("Not proceeded. Only CREATED, SUBMITTED, CONFIRMED, REJECTED allowed");
+                }
+                documentRepository.save(documentToSetState);
+                log.info("Document state set to: " + documentSetStateCommand.getDocumentState());
             }
-            documentRepository.save(documentToSetState);
-            log.info("Document state set to: " + documentSetStateCommand.getDocumentState());
         }
     }
-
 
 /*
     //UPDATE. Version_01. ==============================================================================================
