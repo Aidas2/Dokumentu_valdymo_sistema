@@ -26,7 +26,7 @@ class UpdateUserContainer extends Component {
     msg: false,
     allUserGroups: [],
     userDetailsBeforeUpdate: "",
-    mostRecentAdmintValue: ""
+    mostRecentAdmintValue: null
   };
 
   componentDidMount() {
@@ -53,6 +53,8 @@ class UpdateUserContainer extends Component {
     })
       .then(response => {
         let userDetailsBeforeUpdate = response.data;
+        let updatedUserInfo = this.state.updatedUserInfo;
+
         // userDetailsBeforeUpdate.administrator
         //   ? (userDetailsBeforeUpdate.administrator = "Taip")
         //   : (userDetailsBeforeUpdate.administrator = "Ne");
@@ -60,16 +62,17 @@ class UpdateUserContainer extends Component {
         // this.setState({ userDetailsBeforeUpdate: response.data });
         this.setState({ mostRecentAdmintValue: response.data.administrator });
 
-        const updatedUserInfo = this.state.updatedUserInfo;
         updatedUserInfo.userGroupTitle = response.data.userGroups;
         // response.data.administrator
         //   ? (updatedUserInfo.administrator = true)
         //   : (updatedUserInfo.administrator = false);
+        updatedUserInfo.administrator = response.data.administrator;
         updatedUserInfo.emailAddress = response.data.emailAddress;
         updatedUserInfo.firstName = response.data.firstName;
         updatedUserInfo.hireDate = response.data.hireDate;
         updatedUserInfo.lastName = response.data.lastName;
         updatedUserInfo.password = response.data.password;
+        this.setState({ updatedUserInfo });
       })
       .catch(error => {
         console.log(error);
@@ -163,10 +166,12 @@ class UpdateUserContainer extends Component {
   };
 
   handleAdministratorChange = e => {
+    console.log("admin e.target.value----", e.target.value);
     this.handleCloseAlert();
     const updatedUserInfo = this.state.updatedUserInfo;
     updatedUserInfo.administrator = e.target.value;
     this.setState({ updatedUserInfo });
+    this.setState({ mostRecentAdmintValue: e.target.value });
   };
   handleEmailAddressChange = e => {
     this.handleCloseAlert();
