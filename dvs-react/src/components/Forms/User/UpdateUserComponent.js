@@ -15,9 +15,6 @@ const UpdateUserComponent = props => {
     password,
     username
   } = props.userDetailsBeforeUpdate;
-  console.log("Props inside UserUpdateCOmponent----------------", props);
-  // const administratorValue = "";
-  // administrator ? (administratorValue = "Taip") : (administratorValue = "Ne");
 
   return (
     <div>
@@ -64,7 +61,6 @@ const UpdateUserComponent = props => {
               </td>
               <td>
                 <input
-                  // value={firstName}
                   className=" form-control form-control-sm italic-style"
                   placeholder={firstName}
                   type="text"
@@ -89,22 +85,7 @@ const UpdateUserComponent = props => {
                 />
               </td>
             </tr>
-            {/* <tr>
-              <td>
-                <h6>3</h6>
-              </td>
-              <td>
-                <h6>Unikalus vardas sistemoje</h6>
-              </td>
-              <td>
-                <input
-                  className="form-control form-control-sm italic-style"
-                  placeholder="Įveskite prisijungimo vardą"
-                  type="text"
-                  onChange={props.onUsernameChange}
-                />
-              </td>
-            </tr> */}
+
             <tr>
               <td>
                 <h6>3</h6>

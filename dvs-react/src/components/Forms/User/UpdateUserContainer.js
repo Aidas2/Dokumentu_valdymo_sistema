@@ -173,6 +173,11 @@ class UpdateUserContainer extends Component {
     this.handleCloseAlert();
     const temporalUserInfo = this.state.temporalUserInfo;
     temporalUserInfo.administrator = e.target.value;
+    if (e.target.value == "true") {
+      this.setState({ mostRecentAdmintValue: "Taip" });
+    } else if (e.target.value == "false") {
+      this.setState({ mostRecentAdmintValue: "Ne" });
+    }
     this.setState({ temporalUserInfo });
   };
   handleEmailAddressChange = e => {
