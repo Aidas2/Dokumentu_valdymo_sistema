@@ -55,7 +55,7 @@ public class DocumentUpdateCommand {
         this.description = description;
     }
 
-    @Override
+    @Override   // this is for formatting output of logger
     public String toString() {
         return "DocumentUpdateCommand{" +
                 "documentTypeTitle='" + documentTypeTitle + '\'' +

@@ -50,13 +50,21 @@ public class DocumentGetCommand {
         this.submissionDate = submissionDate;
         this.confirmationDate = confirmationDate;
         this.rejectionDate = rejectionDate;
-        this.reviewerUsername = setReviewerUsername(reviewerUsername);
-        this.rejectionReason = setRejectionReason(rejectionReason);
+//        this.reviewerUsername = setReviewerUsername(reviewerUsername);
+//        this.rejectionReason = setRejectionReason(rejectionReason);
+        this.reviewerUsername = reviewerUsername;
+        this.rejectionReason = rejectionReason;
         this.path = path;
         this.attachments = attachments;
     }
 
-
+    //  for preventing NullPointerException ir case then "document.getReviewer() == null"
+    // actually, this could be implemented in Document.java
+//    public Reviewer getReviewer() {
+//        if (this.reviewer == null) {
+//            return new Reviewer();
+//        }
+//    }
 
      public Long getId() {
         return id;
@@ -154,26 +162,34 @@ public class DocumentGetCommand {
         return reviewerUsername;
     }
 
-    public String setReviewerUsername(String reviewerUsername) {
-        if(reviewerUsername == null) {
-            this.reviewerUsername = "";
-        } else {
-            this.reviewerUsername = reviewerUsername;
-        }
-        return this.reviewerUsername;
+//    public String setReviewerUsername(String reviewerUsername) {
+//        if(reviewerUsername == null) {
+//            this.reviewerUsername = "";
+//        } else {
+//            this.reviewerUsername = reviewerUsername;
+//        }
+//        return this.reviewerUsername;
+//    }
+
+    public void setReviewerUsername(String reviewerUsername) {
+        this.reviewerUsername = reviewerUsername;
     }
 
     public String getRejectionReason() {
         return rejectionReason;
     }
 
-    public String setRejectionReason(String rejectionReason) {
-        if(rejectionReason == null) {
-            this.rejectionReason = "";
-        } else {
-            this.rejectionReason = rejectionReason;
-        }
-        return this.rejectionReason;
+//    public String setRejectionReason(String rejectionReason) {
+//        if(rejectionReason == null) {
+//            this.rejectionReason = "";
+//        } else {
+//            this.rejectionReason = rejectionReason;
+//        }
+//        return this.rejectionReason;
+//    }
+
+    public void setRejectionReason(String rejectionReason) {
+        this.rejectionReason = rejectionReason;
     }
 
     public String getPath() {

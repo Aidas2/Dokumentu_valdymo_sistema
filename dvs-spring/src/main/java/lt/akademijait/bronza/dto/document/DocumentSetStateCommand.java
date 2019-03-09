@@ -13,13 +13,13 @@ public class DocumentSetStateCommand {
     private String documentState;         //version_02 (by J.C.)
 
     //private DocumentType documentType;
-    private String title;
+    //private String title;
     //private String description;
     //private Date creationDate;
     //private Date submissionDate;
     //private Date confirmationDate;
     //private Date rejectionDate;
-    private String authorUsername;
+    //private String authorUsername;
     private String reviewerUsername;    //private User reviewer;
     private String rejectionReason;
 
@@ -57,13 +57,21 @@ public class DocumentSetStateCommand {
 //        this.documentState = documentState;
 //    }
 
-    public String getAuthorUsername() {
-        return authorUsername;
-    }
+//    public String getAuthorUsername() {
+//        return authorUsername;
+//    }
+//
+//    public void setAuthorUsername(String authorUsername) {
+//        this.authorUsername = authorUsername;
+//    }
 
-    public void setAuthorUsername(String authorUsername) {
-        this.authorUsername = authorUsername;
-    }
+//    public String getTitle() {
+//        return title;
+//    }
+//
+//    public void setTitle(String title) {
+//        this.title = title;
+//    }
 
     public String getReviewerUsername() {
         return reviewerUsername;
