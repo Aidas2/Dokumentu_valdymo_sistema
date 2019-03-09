@@ -216,7 +216,7 @@ public class UserService implements UserDetailsService {
             throw new UsernameNotFoundException(username + " not found.");
         }
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
-                AuthorityUtils.createAuthorityList(new String[]{"ROLE_"+user.getRole()}));
+                AuthorityUtils.createAuthorityList(new String[]{"ROLE_"+user.getRole().getTitle()}));
     }
 
 
