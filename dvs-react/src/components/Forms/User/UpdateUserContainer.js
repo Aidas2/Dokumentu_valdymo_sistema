@@ -8,7 +8,7 @@ class UpdateUserContainer extends Component {
   state = {
     updatedUserInfo: {
       userGroupTitle: [],
-      administrator: "",
+      administrator: null,
       emailAddress: "",
       firstName: "",
       hireDate: "",
@@ -41,10 +41,7 @@ class UpdateUserContainer extends Component {
       .catch(error => {
         console.log(error);
       });
-    console.log(
-      "ComponentDidMount inside DocumentTYpesCOntainer >>>>>>>>>> this.state.userGroups>>>>.",
-      this.state.allUserGroups
-    );
+
     const usernameParam = this.props.match.params.username;
 
     axios({
@@ -56,18 +53,18 @@ class UpdateUserContainer extends Component {
     })
       .then(response => {
         let userDetailsBeforeUpdate = response.data;
-        userDetailsBeforeUpdate.administrator
-          ? (userDetailsBeforeUpdate.administrator = "Taip")
-          : (userDetailsBeforeUpdate.administrator = "Ne");
+        // userDetailsBeforeUpdate.administrator
+        //   ? (userDetailsBeforeUpdate.administrator = "Taip")
+        //   : (userDetailsBeforeUpdate.administrator = "Ne");
 
-        this.setState({ userDetailsBeforeUpdate: response.data });
+        // this.setState({ userDetailsBeforeUpdate: response.data });
         this.setState({ mostRecentAdmintValue: response.data.administrator });
 
         const updatedUserInfo = this.state.updatedUserInfo;
         updatedUserInfo.userGroupTitle = response.data.userGroups;
-        response.data.administrator
-          ? (updatedUserInfo.administrator = true)
-          : (updatedUserInfo.administrator = false);
+        // response.data.administrator
+        //   ? (updatedUserInfo.administrator = true)
+        //   : (updatedUserInfo.administrator = false);
         updatedUserInfo.emailAddress = response.data.emailAddress;
         updatedUserInfo.firstName = response.data.firstName;
         updatedUserInfo.hireDate = response.data.hireDate;
@@ -81,11 +78,7 @@ class UpdateUserContainer extends Component {
 
   handleSubmit = () => {
     const updatedUserInfo = this.state.updatedUserInfo;
-    console.log(
-      "******************* username, updatedUserInfo >> ",
-      this.state.userDetailsBeforeUpdate.username,
-      updatedUserInfo
-    );
+
     const temporalUserInfo = this.state.temporalUserInfo;
 
     temporalUserInfo.emailAddress
@@ -103,9 +96,9 @@ class UpdateUserContainer extends Component {
     temporalUserInfo.password
       ? (updatedUserInfo.password = temporalUserInfo.password)
       : console.log("Password was not changed");
-    temporalUserInfo.administrator
-      ? (updatedUserInfo.administrator = temporalUserInfo.administrator)
-      : console.log("Administrator was not changed");
+    // temporalUserInfo.administrator
+    //   ? (updatedUserInfo.administrator = temporalUserInfo.administrator)
+    //   : console.log("Administrator was not changed");
 
     // axios
     //   .put(
@@ -171,9 +164,9 @@ class UpdateUserContainer extends Component {
 
   handleAdministratorChange = e => {
     this.handleCloseAlert();
-    const temporalUserInfo = this.state.temporalUserInfo;
-    temporalUserInfo.administrator = e.target.value;
-    this.setState({ temporalUserInfo });
+    const updatedUserInfo = this.state.updatedUserInfo;
+    updatedUserInfo.administrator = e.target.value;
+    this.setState({ updatedUserInfo });
   };
   handleEmailAddressChange = e => {
     this.handleCloseAlert();
@@ -251,6 +244,10 @@ class UpdateUserContainer extends Component {
   };
 
   render() {
+    console.log(
+      "MostRecentAdminVlaue:************ ",
+      this.state.mostRecentAdmintValue
+    );
     // var userGroupsTitlesToDisplay = this.state.userGroups.map(
     //   group => group + " *** "
     // );
@@ -275,10 +272,6 @@ class UpdateUserContainer extends Component {
         }
       );
     }
-    console.log(
-      ">>>>>>>>>>>>>>>>>>>> this.state.userDetailsBeforeUpdate.userGroups>>>>>>>>>>..",
-      this.state.userDetailsBeforeUpdate.userGroups
-    );
 
     console.log(
       "-------------@@@@@@@@@@@@@@@ UpdateUserContainer inside render() this.state>>>>>>>> ",

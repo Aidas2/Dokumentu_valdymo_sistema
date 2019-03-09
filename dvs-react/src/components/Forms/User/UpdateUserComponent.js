@@ -15,9 +15,6 @@ const UpdateUserComponent = props => {
     password,
     username
   } = props.userDetailsBeforeUpdate;
-  console.log("Props inside UserUpdateCOmponent----------------", props);
-  // const administratorValue = "";
-  // administrator ? (administratorValue = "Taip") : (administratorValue = "Ne");
 
   return (
     <div>
@@ -172,8 +169,8 @@ const UpdateUserComponent = props => {
                   className="col-6 form-control form-control-sm italic-style "
                   id="documentTypeSelect"
                 >
-                  <option value="false">Ne</option>
-                  <option value="true">Taip</option>
+                  <option value={false}>Ne</option>
+                  <option value={true}>Taip</option>
                 </select>
                 <br />
                 <span>
