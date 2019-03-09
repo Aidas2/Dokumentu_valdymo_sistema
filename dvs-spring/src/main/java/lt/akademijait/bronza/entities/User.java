@@ -1,5 +1,7 @@
 package lt.akademijait.bronza.entities;
 
+import lt.akademijait.bronza.enums.Role;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.Date;
@@ -39,14 +41,24 @@ public class User {
 
     @ManyToMany
     private Set<UserGroup> userGroups;
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.DETACH})
+    @JoinColumn(name = "ROLE_ID")
+    private Role role;
 
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 //    @OneToMany
 //    private Set<Document> documents;
 
     //@Column
     //@CollectionTable(name = "USER_ROLE", joinColumns = @JoinColumn(name = "USER_ID"))
-    //@ElementCollection(fetch = FetchType.EAGER, targetClass = UserRole.class)
-    //private Set<UserRole> role;
+    //@ElementCollection(fetch = FetchType.EAGER, targetClass = Role.class)
+    //private Set<Role> role;
 
     public User() {
 
