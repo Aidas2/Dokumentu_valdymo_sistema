@@ -1,12 +1,26 @@
-/* Style for all html page */
 html {
-  background-color: #eeeeee;
+  background-color: #f4fdfd;
   font-family: sans serif;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 0px;
+  padding-right: 0px;
   padding-top: 0px;
   padding-bottom: 0px;
   min-width: 1000px;
+}
+
+body {
+  min-height: 100%;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  word-wrap: break-word;
+  background-color: #f4fdfd;
+}
+
+body::after {
+  content: "";
+  display: block;
+  height: 30px;
 }
 
 /* Navigation (position TOP) style */
@@ -55,6 +69,7 @@ h2 {
   display: inline-block;
   padding: 30px;
   border: #e2e2e2 1px solid;
+  background-color: white;
 }
 
 .login-form-style {
@@ -378,20 +393,6 @@ html {
   height: 100%;
 }
 
-body {
-  min-height: 100%;
-  padding: 0;
-  margin: 0;
-  position: relative;
-  word-wrap: break-word;
-}
-
-body::after {
-  content: "";
-  display: block;
-  height: 30px;
-}
-
 /* ----------------------------------- 
 
 #sidebar {
@@ -461,8 +462,6 @@ body::after {
   padding-left: 0px;
   padding-bottom: 0px;
   margin: 0px;
-
-  background-color: #ffffff;
 }
 
 #side-bar-box {
