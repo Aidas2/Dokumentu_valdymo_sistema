@@ -75,36 +75,24 @@ class DocumentTypesContainer extends Component {
           >
             Kurti naują dokumento tipą
           </Link>
-          <p />
 
-          <input type="checkbox" id="Document-type-box" />
-          <label id="Document-type-container" htmlFor="Document-type-box">
-            <div id="button " className="collapsed-style">
-              Paspauskite ant šio teksto, tam kad būtų galima peržiūrėti/
-              paslėpti sukurtus dokumentų tipus:
-              <ul id="Document-type-bar-appear" className="navbar-nav mr-auto">
-                <table className="table table-active table-style-rounded">
-                  <tbody>
-                    <tr>
-                      <th className="col-1 Table-number-style">#</th>
-                      <th className="col-11 Table-action-style">
-                        Dokumento tipo pavadinimas
-                      </th>
-                    </tr>
+          <table className="table table-active table-style-rounded">
+            <tbody>
+              <tr>
+                <th className="col-1 Table-number-style">#</th>
+                <th className="col-11 Table-action-style">
+                  Dokumento tipo pavadinimas
+                </th>
+              </tr>
 
-                    <tr>
-                      <td className="table-action-size">
-                        {docTypesArrayToRenderId}
-                      </td>
-                      <td className="table-action-size">
-                        {docTypesArrayToRenderTitle}
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </ul>
-            </div>
-          </label>
+              <tr>
+                <td className="table-action-size">{docTypesArrayToRenderId}</td>
+                <td className="table-action-size">
+                  {docTypesArrayToRenderTitle}
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     );

@@ -65,40 +65,26 @@ class UsersContainer extends Component {
           <Link to={"/admin/newuser/"} className="btn btn-outline-success m-2">
             Pridėti naują vartotoją
           </Link>
-          <p />
-          <input type="checkbox" id="Document-type-box" />
 
-          <label id="Document-type-container" htmlFor="Document-type-box">
-            <div id="button" className="collapsed-style">
-              Paspauskite ant šio teksto, tam kad būtų galima peržiūrėti/
-              paslėpti sukurtus vartotojus:
-              <ul id="Document-type-bar-appear" className="navbar-nav mr-auto">
-                <div className="table table-active table-style-rounded">
-                  <div className="container-fluid users-padding-bottom">
-                    <div className="row table-active table-style-rounded ">
-                      <div className="col-1  users-table-number-style ">#</div>
-                      <div className="col-2   users-table-middle-style">
-                        Prisijungimo vardas
-                      </div>
-                      <div className=" col-2 users-table-middle-style">
-                        Vardas
-                      </div>
-                      <div className="col-2   users-table-middle-style ">
-                        Pavardė
-                      </div>
-                      <div className="col-2  users-table-middle-style ">
-                        El. pašto adresas
-                      </div>
-                      <div className="col-3   users-table-action-style ">
-                        Įdarbinimo data
-                      </div>
-                    </div>
-                    {usersArrayToRender}
-                  </div>
+          <div className="table table-active table-style-rounded">
+            <div className="container-fluid users-padding-bottom">
+              <div className="row table-active table-style-rounded ">
+                <div className="col-1  users-table-number-style ">#</div>
+                <div className="col-2   users-table-middle-style">
+                  Prisijungimo vardas
                 </div>
-              </ul>
+                <div className=" col-2 users-table-middle-style">Vardas</div>
+                <div className="col-2   users-table-middle-style ">Pavardė</div>
+                <div className="col-2  users-table-middle-style ">
+                  El. pašto adresas
+                </div>
+                <div className="col-3   users-table-action-style ">
+                  Įdarbinimo data
+                </div>
+              </div>
+              {usersArrayToRender}
             </div>
-          </label>
+          </div>
         </div>
       </div>
     );
