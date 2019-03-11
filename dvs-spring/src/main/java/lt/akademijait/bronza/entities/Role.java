@@ -10,7 +10,10 @@ public class Role {
     private long id;
     private String title;
 
-    public Role( String title) {
+    public Role() {
+    }
+
+    public Role(String title) {
         this.title = title;
     }
 
