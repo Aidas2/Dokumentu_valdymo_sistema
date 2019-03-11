@@ -1,7 +1,9 @@
 package lt.akademijait.bronza.services;
 
 
+import lt.akademijait.bronza.dto.role.RoleCreateCommand;
 import lt.akademijait.bronza.dto.role.RoleGetCommand;
+import lt.akademijait.bronza.entities.Role;
 import lt.akademijait.bronza.repositories.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,4 +28,15 @@ public class RoleService {
                 )).collect(Collectors.toList());
     }
 
+    @Transactional
+    public void createRole(RoleCreateCommand roleCreateCommand) {
+//        roleRepository.save(new Role(roleCreateCommand.getTitle())) ;
+
+
+        if(roleRepository.findByTitle(roleCreateCommand.getTitle())==null
+               ){
+            roleRepository.save(new Role(roleCreateCommand.getTitle())) ;
+        } else throw new IllegalArgumentException("This roles already exists");
+// &&!roleRepository.findByTitle(roleCreateCommand.getTitle()).getTitle().equals(roleCreateCommand.getTitle())
+    }
 }
