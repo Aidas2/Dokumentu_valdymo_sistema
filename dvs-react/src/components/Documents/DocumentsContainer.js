@@ -94,10 +94,10 @@ class DocumentsContainer extends Component {
                 </div>
                 <div className=" col-2 users-table-middle-style">Tipas</div>
                 <div className="col-2   users-table-middle-style ">Būsena</div>
-                <div className="col-3  users-table-middle-style ">
+                <div className="col-2  users-table-middle-style ">
                   Aprašymas
                 </div>
-                <div className="col-2   users-table-action-style ">
+                <div className="col-3   users-table-action-style ">
                   Veiksmai
                 </div>
               </div>

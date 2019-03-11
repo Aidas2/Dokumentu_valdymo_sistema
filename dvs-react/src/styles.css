@@ -219,13 +219,7 @@ h5,
 .padding-normal {
   padding-bottom: 15px;
 }
- {
-  /* 
-.logo:hover {
-  filter: brightness(0) invert(0.8);
-}
-*/
-}
+
 .logo-info {
   position: relative;
   display: inline-block;
@@ -337,6 +331,8 @@ h5,
   color: #4d4d33;
   padding-top: 5px;
   font-style: italic;
+
+  max-width: 100px;
 }
 
 /*.italic-style-ORIGIN {
@@ -491,7 +487,7 @@ html {
 }
 
 .sidebar-icon {
-  padding-right: 3px;
+  margin-right: 10px;
 }
 
 #side-bar-box {

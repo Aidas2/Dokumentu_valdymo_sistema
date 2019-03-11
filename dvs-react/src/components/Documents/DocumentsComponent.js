@@ -34,12 +34,12 @@ const DocumentsComponent = props => {
       <div className="col-2 documents-table-size">
         {documentStateInLithuanian}
       </div>
-      <div className="col-3 documents-table-size">{description}</div>
+      <div className="col-2 documents-table-size">{description}</div>
 
       <div className="col-1 documents-table-size">
         <FileViewContainer documentId={id} />
       </div>
-      <div className="col-1 documents-table-size">
+      <div className="col-2 documents-table-size">
         <FileDownloadConatainer documentId={id} />
       </div>
     </div>

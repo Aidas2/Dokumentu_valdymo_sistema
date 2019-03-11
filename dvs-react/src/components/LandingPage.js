@@ -11,7 +11,7 @@ const LandingPage = props => {
             <img
               src={main_icon}
               className=" center-block picture-padding"
-              alt="main icon"
+              alt=""
             />
           </div>
         </div>

@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-import logo from "../../images/home.png";
+import homeIcon from "../../images/home-icon.png";
 import documents from "../../images/documentsIcon.png";
 import documentSubmit from "../../images/documentSubmitIcon.png";
 import adminIcon from "../../images/adminIcon.png";
+import statistics from "../../images/statistics.png";
 
 class SideBarComponent extends Component {
   render() {
@@ -13,9 +14,9 @@ class SideBarComponent extends Component {
           <li>
             <NavLink activeClassName={"active"} exact={true} to={"/"}>
               <img
-                src={logo}
-                width="25"
-                height="20"
+                src={homeIcon}
+                width="20"
+                height="17"
                 alt="home"
                 className="sidebar-icon logo"
               />
@@ -27,7 +28,7 @@ class SideBarComponent extends Component {
             <NavLink activeClassName={"active"} to={"/docs"}>
               <img
                 src={documents}
-                width="25"
+                width="20"
                 height="20"
                 alt="home"
                 className="sidebar-icon logo"
@@ -39,7 +40,7 @@ class SideBarComponent extends Component {
             <NavLink activeClassName={"active"} to={"/upload"}>
               <img
                 src={documentSubmit}
-                width="25"
+                width="20"
                 height="20"
                 alt="home"
                 className="sidebar-icon logo"
@@ -50,8 +51,8 @@ class SideBarComponent extends Component {
           <li>
             <NavLink activeClassName={"active"} to={"/statistic"}>
               <img
-                src={documentSubmit}
-                width="25"
+                src={statistics}
+                width="20"
                 height="20"
                 alt="home"
                 className="sidebar-icon logo"
@@ -66,7 +67,7 @@ class SideBarComponent extends Component {
             <NavLink activeClassName={"active"} to={"/admin"}>
               <img
                 src={adminIcon}
-                width="25"
+                width="20"
                 height="20"
                 alt="home"
                 className="sidebar-icon logo"
