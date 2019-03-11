@@ -1,0 +1,2764 @@
+[33mcommit 24aaa70abf33a656281b8a382d771626a2b05eb3[m[33m ([m[1;36mHEAD -> [m[1;32m2019-03-09-1654-SECURITY[m[33m)[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Mon Mar 11 16:02:14 2019 +0200
+
+    Looks like all resources are allowed, login is not needed, Stasauskas method configure was overwritten in SecurityConfig
+
+[33mcommit 440549b5ac3844f6556f6cc099b709f7c8b53f18[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Mon Mar 11 15:49:06 2019 +0200
+
+    User was created and linked with the role corrctly on swagger
+
+[33mcommit 81b27d776ed3d3e0ce6179b8673bf3247d8d96aa[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Mon Mar 11 15:42:30 2019 +0200
+
+    UserCreateCommand got the role added
+
+[33mcommit 07b732742f44f2641d41276c81048aa315abd151[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Mon Mar 11 15:25:41 2019 +0200
+
+    ROles can be created as uniques ones
+
+[33mcommit 48bb7af9e219202d717563e1d122a4fdc6e1dce0[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Mon Mar 11 14:48:23 2019 +0200
+
+    RoleController has a getAllRoles method that works
+
+[33mcommit 398c2fe684619249477badc0a16e08bae3839c72[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Mon Mar 11 13:38:21 2019 +0200
+
+    Security was disabled. ROles is added, need controller for it, etc
+
+[33mcommit 095a15fc2b8f6b24422f0f815f03e1552c370323[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Mon Mar 11 13:17:39 2019 +0200
+
+    ROle was added to user constructor and hardcoded in userService
+
+[33mcommit 0310fa15894065c9ef241c5fb8946dcc381ee2cc[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sun Mar 10 13:33:41 2019 +0200
+
+    securityConfig.java was modified according to the slides
+
+[33mcommit 22822baa3f9c11e5708b434437a4ef444522be26[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sat Mar 9 20:19:33 2019 +0200
+
+    Role.java entity was introduced. Compiled successfully
+
+[33mcommit 0b1babd43d02894a824344151f92e96564f6b6e8[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sat Mar 9 20:18:47 2019 +0200
+
+    Role.java entity was introduced. Compiled successfully
+
+[33mcommit d13b0d320bc962757ca4944c208851c28c6afb49[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sat Mar 9 18:24:54 2019 +0200
+
+    UserService implemented the UserDetailsService. UserEntity got a new field - ROle that is an enum
+
+[33mcommit 07b7a7bc13b8dff79c0278c6dd72461b9b3fcf45[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sat Mar 9 18:06:48 2019 +0200
+
+    User.java private String password got @NotBlank
+
+[33mcommit c66a8b4de7f25222b03038d35486c916ad1184dc[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sat Mar 9 17:59:29 2019 +0200
+
+    S14 done. SecurityEntryPoint class was created
+
+[33mcommit c2d7d1d52209cde051011d0975105981dc94a3db[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sat Mar 9 17:48:29 2019 +0200
+
+    S13 done. Dependency and application.properties were modified
+
+[33mcommit 3160f403ea3bbdae5781062e81a8d95effe774e5[m[33m ([m[1;31morigin/2019-03-12-13-58-UserUpdateWorksFine-ToGoWithSecurity[m[33m, [m[1;31morigin/2019-03-09-13-58-UserUpdateWorksFine-ForEveythingButNotSecurity[m[33m, [m[1;32m2019-03-09-13-58-UserUpdateWorksFine-ForEveythingButNotSecurity[m[33m)[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sat Mar 9 13:58:03 2019 +0200
+
+    UserUpdate works fine
+
+[33mcommit c8a402c0cca19a08e2ef1d1361c591e2ac316e29[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Fri Mar 8 21:31:06 2019 +0200
+
+    mostRecentAdminValue has the original user admin value
+
+[33mcommit 6e476d70f0ce1ea0bba0e417c3324819dd8cd71f[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Fri Mar 8 21:13:04 2019 +0200
+
+    WOrking on admin value
+
+[33mcommit 15004cc5225d5867f8eb5354871373aa69dfb58a[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Fri Mar 8 21:07:12 2019 +0200
+
+    Admin rle works only if the value is changed
+
+[33mcommit 9f5b5ba8d07a421867cbd812fcbd43b4e6ffacf7[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Fri Mar 8 20:59:16 2019 +0200
+
+    all input fields work fine. Admin is left
+
+[33mcommit 70f682f188f07de829a7e5b331560654bbf4b91b[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Fri Mar 8 20:47:19 2019 +0200
+
+    EMail is updated or not if input is empty
+
+[33mcommit 135c77b2fb86d1c9071f791f14395293ee2da06b[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Fri Mar 8 20:40:59 2019 +0200
+
+    TemporalUserInfo was introduced
+
+[33mcommit 1a38a8373b18e0b46b13d00705f2bb9c57915567[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Fri Mar 8 20:30:39 2019 +0200
+
+    PUT method works on UI
+
+[33mcommit 8d01e1a8e33ccdaca828d7d545a6d590bf78a390[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Fri Mar 8 20:24:54 2019 +0200
+
+    Hardcoded data or request body on UI - PUT method works on UI
+
+[33mcommit 4fbc3a3ffa158c21e9bf0f4038bff85926a6f592[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Fri Mar 8 20:18:37 2019 +0200
+
+    SMall changes, put method still does not work. Even on Postman
+
+[33mcommit 0bb4ef5cdd0e7da8a48a6ad8f7b9eaa1517f095c[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Fri Mar 8 19:57:23 2019 +0200
+
+    userGroups can be added, but put method still does not work
+
+[33mcommit 377c3c9e7e34e94b7c663f8c81761f7fedff8824[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Fri Mar 8 18:35:54 2019 +0200
+
+    state.updatedUserInfo was modified to match the request body
+
+[33mcommit e6be80845474430f6b7f63ea07e0ccd3ecc839f4[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Fri Mar 8 18:22:09 2019 +0200
+
+    Username field was removed
+
+[33mcommit 90eeff084b6b53cc1334ce195203c3de0428cb15[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Fri Mar 8 18:18:57 2019 +0200
+
+    Group removal looks working
+
+[33mcommit 7646d5da43f3227bb11830d830d833a62392a5c2[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Fri Mar 8 18:16:31 2019 +0200
+
+    UserGroups are displayed from UpdatedUserInfo obj in the state
+
+[33mcommit f718083192fe9a770435f43a32403301b0a03734[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Fri Mar 8 16:36:59 2019 +0200
+
+    UserGroups do not thows an error anymore
+
+[33mcommit c96e516f71691d732e8788e882b0baf26186a403[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Fri Mar 8 16:16:29 2019 +0200
+
+    working on
+
+[33mcommit 6dbb111f78ce1d8b24a8584d7b894c7a5b645405[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Fri Mar 8 15:36:22 2019 +0200
+
+    Props are gotten
+
+[33mcommit acb154fa9841f2ea989ce6f7752ed66e97d46f7a[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Fri Mar 8 15:30:57 2019 +0200
+
+    Props are given, need to check if are gotten
+
+[33mcommit cbd556d4809599726c43cee1e9e21c4e9e1ce1c0[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Fri Mar 8 15:26:26 2019 +0200
+
+    UserDetails call was added to container
+
+[33mcommit b6e5c7842ce9237a7964eedefaf35b939f77e1f6[m
+Merge: 88af1a5 187ac65
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Fri Mar 8 15:16:51 2019 +0200
+
+    VIlius added sth to UpdateUser controller
+    Merge branch 'master' into 2019-03-07-1916-AfterRebase
+
+[33mcommit 88af1a50279c74cbe417372e3e88c5ce153b6196[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Fri Mar 8 15:16:17 2019 +0200
+
+    Working on before merge from the master
+
+[33mcommit d38623509918828d2bd028303f8db4da4ac29812[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Fri Mar 8 15:13:07 2019 +0200
+
+    Link to update user was added to UserDetailsComponent
+
+[33mcommit 248c1665d71535d746f691fc4f7f5b6e00353b2e[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Fri Mar 8 15:04:29 2019 +0200
+
+    Index got a path to updateUser container
+
+[33mcommit 187ac65216d9b52998828877654de5b2d6ff5e72[m
+Author: Vilius Zalys <you@example.com>
+Date:   Fri Mar 8 15:04:14 2019 +0200
+
+    User update service modified
+
+[33mcommit 84b34d19085a6e62cfe9ee68a45de63a3a461853[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Fri Mar 8 15:02:17 2019 +0200
+
+    UpdateUserCOmponent and COntainer were introduced
+
+[33mcommit 1d4433cf5de5b1b8bed564b15453d5b94ea0ddf7[m
+Merge: 6e0c90c 79b3410
+Author: Aidas <aidas.pupelis@gmail.com>
+Date:   Fri Mar 8 10:41:56 2019 +0200
+
+    conflict solved
+
+[33mcommit 79b3410258799f5772888bc2ddf9305285727eee[m
+Author: Aidas <aidas.pupelis@gmail.com>
+Date:   Fri Mar 8 10:37:19 2019 +0200
+
+    repaired User service logging
+
+[33mcommit 6e0c90cd1ba7f3caf617893848345007b256a497[m
+Author: Vilius Zalys <you@example.com>
+Date:   Fri Mar 8 01:17:28 2019 +0200
+
+    userUpdateCommand validation added
+
+[33mcommit 97f6aa9942cf017b076022d3b337ccb3ae9c57e7[m
+Author: Vilius Zalys <you@example.com>
+Date:   Thu Mar 7 23:50:09 2019 +0200
+
+    Validation for userCreateCommand and userGroupCreateCommand added
+
+[33mcommit 46a9b85deb44fee97995448c29c9b3515d235d86[m
+Author: Vilius Zalys <you@example.com>
+Date:   Thu Mar 7 22:23:22 2019 +0200
+
+    loggers updated
+
+[33mcommit f2abde5d15fcd7987296fbaf89a92d23f535e759[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Mar 7 21:21:58 2019 +0200
+
+    All states can be assigned in DOcDetails
+
+[33mcommit 749ba311ceb52f756470769129d959bcb0ddce4f[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Mar 7 21:14:34 2019 +0200
+
+    DOc state can be changed on UI
+
+[33mcommit b6ef1f9d1af27d862a7db84ba3de347fde7bb528[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Mar 7 21:07:41 2019 +0200
+
+    DOc can be confirmed/rejected on UI
+
+[33mcommit dfdac6b08e1936498cf0a7de602ec3c24fcaa502[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Mar 7 20:47:45 2019 +0200
+
+    UI still does not set the doc state
+
+[33mcommit 3d5bcfb20bb6bf6eb83e9136b7b7c4d974595908[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Mar 7 20:25:56 2019 +0200
+
+    setState method v2 works on swagger
+
+[33mcommit 5eeffba0434583523b3ad178c48600f7eec8cca7[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Mar 7 18:37:51 2019 +0200
+
+    GetDOcById was modified
+
+[33mcommit f2493677ebad8922912f0d6c95eb2fc43902ec42[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Mar 7 18:36:33 2019 +0200
+
+    Reviewers are shown on UI, docs are displayed fine - with or /w reviewers
+
+[33mcommit c5dd180fff86f6c2f505ce3e2d63dac254b06fc5[m
+Merge: 779f530 c12c664
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Mar 7 18:18:53 2019 +0200
+
+    getAllDOcs works with/without a reviewer on swagger
+    Merge branch 'sleepy' into 2019-02-23-1542-WillContinueFIleUploadAndDocEntityOnOneRequest-DownloadIsHardcoded
+
+[33mcommit c12c66420dd6ecb65862d3f3d907e1d529f7bd5e[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Mar 7 17:44:54 2019 +0200
+
+    getAllDosc controller works on swagger. Problem was with not handling docs without a reviewer
+
+[33mcommit 779f53070856afef06137372fc656c42e86a0737[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Mar 7 17:15:45 2019 +0200
+
+    HandleReject was implemented. Still needs to be tested out
+
+[33mcommit 5aa1224853851ca7fe2865a866182ac95b15ddc2[m
+Author: Aidas <aidas.pupelis@gmail.com>
+Date:   Thu Mar 7 17:13:52 2019 +0200
+
+    error by getting reviewerUsename
+
+[33mcommit c9bfb8309f2e4ed50d41270de7a871d94ad65247[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Mar 7 17:11:37 2019 +0200
+
+    Looks like UI works with doc confirmation. Looks like BE needs some modification.
+
+[33mcommit 460dfd232fed7870330263299a7b18270e199133[m[33m ([m[1;31morigin/2019-02-23-1542-WillContinueFIleUploadAndDocEntityOnOneRequest-DownloadIsHardcoded[m[33m, [m[1;32m2019-02-23-1542-WillContinueFIleUploadAndDocEntityOnOneRequest-DownloadIsHardcoded[m[33m)[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Mar 7 14:18:00 2019 +0200
+
+    handleSubmit is being modified. error 404
+
+[33mcommit 32387b6cfae57adf5d6b1934b759f992d762014a[m
+Merge: ebe2f7f 8db9211
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Mar 7 13:23:37 2019 +0200
+
+    Aidas modified DocGetCOmmand to return a reviewer as s String
+    Merge branch 'master' into 2019-02-23-1542-WillContinueFIleUploadAndDocEntityOnOneRequest-DownloadIsHardcoded
+
+[33mcommit 8db9211a43467b535e1f034c30925f7b9b606b1b[m
+Merge: 61e291a cce0704
+Author: Aidas <aidas.pupelis@gmail.com>
+Date:   Thu Mar 7 12:58:06 2019 +0200
+
+    Merge branch 'sleepy'
+
+[33mcommit ebe2f7f1fcbf8f2bd847a91881bd1c53da8089e5[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Mar 7 12:39:43 2019 +0200
+
+    Empty methods work, buttons function
+
+[33mcommit cce07044ef58257e2351960bd26b15a10320345c[m
+Author: Aidas <aidas.pupelis@gmail.com>
+Date:   Thu Mar 7 11:54:29 2019 +0200
+
+    Added some validation to fields. Added validation logic to Document set state method
+
+[33mcommit c512ac98189a0a18b4a8b504150a0e2271ed2430[m
+Author: Aidas <aidas.pupelis@gmail.com>
+Date:   Thu Mar 7 09:32:33 2019 +0200
+
+    returns Reviewer not as object, but as String reviewerUsername
+
+[33mcommit 61e291ac1e080769375f0735d085c1aebfe1ec7d[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Mar 6 19:35:49 2019 +0200
+
+    Working on
+
+[33mcommit bcd7a647390d37c15435ba17e6dfc07973ee5f87[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Mar 6 19:24:37 2019 +0200
+
+    Preview/download buttons are rendered in details correctly
+
+[33mcommit ea12dbe852f0c19a07cf5035ae13ac23863df1ed[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Mar 6 19:06:59 2019 +0200
+
+    FIles ca be viewed on UI
+
+[33mcommit 599ec215b0cbc9155894ecfb612df91f0aca61d2[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Mar 6 17:08:45 2019 +0200
+
+    Document can be downloaded in doc details
+
+[33mcommit 4808248467ff3648b522447cd9bb0f684750152b[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Mar 6 16:20:11 2019 +0200
+
+    SOme buttons were added to DOcumentDetails
+
+[33mcommit 4a1e4d60d85aa653a7fa68cbb42c0dab837ccd16[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Mar 6 16:03:40 2019 +0200
+
+    Documents are numerated on UI
+
+[33mcommit 8e5d42da7375f21f42cc9d4931a69ab7b053ed6e[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Mar 6 16:00:12 2019 +0200
+
+    DocTypes are numerated on UI
+
+[33mcommit c7db608a9d4cd583008c404b38d028c01638254c[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Mar 6 15:57:00 2019 +0200
+
+    Users are numerated on UI
+
+[33mcommit 21776932f233280aacf388068e6cdfae19d08975[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Mar 6 15:52:40 2019 +0200
+
+    UserGroups are numerated
+
+[33mcommit de81f64f2ac87cc8237c72fb56eb21f1296b6380[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Mar 6 15:18:53 2019 +0200
+
+    Dubliacted types cannot be added while creating a userGroup
+
+[33mcommit 7a9abd5a610904178387b0c58a66e67dfb5df8ff[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Mar 6 15:15:14 2019 +0200
+
+    No dublicated groups can be added while creating a user
+
+[33mcommit 1fc3023f8550b96246f8c363cbc83364c36126a4[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Mar 6 15:10:53 2019 +0200
+
+    UserGroups can be removed whiles creating a user
+
+[33mcommit 9c00a9db97993bf917e958e25437e3cd6aee607b[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Mar 6 14:55:55 2019 +0200
+
+    DocTypes can be removed while creating user groups
+
+[33mcommit 462fd1dd4aceb16754647c63cc869aaac42c30a8[m
+Author: Aidas <aidas.pupelis@gmail.com>
+Date:   Wed Mar 6 14:45:41 2019 +0200
+
+    updated method to set document state_V01
+
+[33mcommit 9550f0c627e10e500913ec3b860b49ccf0bd9003[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Mar 6 12:31:56 2019 +0200
+
+    spam->spam
+
+[33mcommit f991782726eb7cd7654f9dcfbb0777e6888e787a[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Mar 6 12:00:28 2019 +0200
+
+    All good
+
+[33mcommit c6ada8ca238b800e3ef6c252b2f787167303928a[m
+Merge: 771350d a2403af
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Mar 6 11:54:56 2019 +0200
+
+    UI appearance is merged
+    
+    Merge branch 'master' into 2019-02-23-1542-WillContinueFIleUploadAndDocEntityOnOneRequest-DownloadIsHardcoded
+
+[33mcommit 771350d6e5905bf32fba6b35e82511d473fdcea4[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Mar 6 11:53:07 2019 +0200
+
+    Alert is closed
+
+[33mcommit 57f2c6d0a1c92653f3a016de7e2bd1b8f1ecc915[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Mar 6 11:50:10 2019 +0200
+
+    looks like attachments can be remoed if needed
+
+[33mcommit a2403af6bcef9a66dded63aeb9fc83d6c1621417[m
+Merge: a9c1478 b45dd93
+Author: Aidas <aidas.pupelis@gmail.com>
+Date:   Wed Mar 6 10:48:26 2019 +0200
+
+    loggers
+
+[33mcommit b45dd932e1ffdc94488fcdbcc2e66cfcf41ad073[m
+Author: Aidas <aidas.pupelis@gmail.com>
+Date:   Wed Mar 6 10:45:46 2019 +0200
+
+    loggers working (creating log files)
+
+[33mcommit a9c147847d372fe43a3bd0b821ecb0c67215bb74[m
+Merge: 82e6d67 94be863
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Tue Mar 5 21:38:42 2019 +0200
+
+    merged with last sleepy commits
+
+[33mcommit 82e6d674515eb2dce72210926b1292deacd4e3c6[m[33m ([m[1;31morigin/miri[m[33m)[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Tue Mar 5 21:36:38 2019 +0200
+
+    looks like, that fixed all Console erros in UI
+
+[33mcommit 287aa22ca7029909d62a80a3023bb1eef1eae801[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Mar 5 21:21:53 2019 +0200
+
+    Attachments have a button to remove it. still not functining
+
+[33mcommit 23ab9a7f7a937959a4ec4587ac5ba01708c22f17[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Tue Mar 5 21:15:34 2019 +0200
+
+    fixed console errors
+
+[33mcommit ecd6d23c90ff01626b129804017b93fd255a4402[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Tue Mar 5 20:44:38 2019 +0200
+
+    fixed some minor console errors
+
+[33mcommit 88aa2d294bb5630234e8325d22a014faeea193b6[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Tue Mar 5 20:29:38 2019 +0200
+
+    fixed some errors from console
+
+[33mcommit 94be863fcf542611c9e9525420e7d7455e3a0441[m
+Author: Aidas <aidas.pupelis@gmail.com>
+Date:   Tue Mar 5 20:23:56 2019 +0200
+
+    Attachment wit field path. Document with field Set<Attachment>
+
+[33mcommit f7b6ead737e2cb4ee242fce444a8c2d2d936c928[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Tue Mar 5 20:16:40 2019 +0200
+
+    fixed some console errors
+
+[33mcommit b0ecf99cd2da2160b1a8d5daaa7f3482e77f4d80[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Tue Mar 5 20:10:14 2019 +0200
+
+     remove scope=row from <td>
+
+[33mcommit fd739282226a142546d1f109486714831477f877[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Tue Mar 5 20:05:58 2019 +0200
+
+    fixed img (added alt field
+
+[33mcommit 9317c92ab4e06e16e0530df6c57b6c6a1888da3b[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Tue Mar 5 19:33:35 2019 +0200
+
+    fixed console error
+
+[33mcommit 425f0f8264c112b240a5c211d48c9a97644d8d3b[m
+Merge: 77884f0 8aeabb5
+Author: Aidas <aidas.pupelis@gmail.com>
+Date:   Tue Mar 5 19:33:28 2019 +0200
+
+    Merge branch 'sleepy'
+
+[33mcommit 8aeabb5fa66303538f3ac64e8821094d882d12d0[m
+Author: Aidas <aidas.pupelis@gmail.com>
+Date:   Tue Mar 5 19:31:38 2019 +0200
+
+    just trying to log to file
+
+[33mcommit d764a3c42646e1ca2a902ceeca158f6ceabe8c9a[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Tue Mar 5 19:22:33 2019 +0200
+
+    fixed console errors: class -> className; for -> htmlFor, added img alt
+
+[33mcommit 77884f0ef0284462f02d40900a1629a3f98676c3[m
+Merge: b137389 6447dc5
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Mar 5 19:13:46 2019 +0200
+
+    Merge branch 'master' of https://github.com/Aidas2/Dokumentu_valdymo_sistema
+
+[33mcommit b137389a95f7968882e7db6f77ddd88f72ac3e70[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Mar 5 19:13:22 2019 +0200
+
+    DocState is returned in LT in DOcGetCommand
+
+[33mcommit 6447dc5416053657d0f53427cef80de779ab39bc[m
+Merge: d92587a 27e9738
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Tue Mar 5 18:54:53 2019 +0200
+
+    merged with miri - achanged DocumentsContainer and DocumentsComponent
+
+[33mcommit d92587a11e0fd21b3ac9a6704570caec4ba78737[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Tue Mar 5 18:51:06 2019 +0200
+
+    DocumentsDetail table have been modified
+
+[33mcommit 27e9738d8584f7bb5c4f5a3b31566320624e7301[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Mar 5 18:32:43 2019 +0200
+
+    Document list shows the type and the status
+
+[33mcommit 1c3dde7c3d0a45389131c519d1b268b24d5ee8e5[m
+Merge: e781269 55f4d51
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Tue Mar 5 17:54:40 2019 +0200
+
+    merged with master. Documents details container and component have been created
+
+[33mcommit 55f4d51a235b413127169f1ffe756f083766e093[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Mar 5 16:59:40 2019 +0200
+
+    DocumentTitle was modified to be a link
+
+[33mcommit 26a783ab46dd1749987c9f3a89dc2bac071e9e9e[m
+Merge: 59005e8 4a0a9eb
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Mar 5 16:55:14 2019 +0200
+
+    DOcumentDetails are displayed on UI
+    Merge branch '2019-02-23-1542-WillContinueFIleUploadAndDocEntityOnOneRequest-DownloadIsHardcoded'
+
+[33mcommit 4a0a9eb42f15b3929de3f295af1b5a654651d56e[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Mar 5 16:53:04 2019 +0200
+
+    DOcumentDetails are displayed on UI
+
+[33mcommit 385e049483e132ef359c9c2c137563cc48e8ac59[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Mar 5 16:52:42 2019 +0200
+
+    DOcumentDetails are displayed on UI
+
+[33mcommit e7812694307b659adb5c772ac88824f3c9a9eed5[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Tue Mar 5 16:41:43 2019 +0200
+
+    created user groups table where you can see documents types which users can submit or review
+
+[33mcommit e7d31295b2204c961f910e4b3e2b1a68d00e5080[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Tue Mar 5 16:03:16 2019 +0200
+
+    created design of users apperance
+
+[33mcommit 1c753019d4e47c8de68545d1e91d62a033a4a814[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Tue Mar 5 14:20:16 2019 +0200
+
+    modified border style in css
+
+[33mcommit 31ff8eda01fee62165ec4029917a31921bab8534[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Tue Mar 5 11:11:53 2019 +0200
+
+    fixed user groups table
+
+[33mcommit f4400a37ba90c334ca5f53547f09df2c57f27a6c[m
+Merge: 862102d 59005e8
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Tue Mar 5 10:13:37 2019 +0200
+
+    merged with master
+
+[33mcommit 862102d5d50e7aa9c0d4b4fb78a965bd61e5dfec[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Tue Mar 5 10:06:02 2019 +0200
+
+    fixed DOcumentTypes and UserGroups tables
+
+[33mcommit 59005e882e8487084ca1d39b8596ab848b7f5c7b[m
+Merge: e244bd0 a9445d9
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Mar 5 09:24:21 2019 +0200
+
+    DocumentDetails are still in progress
+
+[33mcommit e244bd086251d5fd6da9cadd2604aa491f1cf128[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Tue Mar 5 00:17:50 2019 +0200
+
+    added info icon to main components
+
+[33mcommit ec176d42a4825fa08bc885f61c28fd91e0959ed4[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Tue Mar 5 00:01:18 2019 +0200
+
+    added icon to documentsContainer
+
+[33mcommit 170ace5025ebb50ef86fd823cfe0c827862b63b1[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Mon Mar 4 23:46:13 2019 +0200
+
+    added download and preview icons
+
+[33mcommit c80a22222b73cc01c3d70b88d974796c32f3b91c[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Mon Mar 4 22:13:27 2019 +0200
+
+    Documents table design created
+
+[33mcommit a9445d95112847666f919afe6bd05f73884f939d[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Mon Mar 4 21:36:53 2019 +0200
+
+    DocumentDetails are still in progress
+
+[33mcommit 036745cdde89a31f5487a5ce254110de0fe946c9[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Mon Mar 4 21:01:50 2019 +0200
+
+    CreateUser UI have been modified
+
+[33mcommit e7e518c252e3ae027e4e8eefd75e77ea02105210[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Mon Mar 4 20:33:38 2019 +0200
+
+    fixed users table in UI
+
+[33mcommit 43f01ae0ed6e34f95c26c651128070277ff7d49d[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Mon Mar 4 20:05:00 2019 +0200
+
+    fixed table width with container-fluid
+
+[33mcommit fd204bc6b2dadacf451980646f2d6ef2d8386e66[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Mon Mar 4 19:04:19 2019 +0200
+
+    fixed table width
+
+[33mcommit 013601a51a16eef925581a1752a39e2e8922d001[m
+Author: Aidas <aidas.pupelis@gmail.com>
+Date:   Mon Mar 4 16:11:05 2019 +0200
+
+    method setDocumentState_V2 improoved
+
+[33mcommit 92d9ee2e553f51715c5b4edb3e25bb4961ad1e50[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Sun Mar 3 23:45:53 2019 +0200
+
+    added collapsed table to users, but need to remove data bug and etc.
+
+[33mcommit 7e04b8d27c61c68741517f0014a4e84c2e04d21d[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Sun Mar 3 19:45:02 2019 +0200
+
+    modified usergroups
+
+[33mcommit ada08d09ed4ba12dcf726aa7e2cea6b5c6ba6889[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Sun Mar 3 17:27:19 2019 +0200
+
+    changed ClassNames
+
+[33mcommit e58d9c97ae9bdb15bda8a3bbd565b154bd12385b[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Sun Mar 3 17:16:10 2019 +0200
+
+    created collapsed menu
+
+[33mcommit 55be8c15a5d573dfbd6a12b7cd8a0c2652bdc7d9[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sun Mar 3 15:14:11 2019 +0200
+
+    Some properties are rendered in document details
+
+[33mcommit acd0c4146e865ac7b76d4c5ed1129b749a8a4cdc[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sun Mar 3 15:06:40 2019 +0200
+
+    Username is added from localstorage
+
+[33mcommit 68989eb90592517a41e3d7784b8019b587f6d1eb[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sun Mar 3 15:02:17 2019 +0200
+
+    Index was changed to link to new userGroup
+
+[33mcommit 2a3291b58b0f3ab749fb4dcedf0c60d4cfeeb9fc[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Sun Mar 3 14:58:57 2019 +0200
+
+    administration component Design have been modified
+
+[33mcommit cb28e6f35ee4d7a0a513bbc0c017d1b11a3837ef[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Sun Mar 3 14:39:16 2019 +0200
+
+    changed styles.css, started modified admininstration design
+
+[33mcommit 12f076c6fd5a9028f167d80872e8b84866c2e7ca[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Sun Mar 3 14:12:05 2019 +0200
+
+    added collapse.icon (only draft version of this picture), changed sidebar design - now looks good.
+
+[33mcommit b2d662f639a5031d7a4782b44b238ced378c97af[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Sun Mar 3 13:18:15 2019 +0200
+
+    changed LandingPage column width and changed SideBar component
+
+[33mcommit c2e6f503ebb70a34f604764dee31d7384f29d715[m
+Merge: 339330b 7626f81
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Sat Mar 2 18:58:09 2019 +0200
+
+    branch miri have been merged with master. Added dvs-spring new files
+
+[33mcommit 339330ba88508cc7e7cd51fcd135ee1c113fd429[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Sat Mar 2 18:55:07 2019 +0200
+
+    deleted react-dropdown drom dependencies
+
+[33mcommit 6615e8ccbc4ee14dc3a2d2a28af6fb9a8b044507[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Sat Mar 2 18:51:57 2019 +0200
+
+    styles.css destination have been changed. Added active sidebar
+
+[33mcommit f088808d5ecea1d70058b7f42896a5c4ad1ec173[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sat Mar 2 18:35:40 2019 +0200
+
+    Moving on
+
+[33mcommit b2b5a1b34fb064b6632a5a28f198a4deccb45cdf[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sat Mar 2 16:44:35 2019 +0200
+
+    Sth done
+
+[33mcommit 00a29d33ac04d14c7a6c959862047657bf5fc288[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sat Mar 2 16:34:04 2019 +0200
+
+    Doc title was changed to a link
+
+[33mcommit d90fa0efd7dec8a11d9228a37232df1b23175579[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sat Mar 2 16:30:55 2019 +0200
+
+    DocumentDetailsCOntainer and component were introduced
+
+[33mcommit 160850824d18a1ccf42b1a93a90c192dec3d87dd[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sat Mar 2 15:50:42 2019 +0200
+
+    Still file is not displayed. A RenderResponse component is opened in a new window
+
+[33mcommit be64fdbde569566723e079c67dfc1463f0ab0c0b[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sat Mar 2 15:38:04 2019 +0200
+
+    Shit happens. Anyway, new window is openew with needed URI
+
+[33mcommit 7626f8165ceee0d1397e056d7f5ca4d555b161be[m
+Merge: e7c6ae1 3654b58
+Author: Aidas <aidas.pupelis@gmail.com>
+Date:   Sat Mar 2 13:38:42 2019 +0200
+
+    Merge branch 'sleepy'
+
+[33mcommit 3654b582ec185bdec16f66d007435849ca720f9e[m
+Author: Aidas <aidas.pupelis@gmail.com>
+Date:   Sat Mar 2 13:37:29 2019 +0200
+
+    some improovements on various methods
+
+[33mcommit cd7dc610baa3cb45d836c8e6fa4eb987839cef44[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sat Mar 2 13:08:05 2019 +0200
+
+    ResponseData is returned as a BLOB object application/pdf. However, it is not rendered in a new tab
+
+[33mcommit e7c6ae15115ac51c980db18aaac636f9da350857[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Fri Mar 1 23:52:03 2019 +0200
+
+    deleted uploaded-files
+
+[33mcommit 21dde1073b14d3089b9e72f66659d8c09c5d6b38[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Fri Mar 1 23:46:56 2019 +0200
+
+    tried again gitignore uploaded-files
+
+[33mcommit 5ec30e063dc0563bd56d6b068b7c18e0c72e4efd[m
+Merge: 0cc408c b475f39
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Fri Mar 1 23:44:04 2019 +0200
+
+    Merge branch 'master' into miri
+
+[33mcommit 0cc408cc7434b3049352261f36ce7048102cc066[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Fri Mar 1 23:39:12 2019 +0200
+
+    added initial  sidebar version, but probably we do not need it, because we have good navigation at the Top side
+
+[33mcommit f839077e54d75ac8319cea7eb1acddae345e0533[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Fri Mar 1 21:18:06 2019 +0200
+
+    added hover on login input, changed h2 style
+
+[33mcommit b475f39e7e838f22f72a0253b54547b8ebe50a74[m
+Merge: 6a5135f fc325da
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Fri Mar 1 20:51:18 2019 +0200
+
+    Merge branch 'master' of https://github.com/Aidas2/Dokumentu_valdymo_sistema
+
+[33mcommit 6a5135fd95e1a2cf6e3776dc9e0e61ba7ee2862d[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Fri Mar 1 20:51:08 2019 +0200
+
+    Empty commit
+
+[33mcommit 15e2d8b1f1b60bff21b45e1aa02688995cfef904[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Fri Mar 1 19:10:01 2019 +0200
+
+    fixed Landing page design
+
+[33mcommit e0eb56a8550289a7b6b67e8bcecdf40e3484b0ca[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Fri Mar 1 18:44:22 2019 +0200
+
+    LandingPage renewed
+
+[33mcommit 78f7474d5213f58f58780aeb908a63c164565760[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Fri Mar 1 17:42:47 2019 +0200
+
+    AdministrationContainer design have been changed - fixed table colors bugg
+
+[33mcommit f592c3e5af571bedc9ae05b4b2e71cccfb037eec[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Fri Mar 1 17:38:30 2019 +0200
+
+    Landing page renewed, some styles have been changed
+
+[33mcommit 4e9820e2f548ac9fdeddaeaf4095472d2d8e4193[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Fri Mar 1 15:09:09 2019 +0200
+
+    UserGroup details are rendered fine
+
+[33mcommit 77f2ce014a7b6330c485dbf498306237ca44dea2[m
+Merge: 0ca5aa1 fc325da
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Fri Mar 1 13:39:47 2019 +0200
+
+    Merge branch 'master' into miri
+
+[33mcommit fc325dad0a8221906760eb25398fad4e321d3200[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Fri Mar 1 13:23:15 2019 +0200
+
+    git ignore modified for uploaded-files
+
+[33mcommit 0ca5aa1993b63bb91f3fcadafe683c9a58881726[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Fri Mar 1 13:17:50 2019 +0200
+
+    git ignore modified
+
+[33mcommit c6d11623f06a8d99371426aea17bce4d084294a3[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Fri Mar 1 13:04:44 2019 +0200
+
+    testing git ignore on uploaded-files
+
+[33mcommit e1c13c57b49be636ac2a5a0c9d9d45db3b85dcef[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Fri Mar 1 12:22:28 2019 +0200
+
+    deleted uploaded-files
+
+[33mcommit be0099643bb968437d28130b336a941494888c98[m
+Author: Vilius Zalys <you@example.com>
+Date:   Fri Mar 1 10:42:56 2019 +0200
+
+    some minor changes
+
+[33mcommit 6df95f910e3e142008920e7c4941f4b09be2032c[m
+Author: Vilius Zalys <you@example.com>
+Date:   Fri Mar 1 00:59:22 2019 +0200
+
+    Security class added (inactive)
+
+[33mcommit 437721ab15a715ec7a828b7f23724fa067b75f9a[m
+Author: Vilius Zalys <you@example.com>
+Date:   Fri Mar 1 00:46:20 2019 +0200
+
+    Logger.info was added to the user group  services
+
+[33mcommit 308b563ef039611ff0a30e22d50e288d08129f9b[m
+Author: Vilius Zalys <you@example.com>
+Date:   Fri Mar 1 00:33:58 2019 +0200
+
+    Logger.info was added to the user services
+
+[33mcommit 15979f34c29e3299e31441598284405e2002fce4[m
+Merge: 634044f 4c44d08
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Thu Feb 28 23:03:22 2019 +0200
+
+    Merge branch 'master' of https://github.com/Aidas2/Dokumentu_valdymo_sistema
+
+[33mcommit fcba42ef86c3e1c520ecc7fb28b1b3ae2037fc74[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Feb 28 23:00:05 2019 +0200
+
+    Initial document properties were removed not to be shown on loading
+
+[33mcommit 2bce93e57f8b954c1b2e28bd748fb4736c3bfc97[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Feb 28 22:59:42 2019 +0200
+
+    Initial document properties were removed not to be shown on loading
+
+[33mcommit 4c44d0892ab057340bbf818b16f5b3547b2e69cd[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Feb 28 22:52:42 2019 +0200
+
+    UserGroup details are displayed correctly on UI
+
+[33mcommit 634044fb514eb45a4ea1ed00fbe1d43c68d9607c[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Thu Feb 28 22:51:43 2019 +0200
+
+    additional navigation have been added to newest components
+
+[33mcommit 60533f44c41c140fedd13a7904a7e3ce1114e137[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Feb 28 22:47:31 2019 +0200
+
+    UserGroupDetails are rendered, just the links are needed for each group
+
+[33mcommit d3422cd98ab0d77b09f5d4fd4156737ef9853407[m
+Merge: f00afd0 3605d66
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Feb 28 22:27:13 2019 +0200
+
+    Merge branch 'master' of https://github.com/Aidas2/Dokumentu_valdymo_sistema
+
+[33mcommit f00afd029aea2bf17b33224a4007395c03a18790[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Feb 28 22:20:29 2019 +0200
+
+    UserGroupDetails container and component still needs to be modified
+
+[33mcommit 1ba3af1285c9fe11259f2dec3cff74cc8af32ff6[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Feb 28 22:13:26 2019 +0200
+
+    UserGroupDetailsComponent and container were introduced
+
+[33mcommit 3605d66efc438738a95979549d6e75a0f0e59c8d[m
+Author: Vilius Zalys <you@example.com>
+Date:   Thu Feb 28 20:41:43 2019 +0200
+
+    Get users of a certain userGroup controller added
+
+[33mcommit 64f5834283624c16e8036e01374bcd12a36e85a1[m
+Merge: 801f1a7 e458270
+Author: Vilius Zalys <you@example.com>
+Date:   Thu Feb 28 19:49:44 2019 +0200
+
+    Merge branch 'master' of https://github.com/Aidas2/Dokumentu_valdymo_sistema
+
+[33mcommit e4582702668996fe3caa19230ecf7a63a9b8bc58[m
+Merge: 4cf6be0 bd64b5a
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Feb 28 19:40:19 2019 +0200
+
+    UserDetails are rendered. All good.
+    Merge branch '2019-02-23-1542-WillContinueFIleUploadAndDocEntityOnOneRequest-DownloadIsHardcoded'
+
+[33mcommit bd64b5a9dba07eaaff0da8ea68c1fbf5193b7fa4[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Feb 28 19:39:50 2019 +0200
+
+    UserDetails are rendered for each user. All good
+
+[33mcommit 29e29837ce0d411375cd5277aa8b92bffed519ce[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Feb 28 19:32:56 2019 +0200
+
+    Username link routes to a right URL
+
+[33mcommit 55a81efe7e3a530949b2bbbb2c090041c0189caf[m
+Author: Aidas <aidas.pupelis@gmail.com>
+Date:   Thu Feb 28 19:24:38 2019 +0200
+
+    Additional DocumentType Controlers
+
+[33mcommit 5146d2225f2eec06e9f35a8cfc7ef8e96d3469b9[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Feb 28 19:22:54 2019 +0200
+
+    index.js got the path for userDetailsContainer
+
+[33mcommit 4cf6be06ddcfbc2a3230bbcb151e22219b9a0796[m
+Merge: 43cdff9 67c94b5
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Feb 28 19:19:06 2019 +0200
+
+    UserDetails ca be seen, still hardcoded for one user"
+    
+    Merge branch '2019-02-23-1542-WillContinueFIleUploadAndDocEntityOnOneRequest-DownloadIsHardcoded'
+
+[33mcommit 67c94b5ce3583bd3c575b41f4d8e1f4d56019d13[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Feb 28 19:18:44 2019 +0200
+
+    Small changes
+
+[33mcommit fe0e29462627c9721710fae8062dc7164a953d65[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Feb 28 18:21:16 2019 +0200
+
+    Link as username works. Still hardcoded
+
+[33mcommit 510c6c6ec63eb55a6433725078dcb28dae83f4f1[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Feb 28 18:16:57 2019 +0200
+
+    Minor changes
+
+[33mcommit 87d6bb115fc66328074e7632526ee10517bb70ad[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Feb 28 18:14:27 2019 +0200
+
+    UserDetails are rendered successfully. Still hardcoded
+
+[33mcommit fb43f8c325be44f00f6f9162e63a864cd54f0116[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Feb 28 17:42:17 2019 +0200
+
+    All info is shown, but userGroups should be adjusted
+
+[33mcommit 4d965c8243627c8ebef7aa77e6ff157a8e63aa17[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Feb 28 16:43:44 2019 +0200
+
+    One user info is gotten on reat. Still hardcoded
+
+[33mcommit dcd1e421fcc89aa259b40bb4cc96200cb99ef613[m
+Author: Aidas <aidas.pupelis@gmail.com>
+Date:   Thu Feb 28 16:41:32 2019 +0200
+
+    added Attachment (from entity to controller)
+
+[33mcommit b0cb34f6bc223d5d08d6c9df97d5d852d74d009d[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Feb 28 16:29:46 2019 +0200
+
+    Initial COntainer is rendered
+
+[33mcommit 23d429e88fbcb43ad4bc47acea3c6f98769056ca[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Feb 28 16:19:42 2019 +0200
+
+    UserDetailsComponent and container were introduced
+
+[33mcommit 817629be52963f26f2396b7b9b4e0f7c0f484720[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Feb 28 13:09:30 2019 +0200
+
+    File still cannot be viewed, download works, some stuff is commented to be used later
+
+[33mcommit a8c2df66e0d25e4739e9071129b30c0bd1575a71[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Feb 28 13:00:45 2019 +0200
+
+    sth is added and commented out in fileViewContainer
+
+[33mcommit 43cdff9bfa10215d79bb749a332dafcb51d75d59[m
+Merge: 408ecd2 6ffd80f
+Author: Aidas <aidas.pupelis@gmail.com>
+Date:   Thu Feb 28 11:48:39 2019 +0200
+
+    Merge branch 'sleepy'
+
+[33mcommit 6ffd80f90fe935b1a1a3f4a60a4c7223d13cb193[m
+Author: Aidas <aidas.pupelis@gmail.com>
+Date:   Thu Feb 28 11:47:38 2019 +0200
+
+    Added more loggers. Added validation also in constructor
+
+[33mcommit 801f1a79a4780da04859ea1f91a707ecf92a9bc3[m
+Merge: 8778c23 43cdff9
+Author: Vilius Zalys <you@example.com>
+Date:   Thu Feb 28 01:15:12 2019 +0200
+
+    Merge branch 'master' of https://github.com/Aidas2/Dokumentu_valdymo_sistema
+
+[33mcommit 8778c23cbc98902cff313acea4efae733701cdb4[m
+Author: Vilius Zalys <you@example.com>
+Date:   Thu Feb 28 00:25:11 2019 +0200
+
+    Added spring security to pom.xml file and application.properties
+
+[33mcommit 8b24cbb90c0df8584832686edcd6df4153332018[m
+Author: Vilius Zalys <you@example.com>
+Date:   Thu Feb 28 00:18:35 2019 +0200
+
+    UrserGroup title update controller added
+
+[33mcommit c9ba20663793472271e21f1e115b8546d26c42ea[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Feb 27 20:31:16 2019 +0200
+
+    React still needs to be modified to view the content of a file
+
+[33mcommit a3471d8df84737e79784a1ea9a4915aaa8af0750[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Feb 27 19:16:35 2019 +0200
+
+    FIle stream is gotten on UI response in console
+
+[33mcommit e4c01813a4f6d2803f46a26e891835fede1acd62[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Feb 27 19:10:49 2019 +0200
+
+    FileViewContainer.js was created
+
+[33mcommit 6ac9e308eb6a774be07812071ef464fa88dd4846[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Feb 27 19:08:25 2019 +0200
+
+    FIle by ID is shown on the URL. No hard coding
+
+[33mcommit 0a422ccdf795b0cd236a7792b2da8301e9672887[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Feb 27 19:03:52 2019 +0200
+
+    Looks like file ca be viewed vis Postman and URL. Still hardcoded
+
+[33mcommit 97cfb65d919e05154e7192847ec80b043732f4e9[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Feb 27 19:01:59 2019 +0200
+
+    ViewFile method give response code 200, but downloads a file
+
+[33mcommit 408ecd2d2ee0259a1e477a19b2c74e4ac0d05c16[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Feb 27 18:23:31 2019 +0200
+
+    Main documents ca be downloaded. ALl good
+
+[33mcommit bdaf493c7cf1d4f4df57c6b7be43b8edb6753921[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Feb 27 18:19:52 2019 +0200
+
+    Looks like each single file ca be downloaded
+
+[33mcommit f6897fccf5fa6e5f7c5eacaca00bdf7e0d812127[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Feb 27 17:58:24 2019 +0200
+
+    FIle ca be downloaded using UI passing a file ID. Only testing implementation
+
+[33mcommit 64fa66d3f16f7a99c967bbbcb23b809b3313211b[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Feb 27 17:53:21 2019 +0200
+
+    @RequestParam was added to FIleDOwnload COntroller. Works via swagger
+
+[33mcommit bf78906462a87bc300e0457cad21b002547b5857[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Feb 27 17:21:40 2019 +0200
+
+    FIleDOwnloadController got small changes.Still works
+
+[33mcommit a900eaf378bab8ea7e13471c6e478545065d560f[m
+Merge: ad0c6a2 bb5531f
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Feb 27 16:06:53 2019 +0200
+
+    UserGroups can be created now.
+    Merge branch '2019-02-23-1542-WillContinueFIleUploadAndDocEntityOnOneRequest-DownloadIsHardcoded'
+
+[33mcommit bb5531fbd639d706ce04582e390f7b80c29b1d15[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Feb 27 16:05:50 2019 +0200
+
+    Alert was modified to disappear on all forms
+
+[33mcommit c5f47a068641be982b903bcfb5f40ca0cc605134[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Feb 27 16:00:58 2019 +0200
+
+    UserGroups can be created on UI. ALl good
+
+[33mcommit 81fac2bedb798eb9d7bfc05f2e3a24362f5f0cb5[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Feb 27 15:11:20 2019 +0200
+
+    UI works, just need to sent an axios message in the COntainer
+
+[33mcommit 5014d4e43b2080eb702025c432286770449af77f[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Feb 27 14:10:35 2019 +0200
+
+    Document types are displayed on CreateUserGroups UI
+
+[33mcommit 9befa12127874f2b2134d61f77e711e5ec9f9e16[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Feb 27 13:57:15 2019 +0200
+
+    CreateUserGroupsCOmponent and COntainer are rendered as empty ones
+
+[33mcommit 43405240a702d3e8ba9dc4e498e8c92f2e8bbc2f[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Feb 27 13:40:48 2019 +0200
+
+    UserGroup.js was deleted. It is equivalent to UserGroupsDelete.js
+
+[33mcommit 262dd48a29d4afbdf7be5f0c23f57a725c6091cc[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Feb 27 13:38:14 2019 +0200
+
+    UserGoupsComponent and COntainer by Mindaugas were deleted
+
+[33mcommit ad0c6a2fd7e80b6ef6427088364fc68623380d10[m
+Merge: 622869e 4cee8f3
+Author: Aidas <aidas.pupelis@gmail.com>
+Date:   Wed Feb 27 12:02:12 2019 +0200
+
+    Merge branch 'sleepy'
+
+[33mcommit 4cee8f3318e76cf7d1b69c9f218a06de0fd098c4[m
+Author: Aidas <aidas.pupelis@gmail.com>
+Date:   Wed Feb 27 12:00:52 2019 +0200
+
+    added logger file, added loggers code
+
+[33mcommit 8f7a1428a267437ee061bdae294147acabda5bea[m
+Author: Aidas <aidas.pupelis@gmail.com>
+Date:   Wed Feb 27 09:53:47 2019 +0200
+
+    updater method to set Document state (working)
+
+[33mcommit 622869ec4d3e23f404395295c8dbb9d1517bd847[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Feb 26 22:28:38 2019 +0200
+
+    UserGroups are displayed on UI, it still needs to be created on Swagger
+
+[33mcommit 504f417c5a3922e78f19e17c94e4684597829bed[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Feb 26 21:56:49 2019 +0200
+
+    UserGroupsCOmponentAndCOntainer were introduced to to display groups for admin
+
+[33mcommit 07ecbbaec76ec022e23d96e7d38f5fe0a3bb3041[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Feb 26 21:45:26 2019 +0200
+
+    Users can be created, selected groups are displayed
+
+[33mcommit c0afb91a35a9f4c8ea999ffb725e528e43b42050[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Feb 26 20:05:24 2019 +0200
+
+    User password validated on UI
+
+[33mcommit 6e2c56761906e5c90ee715536e2ceb4055ac2b46[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Feb 26 20:03:08 2019 +0200
+
+    Users can be created viaUI
+
+[33mcommit 786886a5eb45e00e36c6a0705b1aa64c7c65e269[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Feb 26 19:11:45 2019 +0200
+
+    User form is rendered correctly. A user cannot be created yet
+
+[33mcommit 43af2b95502a598c146a2f17ff5b546e37669e97[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Feb 26 18:59:52 2019 +0200
+
+    UserGroups are shown in CreateUser on UI
+
+[33mcommit 96c6aff715c6c9227384bf5c090ebe58793a05be[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Feb 26 18:50:16 2019 +0200
+
+    /testinggroups renders the groups. However, CreateUserContainer still does not work
+
+[33mcommit 30464c3db5e47deb1298532f9dc5d7b65eebcc41[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Feb 26 18:11:42 2019 +0200
+
+    UserGroupsComponent and Container were introduced in UserForm directory
+
+[33mcommit ece558ba55de0c817d8e6454493236d060cfdfe8[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Feb 26 17:44:07 2019 +0200
+
+    Main document is allways the main one even if the attachments have been added firstly
+
+[33mcommit 6da719f6ff9ffa91f910c740d69ff173ee0fd272[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Feb 26 17:21:56 2019 +0200
+
+    small changes
+
+[33mcommit 93787fb9bf99d4022766011d32c228c652e9a4aa[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Feb 26 17:10:50 2019 +0200
+
+    small mistakes corrected in react
+
+[33mcommit 74689acfb501bf0dfe01f9149e8f501bb894abaf[m
+Merge: 2486f18 6052c22
+Author: Aidas <aidas.pupelis@gmail.com>
+Date:   Tue Feb 26 14:37:20 2019 +0200
+
+    Merge branch 'sleepy'
+
+[33mcommit 6052c22a1f7ce3e2e2422a317409d02d7309c41f[m
+Author: Aidas <aidas.pupelis@gmail.com>
+Date:   Tue Feb 26 14:34:47 2019 +0200
+
+    in some methods changed @PathVariable --> @RequestParam. And they started to work ;)
+
+[33mcommit 2486f18c03bfb92bc23740963916da759b9a0246[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Tue Feb 26 12:12:54 2019 +0200
+
+    added footer in UI
+
+[33mcommit 703c94907c3f9fc77a67127670cbf915b883988d[m
+Author: Vilius Zalys <you@example.com>
+Date:   Tue Feb 26 11:56:12 2019 +0200
+
+    UserGroup get all groups controller fixed
+
+[33mcommit 84963f267c0e58eaed3929a86f77f86e09dc56c1[m
+Merge: f7996b8 70f2a72
+Author: Vilius Zalys <you@example.com>
+Date:   Tue Feb 26 11:31:07 2019 +0200
+
+    Merge branch 'master' of https://github.com/Aidas2/Dokumentu_valdymo_sistema
+
+[33mcommit 70f2a72cf6e5889a346b8e8f7fbe2bf5740c3501[m
+Author: Aidas <aidas.pupelis@gmail.com>
+Date:   Tue Feb 26 11:14:28 2019 +0200
+
+    updated method to find Document by DocumentTypeTitle
+
+[33mcommit f7996b8e0cd316833fddc4f3a8ff5aa9848ec53b[m
+Author: Vilius Zalys <you@example.com>
+Date:   Tue Feb 26 11:09:35 2019 +0200
+
+    User get services updated, user add and remove from group controller added
+
+[33mcommit d49e0f545f1fceafab582dd2309ee0441b235c7b[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Mon Feb 25 22:42:34 2019 +0200
+
+    removed upper-case font style, added some styles, create file UI have been designed
+
+[33mcommit d8f4e60b460c69afb2d75edcf1de1e225da6d4d9[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Mon Feb 25 20:19:40 2019 +0200
+
+    DocContainer was fixed react
+
+[33mcommit da92ecd59c02ec26bdb9313aa01c5de0e3b06ae3[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Mon Feb 25 19:57:20 2019 +0200
+
+    CONFLICT (content): Merge conflict in dvs-spring/src/main/java/lt/akademijait/bronza/controllers/DocumentController.java was resolved. Line 84, 90 got authorId renamed from authorid
+
+[33mcommit af773666968c94a0859cf21f4accc070a7c12ff8[m
+Merge: 551fd2f 76a7650
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Mon Feb 25 19:57:04 2019 +0200
+
+    CONFLICT (content): Merge conflict in dvs-spring/src/main/java/lt/akademijait/bronza/controllers/DocumentController.java was resolved. Line 84, 90 got authorId renamed from authorid
+
+[33mcommit 551fd2fb7fd342b7f1828ea25d562378d1e413d3[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Mon Feb 25 19:45:07 2019 +0200
+
+    Files can be downloaded by ID on Postman
+
+[33mcommit 76a7650981ccf808cd3a221c19f2b0bdea5eca02[m
+Author: Aidas <aidas.pupelis@gmail.com>
+Date:   Mon Feb 25 18:56:29 2019 +0200
+
+    tryed to set DocumentState in lithuanian, no success, commented
+
+[33mcommit 8ebfc20294021cd284da5f73c615f1dfab7b4f1b[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Mon Feb 25 18:55:27 2019 +0200
+
+    React. Document download and view buttons modified. Still no functionality
+
+[33mcommit f3bc904cff8bc2a12a735aa7e944a4440b3d98c9[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Mon Feb 25 18:43:00 2019 +0200
+
+    Buttons were added to view and download a doc. No functionality yet
+
+[33mcommit 103bee838bb7159fc4871d33bc778da0cf0878dc[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Mon Feb 25 18:31:00 2019 +0200
+
+    AdministrationContainer was changed to reposition the elements
+
+[33mcommit 27654ad0b825379932692bd0909021c9c1bc478e[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Mon Feb 25 18:23:30 2019 +0200
+
+    Nav Dokumentai renders all documents
+
+[33mcommit f257e1556e17a56811fdee99579bab4945b4f5c1[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Mon Feb 25 17:47:04 2019 +0200
+
+    Documents were added to navigation
+
+[33mcommit 8f93d618299ec6a6317399006200b922ba675be4[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Mon Feb 25 17:35:30 2019 +0200
+
+    DocController was modified to take the right pathVariable for all docs by a specific user
+
+[33mcommit bae54731b761a6600254529050322a42b2dfdd7c[m
+Merge: 303bd9d ca5efd6
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Mon Feb 25 17:16:39 2019 +0200
+
+    Merge branch 'master' into 2019-02-23-1542-WillContinueFIleUploadAndDocEntityOnOneRequest-DownloadIsHardcoded
+    Aidas added a controller for documents created by a user
+
+[33mcommit 303bd9d9650140b7ca954f430487f570032ff0c1[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Mon Feb 25 17:03:28 2019 +0200
+
+    Documents are rendered on UI, just ID is missing
+
+[33mcommit ca5efd6769355c78a490e9c9bd5712aa80c72062[m
+Author: Aidas <aidas.pupelis@gmail.com>
+Date:   Mon Feb 25 16:52:06 2019 +0200
+
+    added method getAllDocumentsByAuthorId (in DocumentService and in DocumentController)
+
+[33mcommit 96ada8326c794b9e807794372077610c54c3289c[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Mon Feb 25 16:50:18 2019 +0200
+
+    NavigationComponnet got class attributes renamed
+
+[33mcommit 1d793c17b834f1856757c097fbd7e055f56f177e[m
+Merge: a162823 73b958b
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Mon Feb 25 14:47:30 2019 +0200
+
+    Merge branch 'master' into 2019-02-23-1542-WillContinueFIleUploadAndDocEntityOnOneRequest-DownloadIsHardcoded
+
+[33mcommit 73b958b137f58cd7fb9c72b08191e6db15358704[m
+Author: Aidas <aidas.pupelis@gmail.com>
+Date:   Mon Feb 25 14:41:37 2019 +0200
+
+    Objects changed to 'String authorUsername', String documentTypeTitle (in dto DocumentGetCommand and in service DocumentService
+
+[33mcommit 9b2eb6876f9e6e3e33e81adc716335950a8a4e0e[m
+Merge: c3c0d67 9c73d43
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Sun Feb 24 23:11:05 2019 +0200
+
+    created UI initial design, modified tables. Also file explorer navigation (test version) have been created
+
+[33mcommit a162823658c0b37e22f9f004a13cd7a7b862a923[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sun Feb 24 22:02:21 2019 +0200
+
+    DOcContainer and COmponent work. Just the axios call needs to be done
+
+[33mcommit 27bf8a201d53ee574b4448f8856b77ef4c5c97b0[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sun Feb 24 21:33:13 2019 +0200
+
+    Sth is rendered on UI /admin/docs
+
+[33mcommit 85951e784bb960e50b1d9c39ba3677f4054db39d[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sun Feb 24 21:02:18 2019 +0200
+
+    DocumentCOmponent.js was created
+
+[33mcommit c3c0d67d0fa852dd1a78073aeed426b02a120a64[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Sun Feb 24 20:38:42 2019 +0200
+
+    Renewed UI
+
+[33mcommit 9c73d431bd2d910215241df72ca0e78c334b8716[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sun Feb 24 20:02:20 2019 +0200
+
+    Things indended to work works fine. It is going to be pushed
+
+[33mcommit 8873a54dc379e3bf3cd5aca29b487d87001072e3[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sun Feb 24 19:58:23 2019 +0200
+
+    FileBoundary.java was deleted
+
+[33mcommit 5fb4f3d27709e5e954ca8792a745af5a2ab3556a[m
+Merge: 1edf2ee 9bcbf8d
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sun Feb 24 19:56:02 2019 +0200
+
+    Merge conflict in dvs-spring/src/main/java/lt/akademijait/bronza/repositories/DocumentRepository.java was resolved
+
+[33mcommit 9bcbf8d0c7c67859b198aac9af532354ad680c4d[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sun Feb 24 19:53:03 2019 +0200
+
+    app.js was downloaded as hardcoded one
+
+[33mcommit 4716ab5f060aacb8e4dda21409ffd676620bba97[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sun Feb 24 19:32:49 2019 +0200
+
+    Empty commit
+
+[33mcommit 456f1c67106ec8b53e14e130d76c7793c186a7a8[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sun Feb 24 19:32:05 2019 +0200
+
+    Add to git FIleUploadCOntainer.js
+
+[33mcommit f498e410a1c7aefa803a1843a49898fe665144ed[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sun Feb 24 19:31:06 2019 +0200
+
+    Empty commit
+
+[33mcommit fbdd84f9d48715523b84814abb44ec38bc25ab85[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sun Feb 24 19:28:18 2019 +0200
+
+    All good. Let's go to fileDownload
+
+[33mcommit 821acc922601bca3825cdb0a7455f284a8e7f3d8[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sun Feb 24 19:23:25 2019 +0200
+
+    State is assigned as created
+
+[33mcommit 3e2e945980d740e8d026619ddc1c2ba788e70292[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sun Feb 24 19:19:02 2019 +0200
+
+    FIles are uploaded correctly, path is assigned, one docEntity is created
+
+[33mcommit e66e326c121b63ab46efcb870b4e89ba2bad498b[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sun Feb 24 14:29:55 2019 +0200
+
+    DileUploadTesting.js was created
+
+[33mcommit caa8b263164964b3b1c761f142de78e4a5c4f2fa[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sat Feb 23 19:55:05 2019 +0200
+
+    It works with MultipartFile instead of MultipartFile[]
+
+[33mcommit 6755278a0b2f4d2f1e8f9f78ff8b1aea37eb9427[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sat Feb 23 18:59:13 2019 +0200
+
+    DocEntity is created for all files - even attachments
+
+[33mcommit 31d11cb8f0f6cb020c7699cf15ecab3e279ddaae[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sat Feb 23 18:36:30 2019 +0200
+
+    All good. Doc entity is created on one request
+
+[33mcommit 3f2e9df116ba46d4d268bdcbd5b6bc1e91b432ae[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sat Feb 23 18:02:03 2019 +0200
+
+    Username is read correctly from the UI
+
+[33mcommit 608afc0e6767c22174ff1f2e77c14fc0edacb6a7[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sat Feb 23 17:41:44 2019 +0200
+
+    Data is passed from UI, but it is stil in quates
+
+[33mcommit e446b4e46003644ab5971fb5b476f48b3a95c2d6[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sat Feb 23 17:40:27 2019 +0200
+
+    docData is taken from the UI, but values are still surrounded by
+
+[33mcommit c26cf433b49cb1d8635a3e6a129a0681afd0674e[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sat Feb 23 17:26:44 2019 +0200
+
+    Username is taken from the localSorage. All good.
+
+[33mcommit df31afe51fde757eed424f56b679950fb07582fd[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sat Feb 23 17:20:06 2019 +0200
+
+    File is uploaded successfully, DocEntity is created using a different rewuest
+
+[33mcommit 8728686d560988fcaa342bbb76254e61eaff45b3[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sat Feb 23 16:55:59 2019 +0200
+
+    Login saves username to LocalStorage
+
+[33mcommit 1edf2eef07d8b4dd545f88aa4d99402048354ffb[m
+Merge: 5034f00 99ab4e9
+Author: Aidas <aidas.pupelis@gmail.com>
+Date:   Fri Feb 22 14:45:06 2019 +0200
+
+    Merge branch 'master' of https://github.com/Aidas2/Dokumentu_valdymo_sistema
+
+[33mcommit 5034f005707f9577c66f10339906416f291cf862[m
+Author: Aidas <aidas.pupelis@gmail.com>
+Date:   Fri Feb 22 14:43:29 2019 +0200
+
+    some formatting
+
+[33mcommit a383395a3a55d02c58c218ef14ae4c9665cb9f2d[m
+Author: Aidas <aidas.pupelis@gmail.com>
+Date:   Fri Feb 22 12:11:50 2019 +0200
+
+    updated method setDocumentState
+
+[33mcommit 99ab4e9d33177f96890cb653a03aec2caf176a9a[m
+Author: Vilius Zalys <you@example.com>
+Date:   Fri Feb 22 11:20:35 2019 +0200
+
+    Add usergroup to user controller added
+
+[33mcommit e8bb9272a52785cc2622ad871c2f1ab4640eb50e[m
+Author: Vilius Zalys <you@example.com>
+Date:   Fri Feb 22 10:47:08 2019 +0200
+
+    Updated usergroup create and get services
+
+[33mcommit 781ddc47286a2b049050c9b57ea1ea91053db787[m
+Merge: b6c4026 6284cbe
+Author: Aidas <aidas.pupelis@gmail.com>
+Date:   Fri Feb 22 09:17:26 2019 +0200
+
+    Merge branch 'sleepy'
+
+[33mcommit b6c402629aa3c6f81906bea2aec613982d70ae1a[m
+Author: Vilius Zalys <you@example.com>
+Date:   Thu Feb 21 23:57:49 2019 +0200
+
+    User and userGroup services updated
+
+[33mcommit 6284cbe720948ce12a054cec226cbb30dd8d1ef1[m
+Author: Aidas <aidas.pupelis@gmail.com>
+Date:   Thu Feb 21 16:16:03 2019 +0200
+
+    just some more comments
+
+[33mcommit edd204f9f6dffe9b277c7a6287914492071e1b54[m
+Author: Aidas <aidas.pupelis@gmail.com>
+Date:   Thu Feb 21 11:30:01 2019 +0200
+
+    just some coomments
+
+[33mcommit 8b2fc41c77497cb23a606dd98de29ef3015b0b77[m
+Author: Aidas <aidas.pupelis@gmail.com>
+Date:   Wed Feb 20 11:31:34 2019 +0200
+
+    Updated method setDocumentState. Created methods and controllers: getAllDocumentsByDocumentState, getAllDocumentsByDocumentType
+
+[33mcommit 107bd8ae7dd7e31460e7f75d7181144cd256654b[m
+Author: Vilius Zalys <you@example.com>
+Date:   Tue Feb 19 17:41:25 2019 +0200
+
+    Adding users to usergroups enabled
+
+[33mcommit 0b7940b9062abc3f65078877999a86c0ede2abda[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Feb 19 14:39:40 2019 +0200
+
+    FileManagedService is good, BE is good, React is to be changed
+
+[33mcommit d7ae605372a019e3edabc0234b5b371e100fefdc[m
+Merge: ce173a1 7325915
+Author: Vilius Zalys <you@example.com>
+Date:   Tue Feb 19 12:01:45 2019 +0200
+
+    solved conflicts
+
+[33mcommit ce173a16bcf2133c87631d6c81ab3a770820238f[m
+Author: Vilius Zalys <you@example.com>
+Date:   Tue Feb 19 11:31:18 2019 +0200
+
+    Create user service updated
+
+[33mcommit 7325915055ed2e68e65000904a1a633850a39137[m
+Merge: 6e6fe5b 411e489
+Author: Aidas <aidas.pupelis@gmail.com>
+Date:   Tue Feb 19 11:28:31 2019 +0200
+
+    conflict after merging solved
+
+[33mcommit 411e489ec912e71354c45ec9257e5649270ef5c1[m
+Author: Aidas <aidas.pupelis@gmail.com>
+Date:   Tue Feb 19 10:53:23 2019 +0200
+
+    Deletet List of Documents from User. Created permission checking in DocumentService.
+
+[33mcommit 83982b5231c3a27967f481f4ac3316e5c9456bc6[m
+Author: Aidas <aidas.pupelis@gmail.com>
+Date:   Mon Feb 18 10:47:14 2019 +0200
+
+    List<UserGroup> changed to Set<UserGroup>
+
+[33mcommit fef7a6a4a03b2b770ced148cef75b621d30a314e[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sun Feb 17 19:12:22 2019 +0200
+
+    @Transactional was added to FileManageService uploadFiles()
+
+[33mcommit 5384982b73f236262464e5dded616b2b3307348b[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sun Feb 17 18:49:57 2019 +0200
+
+    FileManageService.java was created
+
+[33mcommit 2137d2a08f636613ce9eadb7de7ed71ce3b04847[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sun Feb 17 18:15:59 2019 +0200
+
+    FileUploadController was renamed do FileManageController.java
+
+[33mcommit 59b3967baece02469713172af2dc34eb66e3cfeb[m[33m ([m[1;32m2019-02-13-InitialFileDownload[m[33m)[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sun Feb 17 17:51:51 2019 +0200
+
+    File is downloaded correclty with a hardcoded name
+
+[33mcommit 08c62b35ba19020d84894546786033bec448a861[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sun Feb 17 17:06:45 2019 +0200
+
+    FileName can be filtered from the content-disposition on react
+
+[33mcommit 18c2aeb92ddc047b0348f64946273c330e9d6da0[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sun Feb 17 15:26:32 2019 +0200
+
+    BE downloads with the right name, UI downloads with hardcoded name
+
+[33mcommit 0199ac7285a78c3d537b8c6385fe0736ea752e43[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sat Feb 16 22:37:16 2019 +0200
+
+    FileDownload with a wrong name. Additional controller was introduced as well
+
+[33mcommit 353659699c42e67826f8fcf8fe72effc83db25fd[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sat Feb 16 22:10:14 2019 +0200
+
+    Back to file download with a wrong name. MultipartFile should be used
+
+[33mcommit f762f85ad41f901a88089909a051021ed3fc5d4f[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sat Feb 16 22:07:03 2019 +0200
+
+    Playing with the file name - no go
+
+[33mcommit 56dfad02a4dccee6dfd96bf151210c361fe7bef3[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sat Feb 16 21:43:32 2019 +0200
+
+    File name is wrong. It looks like Form-data should be used to solve this
+
+[33mcommit 5fe8e49929228e5ca9af28c7652a09ca3632dcfa[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sat Feb 16 20:56:04 2019 +0200
+
+    FIle can be downloaded. First success
+
+[33mcommit c237419cbe5ee2cc94fd924bf03c66c283717fc2[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sat Feb 16 13:30:19 2019 +0200
+
+    FileUploadCOntroller download method got the mistake removed
+
+[33mcommit 6f15d675749051478b3d1fa670ca62485d947b2e[m
+Author: Aidas <aidas.pupelis@gmail.com>
+Date:   Sat Feb 16 12:23:09 2019 +0200
+
+    Changed content of DocumentSetStateCommand.Created method to set status (ir DocumentService)
+
+[33mcommit 9275b2d188dbe6b99226cbc200b2f3941f52a8a3[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Fri Feb 15 18:45:07 2019 +0200
+
+    Working on, nothing works
+
+[33mcommit 6e6fe5b682cf56c4763d7a045c1883952ab4b62c[m
+Merge: 3693e0e e28eb0a
+Author: Aidas <aidas.pupelis@gmail.com>
+Date:   Fri Feb 15 11:06:52 2019 +0200
+
+    Merge branch 'sleepy'
+    Merginimas po penktadieninio pasitarimo.
+
+[33mcommit e28eb0a161515b7b7116ee731409075c68d8890e[m
+Author: Aidas <aidas.pupelis@gmail.com>
+Date:   Fri Feb 15 11:05:45 2019 +0200
+
+    UPDATE method changed (for Document). DTO DocumentReviewComand renamed to DocumentSetStatusCommand
+
+[33mcommit 3693e0ed2c04a331b7c3281452b0ffa2ba49ae30[m
+Merge: ff0a8d7 25309fc
+Author: Aidas <aidas.pupelis@gmail.com>
+Date:   Thu Feb 14 11:51:09 2019 +0200
+
+    added error/message if trying to write not existing User or Document Type (when creating Document). Added assign method to DocummentController
+
+[33mcommit 25309fc427f0c2c24467a56704725ecdf2281453[m
+Author: Aidas <aidas.pupelis@gmail.com>
+Date:   Thu Feb 14 11:45:43 2019 +0200
+
+    added assign method to DocumentController
+
+[33mcommit 72a40bdc6fc2f490ba0eaa06bafd5561d0202836[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Feb 13 20:31:08 2019 +0200
+
+    FileBoundary.java was introduced. It is a download controller
+
+[33mcommit 481985470d28deb4a005b73e601f3f256c4c5136[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Feb 13 20:26:50 2019 +0200
+
+    FileUpload works with old FileUploadCOntroller.java post method
+
+[33mcommit 7abfdafc6ff52ea16a155895152d4b0830983c16[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Feb 13 20:07:07 2019 +0200
+
+    React is done with a download button and function
+
+[33mcommit b1a8c3ee5dd0d700f7e67a081beb8246829c03f8[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Feb 13 18:49:59 2019 +0200
+
+    Working on UploadFile() method
+
+[33mcommit 0d6626ccfa0338dd720a04f684ee09db60d33005[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Feb 13 18:37:10 2019 +0200
+
+    /download URI has the FIleDOwnloadCOntainer
+
+[33mcommit b00ac72a3a7bce917b9b52acc3c029945903a9d2[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Feb 13 18:33:50 2019 +0200
+
+    Renamed
+
+[33mcommit 1507a94500706993c16482734142bb67fb45f763[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Feb 13 18:32:38 2019 +0200
+
+    FileDownloadContainer was introduced
+
+[33mcommit ff0a8d7d9ca47597db7f55f68fdf81cf4a917c4a[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Feb 13 09:14:19 2019 +0200
+
+    UserUpdateCommand was modified. All good
+
+[33mcommit 0bd5444b8f0ec6f46fee504dc15fb3e7a743e27c[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Feb 12 21:30:45 2019 +0200
+
+    Alert was modified to give a right message
+
+[33mcommit f122933295dac3be8b9d2ede8a95659be37182b3[m
+Author: Vilius Zalys <you@example.com>
+Date:   Wed Feb 13 00:46:45 2019 +0200
+
+    Updated User and usergroup services and controllers
+
+[33mcommit 84ffa7529422dae37cedd22f32c0dd4133e7596a[m[33m ([m[1;32m2019-02-12-1505-ImplementingCreateUserUI[m[33m)[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Feb 12 21:18:25 2019 +0200
+
+    Alert launched successfully
+
+[33mcommit 75e3d1e97b4722f7978c4ebfb70e67c369f8026f[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Feb 12 20:01:52 2019 +0200
+
+    Administration option was modified to be selectabble
+
+[33mcommit ac4be240a64a6c24fdceffc1307fae99e19f70e9[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Feb 12 18:31:46 2019 +0200
+
+    UserGetCommand got the hireDate added. All good. Everything is rendered correctly
+
+[33mcommit 76354e2f8ed69595f7219d12b558359e72853d97[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Feb 12 18:16:27 2019 +0200
+
+    DocumentGetCOmmand got the userId added. UI renders users and creates as well
+
+[33mcommit 3904a4af9a8bbf211686b3f97d984635d6cac505[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Feb 12 18:03:50 2019 +0200
+
+    Looks like it is working, just UserGetCOmmand lacks of a userId to provide
+
+[33mcommit 9e83ce1612c1872b307641a37f2825d33f61f93e[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Feb 12 17:34:15 2019 +0200
+
+    /admin/users renders some info
+
+[33mcommit d26c051aeb7a0afa283e56f688a212df63a07c4f[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Feb 12 17:18:27 2019 +0200
+
+    UsersCOmponent and Container were introduced
+
+[33mcommit 53187ecae02da8f9c7b11b240aaa0134feddc9ef[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Feb 12 17:00:49 2019 +0200
+
+    User is created using UI
+
+[33mcommit 77831f0364857615dfa0a52e3920fa23acffbfb8[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Feb 12 16:46:45 2019 +0200
+
+    State is updated with all user details
+
+[33mcommit 6336690f3bac477c49454fad1ae1e4b36e783f60[m
+Author: Aidas Pupelis <aidas.pupelis@gmail.com>
+Date:   Tue Feb 12 16:45:03 2019 +0200
+
+    added error/message to create User and DocumentType before creating Document
+
+[33mcommit 4ef8f4a42cbe2732c457cd772d766eb4ad29157e[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Feb 12 16:19:18 2019 +0200
+
+    props were added
+
+[33mcommit 2b6b12a69318cacac6bab3fa7be1d44c1ab4b675[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Feb 12 16:15:34 2019 +0200
+
+    Compnent got the Administrator input
+
+[33mcommit 29bbe5dbab0fc32de84be1d05a58866b272079b3[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Feb 12 16:08:56 2019 +0200
+
+    State was added to COntainer
+
+[33mcommit a746e97021e8ca5fe9c52704dc872353aba873fa[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Feb 12 15:43:47 2019 +0200
+
+    CreateUserComponent has all the fields, jus need to modify it
+
+[33mcommit f55078ca54521c86bde470999e90a35a0ba597c7[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Feb 12 15:21:11 2019 +0200
+
+    Index was adjusted to link to /users
+
+[33mcommit 45f32f86ba60364e7b8d8a66a7a57db9f11741a7[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Feb 12 15:09:37 2019 +0200
+
+    CreateUser component and container were introduced
+
+[33mcommit 5a25d79903baec035b1686d089dbad6615690f59[m[33m ([m[1;32m2019-02-12-1323-FromMaster.MakingDocEntityCreationUsingUI[m[33m)[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Feb 12 14:50:10 2019 +0200
+
+    Tried to ignore uploaded files
+
+[33mcommit 4e8040a68dfafc11a12f7d67d788a22e19eaac53[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Feb 12 14:38:07 2019 +0200
+
+    DOcumentEntity is created successfully using UI. Will be merget to master.
+
+[33mcommit f28cb2a256f5630ca2abbc4c45643256d9fec40f[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Feb 12 14:31:36 2019 +0200
+
+    Document title is managed
+
+[33mcommit fc6ed8cc64b78f5ed32b77306a63025bf82fd488[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Feb 12 14:28:58 2019 +0200
+
+    DOcument type is sent to this.state.createDOcumentInfo
+
+[33mcommit ceb15214653a4966cefe1997f5d2035f6989c11e[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Feb 12 14:26:08 2019 +0200
+
+    Description is sent to the state
+
+[33mcommit d4855a0cbbede570c8f93663584e730644129525[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Feb 12 14:21:28 2019 +0200
+
+    React. FileUploadCOmponent got the DocumentDescription field
+
+[33mcommit ab201f05b133dca5e78378383bf3b5383f0b6e75[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Feb 12 14:18:12 2019 +0200
+
+    Default DocumentTYpe is sent to the state
+
+[33mcommit 713777ddd37905776a1840ca81a9fa23b18a93d4[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Feb 12 13:22:46 2019 +0200
+
+    File is uplaoded, DocEntity is created using UI with hardcoded data
+
+[33mcommit 3fbb82dd5e607665ca028f4fbdcc9cea042e310f[m
+Author: Aidas Pupelis <aidas.pupelis@gmail.com>
+Date:   Tue Feb 12 11:54:05 2019 +0200
+
+    DocumentTypeCreateCommamd without Long Id
+
+[33mcommit 10e430316b19d31fbe5092e55605c57730487cf9[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Feb 12 11:32:33 2019 +0200
+
+    Looks like file upload works
+
+[33mcommit 6c67dfc35165e09c3e2c7842f6b27981f8a41897[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Feb 12 11:27:20 2019 +0200
+
+    FIleUploadController was added
+
+[33mcommit e7454359ed1276427c35f2bdb214a17ec7b42b23[m
+Author: Aidas Pupelis <aidas.pupelis@gmail.com>
+Date:   Tue Feb 12 11:06:45 2019 +0200
+
+    Antras bandymas. Nukopinta Aido BE ant virsaus (is sleepy branch). Truksta FileUploadController
+
+[33mcommit c7fd721b6731e31c8c47ccbb899d5c80f3561c33[m
+Author: Aidas Pupelis <aidas.pupelis@gmail.com>
+Date:   Tue Feb 12 10:48:13 2019 +0200
+
+    Aido atsargine kopija BE nukopinta ant virsaus
+
+[33mcommit af214f617c549607928e20b689d4c4733880232f[m
+Merge: 41118c6 98503bc
+Author: Aidas Pupelis <aidas.pupelis@gmail.com>
+Date:   Tue Feb 12 10:40:19 2019 +0200
+
+    merge conflict solved
+
+[33mcommit 98503bcab41ddbb276034359b274dd253985cf92[m
+Author: Aidas Pupelis <aidas.pupelis@gmail.com>
+Date:   Tue Feb 12 10:01:56 2019 +0200
+
+    Document Entity has User as object. DocumentCreateCommand has string username. User entity and Document entity can be creater on Swagger
+
+[33mcommit 41118c63b558c2e59d05488399bf4054dc5ffe60[m[33m ([m[1;32m2019-02-09-1652-Create-DocEntity-OnFileUpload[m[33m)[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sun Feb 10 18:59:48 2019 +0200
+
+    React FIleUploadContainer got everything that was needed for a docEntity creation from the other branch. Thhe other 2019-02-10-1406-CreateDocEntityOnFIleUpload-CreateDocCOmmandIsWrongis no longer needed
+
+[33mcommit 67159c7b08367dddda9a7e691ee1f57b05a6f0da[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sun Feb 10 18:40:20 2019 +0200
+
+    getCurrentDateTimeStamp method was added to DocumentService.class
+
+[33mcommit 3f248cdd1650cb9f2f6ebe07eef3d4dcb3dfbb40[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sun Feb 10 18:37:06 2019 +0200
+
+    Document is created using Swagger with all userID and other implemented deatails
+
+[33mcommit e81ee09474892cce186427520ec6745bff95fb6f[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sun Feb 10 18:21:53 2019 +0200
+
+    Some mistakes or naming were corrected
+
+[33mcommit 1f0c7e2a78e7bd39126abc4755a782126d4e64a1[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sun Feb 10 18:13:29 2019 +0200
+
+    @ManyToOne was commented in DocuemntEntity
+
+[33mcommit d4e17f87421d2d6ef8efb8a81febd72f325cd1f1[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sun Feb 10 18:11:42 2019 +0200
+
+    AuthodId was introduced in DocumentService
+
+[33mcommit 420cee5126d817c45da14bc9a5b5eaf6a355bcd0[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sun Feb 10 18:09:34 2019 +0200
+
+    AuthodId appeared in DocumentCreateCommand instead of USerName
+
+[33mcommit 0ae559ec2bdb750a64a09cc4e2081d754654ebb1[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sun Feb 10 18:07:44 2019 +0200
+
+    AuthodId appeared in DocumentGetCommand
+
+[33mcommit 20a1052f366f5e1150573945aed31746019aacd6[m[33m ([m[1;31morigin/2019-02-09-1652-Create-DocEntity-OnFileUpload[m[33m)[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sun Feb 10 17:26:31 2019 +0200
+
+    DocumentEntity got the Author renamed to AuthorId
+
+[33mcommit bd296f352fe9374d9c3ca37e828a22e571d44d03[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sun Feb 10 17:24:34 2019 +0200
+
+    Spring-boot runs as hell. ManyToOne relation was removed from DocumentEntity
+
+[33mcommit e75b06aebe93bd4d96e0354249450c20ee7a08a2[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sat Feb 9 22:34:49 2019 +0200
+
+    Commiting as needed. Spring-boot does not run
+
+[33mcommit c5674b712a348dea85676866adee0a2398e54899[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sat Feb 9 17:19:55 2019 +0200
+
+    DocumentGetCommand got the DocumentType renamed to Long documentTYpeId
+
+[33mcommit 9a84e7fba91ed344ad990006dff20be934f84476[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sat Feb 9 17:18:17 2019 +0200
+
+    DocumentCreateCommand got documentTypeTitle renamed to documentTYpeId
+
+[33mcommit f321ff4f67bc15e95a2685890b302e021ecfa482[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sat Feb 9 17:15:04 2019 +0200
+
+    DocumentEntity got documentType changed to Long DocumentTypeId
+
+[33mcommit 9af907e5e3471b9b89683e6968d66fc8243aa3e1[m[33m ([m[1;32m2019-02-08-2100-Create-docTypes-using-UI[m[33m)[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sat Feb 9 14:33:49 2019 +0200
+
+    All good. It is going to be merged with a master branch
+
+[33mcommit 6373b5c5b0bea8cc7c6b0acfe091908fa933bbf6[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sat Feb 9 14:28:34 2019 +0200
+
+    DocumentTypes are rendered nicely using axios
+
+[33mcommit 232d02d26809487ce6c6002d8843bfd3ead44c13[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sat Feb 9 14:21:49 2019 +0200
+
+    Document types are rendered correctly as hardcoded ones
+
+[33mcommit b261dca366fba9cd25ef94d0abf95a4ed451a583[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sat Feb 9 13:31:58 2019 +0200
+
+    Moving on with DocumentYpeComponent
+
+[33mcommit e66914ca7aed91151e1cc8403150c8d7e6283306[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sat Feb 9 13:10:58 2019 +0200
+
+    DocTypesComponent was adjusted
+
+[33mcommit a2d52e121f6486cf9f324cf171438571cd7e0719[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sat Feb 9 12:46:42 2019 +0200
+
+    DocTypeContainer and Component is rendered. Link to CreateNewDoc works
+
+[33mcommit 46e52d02b427ad3b67a09d2a8933d15e2100cb1e[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sat Feb 9 11:57:33 2019 +0200
+
+    Alert design modified. All good
+
+[33mcommit 421bc278625f71853c4bf6ed42e1d67ea9eb8c93[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sat Feb 9 11:55:39 2019 +0200
+
+    Administration component got some adjustments, all good now, works as intended
+
+[33mcommit a2ea8c7e98ca0630f65d14595bdedcf6e33347f4[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sat Feb 9 11:51:58 2019 +0200
+
+    Looks like it works. Alert is launched. But the state.msg is logged out as false after all - wtf?
+
+[33mcommit b5c3e4876b289c65fd23afa7f8d9b28dcb102751[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sat Feb 9 10:53:20 2019 +0200
+
+    UI creates docTypes successfully
+
+[33mcommit b09e6cc0e2aa1e4ac00ca37c57488dbab5a641ec[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Sat Feb 9 10:43:59 2019 +0200
+
+    Creates docType with title hardcoded in state
+
+[33mcommit 5352541abcbb1b34cbe45ab41b0701b2bf4a6d55[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Fri Feb 8 23:36:21 2019 +0200
+
+    UI creates doctype if it is hardcoded
+
+[33mcommit a14786359f1b7a73687f1f8cddde30e1aa51baf2[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Fri Feb 8 23:34:50 2019 +0200
+
+    BE:DocumentTYpeService and dto were adjusted to drop the ID down. Swagger creates docTYpe correctly
+
+[33mcommit dcf5cabf42156977aa96cf948475aee4931a1b54[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Fri Feb 8 21:55:02 2019 +0200
+
+    Axios made a post request, posted, but the default type1 was changed into the posted one. The post value is hardcoded
+
+[33mcommit 54f9d61deb19423768239a0c9e46fca8602ca8e1[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Fri Feb 8 21:30:27 2019 +0200
+
+    Component was filled up
+
+[33mcommit b5cae9294b89a37fa6dea144ee42e28ce2f21c7a[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Fri Feb 8 21:19:05 2019 +0200
+
+    CreateDocTypesCOmponent and COntainer were created as empty, Admin page and index.js got the changes to navigate to the component correctly
+
+[33mcommit 9b4347a9e56a27c8ea8a959c70c56294e667af8b[m[33m ([m[1;31morigin/2019-02-06-1833-Creating-doc-entity-while-uploading-files[m[33m, [m[1;32m2019-02-06-1833-Creating-doc-entity-while-uploading-files[m[33m)[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Fri Feb 8 16:13:45 2019 +0200
+
+    Aert is launched successfully as well as closed
+
+[33mcommit 3528152193a18f3ec47b9d5e19d681277c6944c2[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Fri Feb 8 15:56:32 2019 +0200
+
+    Alert appeares, but cannot be removed
+
+[33mcommit 424704ba03868d99dbeb2d67e21542110ad057fd[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Feb 7 20:29:17 2019 +0200
+
+    Still in progress rendering upload status
+
+[33mcommit fd18df5e65da141715194b5b19d489b95fde015d[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Feb 7 19:53:30 2019 +0200
+
+    Selected attachments are displayed in UI
+
+[33mcommit 4753781ea32f7ae51d24e2df31338b3e5b61a839[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Feb 7 17:58:23 2019 +0200
+
+    Spring got adjustments to save the file with the timestamp in the name
+
+[33mcommit 1b8542be6f65c10837bea4de9b16c2afbe9e349f[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Feb 7 17:02:58 2019 +0200
+
+    Minor changes were made
+
+[33mcommit 689ae77cad4761e6a5394e5b33a8de5c4dac5a90[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Feb 7 16:21:07 2019 +0200
+
+    Information about selected files is added. Still in progress
+
+[33mcommit ecd84165b0553e21f534fd2a0c994eb754416796[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Feb 7 15:59:47 2019 +0200
+
+    Default type is set. All good. Done with a document types
+
+[33mcommit ae46f1c50106426a4da5f396ad738aeb09092aba[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Feb 7 15:56:01 2019 +0200
+
+    Document Type is set to the uploaded document. All good
+
+[33mcommit 6e23fc1c8ae9b6774b5cd2029bbbc58574192cb0[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Feb 7 15:53:37 2019 +0200
+
+    document types are gotten uding axios inside FileUploadContainer, it is passed via props down to DocumentTypesContainer. All good
+
+[33mcommit 72803379725e24abe4730690391e2d660d4d584a[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Feb 7 15:37:16 2019 +0200
+
+    So the handleFileType method works fine passed via props. Good to implement axios in the state
+
+[33mcommit d778efe993cd8618a3f69c283e96989e1d89eb0f[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Feb 7 15:32:14 2019 +0200
+
+    Looks like the COmponentDidMount method works in FileUploadContainer
+
+[33mcommit 8cf7999c518ba7669f8bb359c89392aa5f387f04[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Feb 7 14:55:43 2019 +0200
+
+    Landing page got class renamed to className
+
+[33mcommit 3365d14c89d0ee42495f238f93376cb4142e1e4f[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Feb 7 14:18:54 2019 +0200
+
+    HandleDocType does not work passed via props. It should console.log(,...)
+
+[33mcommit 5804c4dcd8a87c9d11db7454812d14ade5e70be5[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Feb 7 13:20:55 2019 +0200
+
+    FileTypes are not passed to the state
+
+[33mcommit 41581194f3a6de844d79fb35930acf227516b16b[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Feb 7 12:20:49 2019 +0200
+
+    Types are rendered successgully in /upload. Upload UI works fine. All good.
+
+[33mcommit 63993f42f651fc09564593af4e9ef5145ec009f8[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Feb 7 12:17:50 2019 +0200
+
+    Looks like types are rendered successfully from axios in DocumentTypesContainer using a DocumentTypesComponent as well
+
+[33mcommit 9743ed4846a0dccb30f36af78e166ad811f889a3[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Feb 7 11:49:52 2019 +0200
+
+    DocumentTypesCompoment was created as an empty sfc
+
+[33mcommit 96cfe8e13ac350643bdcf7d8bfebb28167eac3d0[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Thu Feb 7 11:46:57 2019 +0200
+
+    DocTypes are gotten with axios in DocumentTypeContainer
+
+[33mcommit c292cd93f08ad2735a6d524c7400e56aa7007b72[m
+Merge: c218cda e90ab9a
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Feb 6 18:27:49 2019 +0200
+
+    Merge branch '2019-02-05-1814-FileUpload'
+
+[33mcommit e90ab9ad868d0ba9dd7f054e3ed29d5e5bca799f[m[33m ([m[1;31morigin/2019-02-05-1814-FileUpload[m[33m, [m[1;32m2019-02-05-1814-FileUpload[m[33m)[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Feb 6 17:05:20 2019 +0200
+
+    One more commit after adding separate fiels
+
+[33mcommit 3b87a75db542093afd03a8e95247f6cda591f52f[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Wed Feb 6 16:57:26 2019 +0200
+
+    FileUpload was modified to work with windows and Linux on any computer
+
+[33mcommit c218cda805fa8e7ace6f325cccd467c1a3a36448[m[33m ([m[1;32mid[m[33m)[m
+Author: Aidas Pupelis <aidas.pupelis@gmail.com>
+Date:   Wed Feb 6 10:32:33 2019 +0200
+
+    just couple comments
+
+[33mcommit 6ea3190a38082501bea0fa92573e85aa02091025[m
+Author: Vilius Zalys <you@example.com>
+Date:   Wed Feb 6 01:38:27 2019 +0200
+
+    Updated User services and controllers
+
+[33mcommit 31cfa59698cf952990d8283992a377aa0d11582b[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Feb 5 19:06:15 2019 +0200
+
+    BE and FE works fine. Documents can be uploaded
+
+[33mcommit 642eaadb0201061b47466bf0cded8b315dd2ee05[m
+Author: Paulius <paulius.ccs@gmail.com>
+Date:   Tue Feb 5 18:16:47 2019 +0200
+
+    FileUpload Component and COntainer were added
+
+[33mcommit 6925a657b5f01d7abf3d1e80c0fe0844ffd477aa[m
+Author: Aidas Pupelis <aidas.pupelis@gmail.com>
+Date:   Tue Feb 5 11:37:20 2019 +0200
+
+    updated Document services and controllers
+
+[33mcommit cc72c032a8e113ff99de23320eed5f3bbba68dd9[m
+Author: Vilius Zalys <you@example.com>
+Date:   Tue Feb 5 00:36:59 2019 +0200
+
+    updated usergroup services
+
+[33mcommit d40622d5f9eda252739828716e116cf4f4bae65d[m
+Author: Mindaugas <mindaugasrimdzius@gmail.com>
+Date:   Mon Feb 4 21:50:31 2019 +0200
+
+    added initial React UI
+
+[33mcommit 00f61c5cb767faacf0d12c51f21766a6316cbad3[m
+Author: Aidas Pupelis <aidas.pupelis@gmail.com>
+Date:   Sun Feb 3 16:10:53 2019 +0200
+
+    added Document service and controller
+
+[33mcommit 9506ddaceae2e611019232649804eb0d8f8ae215[m
+Author: Aidas Pupelis <aidas.pupelis@gmail.com>
+Date:   Sun Feb 3 14:44:31 2019 +0200
+
+    added Document service and controller (partially)
+
+[33mcommit 5c94ef22a10fe088c8533a597421125c3f58b165[m
+Author: Aidas Pupelis <aidas.pupelis@gmail.com>
+Date:   Fri Feb 1 15:34:13 2019 +0200
+
+    Renamed from Doc to Document everywhere
+
+[33mcommit 3f233d52ad281d7c1c6c4019bedd0b0bcc432cbb[m
+Author: Vilius Zalys <you@example.com>
+Date:   Fri Feb 1 11:52:35 2019 +0200
+
+    User and userGroup services and controllers
+
+[33mcommit 4da7e0e76f90bd79ad1f3d6547bdf0cc746504b3[m
+Author: Vilius Zalys <you@example.com>
+Date:   Thu Jan 31 22:51:28 2019 +0200
+
+    added some Group services
+
+[33mcommit a5f5d3bfced00d82e53f35156d75b46e9b8090d0[m
+Author: Vilius Zalys <you@example.com>
+Date:   Thu Jan 31 00:32:10 2019 +0200
+
+    added user services (bandymai)
+
+[33mcommit 69c1017572cf26fd0afe409b71d2e64465b03cd3[m
+Author: Aidas Pupelis <aidas.pupelis@gmail.com>
+Date:   Tue Jan 29 11:31:14 2019 +0200
+
+    updated shell files (set to port 8081)
+
+[33mcommit dc92a47cf783a3cd744c09f9676294945346d337[m
+Author: Aidas Pupelis <aidas.pupelis@gmail.com>
+Date:   Mon Jan 28 15:28:52 2019 +0200
+
+    updated DTO, added @Services and @RestControllers (partialy filled)
+
+[33mcommit 164c37e8f554724b3ad1d6afc9eafa88270d14af[m
+Author: Aidas Pupelis <aidas.pupelis@gmail.com>
+Date:   Mon Jan 28 12:04:18 2019 +0200
+
+    added DTO
+
+[33mcommit df72df715c8b1f1ef00242a3d2943c6d97d614ff[m
+Author: Aidas Pupelis <aidas.pupelis@gmail.com>
+Date:   Sat Jan 26 13:17:10 2019 +0200
+
+    added/updated entities, setted relations @OneToMany
+
+[33mcommit f01151a1e7b9db098f8cefa0b651f1a01ee39909[m
+Author: Aidas Pupelis <aidas.pupelis@gmail.com>
+Date:   Fri Jan 25 15:22:25 2019 +0200
+
+    added two entities and one enum
+
+[33mcommit 376802bfbd2db945965e291f4ec8371e26292b23[m
+Author: Vilius Zalys <you@example.com>
+Date:   Fri Jan 25 11:18:16 2019 +0200
+
+    added repositories
+
+[33mcommit fae99f65a9d9291f5f6fb1b50fc00d903f71fc34[m
+Author: Aidas Pupelis <aidas.pupelis@gmail.com>
+Date:   Fri Jan 25 11:07:45 2019 +0200
+
+    added empty constuctors to entities
+
+[33mcommit 49ef06f3a205ee487a5e775098fdbfee134f9c7b[m
+Author: Vilius Zalys <you@example.com>
+Date:   Fri Jan 25 10:56:31 2019 +0200
+
+    User entity added
+
+[33mcommit 6032b6786a01580a1aa1a53b9c5c9df7bcc8510e[m
+Merge: 9daaffa 69bab57
+Author: Vilius Zalys <you@example.com>
+Date:   Fri Jan 25 10:40:00 2019 +0200
+
+    Merge branch 'master' of https://github.com/Aidas2/Dokumentu_valdymo_sistema
+
+[33mcommit 69bab57191cb26bcb3be0caa71432f5f722f0641[m
+Author: Aidas Pupelis <aidas.pupelis@gmail.com>
+Date:   Fri Jan 25 10:39:00 2019 +0200
+
+    updated  entity Document
+
+[33mcommit 9daaffa3c1e478fc73d1f45b35a459c1d3017906[m
+Merge: 08c4a6c 9d7581f
+Author: Vilius Zalys <you@example.com>
+Date:   Fri Jan 25 10:18:44 2019 +0200
+
+    removing .idea
+
+[33mcommit 08c4a6ca18939338786797149118f9acf64ec0e5[m
+Author: Vilius Zalys <you@example.com>
+Date:   Fri Jan 25 10:16:46 2019 +0200
+
+    removing .idea
+
+[33mcommit 9d7581fac5e36ee01aab09456708592bf6adfd9e[m
+Author: Aidas Pupelis <aidas.pupelis@gmail.com>
+Date:   Fri Jan 25 10:14:47 2019 +0200
+
+    added entity Document
+
+[33mcommit 7115e86c81d59c85cc797be345429c0be8007732[m
+Author: Aidas Pupelis <aidas.pupelis@gmail.com>
+Date:   Fri Jan 25 09:58:32 2019 +0200
+
+    removed .idea folder from git
+
+[33mcommit 69e82f80d7d51b3619f3b82ba771f0f4bc0fc265[m
+Author: Aidas Pupelis <aidas.pupelis@gmail.com>
+Date:   Fri Jan 25 09:56:13 2019 +0200
+
+    moved .gitignore to main folder
+
+[33mcommit 4dbfea861f6ad83672adfe79d5548c69099ebbde[m
+Merge: 6c4bf5b b6d53a9
+Author: Aidas Pupelis <aidas.pupelis@gmail.com>
+Date:   Fri Jan 25 09:51:19 2019 +0200
+
+    first conflict
+
+[33mcommit 6c4bf5bd7351e60f345d961df0f29c13e1e2b761[m
+Author: Aidas Pupelis <aidas.pupelis@gmail.com>
+Date:   Fri Jan 25 09:49:41 2019 +0200
+
+    first conflict
+
+[33mcommit b6d53a960c7fa65132f959d2148b8a31ad942f0e[m
+Author: Vilius Zalys <you@example.com>
+Date:   Fri Jan 25 09:43:31 2019 +0200
+
+    Changed App.jave file
+
+[33mcommit 74a6e4934e5e6f01d8b6bcca6787f9098d4055e9[m
+Author: Aidas Pupelis <aidas.pupelis@gmail.com>
+Date:   Fri Jan 25 09:37:18 2019 +0200
+
+    renamed package
+
+[33mcommit 752949d717ddd3dc041ef763020e1266cfd56989[m
+Author: Aidas Pupelis <aidas.pupelis@gmail.com>
+Date:   Fri Jan 25 09:30:32 2019 +0200
+
+    added .gitignore
+
+[33mcommit d2a309eafb7857dae222261069cfdc5e08ba0a07[m
+Author: Aidas Pupelis <aidas.pupelis@gmail.com>
+Date:   Fri Jan 25 09:24:34 2019 +0200
+
+    deleted folder target
+
+[33mcommit 4d8a5b1da56817878d1d6c4299499ae3b2df2eb6[m
+Author: Aidas Pupelis <aidas.pupelis@gmail.com>
+Date:   Fri Jan 25 09:16:20 2019 +0200
+
+    added .gitignore
+
+[33mcommit 176a3ee861f52a00c9f3f65a7f3eba5e42cf03ef[m
+Author: Aidas Pupelis <aidas.pupelis@gmail.com>
+Date:   Fri Jan 25 09:01:55 2019 +0200
+
+    first commit
+
+[33mcommit a9dc075a4cda8d08d96af87ae05caf7805bf05b0[m
+Author: Aidas Pupelis <aidas.pupelis@gmail.com>
+Date:   Wed Jan 23 13:42:46 2019 +0200
+
+    4_pvz
