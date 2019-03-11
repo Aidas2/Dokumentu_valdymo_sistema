@@ -40,6 +40,7 @@ public class User {
 
     @ManyToMany
     private Set<UserGroup> userGroups;
+    
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.DETACH})
     @JoinColumn(name = "ROLE_ID")
     private Role role;
