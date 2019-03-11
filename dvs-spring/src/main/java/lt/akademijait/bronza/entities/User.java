@@ -44,13 +44,7 @@ public class User {
     @JoinColumn(name = "ROLE_ID")
     private Role role;
 
-    public Role getRole() {
-        return role;
-    }
 
-    public void setRole(Role role) {
-        this.role = role;
-    }
 //    @OneToMany
 //    private Set<Document> documents;
 
@@ -63,7 +57,8 @@ public class User {
 
     }
 
-    public User(String firstName, String lastName, Date hireDate, boolean administrator, String username, String password, String emailAddress, Set<UserGroup> userGroups) {
+    public User(String firstName, String lastName, Date hireDate, boolean administrator, String username,
+                String password, String emailAddress, Set<UserGroup> userGroups, Role role) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.hireDate = hireDate;
@@ -72,6 +67,7 @@ public class User {
         this.password = password;
         this.emailAddress = emailAddress;
         this.userGroups = userGroups;
+        this.role = role;
     }
 
     public Long getId() {
@@ -144,6 +140,14 @@ public class User {
 
     public void setUserGroups(Set<UserGroup> userGroups) {
         this.userGroups = userGroups;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
 //    public List<Document> getDocuments() {

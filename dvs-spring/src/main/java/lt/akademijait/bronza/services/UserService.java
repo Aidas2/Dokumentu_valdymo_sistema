@@ -6,6 +6,7 @@ import lt.akademijait.bronza.dto.user.UserCreateCommand;
 import lt.akademijait.bronza.dto.user.UserGetCommand;
 import lt.akademijait.bronza.dto.user.UserUpdateCommand;
 import lt.akademijait.bronza.dto.usergroup.UserGroupGetCommand;
+import lt.akademijait.bronza.entities.Role;
 import lt.akademijait.bronza.entities.User;
 import lt.akademijait.bronza.entities.UserGroup;
 import lt.akademijait.bronza.repositories.UserGroupRepository;
@@ -98,7 +99,8 @@ public class UserService implements UserDetailsService {
                 ucc.getUsername(),
                 ucc.getPassword(),
                 ucc.getEmailAddress(),
-                userGroupsToSet
+                userGroupsToSet,
+                new Role("ADMIN")
         );
         userRepository.save(newUser);
         log.info("New user " + newUser.getUsername() + " was created");
