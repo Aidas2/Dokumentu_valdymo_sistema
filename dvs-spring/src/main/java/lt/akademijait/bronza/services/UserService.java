@@ -9,6 +9,7 @@ import lt.akademijait.bronza.dto.usergroup.UserGroupGetCommand;
 import lt.akademijait.bronza.entities.Role;
 import lt.akademijait.bronza.entities.User;
 import lt.akademijait.bronza.entities.UserGroup;
+import lt.akademijait.bronza.repositories.RoleRepository;
 import lt.akademijait.bronza.repositories.UserGroupRepository;
 import lt.akademijait.bronza.repositories.UserRepository;
 import org.slf4j.Logger;
@@ -34,6 +35,8 @@ public class UserService {//implements UserDetailsService {
     private UserRepository userRepository;
     @Autowired
     private UserGroupRepository userGroupRepository;
+    @Autowired
+    private RoleRepository roleRepository;
 
 
     @Transactional(readOnly = true)
@@ -100,7 +103,8 @@ public class UserService {//implements UserDetailsService {
                 ucc.getPassword(),
                 ucc.getEmailAddress(),
                 userGroupsToSet,
-                new Role("ADMIN")
+                roleRepository.findByTitle(ucc.getRoleTitle())!=null? roleRepository.findByTitle(ucc.getRoleTitle())
+                        :null
         );
         userRepository.save(newUser);
         log.info("New user " + newUser.getUsername() + " was created");
