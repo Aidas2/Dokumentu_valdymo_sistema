@@ -37,7 +37,7 @@ class NavigationComponent extends Component {
           </ul>
         </div>
 */}
-        <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <div className="navbar-collapse collapse w-100 order-3 dual-collapse2 navigation-right-padding">
           <ul className="navbar-nav ml-auto">
             <li className="nav-item">
               <Link to={"/"} className="nav-link">

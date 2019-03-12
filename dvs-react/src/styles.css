@@ -156,53 +156,61 @@ h5,
 }
 
 .users-table-number-style {
-  background-color: rgb(60, 56, 95);
+  background-color: rgb(176, 169, 240);
   border-top-left-radius: 8px;
   padding-top: 10px;
   padding-bottom: 10px;
-  color: white;
+  color: rgb(0, 0, 0);
 
   font-weight: 600;
   line-height: 1.5;
 }
 
+.navigation-right-padding {
+  padding-right: 20px;
+}
+
 .users-padding-bottom {
-  padding-bottom: 15px;
+  padding-bottom: 0px;
+  background-color: white;
+  margin-right: 30px;
+  margin-left: 30px;
+  border-bottom: #9baeff 1px solid;
 }
 
 .users-table-middle-style {
-  background-color: rgb(60, 56, 95);
+  background-color: rgb(176, 169, 240);
 
   padding-top: 10px;
   padding-bottom: 10px;
-  color: white;
+  color: rgb(0, 0, 0);
 
   font-weight: 600;
   line-height: 1.5;
 }
 
 .users-table-action-style {
-  background-color: rgb(60, 56, 95);
+  background-color: rgb(176, 169, 240);
   border-top-right-radius: 8px;
   padding-top: 10px;
   padding-bottom: 10px;
-  color: white;
+  color: rgb(0, 0, 0);
 
   font-weight: 600;
   line-height: 1.5;
 }
 
 .Table-action-style {
-  background-color: rgb(56, 56, 56);
+  background-color: rgb(176, 169, 240);
   border-top-right-radius: 8px;
 
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 .table-middle-style {
-  background-color: rgb(56, 56, 56);
+  background-color: rgb(176, 169, 240);
 
-  color: red;
+  color: rgb(0, 0, 0);
 }
 
 .table-action-size {
@@ -337,6 +345,7 @@ h5,
 .no-padding {
   padding: 0px;
   margin: 0px;
+  padding-bottom: 50px;
 }
 
 .second-navigation-style {
@@ -371,8 +380,8 @@ h5,
 .table-style-rounded {
   border-collapse: collapse;
   border-radius: 8px;
-  /*border-style: hidden;  hide standard table (collapsed) border */
-  box-shadow: 5px 0 0px -1px #998cfc; /* this draws the table border  */
+
+  /* box-shadow: 5px 0 0px -1px #998cfc;  */
 
   border-bottom: #d8d8d8 1px solid;
 }
