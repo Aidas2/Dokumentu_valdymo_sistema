@@ -33,7 +33,8 @@ class DocumentTypesContainer extends Component {
     return (
       <select
         onChange={this.props.onDocumentTypeChange}
-        className="form-control col-6 pop-up-style"
+        multiple
+        className="form-control col-12 pop-up-style"
         id="documentTypeSelect"
       >
         {docTypesArrayToRender}

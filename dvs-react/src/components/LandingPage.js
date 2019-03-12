@@ -34,7 +34,7 @@ const LandingPage = props => {
 
           <button
             onClick={props.onSaveUsername}
-            className="btn btn-outline-success login-button"
+            className="btn btn-outline-success login-button button-color"
           >
             Prisijungti
           </button>

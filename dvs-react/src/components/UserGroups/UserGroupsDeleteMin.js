@@ -26,18 +26,21 @@ class UserGroups extends React.Component {
           <p className="card-text">{this.props.description}</p>
           <Link
             to={"/admin/usergroup/" + this.props.id}
-            className="btn btn-outline-success m-2"
+            className="btn btn-outline-success m-2 button-color"
           >
             update
           </Link>
           <Link
             to={"/admin/usergroup/" + this.props.id}
-            className="btn btn-outline-success m-2"
+            className="btn btn-outline-success m-2 button-color"
           >
             add user group
           </Link>
           <form onSubmit={this.deleteHandler.bind(this)}>
-            <button type="submit" className="btn btn-outline-success m-2">
+            <button
+              type="submit"
+              className="btn btn-outline-success m-2 button-color"
+            >
               delete
             </button>
           </form>

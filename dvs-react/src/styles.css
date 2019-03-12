@@ -131,15 +131,6 @@ h5,
   font-size: 10px;
 }
 
-.table-style-rounded {
-  border-collapse: collapse;
-  border-radius: 8px;
-  /*border-style: hidden;  hide standard table (collapsed) border */
-  box-shadow: 5px 0 0px -1px rgb(94, 94, 94); /* this draws the table border  */
-
-  border-bottom: #d8d8d8 1px solid;
-}
-
 .logo {
   filter: brightness(0) invert(0.5);
 }
@@ -233,6 +224,15 @@ h5,
 
   border: #e2e2e2 1px solid;
   font-weight: 400;
+  max-height: 80px;
+}
+
+.button-color {
+  background-color: #42cb6f;
+  color: white;
+  font-weight: 600;
+  border-bottom: #3ab65c 5px solid;
+  letter-spacing: -0.5px;
 }
 
 .logo-info .tooltiptext {
@@ -323,6 +323,25 @@ h5,
   border-radius: 5px;
   border-right: 4px solid rgb(94, 94, 94);
   margin-bottom: 20px;
+}
+
+.table-color-style {
+  background-color: white;
+}
+
+.table-color-top-style {
+  background-color: #7b6bef;
+  color: white;
+  border-radius: 5px;
+}
+
+.table-style-rounded {
+  border-collapse: collapse;
+  border-radius: 8px;
+  /*border-style: hidden;  hide standard table (collapsed) border */
+  box-shadow: 5px 0 0px -1px #998cfc; /* this draws the table border  */
+
+  border-bottom: #d8d8d8 1px solid;
 }
 
 .italic-style-small {
@@ -437,6 +456,7 @@ html {
   border-top: 2px solid #ffffff;
   border-bottom: 2px solid #ffffff;
   border-left: 4px solid #ffffff;
+  letter-spacing: -0.7px;
   /*width: 150px;*/
 }
 
@@ -477,7 +497,7 @@ html {
 
 .sidebar-style {
   background-color: rgb(255, 255, 255);
-  min-height: calc(100vh - 80px);
+  min-height: calc(100vh - 70px);
 }
 
 .sb-style {

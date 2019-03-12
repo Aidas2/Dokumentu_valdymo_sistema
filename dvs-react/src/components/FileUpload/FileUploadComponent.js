@@ -31,7 +31,7 @@ class FileUploadComponent extends Component {
           </Link>
         </h5>
 
-        <table className="table table-striped table-style-rounded">
+        <table className="table table-color-style table-style-rounded">
           <tbody>
             <tr>
               <th className="col-1">#</th>

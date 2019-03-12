@@ -34,9 +34,9 @@ class AdministrationContainer extends Component {
           </Link>
         </h5>
 
-        <table className="table table-striped table-style-rounded">
+        <table className="table table-style-rounded table-color-style">
           <tbody>
-            <tr>
+            <tr className="">
               <th scope="col-2">#</th>
               <th scope="col-7">Parametrai</th>
               <th scope="col-3">Veiksmai</th>

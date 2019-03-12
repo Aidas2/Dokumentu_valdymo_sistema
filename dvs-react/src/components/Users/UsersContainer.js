@@ -62,13 +62,16 @@ class UsersContainer extends Component {
             </Link>
           </h5>
 
-          <Link to={"/admin/newuser/"} className="btn btn-outline-success m-2">
+          <Link
+            to={"/admin/newuser/"}
+            className="btn btn-outline-success m-2 button-color"
+          >
             Pridėti naują vartotoją
           </Link>
 
-          <div className="table table-active table-style-rounded">
+          <div className="table table-color-style table-style-rounded">
             <div className="container-fluid users-padding-bottom">
-              <div className="row table-active table-style-rounded ">
+              <div className="row table-color-style table-style-rounded ">
                 <div className="col-1  users-table-number-style ">#</div>
                 <div className="col-2   users-table-middle-style">
                   Prisijungimo vardas

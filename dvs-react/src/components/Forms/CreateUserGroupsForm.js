@@ -44,7 +44,7 @@ class CreateUserGroupsForm extends Component {
 
         <h5 className="display-6 normal-padding second-navigation-style ">
           <Link to={"/"}>
-            <img src={logo} width="20" height="10" alt="logo icon"/>
+            <img src={logo} width="20" height="10" alt="logo icon" />
           </Link>
           &ensp;/ &ensp;
           <Link to={"/admin"} className="second-navigation">
@@ -82,7 +82,10 @@ class CreateUserGroupsForm extends Component {
           </select>
         </div>
 
-        <button type="submit" className="btn btn-outline-success m-2">
+        <button
+          type="submit"
+          className="btn btn-outline-success m-2 button-color"
+        >
           Kurti naują grupę
         </button>
       </div>

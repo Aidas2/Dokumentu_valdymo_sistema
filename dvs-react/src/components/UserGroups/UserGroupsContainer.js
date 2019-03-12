@@ -73,12 +73,12 @@ class DocumentTypesContainer extends Component {
 
           <Link
             to={"/admin/newusergroup"}
-            className="btn btn-outline-success m-2"
+            className="btn btn-outline-success m-2 button-color"
           >
             Kurti naują vartotojų grupę
           </Link>
 
-          <table className="table table-active table-style-rounded">
+          <table className="table table-color-style table-style-rounded">
             <tbody>
               <tr>
                 <th className="col-1 Table-number-style">#</th>
