@@ -56,37 +56,52 @@ class DocumentsContainer extends Component {
     );
     return (
       <div>
-        <div className="container-fluid m-2 ">
-          <h2 className="display-6 normal-padding">
-            Dokumentai
-            <div className="logo-info">
-              <img src={infoIcon} className="info-icon-style" alt="info icon" />
-              <span className="tooltiptext">
-                Šiame meniu galima įkelti naujus dokumentus ir peržiūrėti jau
-                esamus dokumentus.
-              </span>
+        <div className="container-fluid no-padding">
+          <div className="row justify-content-between no-padding ">
+            <div className=" col-6  normal-padding">
+              <h5 className="display-6  second-navigation-style ">
+                <Link to={"/"}>
+                  <img
+                    className="logo-color"
+                    src={logo}
+                    width="40"
+                    height="20"
+                    alt="logo icon"
+                  />
+                </Link>
+                &ensp;/ &ensp;
+                <Link to={"/admin"} className="second-navigation">
+                  Administratoriaus rolė
+                </Link>
+                &ensp;/ &ensp;
+                <Link to={"/docs"} className="second-navigation">
+                  Dokumentai
+                </Link>
+              </h5>
+              <h2 className="display-6 ">
+                Dokumentai
+                <div className="logo-info">
+                  <img
+                    src={infoIcon}
+                    className="info-icon-style"
+                    alt="info icon"
+                  />
+                  <span className="tooltiptext">
+                    Šiame meniu galima įkelti naujus dokumentus ir peržiūrėti
+                    jau esamus dokumentus.
+                  </span>
+                </div>
+              </h2>
             </div>
-          </h2>
-          <h5 className="display-6 normal-padding second-navigation-style ">
-            <Link to={"/"}>
-              <img src={logo} width="20" height="10" alt="logo icon" />
-            </Link>
-            &ensp;/ &ensp;
-            <Link to={"/admin"} className="second-navigation">
-              Administratoriaus rolė
-            </Link>
-            &ensp;/ &ensp;
-            <Link to={"/docs"} className="second-navigation">
-              Dokumentai
-            </Link>
-          </h5>
-
-          <Link
-            to={"/upload"}
-            className="btn btn-outline-success m-2 button-color"
-          >
-            Įketi naują dokumentą
-          </Link>
+            <div className=" col-6  normal-padding left-align ">
+              <Link
+                to={"/upload"}
+                className="btn btn-outline-success m-2 button-color "
+              >
+                Įketi naują dokumentą
+              </Link>
+            </div>
+          </div>
 
           <div className="table table-color-style table-style-rounded">
             <div className="container-fluid users-padding-bottom">

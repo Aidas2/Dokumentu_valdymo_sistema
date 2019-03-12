@@ -6,7 +6,7 @@ import adminIcon from "../../images/adminIcon.png";
 class NavigationComponent extends Component {
   render() {
     return (
-      <nav className="navbar navbar-expand-md navbar-dark bg-dark navigation-style">
+      <nav className="navbar navbar-expand-md navbar-dark  navigation-style">
         {/*  
         <div className="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
           <Link to={"/"} className="nav-link logo ">

@@ -71,7 +71,7 @@ class DocumentTypesContainer extends Component {
 
           <Link
             to={"/admin/newdoctype/"}
-            className="btn btn-outline-success m-2 button-color"
+            className="btn btn-outline-success m-2"
           >
             Kurti naują dokumento tipą
           </Link>
