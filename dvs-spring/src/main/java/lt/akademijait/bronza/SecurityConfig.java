@@ -42,39 +42,39 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //        return provider;
 //    }
 //
-    @Override
-    protected void configure(HttpSecurity http) throws Exception{
-        http.authorizeRequests().anyRequest().authenticated()
-                .and().formLogin()
-                .and().httpBasic();
-    }
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception{
+//        http.authorizeRequests().anyRequest().authenticated()
+//                .and().formLogin()
+//                .and().httpBasic();
+//    }
 
 
 
 //THE MOETHOD FROM STASAUSKAS SLIDES. HOWEVER IT CANNOT ACCEPT THE USERNAME AND PASS FROM DB YET
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//        http
-//                .authorizeRequests()
-//// be saugumo UI dalis ir swaggeris
-//                .antMatchers("/", "/swagger-ui.html").permitAll()
-//// visi /api/ saugus (dar galima .anyRequest() )
-//                .antMatchers("/api/**", "/calc/**").authenticated()
-//                .and().formLogin() // leidziam login
-//// prisijungus
-//                .successHandler(new SimpleUrlAuthenticationSuccessHandler())
-//// esant blogiems user/pass
-//                .failureHandler(new SimpleUrlAuthenticationFailureHandler())
-//                .loginPage("/login").permitAll() // jis jau egzistuoja !
-//                .and().logout().permitAll() // leidziam /logout
-//                .and()
-//                .csrf().disable() // nenaudojam tokenu
-//// toliau forbidden klaidai
-//                .exceptionHandling()
-//                .authenticationEntryPoint(securityEntryPoint)
-//                .and()
-//                .headers().frameOptions().disable(); // H2 konsolei
-//    }
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .authorizeRequests()
+// be saugumo UI dalis ir swaggeris
+                .antMatchers("/", "/swagger-ui.html").permitAll()
+// visi /api/ saugus (dar galima .anyRequest() )
+                .antMatchers(/*"/api/**", */"/calc/**").authenticated()
+                .and().formLogin() // leidziam login
+// prisijungus
+                .successHandler(new SimpleUrlAuthenticationSuccessHandler())
+// esant blogiems user/pass
+                .failureHandler(new SimpleUrlAuthenticationFailureHandler())
+                .loginPage("/login").permitAll() // jis jau egzistuoja !
+                .and().logout().permitAll() // leidziam /logout
+                .and()
+                .csrf().disable() // nenaudojam tokenu
+// toliau forbidden klaidai
+                .exceptionHandling()
+                .authenticationEntryPoint(securityEntryPoint)
+                .and()
+                .headers().frameOptions().disable(); // H2 konsolei
+    }
 
 
     }

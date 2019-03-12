@@ -19,6 +19,8 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -94,17 +96,20 @@ public class UserService implements UserDetailsService {
         for (String userGroupTitle : ucc.getUserGroupTitle()) {
             userGroupsToSet.add(userGroupRepository.findByTitle(userGroupTitle));
         }
+
+        PasswordEncoder encoder =
+                PasswordEncoderFactories.createDelegatingPasswordEncoder();
         User newUser = new User(
                 ucc.getFirstName(),
                 ucc.getLastName(),
                 ucc.getHireDate(),
                 ucc.isAdministrator(),
                 ucc.getUsername(),
-                ucc.getPassword(),
+                encoder.encode(ucc.getPassword()),
                 ucc.getEmailAddress(),
                 userGroupsToSet,
-                roleRepository.findByTitle(ucc.getRoleTitle())!=null? roleRepository.findByTitle(ucc.getRoleTitle())
-                        :null
+                roleRepository.findByTitle(ucc.getRoleTitle()) != null ? roleRepository.findByTitle(ucc.getRoleTitle())
+                        : null
         );
         userRepository.save(newUser);
         log.info("New user " + newUser.getUsername() + " was created");
@@ -222,7 +227,7 @@ public class UserService implements UserDetailsService {
             throw new UsernameNotFoundException(username + " not found.");
         }
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
-                AuthorityUtils.createAuthorityList(new String[]{"ROLE_"+user.getRole().getTitle()}));
+                AuthorityUtils.createAuthorityList(new String[]{"ROLE_" + user.getRole().getTitle()}));
     }
 
 
