@@ -9,6 +9,7 @@ import lt.akademijait.bronza.dto.documenttype.DocumentTypeGetCommand;
 import lt.akademijait.bronza.services.DocumentTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -83,6 +84,7 @@ public class DocumentTypeController {
 
 
     //CREATE ===========================================================================================================
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping(method = RequestMethod.POST)
     @ApiOperation(value = "Add new document type", notes = "Adds new document type")
     @ResponseStatus(HttpStatus.CREATED)
@@ -93,6 +95,7 @@ public class DocumentTypeController {
     }
 
     //UPDATE ===========================================================================================================
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     @ApiOperation(value = "Update document type info", notes = "Update document type by id")
     @ResponseStatus(HttpStatus.CREATED)
@@ -108,6 +111,7 @@ public class DocumentTypeController {
 
 
     //DELETE Version_01 ================================================================================================
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
     @ApiOperation(value = "Delete document type. V_01", notes = "Delete document type by id")
     @ResponseStatus(HttpStatus.ACCEPTED)
@@ -118,6 +122,7 @@ public class DocumentTypeController {
     }
 
     //DELETE Version_02 ================================================================================================
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
     @ApiOperation(value = "Delete document type. V_02", notes = "Delete document type by id")
     @ResponseStatus(HttpStatus.ACCEPTED)
