@@ -23,7 +23,7 @@ public class UserUpdateCommand {
     @Length(min = 1, max = 30)
     private String firstName;
 
-
+    @NotNull
     @Length(min = 1, max = 30)
     private String lastName;
 
@@ -51,36 +51,17 @@ public class UserUpdateCommand {
     public UserUpdateCommand() {
     }
 
-    public UserUpdateCommand(@Length(min = 1, max = 50) String firstName,
-                             @Length(min = 1, max = 50) String lastName, @PastOrPresent Date hireDate,
-                             boolean administrator, String password,
-                             @Email String emailAddress, Set<String> userGroupTitle) {
+    public UserUpdateCommand(@NotNull @Length(min = 1, max = 30) String firstName, @NotNull @Length(min = 1, max = 30) String lastName,
+                             @PastOrPresent Date hireDate, @NotNull boolean administrator, @NotNull String password,
+                             @NotNull @Email String emailAddress, Set<String> userGroupTitle) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.hireDate = hireDate;
         this.administrator = administrator;
-//        this.username = username;
         this.password = password;
         this.emailAddress = emailAddress;
         this.userGroupTitle = userGroupTitle;
     }
-
-    //    public UserUpdateCommand(String firstName, @NotNull String lastName,
-//                             Date hireDate, @NotNull boolean administrator,
-//                             @NotNull String username, @NotNull String password,
-//                             @NotNull String emailAddress, Set<String> userGroupTitle) {
-//
-//        this.firstName = firstName;
-//        this.lastName = lastName;
-//        this.hireDate = hireDate;
-//        this.administrator = administrator;
-//        this.username = username;
-//        this.password = password;
-//        this.emailAddress = emailAddress;
-//        this.userGroupTitle = userGroupTitle;
-////        this.documents = documents;
-//    }
-
 
     public String getFirstName() {
         return firstName;
