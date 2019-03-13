@@ -11,6 +11,7 @@ import lt.akademijait.bronza.services.DocumentService;
 import lt.akademijait.bronza.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -33,6 +34,7 @@ public class UserController {
         return userService.getAllUsers();
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     @ApiOperation(value = "Create new user", notes = "Creates new user")
@@ -41,6 +43,7 @@ public class UserController {
         userService.createNewUser(ucc);
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping(path = "/{username}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.ACCEPTED)
     @ApiOperation(value = "Delete user", notes = "Deletes an existing user")
@@ -48,6 +51,7 @@ public class UserController {
         userService.deleteUser(username);
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping(path = "/{username}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
     @ApiOperation(value = "Update user", notes = "Updates user's data")
@@ -64,6 +68,7 @@ public class UserController {
         return userService.getUserByUsername(username);
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping(path = "/groups/{username}", method = RequestMethod.PUT)
     @ApiOperation(value = "Add user to userGroup", notes = "Adds user to new userGroup")
     public void addUserToUserGroup(
@@ -72,6 +77,7 @@ public class UserController {
         userService.addUserToNewUserGroup(username, uagc);
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping(path = "/groups/{username}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.ACCEPTED)
     @ApiOperation(value = "Remove user from group", notes = "Removes user from a certain user group")

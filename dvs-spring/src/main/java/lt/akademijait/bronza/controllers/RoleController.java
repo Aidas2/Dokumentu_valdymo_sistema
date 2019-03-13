@@ -26,6 +26,8 @@ public class RoleController {
     public List<RoleGetCommand> getAllUsers() {
         return roleService.getAllRoles();
     }
+
+
     @RequestMapping(method = RequestMethod.POST)
     @ApiOperation(value = "Add new document type", notes = "Adds new document type")
     @ResponseStatus(HttpStatus.CREATED)

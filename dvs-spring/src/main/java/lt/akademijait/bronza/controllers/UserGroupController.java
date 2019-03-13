@@ -9,6 +9,7 @@ import lt.akademijait.bronza.dto.usergroup.UserGroupUpdateDocTypeCommand;
 import lt.akademijait.bronza.services.UserGroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -28,6 +29,7 @@ public class UserGroupController {
         return userGroupService.getAllGroups();
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     @ApiOperation(value = "Create group", notes = "Creates new user group")
@@ -35,6 +37,7 @@ public class UserGroupController {
         userGroupService.createNewGroup(ugc);
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping(path = "/{title}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.ACCEPTED)
     @ApiOperation(value = "Delete group", notes = "Deletes an existing user group")
@@ -42,6 +45,7 @@ public class UserGroupController {
         userGroupService.deleteGroup(title);
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping(path = "/reviewDocType/{userGroup}", method = RequestMethod.PUT)
     @ApiOperation(value = "Add doctype to review", notes = "Adds new document type to review to user group")
     public void addDocTypeToReview(
@@ -50,6 +54,7 @@ public class UserGroupController {
         userGroupService.addDocTypeToReview(userGroup, ugu);
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping(path = "/reviewDocType/{userGroup}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.ACCEPTED)
     @ApiOperation(value = "Remove doctype to review", notes = "Removes document type to review from user group")
@@ -59,6 +64,7 @@ public class UserGroupController {
         userGroupService.removeDocTypeToReview(userGroup, ugu);
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping(path = "/submitDocType/{userGroup}", method = RequestMethod.PUT)
     @ApiOperation(value = "Add doctype to submit", notes = "Adds new document type to submit to user group")
     public void addDocTypeToSubmit(
@@ -67,6 +73,7 @@ public class UserGroupController {
         userGroupService.addDocTypeToSubmit(userGroup, ugu);
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping(path = "/submitDocType/{userGroup}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.ACCEPTED)
     @ApiOperation(value = "Remove doctype to submit", notes = "Removes document type to submit from user group")
@@ -76,6 +83,7 @@ public class UserGroupController {
         userGroupService.removeDocTypeToSubmit(userGroup, ugu);
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping(path = "/{usergroup}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
     @ApiOperation(value = "Update usergroup title", notes = "Change titel of a certain usergroup")
