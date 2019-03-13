@@ -77,35 +77,26 @@ class DocumentTypesContainer extends Component {
           >
             Kurti naują vartotojų grupę
           </Link>
-          <p />
-          <input type="checkbox" id="Document-type-box" />
-          <label id="Document-type-container" htmlFor="Document-type-box">
-            <div id="button " className="collapsed-style">
-              Paspauskite ant šio teksto, tam kad būtų galima peržiūrėti/
-              paslėpti sukurtas vartotojų grupes:
-              <ul id="Document-type-bar-appear" className="navbar-nav mr-auto">
-                <table className="table table-active table-style-rounded">
-                  <tbody>
-                    <tr>
-                      <th className="col-1 Table-number-style">#</th>
-                      <th className="col-11 Table-action-style">
-                        Dokumento tipo pavadinimas
-                      </th>
-                    </tr>
 
-                    <tr>
-                      <td className="table-action-size">
-                        {userGroupsArrayToRenderId}
-                      </td>
-                      <td className="table-action-size">
-                        {userGroupsArrayToRenderTitle}
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </ul>
-            </div>
-          </label>
+          <table className="table table-active table-style-rounded">
+            <tbody>
+              <tr>
+                <th className="col-1 Table-number-style">#</th>
+                <th className="col-11 Table-action-style">
+                  Dokumento tipo pavadinimas
+                </th>
+              </tr>
+
+              <tr>
+                <td className="table-action-size">
+                  {userGroupsArrayToRenderId}
+                </td>
+                <td className="table-action-size">
+                  {userGroupsArrayToRenderTitle}
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     );

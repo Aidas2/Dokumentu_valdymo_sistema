@@ -9,7 +9,7 @@ import logo from "../../images/home.png";
 class FileUploadComponent extends Component {
   render() {
     return (
-      <div className="container-fluid m-2">
+      <div className="container-fluid ">
         <h2 className="display-6 normal-padding">
           Dokumento įkėlimas
           <div className="logo-info">
