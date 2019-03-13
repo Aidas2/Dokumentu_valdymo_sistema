@@ -97,15 +97,15 @@ public class UserService implements UserDetailsService {
             userGroupsToSet.add(userGroupRepository.findByTitle(userGroupTitle));
         }
 
-        PasswordEncoder encoder =
-                PasswordEncoderFactories.createDelegatingPasswordEncoder();
+//        PasswordEncoder encoder =
+//                PasswordEncoderFactories.createDelegatingPasswordEncoder();
         User newUser = new User(
                 ucc.getFirstName(),
                 ucc.getLastName(),
                 ucc.getHireDate(),
                 ucc.isAdministrator(),
                 ucc.getUsername(),
-                encoder.encode(ucc.getPassword()),
+                ucc.getPassword(),
                 ucc.getEmailAddress(),
                 userGroupsToSet,
                 roleRepository.findByTitle(ucc.getRoleTitle()) != null ? roleRepository.findByTitle(ucc.getRoleTitle())
