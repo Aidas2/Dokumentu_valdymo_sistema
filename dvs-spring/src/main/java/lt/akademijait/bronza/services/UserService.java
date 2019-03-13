@@ -19,6 +19,7 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -97,15 +98,17 @@ public class UserService implements UserDetailsService {
             userGroupsToSet.add(userGroupRepository.findByTitle(userGroupTitle));
         }
 
-//        PasswordEncoder encoder =
-//                PasswordEncoderFactories.createDelegatingPasswordEncoder();
+        PasswordEncoder encoder =
+                new BCryptPasswordEncoder();
+//        newUser.setPassword(encoder.encode(password));
+
         User newUser = new User(
                 ucc.getFirstName(),
                 ucc.getLastName(),
                 ucc.getHireDate(),
                 ucc.isAdministrator(),
                 ucc.getUsername(),
-                ucc.getPassword(),
+                encoder.encode(ucc.getPassword()),
                 ucc.getEmailAddress(),
                 userGroupsToSet,
                 ucc.isAdministrator()? roleRepository.findByTitle("ADMIN"):roleRepository.findByTitle("USER")
