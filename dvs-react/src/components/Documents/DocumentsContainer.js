@@ -8,6 +8,7 @@ import infoIcon from "../../images/info-icon.png";
 
 class DocumentsContainer extends Component {
   state = {
+    username: "",
     documents: [
       {
         id: "",
@@ -28,8 +29,13 @@ class DocumentsContainer extends Component {
   };
 
   componentDidMount() {
+    this.setState({ username: localStorage.getItem("username") });
     axios
-      .get("http://localhost:8081/api/docs")
+      .get("http://localhost:8081/api/docs", {
+        params: {
+          username: this.state.username
+        }
+      })
       .then(response => {
         this.setState({ documents: response.data });
       })
