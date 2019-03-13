@@ -360,11 +360,11 @@ public class DocumentService {
     //GET BY AUTHOR_ID =================================================================================================
     // (with filter and with filter of permissions (which documents this UserGroup can manage)
     @Transactional(readOnly = true)
-    public List<DocumentGetCommand> getAllDocumentsByAuthorId(Long authorId) {
-        log.info("Gotten all documents by this author id: " + authorId);
+    public List<DocumentGetCommand> getAllDocumentsByAuthorUsername(String username) {
+        log.info("Gotten all documents by this author username: " + username);
         return documentRepository.findAll()
                 .stream()
-                .filter(document -> document.getAuthor().getId().equals(authorId))
+                .filter(document -> document.getAuthor().getUsername().equals(username))
                 .map((document) -> new DocumentGetCommand(
                         document.getId(),
                         document.getAuthor().getUsername(),
