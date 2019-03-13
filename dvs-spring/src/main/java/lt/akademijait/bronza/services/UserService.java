@@ -108,8 +108,9 @@ public class UserService implements UserDetailsService {
                 ucc.getPassword(),
                 ucc.getEmailAddress(),
                 userGroupsToSet,
-                roleRepository.findByTitle(ucc.getRoleTitle()) != null ? roleRepository.findByTitle(ucc.getRoleTitle())
-                        : null
+                ucc.isAdministrator()? roleRepository.findByTitle("ADMIN"):roleRepository.findByTitle("USER")
+//                roleRepository.findByTitle(ucc.getRoleTitle()) != null ? roleRepository.findByTitle(ucc.getRoleTitle())
+//                        : null
         );
         userRepository.save(newUser);
         log.info("New user " + newUser.getUsername() + " was created");

@@ -45,7 +45,7 @@ public class UserCreateCommand {
     @ManyToMany
     private Set<String> userGroupTitle;
 
-    private String roleTitle;
+//    private String roleTitle;
 
 
     public UserCreateCommand() {
@@ -54,7 +54,7 @@ public class UserCreateCommand {
     public UserCreateCommand(@NotNull @Length(min = 1, max = 50) String firstName,
                              @NotNull @Length(min = 1, max = 50) String lastName, Date hireDate,
                              @NotNull boolean administrator, @NotNull @Length(min = 6, max = 20) String username,
-                             @NotNull String password, @NotNull @Email String emailAddress, Set<String> userGroupTitle, String roleTitle) {
+                             @NotNull String password, @NotNull @Email String emailAddress, Set<String> userGroupTitle/*, String roleTitle*/) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.hireDate = hireDate;
@@ -63,7 +63,7 @@ public class UserCreateCommand {
         this.password = password;
         this.emailAddress = emailAddress;
         this.userGroupTitle = userGroupTitle;
-        this.roleTitle=roleTitle;
+//        this.roleTitle=roleTitle;
     }
 
 
@@ -131,11 +131,11 @@ public class UserCreateCommand {
         this.userGroupTitle = userGroupTitle;
     }
 
-    public String getRoleTitle() {
-        return roleTitle;
-    }
-
-    public void setRoleTitle(String roleTitle) {
-        this.roleTitle = roleTitle;
-    }
+//    public String getRoleTitle() {
+//        return roleTitle;
+//    }
+//
+//    public void setRoleTitle(String roleTitle) {
+//        this.roleTitle = roleTitle;
+//    }
 }
