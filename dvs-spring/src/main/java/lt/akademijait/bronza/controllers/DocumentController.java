@@ -137,8 +137,19 @@ public class DocumentController {
     }
     */
 
+    //READ BY TYPE (SPECIFIED) AND BY AUTHOR (SPECIFIED) ===============================================================
+    @RequestMapping(value = "/{username}/bytype", method = RequestMethod.GET)
+    @ApiOperation(value = "Get user's (by specified username) documents (by specified type)", notes = "Returns user's (by specified username) documents (by specified type)")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public List<DocumentGetCommand> getAllDocumentsByDocumentTypeAndUser(
+            @ApiParam(value = "User username", required = true)
+            @PathVariable String username,
+            @ApiParam(value = "Document type", required = true)
+            @RequestParam String documentTypeTitle) {
+        return documentService.getAllDocumentsByDocumentTypeAndUsername(username, documentTypeTitle);
+    }
 
-    //READ All DOCUMENTS BY AUTHOR_ID =========================================================================
+    //READ All DOCUMENTS BY AUTHOR_ID ==================================================================================
     @RequestMapping(value = "/authorId", method = RequestMethod.GET)
     @ApiOperation(value = "Get all document of specified author id", notes = "Returns all document of specified author id")
     @ResponseStatus(HttpStatus.ACCEPTED)
