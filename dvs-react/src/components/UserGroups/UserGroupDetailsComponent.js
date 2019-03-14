@@ -8,6 +8,8 @@ const UserGroupDetailsComponent = props => {
   var { title, submissionDocTypes, reviewDocTypes } = props;
 
   var linkToUserGroupDetails = "/admin/usergroups/" + title;
+  const linkToIndividualGroupUpdateContainer = "/admin/updategroup/" + title;
+
   return (
     <div>
       <div className="container-fluid m-2">
@@ -51,6 +53,21 @@ const UserGroupDetailsComponent = props => {
               </td>
               <td className="list-style ">
                 <h6>{reviewDocTypes}</h6>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h6>
+                  <Link
+                    to={linkToIndividualGroupUpdateContainer}
+                    className="btn btn-secondary"
+                  >
+                    Redaguoti grupę
+                  </Link>
+                </h6>
+              </td>
+              <td>
+                <h6 className="list-style" />
               </td>
             </tr>
           </tbody>
