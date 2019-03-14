@@ -74,14 +74,24 @@ public class DocumentTypeController {
     }
 
     //Gali padaryt kontrollerį, kuris grąžintų tik dokumentų tipus, kuriuos useris gali submittinti?
-    //READ BY STATE (READY FOR SUBMITTING) AND USER (SPECIFIED)
-    @RequestMapping(value = "/{username}/readyForSubmitting", method = RequestMethod.GET)
-    @ApiOperation(value = "Get document types (ready for submiting) for specified user")
+    //READ BY STATE (READY FOR SUBMITTING) AND USER (SPECIFIED) V_01 (without dto) =====================================
+    @RequestMapping(value = "/{username}/readyForSubmittingV1", method = RequestMethod.GET)
+    @ApiOperation(value = "Get document types STRING (ready for submiting) for specified user V01")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public List<String> getTypesTitlesOfSubmittingUser (
+    public List<String> getTypesTitlesOfSubmittingUser1 (
             @ApiParam(value = "User username", required = true)
             @PathVariable String username) {
-        return documentTypeService.getDocumentTypeTitlesOfSubmittingUser(username);
+        return documentTypeService.getDocumentTypeTitlesOfSubmittingUser1(username);
+    }
+
+    //READ BY STATE (READY FOR SUBMITTING) AND USER (SPECIFIED) V_02 (with dto) =====================================
+    @RequestMapping(value = "/{username}/readyForSubmittingV2", method = RequestMethod.GET)
+    @ApiOperation(value = "Get document types DTO (ready for submiting) for specified user V02")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public List<DocumentTypeGetCommand> getTypesTitlesOfSubmittingUser2 (
+            @ApiParam(value = "User username", required = true)
+            @PathVariable String username) {
+        return documentTypeService.getDocumentTypeTitlesOfSubmittingUser2(username);
     }
 
     //CREATE ===========================================================================================================
