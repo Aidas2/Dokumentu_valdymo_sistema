@@ -28,6 +28,7 @@ public class UserController {
     @Autowired
     private DocumentService documentService;
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping(method = RequestMethod.GET)
     @ApiOperation(value = "Get all users", notes = "Returns all users")
     public List<UserGetCommand> getAllUsers(){
