@@ -22,12 +22,16 @@ import "./styles.css";
 import RenderResponse from "./components/FileDownload/RenderResponse";
 import DocumentDetailsContainer from "./components/Documents/DocumentDetailsContainer";
 import UpdateUserContainer from "./components/Forms/User/UpdateUserContainer";
+import LoginContainer from "./components/login/LoginContainer";
+
+// const urlToGetDocs = "http://localhost:8081/api/docs";
 
 ReactDOM.render(
   <BrowserRouter>
     <App>
       <Switch>
         <Route exact path="/" component={LandingPageContainer} />
+        <Route exact path="/login" component={LoginContainer} />
         <Route exact path="/usergroups" component={UserGroupsContainer} />
         <Route exact path="/usergroups/:id" />
         <Route exact path="/admin" component={AdministrationContainer} />
@@ -50,6 +54,13 @@ ReactDOM.render(
           path="/admin/updateuser/:username"
           component={UpdateUserContainer}
         />
+        {/* <Route
+          exact
+          path="/admin/docs"
+          render={props => (
+            <DocumentsContainer {...props} requestUrl={urlToGetDocs} />
+          )}
+        /> */}
         <Route exact path="/admin/docs" component={DocumentsContainer} />
         <Route
           exact
