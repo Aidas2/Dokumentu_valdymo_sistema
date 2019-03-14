@@ -34,7 +34,7 @@ class LoginContainer extends Component {
   };
 
   render() {
-    console.log("this.state in render() ------------ ", this.state);
+    // console.log("this.state in render() ------------ ", this.state);
     return (
       <LoginComponent
         username={this.state.username}

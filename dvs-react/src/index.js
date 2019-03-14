@@ -30,8 +30,8 @@ ReactDOM.render(
   <BrowserRouter>
     <App>
       <Switch>
-        <Route exact path="/" component={LandingPageContainer} />
-        <Route exact path="/login" component={LoginContainer} />
+        {/* <Route exact path="/" component={LandingPageContainer} /> */}
+        <Route exact path="/" component={LoginContainer} />
         <Route exact path="/usergroups" component={UserGroupsContainer} />
         <Route exact path="/usergroups/:id" />
         <Route exact path="/admin" component={AdministrationContainer} />
