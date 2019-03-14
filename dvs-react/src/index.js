@@ -23,6 +23,7 @@ import RenderResponse from "./components/FileDownload/RenderResponse";
 import DocumentDetailsContainer from "./components/Documents/DocumentDetailsContainer";
 import UpdateUserContainer from "./components/Forms/User/UpdateUserContainer";
 import LoginContainer from "./components/login/LoginContainer";
+import LogoutContainer from "./components/login/LogoutContainer";
 
 // const urlToGetDocs = "http://localhost:8081/api/docs";
 
@@ -32,6 +33,7 @@ ReactDOM.render(
       <Switch>
         {/* <Route exact path="/" component={LandingPageContainer} /> */}
         <Route exact path="/" component={LoginContainer} />
+        <Route exact path="/logout" component={LogoutContainer} />
         <Route exact path="/usergroups" component={UserGroupsContainer} />
         <Route exact path="/usergroups/:id" />
         <Route exact path="/admin" component={AdministrationContainer} />

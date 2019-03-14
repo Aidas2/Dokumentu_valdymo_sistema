@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 import logo from "../../images/home.png";
+import LogoutContainer from "../login/LogoutContainer";
 
 class NavigationComponent extends Component {
   render() {
@@ -44,6 +45,10 @@ class NavigationComponent extends Component {
               </Link>
             </li>
           </ul>
+          <LogoutContainer />
+          {/* <Link to={"/logout"} className="nav-link">
+            Atsijungti
+          </Link> */}
         </div>
       </nav>
     );
