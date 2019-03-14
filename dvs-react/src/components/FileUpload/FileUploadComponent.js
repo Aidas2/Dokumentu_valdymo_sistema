@@ -9,7 +9,53 @@ import logo from "../../images/home.png";
 class FileUploadComponent extends Component {
   render() {
     return (
-      <div className="container-fluid ">
+      <div className="container-fluid no-padding">
+        <div className="row justify-content-between no-padding ">
+          <div className=" col-12  normal-padding">
+            <h5 className="display-6  second-navigation-style ">
+              <Link to={"/"}>
+                <img
+                  className="logo-color"
+                  src={logo}
+                  width="40"
+                  height="20"
+                  alt="logo icon"
+                />
+              </Link>
+              &ensp;/ &ensp;
+              <Link to={"/upload"} className="second-navigation">
+                Dokumento įkėlimas
+              </Link>
+            </h5>
+            <h2 className="display-6 ">
+              Dokumento įkėlimas
+              <div className="logo-info">
+                <img
+                  src={infoIcon}
+                  className="info-icon-style"
+                  alt="info icon"
+                />
+                <span className="tooltiptext">
+                  Šiame meniu pasirinkus norimus parametrus ir dokumentus,
+                  galima įkelti dokumentus.
+                </span>
+              </div>
+            </h2>
+          </div>
+        </div>
+
+        <div className="container-fluid">
+          <div className="row users-padding-bottom table-style-rounded">
+            <div className="col-1 users-table-number-style  ">#</div>
+            <div className="col-2  users-table-middle-style ">Pavadinimas</div>
+            <div className=" col-2 users-table-middle-style">Tipas</div>
+            <div className="col-2    users-table-middle-style ">Būsena</div>
+            <div className="col-2  users-table-middle-style">Aprašymas</div>
+            <div className="col-3  users-table-action-style ">Veiksmai</div>
+          </div>
+          <div className="">{55}</div>
+        </div>
+
         <h2 className="display-6 normal-padding">
           Dokumento įkėlimas
           <div className="logo-info">

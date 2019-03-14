@@ -149,14 +149,14 @@ h5,
 }
 
 .Table-number-style {
-  background-color: rgb(60, 56, 95);
+  background-color: rgb(197, 206, 255);
   border-top-left-radius: 8px;
 
   color: white;
 }
 
 .users-table-number-style {
-  background-color: rgb(176, 169, 240);
+  background-color: rgb(197, 206, 255);
   border-top-left-radius: 8px;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -179,7 +179,7 @@ h5,
 }
 
 .users-table-middle-style {
-  background-color: rgb(176, 169, 240);
+  background-color: rgb(197, 206, 255);
 
   padding-top: 10px;
   padding-bottom: 10px;
@@ -190,7 +190,7 @@ h5,
 }
 
 .users-table-action-style {
-  background-color: rgb(176, 169, 240);
+  background-color: rgb(197, 206, 255);
   border-top-right-radius: 8px;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -201,14 +201,14 @@ h5,
 }
 
 .Table-action-style {
-  background-color: rgb(176, 169, 240);
+  background-color: rgb(197, 206, 255);
   border-top-right-radius: 8px;
 
   color: rgb(0, 0, 0);
 }
 
 .table-middle-style {
-  background-color: rgb(176, 169, 240);
+  background-color: rgb(197, 206, 255);
 
   color: rgb(0, 0, 0);
 }
@@ -651,6 +651,7 @@ html {
 }
 
 .info-icon-style {
+  margin-left: 5px;
   width: 10px;
   height: 10px;
   vertical-align: text-top;
@@ -663,4 +664,8 @@ html {
   height: 10px;
   vertical-align: text-top;
   opacity: 1;
+}
+
+.ReactTable .rt-thead {
+  overflow-y: scroll;
 }
