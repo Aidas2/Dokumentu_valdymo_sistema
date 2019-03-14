@@ -279,6 +279,40 @@ public class DocumentService {
                 )).collect(Collectors.toList());
     }
 
+
+//    Kad grąžintu dokumentus tik to tipo, kuriuos useris gali reviewinti ir kurie turi state submitted ir tik submitted
+//    Tada galėsim gauti konkrečiai tuos dokus, kuriuos useris galės approvinti arba rejectinti
+//    Paduodam parametrą username ir pagal jį surandam reikiamus dokus, kuriuos jis managins
+
+    //ATTENTION Sis metodas netikrina, o tik grazina !
+    //GET BY STATE (SPECIFIED) AND BY USER (SPECIFIED) =================================================================
+    @Transactional(readOnly = true)
+    public List<DocumentGetCommand> getDocumentsByDocumentStateAndUser(String username, DocumentState documentState) {
+        log.info("Gotten all documents by this state: " + documentState);
+
+        return documentRepository.findAll()
+                .stream()
+                .filter(document -> document.getAuthor().equals(userRepository.findByUsername(username)))
+                .filter(document -> document.getDocumentState().equals(documentState))
+                .map((document) -> new DocumentGetCommand(
+                        document.getId(),
+                        document.getAuthor().getUsername(),
+                        document.getDocumentState().toString(),
+                        document.getDocumentType().getTitle(),
+                        document.getTitle(),
+                        document.getDescription(),
+                        document.getCreationDate(),
+                        document.getSubmissionDate(),
+                        document.getConfirmationDate(),
+                        document.getRejectionDate(),
+                        document.getReviewer() != null ? document.getReviewer().getUsername() : null,
+                        document.getRejectionReason(),
+                        document.getPath(),
+                        document.getAttachments()
+                )).collect(Collectors.toList());
+    }
+
+
     //GET BY TYPE. Version_01 (passing object) =========================================================================
     @Transactional(readOnly = true)
     public List<DocumentGetCommand> getAllDocumentsByDocumentType1(DocumentType documentType) {
@@ -330,7 +364,7 @@ public class DocumentService {
                 )).collect(Collectors.toList());
     }
 
-    //GET BY TYPE (SPECIFIED) AND BY AUTHOR (SPECIFIED) (passing String) =========================================
+    //GET BY TYPE (SPECIFIED) AND BY AUTHOR (SPECIFIED) (passing String) ===============================================
     @Transactional(readOnly = true)
     public List<DocumentGetCommand> getAllDocumentsByDocumentTypeAndUsername(String username, String documentTypeTitle) {
 
