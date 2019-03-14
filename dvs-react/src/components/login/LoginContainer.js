@@ -25,6 +25,7 @@ class LoginContainer extends Component {
       })
       .then(resp => {
         console.log("user " + resp.data.username + " logged in");
+        localStorage.setItem("username", resp.data.username);
       })
       .catch(e => {
         console.log(e);
