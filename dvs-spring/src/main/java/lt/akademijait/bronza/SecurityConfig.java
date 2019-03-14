@@ -11,12 +11,20 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 @Configuration
 @EnableWebSecurity
@@ -62,7 +70,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/swagger-ui.html").authenticated()
                 .anyRequest().permitAll() //any requests that are not in antMatchers will be allowed
-                .and().formLogin().permitAll();
+                .and().formLogin().permitAll()
+                .successHandler(new AuthenticationSuccessHandler() {
+                    @Override
+                    public void onAuthenticationSuccess(HttpServletRequest request,
+                                                        HttpServletResponse response,
+                                                        Authentication authentication)
+                            throws IOException, ServletException {
+                        response.setHeader("Access-Control-Allow-Credentials", "true");
+                        response.setHeader("Access-Control-Allow-Origin",
+                                request.getHeader("Origin"));
+                        response.setHeader("Content-Type",
+                                "application/json;charset=UTF-8");
+                        response.getWriter().print("{\"username\": \""+
+                                SecurityContextHolder.getContext().getAuthentication().getName()
+                                +"\"}");
+                    }
+                })
+                .and().logout().permitAll() // leidziam /logout
+
+
+        ;
     }
 
 
@@ -85,7 +113,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .and().formLogin()
 //                .and().httpBasic();
 //    }
-
 
 
 //THE MOETHOD FROM STASAUSKAS SLIDES. HOWEVER IT CANNOT ACCEPT THE USERNAME AND PASS FROM DB YET
@@ -114,4 +141,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //    }
 
 
-    }
+}
