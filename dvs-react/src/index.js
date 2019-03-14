@@ -23,11 +23,6 @@ import RenderResponse from "./components/FileDownload/RenderResponse";
 import DocumentDetailsContainer from "./components/Documents/DocumentDetailsContainer";
 import UpdateUserContainer from "./components/Forms/User/UpdateUserContainer";
 
-import { render } from "react-dom";
-import { makeData, Logo, Tips } from "./components/Utils";
-import ReactTable from "react-table";
-import "react-table/react-table.css";
-
 ReactDOM.render(
   <BrowserRouter>
     <App>
