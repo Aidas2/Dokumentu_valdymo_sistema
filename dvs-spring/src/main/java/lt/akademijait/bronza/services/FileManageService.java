@@ -10,6 +10,9 @@ import lt.akademijait.bronza.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -65,14 +68,15 @@ public class FileManageService {
         String documentPath = null;
         Document newDocument = new Document();
         newDocument.setCreationDate(new Date());
-        newDocument.setAuthor(userRepository.findByUsername(documentCreateCommand.getUsername()));
+        newDocument.setAuthor(userRepository.findByUsername(getLoggedInUsername()));
+//        newDocument.setAuthor(userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()));
         newDocument.setDocumentType(documentTypeRepository.findByTitle(documentCreateCommand.getDocumentTypeTitle()));
         newDocument.setTitle(documentCreateCommand.getTitle());
         newDocument.setDescription(documentCreateCommand.getDescription());
 
         for (int i = 0; i < files.length; i++) {
             File userDirectory = new File(currentAbsolutePath + fileSeparator + "uploaded-files" + fileSeparator
-                    + documentCreateCommand.getUsername());
+                    + getLoggedInUsername());
             userDirectory.mkdirs();
             File fileToSave = new File(userDirectory, userID + "-" + getCurrentLocalDateTimeStamp() + "-"
                     + files[i].getOriginalFilename());
@@ -100,6 +104,16 @@ public class FileManageService {
     public String getCurrentLocalDateTimeStamp() {
         return LocalDateTime.now()
                 .format(DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss-SSS"));
+    }
+
+    public String getLoggedInUsername() {
+        Authentication authentication =
+                SecurityContextHolder.getContext().getAuthentication();
+        if (!(authentication instanceof AnonymousAuthenticationToken)) {
+            String currentUserName = authentication.getName();
+            return currentUserName;
+        }
+        return null;
     }
 
 }
