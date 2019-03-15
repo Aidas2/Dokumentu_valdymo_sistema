@@ -19,6 +19,7 @@ import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -284,32 +285,55 @@ public class DocumentService {
 //    Tada galėsim gauti konkrečiai tuos dokus, kuriuos useris galės approvinti arba rejectinti
 //    Paduodam parametrą username ir pagal jį surandam reikiamus dokus, kuriuos jis managins
 
-    //ATTENTION Sis metodas netikrina, o tik grazina !
-    //GET BY STATE (SPECIFIED) AND BY USER (SPECIFIED) =================================================================
+    //GET BY STATE (SUBMITTED) AND BY USER (SPECIFIED) =================================================================
     @Transactional(readOnly = true)
-    public List<DocumentGetCommand> getDocumentsByDocumentStateAndUser(String username, DocumentState documentState) {
-        log.info("Gotten all documents by this state: " + documentState);
+    public List<DocumentGetCommand> getSubmittedDocumentForReviewing(String username) {
 
-        return documentRepository.findAll()
-                .stream()
-                .filter(document -> document.getAuthor().equals(userRepository.findByUsername(username)))
-                .filter(document -> document.getDocumentState().equals(documentState))
-                .map((document) -> new DocumentGetCommand(
-                        document.getId(),
-                        document.getAuthor().getUsername(),
-                        document.getDocumentState().toString(),
-                        document.getDocumentType().getTitle(),
-                        document.getTitle(),
-                        document.getDescription(),
-                        document.getCreationDate(),
-                        document.getSubmissionDate(),
-                        document.getConfirmationDate(),
-                        document.getRejectionDate(),
-                        document.getReviewer() != null ? document.getReviewer().getUsername() : null,
-                        document.getRejectionReason(),
-                        document.getPath(),
-                        document.getAttachments()
-                )).collect(Collectors.toList());
+        List<DocumentGetCommand> documentDtoForReviewing = new ArrayList<>();   // is anksto sukuriam DTO Lista i kuri addinsim Documents kaip OBJECT;
+        User reviewingUser = userRepository.findByUsername(username);  // pasirinkti useri (is repositorijos ir t.t.)
+        Set<UserGroup> userGroupsOfReviewingUser = reviewingUser.getUserGroups(); // gettinam kokios userGroups jam priskirtos, gavom masyva userGroups'u [Administracija, Gamyba];
+        // einam foreach'u per kiekviena masyvo userGroups elementa ir gettinam kokios yra reviewDoctype, gaunam antra masyva [Instrukcija, Prasymas, Isakymas]
+        for (UserGroup userGroup: userGroupsOfReviewingUser
+             ) {
+            Set<DocumentType> documentTypeOfReviewingUser = userGroup.getReviewDocumentType(); //gavom [Instrukcija, Prasymas, Isakymas]
+
+            // einam foreach'u per kiekviena masyvo documentType elementa,  getinam kokie yra Documents, gaunam trecia masyva [PrasymasAtostogu, PrasymasPakeltiAlga, IsakymasDarboLaiko]
+            for (DocumentType documentType: documentTypeOfReviewingUser
+                 ) {
+
+                List<Document> documentOfReviewingUser = documentType.getDocuments();   //gavom [PrasymasAtostogu, PrasymasPakeltiAlga, IsakymasDarboLaiko]
+                                                                                        //kad veiktu .getDocuments() reikejo ideti atitinkama fielda i DocumentsType entity...
+
+                // einam foreach'u per kiekviena masyvo Document elementa,  gettinam viska (id, author, state, type ir t.t.), ir pridedam i nauja DTO, kuri addinsim i is anksto susikurta  objektu Lista
+                for (Document document: documentOfReviewingUser
+                     ) {
+                    DocumentGetCommand documentDTO = new DocumentGetCommand(
+                            document.getId(),
+                            document.getAuthor().getUsername(),
+                            document.getDocumentState().toString(),
+                            document.getDocumentType().getTitle(),
+                            document.getTitle(),
+                            document.getDescription(),
+                            document.getCreationDate(),
+                            document.getSubmissionDate(),
+                            document.getConfirmationDate(),
+                            document.getRejectionDate(),
+                            document.getReviewer() != null ? document.getReviewer().getUsername() : null,
+                            document.getRejectionReason(),
+                            document.getPath(),
+                            document.getAttachments()); // gavom nauja DTO su paduotomis reiksmemis
+
+
+                    //abejotinas sitas if ... gal geriau documentDTO.getDocumentState() ?
+                    if (document.getDocumentState().equals(DocumentState.SUBMITTED)){
+                        documentDtoForReviewing.add(documentDTO);
+                    }
+
+                }
+            }
+        }
+
+        return documentDtoForReviewing;
     }
 
 
