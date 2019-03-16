@@ -28,21 +28,25 @@ class DocumentTypesContainer extends Component {
     var userGroupsArrayToRenderId = this.state.userGroups.map(
       (oneGroupObj, index) => {
         return (
-          <UserGroupsComponent key={oneGroupObj.title} groupId={index + 1} />
-        );
-      }
-    );
-
-    var userGroupsArrayToRenderTitle = this.state.userGroups.map(
-      oneGroupObj => {
-        return (
           <UserGroupsComponent
             key={oneGroupObj.title}
+            groupId={index + 1}
             groupTitle={oneGroupObj.title}
           />
         );
       }
     );
+
+    // var userGroupsArrayToRenderTitle = this.state.userGroups.map(
+    //   oneGroupObj => {
+    //     return (
+    //       <UserGroupsComponent
+    //         key={oneGroupObj.title}
+    //         groupTitle={oneGroupObj.title}
+    //       />
+    //     );
+    //   }
+    // );
 
     return (
       <div>
@@ -91,23 +95,15 @@ class DocumentTypesContainer extends Component {
               </Link>
             </div>
           </div>
-
-          <div className="container-fluid">
-            <div className="row users-padding-bottom table-style-rounded">
-              <div className="col-1 users-table-number-style  ">#</div>
-              <div className="col-11   users-table-action-style">
-                Vartotojų grupės pavadinimas
-              </div>
-            </div>
-            <div>
-              <div className="row users-padding-bottom">
-                <div className="col-1 documents-table-size ">
-                  {userGroupsArrayToRenderId}
-                </div>
-                <div className="col-11 documents-table-size">
-                  {userGroupsArrayToRenderTitle}
+          <div>
+            <div className="container-fluid">
+              <div className="row users-padding-bottom table-style-rounded">
+                <div className="col-1 users-table-number-style  ">#</div>
+                <div className="col-11   users-table-action-style">
+                  Vartotojų grupės pavadinimas
                 </div>
               </div>
+              <div className="">{userGroupsArrayToRenderId}</div>
             </div>
           </div>
         </div>
