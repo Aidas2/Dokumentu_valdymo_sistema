@@ -178,7 +178,7 @@ const CreateUserComponent = props => {
                 className="btn btn-outline-success btn-sm document-button-style button-color"
                 onClick={props.onSubmit}
               >
-                Kurti vartotoją
+                Kurti
               </button>
             </div>
           </div>
