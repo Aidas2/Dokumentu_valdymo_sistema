@@ -38,55 +38,68 @@ class UsersContainer extends Component {
 
     return (
       <div>
-        <div className="container-fluid m-2 ">
-          <h2 className="display-6 normal-padding">
-            Vartotojai
-            <div className="logo-info">
-              <img src={infoIcon} className="info-icon-style" alt="info icon" />
-              <span className="tooltiptext">
-                Šiame meniu galima kurti ir peržiūrėti vartotojus.
-              </span>
+        <div className="container-fluid no-padding">
+          <div className="row justify-content-between no-padding ">
+            <div className=" col-6  normal-padding">
+              <h5 className="display-6  second-navigation-style ">
+                <Link to={"/"}>
+                  <img
+                    className="logo-color"
+                    src={logo}
+                    width="40"
+                    height="20"
+                    alt="logo icon"
+                  />
+                </Link>
+                &ensp;/ &ensp;
+                <Link to={"/admin"} className="second-navigation">
+                  Administratoriaus rolė
+                </Link>
+                &ensp;/ &ensp;
+                <Link to={"/admin/users"} className="second-navigation">
+                  Vartotojai
+                </Link>
+              </h5>
+              <h2 className="display-6 ">
+                Vartotojai
+                <div className="logo-info">
+                  <img
+                    src={infoIcon}
+                    className="info-icon-style"
+                    alt="info icon"
+                  />
+                  <span className="tooltiptext">
+                    Šiame meniu galima kurti ir peržiūrėti vartotojus.
+                  </span>
+                </div>
+              </h2>
             </div>
-          </h2>
-          <h5 className="display-6 normal-padding second-navigation-style ">
-            <Link to={"/"}>
-              <img src={logo} width="20" height="10" alt="logo icon" />
-            </Link>
-            &ensp;/ &ensp;
-            <Link to={"/admin"} className="second-navigation">
-              Administratoriaus rolė
-            </Link>
-            &ensp;/ &ensp;
-            <Link to={"/admin/users"} className="second-navigation">
-              Vartotojai
-            </Link>
-          </h5>
+            <div className=" col-6  normal-padding left-align ">
+              <Link
+                to={"/admin/newuser/"}
+                className="btn btn-outline-success m-2 button-color"
+              >
+                Pridėti naują vartotoją
+              </Link>
+            </div>
+          </div>
 
-          <Link
-            to={"/admin/newuser/"}
-            className="btn btn-outline-success m-2 button-color"
-          >
-            Pridėti naują vartotoją
-          </Link>
-
-          <div className="table table-color-style table-style-rounded">
-            <div className="container-fluid users-padding-bottom">
-              <div className="row table-color-style table-style-rounded ">
-                <div className="col-1  users-table-number-style ">#</div>
-                <div className="col-2   users-table-middle-style">
-                  Prisijungimo vardas
-                </div>
-                <div className=" col-2 users-table-middle-style">Vardas</div>
-                <div className="col-2   users-table-middle-style ">Pavardė</div>
-                <div className="col-2  users-table-middle-style ">
-                  El. pašto adresas
-                </div>
-                <div className="col-3   users-table-action-style ">
-                  Įdarbinimo data
-                </div>
+          <div className="container-fluid">
+            <div className="row users-padding-bottom table-style-rounded">
+              <div className="col-1 users-table-number-style  ">#</div>
+              <div className="col-2   users-table-middle-style">
+                Prisijungimo vardas
               </div>
-              {usersArrayToRender}
+              <div className=" col-2 users-table-middle-style">Vardas</div>
+              <div className="col-2   users-table-middle-style ">Pavardė</div>
+              <div className="col-2  users-table-middle-style ">
+                El. pašto adresas
+              </div>
+              <div className="col-3   users-table-action-style ">
+                Įdarbinimo data
+              </div>
             </div>
+            <div> {usersArrayToRender}</div>
           </div>
         </div>
       </div>
