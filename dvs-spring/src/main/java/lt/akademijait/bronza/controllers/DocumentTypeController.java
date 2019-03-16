@@ -21,7 +21,6 @@ public class DocumentTypeController {
     @Autowired
     private DocumentTypeService documentTypeService;
 
-
     //READ =============================================================================================================
     @RequestMapping(method = RequestMethod.GET)
     @ApiOperation(value = "Get all documents types", notes = "Returns all documents types")
@@ -29,8 +28,6 @@ public class DocumentTypeController {
     public List<DocumentTypeGetCommand> getDocumentsTypes() {
         return documentTypeService.getDocumentTypes();
     }
-
-
 
     //READ By ID Version_01 ============================================================================================
     //@PathVariable
@@ -54,9 +51,6 @@ public class DocumentTypeController {
         return documentTypeService.getDocumentTypeById(id);
     }
 
-
-
-
     //READ By TITLE Version_01 =========================================================================================
     //@PathVariable. Remark: for some reason caused "ambiguous" with method getDocumentTypeByIdV1 (in //READ By ID Version_01). Fixed by: value="/{id}" --> value="/{id}/byid",
     @RequestMapping(value="/bytitle/{title}", method = RequestMethod.GET)
@@ -79,8 +73,26 @@ public class DocumentTypeController {
         return documentTypeService.getDocumentsTypeByTitle(title);
     }
 
+    //Gali padaryt kontrollerį, kuris grąžintų tik dokumentų tipus, kuriuos useris gali submittinti?
+    //READ BY STATE (READY FOR SUBMITTING) AND USER (SPECIFIED) V_01 (without dto) =====================================
+    @RequestMapping(value = "/{username}/readyForSubmittingV1", method = RequestMethod.GET)
+    @ApiOperation(value = "Get document types STRING (ready for submiting) for specified user V01")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public List<String> getTypesTitlesOfSubmittingUser1 (
+            @ApiParam(value = "User username", required = true)
+            @PathVariable String username) {
+        return documentTypeService.getDocumentTypeTitlesOfSubmittingUser1(username);
+    }
 
-
+    //READ BY STATE (READY FOR SUBMITTING) AND USER (SPECIFIED) V_02 (with dto) =====================================
+    @RequestMapping(value = "/{username}/readyForSubmittingV2", method = RequestMethod.GET)
+    @ApiOperation(value = "Get document types DTO (ready for submiting) for specified user V02")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public List<DocumentTypeGetCommand> getTypesTitlesOfSubmittingUser2 (
+            @ApiParam(value = "User username", required = true)
+            @PathVariable String username) {
+        return documentTypeService.getDocumentTypeTitlesOfSubmittingUser2(username);
+    }
 
     //CREATE ===========================================================================================================
     @RequestMapping(method = RequestMethod.POST)
@@ -103,10 +115,6 @@ public class DocumentTypeController {
         documentTypeService.updateDocumentType(id, documentTypeCreateCommand);
     }
 
-
-
-
-
     //DELETE Version_01 ================================================================================================
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
     @ApiOperation(value = "Delete document type. V_01", notes = "Delete document type by id")
@@ -126,7 +134,5 @@ public class DocumentTypeController {
             @RequestParam Long id) {
         documentTypeService.deleteDocumentType(id);
     }
-
-
 
 }

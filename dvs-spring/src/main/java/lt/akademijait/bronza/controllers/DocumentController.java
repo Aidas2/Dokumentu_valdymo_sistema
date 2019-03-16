@@ -71,7 +71,7 @@ public class DocumentController {
     }
 
     /* // commented because cause "Ambiguous ... " (maybe passed object covers also and String, and Long and so on)
-    //READ BY STATE (BY SPECIFIED STATE). Version_01 ===================================================================
+    //READ BY STATE (SPECIFIED). Version_01 ===================================================================
     //// first and last "@PathVariable of type object (or/and String ?, or/and Long?)" - because only one is allowed by Spring
     @RequestMapping(value = "/{documentState}", method = RequestMethod.GET)
     @ApiOperation(value = "Get all document of specified state. V_01", notes = "Returns all document of specified state")
@@ -83,7 +83,7 @@ public class DocumentController {
     }
     */
 
-    //READ BY STATE (BY SPECIFIED STATE). Version_02 ===================================================================
+    //READ BY STATE (SPECIFIED). Version_02 ============================================================================
     //@PathVariable --> @RequestParam
     @RequestMapping(value = "/bystate", method = RequestMethod.GET)
     @ApiOperation(value = "Get all document of specified state. V_02", notes = "Returns all document of specified state")
@@ -94,6 +94,18 @@ public class DocumentController {
         return documentService.getAllDocumentsByDocumentState(documentState);
     }
 
+    //READ BY STATE (SPECIFIED) AND BY USER (SPECIFIED) ===============================================================
+    //@PathVariable --> @RequestParam
+    @RequestMapping(value = "/{username}/bystate", method = RequestMethod.GET)
+    @ApiOperation(value = "Get user's (by specified username) documents (by specified state)", notes = "Returns user's (by specified username) documents (by specified state)")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public List<DocumentGetCommand> getDocumentsByDocumentStateAndUser(
+            @ApiParam(value = "User username", required = true)
+            @PathVariable String username,
+            @ApiParam(value = "Document state", required = true)
+            @RequestParam("state") DocumentState documentState) {
+        return documentService.getDocumentsByDocumentStateAndUser(username, documentState);
+    }
 
     /* // Doesn't work :( !
     //READ BY TYPE. Version_01 =========================================================
@@ -137,8 +149,19 @@ public class DocumentController {
     }
     */
 
+    //READ BY TYPE (SPECIFIED) AND BY AUTHOR (SPECIFIED) ===============================================================
+    @RequestMapping(value = "/{username}/bytype", method = RequestMethod.GET)
+    @ApiOperation(value = "Get user's (by specified username) documents (by specified type)", notes = "Returns user's (by specified username) documents (by specified type)")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public List<DocumentGetCommand> getAllDocumentsByDocumentTypeAndUser(
+            @ApiParam(value = "User username", required = true)
+            @PathVariable String username,
+            @ApiParam(value = "Document type", required = true)
+            @RequestParam String documentTypeTitle) {
+        return documentService.getAllDocumentsByDocumentTypeAndUsername(username, documentTypeTitle);
+    }
 
-    //READ All DOCUMENTS BY AUTHOR_ID =========================================================================
+    //READ All DOCUMENTS BY AUTHOR_ID ==================================================================================
     @RequestMapping(value = "/authorId", method = RequestMethod.GET)
     @ApiOperation(value = "Get all document of specified author id", notes = "Returns all document of specified author id")
     @ResponseStatus(HttpStatus.ACCEPTED)
