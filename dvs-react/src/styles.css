@@ -252,6 +252,17 @@ h5,
   max-height: 80px;
 }
 
+.pop-up-style-admin {
+  color: #4d4d33;
+  padding-top: 5px;
+  font-size: 14px;
+  font-family: sans serif;
+
+  border: #e2e2e2 1px solid;
+  font-weight: 400;
+  max-height: 45px;
+}
+
 .button-color {
   background-color: #42cb6f;
   color: white;
@@ -411,7 +422,7 @@ h5,
 */
 
 .italic-style {
-  width: 100%;
+  /* width: 100%; */
   border: #e2e2e2 1px solid;
   font-weight: 400;
   font-size: 14px;
@@ -661,12 +672,5 @@ html {
 }
 
 .info-icon-style:hover {
-  width: 10px;
-  height: 10px;
-  vertical-align: text-top;
   opacity: 1;
-}
-
-.ReactTable .rt-thead {
-  overflow-y: scroll;
 }

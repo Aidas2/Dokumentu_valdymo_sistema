@@ -148,8 +148,9 @@ const CreateUserComponent = props => {
             <div className="col-6 documents-table-size">
               <select
                 onChange={props.onAdministratorChange}
-                className="col-6 form-control form-control-sm italic-style "
+                className="col-6 form-control form-control-sm italic-style pop-up-style-admin"
                 id="documentTypeSelect"
+                multiple
               >
                 <option value="false">Ne</option>
                 <option value="true">Taip</option>
