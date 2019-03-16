@@ -30,7 +30,7 @@ const CreateUserGroupsComponent = props => {
                 Vartotojų grupės
               </Link>
               &ensp;/ &ensp;
-              <Link to={"/admin/usergroups/new"} className="second-navigation">
+              <Link to={"/admin/newusergroup"} className="second-navigation">
                 Naujos vartotojų grupės kūrimas
               </Link>
             </h5>
