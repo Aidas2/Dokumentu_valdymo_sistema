@@ -16,7 +16,7 @@ const CreateDocumentTypeComponent = props => {
                   src={logo}
                   width="40"
                   height="20"
-                  alt="logo icon"
+                  alt=" "
                 />
               </Link>
               &ensp;/ &ensp;

@@ -48,7 +48,7 @@ class UsersContainer extends Component {
                     src={logo}
                     width="40"
                     height="20"
-                    alt="logo icon"
+                    alt=" "
                   />
                 </Link>
                 &ensp;/ &ensp;
