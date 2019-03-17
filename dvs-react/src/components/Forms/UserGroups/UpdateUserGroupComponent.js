@@ -117,7 +117,7 @@ const UpdateUserGroupComponent = props => {
                 className="btn btn-outline-success btn-sm document-button-style button-color"
                 onClick={props.onSubmit}
               >
-                Kurti
+                Atnaujinti
               </button>
             </div>
           </div>

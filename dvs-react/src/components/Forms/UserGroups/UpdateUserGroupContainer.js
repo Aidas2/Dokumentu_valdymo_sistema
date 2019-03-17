@@ -41,8 +41,10 @@ class UpdateUserGroupContainer extends Component {
   }
 
   handleSubmit = () => {
+    const usergroupParam = this.props.match.params.title;
+
     axios
-      .post("http://localhost:8081/api/groups", {
+      .put("http://localhost:8081/api/groups/" + usergroupParam, {
         title: this.state.title,
         reviewDocumentType: this.state.reviewDocumentType,
         submitDocumentType: this.state.submitDocumentType
@@ -89,7 +91,7 @@ class UpdateUserGroupContainer extends Component {
             &times;
           </button>
           Sveikiname! Vartotojų grupė <strong>{this.state.title} </strong>
-          sukurta sėkmingai.
+          atnaujinta sėkmingai.
         </div>
       );
     }
