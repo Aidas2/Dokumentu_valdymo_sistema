@@ -94,17 +94,20 @@ public class DocumentController {
         return documentService.getAllDocumentsByDocumentState(documentState);
     }
 
-    //READ BY STATE (SPECIFIED) AND BY USER (SPECIFIED) ===============================================================
+
+//    Kad grąžintu dokumentus tik to tipo, kuriuos useris gali reviewinti ir kurie turi state submitted ir tik submitted
+//    Tada galėsim gauti konkrečiai tuos dokus, kuriuos useris galės approvinti arba rejectinti
+//    Paduodam parametrą username ir pagal jį surandam reikiamus dokus, kuriuos jis managins
+
+    //READ BY STATE (SUBMITTED) AND BY USER (SPECIFIED) ===============================================================
     //@PathVariable --> @RequestParam
-    @RequestMapping(value = "/{username}/bystate", method = RequestMethod.GET)
-    @ApiOperation(value = "Get user's (by specified username) documents (by specified state)", notes = "Returns user's (by specified username) documents (by specified state)")
+    @RequestMapping(value = "/{username}/toreview", method = RequestMethod.GET)
+    @ApiOperation(value = "Get submitted documents for user's (specified) to review", notes = "Returns submitted documents for user's (specified) to review")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public List<DocumentGetCommand> getDocumentsByDocumentStateAndUser(
             @ApiParam(value = "User username", required = true)
-            @PathVariable String username,
-            @ApiParam(value = "Document state", required = true)
-            @RequestParam("state") DocumentState documentState) {
-        return documentService.getDocumentsByDocumentStateAndUser(username, documentState);
+            @PathVariable String username) {
+        return documentService.getSubmittedDocumentForReviewing(username);
     }
 
     /* // Doesn't work :( !
