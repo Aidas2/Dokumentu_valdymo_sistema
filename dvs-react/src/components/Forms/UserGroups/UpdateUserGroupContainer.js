@@ -8,6 +8,7 @@ class UpdateUserGroupContainer extends Component {
     title: "",
     submitDocumentType: [],
     reviewDocumentType: [],
+    temporalTitle: "",
     msg: false,
     documentTypes: []
   };
@@ -42,15 +43,14 @@ class UpdateUserGroupContainer extends Component {
 
   handleSubmit = () => {
     const usergroupParam = this.props.match.params.title;
-    // const temporalTitle = this.state.temporalTitle;
-    // temporalTitle
-    //   ? this.setState({ title: temporalTitle })
-    //   : console.log("The title was not changed");
-    // console.log("UsergroupTitleParam in SUbnit()", usergroupParam);
+    let titleToSet = "";
+    this.state.temporalTitle
+      ? (titleToSet = this.state.temporalTitle)
+      : (titleToSet = this.state.title);
 
     axios
       .put("http://localhost:8081/api/groups/" + usergroupParam, {
-        title: this.state.temporalTitle,
+        title: titleToSet,
         reviewDocumentType: this.state.reviewDocumentType,
         submitDocumentType: this.state.submitDocumentType
       })
