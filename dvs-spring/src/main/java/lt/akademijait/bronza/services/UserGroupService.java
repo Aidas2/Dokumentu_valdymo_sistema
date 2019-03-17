@@ -186,8 +186,8 @@ public class UserGroupService {
         log.info("Info about the group " + groupName + " was gotten");
         return new UserGroupGetCommand(
                 userGroup.getTitle(),
-                reviewDocType,
-                submitDocType
+                submitDocType,
+                reviewDocType
                 );
     }
 
