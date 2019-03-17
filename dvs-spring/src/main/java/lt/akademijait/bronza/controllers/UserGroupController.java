@@ -24,6 +24,7 @@ public class UserGroupController {
     @Autowired
     private UserGroupService userGroupService;
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping(method = RequestMethod.GET)
     @ApiOperation(value = "Get all groups", notes = "Returns all user groups")
     public List<UserGroupGetCommand> getAllGroups(){
