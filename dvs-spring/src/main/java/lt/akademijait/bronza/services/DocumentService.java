@@ -291,11 +291,14 @@ public class DocumentService {
 
         List<DocumentGetCommand> documentDtoForReviewing = new ArrayList<>();   // is anksto sukuriam DTO Lista i kuri addinsim Documents kaip OBJECT;
         User reviewingUser = userRepository.findByUsername(username);  // pasirinkti useri (is repositorijos ir t.t.)
+        log.info("Gotten current reviewing user: " + reviewingUser.getUsername());
         Set<UserGroup> userGroupsOfReviewingUser = reviewingUser.getUserGroups(); // gettinam kokios userGroups jam priskirtos, gavom masyva userGroups'u [Administracija, Gamyba];
+        log.info("Gotten list groups belonging to reviewing User: " + userGroupsOfReviewingUser.toString());
         // einam foreach'u per kiekviena masyvo userGroups elementa ir gettinam kokios yra reviewDoctype, gaunam antra masyva [Instrukcija, Prasymas, Isakymas]
         for (UserGroup userGroup: userGroupsOfReviewingUser
              ) {
             Set<DocumentType> documentTypeOfReviewingUser = userGroup.getReviewDocumentType(); //gavom [Instrukcija, Prasymas, Isakymas]
+            log.info("1-st foreach. Gotten list of Document Types belonging to reviewing User: " + documentTypeOfReviewingUser);
 
             // einam foreach'u per kiekviena masyvo documentType elementa,  getinam kokie yra Documents, gaunam trecia masyva [PrasymasAtostogu, PrasymasPakeltiAlga, IsakymasDarboLaiko]
             for (DocumentType documentType: documentTypeOfReviewingUser
@@ -303,6 +306,7 @@ public class DocumentService {
 
                 List<Document> documentOfReviewingUser = documentType.getDocuments();   //gavom [PrasymasAtostogu, PrasymasPakeltiAlga, IsakymasDarboLaiko]
                                                                                         //kad veiktu .getDocuments() reikejo ideti atitinkama fielda i DocumentsType entity...
+                log.info("2-nd foreach. Gotten list of Documents belonging to reviewing User: " + documentOfReviewingUser);
 
                 // einam foreach'u per kiekviena masyvo Document elementa,  gettinam viska (id, author, state, type ir t.t.), ir pridedam i nauja DTO, kuri addinsim i is anksto susikurta  objektu Lista
                 for (Document document: documentOfReviewingUser
@@ -322,11 +326,13 @@ public class DocumentService {
                             document.getRejectionReason(),
                             document.getPath(),
                             document.getAttachments()); // gavom nauja DTO su paduotomis reiksmemis
+                    log.info("3-rd foreach. Gotten DTO of document belonging to reviewing User: " + documentDTO);
 
 
                     //abejotinas sitas if ... gal geriau documentDTO.getDocumentState() ?
                     if (document.getDocumentState().equals(DocumentState.SUBMITTED)){
                         documentDtoForReviewing.add(documentDTO);
+                        log.info("Document DTO added to list: " + documentDtoForReviewing);
                     }
 
                 }
