@@ -49,7 +49,7 @@ class SideBarComponent extends Component {
             </NavLink>
           </li>
           <li>
-            <NavLink activeClassName={"active"} to={"/statistic"}>
+            <NavLink activeClassName={"active"} to={"/statistics"}>
               <img
                 src={statistics}
                 width="20"

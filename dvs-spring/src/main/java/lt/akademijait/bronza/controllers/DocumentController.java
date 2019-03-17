@@ -71,7 +71,7 @@ public class DocumentController {
     }
 
     /* // commented because cause "Ambiguous ... " (maybe passed object covers also and String, and Long and so on)
-    //READ BY STATE (BY SPECIFIED STATE). Version_01 ===================================================================
+    //READ BY STATE (SPECIFIED). Version_01 ===================================================================
     //// first and last "@PathVariable of type object (or/and String ?, or/and Long?)" - because only one is allowed by Spring
     @RequestMapping(value = "/{documentState}", method = RequestMethod.GET)
     @ApiOperation(value = "Get all document of specified state. V_01", notes = "Returns all document of specified state")
@@ -83,7 +83,7 @@ public class DocumentController {
     }
     */
 
-    //READ BY STATE (BY SPECIFIED STATE). Version_02 ===================================================================
+    //READ BY STATE (SPECIFIED). Version_02 ============================================================================
     //@PathVariable --> @RequestParam
     @RequestMapping(value = "/bystate", method = RequestMethod.GET)
     @ApiOperation(value = "Get all document of specified state. V_02", notes = "Returns all document of specified state")
@@ -94,6 +94,21 @@ public class DocumentController {
         return documentService.getAllDocumentsByDocumentState(documentState);
     }
 
+
+//    Kad grąžintu dokumentus tik to tipo, kuriuos useris gali reviewinti ir kurie turi state submitted ir tik submitted
+//    Tada galėsim gauti konkrečiai tuos dokus, kuriuos useris galės approvinti arba rejectinti
+//    Paduodam parametrą username ir pagal jį surandam reikiamus dokus, kuriuos jis managins
+
+    //READ BY STATE (SUBMITTED) AND BY USER (SPECIFIED) ===============================================================
+    //@PathVariable --> @RequestParam
+    @RequestMapping(value = "/{username}/toreview", method = RequestMethod.GET)
+    @ApiOperation(value = "Get submitted documents for user's (specified) to review", notes = "Returns submitted documents for user's (specified) to review")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public List<DocumentGetCommand> getDocumentsByDocumentStateAndUser(
+            @ApiParam(value = "User username", required = true)
+            @PathVariable String username) {
+        return documentService.getSubmittedDocumentForReviewing(username);
+    }
 
     /* // Doesn't work :( !
     //READ BY TYPE. Version_01 =========================================================

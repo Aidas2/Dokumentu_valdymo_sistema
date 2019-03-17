@@ -31,68 +31,79 @@ class DocumentTypesContainer extends Component {
     var docTypesArrayToRenderId = this.state.docTypes.map(
       (oneTypeObj, index) => {
         return (
-          <DocumentTypesComponent key={oneTypeObj.id} typeId={index + 1} />
+          <DocumentTypesComponent
+            key={oneTypeObj.id}
+            typeId={index + 1}
+            typeTitle={oneTypeObj.title}
+          />
         );
       }
     );
 
-    var docTypesArrayToRenderTitle = this.state.docTypes.map(oneTypeObj => {
-      return (
-        <DocumentTypesComponent key={oneTypeObj.id} typeId={oneTypeObj.title} />
-      );
-    });
+    // var docTypesArrayToRenderTitle = this.state.docTypes.map(oneTypeObj => {
+    //   return (
+    //     <DocumentTypesComponent key={oneTypeObj.id} typeId={oneTypeObj.title} />
+    //   );
+    // });
 
     return (
       <div>
-        <div className="container-fluid m-2 ">
-          <h2 className="display-6 normal-padding">
-            Dokumentų tipai
-            <div className="logo-info">
-              <img src={infoIcon} className="info-icon-style" alt="info icon" />
-              <span className="tooltiptext">
-                Šiame meniu galima sukurti ir peržiūrėti dokumentų tipus.
-              </span>
+        <div className="container-fluid no-padding">
+          <div className="row justify-content-between no-padding ">
+            <div className=" col-6  normal-padding">
+              <h5 className="display-6  second-navigation-style ">
+                <Link to={"/"}>
+                  <img
+                    className="logo-color"
+                    src={logo}
+                    width="40"
+                    height="20"
+                    alt=" "
+                  />
+                </Link>
+                &ensp;/ &ensp;
+                <Link to={"/admin"} className="second-navigation">
+                  Administratoriaus rolė
+                </Link>
+                &ensp;/ &ensp;
+                <Link to={"/admin/doctypes"} className="second-navigation">
+                  Dokumentų tipai
+                </Link>
+              </h5>
+              <h2 className="display-6 ">
+                Dokumentų tipai
+                <div className="logo-info">
+                  <img
+                    src={infoIcon}
+                    className="info-icon-style"
+                    alt="info icon"
+                  />
+                  <span className="tooltiptext">
+                    Šiame meniu galima sukurti ir peržiūrėti dokumentų tipus.
+                  </span>
+                </div>
+              </h2>
             </div>
-          </h2>
-
-          <h5 className="display-6 normal-padding second-navigation-style ">
-            <Link to={"/"}>
-              <img src={logo} width="20" height="10" alt="logo icon" />
-            </Link>
-            &ensp;/ &ensp;
-            <Link to={"/admin"} className="second-navigation">
-              Administratoriaus rolė
-            </Link>
-            &ensp;/ &ensp;
-            <Link to={"/admin/doctypes"} className="second-navigation">
-              Dokumentų tipai
-            </Link>
-          </h5>
-
-          <Link
-            to={"/admin/newdoctype/"}
-            className="btn btn-outline-success m-2"
-          >
-            Kurti naują dokumento tipą
-          </Link>
-
-          <table className="table table-active table-style-rounded">
-            <tbody>
-              <tr>
-                <th className="col-1 Table-number-style">#</th>
-                <th className="col-11 Table-action-style">
+            <div className=" col-6  normal-padding left-align ">
+              <Link
+                to={"/admin/newdoctype/"}
+                className="btn btn-outline-success m-2 button-color"
+              >
+                Kurti naują dokumento tipą
+              </Link>
+            </div>
+          </div>
+          <div>
+            <div className="container-fluid">
+              <div className="row users-padding-bottom table-style-rounded">
+                <div className="col-1 users-table-number-style  ">#</div>
+                <div className="col-11   users-table-action-style">
                   Dokumento tipo pavadinimas
-                </th>
-              </tr>
-
-              <tr>
-                <td className="table-action-size">{docTypesArrayToRenderId}</td>
-                <td className="table-action-size">
-                  {docTypesArrayToRenderTitle}
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                </div>
+              </div>
+              <div className="">{docTypesArrayToRenderId}</div>
+            </div>
+          </div>
         </div>
       </div>
     );

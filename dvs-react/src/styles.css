@@ -31,6 +31,7 @@ body::after {
   padding: 5px;
   padding-left: 20px;
   padding-right: 20px;
+  background-color: rgb(0, 0, 0);
 }
 
 h1 {
@@ -46,9 +47,11 @@ h1 {
 h2 {
   font-family: sans serif;
   letter-spacing: -0.9px;
-  color: #525f64;
-  font-size: 25px;
+  /* color: #525f64; */
+  color: #ffffff;
+  font-size: 35px;
   font-weight: 1000;
+  padding-top: 20px;
 }
 
 /* Login style */
@@ -88,13 +91,12 @@ h2 {
 
 /* Login-Buttons */
 .login-button {
-  width: 50%;
   font-weight: 600;
   font-size: 14px;
   font-family: sans serif;
-  width: 60%;
-  margin-left: 20%;
-  margin-right: 20%;
+  width: 40%;
+  margin-left: 30%;
+  margin-right: 30%;
 }
 
 /* all buttons */
@@ -110,6 +112,7 @@ button {
 }
 
 .document-button-style {
+  margin-top: 20px;
   width: 160px;
 }
 
@@ -126,79 +129,89 @@ h5,
 .second-navigation {
   font-family: sans serif;
 
-  color: #4d4d33;
+  /* color: #4d4d33; */
+  color: #ffffff;
   padding-top: 5px;
-  font-size: 10px;
-}
-
-.table-style-rounded {
-  border-collapse: collapse;
-  border-radius: 8px;
-  /*border-style: hidden;  hide standard table (collapsed) border */
-  box-shadow: 5px 0 0px -1px rgb(94, 94, 94); /* this draws the table border  */
-
-  border-bottom: #d8d8d8 1px solid;
+  font-size: 14px;
+  font-weight: 100;
 }
 
 .logo {
   filter: brightness(0) invert(0.5);
 }
 
+.logo-color {
+  filter: brightness(1) invert(0.6);
+}
+
+.left-align {
+  text-align: right;
+  padding-top: 35px !important;
+}
+
 .Table-number-style {
-  background-color: rgb(56, 56, 56);
+  background-color: rgb(197, 206, 255);
   border-top-left-radius: 8px;
 
   color: white;
 }
 
 .users-table-number-style {
-  background-color: rgb(56, 56, 56);
+  background-color: rgb(197, 206, 255);
   border-top-left-radius: 8px;
   padding-top: 10px;
   padding-bottom: 10px;
-  color: white;
+  color: rgb(0, 0, 0);
 
   font-weight: 600;
   line-height: 1.5;
 }
 
+.navigation-right-padding {
+  padding-right: 20px;
+}
+
 .users-padding-bottom {
-  padding-bottom: 15px;
+  padding-bottom: 0px;
+  background-color: white;
+  margin-right: 30px;
+  margin-left: 30px;
+  border-bottom: #9baeff 1px solid;
 }
 
 .users-table-middle-style {
-  background-color: rgb(56, 56, 56);
+  background-color: rgb(197, 206, 255);
 
   padding-top: 10px;
   padding-bottom: 10px;
-  color: white;
+  color: rgb(0, 0, 0);
 
   font-weight: 600;
   line-height: 1.5;
 }
 
 .users-table-action-style {
-  background-color: rgb(56, 56, 56);
+  background-color: rgb(197, 206, 255);
   border-top-right-radius: 8px;
   padding-top: 10px;
   padding-bottom: 10px;
-  color: white;
+  color: rgb(0, 0, 0);
 
   font-weight: 600;
   line-height: 1.5;
 }
 
 .Table-action-style {
-  background-color: rgb(56, 56, 56);
+  background-color: rgb(197, 206, 255);
   border-top-right-radius: 8px;
 
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 .table-middle-style {
-  background-color: rgb(56, 56, 56);
+  background-color: rgb(197, 206, 255);
 
-  color: red;
+  color: rgb(0, 0, 0);
 }
 
 .table-action-size {
@@ -212,8 +225,11 @@ h5,
 
 .documents-table-size {
   font-size: 14px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: rgb(0, 0, 0);
+
+  align-items: center; /* Vertical center alignment */
 }
 
 .padding-normal {
@@ -233,6 +249,26 @@ h5,
 
   border: #e2e2e2 1px solid;
   font-weight: 400;
+  max-height: 80px;
+}
+
+.pop-up-style-admin {
+  color: #4d4d33;
+  padding-top: 5px;
+  font-size: 14px;
+  font-family: sans serif;
+
+  border: #e2e2e2 1px solid;
+  font-weight: 400;
+  max-height: 45px;
+}
+
+.button-color {
+  background-color: #42cb6f;
+  color: white;
+  font-weight: 600;
+  border-bottom: #3ab65c 5px solid;
+  letter-spacing: -0.5px;
 }
 
 .logo-info .tooltiptext {
@@ -314,15 +350,55 @@ h5,
 
 .normal-padding {
   padding-top: 20px;
-  padding-bottom: 20px;
-  padding-left: 20px;
+  padding-right: 40px;
+  padding-left: 40px;
+  background-color: rgb(61, 61, 61);
+  margin-bottom: 20px;
+  border-bottom: #7b6bef 5px solid;
+}
+
+.no-padding {
+  padding: 0px;
+  margin: 0px;
+  padding-bottom: 50px;
 }
 
 .second-navigation-style {
-  background-color: #dcdcdc;
+  padding: 0px;
+  font-size: 20px;
+  /* background-color: #dcdcdc;
   border-radius: 5px;
   border-right: 4px solid rgb(94, 94, 94);
-  margin-bottom: 20px;
+  margin-bottom: 20px; */
+}
+
+.second-navigation:hover {
+  color: rgb(255, 255, 255);
+  font-weight: 500;
+}
+
+.logo-color:hover {
+  border-bottom: 1px solid rgb(0, 0, 0);
+  filter: brightness(0) invert(1);
+}
+
+.table-color-style {
+  background-color: white;
+}
+
+.table-color-top-style {
+  background-color: #7b6bef;
+  color: white;
+  border-radius: 5px;
+}
+
+.table-style-rounded {
+  border-collapse: collapse;
+  border-radius: 8px;
+
+  /* box-shadow: 5px 0 0px -1px #998cfc;  */
+
+  border-bottom: #d8d8d8 1px solid;
 }
 
 .italic-style-small {
@@ -346,7 +422,7 @@ h5,
 */
 
 .italic-style {
-  width: 100%;
+  /* width: 100%; */
   border: #e2e2e2 1px solid;
   font-weight: 400;
   font-size: 14px;
@@ -425,18 +501,22 @@ html {
 */
 .sidebar-style a {
   text-decoration: none;
-  font-size: 13px;
+  /* font-size: 13px; */
+  font-size: 14px;
   color: #525466;
   display: block;
   /*transition: 0.6s; */
+  padding-top: 10px;
   padding-bottom: 10px;
-  padding: 10px !important;
+  padding-left: 50px;
   font-family: sans serif;
   font-weight: 500;
   border-right: 2px solid #ffffff;
   border-top: 2px solid #ffffff;
   border-bottom: 2px solid #ffffff;
   border-left: 4px solid #ffffff;
+  letter-spacing: -0.7px;
+
   /*width: 150px;*/
 }
 
@@ -477,13 +557,15 @@ html {
 
 .sidebar-style {
   background-color: rgb(255, 255, 255);
-  min-height: calc(100vh - 80px);
+  /* min-height: calc(100vh - 70px); */
+  min-height: calc(100vh - 70px);
 }
 
 .sb-style {
   padding-left: 0px;
   padding-bottom: 0px;
   margin: 0px;
+  /* max-width: 350px; */
 }
 
 .sidebar-icon {
@@ -581,15 +663,14 @@ html {
 }
 
 .info-icon-style {
+  margin-left: 5px;
   width: 10px;
   height: 10px;
   vertical-align: text-top;
   opacity: 0.7;
+  filter: brightness(1) invert(1);
 }
 
 .info-icon-style:hover {
-  width: 10px;
-  height: 10px;
-  vertical-align: text-top;
   opacity: 1;
 }

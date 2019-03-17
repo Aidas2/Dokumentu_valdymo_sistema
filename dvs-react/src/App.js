@@ -10,10 +10,10 @@ const App = props => {
       <div className="container-fluid main-container  ">
         <div className="row justify-content-between">
           {/*  <FooterComponent /> */}
-          <div className=" col-lg-3 col-xl-2 col-md-3 col-sm-5 sb-style">
+          <div className=" col-lg-3 col-xl-3 col-md-3 col-sm-5 sb-style no-padding">
             <SideBarComponent />
           </div>
-          <div className=" col-lg-9 col-xl-10 col-md-9 col-sm-9 ">
+          <div className=" col-lg-9 col-xl-9 col-md-9 col-sm-9 no-padding">
             {props.children}
           </div>
         </div>

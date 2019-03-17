@@ -6,7 +6,7 @@ import adminIcon from "../../images/adminIcon.png";
 class NavigationComponent extends Component {
   render() {
     return (
-      <nav className="navbar navbar-expand-md navbar-dark bg-dark navigation-style">
+      <nav className="navbar navbar-expand-md navbar-dark  navigation-style">
         {/*  
         <div className="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
           <Link to={"/"} className="nav-link logo ">
@@ -37,7 +37,7 @@ class NavigationComponent extends Component {
           </ul>
         </div>
 */}
-        <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <div className="navbar-collapse collapse w-100 order-3 dual-collapse2 navigation-right-padding">
           <ul className="navbar-nav ml-auto">
             <li className="nav-item">
               <Link to={"/"} className="nav-link">

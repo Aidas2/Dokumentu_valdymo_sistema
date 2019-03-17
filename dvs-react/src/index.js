@@ -13,6 +13,7 @@ import DocumentTypesContainer from "./components/DocumentTypes/DocumentTypesCont
 import CreateDocumentTypeConatainer from "./components/Forms/DocumentType/CreateDocumentTypeContainer";
 import CreateUserContainer from "./components/Forms/User/CreateUserContainer";
 import UsersContainer from "./components/Users/UsersContainer";
+import StatisticsContainer from "./components/Statistics/StatisticsContainer";
 import FileDownloadConatainer from "./components/FileDownload/FileDownloadContainer";
 import LandingPageContainer from "./components/LandingPageContainer";
 import DocumentsContainer from "./components/Documents/DocumentsContainer";
@@ -48,6 +49,7 @@ ReactDOM.render(
         />{" "}
         <Route exact path="/admin/newuser" component={CreateUserContainer} />
         <Route exact path="/admin/users" component={UsersContainer} />
+        <Route exact path="/statistics" component={StatisticsContainer} />
         <Route
           exact
           path="/admin/updateuser/:username"
