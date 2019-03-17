@@ -99,7 +99,7 @@ public class DocumentTypeService {
     //GET BY STATE (READY FOR SUBMITTING) AND USER (SPECIFIED) V_02 (with DTO) ======================================
     @Transactional (readOnly = true)
      public List<DocumentTypeGetCommand> getDocumentTypeTitlesOfSubmittingUser2 (String username) {
-        List<DocumentTypeGetCommand> documentTypesDtoOfSubmittingUser = new ArrayList<>();   // is anksto sukuriam DTO Lista i kuri addinsim rezultatus;
+        List<DocumentTypeGetCommand> documentTypesDtoOfSubmittingUser = new ArrayList<>();   // is anksto sukuriam DTO Lista i kuri addinsim DTO kaip OBJEKTUS;
         User submittingUser = userRepository.findByUsername(username);  // pasirinkti useri (is repositorijos ir t.t.)
         Set<UserGroup> userGroupsOfSubmittingUser = submittingUser.getUserGroups(); // gettinam kokios userGroups jam priskirtos, gaunam masyva userGroups'u [Administracija, Gamyba];
 
@@ -111,10 +111,10 @@ public class DocumentTypeService {
             // einam foreach'u per kiekviena masyvo documentType elementa,  getinam viska (id, title), ir pridedam i nauja DTO, kuri addinsim i is anksto susikurta  objektu Lista
             for (DocumentType documentType: submissionDocumentTypeOfSubmittingUser
             ) {
-                DocumentTypeGetCommand docType = new DocumentTypeGetCommand(documentType.getId(),documentType.getTitle()); // gavom nauja DTO su paduotomis reiksmemis
+                DocumentTypeGetCommand docTypeDTO = new DocumentTypeGetCommand(documentType.getId(),documentType.getTitle()); // gavom nauja DTO su paduotomis reiksmemis
 
-                if(!documentTypesDtoOfSubmittingUser.contains(docType)) { //(bet tik tuo atveju jei dar neaddintas, zr. @Override)
-                    documentTypesDtoOfSubmittingUser.add(docType);
+                if(!documentTypesDtoOfSubmittingUser.contains(docTypeDTO)) { //(bet tik tuo atveju jei dar neaddintas, zr. @Override)
+                    documentTypesDtoOfSubmittingUser.add(docTypeDTO);
                 }
             }
         }

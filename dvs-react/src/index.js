@@ -23,6 +23,9 @@ import "./styles.css";
 import RenderResponse from "./components/FileDownload/RenderResponse";
 import DocumentDetailsContainer from "./components/Documents/DocumentDetailsContainer";
 import UpdateUserContainer from "./components/Forms/User/UpdateUserContainer";
+import UpdateUserGroupContainer from "./components/Forms/UserGroups/UpdateUserGroupContainer";
+
+const urlToGetDocs = "http://localhost:8081/api/docs";
 
 ReactDOM.render(
   <BrowserRouter>
@@ -52,6 +55,18 @@ ReactDOM.render(
           path="/admin/updateuser/:username"
           component={UpdateUserContainer}
         />
+        <Route
+          exact
+          path="/admin/updategroup/:title"
+          component={UpdateUserGroupContainer}
+        />
+        {/* <Route
+          exact
+          path="/admin/docs"
+          render={props => (
+            <DocumentsContainer {...props} requestUrl={urlToGetDocs} />
+          )}
+        /> */}
         <Route exact path="/admin/docs" component={DocumentsContainer} />
         <Route
           exact
