@@ -13,6 +13,8 @@ class UpdateUserGroupContainer extends Component {
   };
 
   componentDidMount() {
+    const usergroupParam = this.props.match.params.title;
+
     axios
       .get("http://localhost:8081/api/doctypes")
       .then(response => {
@@ -22,11 +24,10 @@ class UpdateUserGroupContainer extends Component {
         console.log(error);
       });
 
-    const usergroupParam = this.props.match.params.usergroup;
     console.log("USER GROUP TITLE ======== ", usergroupParam);
 
     axios
-      .get("http://localhost:8081/api/groups/" + "direktoriusgroup")
+      .get("http://localhost:8081/api/groups/" + usergroupParam)
       .then(response => {
         this.setState({
           title: response.data.title,
