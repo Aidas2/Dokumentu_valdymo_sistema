@@ -1,0 +1,6 @@
+#FileLock
+#Wed Mar 13 20:44:57 EET 2019
+hostName=paulius-VirtualBox
+id=169785f25f4244fb009918d95697ebcfa3247ecbfc8
+method=file
+server=127.0.1.1\:41777

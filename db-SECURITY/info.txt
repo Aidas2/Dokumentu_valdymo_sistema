@@ -1,0 +1,10 @@
+//encrypted
+username: adminas
+pass: pass
+
+//not encrypted
+direktorius/pass
+virejas/pass
+
+originally was created on 2019-03-12-2047-SECURITY-stasauskas-implementation-main
+
