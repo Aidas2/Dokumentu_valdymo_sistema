@@ -25,8 +25,6 @@ class UpdateUserGroupContainer extends Component {
         console.log(error);
       });
 
-    console.log("USER GROUP TITLE ======== ", usergroupParam);
-
     axios
       .get("http://localhost:8081/api/groups/" + usergroupParam)
       .then(response => {
@@ -55,7 +53,7 @@ class UpdateUserGroupContainer extends Component {
         submitDocumentType: this.state.submitDocumentType
       })
       .then(response => {
-        const uploadStatus = "Group was created successfully";
+        const uploadStatus = "Group was created updated";
         console.log("upload status >>>>>>>>>> ", uploadStatus);
         this.setState({ msg: true });
       })
@@ -125,14 +123,14 @@ class UpdateUserGroupContainer extends Component {
   };
   handleSubmitTypeRemoval = type => {
     let submitDocumentType = this.state.submitDocumentType;
-    var filteredSubmitDocumentTypes = submitDocumentType.filter(
+    let filteredSubmitDocumentTypes = submitDocumentType.filter(
       oneType => oneType !== type
     );
     this.setState({ submitDocumentType: filteredSubmitDocumentTypes });
   };
   handleReviewTypeRemoval = type => {
     let reviewDocumentType = this.state.reviewDocumentType;
-    var filteredReviewDocumentTypes = reviewDocumentType.filter(
+    let filteredReviewDocumentTypes = reviewDocumentType.filter(
       oneType => oneType !== type
     );
     this.setState({ reviewDocumentType: filteredReviewDocumentTypes });
