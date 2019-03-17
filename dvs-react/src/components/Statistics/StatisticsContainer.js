@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-// import StatisticsComponent from "./StatisticsComponent";
+import StatisticsComponent from "./StatisticsComponent";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import logo from "../../images/home.png";
@@ -14,6 +14,7 @@ class StatisticsContainer extends Component {
     axios
       .get("http://localhost:8081/api/statistics/docAndusers")
       .then(response => {
+        console.log(response);
         this.setState({
           statistics: response.data
         });
@@ -21,6 +22,7 @@ class StatisticsContainer extends Component {
       .catch(error => {
         console.log(error);
       });
+
     console.log(
       "ComponentDidMount inside DocumentTYpesCOntainer >>>>>>>>>> this.state.statistics>>>>.",
       this.state
@@ -28,18 +30,17 @@ class StatisticsContainer extends Component {
   }
 
   render() {
-    var statistics55 = [1, 5, 6];
+    var statisticsExample = this.state.statistics.map(
+      statisticsFirstElement => {
+        return <div>{statisticsFirstElement} </div>;
+      }
+    );
 
-    var statisticsToRenderId = this.state.statistics.map(
-      (oneStatisticsObj, index) => {
-        return (
-          // <StatisticsComponent
-          //   key={oneStatisticsObj.id}
-          //   typeId={index + 1}
-          //   typeTitle={oneStatisticsObj.title}
-          // />
-          statistics55
-        );
+    // var map1 = new Map(this.state.statistics);
+
+    var statisticsExample22 = this.state.statistics.map(
+      statisticsFirstElement => {
+        return <div>{statisticsFirstElement} </div>;
       }
     );
 
@@ -85,10 +86,12 @@ class StatisticsContainer extends Component {
               <div className="col-2   users-table-middle-style">---</div>
               <div className=" col-2 users-table-middle-style">--</div>
               <div className="col-2   users-table-middle-style ">-</div>
-              <div className="col-2  users-table-middle-style ">--</div>
-              <div className="col-3   users-table-action-style ">---</div>
+              <div className="col-2  users-table-middle-style ">{123}</div>
+              <div className="col-3   users-table-action-style ">
+                {statisticsExample22}
+              </div>
             </div>
-            <div> {statisticsToRenderId}</div>
+            <div>{statisticsExample}</div>
           </div>
         </div>
       </div>
