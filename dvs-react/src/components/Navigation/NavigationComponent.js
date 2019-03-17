@@ -1,15 +1,16 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-
+// import { Link } from "react-router-dom";
 import logo from "../../images/home.png";
 import LogoutContainer from "../login/LogoutContainer";
+import adminIcon from "../../images/adminIcon.png";
 
 class NavigationComponent extends Component {
   render() {
     return (
-      <nav className="navbar navbar-expand-md navbar-dark bg-dark navigation-style">
+      <nav className="navbar navbar-expand-md navbar-dark  navigation-style">
+        {/*  
         <div className="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-          <Link to={"/"} className="nav-link logo">
+          <Link to={"/"} className="nav-link logo ">
             <img src={logo} width="40" height="20" alt="home" />
           </Link>
 
@@ -36,13 +37,18 @@ class NavigationComponent extends Component {
             </li>
           </ul>
         </div>
-
-        <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
+*/}
+        <div className="navbar-collapse collapse w-100 order-3 dual-collapse2 navigation-right-padding">
           <ul className="navbar-nav ml-auto">
             <li className="nav-item">
-              <Link to={"/"} className="nav-link">
+              <div className="dropdown">
+                <span className="dot" />
                 Prisijungęs vartotojas
-              </Link>
+                <div className="dropdown-content">
+                  <a href="https://www.google.com/">Nustatymai</a>
+                  <a href="https://www.google.com/">Atsijungti</a>
+                </div>
+              </div>
             </li>
           </ul>
           <LogoutContainer />

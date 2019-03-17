@@ -3,6 +3,7 @@ package lt.akademijait.bronza.services;
 import lombok.extern.slf4j.Slf4j;
 import lt.akademijait.bronza.dto.usergroup.UserGroupCreateCommand;
 import lt.akademijait.bronza.dto.usergroup.UserGroupGetCommand;
+import lt.akademijait.bronza.dto.usergroup.UserGroupUpdateCommand;
 import lt.akademijait.bronza.dto.usergroup.UserGroupUpdateDocTypeCommand;
 import lt.akademijait.bronza.entities.DocumentType;
 import lt.akademijait.bronza.entities.UserGroup;
@@ -84,6 +85,29 @@ public class UserGroupService {
     }
 
     @Transactional
+    public void updateUserGroupInfo(String userGroupName, UserGroupUpdateCommand uguc){
+
+        UserGroup userGroupToUpdate = userGroupRepository.findByTitle(userGroupName);
+
+        Set<DocumentType> docTypesToSubmit = new HashSet<>();
+        for (String submitDocType: uguc.getSubmitDocumentType()) {
+            docTypesToSubmit.add(documentTypeRepository.findByTitle(submitDocType));
+        }
+
+        Set<DocumentType> docTypesToReview = new HashSet<>();
+        for (String reviewDocType: uguc.getReviewDocumentType()) {
+            docTypesToReview.add(documentTypeRepository.findByTitle(reviewDocType));
+        }
+
+        userGroupToUpdate.setTitle(uguc.getTitle());
+        userGroupToUpdate.setSubmissionDocumentType(docTypesToSubmit);
+        userGroupToUpdate.setReviewDocumentType(docTypesToReview);
+
+        userGroupRepository.save(userGroupToUpdate);
+        log.info("The info of the group " + userGroupName + " was updated");
+    }
+
+    @Transactional
     public void addDocTypeToReview(String userGroup, UserGroupUpdateDocTypeCommand userGroupUpdateDocTypeCommand){
 
         UserGroup groupToUpdate = userGroupRepository.findByTitle(userGroup);
@@ -144,13 +168,7 @@ public class UserGroupService {
         log.info("The user group " + title + " was deleted");
     }
 
-    @Transactional
-    public void changeGroupName(String userGroup, UserGroupCreateCommand ugcc){
-        UserGroup userGroupToUpdate = userGroupRepository.findByTitle(userGroup);
-        userGroupToUpdate.setTitle(ugcc.getTitle());
-        userGroupRepository.save(userGroupToUpdate);
-        log.info("The name of the group " + userGroup + " was changed to the name " + ugcc.getTitle());
-    }
+
 
     @Transactional
     public UserGroupGetCommand getUserGroupInfo (String groupName){
@@ -168,8 +186,8 @@ public class UserGroupService {
         log.info("Info about the group " + groupName + " was gotten");
         return new UserGroupGetCommand(
                 userGroup.getTitle(),
-                reviewDocType,
-                submitDocType
+                submitDocType,
+                reviewDocType
                 );
     }
 

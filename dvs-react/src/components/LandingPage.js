@@ -11,7 +11,7 @@ const LandingPage = props => {
             <img
               src={main_icon}
               className=" center-block picture-padding"
-              alt="main icon"
+              alt=""
             />
           </div>
         </div>
@@ -34,7 +34,7 @@ const LandingPage = props => {
 
           <button
             onClick={props.onSaveUsername}
-            className="btn btn-outline-success login-button"
+            className="btn btn-outline-success login-button button-color"
           >
             Prisijungti
           </button>

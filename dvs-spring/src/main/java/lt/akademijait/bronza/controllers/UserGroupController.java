@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lt.akademijait.bronza.dto.usergroup.UserGroupCreateCommand;
 import lt.akademijait.bronza.dto.usergroup.UserGroupGetCommand;
+import lt.akademijait.bronza.dto.usergroup.UserGroupUpdateCommand;
 import lt.akademijait.bronza.dto.usergroup.UserGroupUpdateDocTypeCommand;
 import lt.akademijait.bronza.services.UserGroupService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -86,11 +87,11 @@ public class UserGroupController {
     @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping(path = "/{usergroup}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
-    @ApiOperation(value = "Update usergroup title", notes = "Change titel of a certain usergroup")
-    public void updateUserGroupTitle(
-            @ApiParam(value = "Usergroup", required = true) @PathVariable final String usergroup,
-            @ApiParam(value =  "new title", required = true) @RequestBody UserGroupCreateCommand ugcc){
-        userGroupService.changeGroupName(usergroup,ugcc);
+    @ApiOperation(value = "Update usergroup info", notes = "Change info of a certain usergroup")
+    public void updateUserGroup(
+            @ApiParam(value = "usergroup", required = true) @PathVariable final String usergroup,
+            @ApiParam(value =  "new data", required = true) @RequestBody UserGroupUpdateCommand uguc){
+        userGroupService.updateUserGroupInfo(usergroup, uguc);
     }
 
     @RequestMapping(path = "/{usergroup}", method = RequestMethod.GET)

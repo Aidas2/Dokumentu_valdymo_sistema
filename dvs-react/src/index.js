@@ -13,6 +13,7 @@ import DocumentTypesContainer from "./components/DocumentTypes/DocumentTypesCont
 import CreateDocumentTypeConatainer from "./components/Forms/DocumentType/CreateDocumentTypeContainer";
 import CreateUserContainer from "./components/Forms/User/CreateUserContainer";
 import UsersContainer from "./components/Users/UsersContainer";
+import StatisticsContainer from "./components/Statistics/StatisticsContainer";
 import FileDownloadConatainer from "./components/FileDownload/FileDownloadContainer";
 import LandingPageContainer from "./components/LandingPageContainer";
 import DocumentsContainer from "./components/Documents/DocumentsContainer";
@@ -24,8 +25,11 @@ import DocumentDetailsContainer from "./components/Documents/DocumentDetailsCont
 import UpdateUserContainer from "./components/Forms/User/UpdateUserContainer";
 import LoginContainer from "./components/login/LoginContainer";
 import LogoutContainer from "./components/login/LogoutContainer";
+import UpdateUserGroupContainer from "./components/Forms/UserGroups/UpdateUserGroupContainer";
 
 // const urlToGetDocs = "http://localhost:8081/api/docs";
+
+const urlToGetDocs = "http://localhost:8081/api/docs";
 
 ReactDOM.render(
   <BrowserRouter>
@@ -51,10 +55,16 @@ ReactDOM.render(
         />{" "}
         <Route exact path="/admin/newuser" component={CreateUserContainer} />
         <Route exact path="/admin/users" component={UsersContainer} />
+        <Route exact path="/statistics" component={StatisticsContainer} />
         <Route
           exact
           path="/admin/updateuser/:username"
           component={UpdateUserContainer}
+        />
+        <Route
+          exact
+          path="/admin/updategroup/:title"
+          component={UpdateUserGroupContainer}
         />
         {/* <Route
           exact

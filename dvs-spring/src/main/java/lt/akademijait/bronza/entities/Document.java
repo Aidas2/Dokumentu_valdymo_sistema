@@ -213,6 +213,15 @@ public class Document {
         return reviewer;
     }
 
+    //  for preventing NullPointerException ir case then "document.getReviewer() == null"
+//    public User getReviewer() {
+//        if (this.reviewer == null) {
+//            return new User();
+//        } else {
+//            return reviewer;
+//        }
+//    }
+
     public void setReviewer(User reviewer) {
         this.reviewer = reviewer;
     }
@@ -233,7 +242,7 @@ public class Document {
         this.path = path;
     }
 
-    @Override
+    @Override // this is for formatting output of logger
     public String toString() {
         return "Document{" +
                 "documentState=" + documentState +

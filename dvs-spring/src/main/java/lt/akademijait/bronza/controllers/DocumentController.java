@@ -71,7 +71,7 @@ public class DocumentController {
     }
 
     /* // commented because cause "Ambiguous ... " (maybe passed object covers also and String, and Long and so on)
-    //READ BY STATE (BY SPECIFIED STATE). Version_01 ===================================================================
+    //READ BY STATE (SPECIFIED). Version_01 ===================================================================
     //// first and last "@PathVariable of type object (or/and String ?, or/and Long?)" - because only one is allowed by Spring
     @RequestMapping(value = "/{documentState}", method = RequestMethod.GET)
     @ApiOperation(value = "Get all document of specified state. V_01", notes = "Returns all document of specified state")
@@ -83,7 +83,7 @@ public class DocumentController {
     }
     */
 
-    //READ BY STATE (BY SPECIFIED STATE). Version_02 ===================================================================
+    //READ BY STATE (SPECIFIED). Version_02 ============================================================================
     //@PathVariable --> @RequestParam
     @RequestMapping(value = "/bystate", method = RequestMethod.GET)
     @ApiOperation(value = "Get all document of specified state. V_02", notes = "Returns all document of specified state")
@@ -94,6 +94,21 @@ public class DocumentController {
         return documentService.getAllDocumentsByDocumentState(documentState);
     }
 
+
+//    Kad grąžintu dokumentus tik to tipo, kuriuos useris gali reviewinti ir kurie turi state submitted ir tik submitted
+//    Tada galėsim gauti konkrečiai tuos dokus, kuriuos useris galės approvinti arba rejectinti
+//    Paduodam parametrą username ir pagal jį surandam reikiamus dokus, kuriuos jis managins
+
+    //READ BY STATE (SUBMITTED) AND BY USER (SPECIFIED) ===============================================================
+    //@PathVariable --> @RequestParam
+    @RequestMapping(value = "/{username}/toreview", method = RequestMethod.GET)
+    @ApiOperation(value = "Get submitted documents for user's (specified) to review", notes = "Returns submitted documents for user's (specified) to review")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public List<DocumentGetCommand> getDocumentsByDocumentStateAndUser(
+            @ApiParam(value = "User username", required = true)
+            @PathVariable String username) {
+        return documentService.getSubmittedDocumentForReviewing(username);
+    }
 
     /* // Doesn't work :( !
     //READ BY TYPE. Version_01 =========================================================
@@ -137,15 +152,26 @@ public class DocumentController {
     }
     */
 
+    //READ BY TYPE (SPECIFIED) AND BY AUTHOR (SPECIFIED) ===============================================================
+    @RequestMapping(value = "/{username}/bytype", method = RequestMethod.GET)
+    @ApiOperation(value = "Get user's (by specified username) documents (by specified type)", notes = "Returns user's (by specified username) documents (by specified type)")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public List<DocumentGetCommand> getAllDocumentsByDocumentTypeAndUser(
+            @ApiParam(value = "User username", required = true)
+            @PathVariable String username,
+            @ApiParam(value = "Document type", required = true)
+            @RequestParam String documentTypeTitle) {
+        return documentService.getAllDocumentsByDocumentTypeAndUsername(username, documentTypeTitle);
+    }
 
-    //READ All DOCUMENTS BY AUTHOR_ID =========================================================================
-    @RequestMapping(value = "/authorId", method = RequestMethod.GET)
+    //READ All DOCUMENTS BY AUTHOR_ID ==================================================================================
+    @RequestMapping(value = "/username", method = RequestMethod.GET)
     @ApiOperation(value = "Get all document of specified author id", notes = "Returns all document of specified author id")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public List<DocumentGetCommand> getAllDocumentsByAuthorId(
-            @ApiParam(value = "Author ID", required = true)
-            @RequestParam Long authorId) {
-        return documentService.getAllDocumentsByAuthorId(authorId);
+            @ApiParam(value = "Author username", required = true)
+            @RequestParam String username) {
+        return documentService.getAllDocumentsByAuthorUsername(username);
     }
 
     // POST POST POST POST POST POST POST POST POST POST POST POST POST POST POST POST POST POST POST POST POST POST
@@ -189,6 +215,7 @@ public class DocumentController {
     }
     */
 
+    /*
     //SET DOCUMENT STATE. Version_01 (by my) ===========================================================================
     @RequestMapping(value = "/setstate1", method = RequestMethod.PUT)
     @ApiOperation(value = "Set document state by id. V_01", notes = "Set document state by id")
@@ -207,6 +234,7 @@ public class DocumentController {
         documentService.setDocumentStateV1(documentSetStateCommand);
     }
 
+*/
     //SUGGESTION: pass not Body, but only state (because we want change only state, not others fields
 
     //SET DOCUMENT STATE. Version_02 (by J.C.) =========================================================================
