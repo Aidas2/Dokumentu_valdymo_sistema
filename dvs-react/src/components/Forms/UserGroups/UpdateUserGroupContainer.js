@@ -11,6 +11,7 @@ class UpdateUserGroupContainer extends Component {
     msg: false,
     documentTypes: []
   };
+
   componentDidMount() {
     axios
       .get("http://localhost:8081/api/doctypes")
@@ -20,10 +21,22 @@ class UpdateUserGroupContainer extends Component {
       .catch(error => {
         console.log(error);
       });
-    console.log(
-      "ComponentDidMount inside DocumentTYpesCOntainer >>>>>>>>>> this.state.documetTypes>>>>.",
-      this.state.documentTypes
-    );
+
+    const usergroupParam = this.props.match.params.usergroup;
+    console.log("USER GROUP TITLE ======== ", usergroupParam);
+
+    axios
+      .get("http://localhost:8081/api/groups/" + "direktoriusgroup")
+      .then(response => {
+        this.setState({
+          title: response.data.title,
+          submitDocumentType: response.data.submissionDocType,
+          reviewDocumentType: response.data.reviewDocType
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   handleSubmit = () => {
@@ -160,6 +173,7 @@ class UpdateUserGroupContainer extends Component {
 
     return (
       <UpdateUserGroupComponent
+        title={this.state.title}
         documentTypes={this.state.documentTypes}
         onSubmitTypesChange={this.handleSubmitDocumentTypeChange}
         onReviewTypesChange={this.handleReviewDocumentTypeChange}

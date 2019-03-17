@@ -69,7 +69,7 @@ const UpdateUserGroupComponent = props => {
             <div className="col-6 documents-table-size">
               <input
                 className=" form-control form-control-sm italic-style"
-                placeholder="Įveskite vartotojų grupės pavadinimą"
+                placeholder={props.title}
                 type="text"
                 onChange={props.onTitleChange}
               />
