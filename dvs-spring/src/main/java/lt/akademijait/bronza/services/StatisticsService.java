@@ -13,7 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -32,43 +34,73 @@ public class StatisticsService {
     private DocumentRepository documentRepository;
 
     @Transactional
-    public Long getAllUsersCount(){
+    public Long getAllUsersCount() {
         return (long) userRepository.findAll().size();
     }
 
     @Transactional
-    public Long getAllDocumentsCount(){
+    public Long getAllDocumentsCount() {
         return (long) documentRepository.findAll().size();
     }
 
     @Transactional
-    public List<Long> getAllDocumentsandUsersCount(){
-        List<Long> count = new ArrayList<>();
-
-        count.add((long) userRepository.findAll().size());
-        count.add((long) documentRepository.findAll().size());
-
-
-        return count;
-    }
-
-    @Transactional
-    public DocumentCountGetCommand getCountByDocumentType(String docType){
+    public DocumentCountGetCommand getDocCountByDate(String docType, Date startDate, Date endDate) {
 
         List<String> count = new ArrayList<>();
         List<String> submit = new ArrayList<>();
         List<String> accept = new ArrayList<>();
         List<String> reject = new ArrayList<>();
 
-        for (Document document:documentRepository.findAll()){
-            if (document.getDocumentType().getTitle().equals(docType)){
+        for (Document document : documentRepository.findAll()) {
+            if (document.getDocumentType().getTitle().equals(docType)) {
+                if (startDate.before(document.getCreationDate()) && endDate.after(document.getCreationDate())) {
+                    count.add(document.getTitle());
+                }
+                if (document.getSubmissionDate() != null) {
+                    if (startDate.before(document.getSubmissionDate()) && endDate.after(document.getCreationDate())) {
+                        submit.add(document.getTitle());
+                    }
+                    if (document.getDocumentState().equals(DocumentState.CONFIRMED)) {
+                        if (startDate.before(document.getConfirmationDate()) && endDate.after(document.getConfirmationDate())) {
+                            accept.add(document.getTitle());
+                        }
+                    }
+                    if (document.getRejectionDate() != null) {
+                        if (startDate.before(document.getRejectionDate()) && endDate.after(document.getRejectionDate())) {
+                            reject.add(document.getTitle());
+                        }
+                    }
+
+                }
+            }
+        }
+        return new DocumentCountGetCommand(
+                count.size(),
+                submit.size(),
+                accept.size(),
+                reject.size());
+    }
+
+
+    @Transactional
+    public DocumentCountGetCommand getCountByDocumentType(String docType) {
+
+        List<String> count = new ArrayList<>();
+        List<String> submit = new ArrayList<>();
+        List<String> accept = new ArrayList<>();
+        List<String> reject = new ArrayList<>();
+
+        for (Document document : documentRepository.findAll()) {
+            if (document.getDocumentType().getTitle().equals(docType)) {
                 count.add(document.getTitle());
-                if (document.getDocumentState().equals(DocumentState.SUBMITTED)){
+                if (document.getSubmissionDate() != null) {
                     submit.add(document.getTitle());
-                } else if (document.getDocumentState().equals(DocumentState.CONFIRMED)){
-                    accept.add(document.getTitle());
-                } else if (document.getDocumentState().equals(DocumentState.REJECTED)){
-                    reject.add(document.getTitle());
+                    if (document.getDocumentState().equals(DocumentState.CONFIRMED)) {
+                        accept.add(document.getTitle());
+                    }
+                    if (document.getRejectionDate() != null) {
+                        reject.add(document.getTitle());
+                    }
                 }
             }
         }
@@ -80,3 +112,5 @@ public class StatisticsService {
                 reject.size());
     }
 }
+
+

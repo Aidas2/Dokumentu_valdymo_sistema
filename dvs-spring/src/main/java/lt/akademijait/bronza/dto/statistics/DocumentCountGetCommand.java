@@ -2,7 +2,7 @@ package lt.akademijait.bronza.dto.statistics;
 
 public class DocumentCountGetCommand {
 
-    private int allDocumentsCount;
+    private int createdDocumentsCount;
     private int submittedDocumentsCount;
     private int acceptedDocumentsCount;
     private int rejectedDocumentsCount;
@@ -10,20 +10,20 @@ public class DocumentCountGetCommand {
     public DocumentCountGetCommand() {
     }
 
-    public DocumentCountGetCommand(int allDocumentsCount, int submittedDocumentsCount,
+    public DocumentCountGetCommand(int createdDocumentsCount, int submittedDocumentsCount,
                                    int acceptedDocumentsCount, int rejectedDocumentsCount) {
-        this.allDocumentsCount = allDocumentsCount;
+        this.createdDocumentsCount = createdDocumentsCount;
         this.submittedDocumentsCount = submittedDocumentsCount;
         this.acceptedDocumentsCount = acceptedDocumentsCount;
         this.rejectedDocumentsCount = rejectedDocumentsCount;
     }
 
-    public int getAllDocumentsCount() {
-        return allDocumentsCount;
+    public int getCreatedDocumentsCount() {
+        return createdDocumentsCount;
     }
 
-    public void setAllDocumentsCount(int allDocumentsCount) {
-        this.allDocumentsCount = allDocumentsCount;
+    public void setCreatedDocumentsCount(int createdDocumentsCount) {
+        this.createdDocumentsCount = createdDocumentsCount;
     }
 
     public int getSubmittedDocumentsCount() {

@@ -8,12 +8,13 @@ import lt.akademijait.bronza.dto.user.UserGetCommand;
 import lt.akademijait.bronza.services.StatisticsService;
 import lt.akademijait.bronza.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -36,17 +37,26 @@ public class StatisticsController {
         return statisticsService.getAllDocumentsCount();
     }
 
-    @RequestMapping(path = "/docAndusers", method = RequestMethod.GET)
-    @ApiOperation(value = "Get all documents count", notes = "Returns all document count")
-    public List<Long> getAllDocAndUsers(){
-        return statisticsService.getAllDocumentsandUsersCount();
-    }
+//    @RequestMapping(path = "/docAndusers", method = RequestMethod.GET)
+//    @ApiOperation(value = "Get all documents count", notes = "Returns all document count")
+//    public List<Long> getAllDocAndUsers(){
+//        return statisticsService.getAllDocumentsandUsersCount();
+//    }
 
     @RequestMapping(path = "/{docType}", method = RequestMethod.GET)
     @ApiOperation(value = "Get documents by doctype", notes = "Returns documents statistics by document type")
     public DocumentCountGetCommand getDocumentsByType(
             @ApiParam(value = "docType", required = true) @PathVariable final String docType){
         return statisticsService.getCountByDocumentType(docType);
+    }
+
+    @RequestMapping(path = "/{docType}/Date", method = RequestMethod.GET)
+    @ApiOperation(value = "Get documents by doctypa and date", notes = "returns document statistics by document type and date")
+    public DocumentCountGetCommand getDocByTypeAndDate(
+            @ApiParam(value = "docType", required = true) @PathVariable final String docType,
+            @ApiParam(value = "startDate", defaultValue = "2019-03-03") @RequestParam Date startDate,
+            @ApiParam(value = "endDate", defaultValue = "2019-03-17") @RequestParam Date endDate){
+        return statisticsService.getDocCountByDate(docType, startDate, endDate);
     }
 
 
