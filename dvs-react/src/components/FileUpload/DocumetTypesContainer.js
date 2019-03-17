@@ -18,14 +18,14 @@ class DocumentTypesContainer extends Component {
   // }
 
   render() {
-    console.log("$$$$$$$$$ this.props >>>>>>>>>", this.props);
-    this.props.documentTypes.length > 1
-      ? console.log(
-          "$$$$$$$$$ this.props.documentTypes[1].title >>>>>>>>>",
-          this.props.documentTypes[1].title
-        )
-      : console.log("$$$$$$$$$ Array does not contain at least 2 elements ");
-    console.log("$$$$$$$$$$ docTypesArray >>>>>>>>>");
+    // console.log("$$$$$$$$$ this.props >>>>>>>>>", this.props);
+    // this.props.documentTypes.length > 1
+    //   ? console.log(
+    //       "$$$$$$$$$ this.props.documentTypes[1].title >>>>>>>>>",
+    //       this.props.documentTypes[1].title
+    //     )
+    //   : console.log("$$$$$$$$$ Array does not contain at least 2 elements ");
+    // console.log("$$$$$$$$$$ docTypesArray >>>>>>>>>");
 
     const docTypesArrayToRender = this.props.documentTypes.map(oneType => {
       return <DocumetTypesComponent key={oneType.id} typeObject={oneType} />;
