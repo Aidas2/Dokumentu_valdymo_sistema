@@ -80,12 +80,12 @@ const UserGroupDetailsComponent = props => {
               <div className="col-6 documents-table-size list-style">
                 {reviewDocTypes}
               </div>
-              {/* <Link
+              <Link
                 to={linkToIndividualGroupUpdateContainer}
                 className="btn btn-secondary"
               >
                 Redaguoti grupę
-              </Link> */}
+              </Link>
             </div>
           </div>
         </div>
