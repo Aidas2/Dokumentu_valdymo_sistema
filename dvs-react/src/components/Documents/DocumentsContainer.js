@@ -30,8 +30,23 @@ class DocumentsContainer extends Component {
 
   componentDidMount() {
     this.setState({ username: localStorage.getItem("username") });
+    // axios
+    //   .get(this.props.requestUrl, {
+    //     params: {
+    //       username: this.state.username
+    //     }
+    //   })
+    //   .then(response => {
+    //     this.setState({ documents: response.data });
+    //   })
+    //   .catch(error => {
+    //     console.log(error);
+    //   });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
     axios
-      .get("http://localhost:8081/api/docs", {
+      .get(this.props.requestUrl, {
         params: {
           username: this.state.username
         }

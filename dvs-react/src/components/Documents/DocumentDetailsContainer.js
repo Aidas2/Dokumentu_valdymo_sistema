@@ -132,6 +132,43 @@ class DocumentDetailsContainer extends Component {
     this.setState(setStateInfo);
   };
 
+  getActionButtons = () => {
+    if (this.state.documentDetails.documentStateInLithuanian === "SUKURTAS") {
+      return (
+        <div>
+          <button
+            onClick={() => this.handleAcceptDocument("SUBMITTED")}
+            className="btn btn-warning "
+          >
+            Pateikti
+          </button>
+          &ensp;
+        </div>
+      );
+    } else if (
+      this.state.documentDetails.documentStateInLithuanian === "PATEIKTAS"
+    ) {
+      return (
+        <div>
+          <button
+            onClick={() => this.handleAcceptDocument("CONFIRMED")}
+            className="btn btn-success"
+          >
+            Priimti
+          </button>
+          &ensp;
+          <button
+            onClick={() => this.handleAcceptDocument("REJECTED")}
+            className="btn btn-danger "
+          >
+            Atmesti
+          </button>
+          &ensp;
+        </div>
+      );
+    }
+  };
+
   render() {
     // var submissionTypesToDisplay = null;
     // if (this.state.submissionDocType) {
@@ -151,9 +188,10 @@ class DocumentDetailsContainer extends Component {
         <DocumentDetailsComponent
           documentDetails={this.state.documentDetails}
           onRejectionReasonChange={this.handleRejectionReason}
-          onAcceptDocument={() => this.handleAcceptDocument("CONFIRMED")}
-          onRejectDocument={() => this.handleAcceptDocument("REJECTED")}
-          onSubmitDocument={() => this.handleAcceptDocument("SUBMITTED")}
+          // onAcceptDocument={() => this.handleAcceptDocument("CONFIRMED")}
+          // onRejectDocument={() => this.handleAcceptDocument("REJECTED")}
+          // onSubmitDocument={() => this.handleAcceptDocument("SUBMITTED")}
+          actionButtons={this.getActionButtons()}
         />
       </div>
     );

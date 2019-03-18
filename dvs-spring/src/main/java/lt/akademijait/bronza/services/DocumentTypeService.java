@@ -68,9 +68,7 @@ public class DocumentTypeService {
         );
     }
 
-
-
-    //Gali padaryt kontrollerį, kuris grąžintų tik dokumentų tipus, kuriuos useris gali submittinti?
+/*  //commented as not necessary (but useful if you want to return only String)
     //GET BY STATE (READY FOR SUBMITTING) AND USER (SPECIFIED) V_01 (without dto) ======================================
     @Transactional (readOnly = true)
     //public List <DocumentTypeGetCommand> getDocumentTypeTitlesOfSubmittingUser1 (String username) {
@@ -95,7 +93,7 @@ public class DocumentTypeService {
         log.info("Gotten all document type titles which user " + username + " can submit");
         return documentTypesTitlesOfSubmittingUser;
     }
-
+*/
     //GET BY STATE (READY FOR SUBMITTING) AND USER (SPECIFIED) V_02 (with DTO) ======================================
     @Transactional (readOnly = true)
      public List<DocumentTypeGetCommand> getDocumentTypeTitlesOfSubmittingUser2 (String username) {
@@ -122,7 +120,31 @@ public class DocumentTypeService {
         return documentTypesDtoOfSubmittingUser;
     }
 
+    //GET BY STATE (READY FOR REVIEwING) AND USER (SPECIFIED) (with DTO) ======================================
+    @Transactional (readOnly = true)
+    public List<DocumentTypeGetCommand> getDocumentTypeTitlesOfReviewingUser (String username) {
+        List<DocumentTypeGetCommand> documentTypesDtoOfReviewingUser = new ArrayList<>();   // is anksto sukuriam DTO Lista i kuri addinsim DTO kaip OBJEKTUS;
+        User reviewingUser = userRepository.findByUsername(username);  // pasirinkti useri (is repositorijos ir t.t.)
+        Set<UserGroup> userGroupsOfReviewingUser = reviewingUser.getUserGroups(); // gettinam kokios userGroups jam priskirtos, gaunam masyva userGroups'u [Administracija, Gamyba];
 
+        // einam foreach'u per kiekviena masyvo userGroups elementa ir gettinam kokios yra submissionDoctype, gaunam dar viena masyva [Instrukcija, Prasymas, Isakymas]
+        for (UserGroup userGroup: userGroupsOfReviewingUser
+        ) {
+            Set<DocumentType> reviewingDocumentTypeOfSubmittingUser = userGroup.getReviewDocumentType(); //gavom [Instrukcija, Prasymas, Isakymas]
+
+            // einam foreach'u per kiekviena masyvo documentType elementa,  getinam viska (id, title), ir pridedam i nauja DTO, kuri addinsim i is anksto susikurta  objektu Lista
+            for (DocumentType documentType: reviewingDocumentTypeOfSubmittingUser
+            ) {
+                DocumentTypeGetCommand docTypeDTO = new DocumentTypeGetCommand(documentType.getId(),documentType.getTitle()); // gavom nauja DTO su paduotomis reiksmemis
+
+                if(!documentTypesDtoOfReviewingUser.contains(docTypeDTO)) { //(bet tik tuo atveju jei dar neaddintas, zr. @Override)
+                    documentTypesDtoOfReviewingUser.add(docTypeDTO);
+                }
+            }
+        }
+        log.info("Gotten all document type titles which user " + username + " can review");
+        return documentTypesDtoOfReviewingUser;
+    }
 
 
 

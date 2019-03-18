@@ -1,7 +1,6 @@
 package lt.akademijait.bronza.entities;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 //@Table(name="DOCUMENT_TYPE")
@@ -18,8 +17,8 @@ public class DocumentType {
 
 
 
-    @OneToMany //for connecting  DocumentType and Document (one DocumentType may have many Documents)
-    private List<Document> documents;   //uncommented at 2019-03-15 for reason to get Documents belonging to DocumentType (for method getSubmittedDocumentForReviewing)
+    //@OneToMany //for connecting  DocumentType and Document (one DocumentType may have many Documents)
+    //private List<Document> documents;   //uncommented at 2019-03-15 for reason to get Documents belonging to DocumentType (for method getSubmittedDocumentForReviewing)
 /*
     @ManyToMany//(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     //@JoinTable(name = "submission_type", joinColumns = @JoinColumn(name="doc_type"), inverseJoinColumns = @JoinColumn(name="user_group_id") )
@@ -39,14 +38,14 @@ public class DocumentType {
     public DocumentType(String title) {
         this.title = title;
     }
-
+/*
     //constructor added at 2019-03-15 for same reason as mentioned above
     public DocumentType(Long id, String title, List<Document> documents) {
         this.id = id;
         this.title = title;
         this.documents = documents;
     }
-
+*/
     /*
     public DocumentType(String title,
                         List<Document> documents,
@@ -93,7 +92,7 @@ public class DocumentType {
     public void setTitle(String title) {
         this.title = title;
     }
-
+/*
     public List<Document> getDocuments() {
         return documents;
     }
@@ -101,4 +100,5 @@ public class DocumentType {
     public void setDocuments(List<Document> documents) {
         this.documents = documents;
     }
+    */
 }

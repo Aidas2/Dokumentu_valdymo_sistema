@@ -26,10 +26,12 @@ import UpdateUserContainer from "./components/Forms/User/UpdateUserContainer";
 import LoginContainer from "./components/login/LoginContainer";
 import LogoutContainer from "./components/login/LogoutContainer";
 import UpdateUserGroupContainer from "./components/Forms/UserGroups/UpdateUserGroupContainer";
+import ServicesContext from "./components/context/ServicesContext";
+import axios from "axios";
 
-// const urlToGetDocs = "http://localhost:8081/api/docs";
-
-const urlToGetDocs = "http://localhost:8081/api/docs";
+const urlToGetAllDocs = "http://localhost:8081/api/docs";
+const urlToGetDocsByUser = "http://localhost:8081/api/docs/docsbyuser";
+// const loggedUsername = "";
 
 ReactDOM.render(
   <BrowserRouter>
@@ -66,20 +68,26 @@ ReactDOM.render(
           path="/admin/updategroup/:title"
           component={UpdateUserGroupContainer}
         />
-        {/* <Route
+        <Route
+          exact
+          path="/docs"
+          render={props => (
+            <DocumentsContainer {...props} requestUrl={urlToGetDocsByUser} />
+          )}
+        />
+        <Route
           exact
           path="/admin/docs"
           render={props => (
-            <DocumentsContainer {...props} requestUrl={urlToGetDocs} />
+            <DocumentsContainer {...props} requestUrl={urlToGetAllDocs} />
           )}
-        /> */}
-        <Route exact path="/admin/docs" component={DocumentsContainer} />
+        />
         <Route
           exact
           path="/admin/docs/:id"
           component={DocumentDetailsContainer}
         />
-        <Route exact path="/docs" component={DocumentsContainer} />
+        {/* <Route exact path="/docs" component={DocumentsContainer} /> */}
         <Route exact path="/testing" component={RenderResponse} />
         <Route exact path="/admin/usergroups" component={UserGroupsContainer} />
         <Route

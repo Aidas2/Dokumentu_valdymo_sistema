@@ -164,14 +164,14 @@ public class DocumentController {
         return documentService.getAllDocumentsByDocumentTypeAndUsername(username, documentTypeTitle);
     }
 
-    //READ All DOCUMENTS BY AUTHOR_ID ==================================================================================
-    @RequestMapping(value = "/username", method = RequestMethod.GET)
-    @ApiOperation(value = "Get all document of specified author id", notes = "Returns all document of specified author id")
+    //READ All DOCUMENTS BY AUTHOR_USERNAME ==================================================================================
+    @RequestMapping(value = "/docsbyuser", method = RequestMethod.GET)
+    @ApiOperation(value = "Get all document of specified author username", notes = "Returns all document of specified author username")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public List<DocumentGetCommand> getAllDocumentsByAuthorId(
-            @ApiParam(value = "Author username", required = true)
-            @RequestParam String username) {
-        return documentService.getAllDocumentsByAuthorUsername(username);
+           /* @ApiParam(value = "Author username", required = true)
+            @PathVariable String username*/) {
+        return documentService.getAllDocumentsByAuthorUsername(/*username*/);
     }
 
     // POST POST POST POST POST POST POST POST POST POST POST POST POST POST POST POST POST POST POST POST POST POST
@@ -215,41 +215,34 @@ public class DocumentController {
     }
     */
 
-    /*
-    //SET DOCUMENT STATE. Version_01 (by my) ===========================================================================
+    // This method  still in progress, do not use ! (temporally use Version_02, see below).
+    //SET DOCUMENT STATE. Version_01 (by J.C.) =========================================================================
     @RequestMapping(value = "/setstate1", method = RequestMethod.PUT)
-    @ApiOperation(value = "Set document state by id. V_01", notes = "Set document state by id")
+    @ApiOperation(value = "Set document state by id. V_01 (in progress)", notes = "Set document state by id")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public void setDocumentStateByIdV1(
             @ApiParam(value = "<--RequestBody", required = true)
             @RequestBody final DocumentSetStateCommand documentSetStateCommand
 
-            //@ApiParam(value = "Document id", required = true) // not necessary, because specified in DocumentSetStateCommand
-            //@PathVariable Long id // not necessary, because specified in body (in DocumentSetStateCommand)
-
-            // this is for choosing from existing states (also not necessary):
+            // this is for choosing from existing states (not necessary):
             //@ApiParam(value = "Document state", required = true)
             //@PathVariable DocumentState documentState
     ) {
         documentService.setDocumentStateV1(documentSetStateCommand);
     }
 
-*/
-    //SUGGESTION: pass not Body, but only state (because we want change only state, not others fields
-
+    // This version is temporal, while version above is in progress.
+    // This version allows to change state to anny user (without checking his permisions).
     //SET DOCUMENT STATE. Version_02 (by J.C.) =========================================================================
     @RequestMapping(value = "/setstate2", method = RequestMethod.PUT)
-    @ApiOperation(value = "Set document state by id. V_02", notes = "Set document state by id")
+    @ApiOperation(value = "Set document state by id. V_02 (temporal)", notes = "Set document state by id")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public void setDocumentStateByIdV2 (
+    public void setDocumentStateByIdV2(
             @ApiParam(value = "<--RequestBody", required = true)
             @RequestBody final DocumentSetStateCommand documentSetStateCommand
 
-            // this is for choosing from existing states (also not necessary):
-            //@ApiParam(value = "Document state", required = true)
-            //@PathVariable DocumentState documentState
     ) {
-                documentService.setDocumentStateV2(documentSetStateCommand);
+        documentService.setDocumentStateV2(documentSetStateCommand);
     }
 
     // DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE DELETE
