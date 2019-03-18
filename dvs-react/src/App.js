@@ -8,7 +8,7 @@ import ServicesContext from "./components/context/ServicesContext";
 class App extends Component {
   state = { loggedUsername: "" };
 
-  componentDidMount = () => {
+  componentDidUpdate(prevProps, prevState) {
     axios
       .get("http://localhost:8081/loggedUsername")
       .then(response => {
@@ -17,10 +17,10 @@ class App extends Component {
       .catch(error => {
         console.log(error);
       });
-  };
+  }
 
   render() {
-    console.log("LOGGEDUSERNAME: ", this.state.loggedUsername);
+    // console.log("LOGGEDUSERNAME: ", this.state.loggedUsername);
 
     return (
       <React.Fragment>
