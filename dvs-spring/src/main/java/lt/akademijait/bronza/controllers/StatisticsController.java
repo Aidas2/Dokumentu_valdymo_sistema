@@ -37,11 +37,6 @@ public class StatisticsController {
         return statisticsService.getAllDocumentsCount();
     }
 
-//    @RequestMapping(path = "/docAndusers", method = RequestMethod.GET)
-//    @ApiOperation(value = "Get all documents count", notes = "Returns all document count")
-//    public List<Long> getAllDocAndUsers(){
-//        return statisticsService.getAllDocumentsandUsersCount();
-//    }
 
     @RequestMapping(path = "/{docType}", method = RequestMethod.GET)
     @ApiOperation(value = "Get documents by doctype", notes = "Returns documents statistics by document type")
