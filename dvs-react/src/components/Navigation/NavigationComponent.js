@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import logo from "../../images/home.png";
 import LogoutContainer from "../login/LogoutContainer";
 import adminIcon from "../../images/adminIcon.png";
+import ServicesContext from "../context/ServicesContext";
 
 class NavigationComponent extends Component {
   render() {
@@ -43,7 +44,13 @@ class NavigationComponent extends Component {
             <li className="nav-item">
               <div className="dropdown">
                 <span className="dot" />
-                Prisijungęs vartotojas
+                Prisijungęs vartotojas:{" "}
+                <ServicesContext.Consumer>
+                  {/* //userNameObject actually is the value from the Context */}
+                  {userNameObject => {
+                    return <span> {userNameObject.userFromContext.name}</span>;
+                  }}
+                </ServicesContext.Consumer>
                 <LogoutContainer />
                 {/* <a href="http://localhost:8081/login?logout/">Atsijungti</a> */}
               </div>
