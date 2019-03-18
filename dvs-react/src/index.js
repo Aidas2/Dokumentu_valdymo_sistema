@@ -27,8 +27,21 @@ import LoginContainer from "./components/login/LoginContainer";
 import LogoutContainer from "./components/login/LogoutContainer";
 import UpdateUserGroupContainer from "./components/Forms/UserGroups/UpdateUserGroupContainer";
 import ServicesContext from "./components/context/ServicesContext";
+import axios from "axios";
 
 // const urlToGetDocs = "http://localhost:8081/api/docs";
+const loggedUsername = "";
+
+const componentDidMount = () => {
+  axios
+    .get("http://localhost:8081/loggedUsername")
+    .then(response => {
+      loggedUsername = response;
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
 
 ReactDOM.render(
   <BrowserRouter>
