@@ -59,7 +59,7 @@ const UserGroupDetailsComponent = props => {
               to={linkToIndividualGroupUpdateContainer}
               className="btn btn-outline-success m-2 button-color "
             >
-              Redaguoti vartotoją
+              Redaguoti grupę
             </Link>
           </div>
         </div>
@@ -80,12 +80,6 @@ const UserGroupDetailsComponent = props => {
               <div className="col-6 documents-table-size list-style">
                 {reviewDocTypes}
               </div>
-              <Link
-                to={linkToIndividualGroupUpdateContainer}
-                className="btn btn-secondary"
-              >
-                Redaguoti grupę
-              </Link>
             </div>
           </div>
         </div>

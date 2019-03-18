@@ -16,6 +16,7 @@ class LogoutContainer extends Component {
       .catch(e => {
         console.log(e);
       });
+    this.props.history.push("/");
     event.preventDefault();
   };
 

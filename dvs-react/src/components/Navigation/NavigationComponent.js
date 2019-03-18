@@ -44,15 +44,12 @@ class NavigationComponent extends Component {
               <div className="dropdown">
                 <span className="dot" />
                 Prisijungęs vartotojas
-                <div className="dropdown-content">
-                  <a href="https://www.google.com/">Nustatymai</a>
-                  <LogoutContainer />
-                  {/* <a href="http://localhost:8081/login?logout/">Atsijungti</a> */}
-                </div>
+                <LogoutContainer />
+                {/* <a href="http://localhost:8081/login?logout/">Atsijungti</a> */}
               </div>
             </li>
           </ul>
-          <LogoutContainer />
+
           {/* <Link to={"/logout"} className="nav-link">
             Atsijungti
           </Link> */}

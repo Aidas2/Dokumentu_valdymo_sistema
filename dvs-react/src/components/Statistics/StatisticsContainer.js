@@ -7,16 +7,16 @@ import logo from "../../images/home.png";
 import infoIcon from "../../images/info-icon.png";
 class StatisticsContainer extends Component {
   state = {
-    statistics: []
+    statisticsUsers: []
   };
 
   componentDidMount() {
     axios
-      .get("http://localhost:8081/api/statistics/docAndusers")
+      .get("http://localhost:8081/api/statistics/users")
       .then(response => {
         console.log(response);
         this.setState({
-          statistics: response.data
+          statisticsUsers: response.data
         });
       })
       .catch(error => {
@@ -30,19 +30,17 @@ class StatisticsContainer extends Component {
   }
 
   render() {
-    var statisticsExample = this.state.statistics.map(
-      statisticsFirstElement => {
-        return <div>{statisticsFirstElement} </div>;
-      }
-    );
+    // var statisticsExample = this.state.statistics.map(
+    //   statisticsFirstElement => {
+    //     return <div>{statisticsFirstElement} </div>;
+    //   }
+    // );
 
-    // var map1 = new Map(this.state.statistics);
-
-    var statisticsExample22 = this.state.statistics.map(
-      statisticsFirstElement => {
-        return <div>{statisticsFirstElement} </div>;
-      }
-    );
+    // var statisticsExample22 = this.state.statistics.map(
+    //   statisticsFirstElement => {
+    //     return <div>{statisticsFirstElement} </div>;
+    //   }
+    // );
 
     return (
       <div>
@@ -88,10 +86,10 @@ class StatisticsContainer extends Component {
               <div className="col-2   users-table-middle-style ">-</div>
               <div className="col-2  users-table-middle-style ">{123}</div>
               <div className="col-3   users-table-action-style ">
-                {statisticsExample22}
+                {/* {statisticsExample22} */}
               </div>
             </div>
-            <div>{statisticsExample}</div>
+            <div>{/* {statisticsExample} */}</div>
           </div>
         </div>
       </div>
