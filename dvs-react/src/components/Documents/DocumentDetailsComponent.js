@@ -153,27 +153,7 @@ const DocumentDetailsComponent = props => {
           <div className="row users-padding-bottom">
             <div className="col-1 documents-table-size" />
             <div className="col-5 documents-table-size">
-              <button
-                onClick={props.onSubmitDocument}
-                className="btn btn-warning "
-              >
-                Pateikti
-              </button>
-              &ensp;
-              <button
-                onClick={props.onAcceptDocument}
-                className="btn btn-success"
-              >
-                Priimti
-              </button>
-              &ensp;
-              <button
-                onClick={props.onRejectDocument}
-                className="btn btn-danger "
-              >
-                Atmesti
-              </button>
-              &ensp;
+              {props.actionButtons}
             </div>
             <div className="col-6 documents-table-size">
               <div>
