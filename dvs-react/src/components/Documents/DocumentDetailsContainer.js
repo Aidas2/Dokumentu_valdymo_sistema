@@ -133,31 +133,40 @@ class DocumentDetailsContainer extends Component {
   };
 
   getActionButtons = () => {
-    return (
-      <div>
-        <button
-          onClick={() => this.handleAcceptDocument("SUBMITTED")}
-          className="btn btn-warning "
-        >
-          Pateikti
-        </button>
-        &ensp;
-        <button
-          onClick={() => this.handleAcceptDocument("ACCEPTED")}
-          className="btn btn-success"
-        >
-          Priimti
-        </button>
-        &ensp;
-        <button
-          onClick={() => this.handleAcceptDocument("REJECTED")}
-          className="btn btn-danger "
-        >
-          Atmesti
-        </button>
-        &ensp;
-      </div>
-    );
+    if (this.state.documentDetails.documentStateInLithuanian === "SUKURTAS") {
+      return (
+        <div>
+          <button
+            onClick={() => this.handleAcceptDocument("SUBMITTED")}
+            className="btn btn-warning "
+          >
+            Pateikti
+          </button>
+          &ensp;
+        </div>
+      );
+    } else if (
+      this.state.documentDetails.documentStateInLithuanian === "PATEIKTAS"
+    ) {
+      return (
+        <div>
+          <button
+            onClick={() => this.handleAcceptDocument("CONFIRMED")}
+            className="btn btn-success"
+          >
+            Priimti
+          </button>
+          &ensp;
+          <button
+            onClick={() => this.handleAcceptDocument("REJECTED")}
+            className="btn btn-danger "
+          >
+            Atmesti
+          </button>
+          &ensp;
+        </div>
+      );
+    }
   };
 
   render() {
