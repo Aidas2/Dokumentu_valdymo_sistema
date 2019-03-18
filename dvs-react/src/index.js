@@ -13,7 +13,7 @@ import DocumentTypesContainer from "./components/DocumentTypes/DocumentTypesCont
 import CreateDocumentTypeConatainer from "./components/Forms/DocumentType/CreateDocumentTypeContainer";
 import CreateUserContainer from "./components/Forms/User/CreateUserContainer";
 import UsersContainer from "./components/Users/UsersContainer";
-import StatisticsContainer from "./components/Statistics/StatisticsContainerM";
+import StatisticsContainer from "./components/Statistics/StatisticsContainer";
 import FileDownloadConatainer from "./components/FileDownload/FileDownloadContainer";
 import LandingPageContainer from "./components/LandingPageContainer";
 import DocumentsContainer from "./components/Documents/DocumentsContainer";
