@@ -29,8 +29,6 @@ import UpdateUserGroupContainer from "./components/Forms/UserGroups/UpdateUserGr
 
 // const urlToGetDocs = "http://localhost:8081/api/docs";
 
-const urlToGetDocs = "http://localhost:8081/api/docs";
-
 ReactDOM.render(
   <BrowserRouter>
     <App>
