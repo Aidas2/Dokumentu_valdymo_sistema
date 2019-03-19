@@ -229,6 +229,10 @@ h5,
   border-bottom: #9baeff 1px solid;
 }
 
+.margin-bottom-style {
+  margin-bottom: 20px;
+}
+
 .users-table-middle-style {
   background-color: rgb(197, 206, 255);
 

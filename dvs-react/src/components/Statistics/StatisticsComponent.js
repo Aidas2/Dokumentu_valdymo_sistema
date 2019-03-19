@@ -12,21 +12,41 @@ const StatisticsComponent = props => {
 
   return (
     <div>
+      <div className="select col-4 ml-3">
+        <label>Pasirinkite dokumento tipą:</label>
+        <select
+          onChange={props.onDocumentTypeChange}
+          className="form-control pop-up-style margin-bottom-style"
+          multiple
+          id="sel1"
+        >
+          {props.docTypesToRender}
+        </select>
+      </div>
+
+      <div className="row users-padding-bottom table-style-rounded">
+        <div className="col-3 users-table-number-style  ">Sukurta</div>
+        <div className="col-3   users-table-middle-style">Pateikta</div>
+        <div className="col-3   users-table-middle-style ">Patvirtinta</div>
+        <div className="col-3  users-table-middle-style ">Atmesta</div>
+      </div>
+
       <div className="row users-padding-bottom">
-        <div className="col-1  documents-table-size  ">
+        <div className="col-3  documents-table-size  ">
           {createdDocumentsCount}
         </div>
-        <div className="col-2  documents-table-size">
+        <div className="col-3  documents-table-size">
           {submittedDocumentsCount}
         </div>
-        <div className="col-2  documents-table-size">
+        <div className="col-3  documents-table-size">
           {acceptedDocumentsCount}
         </div>
-        <div className="col-2   documents-table-size">
+        <div className="col-3   documents-table-size">
           {rejectedDocumentsCount}
         </div>
       </div>
-      <div className="select col-4 ml-3">
+
+      {/* <div className="select col-4 ml-3">
         <label>Pasirinkite dokumento tipą:</label>
         <select
           onChange={props.onDocumentTypeChange}
@@ -34,12 +54,9 @@ const StatisticsComponent = props => {
           id="sel1"
         >
           {props.docTypesToRender}
-          {/* <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option> */}
+          
         </select>
-      </div>
+      </div> */}
     </div>
   );
 };

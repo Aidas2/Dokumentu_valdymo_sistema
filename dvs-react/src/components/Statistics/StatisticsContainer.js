@@ -56,17 +56,6 @@ class StatisticsContainer extends Component {
   };
 
   render() {
-    // var statisticsExample = this.state.statistics.map(
-    //   statisticsFirstElement => {
-    //     return <div>{statisticsFirstElement} </div>;
-    //   }
-    // );
-
-    // var statisticsExample22 = this.state.statistics.map(
-    //   statisticsFirstElement => {
-    //     return <div>{statisticsFirstElement} </div>;
-    //   }
-    // );
     console.log(
       "ComponentDidMount inside StatisticsCOntainer render() >>>>>>>>>> this.state.statistics>>>>.",
       this.state
@@ -111,26 +100,22 @@ class StatisticsContainer extends Component {
             </div>
           </div>
           <div className="container-fluid">
-            <div className="row users-padding-bottom table-style-rounded">
-              <div className="col-1 users-table-number-style  ">Sukurta</div>
-              <div className="col-2   users-table-middle-style">Pateikta</div>
-              <div className="col-2   users-table-middle-style ">
+            {/* <div className="row users-padding-bottom table-style-rounded">
+              <div className="col-3 users-table-number-style  ">Sukurta</div>
+              <div className="col-3   users-table-middle-style">Pateikta</div>
+              <div className="col-3   users-table-middle-style ">
                 Patvirtinta
               </div>
-              <div className="col-2  users-table-middle-style ">Atmesta</div>
-              <div className="col-3   users-table-action-style ">
-                {/* {statisticsExample22} */}
-              </div>
-            </div>
-            <div>{/* {statisticsExample} */}</div>
-          </div>{" "}
-          <div>
+              <div className="col-3  users-table-middle-style ">Atmesta</div>
+            </div> */}
             <StatisticsComponent
               statisticsObject={this.state.statisticsObj}
               docTypesToRender={docTypesArrayToRender}
               onDocumentTypeChange={this.handleDocumentTypeChange}
             />
           </div>
+
+          <div />
         </div>
       </div>
     );
