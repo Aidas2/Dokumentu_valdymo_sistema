@@ -112,11 +112,12 @@ class StatisticsContainer extends Component {
           </div>
           <div className="container-fluid">
             <div className="row users-padding-bottom table-style-rounded">
-              <div className="col-1 users-table-number-style  ">#</div>
-              <div className="col-2   users-table-middle-style">---</div>
-              <div className=" col-2 users-table-middle-style">--</div>
-              <div className="col-2   users-table-middle-style ">-</div>
-              <div className="col-2  users-table-middle-style ">{123}</div>
+              <div className="col-1 users-table-number-style  ">Sukurta</div>
+              <div className="col-2   users-table-middle-style">Pateikta</div>
+              <div className="col-2   users-table-middle-style ">
+                Patvirtinta
+              </div>
+              <div className="col-2  users-table-middle-style ">Atmesta</div>
               <div className="col-3   users-table-action-style ">
                 {/* {statisticsExample22} */}
               </div>
@@ -125,6 +126,7 @@ class StatisticsContainer extends Component {
           </div>{" "}
           <div>
             <StatisticsComponent
+              statisticsObject={this.state.statisticsObj}
               docTypesToRender={docTypesArrayToRender}
               onDocumentTypeChange={this.handleDocumentTypeChange}
             />
