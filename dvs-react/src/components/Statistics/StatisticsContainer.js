@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import StatisticsComponent from "./StatisticsComponentM";
+import StatisticsComponent from "./StatisticsComponent";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import logo from "../../images/home.png";
@@ -77,7 +77,6 @@ class StatisticsContainer extends Component {
               </h2>
             </div>
           </div>
-
           <div className="container-fluid">
             <div className="row users-padding-bottom table-style-rounded">
               <div className="col-1 users-table-number-style  ">#</div>
@@ -90,6 +89,9 @@ class StatisticsContainer extends Component {
               </div>
             </div>
             <div>{/* {statisticsExample} */}</div>
+          </div>{" "}
+          <div>
+            <StatisticsComponent />
           </div>
         </div>
       </div>
