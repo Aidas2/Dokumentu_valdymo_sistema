@@ -30,6 +30,21 @@ class DocumentsContainer extends Component {
 
   componentDidMount() {
     this.setState({ username: localStorage.getItem("username") });
+    // axios
+    //   .get(this.props.requestUrl, {
+    //     params: {
+    //       username: this.state.username
+    //     }
+    //   })
+    //   .then(response => {
+    //     this.setState({ documents: response.data });
+    //   })
+    //   .catch(error => {
+    //     console.log(error);
+    //   });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
     axios
       .get(this.props.requestUrl, {
         params: {
@@ -47,8 +62,6 @@ class DocumentsContainer extends Component {
   handleDocumentDownload = () => {};
   handleDocumentView = () => {};
   render() {
-    console.log("PROPS&&& >>> ", this.props);
-
     var documentsArrayToRender = this.state.documents.map(
       (oneDocumentObj, index) => {
         return (
