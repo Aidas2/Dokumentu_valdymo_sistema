@@ -14,7 +14,7 @@ class StatisticsContainer extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:8081/api/doctypes")
+      .get("http://localhost:8081/api/doctypes/readyForReviewing")
       .then(response => {
         this.setState({
           documentTypes: response.data
