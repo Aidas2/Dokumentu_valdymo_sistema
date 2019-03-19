@@ -109,13 +109,12 @@ public class DocumentController {
     //READ BY STATE (SUBMITTED) AND BY USER (SPECIFIED) ===============================================================
     //@PathVariable --> @RequestParam
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
-    @RequestMapping(value = "/{username}/toreview", method = RequestMethod.GET)
+    @RequestMapping(value = "/toreview", method = RequestMethod.GET)
     @ApiOperation(value = "Get submitted documents for user's (specified) to review", notes = "Returns submitted documents for user's (specified) to review")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public List<DocumentGetCommand> getDocumentsByDocumentStateAndUser(
-            @ApiParam(value = "User username", required = true)
-            @PathVariable String username) {
-        return documentService.getSubmittedDocumentForReviewing(username);
+    ) {
+        return documentService.getSubmittedDocumentForReviewing();
     }
 
     /* // Doesn't work :( !
