@@ -33,7 +33,7 @@ class DocumentsContainer extends Component {
     axios
       .get("http://localhost:8081/api/docs", {
         params: {
-          username: this.state.username
+          // username: this.state.username
         }
       })
       .then(response => {
