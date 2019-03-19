@@ -37,6 +37,18 @@ class SideBarComponent extends Component {
             </NavLink>
           </li>
           <li>
+            <NavLink activeClassName={"active"} to={"/docsforreview"}>
+              <img
+                src={documents}
+                width="20"
+                height="20"
+                alt="home"
+                className="sidebar-icon logo"
+              />
+              Dokumentai peržiūrai
+            </NavLink>
+          </li>
+          <li>
             <NavLink activeClassName={"active"} to={"/upload"}>
               <img
                 src={documentSubmit}

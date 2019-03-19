@@ -31,7 +31,7 @@ class DocumentsContainer extends Component {
   componentDidMount() {
     this.setState({ username: localStorage.getItem("username") });
     axios
-      .get("http://localhost:8081/api/docs", {
+      .get("http://localhost:8081/api/docs/toreview", {
         params: {
           // username: this.state.username
         }
@@ -90,12 +90,12 @@ class DocumentsContainer extends Component {
                 />
               </Link>
               &ensp;/ &ensp;
-              <Link to={"/admin"} className="second-navigation">
-                Administratoriaus rolė
-              </Link>
-              &ensp;/ &ensp;
-              <Link to={"/docs"} className="second-navigation">
-                Dokumentai
+              {/* <Link to={"/admin"} className="second-navigation">
+                  Administratoriaus rolė
+                </Link>
+                &ensp;/ &ensp; */}
+              <Link to={"/docsforreview"} className="second-navigation">
+                Dokumentai peržiūrėti
               </Link>
             </h5>
             <h2 className="display-6 ">

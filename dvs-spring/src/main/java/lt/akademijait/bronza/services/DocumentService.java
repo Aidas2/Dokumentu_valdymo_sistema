@@ -290,10 +290,10 @@ public class DocumentService {
 
     //GET BY STATE (SUBMITTED) AND BY USER (SPECIFIED) =================================================================
     @Transactional(readOnly = true)
-    public List<DocumentGetCommand> getSubmittedDocumentForReviewing(String username) {
+    public List<DocumentGetCommand> getSubmittedDocumentForReviewing() {
 
         List<DocumentGetCommand> documentDtoForReviewing = new ArrayList<>();   // is anksto sukuriam DTO Lista i kuri addinsim Documents kaip OBJECT;
-        User reviewingUser = userRepository.findByUsername(username);  // pasirinkti useri (is repositorijos ir t.t.)
+        User reviewingUser = userRepository.findByUsername(getLoggedInUsername());  // pasirinkti useri (is repositorijos ir t.t.)
         log.info("Gotten current reviewing user: " + reviewingUser.getUsername());
         Set<UserGroup> userGroupsOfReviewingUser = reviewingUser.getUserGroups(); // gettinam kokios userGroups jam priskirtos, gavom masyva userGroups'u [Administracija, Gamyba];
         log.info("Gotten list groups belonging to reviewing User: " + userGroupsOfReviewingUser.toString());
