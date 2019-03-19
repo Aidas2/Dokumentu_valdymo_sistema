@@ -7,7 +7,8 @@ import logo from "../../images/home.png";
 import infoIcon from "../../images/info-icon.png";
 class StatisticsContainer extends Component {
   state = {
-    documentTypes: []
+    documentTypes: [],
+    selectedDocType: ""
   };
 
   componentDidMount() {
@@ -17,11 +18,16 @@ class StatisticsContainer extends Component {
         this.setState({
           documentTypes: response.data
         });
+        this.setState({ selectedDocType: response.data[0].title });
       })
       .catch(error => {
         console.log(error);
       });
   }
+
+  handleDocumentTypeChange = e => {
+    this.setState({ selectedDocType: e.target.value });
+  };
 
   render() {
     // var statisticsExample = this.state.statistics.map(
@@ -92,7 +98,10 @@ class StatisticsContainer extends Component {
             <div>{/* {statisticsExample} */}</div>
           </div>{" "}
           <div>
-            <StatisticsComponent docTypesToRender={docTypesArrayToRender} />
+            <StatisticsComponent
+              docTypesToRender={docTypesArrayToRender}
+              onDocumentTypeChange={this.handleDocumentTypeChange}
+            />
           </div>
         </div>
       </div>
