@@ -94,7 +94,7 @@ public class FileManageService {
                     e.printStackTrace();
                 }
 
-            }
+            } else throw new IllegalArgumentException("This type of a file cannot be uploaded");
 
 
         }
