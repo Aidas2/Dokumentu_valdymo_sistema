@@ -13,10 +13,11 @@ const StatisticsComponent = props => {
       <div className="select col-4 ml-3">
         <label>Pasirinkite dokumento tipą:</label>
         <select className="form-control" id="sel1">
-          <option>1</option>
+          {props.docTypesToRender}
+          {/* <option>1</option>
           <option>2</option>
           <option>3</option>
-          <option>4</option>
+          <option>4</option> */}
         </select>
       </div>
     </div>

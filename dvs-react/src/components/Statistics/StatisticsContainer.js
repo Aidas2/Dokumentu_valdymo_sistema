@@ -7,26 +7,20 @@ import logo from "../../images/home.png";
 import infoIcon from "../../images/info-icon.png";
 class StatisticsContainer extends Component {
   state = {
-    statisticsUsers: []
+    documentTypes: []
   };
 
   componentDidMount() {
     axios
-      .get("http://localhost:8081/api/statistics/users")
+      .get("http://localhost:8081/api/doctypes")
       .then(response => {
-        console.log(response);
         this.setState({
-          statisticsUsers: response.data
+          documentTypes: response.data
         });
       })
       .catch(error => {
         console.log(error);
       });
-
-    console.log(
-      "ComponentDidMount inside DocumentTYpesCOntainer >>>>>>>>>> this.state.statistics>>>>.",
-      this.state
-    );
   }
 
   render() {
@@ -41,7 +35,14 @@ class StatisticsContainer extends Component {
     //     return <div>{statisticsFirstElement} </div>;
     //   }
     // );
+    console.log(
+      "ComponentDidMount inside StatisticsCOntainer render() >>>>>>>>>> this.state.statistics>>>>.",
+      this.state
+    );
 
+    const docTypesArrayToRender = this.state.documentTypes.map(oneType => {
+      return <option key={oneType.id}>{oneType.title}</option>;
+    });
     return (
       <div>
         <div className="container-fluid no-padding">
@@ -91,7 +92,7 @@ class StatisticsContainer extends Component {
             <div>{/* {statisticsExample} */}</div>
           </div>{" "}
           <div>
-            <StatisticsComponent />
+            <StatisticsComponent docTypesToRender={docTypesArrayToRender} />
           </div>
         </div>
       </div>
