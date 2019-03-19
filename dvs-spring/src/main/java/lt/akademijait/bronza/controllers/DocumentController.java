@@ -164,14 +164,14 @@ public class DocumentController {
         return documentService.getAllDocumentsByDocumentTypeAndUsername(username, documentTypeTitle);
     }
 
-    //READ All DOCUMENTS BY AUTHOR_ID ==================================================================================
-    @RequestMapping(value = "/username", method = RequestMethod.GET)
-    @ApiOperation(value = "Get all document of specified author id", notes = "Returns all document of specified author id")
+    //READ All DOCUMENTS BY AUTHOR_USERNAME ==================================================================================
+    @RequestMapping(value = "/docsbyuser", method = RequestMethod.GET)
+    @ApiOperation(value = "Get all document of specified author username", notes = "Returns all document of specified author username")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public List<DocumentGetCommand> getAllDocumentsByAuthorId(
-            @ApiParam(value = "Author username", required = true)
-            @RequestParam String username) {
-        return documentService.getAllDocumentsByAuthorUsername(username);
+           /* @ApiParam(value = "Author username", required = true)
+            @PathVariable String username*/) {
+        return documentService.getAllDocumentsByAuthorUsername(/*username*/);
     }
 
     // POST POST POST POST POST POST POST POST POST POST POST POST POST POST POST POST POST POST POST POST POST POST
@@ -220,7 +220,7 @@ public class DocumentController {
     @RequestMapping(value = "/setstate1", method = RequestMethod.PUT)
     @ApiOperation(value = "Set document state by id. V_01 (in progress)", notes = "Set document state by id")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public void setDocumentStateByIdV1 (
+    public void setDocumentStateByIdV1(
             @ApiParam(value = "<--RequestBody", required = true)
             @RequestBody final DocumentSetStateCommand documentSetStateCommand
 
@@ -228,7 +228,7 @@ public class DocumentController {
             //@ApiParam(value = "Document state", required = true)
             //@PathVariable DocumentState documentState
     ) {
-                documentService.setDocumentStateV1(documentSetStateCommand);
+        documentService.setDocumentStateV1(documentSetStateCommand);
     }
 
     // This version is temporal, while version above is in progress.
@@ -237,7 +237,7 @@ public class DocumentController {
     @RequestMapping(value = "/setstate2", method = RequestMethod.PUT)
     @ApiOperation(value = "Set document state by id. V_02 (temporal)", notes = "Set document state by id")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public void setDocumentStateByIdV2 (
+    public void setDocumentStateByIdV2(
             @ApiParam(value = "<--RequestBody", required = true)
             @RequestBody final DocumentSetStateCommand documentSetStateCommand
 

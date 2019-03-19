@@ -16,6 +16,9 @@ import lt.akademijait.bronza.repositories.UserGroupRepository;
 import lt.akademijait.bronza.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -429,11 +432,12 @@ public class DocumentService {
     //GET BY AUTHOR_ID =================================================================================================
     // (with filter and with filter of permissions (which documents this UserGroup can manage)
     @Transactional(readOnly = true)
-    public List<DocumentGetCommand> getAllDocumentsByAuthorUsername(String username) {
-        log.info("Gotten all documents by this author username: " + username);
+    public List<DocumentGetCommand> getAllDocumentsByAuthorUsername(/*String username*/) {
+
+        log.info("Gotten all documents by this author username: " + getLoggedInUsername());
         return documentRepository.findAll()
                 .stream()
-                .filter(document -> document.getAuthor().getUsername().equals(username))
+                .filter(document -> document.getAuthor().getUsername().equals(getLoggedInUsername()))
                 .map((document) -> new DocumentGetCommand(
                         document.getId(),
                         document.getAuthor().getUsername(),
@@ -677,6 +681,15 @@ public class DocumentService {
     public void deleteDocument(long id) {
         documentRepository.deleteById(id);
         log.info("Document with id = " + id + " was deleted");
+    }
+    public String getLoggedInUsername() {
+        Authentication authentication =
+                SecurityContextHolder.getContext().getAuthentication();
+        if (!(authentication instanceof AnonymousAuthenticationToken)) {
+            String currentUserName = authentication.getName();
+            return currentUserName;
+        }
+        return "not logged";
     }
 
 /*
