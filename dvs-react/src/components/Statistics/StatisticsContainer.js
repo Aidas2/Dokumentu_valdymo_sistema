@@ -64,6 +64,8 @@ class StatisticsContainer extends Component {
     const docTypesArrayToRender = this.state.documentTypes.map(oneType => {
       return <option key={oneType.id}>{oneType.title}</option>;
     });
+
+    
     return (
       <div>
         <div className="container-fluid no-padding">

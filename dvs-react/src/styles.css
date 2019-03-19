@@ -728,3 +728,117 @@ html {
 .info-icon-style:hover {
   opacity: 1;
 }
+
+/* ----------------------------------- */
+dl {
+  display: flex;
+  background-color: white;
+  flex-direction: column;
+  width: 100%;
+  /* max-width: 700px; */
+  position: relative;
+  padding: 20px;
+}
+
+dt {
+  align-self: flex-start;
+  width: 100%;
+  font-weight: 700;
+  display: block;
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: 700;
+  margin-bottom: 20px;
+  margin-left: 130px;
+}
+
+.text {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  width: 130px;
+  background-color: white;
+  position: absolute;
+  left: 0;
+  justify-content: flex-end;
+}
+
+.created-graph-style {
+  content: "";
+  display: block;
+  background-color: yellow;
+  width: 0px;
+  margin-bottom: 10px;
+  height: 50px;
+  
+  top: 50%;
+  transform: translateY(-50%);
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  
+}
+
+.subbmitted-graph-style {
+  content: "";
+  display: block;
+  background-color: orange;
+  width: 0px;
+  margin-bottom: 10px;
+  height: 50px;
+  
+  top: 50%;
+  transform: translateY(-50%);
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  
+}
+
+
+.accepted-graph-style {
+  content: "";
+  display: block;
+  background-color: green;
+  width: 0px;
+  margin-bottom: 10px;
+  height: 50px;
+  
+  top: 50%;
+  transform: translateY(-50%);
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  
+}
+
+.rejected-graph-style {
+  content: "";
+  display: block;
+  background-color: red;
+  width: 0px;
+  margin-bottom: 10px;
+  height: 50px;
+  
+  top: 50%;
+  transform: translateY(-50%);
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  
+}
+
+
+.created-graph-style:hover {
+  background-color: #aaa;
+}
+.subbmitted-graph-style:hover {
+  background-color: #aaa;
+}
+
+.accepted-graph-style:hover {
+  background-color: #aaa;
+}
+
+.rejected-graph-style:hover {
+  background-color: #aaa;
+}
+
+

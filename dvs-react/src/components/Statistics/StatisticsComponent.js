@@ -10,6 +10,33 @@ const StatisticsComponent = props => {
     rejectedDocumentsCount
   } = props.statisticsObject;
 
+
+const createdDocumentsCountGraph = createdDocumentsCount / createdDocumentsCount
+const submittedDocumentsCountGraph = submittedDocumentsCount / createdDocumentsCount
+const acceptedDocumentsCountGraph = acceptedDocumentsCount / createdDocumentsCount
+const rejectedDocumentsCountGraph = rejectedDocumentsCount / createdDocumentsCount
+
+
+  const styleGraph = {
+   createdDocumentsCountGraphStyle: {
+      width:  `${createdDocumentsCountGraph *100 || 0.5}%`,
+      
+    },
+    submittedDocumentsCountGraphStyle: {
+       width:  `${submittedDocumentsCountGraph *100 || 0.5}%`
+    },
+   acceptedDocumentsCountGraphStyle: {
+     width:  `${acceptedDocumentsCountGraph *100 || 0.5}%`
+    },
+  rejectedDocumentsCountGraphStyle: {
+     width:  `${rejectedDocumentsCountGraph *100 || 0.5}%`
+    }
+
+  };
+
+
+
+
   return (
     <div>
       <div className="select col-4 ml-3">
@@ -33,7 +60,7 @@ const StatisticsComponent = props => {
 
       <div className="row users-padding-bottom">
         <div className="col-3  documents-table-size  ">
-          {createdDocumentsCount}
+         {createdDocumentsCount}
         </div>
         <div className="col-3  documents-table-size">
           {submittedDocumentsCount}
@@ -44,7 +71,26 @@ const StatisticsComponent = props => {
         <div className="col-3   documents-table-size">
           {rejectedDocumentsCount}
         </div>
-      </div>
+
+       
+        <dl>
+        <dt>Gal iseitu cia paduoti dokumento tipa?</dt>
+        <dd class="created-graph-style " style={styleGraph.createdDocumentsCountGraphStyle}>
+          {/* <span class="text">Sukurta</span> */}
+        </dd>
+        <dd class="subbmitted-graph-style" style={styleGraph.submittedDocumentsCountGraphStyle}>
+          {/* <span class="text">Pateikta</span> */}
+        </dd>
+        <dd class="accepted-graph-style" style={styleGraph.acceptedDocumentsCountGraphStyle}>
+          {/* <span class="text">Patvirtinta</span> */}
+        </dd>
+        <dd class="rejected-graph-style" style={styleGraph.rejectedDocumentsCountGraphStyle}>
+          {/* <span class="text">Atmesta</span> */}
+        </dd>
+      </dl>
+      
+</div>
+      
 
       {/* <div className="select col-4 ml-3">
         <label>Pasirinkite dokumento tipą:</label>
