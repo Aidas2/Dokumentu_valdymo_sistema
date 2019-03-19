@@ -60,7 +60,7 @@ public class StatisticsService {
                     if (startDate.before(document.getSubmissionDate()) && endDate.after(document.getCreationDate())) {
                         submit.add(document.getTitle());
                     }
-                    if (document.getDocumentState().equals(DocumentState.CONFIRMED)) {
+                    if (document.getConfirmationDate() != null) {
                         if (startDate.before(document.getConfirmationDate()) && endDate.after(document.getConfirmationDate())) {
                             accept.add(document.getTitle());
                         }
@@ -95,7 +95,7 @@ public class StatisticsService {
                 count.add(document.getTitle());
                 if (document.getSubmissionDate() != null) {
                     submit.add(document.getTitle());
-                    if (document.getDocumentState().equals(DocumentState.CONFIRMED)) {
+                    if (document.getConfirmationDate() != null) {
                         accept.add(document.getTitle());
                     }
                     if (document.getRejectionDate() != null) {
