@@ -75,22 +75,27 @@ public class FileManageService {
         newDocument.setDescription(documentCreateCommand.getDescription());
 
         for (int i = 0; i < files.length; i++) {
+
             File userDirectory = new File(currentAbsolutePath + fileSeparator + "uploaded-files" + fileSeparator
                     + getLoggedInUsername());
             userDirectory.mkdirs();
-            File fileToSave = new File(userDirectory, userID + "-" + getCurrentLocalDateTimeStamp() + "-"
-                    + files[i].getOriginalFilename());
-            if (i == 0) {
-                documentPath = fileToSave.getAbsolutePath();
+            if (files[i].getContentType().equalsIgnoreCase("application/pdf")) {
+
+                File fileToSave = new File(userDirectory, userID + "-" + getCurrentLocalDateTimeStamp() + "-"
+                        + files[i].getOriginalFilename());
+                if (i == 0) {
+                    documentPath = fileToSave.getAbsolutePath();
+                }
+                try {
+                    files[i].transferTo(fileToSave);
+                } catch (IllegalStateException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
             }
 
-            try {
-                files[i].transferTo(fileToSave);
-            } catch (IllegalStateException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
 
         }
         newDocument.setDocumentState(DocumentState.CREATED);
