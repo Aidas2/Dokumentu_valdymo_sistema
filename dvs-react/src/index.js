@@ -81,6 +81,13 @@ ReactDOM.render(
           render={props => (
             <DocumentsContainer {...props} requestUrl={urlToGetAllDocs} />
           )}
+        />{" "}
+        <Route
+          exact
+          path="/docsforreview"
+          render={props => (
+            <DocumentsContainer {...props} requestUrl={urlToGetAllDocs} />
+          )}
         />
         <Route
           exact
