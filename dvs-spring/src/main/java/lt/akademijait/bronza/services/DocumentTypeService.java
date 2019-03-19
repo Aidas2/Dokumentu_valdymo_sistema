@@ -10,6 +10,9 @@ import lt.akademijait.bronza.repositories.DocumentTypeRepository;
 import lt.akademijait.bronza.repositories.UserGroupRepository;
 import lt.akademijait.bronza.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -96,9 +99,9 @@ public class DocumentTypeService {
 */
     //GET BY STATE (READY FOR SUBMITTING) AND USER (SPECIFIED) V_02 (with DTO) ======================================
     @Transactional (readOnly = true)
-     public List<DocumentTypeGetCommand> getDocumentTypeTitlesOfSubmittingUser2 (String username) {
+     public List<DocumentTypeGetCommand> getDocumentTypeTitlesOfSubmittingUser2 () {
         List<DocumentTypeGetCommand> documentTypesDtoOfSubmittingUser = new ArrayList<>();   // is anksto sukuriam DTO Lista i kuri addinsim DTO kaip OBJEKTUS;
-        User submittingUser = userRepository.findByUsername(username);  // pasirinkti useri (is repositorijos ir t.t.)
+        User submittingUser = userRepository.findByUsername(getLoggedInUsername());  // pasirinkti useri (is repositorijos ir t.t.)
         Set<UserGroup> userGroupsOfSubmittingUser = submittingUser.getUserGroups(); // gettinam kokios userGroups jam priskirtos, gaunam masyva userGroups'u [Administracija, Gamyba];
 
         // einam foreach'u per kiekviena masyvo userGroups elementa ir gettinam kokios yra submissionDoctype, gaunam dar viena masyva [Instrukcija, Prasymas, Isakymas]
@@ -116,15 +119,15 @@ public class DocumentTypeService {
                 }
             }
         }
-        log.info("Gotten all document type titles which user " + username + " can submit");
+        log.info("Gotten all document type titles which user " + getLoggedInUsername() + " can submit");
         return documentTypesDtoOfSubmittingUser;
     }
 
     //GET BY STATE (READY FOR REVIEwING) AND USER (SPECIFIED) (with DTO) ======================================
     @Transactional (readOnly = true)
-    public List<DocumentTypeGetCommand> getDocumentTypeTitlesOfReviewingUser (String username) {
+    public List<DocumentTypeGetCommand> getDocumentTypeTitlesOfReviewingUser () {
         List<DocumentTypeGetCommand> documentTypesDtoOfReviewingUser = new ArrayList<>();   // is anksto sukuriam DTO Lista i kuri addinsim DTO kaip OBJEKTUS;
-        User reviewingUser = userRepository.findByUsername(username);  // pasirinkti useri (is repositorijos ir t.t.)
+        User reviewingUser = userRepository.findByUsername(getLoggedInUsername());  // pasirinkti useri (is repositorijos ir t.t.)
         Set<UserGroup> userGroupsOfReviewingUser = reviewingUser.getUserGroups(); // gettinam kokios userGroups jam priskirtos, gaunam masyva userGroups'u [Administracija, Gamyba];
 
         // einam foreach'u per kiekviena masyvo userGroups elementa ir gettinam kokios yra submissionDoctype, gaunam dar viena masyva [Instrukcija, Prasymas, Isakymas]
@@ -142,7 +145,7 @@ public class DocumentTypeService {
                 }
             }
         }
-        log.info("Gotten all document type titles which user " + username + " can review");
+        log.info("Gotten all document type titles which user " + getLoggedInUsername() + " can review");
         return documentTypesDtoOfReviewingUser;
     }
 
@@ -176,6 +179,16 @@ public class DocumentTypeService {
     public void deleteDocumentType (Long id) {
         documentTypeRepository.deleteById(id);
         log.info("Document type with id = " + id + " was deleted");
+    }
+
+    public String getLoggedInUsername() {
+        Authentication authentication =
+                SecurityContextHolder.getContext().getAuthentication();
+        if (!(authentication instanceof AnonymousAuthenticationToken)) {
+            String currentUserName = authentication.getName();
+            return currentUserName;
+        }
+        return "not logged";
     }
 
 }
