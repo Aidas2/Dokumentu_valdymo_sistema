@@ -88,6 +88,7 @@ class FileUploadComponent extends Component {
             <div className="col-5 documents-table-size">Dokumento tipas</div>
             <div className="col-6 documents-table-size">
               <DocumentTypesContainer
+                isMultiple={false}
                 documentTypes={this.props.documentTypes}
                 onDocumentTypeChange={this.props.onDocumentTypeChange}
               />
