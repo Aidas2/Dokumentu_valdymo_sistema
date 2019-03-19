@@ -8,7 +8,8 @@ import infoIcon from "../../images/info-icon.png";
 class StatisticsContainer extends Component {
   state = {
     documentTypes: [],
-    selectedDocType: ""
+    selectedDocType: "",
+    statisticsObj: ""
   };
 
   componentDidMount() {
@@ -19,14 +20,39 @@ class StatisticsContainer extends Component {
           documentTypes: response.data
         });
         this.setState({ selectedDocType: response.data[0].title });
+
+        axios
+          .get("http://localhost:8081/api/statistics/" + response.data[0].title)
+          .then(response => {
+            this.setState({
+              statisticsObj: response.data
+            });
+          })
+          .catch(error => {
+            console.log(error);
+          });
       })
       .catch(error => {
         console.log(error);
       });
   }
 
+  // componentDidUpdate(prevProps, prevState) {
+
+  // }
+
   handleDocumentTypeChange = e => {
     this.setState({ selectedDocType: e.target.value });
+    axios
+      .get("http://localhost:8081/api/statistics/" + e.target.value)
+      .then(response => {
+        this.setState({
+          statisticsObj: response.data
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
   };
 
   render() {
