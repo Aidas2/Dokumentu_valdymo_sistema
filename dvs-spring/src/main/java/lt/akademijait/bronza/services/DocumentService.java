@@ -294,23 +294,28 @@ public class DocumentService {
         log.info("Gotten current reviewing user: " + reviewingUser.getUsername());
         Set<UserGroup> userGroupsOfReviewingUser = reviewingUser.getUserGroups(); // gettinam kokios userGroups jam priskirtos, gavom masyva userGroups'u [Administracija, Gamyba];
         log.info("Gotten list groups belonging to reviewing User: " + userGroupsOfReviewingUser.toString());
-        // einam foreach'u per kiekviena masyvo userGroups elementa ir gettinam kokios yra reviewDoctype, gaunam antra masyva [Instrukcija, Prasymas, Isakymas]
-        for (UserGroup userGroup: userGroupsOfReviewingUser
-             ) {
-            Set<DocumentType> documentTypeOfReviewingUser = userGroup.getReviewDocumentType(); //gavom [Instrukcija, Prasymas, Isakymas]
+        // einam foreach'u per kiekviena masyvo userGroupsOfReviewingUser elementa
+        // ir gettinam kokios yra reviewDoctype, gaunam antra masyva [Instrukcija, Prasymas, Isakymas]
+        for (UserGroup userGroup : userGroupsOfReviewingUser
+        ) {
+            Set<DocumentType> documentTypeOfReviewingUser = userGroup.getReviewDocumentType(); //--> [Instrukcija, Prasymas, Isakymas]
             log.info("1-st foreach. Gotten list of Document Types belonging to reviewing User: " + documentTypeOfReviewingUser);
 
-            // einam foreach'u per kiekviena masyvo documentType elementa,  getinam kokie yra Documents, gaunam trecia masyva [PrasymasAtostogu, PrasymasPakeltiAlga, IsakymasDarboLaiko]
-            for (DocumentType documentType: documentTypeOfReviewingUser
-                 ) {
+            // einam foreach'u per kiekviena masyvo documentTypeOfReviewingUser elementa
+            // ir getinam kokie yra Documents, gaunam trecia masyva [PrasymasAtostogu, PrasymasPakeltiAlga, IsakymasDarboLaiko]
+            for (DocumentType documentType : documentTypeOfReviewingUser
+            ) {
 
-                List<Document> documentOfReviewingUser = documentType.getDocuments();   //gavom [PrasymasAtostogu, PrasymasPakeltiAlga, IsakymasDarboLaiko]
-                                                                                        //kad veiktu .getDocuments() reikejo ideti atitinkama fielda i DocumentsType entity...
+                // cia naudoti repository (o joje irasyti metoda paieskai pagal tipa) !!!
+                //List<Document> documentOfReviewingUser = documentType.getDocuments();   //gavom [PrasymasAtostogu, PrasymasPakeltiAlga, IsakymasDarboLaiko]
+                //kad veiktu .getDocuments() reikejo ideti atitinkama fielda i DocumentsType entity...
+                List<Document> documentOfReviewingUser = documentRepository.findByDocumentType(documentType);
+
                 log.info("2-nd foreach. Gotten list of Documents belonging to reviewing User: " + documentOfReviewingUser);
 
                 // einam foreach'u per kiekviena masyvo Document elementa,  gettinam viska (id, author, state, type ir t.t.), ir pridedam i nauja DTO, kuri addinsim i is anksto susikurta  objektu Lista
-                for (Document document: documentOfReviewingUser
-                     ) {
+                for (Document document : documentOfReviewingUser
+                ) {
                     DocumentGetCommand documentDTO = new DocumentGetCommand(
                             document.getId(),
                             document.getAuthor().getUsername(),
@@ -330,7 +335,7 @@ public class DocumentService {
 
 
                     //abejotinas sitas if ... gal geriau documentDTO.getDocumentState() ?
-                    if (document.getDocumentState().equals(DocumentState.SUBMITTED)){
+                    if (document.getDocumentState().equals(DocumentState.SUBMITTED)) {
                         documentDtoForReviewing.add(documentDTO);
                         log.info("Document DTO added to list: " + documentDtoForReviewing);
                     }
@@ -478,9 +483,11 @@ public class DocumentService {
         log.info("New document created - {} Everything is OK", newDocument.toString());
     }
 
-    //SET DOCUMENT STATE. Version_02 (by J.C.) =========================================================================
+
+    // This method  still in progress, do not use ! (temporally use Version_02, see below).
+    //SET DOCUMENT STATE. Version_01 (by J.C.) =========================================================================
     @Transactional
-    public void setDocumentStateV2(DocumentSetStateCommand documentSetStateCommand) {
+    public void setDocumentStateV1(DocumentSetStateCommand documentSetStateCommand) {
 
         //User user = userRepository.findByUsername(documentSetStateCommand.getAuthorUsername());
         Document documentToSetState = documentRepository.getOne(documentSetStateCommand.getDocumentId());
@@ -508,17 +515,13 @@ public class DocumentService {
                 throw new ResourceNotFoundException("Document can be submitted only by its Author. Also by Reviewer)");
             }
 
+            // current state:         documentToSetState.getDocumentState()
+            // suggested state:       documentSetStateCommand.getDocumentState()
 
-            //jei esama state yra REJECTED arba ACCEPTED  tai nustatyti kad keisti bukles nebegalima (pvz. iseiti is metodo)
-            //arba nustatyti kad galima keisti tik jei esama bukle yra CONFIRMED
+            //if current state is CREATED -->  proceed only  in case "SUBMITTED"
+            //if current state is SUBMITTED --> proceed only  in case  "REJECTED" or "CONFIRMED"
+            //if current state is REJECTED or ACCEPTED  --> do not proceed at all
 
-            //jei esama state yra CREATED, o siuloma bukle nera SUBMITED tai nustatyti kad keisti bukles nebegalima (pvz. iseiti is metodo)
-            ///arba nustatyti kad galima keisti tik jei siuloma bukle yra CONFIRMED
-
-            //jei yra SUBMITED, o siuloma bukle nera REJECTED || CONFIRMED tai nustatyti kad keisti bukles nebegalima (pvz. iseiti is metodo;
-
-
-            // setting checked user as reviewer:
             if (canSubmit) {
                 switch (documentSetStateCommand.getDocumentState()) {
                     case "CREATED": {
@@ -589,7 +592,72 @@ public class DocumentService {
         }
     }
 
-    //UPDATE. Version_02. ==============================================================================================
+    // This version is temporal, while version above is in progress.
+    // This version allows to change state to anny user (without checking his permisions).
+    //SET DOCUMENT STATE. Version_02 (by J.C.) =========================================================================
+    @Transactional
+    public void setDocumentStateV2(DocumentSetStateCommand documentSetStateCommand) {
+
+        Document documentToSetState = documentRepository.getOne(documentSetStateCommand.getDocumentId());
+        User reviewerUser = userRepository.findByUsername(documentSetStateCommand.getReviewerUsername());
+
+                switch (documentSetStateCommand.getDocumentState()) {
+                    case "CREATED": {
+                        log.info("Case1. Not proceeded. State CREATED already set during document creation");
+                        throw new ResourceNotFoundException("Case3. Not proceeded. State CREATED already set during document creation");
+                    }
+                    case "SUBMITTED": {
+                        if (documentToSetState.getDocumentState().equals(DocumentState.CREATED)) {
+                            documentToSetState.setDocumentState(DocumentState.SUBMITTED);
+                            documentToSetState.setSubmissionDate(new Date());
+
+                            documentRepository.save(documentToSetState);
+                            log.info("Case2. Document state set to: " + documentSetStateCommand.getDocumentState());
+
+                            break;
+                        } else {
+                            log.info("Case2. Not proceeded. Only CREATED document can be set to SUBMITTED");
+                            throw new ResourceNotFoundException("Case4. Not proceeded. Only CREATED document can be set to SUBMITTED");
+                        }
+                    }
+                    case "REJECTED": {
+                        if (documentToSetState.getDocumentState().equals(DocumentState.SUBMITTED)) {
+                            documentToSetState.setReviewer(reviewerUser);
+                            documentToSetState.setDocumentState(DocumentState.REJECTED);
+                            documentToSetState.setRejectionDate(new Date());
+                            documentToSetState.setRejectionReason(documentSetStateCommand.getRejectionReason());
+
+                            documentRepository.save(documentToSetState);
+                            log.info("Case3. Document state set to: " + documentSetStateCommand.getDocumentState());
+
+                            break;
+                        } else {
+                            log.info("Case3. Not proceeded. Only SUBMITTED document can be reviewed");
+                            throw new ResourceNotFoundException("Case5. Not proceeded. Only SUBMITTED document can be reviewed");
+                        }
+                    }
+                    case "CONFIRMED": {
+                        if (documentToSetState.getDocumentState().equals(DocumentState.SUBMITTED)) {
+                            documentToSetState.setReviewer(reviewerUser);
+                            documentToSetState.setDocumentState(DocumentState.CONFIRMED);
+                            documentToSetState.setConfirmationDate(new Date());
+
+                            documentRepository.save(documentToSetState);
+                            log.info("Case4. Document state set to: " + documentSetStateCommand.getDocumentState());
+
+                            break;
+                        } else {
+                            log.info("Case4. Not proceeded. Only SUBMITTED document can be reviewed");
+                            throw new ResourceNotFoundException("Case6. Not proceeded. Only SUBMITTED document can be reviewed");
+                        }
+                    }
+                    default:
+                        log.error("Non of Switch case proceeded. Only CREATED, SUBMITTED, CONFIRMED, REJECTED allowed");
+                        throw new ResourceNotFoundException("Non of Switch case proceeded. Only CREATED, SUBMITTED, CONFIRMED, REJECTED allowed");
+                }
+            }
+
+    //UPDATE ===========================================================================================================
     @Transactional
     public void updateDocument(Long id, DocumentUpdateCommand documentUpdateCommand) {
         Document documentToUpdate = documentRepository.findById(id).orElse(null);
