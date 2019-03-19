@@ -82,6 +82,7 @@ const CreateUserGroupsComponent = props => {
             </div>
             <div className="col-6 documents-table-size">
               <DocumentTypesContainer
+                isMultiple={true}
                 documentTypes={props.documentTypes}
                 onDocumentTypeChange={props.onSubmitTypesChange}
               />

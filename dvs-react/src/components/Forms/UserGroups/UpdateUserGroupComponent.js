@@ -82,6 +82,7 @@ const UpdateUserGroupComponent = props => {
             </div>
             <div className="col-6 documents-table-size">
               <DocumentTypesContainer
+                isMultiple={true}
                 documentTypes={props.documentTypes}
                 onDocumentTypeChange={props.onSubmitTypesChange}
               />
@@ -99,6 +100,7 @@ const UpdateUserGroupComponent = props => {
             </div>
             <div className="col-6 documents-table-size">
               <DocumentTypesContainer
+                isMultiple={true}
                 documentTypes={props.documentTypes}
                 onDocumentTypeChange={props.onReviewTypesChange}
               />

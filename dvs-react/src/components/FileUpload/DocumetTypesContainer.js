@@ -33,7 +33,7 @@ class DocumentTypesContainer extends Component {
     return (
       <select
         onChange={this.props.onDocumentTypeChange}
-        multiple
+        multiple={this.props.isMultiple}
         className="form-control col-12 pop-up-style"
         id="documentTypeSelect"
       >
