@@ -74,7 +74,7 @@ public class DocumentTypeController {
         return documentTypeService.getDocumentsTypeByTitle(title);
     }
 
-    //Gali padaryt kontrollerį, kuris grąžintų tik dokumentų tipus, kuriuos useris gali submittinti?
+/*  //commented as not necessary (but useful if you want to return only String)
     //READ BY STATE (READY FOR SUBMITTING) AND USER (SPECIFIED) V_01 (without dto) =====================================
     @RequestMapping(value = "/{username}/readyForSubmittingV1", method = RequestMethod.GET)
     @ApiOperation(value = "Get document types STRING (ready for submiting) for specified user V01")
@@ -84,7 +84,7 @@ public class DocumentTypeController {
             @PathVariable String username) {
         return documentTypeService.getDocumentTypeTitlesOfSubmittingUser1(username);
     }
-
+*/
     //READ BY STATE (READY FOR SUBMITTING) AND USER (SPECIFIED) V_02 (with dto) =====================================
     @RequestMapping(value = "/{username}/readyForSubmittingV2", method = RequestMethod.GET)
     @ApiOperation(value = "Get document types DTO (ready for submiting) for specified user V02")
@@ -93,6 +93,16 @@ public class DocumentTypeController {
             @ApiParam(value = "User username", required = true)
             @PathVariable String username) {
         return documentTypeService.getDocumentTypeTitlesOfSubmittingUser2(username);
+    }
+
+    //READ BY STATE (READY FOR REVIEWING) AND USER (SPECIFIED) (with dto) =====================================
+    @RequestMapping(value = "/{username}/readyForReviewing", method = RequestMethod.GET)
+    @ApiOperation(value = "Get document types DTO (ready for reviewing) for specified user")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public List<DocumentTypeGetCommand> getTypesTitlesOfReviewingUser (
+            @ApiParam(value = "User username", required = true)
+            @PathVariable String username) {
+        return documentTypeService.getDocumentTypeTitlesOfReviewingUser(username);
     }
 
     //CREATE ===========================================================================================================
