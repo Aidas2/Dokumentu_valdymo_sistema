@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import infoIcon from "../../images/info-icon.png";
 import FileDownloadConatainer from "../FileDownload/FileDownloadContainer";
 import FileViewContainer from "../FileDownload/FileViewContainer";
+import AttachmentViewContainer from "../AttachmentDownload/AttachmentViewContainer";
+import AttachmentDownloadConatainer from "../AttachmentDownload/AttachmentDownloadContainer";
 
 const DocumentDetailsComponent = props => {
   var {
@@ -15,6 +17,7 @@ const DocumentDetailsComponent = props => {
     title,
     description,
     creationDate,
+    attachments,
     //submissionDate,
     confirmationDate,
     rejectionDate,
@@ -25,6 +28,11 @@ const DocumentDetailsComponent = props => {
 
   var linkToIndividualDocumentDetails = "/admin/docs/" + id;
 
+  console.log("ATTACHMENTS ********** ", attachments);
+
+  var attachmentsListToRender = attachments.map(oneObject => {
+    return <p key={oneObject.id}>oneObject.title</p>;
+  });
   return (
     <div>
       <div className="container-fluid no-padding">
@@ -148,6 +156,15 @@ const DocumentDetailsComponent = props => {
               <FileViewContainer documentId={id} />
               &ensp;
               <FileDownloadConatainer documentId={id} />
+            </div>
+          </div>
+          <div className="row users-padding-bottom">
+            <div className="col-1 documents-table-size">13</div>
+            <div className="col-5 documents-table-size">Priedai</div>
+            <div className="col-6 documents-table-size">
+              <AttachmentViewContainer documentId={id} />
+              &ensp;
+              <AttachmentDownloadConatainer documentId={id} />
             </div>
           </div>
           <div className="row users-padding-bottom">

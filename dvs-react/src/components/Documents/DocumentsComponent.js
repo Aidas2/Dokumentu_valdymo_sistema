@@ -11,7 +11,8 @@ const DocumentsComponent = props => {
     documentStateInLithuanian,
     documentTypeTitleInLithuanian,
     title,
-    description
+    description,
+    attachments
     //creationDate,
     //submissionDate,
     //confirmationDate,
