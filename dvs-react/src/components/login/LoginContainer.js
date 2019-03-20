@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import axios from "axios";
 import LoginComponent from "./LoginComponent";
+import { Redirect } from "react-router";
 axios.defaults.withCredentials = true; // leidzia dalintis cookies
 
 class LoginContainer extends Component {
   state = {
     username: "",
-    pass: ""
+    pass: "",
+    loggedIn: false
   };
 
   onUsernameChange = event => {
@@ -26,6 +28,7 @@ class LoginContainer extends Component {
       .then(resp => {
         console.log("user " + resp.data.username + " logged in");
         localStorage.setItem("username", resp.data.username);
+        this.setState({ loggedIn: true });
       })
       .catch(e => {
         console.log(e);
@@ -33,16 +36,27 @@ class LoginContainer extends Component {
     event.preventDefault();
   };
 
+  redirectToDocs = () => {
+    if (this.state.loggedIn) {
+      return <Redirect to="/docs" />;
+    } else {
+      return <div>Login Please</div>;
+    }
+  };
+
   render() {
     // console.log("this.state in render() ------------ ", this.state);
     return (
-      <LoginComponent
-        username={this.state.username}
-        pass={this.state.pass}
-        onUsernameChange={this.onUsernameChange}
-        onPassChange={this.onPassChange}
-        onSubmit={this.onSubmit}
-      />
+      <div>
+        <LoginComponent
+          username={this.state.username}
+          pass={this.state.pass}
+          onUsernameChange={this.onUsernameChange}
+          onPassChange={this.onPassChange}
+          onSubmit={this.onSubmit}
+        />
+        {this.redirectToDocs()}
+      </div>
     );
   }
   onCalc = event => {
