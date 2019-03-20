@@ -28,11 +28,15 @@ const DocumentDetailsComponent = props => {
 
   var linkToIndividualDocumentDetails = "/admin/docs/" + id;
 
-  console.log("ATTACHMENTS ********** ", attachments);
+  // console.log("ATTACHMENTS ********** ", attachments);
+  const attachmentsArray = attachments;
+  // console.log("attachmentsArray ********** ", attachmentsArray);
 
-  var attachmentsListToRender = attachments.map(oneObject => {
-    return <p key={oneObject.id}>oneObject.title</p>;
-  });
+  var attachmentsListToRender = () => {
+    attachmentsArray.map(oneObject => {
+      return <p key={oneObject.id}>{oneObject.title}</p>;
+    });
+  };
   return (
     <div>
       <div className="container-fluid no-padding">

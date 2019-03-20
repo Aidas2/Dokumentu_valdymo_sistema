@@ -23,6 +23,7 @@ const DocumentsComponent = props => {
   } = props.documentDetails;
 
   const linkToDOcumentDetails = "/admin/docs/" + id;
+
   return (
     <div className="row users-padding-bottom">
       <div className="col-1 documents-table-size">{props.index}</div>

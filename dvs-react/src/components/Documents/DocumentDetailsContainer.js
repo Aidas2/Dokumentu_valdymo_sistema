@@ -18,7 +18,8 @@ class DocumentDetailsContainer extends Component {
       rejectionDate: "",
       reviewerUsername: "",
       rejectionReason: "",
-      path: ""
+      path: "",
+      attachments: []
     },
     setStateInfo: {
       documentState: "",
@@ -183,6 +184,10 @@ class DocumentDetailsContainer extends Component {
     //   ));
     // }
     console.log("render() _----------this.state----------- >>>> ", this.state);
+    console.log(
+      "############### DocumentDetailsContainer >>>>",
+      this.state.documentDetails.attachments[0]
+    );
     return (
       <div>
         <DocumentDetailsComponent
