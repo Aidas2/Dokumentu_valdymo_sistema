@@ -767,78 +767,74 @@ dt {
 .created-graph-style {
   content: "";
   display: block;
-  background-color: yellow;
+  background-color: rgb(136, 136, 136);
   width: 0px;
   margin-bottom: 10px;
   height: 50px;
-  
+
   top: 50%;
   transform: translateY(-50%);
   transition: background-color 0.3s ease;
   cursor: pointer;
-  
+  opacity: 0.7;
 }
 
 .subbmitted-graph-style {
   content: "";
   display: block;
-  background-color: orange;
+  background-color: rgb(255, 196, 0);
   width: 0px;
   margin-bottom: 10px;
   height: 50px;
-  
+
   top: 50%;
   transform: translateY(-50%);
   transition: background-color 0.3s ease;
   cursor: pointer;
-  
+  opacity: 0.7;
 }
-
 
 .accepted-graph-style {
   content: "";
   display: block;
-  background-color: green;
+  background-color: rgb(2, 196, 2);
   width: 0px;
   margin-bottom: 10px;
   height: 50px;
-  
+
   top: 50%;
   transform: translateY(-50%);
   transition: background-color 0.3s ease;
   cursor: pointer;
-  
+  opacity: 0.7;
 }
 
 .rejected-graph-style {
   content: "";
   display: block;
-  background-color: red;
+  background-color: rgb(230, 7, 7);
   width: 0px;
   margin-bottom: 10px;
   height: 50px;
-  
+
   top: 50%;
   transform: translateY(-50%);
   transition: background-color 0.3s ease;
   cursor: pointer;
-  
+  opacity: 0.7;
 }
-
 
 .created-graph-style:hover {
-  background-color: #aaa;
+  opacity: 1;
 }
 .subbmitted-graph-style:hover {
-  background-color: #aaa;
+  opacity: 1;
 }
 
 .accepted-graph-style:hover {
-  background-color: #aaa;
+  opacity: 1;
 }
 
 .rejected-graph-style:hover {
-  background-color: #aaa;
+  opacity: 1;
 }
-
-
