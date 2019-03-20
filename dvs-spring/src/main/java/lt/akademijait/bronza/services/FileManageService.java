@@ -40,8 +40,8 @@ public class FileManageService {
     private DocumentRepository documentRepository;
     @Autowired
     private AttachmentService attachmentService;
-//    @Autowired
-//    private AttachmentRepository attachmentRepository;
+    @Autowired
+    private AttachmentRepository attachmentRepository;
 
     @Transactional
     public ResponseEntity<String> uploadFiles(
@@ -88,16 +88,20 @@ public class FileManageService {
                     + getLoggedInUsername());
             userDirectory.mkdirs();
             if (files[i].getContentType().equalsIgnoreCase("application/pdf")) {
-
-                File fileToSave = new File(userDirectory, userID + "-" + getCurrentLocalDateTimeStamp() + "-"
-                        + files[i].getOriginalFilename());
                 int attachmentNumber = 1;
+
+                File fileToSave = new File(userDirectory, userID + "-" +
+                        (i == 0 ? "" : "att" + attachmentNumber + "-") + getCurrentLocalDateTimeStamp() + "-"
+                        + files[i].getOriginalFilename());
 //                String attachmentPath=null;
 
                 if (i == 0) {
                     documentPath = fileToSave.getAbsolutePath();
                 } else {
-                    attachments.add(new Attachment("Priedas nr." + attachmentNumber, fileToSave.getAbsolutePath()));
+                    Attachment attachment = new Attachment("Priedas nr." + attachmentNumber, fileToSave.getAbsolutePath());
+                    attachmentNumber++;
+                    attachmentRepository.save(attachment);
+                    attachments.add(attachment);
 
                 }
                 try {
