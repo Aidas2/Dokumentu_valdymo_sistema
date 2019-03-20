@@ -506,6 +506,11 @@ public class DocumentService {
             if (userGroup.getReviewDocumentType().contains(documentToSetState.getDocumentType())) {
                 log.info("Yes, this UserGroup can REVIEW this type of document");
                 canReview = true;
+                //////Added by Paulius
+                if (userGroup.getSubmissionDocumentType().contains(documentToSetState.getDocumentType())) {
+                    log.info("Yes, this UserGroup can  SUBMIT this type of document");
+                    canSubmit = true;
+                } //// end of an add
             } else if (userGroup.getSubmissionDocumentType().contains(documentToSetState.getDocumentType())) {
                 log.info("Yes, this UserGroup can (only) SUBMIT this type of document");
                 canSubmit = true;

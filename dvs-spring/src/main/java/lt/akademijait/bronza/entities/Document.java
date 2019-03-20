@@ -28,7 +28,7 @@ public class Document {
     private List<String> additionalFilePaths = new ArrayList<>();
 
     @OneToMany
-    private Set<Attachment> attachments;
+    private List<Attachment> attachments;
 
     //@NotNull //if uncommented doesn't let to create Document with User==null
     @ManyToOne
@@ -91,7 +91,10 @@ public class Document {
     public Document() {
     }
 
-    public Document(User author, DocumentState documentState, DocumentType documentType, String title, String description, Date creationDate, Date submissionDate, Date confirmationDate, Date rejectionDate, User reviewer, String rejectionReason, String path, Set<Attachment> attachments) {
+    public Document(User author, DocumentState documentState, DocumentType documentType, String title,
+                    String description, Date creationDate, Date submissionDate, Date confirmationDate,
+                    Date rejectionDate, User reviewer, String rejectionReason, String path,
+                    List<Attachment> attachments) {
         this.author = author;
         this.documentState = documentState;
         this.documentType = documentType;
@@ -125,11 +128,11 @@ public class Document {
         this.additionalFilePaths = additionalFilePaths;
     }
 
-    public Set<Attachment> getAttachments() {
+    public List<Attachment> getAttachments() {
         return attachments;
     }
 
-    public void setAttachments(Set<Attachment> attachments) {
+    public void setAttachments(List<Attachment> attachments) {
         this.attachments = attachments;
     }
 

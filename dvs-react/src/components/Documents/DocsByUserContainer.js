@@ -62,6 +62,8 @@ class DocumentsContainer extends Component {
   handleDocumentDownload = () => {};
   handleDocumentView = () => {};
   render() {
+    console.log("STATE IN RENDER >>>>>>>>", this.state);
+
     var documentsArrayToRender = this.state.documents.map(
       (oneDocumentObj, index) => {
         return (

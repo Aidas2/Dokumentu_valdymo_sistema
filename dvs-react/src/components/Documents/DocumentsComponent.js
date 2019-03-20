@@ -11,7 +11,8 @@ const DocumentsComponent = props => {
     documentStateInLithuanian,
     documentTypeTitleInLithuanian,
     title,
-    description
+    description,
+    attachments
     //creationDate,
     //submissionDate,
     //confirmationDate,
@@ -22,6 +23,7 @@ const DocumentsComponent = props => {
   } = props.documentDetails;
 
   const linkToDOcumentDetails = "/admin/docs/" + id;
+
   return (
     <div className="row users-padding-bottom">
       <div className="col-1 documents-table-size">{props.index}</div>

@@ -5,6 +5,7 @@ import lt.akademijait.bronza.entities.Attachment;
 import lt.akademijait.bronza.enums.DocumentState;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 public class DocumentGetCommand {
@@ -29,7 +30,7 @@ public class DocumentGetCommand {
     private String rejectionReason;
     private String path;
 
-    private Set<Attachment> attachments;
+    private List<Attachment> attachments;
 
 
     public DocumentGetCommand() {
@@ -38,7 +39,7 @@ public class DocumentGetCommand {
     public DocumentGetCommand(Long id, String authorUsername, String documentState,
                               String documentTypeTitleInLithuanian, String title, String description,
                               Date creationDate, Date submissionDate, Date confirmationDate, Date rejectionDate,
-                              String reviewerUsername, String rejectionReason, String path, Set<Attachment> attachments) {
+                              String reviewerUsername, String rejectionReason, String path, List<Attachment> attachments) {
         this.id = id;
         this.authorUsername = authorUsername;
         //this.documentStateInLithuanian = documentStateInLithuanian; //see remark bellow
@@ -200,11 +201,11 @@ public class DocumentGetCommand {
         this.path = path;
     }
 
-    public Set<Attachment> getAttachments() {
+    public List<Attachment> getAttachments() {
         return attachments;
     }
 
-    public void setAttachments(Set<Attachment> attachments) {
+    public void setAttachments(List<Attachment> attachments) {
         this.attachments = attachments;
     }
 }

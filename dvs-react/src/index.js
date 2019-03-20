@@ -100,7 +100,7 @@ ReactDOM.render(
           component={DocumentDetailsContainer}
         />
         {/* <Route exact path="/docs" component={DocumentsContainer} /> */}
-        <Route exact path="/testing" component={RenderResponse} />
+        {/* <Route exact path="/testing" component={RenderResponse} /> */}
         <Route exact path="/admin/usergroups" component={UserGroupsContainer} />
         <Route
           exact
