@@ -2,8 +2,10 @@ package lt.akademijait.bronza.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lt.akademijait.bronza.dto.document.DocumentCreateCommand;
+import lt.akademijait.bronza.entities.Attachment;
 import lt.akademijait.bronza.entities.Document;
 import lt.akademijait.bronza.enums.DocumentState;
+import lt.akademijait.bronza.repositories.AttachmentRepository;
 import lt.akademijait.bronza.repositories.DocumentRepository;
 import lt.akademijait.bronza.repositories.DocumentTypeRepository;
 import lt.akademijait.bronza.repositories.UserRepository;
@@ -23,7 +25,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
+import java.util.*;
 
 @Service
 public class FileManageService {
@@ -36,6 +38,10 @@ public class FileManageService {
     private DocumentTypeRepository documentTypeRepository;
     @Autowired
     private DocumentRepository documentRepository;
+    @Autowired
+    private AttachmentService attachmentService;
+//    @Autowired
+//    private AttachmentRepository attachmentRepository;
 
     @Transactional
     public ResponseEntity<String> uploadFiles(
@@ -73,6 +79,8 @@ public class FileManageService {
         newDocument.setDocumentType(documentTypeRepository.findByTitle(documentCreateCommand.getDocumentTypeTitle()));
         newDocument.setTitle(documentCreateCommand.getTitle());
         newDocument.setDescription(documentCreateCommand.getDescription());
+        Set<Attachment> attachments = new HashSet<>();
+
 
         for (int i = 0; i < files.length; i++) {
 
@@ -83,8 +91,14 @@ public class FileManageService {
 
                 File fileToSave = new File(userDirectory, userID + "-" + getCurrentLocalDateTimeStamp() + "-"
                         + files[i].getOriginalFilename());
+                int attachmentNumber = 1;
+//                String attachmentPath=null;
+
                 if (i == 0) {
                     documentPath = fileToSave.getAbsolutePath();
+                } else {
+                    attachments.add(new Attachment("Priedas nr." + attachmentNumber, fileToSave.getAbsolutePath()));
+
                 }
                 try {
                     files[i].transferTo(fileToSave);
@@ -100,6 +114,7 @@ public class FileManageService {
         }
         newDocument.setDocumentState(DocumentState.CREATED);
         newDocument.setPath(documentPath);
+        newDocument.setAttachments(attachments);
         documentRepository.save(newDocument);
 
 

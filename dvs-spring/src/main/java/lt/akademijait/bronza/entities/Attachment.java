@@ -29,8 +29,8 @@ public class Attachment {
     public Attachment() {
     }
 
-    public Attachment(Long id, String title, String path) {
-        this.id = id;
+    public Attachment(/*Long id,*/ String title, String path) {
+//        this.id = id;
         this.title = title;
         this.path = path;
     }
