@@ -79,7 +79,7 @@ public class FileManageService {
         newDocument.setDocumentType(documentTypeRepository.findByTitle(documentCreateCommand.getDocumentTypeTitle()));
         newDocument.setTitle(documentCreateCommand.getTitle());
         newDocument.setDescription(documentCreateCommand.getDescription());
-        Set<Attachment> attachments = new HashSet<>();
+        List<Attachment> attachments = new ArrayList<>();
         int attachmentNumber = 1;
 
 
