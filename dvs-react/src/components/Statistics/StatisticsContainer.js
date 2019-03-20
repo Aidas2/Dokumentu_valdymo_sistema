@@ -65,7 +65,6 @@ class StatisticsContainer extends Component {
       return <option key={oneType.id}>{oneType.title}</option>;
     });
 
-    
     return (
       <div>
         <div className="container-fluid no-padding">
@@ -111,6 +110,7 @@ class StatisticsContainer extends Component {
               <div className="col-3  users-table-middle-style ">Atmesta</div>
             </div> */}
             <StatisticsComponent
+              selectedDocType={this.state.selectedDocType}
               statisticsObject={this.state.statisticsObj}
               docTypesToRender={docTypesArrayToRender}
               onDocumentTypeChange={this.handleDocumentTypeChange}

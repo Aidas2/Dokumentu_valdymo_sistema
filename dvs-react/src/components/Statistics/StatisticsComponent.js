@@ -70,7 +70,7 @@ const StatisticsComponent = props => {
         </div>
 
         <dl>
-          <dt>Gal iseitu cia paduoti dokumento tipa?</dt>
+          <dt>{props.selectedDocType}</dt>
           <dd
             class="created-graph-style "
             style={styleGraph.createdDocumentsCountGraphStyle}
