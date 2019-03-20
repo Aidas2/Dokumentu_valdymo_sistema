@@ -8,7 +8,7 @@ class LoginContainer extends Component {
   state = {
     username: "",
     pass: "",
-    loggedIn: false
+    isLogged: false
   };
 
   onUsernameChange = event => {
@@ -28,7 +28,7 @@ class LoginContainer extends Component {
       .then(resp => {
         console.log("user " + resp.data.username + " logged in");
         localStorage.setItem("username", resp.data.username);
-        this.setState({ loggedIn: true });
+        this.setState({ isLogged: true });
       })
       .catch(e => {
         console.log(e);
@@ -37,10 +37,10 @@ class LoginContainer extends Component {
   };
 
   redirectToDocs = () => {
-    if (this.state.loggedIn) {
+    if (this.state.isLogged) {
       return <Redirect to="/docs" />;
     } else {
-      return <div>Login Please</div>;
+      return <div>Prašome prisijungti prie sistemos</div>;
     }
   };
 
