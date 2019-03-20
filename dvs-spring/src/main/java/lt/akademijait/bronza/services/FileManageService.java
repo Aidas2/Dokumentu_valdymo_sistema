@@ -80,6 +80,7 @@ public class FileManageService {
         newDocument.setTitle(documentCreateCommand.getTitle());
         newDocument.setDescription(documentCreateCommand.getDescription());
         Set<Attachment> attachments = new HashSet<>();
+        int attachmentNumber = 1;
 
 
         for (int i = 0; i < files.length; i++) {
@@ -87,8 +88,8 @@ public class FileManageService {
             File userDirectory = new File(currentAbsolutePath + fileSeparator + "uploaded-files" + fileSeparator
                     + getLoggedInUsername());
             userDirectory.mkdirs();
+
             if (files[i].getContentType().equalsIgnoreCase("application/pdf")) {
-                int attachmentNumber = 1;
 
                 File fileToSave = new File(userDirectory, userID + "-" +
                         (i == 0 ? "" : "att" + attachmentNumber + "-") + getCurrentLocalDateTimeStamp() + "-"
