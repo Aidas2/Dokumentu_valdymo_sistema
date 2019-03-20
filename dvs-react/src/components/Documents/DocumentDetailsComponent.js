@@ -29,14 +29,22 @@ const DocumentDetailsComponent = props => {
   var linkToIndividualDocumentDetails = "/admin/docs/" + id;
 
   // console.log("ATTACHMENTS ********** ", attachments);
-  const attachmentsArray = attachments;
+  // const attachmentsArray = attachments;
   // console.log("attachmentsArray ********** ", attachmentsArray);
 
-  var attachmentsListToRender = () => {
-    attachmentsArray.map(oneObject => {
-      return <p key={oneObject.id}>{oneObject.title}</p>;
-    });
-  };
+  var attachmentsListToRender = attachments.map(oneObject => {
+    return (
+      <span key={oneObject.id}>
+        <span>{oneObject.title}</span> &ensp;
+        {/* <br /> */}
+        <AttachmentViewContainer attachmentId={oneObject.id} />
+        &ensp;
+        <AttachmentDownloadConatainer attachmentId={oneObject.id} /> &ensp;
+        {/* <br /> */}
+      </span>
+    );
+  });
+
   return (
     <div>
       <div className="container-fluid no-padding">
@@ -166,9 +174,10 @@ const DocumentDetailsComponent = props => {
             <div className="col-1 documents-table-size">13</div>
             <div className="col-5 documents-table-size">Priedai</div>
             <div className="col-6 documents-table-size">
-              <AttachmentViewContainer documentId={id} />
-              &ensp;
-              <AttachmentDownloadConatainer documentId={id} />
+              {/* <AttachmentViewContainer documentId={id} />
+              &ensp; */}
+              {/* <AttachmentDownloadConatainer documentId={id} /> */}
+              {attachmentsListToRender}
             </div>
           </div>
           <div className="row users-padding-bottom">

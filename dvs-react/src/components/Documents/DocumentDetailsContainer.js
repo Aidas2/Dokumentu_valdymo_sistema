@@ -184,10 +184,10 @@ class DocumentDetailsContainer extends Component {
     //   ));
     // }
     console.log("render() _----------this.state----------- >>>> ", this.state);
-    console.log(
-      "############### DocumentDetailsContainer >>>>",
-      this.state.documentDetails.attachments[0]
-    );
+    // console.log(
+    //   "############### DocumentDetailsContainer >>>>",
+    //   this.state.documentDetails.attachments[0]
+    // );
     return (
       <div>
         <DocumentDetailsComponent

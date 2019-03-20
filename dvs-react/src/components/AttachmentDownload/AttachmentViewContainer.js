@@ -4,14 +4,14 @@ import reviewIcon from "../../images/review-icon.png";
 
 class AttachmentViewContainer extends Component {
   state = {
-    documentId: null,
+    attachmentId: null,
     response: "",
     file: "",
     fileURL: ""
   };
 
   componentDidMount() {
-    this.setState({ documentId: this.props.documentId });
+    this.setState({ attachmentId: this.props.attachmentId });
   }
 
   viewFile = () => {
@@ -55,8 +55,8 @@ class AttachmentViewContainer extends Component {
     // window.open("testing");
     const link = document.createElement("a");
     link.href =
-      "http://localhost:8081/files/attachments/view?documentId=" +
-      this.props.documentId;
+      "http://localhost:8081/files/attachments/view?attachmentId=" +
+      this.props.attachmentId;
     document.body.appendChild(link);
     link.click();
     link.remove();

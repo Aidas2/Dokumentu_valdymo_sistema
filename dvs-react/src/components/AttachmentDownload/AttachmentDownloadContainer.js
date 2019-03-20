@@ -18,7 +18,7 @@ class AttachmentDownloadConatainer extends Component {
       url: "http://localhost:8081/files/attachments",
       method: "GET",
       params: {
-        documentId: this.props.documentId
+        attachmentId: this.props.attachmentId
       },
       responseType: "blob" // important
     })
