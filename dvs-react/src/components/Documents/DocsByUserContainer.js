@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import DocumentsComponent from "./DocumentsComponent";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import DocumentsOnlySubmitComponent from "./DocumentsOnlySubmitComponent";
 
 import logo from "../../images/home.png";
 import infoIcon from "../../images/info-icon.png";
@@ -50,7 +51,7 @@ class DocumentsContainer extends Component {
     var documentsArrayToRender = this.state.documents.map(
       (oneDocumentObj, index) => {
         return (
-          <DocumentsComponent
+          <DocumentsOnlySubmitComponent
             key={oneDocumentObj.id}
             documentDetails={oneDocumentObj}
             index={index + 1}

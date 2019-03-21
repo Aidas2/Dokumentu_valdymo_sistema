@@ -74,12 +74,25 @@ ReactDOM.render(
             <DocumentsContainer {...props} requestUrl={urlToGetDocsByUser} />
           )}
         /> */}
-        <Route
+        {/* <Route
           exact
           path="/admin/docs/:id"
           component={DocumentDetailsContainer}
+        /> */}
+        <Route
+          exact
+          path="/docs/:id"
+          render={props => (
+            <DocumentDetailsContainer {...props} onlySubmit={true} />
+          )}
+        />{" "}
+        <Route
+          exact
+          path="/admin/docs/:id"
+          render={props => (
+            <DocumentDetailsContainer {...props} onlySubmit={false} />
+          )}
         />
-        {/* <Route exact path="/docs" component={DocumentsContainer} /> */}
         <Route exact path="/admin/usergroups" component={UserGroupsContainer} />
         <Route
           exact

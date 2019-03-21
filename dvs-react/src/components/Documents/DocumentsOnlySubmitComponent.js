@@ -22,7 +22,7 @@ const DocumentsComponent = props => {
     //path
   } = props.documentDetails;
 
-  const linkToDOcumentDetails = "/admin/docs/" + id;
+  const linkToDOcumentDetails = "/docs/" + id;
 
   return (
     <div className="row users-padding-bottom">
@@ -37,7 +37,6 @@ const DocumentsComponent = props => {
         {documentStateInLithuanian}
       </div>
       <div className="col-2 documents-table-size">{description}</div>
-
       <div className="col-1 documents-table-size">
         <FileViewContainer documentId={id} />
       </div>

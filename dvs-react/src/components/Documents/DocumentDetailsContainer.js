@@ -110,7 +110,8 @@ class DocumentDetailsContainer extends Component {
         </div>
       );
     } else if (
-      this.state.documentDetails.documentStateInLithuanian === "PATEIKTAS"
+      this.state.documentDetails.documentStateInLithuanian === "PATEIKTAS" &&
+      !this.props.onlySubmit
     ) {
       return (
         <div className="row users-padding-bottom">
