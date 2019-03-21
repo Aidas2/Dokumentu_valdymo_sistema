@@ -1,6 +1,7 @@
 package lt.akademijait.bronza.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
 import lt.akademijait.bronza.dto.document.DocumentCreateCommand;
 import lt.akademijait.bronza.entities.Attachment;
 import lt.akademijait.bronza.entities.Document;
@@ -28,6 +29,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 @Service
+@Slf4j
+
 public class FileManageService {
 
     @Autowired
@@ -75,7 +78,6 @@ public class FileManageService {
         Document newDocument = new Document();
         newDocument.setCreationDate(new Date());
         newDocument.setAuthor(userRepository.findByUsername(getLoggedInUsername()));
-//        newDocument.setAuthor(userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()));
         newDocument.setDocumentType(documentTypeRepository.findByTitle(documentCreateCommand.getDocumentTypeTitle()));
         newDocument.setTitle(documentCreateCommand.getTitle());
         newDocument.setDescription(documentCreateCommand.getDescription());
@@ -94,15 +96,23 @@ public class FileManageService {
                 File fileToSave = new File(userDirectory, userID + "-" +
                         (i == 0 ? "" : "att" + attachmentNumber + "-") + getCurrentLocalDateTimeStamp() + "-"
                         + files[i].getOriginalFilename());
-//                String attachmentPath=null;
 
                 if (i == 0) {
                     documentPath = fileToSave.getAbsolutePath();
+                    log.info("Main document \""+userID + "-" +
+                            (i == 0 ? "" : "att" + attachmentNumber + "-") + getCurrentLocalDateTimeStamp() + "-"
+                            + files[i].getOriginalFilename()+"\" was created by user with a username \""
+                            +getLoggedInUsername()+"\" @"+ new Date().toString()+".");
+
                 } else {
                     Attachment attachment = new Attachment("Priedas nr." + attachmentNumber, fileToSave.getAbsolutePath());
                     attachmentNumber++;
                     attachmentRepository.save(attachment);
                     attachments.add(attachment);
+                    log.info("Attachment  \""+userID + "-" +
+                            (i == 0 ? "" : "att" + attachmentNumber + "-") + getCurrentLocalDateTimeStamp() + "-"
+                            + files[i].getOriginalFilename()+"\" was created by user with a username \""
+                            +getLoggedInUsername()+"\" @"+ new Date().toString()+".");
 
                 }
                 try {
