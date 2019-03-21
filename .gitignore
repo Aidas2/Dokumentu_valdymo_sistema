@@ -78,4 +78,5 @@ chrome-user-data
 .vscode
 *.swo
 dvs-spring/uploaded-files
-uploaded-files
+uploaded-files/
+4_PVZ/
