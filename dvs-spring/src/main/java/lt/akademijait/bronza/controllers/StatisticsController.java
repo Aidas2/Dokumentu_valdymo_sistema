@@ -49,8 +49,8 @@ public class StatisticsController {
     @ApiOperation(value = "Get documents by doctypa and date", notes = "returns document statistics by document type and date")
     public DocumentCountGetCommand getDocByTypeAndDate(
             @ApiParam(value = "docType", required = true) @PathVariable final String docType,
-            @ApiParam(value = "startDate", defaultValue = "2019-03-03") @RequestParam Date startDate,
-            @ApiParam(value = "endDate", defaultValue = "2019-03-17") @RequestParam Date endDate){
+            @ApiParam(value = "startDate", defaultValue = "Thu, 21 Mar 2019") @RequestParam Date startDate,
+            @ApiParam(value = "endDate", defaultValue = "Thu, 21 Mar 2019") @RequestParam Date endDate){
         return statisticsService.getDocCountByDate(docType, startDate, endDate);
     }
 

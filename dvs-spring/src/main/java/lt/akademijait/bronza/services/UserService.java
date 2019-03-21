@@ -130,30 +130,10 @@ public class UserService implements UserDetailsService {
 
         User userToUpdate = userRepository.findByUsername(oldUserName);
 
-//        if (uuc.getFirstName() != null){
-//            userToUpdate.setFirstName(uuc.getFirstName());
-//        }
-//        if (uuc.getLastName() != null){
-//            userToUpdate.setLastName(uuc.getLastName());
-//        }
-//        userToUpdate.setAdministrator(uuc.isAdministrator());
-//
-//        if (uuc.getUsername() != null){
-//            userToUpdate.setUsername(uuc.getUsername());
-//        }
-//        if (uuc.getPassword() != null){
-//            userToUpdate.setPassword(uuc.getPassword());
-//        }
-//        if (!uuc.getEmailAddress().equals("") || uuc.getEmailAddress() != null){
-//            userToUpdate.setEmailAddress(uuc.getEmailAddress());
-//        }
-//        userToUpdate.setUserGroups(userGroupsToSet);
-
         userToUpdate.setFirstName(uuc.getFirstName());
         userToUpdate.setLastName(uuc.getLastName());
         userToUpdate.setHireDate(uuc.getHireDate());
         userToUpdate.setAdministrator(uuc.isAdministrator());
-//        userToUpdate.setUsername(uuc.getUsername());
         userToUpdate.setPassword(new BCryptPasswordEncoder().encode(uuc.getPassword()));
         userToUpdate.setEmailAddress(uuc.getEmailAddress());
         userToUpdate.setUserGroups(userGroupsToSet);
