@@ -174,13 +174,11 @@ const DocumentDetailsComponent = props => {
             <div className="col-1 documents-table-size">13</div>
             <div className="col-5 documents-table-size">Priedai</div>
             <div className="col-6 documents-table-size">
-              {/* <AttachmentViewContainer documentId={id} />
-              &ensp; */}
-              {/* <AttachmentDownloadConatainer documentId={id} /> */}
               {attachmentsListToRender}
             </div>
           </div>
-          <div className="row users-padding-bottom">
+          {props.actionButtons}
+          {/* <div className="row users-padding-bottom">
             <div className="col-1 documents-table-size" />
             <div className="col-5 documents-table-size">
               {props.actionButtons}
@@ -198,7 +196,7 @@ const DocumentDetailsComponent = props => {
                 />
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

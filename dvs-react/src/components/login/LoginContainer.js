@@ -40,7 +40,7 @@ class LoginContainer extends Component {
     if (this.state.isLogged) {
       return <Redirect to="/docs" />;
     } else {
-      return <div>Prašome prisijungti prie sistemos</div>;
+      return null;
     }
   };
 
