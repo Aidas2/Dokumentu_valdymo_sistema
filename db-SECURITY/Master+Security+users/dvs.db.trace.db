@@ -1,9 +1,0 @@
-2019-03-13 18:19:36 jdbc[13]: exception
-org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "UPDATE  USER PASSWORD=[*]'pass' "; expected "SET"; SQL statement:
-update  USER password='pass' [42001-197]
-2019-03-13 18:19:47 jdbc[13]: exception
-org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "UPDATE  USER PASSWORD=[*]'pass' WHERE ID!=4 "; expected "SET"; SQL statement:
-update  USER password='pass' where id!=4 [42001-197]
-2019-03-13 20:38:30 jdbc[13]: exception
-org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DELETE FROM USER WHERE ID[*]==65 "; SQL statement:
-delete FROM USER where id==65 [42000-197]
