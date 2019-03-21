@@ -10,7 +10,7 @@ class App extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     axios
-      .get("http://localhost:8081/loggedUsername")
+      .get("/loggedUsername")
       .then(response => {
         this.setState({ loggedUsername: response.data });
       })

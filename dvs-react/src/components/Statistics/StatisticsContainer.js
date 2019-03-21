@@ -14,7 +14,7 @@ class StatisticsContainer extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:8081/api/doctypes/readyForReviewing")
+      .get("/api/doctypes/readyForReviewing")
       .then(response => {
         this.setState({
           documentTypes: response.data
@@ -22,7 +22,7 @@ class StatisticsContainer extends Component {
         this.setState({ selectedDocType: response.data[0].title });
 
         axios
-          .get("http://localhost:8081/api/statistics/" + response.data[0].title)
+          .get("/api/statistics/" + response.data[0].title)
           .then(response => {
             this.setState({
               statisticsObj: response.data
@@ -40,7 +40,7 @@ class StatisticsContainer extends Component {
   handleDocumentTypeChange = e => {
     this.setState({ selectedDocType: e.target.value });
     axios
-      .get("http://localhost:8081/api/statistics/" + e.target.value)
+      .get("/api/statistics/" + e.target.value)
       .then(response => {
         this.setState({
           statisticsObj: response.data

@@ -7,7 +7,7 @@ class LogoutContainer extends Component {
 
   handleLogout = event => {
     axios
-      .post("http://localhost:8081/login?logout", {
+      .post("/login?logout", {
         // headers: { "Content-type": "application/x-www-form-urlencoded" }
       })
       .then(resp => {

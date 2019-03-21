@@ -14,7 +14,7 @@ class DocumentTypesContainer extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:8081/api/doctypes")
+      .get("/api/doctypes")
       .then(response => {
         this.setState({ docTypes: response.data });
       })

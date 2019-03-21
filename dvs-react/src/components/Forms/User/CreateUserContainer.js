@@ -20,7 +20,7 @@ class CreateUserContainer extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:8081/api/groups")
+      .get("/api/groups")
       .then(response => {
         this.setState({ allUserGroups: response.data });
       })
@@ -31,7 +31,7 @@ class CreateUserContainer extends Component {
 
   handleSubmit = () => {
     axios
-      .post("http://localhost:8081/api/users", {
+      .post("/api/users", {
         administrator: this.state.administrator,
         emailAddress: this.state.emailAddress,
         firstName: this.state.firstName,

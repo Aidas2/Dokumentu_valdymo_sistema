@@ -9,7 +9,7 @@ class UserGroupDetailsContainer extends Component {
     const titleParam = this.props.match.params.title;
 
     axios({
-      url: "http://localhost:8081/api/groups/" + titleParam,
+      url: "/api/groups/" + titleParam,
       method: "GET"
       //   params: {
       //     username: "username1"

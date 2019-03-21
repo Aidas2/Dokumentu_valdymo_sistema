@@ -9,7 +9,7 @@ class UserDetailsContainer extends Component {
     const usernameParam = this.props.match.params.username;
 
     axios({
-      url: "http://localhost:8081/api/users/" + usernameParam,
+      url: "/api/users/" + usernameParam,
       method: "GET"
       //   params: {
       //     username: "username1"

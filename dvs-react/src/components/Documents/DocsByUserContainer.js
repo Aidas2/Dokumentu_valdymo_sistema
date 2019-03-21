@@ -32,7 +32,7 @@ class DocumentsContainer extends Component {
   componentDidMount() {
     this.setState({ username: localStorage.getItem("username") });
     axios
-      .get("http://localhost:8081/api/docs/docsbyuser", {
+      .get("/api/docs/docsbyuser", {
         params: {}
       })
       .then(response => {

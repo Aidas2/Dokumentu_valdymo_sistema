@@ -12,7 +12,7 @@ class UsersContainer extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:8081/api/users")
+      .get("/api/users")
       .then(response => {
         this.setState({ users: response.data });
       })

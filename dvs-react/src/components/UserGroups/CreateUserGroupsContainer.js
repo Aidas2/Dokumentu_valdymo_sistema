@@ -13,7 +13,7 @@ class CreateUserGroupsContainer extends Component {
   };
   componentDidMount() {
     axios
-      .get("http://localhost:8081/api/doctypes")
+      .get("/api/doctypes")
       .then(response => {
         this.setState({ documentTypes: response.data });
       })
@@ -24,7 +24,7 @@ class CreateUserGroupsContainer extends Component {
 
   handleSubmit = () => {
     axios
-      .post("http://localhost:8081/api/groups", {
+      .post("/api/groups", {
         title: this.state.title,
         reviewDocumentType: this.state.reviewDocumentType,
         submitDocumentType: this.state.submitDocumentType

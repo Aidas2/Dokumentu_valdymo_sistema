@@ -31,7 +31,7 @@ class UpdateUserContainer extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:8081/api/groups")
+      .get("/api/groups")
       .then(response => {
         this.setState({ allUserGroups: response.data });
       })
@@ -45,7 +45,7 @@ class UpdateUserContainer extends Component {
     const usernameParam = this.props.match.params.username;
 
     axios({
-      url: "http://localhost:8081/api/users/" + usernameParam,
+      url: "/api/users/" + usernameParam,
       method: "GET"
       //   params: {
       //     username: "username1"
@@ -105,9 +105,7 @@ class UpdateUserContainer extends Component {
       : console.log("Administrator was not changed");
 
     axios({
-      url:
-        "http://localhost:8081/api/users/" +
-        this.state.userDetailsBeforeUpdate.username,
+      url: "/api/users/" + this.state.userDetailsBeforeUpdate.username,
       method: "put",
       headers: {
         authorisation: "your token"

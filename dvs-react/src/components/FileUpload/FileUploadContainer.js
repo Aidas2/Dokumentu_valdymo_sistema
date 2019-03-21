@@ -19,7 +19,7 @@ class FileUploadContainer extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:8081/api/doctypes/readyForSubmittingV2")
+      .get("/api/doctypes/readyForSubmittingV2")
       .then(response => {
         this.setState({ documentTypes: response.data });
         let createDocumentInfo = this.state.createDocumentInfo;
@@ -73,7 +73,7 @@ class FileUploadContainer extends Component {
       formData.append("docData", JSON.stringify(this.state.createDocumentInfo));
     }
     axios({
-      url: "http://localhost:8081/files",
+      url: "/files",
       method: "post",
       headers: {
         authorisation: "your token"

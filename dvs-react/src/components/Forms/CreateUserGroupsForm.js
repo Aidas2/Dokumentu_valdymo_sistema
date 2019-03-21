@@ -19,8 +19,7 @@ class CreateUserGroupsForm extends Component {
     event.preventDefault();
     axios
       .put(
-        "http://localhost:8081/Bronza-spring/api/usergroups/" +
-          this.props.match.params.id,
+        "/Bronza-spring/api/usergroups/" + this.props.match.params.id,
         this.state
       )
       .then(response => {

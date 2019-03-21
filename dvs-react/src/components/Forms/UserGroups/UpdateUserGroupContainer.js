@@ -17,7 +17,7 @@ class UpdateUserGroupContainer extends Component {
     const usergroupParam = this.props.match.params.title;
 
     axios
-      .get("http://localhost:8081/api/doctypes")
+      .get("/api/doctypes")
       .then(response => {
         this.setState({ documentTypes: response.data });
       })
@@ -26,7 +26,7 @@ class UpdateUserGroupContainer extends Component {
       });
 
     axios
-      .get("http://localhost:8081/api/groups/" + usergroupParam)
+      .get("/api/groups/" + usergroupParam)
       .then(response => {
         this.setState({
           title: response.data.title,
@@ -47,7 +47,7 @@ class UpdateUserGroupContainer extends Component {
       : (titleToSet = this.state.title);
 
     axios
-      .put("http://localhost:8081/api/groups/" + usergroupParam, {
+      .put("/api/groups/" + usergroupParam, {
         title: titleToSet,
         reviewDocumentType: this.state.reviewDocumentType,
         submitDocumentType: this.state.submitDocumentType

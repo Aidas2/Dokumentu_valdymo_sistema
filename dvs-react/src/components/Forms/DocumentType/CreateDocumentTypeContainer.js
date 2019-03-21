@@ -11,7 +11,7 @@ class CreateDocumentTypeConatainer extends Component {
 
   handleSubmit = () => {
     axios
-      .post("http://localhost:8081/api/doctypes", {
+      .post("/api/doctypes", {
         title: this.state.title
       })
       .then(response => {

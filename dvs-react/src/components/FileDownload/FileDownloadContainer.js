@@ -15,7 +15,7 @@ class FileDownloadConatainer extends Component {
     console.log("download method happened");
 
     axios({
-      url: "http://localhost:8081/files",
+      url: "/files",
       method: "GET",
       params: {
         documentId: this.props.documentId

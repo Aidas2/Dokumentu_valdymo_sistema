@@ -22,7 +22,7 @@ class LoginContainer extends Component {
     userData.append("username", this.state.username);
     userData.append("password", this.state.pass);
     axios
-      .post("http://localhost:8081/login", userData, {
+      .post("/login", userData, {
         headers: { "Content-type": "application/x-www-form-urlencoded" }
       })
       .then(resp => {

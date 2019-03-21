@@ -15,7 +15,7 @@ class AttachmentDownloadConatainer extends Component {
     console.log("download method happened");
 
     axios({
-      url: "http://localhost:8081/files/attachments",
+      url: "/files/attachments",
       method: "GET",
       params: {
         attachmentId: this.props.attachmentId

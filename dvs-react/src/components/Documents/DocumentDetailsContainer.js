@@ -33,7 +33,7 @@ class DocumentDetailsContainer extends Component {
     const idParam = this.props.match.params.id;
 
     axios({
-      url: "http://localhost:8081/api/docs/" + idParam,
+      url: "/api/docs/" + idParam,
       method: "GET"
     })
       .then(response => {
@@ -53,7 +53,7 @@ class DocumentDetailsContainer extends Component {
     this.setState({ setStateInfo });
 
     axios({
-      url: "http://localhost:8081/api/docs/setstate",
+      url: "/api/docs/setstate",
       method: "put",
       headers: {
         authorisation: "your token"

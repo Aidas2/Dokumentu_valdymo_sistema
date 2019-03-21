@@ -10,7 +10,7 @@ class UserGroups extends React.Component {
   deleteHandler(event) {
     event.preventDefault();
     axios
-      .delete("http://localhost:8081/api/userGroupss/delete/" + this.props.id)
+      .delete("/api/userGroupss/delete/" + this.props.id)
       .then(response => {
         console.log(response);
       })
