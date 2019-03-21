@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import main_icon from "../../images/main_icon.png";
 
 const LoginComponent = (

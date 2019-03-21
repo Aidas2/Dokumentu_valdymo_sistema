@@ -148,7 +148,7 @@ class FileUploadContainer extends Component {
           >
             &times;
           </button>
-          <strong>Success!</strong> Selected files were uploaded successfully
+          <strong> Sveikiname!</strong> Pasirinkti failai buvo sėkmingai įkelti
         </div>
       );
     }
@@ -161,7 +161,7 @@ class FileUploadContainer extends Component {
   };
 
   render() {
-    const { handleClick } = this.props;
+    // const { handleClick } = this.props;
 
     var attachments = this.state.file.filter(
       file => file.name !== this.state.file[0].name

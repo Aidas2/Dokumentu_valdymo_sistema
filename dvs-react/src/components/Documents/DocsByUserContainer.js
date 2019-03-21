@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import DocumentsComponent from "./DocumentsComponent";
+// import DocumentsComponent from "./DocumentsComponent";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import DocumentsOnlySubmitComponent from "./DocumentsOnlySubmitComponent";

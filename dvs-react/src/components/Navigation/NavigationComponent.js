@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 // import { Link } from "react-router-dom";
-import logo from "../../images/home.png";
+// import logo from "../../images/home.png";
 import LogoutContainer from "../login/LogoutContainer";
-import adminIcon from "../../images/adminIcon.png";
+// import adminIcon from "../../images/adminIcon.png";
 import ServicesContext from "../context/ServicesContext";
 
 class NavigationComponent extends Component {

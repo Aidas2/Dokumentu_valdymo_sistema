@@ -1,6 +1,4 @@
 import React from "react";
-import infoIcon from "../../images/info-icon.png";
-import { Link } from "react-router-dom";
 
 const StatisticsComponent = props => {
   const {

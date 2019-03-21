@@ -10,8 +10,8 @@ const UsersComponent = props => {
     hireDate,
     lastName,
     // password,
-    username,
-    userId
+    username
+    //userId
   } = props.userDetails;
 
   var linkToIndividualUserDetails = "/admin/users/" + username;
