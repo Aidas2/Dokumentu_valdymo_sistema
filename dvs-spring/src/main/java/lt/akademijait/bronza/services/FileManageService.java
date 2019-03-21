@@ -99,20 +99,20 @@ public class FileManageService {
 
                 if (i == 0) {
                     documentPath = fileToSave.getAbsolutePath();
-                    log.info("Main document \""+userID + "-" +
+                    log.info("Main document \"" + userID + "-" +
                             (i == 0 ? "" : "att" + attachmentNumber + "-") + getCurrentLocalDateTimeStamp() + "-"
-                            + files[i].getOriginalFilename()+"\" was created by user with a username \""
-                            +getLoggedInUsername()+"\" @"+ new Date().toString()+".");
+                            + files[i].getOriginalFilename() + "\" was created by user with a username \""
+                            + getLoggedInUsername() + "\" @" + new Date().toString() + ".");
 
                 } else {
                     Attachment attachment = new Attachment("Priedas nr." + attachmentNumber, fileToSave.getAbsolutePath());
-                    attachmentNumber++;
                     attachmentRepository.save(attachment);
                     attachments.add(attachment);
-                    log.info("Attachment  \""+userID + "-" +
+                    log.info("Attachment  \"" + userID + "-" +
                             (i == 0 ? "" : "att" + attachmentNumber + "-") + getCurrentLocalDateTimeStamp() + "-"
-                            + files[i].getOriginalFilename()+"\" was created by user with a username \""
-                            +getLoggedInUsername()+"\" @"+ new Date().toString()+".");
+                            + files[i].getOriginalFilename() + "\" was created by user with a username \""
+                            + getLoggedInUsername() + "\" @" + new Date().toString() + ".");
+                    attachmentNumber++;
 
                 }
                 try {
