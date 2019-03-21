@@ -23,6 +23,7 @@ public class DocumentTypeController {
     private DocumentTypeService documentTypeService;
 
     //READ =============================================================================================================
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
     @RequestMapping(method = RequestMethod.GET)
     @ApiOperation(value = "Get all documents types", notes = "Returns all documents types")
     @ResponseStatus(HttpStatus.ACCEPTED)
