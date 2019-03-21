@@ -20,10 +20,6 @@ class CreateUserGroupsContainer extends Component {
       .catch(error => {
         console.log(error);
       });
-    console.log(
-      "ComponentDidMount inside DocumentTYpesCOntainer >>>>>>>>>> this.state.documetTypes>>>>.",
-      this.state.documentTypes
-    );
   }
 
   handleSubmit = () => {
@@ -118,11 +114,6 @@ class CreateUserGroupsContainer extends Component {
   };
 
   render() {
-    console.log(
-      "@@@@@@@@@@@@@@@ inside render() this.state>>>>>>>> ",
-      this.state
-    );
-
     var selectedSubmissionTypesTitlesToDisplay = this.state.submitDocumentType.map(
       type => {
         return (
@@ -153,10 +144,6 @@ class CreateUserGroupsContainer extends Component {
         );
       }
     );
-
-    // var selectedReviewGroupsTitlesToDisplay = this.state.reviewDocumentType.map(
-    //   group => group + " *** "
-    // );
 
     return (
       <CreateUserGroupsComponent

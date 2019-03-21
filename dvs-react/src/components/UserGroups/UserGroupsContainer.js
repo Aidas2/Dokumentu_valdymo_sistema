@@ -18,10 +18,6 @@ class DocumentTypesContainer extends Component {
       .catch(error => {
         console.log(error);
       });
-    console.log(
-      "ComponentDidMount inside DocumentTYpesCOntainer >>>>>>>>>> this.state.userGroups>>>>.",
-      this.state.userGroups
-    );
   }
 
   render() {
@@ -36,17 +32,6 @@ class DocumentTypesContainer extends Component {
         );
       }
     );
-
-    // var userGroupsArrayToRenderTitle = this.state.userGroups.map(
-    //   oneGroupObj => {
-    //     return (
-    //       <UserGroupsComponent
-    //         key={oneGroupObj.title}
-    //         groupTitle={oneGroupObj.title}
-    //       />
-    //     );
-    //   }
-    // );
 
     return (
       <div>
