@@ -138,36 +138,85 @@ class DocumentDetailsContainer extends Component {
   getActionButtons = () => {
     if (this.state.documentDetails.documentStateInLithuanian === "SUKURTAS") {
       return (
-        <div>
-          <button
-            onClick={() => this.handleAcceptDocument("SUBMITTED")}
-            className="btn btn-warning "
-          >
-            Pateikti
-          </button>
-          &ensp;
+        <div className="row users-padding-bottom">
+          <div className="col-1 documents-table-size" />
+          <div className="col-5 documents-table-size">
+            <div>
+              <button
+                onClick={() => this.handleAcceptDocument("SUBMITTED")}
+                className="btn btn-warning"
+              >
+                Pateikti
+              </button>
+              &ensp;
+            </div>
+          </div>
+          <div className="col-6 documents-table-size" />
         </div>
+
+        // <div>
+        //   <button
+        //     onClick={() => this.handleAcceptDocument("SUBMITTED")}
+        //     className="btn btn-warning "
+        //   >
+        //     Pateikti
+        //   </button>
+        //   &ensp;
+        // </div>
       );
     } else if (
       this.state.documentDetails.documentStateInLithuanian === "PATEIKTAS"
     ) {
       return (
-        <div>
-          <button
-            onClick={() => this.handleAcceptDocument("CONFIRMED")}
-            className="btn btn-success"
-          >
-            Priimti
-          </button>
-          &ensp;
-          <button
-            onClick={() => this.handleAcceptDocument("REJECTED")}
-            className="btn btn-danger "
-          >
-            Atmesti
-          </button>
-          &ensp;
+        <div className="row users-padding-bottom">
+          <div className="col-1 documents-table-size" />
+          <div className="col-5 documents-table-size">
+            <div>
+              <button
+                onClick={() => this.handleAcceptDocument("CONFIRMED")}
+                className="btn btn-success"
+              >
+                Priimti
+              </button>
+              &ensp;
+              <button
+                onClick={() => this.handleAcceptDocument("REJECTED")}
+                className="btn btn-danger "
+              >
+                Atmesti
+              </button>
+              &ensp;
+            </div>{" "}
+          </div>
+          <div className="col-6 documents-table-size">
+            <div>
+              Atmetimo priežastis&ensp;
+              <br />
+              <textarea
+                onChange={this.handleRejectionReason}
+                type="textarea"
+                placeholder="Įveskite atmetimo priežastį"
+                className=" form-control form-control-sm italic-style"
+              />
+            </div>
+          </div>
         </div>
+        // <div>
+        //   <button
+        //     onClick={() => this.handleAcceptDocument("CONFIRMED")}
+        //     className="btn btn-success"
+        //   >
+        //     Priimti
+        //   </button>
+        //   &ensp;
+        //   <button
+        //     onClick={() => this.handleAcceptDocument("REJECTED")}
+        //     className="btn btn-danger "
+        //   >
+        //     Atmesti
+        //   </button>
+        //   &ensp;
+        // </div>
       );
     }
   };
