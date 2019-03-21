@@ -9,6 +9,7 @@ import lt.akademijait.bronza.dto.attachment.AttachmentGetCommand;
 import lt.akademijait.bronza.services.AttachmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,6 +24,7 @@ public class AttachmentController {
 
 
     //READ =============================================================================================================
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping(method = RequestMethod.GET)
     @ApiOperation(value = "Get all attachments", notes = "Returns all attachments")
     @ResponseStatus(HttpStatus.ACCEPTED)
@@ -96,6 +98,7 @@ public class AttachmentController {
 
 
     //DELETE ===========================================================================================================
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping(value = "delete//{id}", method = RequestMethod.DELETE)
     @ApiOperation(value = "Delete attachment", notes = "Delete attachments by id")
     @ResponseStatus(HttpStatus.ACCEPTED)

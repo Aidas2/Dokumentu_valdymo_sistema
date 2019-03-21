@@ -66,9 +66,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
-        http.headers().disable(); //for H2 console
+//        http.headers().disable(); //for H2 console
         http.authorizeRequests()
-                .antMatchers("/swagger-ui.html","/api**").authenticated()
+                .antMatchers("/swagger-ui.html","/api**","/files**").authenticated()
                 .anyRequest().permitAll() //any requests that are not in antMatchers will be allowed
                 .and().formLogin().permitAll()
                 .successHandler(new AuthenticationSuccessHandler() {
