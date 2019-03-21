@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import axios from "axios";
-import CreateUserComponent from "./CreateUserComponent";
+// import CreateUserComponent from "./CreateUserComponent";
 import UpdateUserComponent from "./UpdateUserComponent";
 
 class UpdateUserContainer extends Component {
@@ -138,9 +138,9 @@ class UpdateUserContainer extends Component {
     this.handleCloseAlert();
     const temporalUserInfo = this.state.temporalUserInfo;
     temporalUserInfo.administrator = e.target.value;
-    if (e.target.value == "true") {
+    if (e.target.value === "true") {
       this.setState({ mostRecentAdmintValue: "Taip" });
-    } else if (e.target.value == "false") {
+    } else if (e.target.value === "false") {
       this.setState({ mostRecentAdmintValue: "Ne" });
     }
     this.setState({ temporalUserInfo });

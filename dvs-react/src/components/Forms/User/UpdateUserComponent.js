@@ -6,13 +6,13 @@ import UserGroupsContainer from "./UserGroupsContainer";
 import infoIcon from "../../../images/info-icon.png";
 const UpdateUserComponent = props => {
   const {
-    userGroups,
-    administrator,
+    // userGroups,
+    // administrator,
     emailAddress,
     firstName,
     hireDate,
     lastName,
-    password,
+    // password,
     username
   } = props.userDetailsBeforeUpdate;
   var linkToIndividualUserDetailsUpdate = "/admin/updateuser/" + username;
