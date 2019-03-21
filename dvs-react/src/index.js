@@ -31,15 +31,10 @@ import axios from "axios";
 import DocsByUserContainer from "./components/Documents/DocsByUserContainer";
 import DocsForReviewContainer from "./components/Documents/DocsForReviewContainer";
 
-const urlToGetAllDocs = "http://localhost:8081/api/docs";
-const urlToGetDocsByUser = "http://localhost:8081/api/docs/docsbyuser";
-// const loggedUsername = "";
-
 ReactDOM.render(
   <BrowserRouter>
     <App>
       <Switch>
-        {/* <Route exact path="/" component={LandingPageContainer} /> */}
         <Route exact path="/" component={LoginContainer} />
         <Route exact path="/logout" component={LogoutContainer} />
         <Route exact path="/usergroups" component={UserGroupsContainer} />
@@ -80,27 +75,12 @@ ReactDOM.render(
             <DocumentsContainer {...props} requestUrl={urlToGetDocsByUser} />
           )}
         /> */}
-        {/* <Route
-          exact
-          path="/admin/docs"
-          render={props => (
-            <DocumentsContainer {...props} requestUrl={urlToGetAllDocs} />
-          )}
-        /> */}
-        {/* <Route
-          exact
-          path="/docsforreview"
-          render={props => (
-            <DocumentsContainer {...props} requestUrl={urlToGetAllDocs} />
-          )}
-        /> */}
         <Route
           exact
           path="/admin/docs/:id"
           component={DocumentDetailsContainer}
         />
         {/* <Route exact path="/docs" component={DocumentsContainer} /> */}
-        {/* <Route exact path="/testing" component={RenderResponse} /> */}
         <Route exact path="/admin/usergroups" component={UserGroupsContainer} />
         <Route
           exact
