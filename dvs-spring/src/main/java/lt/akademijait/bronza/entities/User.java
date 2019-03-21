@@ -45,10 +45,6 @@ public class User {
     @JoinColumn(name = "ROLE_ID")
     private Role role;
 
-
-//    @OneToMany
-//    private Set<Document> documents;
-
     //@Column
     //@CollectionTable(name = "USER_ROLE", joinColumns = @JoinColumn(name = "USER_ID"))
     //@ElementCollection(fetch = FetchType.EAGER, targetClass = UserRole.class)
@@ -151,11 +147,5 @@ public class User {
         this.role = role;
     }
 
-//    public List<Document> getDocuments() {
-//        return documents;
-//    }
-//
-//    public void setDocuments(List<Document> documents) {
-//        this.documents = documents;
-//    }
+
 }
