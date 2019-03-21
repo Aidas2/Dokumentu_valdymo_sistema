@@ -1,9 +1,11 @@
 package lt.akademijait.bronza.services;
 
+import lombok.extern.slf4j.Slf4j;
 import lt.akademijait.bronza.dto.statistics.DocumentCountGetCommand;
 import lt.akademijait.bronza.entities.Document;
 import lt.akademijait.bronza.entities.DocumentType;
 import lt.akademijait.bronza.entities.User;
+import lt.akademijait.bronza.entities.UserGroup;
 import lt.akademijait.bronza.enums.DocumentState;
 import lt.akademijait.bronza.repositories.DocumentRepository;
 import lt.akademijait.bronza.repositories.DocumentTypeRepository;
@@ -14,11 +16,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Service
+@Slf4j
 public class StatisticsService {
 
     @Autowired
@@ -35,11 +36,13 @@ public class StatisticsService {
 
     @Transactional
     public Long getAllUsersCount() {
+        log.info("The count of all registered users was gotten");
         return (long) userRepository.findAll().size();
     }
 
     @Transactional
     public Long getAllDocumentsCount() {
+        log.info("The count of all created documents was gotten");
         return (long) documentRepository.findAll().size();
     }
 
@@ -74,6 +77,7 @@ public class StatisticsService {
                 }
             }
         }
+        log.info("Documents which type is " + docType + " statistics from " + startDate + " to " + endDate + " by document state was gotten");
         return new DocumentCountGetCommand(
                 count.size(),
                 submit.size(),
@@ -84,7 +88,6 @@ public class StatisticsService {
 
     @Transactional
     public DocumentCountGetCommand getCountByDocumentType(String docType) {
-
         List<String> count = new ArrayList<>();
         List<String> submit = new ArrayList<>();
         List<String> accept = new ArrayList<>();
@@ -104,7 +107,7 @@ public class StatisticsService {
                 }
             }
         }
-
+        log.info("Documents which type is " + docType + " statistics by document state was gotten");
         return new DocumentCountGetCommand(
                 count.size(),
                 submit.size(),
