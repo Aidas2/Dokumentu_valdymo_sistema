@@ -165,7 +165,7 @@ public class DocumentController {
     //SET DOCUMENT STATE. Version_01 ===================================================================================
     // Permissions check is included (allows to change state only according to user permissions).
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
-    @RequestMapping(value = "/setstate1", method = RequestMethod.PUT)
+    @RequestMapping(value = "/setstate", method = RequestMethod.PUT)
     @ApiOperation(value = "Set document state by id.", notes = "Set document state by id")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public void setDocumentStateByIdV1(

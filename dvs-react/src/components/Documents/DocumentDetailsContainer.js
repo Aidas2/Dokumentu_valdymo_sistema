@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { Redirect } from "react-router";
 import axios from "axios";
 import DocumentDetailsComponent from "./DocumentDetailsComponent";
 
@@ -52,12 +52,13 @@ class DocumentDetailsContainer extends Component {
     let setStateInfo = this.state.setStateInfo;
     setStateInfo.documentState = stateToSet;
     this.setState({ setStateInfo });
+    // return <Redirect to="/docs" />;
     // this.state.setStateInfo.documentState === "PATEIKTAS"
     //   ? this.setState({ setStateInfo })
     //   : console.log("Document has already been managed");
 
     axios({
-      url: "http://localhost:8081/api/docs/setstate2",
+      url: "http://localhost:8081/api/docs/setstate",
       method: "put",
       headers: {
         authorisation: "your token"
@@ -81,6 +82,7 @@ class DocumentDetailsContainer extends Component {
     })
       .then(response => {
         this.setState({ sth: true });
+        window.location.reload();
         // console.log(
         //   "data to put @@@@@@@@@@@@@ ",
         //   "authorUsername: ",
