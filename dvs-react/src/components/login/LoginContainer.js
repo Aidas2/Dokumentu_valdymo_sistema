@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import LoginComponent from "./LoginComponent";
 import { Redirect } from "react-router";
-axios.defaults.withCredentials = true; // leidzia dalintis cookies
+axios.defaults.withCredentials = true; // cookies sharing is allowed
 
 class LoginContainer extends Component {
   state = {
@@ -45,7 +45,6 @@ class LoginContainer extends Component {
   };
 
   render() {
-    // console.log("this.state in render() ------------ ", this.state);
     return (
       <div>
         <LoginComponent
@@ -59,17 +58,6 @@ class LoginContainer extends Component {
       </div>
     );
   }
-  // onCalc = event => {
-  //   axios
-  //     .get("http://localhost:8081/calc?left=1&right=2")
-  //     .then(response => {
-  //       console.log(response);
-  //     })
-  //     .catch(e => {
-  //       console.log(e);
-  //     });
-  //   event.preventDefault();
-  // };
 }
 
 export default LoginContainer;

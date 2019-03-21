@@ -28,19 +28,13 @@ const DocumentDetailsComponent = props => {
 
   var linkToIndividualDocumentDetails = "/admin/docs/" + id;
 
-  // console.log("ATTACHMENTS ********** ", attachments);
-  // const attachmentsArray = attachments;
-  // console.log("attachmentsArray ********** ", attachmentsArray);
-
   var attachmentsListToRender = attachments.map(oneObject => {
     return (
       <span key={oneObject.id}>
         <span>{oneObject.title}</span> &ensp;
-        {/* <br /> */}
         <AttachmentViewContainer attachmentId={oneObject.id} />
         &ensp;
         <AttachmentDownloadConatainer attachmentId={oneObject.id} /> &ensp;
-        {/* <br /> */}
       </span>
     );
   });
@@ -178,25 +172,6 @@ const DocumentDetailsComponent = props => {
             </div>
           </div>
           {props.actionButtons}
-          {/* <div className="row users-padding-bottom">
-            <div className="col-1 documents-table-size" />
-            <div className="col-5 documents-table-size">
-              {props.actionButtons}
-            </div>
-            <div className="col-6 documents-table-size">
-              <div>
-                Atmetimo priežastis&ensp;
-                <br />
-                <textarea
-                  // rows="3"
-                  onChange={props.onRejectionReasonChange}
-                  type="textarea"
-                  placeholder="Įveskite atmetimo priežastį"
-                  className=" form-control form-control-sm italic-style"
-                />
-              </div>
-            </div>
-          </div> */}
         </div>
       </div>
     </div>

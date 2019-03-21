@@ -34,9 +34,6 @@ class UpdateUserContainer extends Component {
       .get("http://localhost:8081/api/groups")
       .then(response => {
         this.setState({ allUserGroups: response.data });
-        // let userGroup = this.state.userGroup;
-        // userGroup.push(response.data[0].title);
-        // this.setState({ userGroup: userGroup });
       })
       .catch(error => {
         console.log(error);
@@ -107,30 +104,6 @@ class UpdateUserContainer extends Component {
       ? (updatedUserInfo.administrator = temporalUserInfo.administrator)
       : console.log("Administrator was not changed");
 
-    // axios
-    //   .put(
-    //     "http://localhost:8081/api/users/" +
-    //       this.state.userDetailsBeforeUpdate.username,
-    //     {
-    //       // administrator: true,
-    //       // emailAddress: "string@str.str",
-    //       // firstName: "Vilius",
-    //       // hireDate: "2019-03-08T13:18:15.781Z",
-    //       // lastName: "Viliauskas",
-    //       // password: "jopass",
-    //       // userGroupTitle: ["group1"]
-
-    //       updatedUserInfo
-    //       // administrator: this.state.administrator,
-    //       // emailAddress: this.state.emailAddress,
-    //       // firstName: this.state.firstName,
-    //       // hireDate: this.state.hireDate,
-    //       // lastName: this.state.lastName,
-    //       // password: this.state.password,
-    //       // username: this.state.username,
-    //       // userGroupTitle: this.state.userGroups
-    //     }
-    //   )
     axios({
       url:
         "http://localhost:8081/api/users/" +
@@ -140,14 +113,6 @@ class UpdateUserContainer extends Component {
         authorisation: "your token"
       },
       data: updatedUserInfo
-
-      // administrator: true,
-      // emailAddress: "string@str.str",
-      // firstName: "ar pasikeisi dar karta",
-      // hireDate: "2019-03-08T13:18:15.781Z",
-      // lastName: "urldynamic",
-      // password: "haha",
-      // userGroupTitle: ["group1"]
     })
       .then(response => {
         const uploadStatus = "User was updated successfully";
@@ -256,11 +221,6 @@ class UpdateUserContainer extends Component {
   };
 
   render() {
-    // var userGroupsTitlesToDisplay = this.state.userGroups.map(
-    //   group => group + " *** "
-    // );
-    // const userGroupsBeforeUpdate = this.state.userDetailsBeforeUpdate
-    //   .userGroups;
     var userGroupsTitlesToDisplay = null;
 
     if (this.state.updatedUserInfo.userGroupTitle) {
@@ -280,15 +240,6 @@ class UpdateUserContainer extends Component {
         }
       );
     }
-    console.log(
-      ">>>>>>>>>>>>>>>>>>>> this.state.userDetailsBeforeUpdate.userGroups>>>>>>>>>>..",
-      this.state.userDetailsBeforeUpdate.userGroups
-    );
-
-    console.log(
-      "-------------@@@@@@@@@@@@@@@ UpdateUserContainer inside render() this.state>>>>>>>> ",
-      this.state
-    );
 
     return (
       <UpdateUserComponent

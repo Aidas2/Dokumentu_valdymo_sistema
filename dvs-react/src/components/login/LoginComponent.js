@@ -44,11 +44,6 @@ const LoginComponent = (
         </div>
       </div>
     </div>
-    // <form onSubmit={onSubmit}>
-    //   <input type="text" value={username} onChange={onUsernameChange} />
-    //   <input type="password" value={pass} onChange={onPassChange} />
-    //   <input type="submit" />
-    // </form>
   );
 };
 

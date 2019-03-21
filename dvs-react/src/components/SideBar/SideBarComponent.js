@@ -87,35 +87,6 @@ class SideBarComponent extends Component {
               Administratoriaus rolė
             </NavLink>
           </li>
-
-          {/*
-          <li className="nav-item ">
-            <Link to={"/"} className="nav-link" activeClassName={"active"}>
-              <img src={logo} width="40" height="20" alt="home" /> Apžvalga
-            </Link>
-          </li>
-          <li className="nav-item ">
-            <Link to={"/docs"} className="nav-link ">
-              Dokumentai
-            </Link>
-          </li>
-          <li className="nav-item ">
-            <Link to={"/upload"} className="nav-link ">
-              Dokumento įkėlimas
-            </Link>
-          </li>
-          <li className="nav-item ">
-            <Link to={"/history"} className="nav-link ">
-              Istorija
-            </Link>
-          </li>
-          <li className="nav-item ">
-            <Link to={"/admin"} className="nav-link ">
-              Administratoriaus rolė
-            </Link>
-          </li>
-
-*/}
         </ul>
       </div>
     );

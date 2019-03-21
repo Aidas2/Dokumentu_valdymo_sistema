@@ -10,19 +10,6 @@ class CreateDocumentTypeConatainer extends Component {
   };
 
   handleSubmit = () => {
-    // axios
-    //   .post("http://localhost:8081/api/doctypes", {
-    //     title: this.state.title
-    //   })
-    //   .then(response => {
-    //     console.log(response);
-    //     console.log("PO sekmingo submito state.sth");
-    //     // this.setState({ msg: true });
-    //   })
-    //   .catch(function(error) {
-    //     console.log(error);
-    //   });
-
     axios
       .post("http://localhost:8081/api/doctypes", {
         title: this.state.title
@@ -33,7 +20,6 @@ class CreateDocumentTypeConatainer extends Component {
         this.setState({ msg: true });
       })
       .catch(function(error) {
-        //it works without catch block as well
         console.log(error);
         if (error.response) {
           //HTTP error happened
@@ -46,12 +32,6 @@ class CreateDocumentTypeConatainer extends Component {
           console.log("Upload error. HTTP error/status code=", error.message);
         }
       });
-    console.log(">>>>>>>>>Submit happened");
-    console.log("@@@@@@@@@@@@@@@ this.state.title >>>>>>>> ", this.state.title);
-    console.log(
-      "@@@@@@@@@@@@@@@ inside handleSubmit this.state.msg >>>>>>>> ",
-      this.state.msg
-    );
   };
 
   handleTitleChange = e => {
@@ -85,11 +65,6 @@ class CreateDocumentTypeConatainer extends Component {
   };
 
   render() {
-    console.log(
-      "@@@@@@@@@@@@@@@ inside render() this.state.msg >>>>>>>> ",
-      this.state.msg
-    );
-
     return (
       <CreateDocumentTypeComponent
         onTitleChange={this.handleTitleChange}

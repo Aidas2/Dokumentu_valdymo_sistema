@@ -40,12 +40,6 @@ class DocumentTypesContainer extends Component {
       }
     );
 
-    // var docTypesArrayToRenderTitle = this.state.docTypes.map(oneTypeObj => {
-    //   return (
-    //     <DocumentTypesComponent key={oneTypeObj.id} typeId={oneTypeObj.title} />
-    //   );
-    // });
-
     return (
       <div>
         <div className="container-fluid no-padding">

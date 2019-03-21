@@ -32,9 +32,7 @@ class DocumentsContainer extends Component {
     this.setState({ username: localStorage.getItem("username") });
     axios
       .get("http://localhost:8081/api/docs/toreview", {
-        params: {
-          // username: this.state.username
-        }
+        params: {}
       })
       .then(response => {
         this.setState({ documents: response.data });
@@ -43,21 +41,6 @@ class DocumentsContainer extends Component {
         console.log(error);
       });
   }
-
-  // componentDidUpdate(prevProps, prevState) {
-  //   axios
-  //     .get(this.props.requestUrl, {
-  //       params: {
-  //         username: this.state.username
-  //       }
-  //     })
-  //     .then(response => {
-  //       this.setState({ documents: response.data });
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     });
-  // }
 
   handleDocumentDownload = () => {};
   handleDocumentView = () => {};
@@ -69,8 +52,6 @@ class DocumentsContainer extends Component {
             key={oneDocumentObj.id}
             documentDetails={oneDocumentObj}
             index={index + 1}
-            // onDocumentDownload={this.handleDocumentDownload}
-            // onDocumentView={this.handleDocumentView}
           />
         );
       }
@@ -90,10 +71,6 @@ class DocumentsContainer extends Component {
                 />
               </Link>
               &ensp;/ &ensp;
-              {/* <Link to={"/admin"} className="second-navigation">
-                  Administratoriaus rolė
-                </Link>
-                &ensp;/ &ensp; */}
               <Link to={"/docsforreview"} className="second-navigation">
                 Dokumentai peržiūrėti
               </Link>
@@ -123,7 +100,6 @@ class DocumentsContainer extends Component {
           </div>
         </div>
 
-        {/* <div className="table table-color-style table-style-rounded"> */}
         <div className="container-fluid">
           <div className="row users-padding-bottom table-style-rounded">
             <div className="col-1 users-table-number-style  ">#</div>
@@ -132,15 +108,6 @@ class DocumentsContainer extends Component {
             <div className="col-2    users-table-middle-style ">Būsena</div>
             <div className="col-2  users-table-middle-style">Aprašymas</div>
             <div className="col-3  users-table-action-style ">Veiksmai</div>
-            {/* <div className="row table-color-style table-style-rounded ">
-              <div className="col-1  users-table-number-style ">#</div>
-              <div className="col-2   users-table-middle-style">
-                Pavadinimas
-              </div>
-              <div className=" col-2 users-table-middle-style">Tipas</div>
-              <div className="col-2   users-table-middle-style ">Būsena</div>
-              <div className="col-2  users-table-middle-style ">Aprašymas</div>
-              <div className="col-3   users-table-action-style ">Veiksmai</div> */}
           </div>
           <div className="">{documentsArrayToRender}</div>
         </div>

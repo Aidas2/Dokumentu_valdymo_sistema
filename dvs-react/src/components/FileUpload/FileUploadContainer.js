@@ -28,40 +28,26 @@ class FileUploadContainer extends Component {
         this.setState({ createDocumentInfo: createDocumentInfo });
         let username = localStorage.getItem("username");
         this.setState({ username });
-        // this.setState({ documentType: response.data[0].title });
-        // this.setState({ documentType: response.data[0].title });
       })
       .catch(error => {
         console.log(error);
       });
-    console.log(
-      "ComponentDidMount inside DocumentTYpesCOntainer >>>>>>>>>> this.state.documetTypes>>>>.",
-      this.state.documentTypes
-    );
   }
 
   handleAttachments = e => {
-    // console.log(e.target.files, "$$$$-e.target.files");
-    // console.log(e.target.files[0], "$$$$-e.target.files[0]");
-    // console.log(e.target.files[1], "$$$$-e.target.files[1]");
     this.handleCloseAlert();
-
-    let file = Array.from(e.target.files); //e.target.files[0] was before
+    let file = Array.from(e.target.files);
     let files = this.state.file;
     file.forEach(element => {
       files.push(element);
     });
 
     this.setState({ file: files });
-    console.log("&&&&&&&&&& state.file from handleFile = ", this.state.file);
   };
   handleMainDocument = e => {
-    // console.log(e.target.files, "$$$$-e.target.files");
-    // console.log(e.target.files[0], "$$$$-e.target.files[0]");
-    // console.log(e.target.files[1], "$$$$-e.target.files[1]");
     this.handleCloseAlert();
 
-    let file = Array.from(e.target.files); //e.target.files[0] was before
+    let file = Array.from(e.target.files);
     let files = this.state.file;
     file.forEach(element => {
       files.unshift(element);
@@ -80,10 +66,10 @@ class FileUploadContainer extends Component {
     console.log(this.state, "THE STATE from handleUpload------$$$$$$");
     let formData = new FormData();
 
-    let files = this.state.file; //was this.state.file before
+    let files = this.state.file;
     for (let i = 0; i < files.length; i++) {
-      formData.append("file", files[i]); //image was originally, I changed it to file
-      formData.append("name", this.state.file[i].name); //2nd parameter was "Paulius cicenas"
+      formData.append("file", files[i]);
+      formData.append("name", this.state.file[i].name);
       formData.append("docData", JSON.stringify(this.state.createDocumentInfo));
     }
     axios({
@@ -101,7 +87,6 @@ class FileUploadContainer extends Component {
         this.setState({ sth: true });
       })
       .catch(function(error) {
-        //it works without catch block as well
         console.log(error);
         if (error.response) {
           //HTTP error happened
@@ -135,11 +120,9 @@ class FileUploadContainer extends Component {
   handleDocumentType = e => {
     this.handleCloseAlert();
 
-    console.log("$$$$$$ DocumentTypeChange occured@@@@@@@@@@@@@@@@@@@@@@");
     let createDocumentInfo = this.state.createDocumentInfo;
     createDocumentInfo.documentTypeTitle = e.target.value;
     this.setState({ createDocumentInfo: createDocumentInfo });
-    // console.log("$$$$$$ this.state.documentType >>>>>> ", this.state.documentType);
   };
 
   getMainDocumentName = () => {
@@ -176,23 +159,10 @@ class FileUploadContainer extends Component {
     var filteredFiles = files.filter(file => file.name !== fileName);
     this.setState({ file: filteredFiles });
   };
-  // withHandlers = () => ({
-  //   handleClick: props => (value1, value2) => event => {
-  //     console.log(event);
-  //     alert(value1 + " was clicked!");
-  //     props.doSomething(value2);
-  //   }
-  // });
 
-  // static propTypes = {
-  //   handleClick: PropTypes.func
-  // };
   render() {
     const { handleClick } = this.props;
-    console.log(
-      "render() inside DocumentTYpesCOntainer >>>>>>>>>> this.state.documetTypes>>>>.",
-      this.state.documentTypes
-    );
+
     var attachments = this.state.file.filter(
       file => file.name !== this.state.file[0].name
     );
@@ -210,12 +180,7 @@ class FileUploadContainer extends Component {
         </span>
       );
     });
-    console.log("########### attachments", attachments);
-    console.log("########### attachmentsNames", attachmentsNames);
-    console.log(
-      "%%%%%%%%%%%%%%%%%%%%% getUploadStatus inside render() >>>",
-      this.uploadStatus
-    );
+
     return (
       <FileUploadComponent
         onUpload={this.handleFilesUpload}

@@ -58,7 +58,6 @@ class UpdateUserGroupContainer extends Component {
         this.setState({ msg: true });
       })
       .catch(function(error) {
-        //it works without catch block as well
         console.log(error);
         if (error.response) {
           //HTTP error happened
@@ -137,11 +136,6 @@ class UpdateUserGroupContainer extends Component {
   };
 
   render() {
-    console.log(
-      "@@@@@@@@@@@@@@@ inside render() this.state>>>>>>>> ",
-      this.state
-    );
-
     var selectedSubmissionTypesTitlesToDisplay = this.state.submitDocumentType.map(
       type => {
         return (
@@ -172,10 +166,6 @@ class UpdateUserGroupContainer extends Component {
         );
       }
     );
-
-    // var selectedReviewGroupsTitlesToDisplay = this.state.reviewDocumentType.map(
-    //   group => group + " *** "
-    // );
 
     return (
       <UpdateUserGroupComponent

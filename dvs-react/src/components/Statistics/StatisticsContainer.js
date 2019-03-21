@@ -37,10 +37,6 @@ class StatisticsContainer extends Component {
       });
   }
 
-  // componentDidUpdate(prevProps, prevState) {
-
-  // }
-
   handleDocumentTypeChange = e => {
     this.setState({ selectedDocType: e.target.value });
     axios
@@ -56,11 +52,6 @@ class StatisticsContainer extends Component {
   };
 
   render() {
-    console.log(
-      "ComponentDidMount inside StatisticsCOntainer render() >>>>>>>>>> this.state.statistics>>>>.",
-      this.state
-    );
-
     const docTypesArrayToRender = this.state.documentTypes.map(oneType => {
       return <option key={oneType.id}>{oneType.title}</option>;
     });
@@ -101,14 +92,6 @@ class StatisticsContainer extends Component {
             </div>
           </div>
           <div className="container-fluid">
-            {/* <div className="row users-padding-bottom table-style-rounded">
-              <div className="col-3 users-table-number-style  ">Sukurta</div>
-              <div className="col-3   users-table-middle-style">Pateikta</div>
-              <div className="col-3   users-table-middle-style ">
-                Patvirtinta
-              </div>
-              <div className="col-3  users-table-middle-style ">Atmesta</div>
-            </div> */}
             <StatisticsComponent
               selectedDocType={this.state.selectedDocType}
               statisticsObject={this.state.statisticsObj}

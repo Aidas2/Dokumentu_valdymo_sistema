@@ -20,7 +20,6 @@ import DocumentsContainer from "./components/Documents/DocumentsContainer";
 import UserDetailsContainer from "./components/Users/UserDetailsContainer";
 import UserGroupDetailsContainer from "./components/UserGroups/UserGroupDetailsContainer";
 import "./styles.css";
-import RenderResponse from "./components/FileDownload/RenderResponse";
 import DocumentDetailsContainer from "./components/Documents/DocumentDetailsContainer";
 import UpdateUserContainer from "./components/Forms/User/UpdateUserContainer";
 import LoginContainer from "./components/login/LoginContainer";

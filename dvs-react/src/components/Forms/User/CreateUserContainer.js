@@ -23,17 +23,10 @@ class CreateUserContainer extends Component {
       .get("http://localhost:8081/api/groups")
       .then(response => {
         this.setState({ allUserGroups: response.data });
-        // let userGroup = this.state.userGroup;
-        // userGroup.push(response.data[0].title);
-        // this.setState({ userGroup: userGroup });
       })
       .catch(error => {
         console.log(error);
       });
-    console.log(
-      "ComponentDidMount inside DocumentTYpesCOntainer >>>>>>>>>> this.state.userGroups>>>>.",
-      this.state.allUserGroups
-    );
   }
 
   handleSubmit = () => {
@@ -143,9 +136,6 @@ class CreateUserContainer extends Component {
   };
 
   render() {
-    // var userGroupsTitlesToDisplay = this.state.userGroups.map(
-    //   group => group + " *** "
-    // );
     var userGroupsTitlesToDisplay = this.state.userGroups.map(group => {
       return (
         <span key={group}>
@@ -159,11 +149,6 @@ class CreateUserContainer extends Component {
         </span>
       );
     });
-
-    console.log(
-      this.state,
-      "-------------@@@@@@@@@@@@@@@ inside render() this.state>>>>>>>> "
-    );
 
     return (
       <CreateUserComponent
