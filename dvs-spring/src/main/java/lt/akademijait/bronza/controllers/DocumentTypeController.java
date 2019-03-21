@@ -33,6 +33,7 @@ public class DocumentTypeController {
 
     //READ By ID Version_01 ============================================================================================
     //@PathVariable
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
     @RequestMapping(value = "/byid/{id}", method = RequestMethod.GET)
     @ApiOperation(value = "Get documents type by id. V_01", notes = "Returns document type by id")
     @ResponseStatus(HttpStatus.ACCEPTED)
@@ -44,6 +45,7 @@ public class DocumentTypeController {
 
     //READ By ID Version_02 ============================================================================================
     //@PathVariable --> @RequestParam
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
     @RequestMapping(value = "/byid", method = RequestMethod.GET)
     @ApiOperation(value = "Get documents type by id. V_02", notes = "Returns document type by id")
     @ResponseStatus(HttpStatus.ACCEPTED)
@@ -54,6 +56,7 @@ public class DocumentTypeController {
     }
 
     //READ By TITLE Version_01 =========================================================================================
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
     @RequestMapping(value = "/bytitle/{title}", method = RequestMethod.GET)
     @ApiOperation(value = "Get documents type by title. V_01", notes = "Returns document type by title")
     @ResponseStatus(HttpStatus.ACCEPTED)
@@ -64,6 +67,7 @@ public class DocumentTypeController {
     }
 
     //READ By TITLE Version_02 =========================================================================================
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
     @RequestMapping(value = "/bytitle", method = RequestMethod.GET)
     @ApiOperation(value = "Get documents type by title. V_02", notes = "Returns document type by title")
     @ResponseStatus(HttpStatus.ACCEPTED)
@@ -86,6 +90,7 @@ public class DocumentTypeController {
     */
 
     //READ BY STATE (READY FOR SUBMITTING) AND USER (SPECIFIED) V_02 (with dto) ========================================
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
     @RequestMapping(value = "/readyForSubmittingV2", method = RequestMethod.GET)
     @ApiOperation(value = "Get document types DTO (ready for submiting) for specified user V02")
     @ResponseStatus(HttpStatus.ACCEPTED)
@@ -95,6 +100,7 @@ public class DocumentTypeController {
     }
 
     //READ BY STATE (READY FOR REVIEWING) AND USER (SPECIFIED) (with dto) ==============================================
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
     @RequestMapping(value = "/readyForReviewing", method = RequestMethod.GET)
     @ApiOperation(value = "Get document types DTO (ready for reviewing) for specified user")
     @ResponseStatus(HttpStatus.ACCEPTED)

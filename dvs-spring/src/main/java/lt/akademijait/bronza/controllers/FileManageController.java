@@ -11,6 +11,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -45,6 +46,7 @@ public class FileManageController {
 
 
     //DOCUMENT DOWNLOAD
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
     @GetMapping(value = "/files")
     @ResponseBody
     public ResponseEntity downloadFile(@RequestParam Long documentId) throws UnsupportedEncodingException {
@@ -75,6 +77,7 @@ public class FileManageController {
     }
 
     //    DOCUMENT PREVIEW
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
     @GetMapping("/files/view")
     public ResponseEntity<Resource> previewFile(@RequestParam Long documentId, HttpServletRequest request) {
         // Load file as Resource
@@ -99,6 +102,7 @@ public class FileManageController {
     }
 
     //ATTACHMENTS DOWNLOAD
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
     @GetMapping(value = "files/attachments")
     @ResponseBody
     public ResponseEntity downloadAttachment(@RequestParam Long attachmentId) throws UnsupportedEncodingException {
@@ -130,6 +134,7 @@ public class FileManageController {
     }
 
     //    ATTACHMENT PREVIEW
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
     @GetMapping("/files/attachments/view")
     public ResponseEntity<Resource> previewAttachment(@RequestParam Long attachmentId, HttpServletRequest request) {
         // Load file as Resource
@@ -156,6 +161,7 @@ public class FileManageController {
 
 
     //FILES UPLOAD
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
     @RequestMapping(value = "/files", method = RequestMethod.POST,
             consumes = "multipart/form-data", produces = "application/json")
     public ResponseEntity<String> mutipleFileUpload(
