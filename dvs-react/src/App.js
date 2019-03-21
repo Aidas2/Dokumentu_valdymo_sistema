@@ -20,8 +20,6 @@ class App extends Component {
   }
 
   render() {
-    // console.log("LOGGEDUSERNAME: ", this.state.loggedUsername);
-
     return (
       <React.Fragment>
         <ServicesContext.Provider

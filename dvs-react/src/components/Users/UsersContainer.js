@@ -22,10 +22,6 @@ class UsersContainer extends Component {
   }
 
   render() {
-    console.log(
-      "ComponentDidMount inside render() >>>>>>>>>> this.state>>>>.",
-      this.state
-    );
     var usersArrayToRender = this.state.users.map((oneUserObj, index) => {
       return (
         <UsersComponent
