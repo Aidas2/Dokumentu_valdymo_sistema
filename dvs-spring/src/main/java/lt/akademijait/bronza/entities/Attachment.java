@@ -16,13 +16,6 @@ public class Attachment {
     @Column
     private String path;
 
-    /*
-    @ManyToOne//(mappedBy="attachments")
-    //@JoinColumn (name = "DOCUMENT_ID")
-    private Document document;
-    */
-
-    //Constructors:
 
     public Attachment() {
     }
@@ -32,8 +25,6 @@ public class Attachment {
         this.title = title;
         this.path = path;
     }
-
-    //Getters and Setters:
 
     public Long getId() {
         return id;

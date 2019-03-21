@@ -34,9 +34,6 @@ public class DocumentTypeService {
     @Autowired
     private UserGroupRepository userGroupRepository;
 
-    //private  final static Logger logger = LoggerFactory.getLogger(DocumentTypeService.class);
-    //private Logger logger = LoggerFactory.getLogger(this.getClass());
-
     //GET ALL ==========================================================================================================
     @Transactional(readOnly = true)
     public List<DocumentTypeGetCommand> getDocumentTypes() {
@@ -71,50 +68,22 @@ public class DocumentTypeService {
         );
     }
 
-/*  //commented as not necessary (but useful if you want to return only String)
-    //GET BY STATE (READY FOR SUBMITTING) AND USER (SPECIFIED) V_01 (without dto) ======================================
-    @Transactional (readOnly = true)
-    //public List <DocumentTypeGetCommand> getDocumentTypeTitlesOfSubmittingUser1 (String username) {
-    public List<String> getDocumentTypeTitlesOfSubmittingUser1 (String username) {
-        List <String> documentTypesTitlesOfSubmittingUser = new ArrayList<>();   // is anksto sukuriam Stringu Lista i kuri addinsim rezultatus;
-        User submittingUser = userRepository.findByUsername(username);  // pasirinkti useri (is repositorijos ir t.t.)
-        Set<UserGroup> userGroupsOfSubmittingUser = submittingUser.getUserGroups(); // gettinam kokios userGroups jam priskirtos, gaunam masyva userGroups'u [Administracija, Gamyba];
-
-        // einam foreach'u per kiekviena masyvo userGroups elementa ir gettinam kokios yra submissionDoctype, gaunam dar viena masyva [Instrukcija, Prasymas, Isakymas]
-        for (UserGroup userGroup: userGroupsOfSubmittingUser
-             ) {
-            Set<DocumentType> submissionDocumentTypeOfSubmittingUser = userGroup.getSubmissionDocumentType(); //gavom [Instrukcija, Prasymas, Isakymas]
-
-            // einam foreach'u per kiekviena masyvo documentType elementa, getinam Title, kuri addinsim i is anksto susikurta Lista (bet tik tuo atveju jei dar neaddintas)
-            for (DocumentType documentType: submissionDocumentTypeOfSubmittingUser
-                 ) {
-                if(!documentTypesTitlesOfSubmittingUser.contains(documentType.getTitle())) { //(bet tik tuo atveju jei dar neaddintas)
-                    documentTypesTitlesOfSubmittingUser.add(documentType.getTitle());
-                }
-            }
-        }
-        log.info("Gotten all document type titles which user " + username + " can submit");
-        return documentTypesTitlesOfSubmittingUser;
-    }
-*/
     //GET BY STATE (READY FOR SUBMITTING) AND USER (SPECIFIED) V_02 (with DTO) ======================================
     @Transactional (readOnly = true)
      public List<DocumentTypeGetCommand> getDocumentTypeTitlesOfSubmittingUser2 () {
-        List<DocumentTypeGetCommand> documentTypesDtoOfSubmittingUser = new ArrayList<>();   // is anksto sukuriam DTO Lista i kuri addinsim DTO kaip OBJEKTUS;
-        User submittingUser = userRepository.findByUsername(getLoggedInUsername());  // pasirinkti useri (is repositorijos ir t.t.)
-        Set<UserGroup> userGroupsOfSubmittingUser = submittingUser.getUserGroups(); // gettinam kokios userGroups jam priskirtos, gaunam masyva userGroups'u [Administracija, Gamyba];
+        List<DocumentTypeGetCommand> documentTypesDtoOfSubmittingUser = new ArrayList<>();
+        User submittingUser = userRepository.findByUsername(getLoggedInUsername());
+        Set<UserGroup> userGroupsOfSubmittingUser = submittingUser.getUserGroups();
 
-        // einam foreach'u per kiekviena masyvo userGroups elementa ir gettinam kokios yra submissionDoctype, gaunam dar viena masyva [Instrukcija, Prasymas, Isakymas]
         for (UserGroup userGroup: userGroupsOfSubmittingUser
         ) {
-            Set<DocumentType> submissionDocumentTypeOfSubmittingUser = userGroup.getSubmissionDocumentType(); //gavom [Instrukcija, Prasymas, Isakymas]
+            Set<DocumentType> submissionDocumentTypeOfSubmittingUser = userGroup.getSubmissionDocumentType();
 
-            // einam foreach'u per kiekviena masyvo documentType elementa,  getinam viska (id, title), ir pridedam i nauja DTO, kuri addinsim i is anksto susikurta  objektu Lista
             for (DocumentType documentType: submissionDocumentTypeOfSubmittingUser
             ) {
-                DocumentTypeGetCommand docTypeDTO = new DocumentTypeGetCommand(documentType.getId(),documentType.getTitle()); // gavom nauja DTO su paduotomis reiksmemis
+                DocumentTypeGetCommand docTypeDTO = new DocumentTypeGetCommand(documentType.getId(),documentType.getTitle());
 
-                if(!documentTypesDtoOfSubmittingUser.contains(docTypeDTO)) { //(bet tik tuo atveju jei dar neaddintas, zr. @Override)
+                if(!documentTypesDtoOfSubmittingUser.contains(docTypeDTO)) {
                     documentTypesDtoOfSubmittingUser.add(docTypeDTO);
                 }
             }
@@ -123,24 +92,22 @@ public class DocumentTypeService {
         return documentTypesDtoOfSubmittingUser;
     }
 
-    //GET BY STATE (READY FOR REVIEwING) AND USER (SPECIFIED) (with DTO) ======================================
+    //GET BY STATE (READY FOR REVIEwING) AND USER (SPECIFIED) (with DTO) ===============================================
     @Transactional (readOnly = true)
     public List<DocumentTypeGetCommand> getDocumentTypeTitlesOfReviewingUser () {
-        List<DocumentTypeGetCommand> documentTypesDtoOfReviewingUser = new ArrayList<>();   // is anksto sukuriam DTO Lista i kuri addinsim DTO kaip OBJEKTUS;
-        User reviewingUser = userRepository.findByUsername(getLoggedInUsername());  // pasirinkti useri (is repositorijos ir t.t.)
-        Set<UserGroup> userGroupsOfReviewingUser = reviewingUser.getUserGroups(); // gettinam kokios userGroups jam priskirtos, gaunam masyva userGroups'u [Administracija, Gamyba];
+        List<DocumentTypeGetCommand> documentTypesDtoOfReviewingUser = new ArrayList<>();
+        User reviewingUser = userRepository.findByUsername(getLoggedInUsername());
+        Set<UserGroup> userGroupsOfReviewingUser = reviewingUser.getUserGroups();
 
-        // einam foreach'u per kiekviena masyvo userGroups elementa ir gettinam kokios yra submissionDoctype, gaunam dar viena masyva [Instrukcija, Prasymas, Isakymas]
         for (UserGroup userGroup: userGroupsOfReviewingUser
         ) {
-            Set<DocumentType> reviewingDocumentTypeOfSubmittingUser = userGroup.getReviewDocumentType(); //gavom [Instrukcija, Prasymas, Isakymas]
+            Set<DocumentType> reviewingDocumentTypeOfSubmittingUser = userGroup.getReviewDocumentType();
 
-            // einam foreach'u per kiekviena masyvo documentType elementa,  getinam viska (id, title), ir pridedam i nauja DTO, kuri addinsim i is anksto susikurta  objektu Lista
             for (DocumentType documentType: reviewingDocumentTypeOfSubmittingUser
             ) {
-                DocumentTypeGetCommand docTypeDTO = new DocumentTypeGetCommand(documentType.getId(),documentType.getTitle()); // gavom nauja DTO su paduotomis reiksmemis
+                DocumentTypeGetCommand docTypeDTO = new DocumentTypeGetCommand(documentType.getId(),documentType.getTitle());
 
-                if(!documentTypesDtoOfReviewingUser.contains(docTypeDTO)) { //(bet tik tuo atveju jei dar neaddintas, zr. @Override)
+                if(!documentTypesDtoOfReviewingUser.contains(docTypeDTO)) {
                     documentTypesDtoOfReviewingUser.add(docTypeDTO);
                 }
             }
@@ -149,15 +116,10 @@ public class DocumentTypeService {
         return documentTypesDtoOfReviewingUser;
     }
 
-
-
-
     //CREATE ===========================================================================================================
-    //galbut nereikia  kurti getId
     @Transactional
     public void createDocumentType (DocumentTypeCreateCommand documentTypeCreateCommand) {
         DocumentType newDocumentType = new DocumentType();
-        //newDocumentType.setId(documentTypeCreateCommand.getId());
         newDocumentType.setTitle(documentTypeCreateCommand.getTitle());
         documentTypeRepository.save(newDocumentType);
         log.info("New document type created - {} Everything is OK", documentTypeCreateCommand.getTitle());
@@ -167,9 +129,7 @@ public class DocumentTypeService {
     @Transactional
     public void updateDocumentType (Long id, DocumentTypeCreateCommand documentTypeCreateCommand) {
         DocumentType documentTypeToUpdate = documentTypeRepository.findById(id).orElseThrow(null);
-        //documentTypeToUpdate.setId(documentTypeCreateCommand.getId());
         documentTypeToUpdate.setTitle(documentTypeCreateCommand.getTitle());
-        //documentTypeToUpdate.setId(id);
         documentTypeRepository.save(documentTypeToUpdate);
         log.info("Document type updated to - {} Everything is OK", documentTypeCreateCommand.getTitle());
     }
@@ -181,8 +141,7 @@ public class DocumentTypeService {
         log.info("Document type with id = " + id + " was deleted");
     }
 
-
-    //Method to get logged in username =================================================================================
+    //Method to get logged user username ===============================================================================
     public String getLoggedInUsername() {
         Authentication authentication =
                 SecurityContextHolder.getContext().getAuthentication();

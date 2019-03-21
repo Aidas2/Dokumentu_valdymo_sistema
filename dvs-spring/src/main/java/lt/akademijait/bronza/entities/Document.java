@@ -25,28 +25,9 @@ public class Document {
     @OneToMany
     private List<Attachment> attachments;
 
-    //@NotNull //if uncommented doesn't let to create Document with User==null
     @ManyToOne
     @JoinColumn(name="author_id")
-    private User author;    //autoriu kol kas reikia "uzhardcodinti"
-
-    /* ATTENTION
-    To join Document and DocumentType it's enough to write field only in one of entities:
-    private DocumentType documentType   (in Document Entity)
-    or
-    private List<Document> documents    (in DocumentType Entity)
-    You can find all Documents of specific DocumentType by writing command in DocumentRepository:
-    documentRepository.findByDocumentType(documentType)
-
-    ATTENTION
-    In Document you should write 'private DocumentType documentType'
-    (not private List<DocumentType>), because Document cant belong to many DocumetTypes.
-    In DocumentType you should write 'private List<Document> documents'
-    (not private DocumentType documentType), because DocumentType can have many Documents.
-
-    All this logic applies also to User and UserGroup !
-
-     */
+    private User author;
 
     @Column
     private DocumentState documentState;
