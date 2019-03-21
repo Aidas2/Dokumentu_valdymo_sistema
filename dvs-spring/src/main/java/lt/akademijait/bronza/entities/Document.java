@@ -7,7 +7,6 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name="DOCUMENT")
@@ -16,11 +15,7 @@ public class Document {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    //private String id;
-
-    //@Column(unique = true, nullable = false)
-    //private String prefix;
+    private Long id;    //private String id;
 
     @ElementCollection
     @CollectionTable
@@ -140,7 +135,6 @@ public class Document {
         return author;
     }
 
-    //galbut reikia perdaryti i String usernameId
     public void setAuthor(User author) {
         this.author = author;
     }
@@ -184,7 +178,6 @@ public class Document {
     public void setCreationDate(Date creationDate) {
 //        SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd-MM-yy:HH:mm:SS");
 //        this.creationDate = DATE_FORMAT.format(creationDate); // incompatible types (String and object)
-
         this.creationDate = creationDate;
     }
 
@@ -254,38 +247,6 @@ public class Document {
                 '}';
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-    //========================
-    /*
-    public String getPrefix() {
-        return prefix;
-    }
-
-    public void setPrefix(String prefix) {
-        this.prefix = prefix;
-        //this.prefix = "_" + author.getUsername() + "_" + System.currentTimeMillis();
-    }
-
-    public void setReviewDate() {
-        if (this.documentState.equals(DocumentState.CONFIRMED)) {
-            this.confirmationDate = new Date();
-        }
-        else if (this.documentState.equals(DocumentState.REJECTED)) {
-            this.rejectionDate = new Date();
-        }
-    }
-    */
 }
 
 

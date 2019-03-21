@@ -181,6 +181,8 @@ public class DocumentTypeService {
         log.info("Document type with id = " + id + " was deleted");
     }
 
+
+    //Method to get logged in username =================================================================================
     public String getLoggedInUsername() {
         Authentication authentication =
                 SecurityContextHolder.getContext().getAuthentication();

@@ -77,7 +77,7 @@ public class DocumentController {
     }
 
     /* // commented because cause "Ambiguous ... " (maybe passed object covers also and String, and Long and so on)
-    //READ BY STATE (SPECIFIED). Version_01 ===================================================================
+    //READ BY STATE (SPECIFIED). Version_01 ============================================================================
     //// first and last "@PathVariable of type object (or/and String ?, or/and Long?)" - because only one is allowed by Spring
     @RequestMapping(value = "/{documentState}", method = RequestMethod.GET)
     @ApiOperation(value = "Get all document of specified state. V_01", notes = "Returns all document of specified state")
@@ -101,12 +101,7 @@ public class DocumentController {
         return documentService.getAllDocumentsByDocumentState(documentState);
     }
 
-
-//    Kad grąžintu dokumentus tik to tipo, kuriuos useris gali reviewinti ir kurie turi state submitted ir tik submitted
-//    Tada galėsim gauti konkrečiai tuos dokus, kuriuos useris galės approvinti arba rejectinti
-//    Paduodam parametrą username ir pagal jį surandam reikiamus dokus, kuriuos jis managins
-
-    //READ BY STATE (SUBMITTED) AND BY USER (SPECIFIED) ===============================================================
+    //READ BY STATE (SUBMITTED) AND BY USER (SPECIFIED) ================================================================
     //@PathVariable --> @RequestParam
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
     @RequestMapping(value = "/toreview", method = RequestMethod.GET)
@@ -118,7 +113,7 @@ public class DocumentController {
     }
 
     /* // Doesn't work :( !
-    //READ BY TYPE. Version_01 =========================================================
+    //READ BY TYPE. Version_01 =========================================================================================
     //object; @PathVariable
     @RequestMapping(value = "/documentbytype1", method = RequestMethod.GET)
     @ApiOperation(value = "Get all document of specified type. V_01", notes = "Returns all document of specified type")
@@ -133,10 +128,10 @@ public class DocumentController {
     }
     */
 
-    //READ BY TYPE. Version_02.1 (by J.C.) =============================================
+    //READ BY TYPE. Version_02.1 (by J.C.) =============================================================================
     //object --> String;
     // first and last "@PathVariable of type String" - because only one is allowed by Spring
-    // wtf ?! also "ambiguous" with "@PathVariable of type Long" ???
+    // ?! also "ambiguous" with "@PathVariable of type Long" ???
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
     @RequestMapping(value = "/bytype", method = RequestMethod.GET)
     @ApiOperation(value = "Get all document of specified type. V_02.1", notes = "Returns all document of specified type")
@@ -148,7 +143,7 @@ public class DocumentController {
     }
 
     /* // commented as duplicates Version_02.1 (by J.C.)
-    //READ BY TYPE. Version_02.2 =======================================================
+    //READ BY TYPE. Version_02.2 =======================================================================================
     //object --> String; @PathVariable --> @RequestParam
     @RequestMapping(value = "/bytype02", method = RequestMethod.GET)
     @ApiOperation(value = "Get all document of specified type. V_02.2", notes = "Returns all document of specified type")
@@ -173,7 +168,7 @@ public class DocumentController {
         return documentService.getAllDocumentsByDocumentTypeAndUsername(username, documentTypeTitle);
     }
 
-    //READ All DOCUMENTS BY AUTHOR_USERNAME ==================================================================================
+    //READ All DOCUMENTS BY AUTHOR_USERNAME ============================================================================
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
     @RequestMapping(value = "/docsbyuser", method = RequestMethod.GET)
     @ApiOperation(value = "Get all document of specified author username", notes = "Returns all document of specified author username")

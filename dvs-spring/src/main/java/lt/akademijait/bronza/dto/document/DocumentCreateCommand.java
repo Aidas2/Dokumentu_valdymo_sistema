@@ -9,13 +9,9 @@ import java.util.Set;
 public class DocumentCreateCommand {
 
     //private Long id;
-    //private String prefix;
-    //private List<String> additionalFilePaths = new ArrayList<>();
-
     //private Set<Attachment> attachments;
     @OneToMany
     private Set<String> attachmentTitle;
-
 
     //private User author; // do not use object, because object sends to swagger all his fields
 

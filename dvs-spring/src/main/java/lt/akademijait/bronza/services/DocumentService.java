@@ -101,11 +101,11 @@ public class DocumentService {
     //if there is a need to filter:
     // version A: insert if (username == current userName) --> then do some action
     // version B: allDocuments.filter()
-    // version C: use ternary if operator (line 151) and optional use
-    // look in DocumentGetCommand, line 59-63 (separate method getReviewer() );
+    // version C: use ternary if operator (line 125) and optional use
+    // look in DocumentGetCommand, line 62-68 (separate method getReviewer() );
 
 
-    //GET ALL DOCUMENTS V2 (by G.G.) ===================================================================================
+    //GET ALL DOCUMENTS V2 (by G.G., using ternary operator) ===========================================================
     @Transactional(readOnly = true)
     public List<DocumentGetCommand> getAllDocuments() {
         log.info("Gotten all documents");
@@ -129,13 +129,12 @@ public class DocumentService {
                 )).collect(Collectors.toList());
     }
 
-    /*
+/*
     //GET BY DOCUMENT_ID V1 (by P.C.) ========================================================================
     @Transactional(readOnly = true)
     public DocumentGetCommand getDocumentById(Long id) {
         Document document = documentRepository.findById(id).orElse(null);
         log.info("Gotten all documents by this id: " + id);
-        //logger.error("null "); try/catch; luzimo pvz: skirtingi duomenu tipai (Long ir string)
         String reviewerUsername = null;
         if (document.getReviewer() != null) {
             reviewerUsername = document.getReviewer().getUsername();
@@ -282,11 +281,6 @@ public class DocumentService {
                         document.getAttachments()
                 )).collect(Collectors.toList());
     }
-
-
-//    Kad grąžintu dokumentus tik to tipo, kuriuos useris gali reviewinti ir kurie turi state submitted ir tik submitted
-//    Tada galėsim gauti konkrečiai tuos dokus, kuriuos useris galės approvinti arba rejectinti
-//    Paduodam parametrą username ir pagal jį surandam reikiamus dokus, kuriuos jis managins
 
     //GET BY STATE (SUBMITTED) AND BY USER (SPECIFIED) =================================================================
     @Transactional(readOnly = true)
@@ -501,22 +495,32 @@ public class DocumentService {
 
         boolean canSubmit = false;
         boolean canReview = false;
+        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@ usergroups >>>> "+ userGroupsBelongingToUser.toString());
 
         for (UserGroup userGroup : userGroupsBelongingToUser) {
+            System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@ usergroupInFor >>>> "+ userGroup.getTitle());
+
             if (userGroup.getReviewDocumentType().contains(documentToSetState.getDocumentType())) {
-                log.info("Yes, this UserGroup can REVIEW this type of document");
+                log.info("if1. Yes, this UserGroup can REVIEW this type of document");
                 canReview = true;
+                System.out.println("################## 1st if canReview >>>> "+ canReview);
+
                 //////Added by Paulius
                 if (userGroup.getSubmissionDocumentType().contains(documentToSetState.getDocumentType())) {
-                    log.info("Yes, this UserGroup can  SUBMIT this type of document");
+                    log.info("if2. Yes, this UserGroup can  SUBMIT this type of document");
                     canSubmit = true;
+                    System.out.println("################## 2st if cansubmit>>>> "+ canSubmit);
+
                 } //// end of an add
             } else if (userGroup.getSubmissionDocumentType().contains(documentToSetState.getDocumentType())) {
-                log.info("Yes, this UserGroup can (only) SUBMIT this type of document");
+                log.info("if3. Yes, this UserGroup can (only) SUBMIT this type of document");
                 canSubmit = true;
-            } else {
+                System.out.println("################## 3st if cansubmit>>>> "+ canSubmit);
+
+            } else if(!canReview&&!canSubmit){
                 log.info("Non of IF1 proceeded. UserGroup of this User isn't set for Document SUBMITTING or REVIEWING");
-                throw new ResourceNotFoundException("Non of IF1 proceeded. UserGroup of this User isn't set for Document SUBMITTING or REVIEWING");
+                throw new ResourceNotFoundException("Non of IF1 proceeded. UserGroup of this User isn't set for Document" +
+                        " SUBMITTING or REVIEWING");
             }
         }
 
@@ -579,7 +583,7 @@ public class DocumentService {
                     throw new ResourceNotFoundException("Non of Switch1 case proceeded. Only CREATED, SUBMITTED, CONFIRMED, REJECTED allowed");
             }
 
-        } else if (canReview) {
+        } else if (canReview && !canSubmit) {
             switch (documentSetStateCommand.getDocumentState()) {
 //                case "CREATED": {
 //                    log.info("Case3. Not proceeded. State CREATED already set during document creation");
@@ -629,7 +633,7 @@ public class DocumentService {
                     throw new ResourceNotFoundException("Non of Switch2 case proceeded. Only CONFIRMED, REJECTED allowed");
             }
 
-        } else if (canSubmit) {
+        } else if (!canReview && canSubmit) {
             switch (documentSetStateCommand.getDocumentState()) {
                 case "CREATED": {
                     log.info("Case7. Not proceeded. State CREATED already set during document creation");
@@ -656,6 +660,31 @@ public class DocumentService {
             throw new ResourceNotFoundException("Non of IF2 proceeded.");
         }
     }
+
+    /**
+     * Cases to check:
+     * user from Gamyba (antanukas, juozukas) can submit Instrukcija or Prasymas, can't submit Isakymas
+     *                                        can't review anything;
+     *
+     * user from Administracija (jonukas)   can submit --> everything,
+     *                                      can review --> everything;
+     *
+     * user from Gamyba&&Administracija (adminukas) can submit --> everything,
+     *                                              can review --> everything;
+     *
+     * any user: can submit/review as his own document, as document of another user;
+     *
+     * any user:
+     * state CREATED can --> SUBMITTED, can't --> CONFIRMED, REJECTED;
+     * state SUBMITTED can --> CONFIRMED, REJECTED, can't CREATED;
+     * state CONFIRMED can't anything
+     * state REJECTED can't anything
+     *
+     * repeating (hit button one more time)
+     */
+
+//bug: then user tries to submitt, confirm/reject document Isakymas, non of if1 proceeds ....
+
 
     // This version is temporal, while version above is in progress.
     // This version allows to change state to anny user (without checking his permisions).
