@@ -19,9 +19,6 @@ public class AttachmentService {
     @Autowired
    private AttachmentRepository attachmentRepository;
 
-
-    //private  final static Logger logger = LoggerFactory.getLogger(AttachmentService.class);
-
     //GET ALL ==========================================================================================================
     @Transactional(readOnly = true)
     public List<AttachmentGetCommand> getAttachments() {

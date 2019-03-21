@@ -3,34 +3,15 @@ package lt.akademijait.bronza.entities;
 import javax.persistence.*;
 
 @Entity
-//@Table(name="DOCUMENT_TYPE")
-//@Table(name="DOCUMENT_TYPE", uniqueConstraints = {@UniqueConstraint(columnNames = "title")})
 public class DocumentType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    //private String id;
+    private Long id;    //private String id;
 
     @Column(unique = true, nullable = false)
     private String title;
 
-
-
-    //@OneToMany //for connecting  DocumentType and Document (one DocumentType may have many Documents)
-    //private List<Document> documents;   //uncommented at 2019-03-15 for reason to get Documents belonging to DocumentType (for method getSubmittedDocumentForReviewing)
-/*
-    @ManyToMany//(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    //@JoinTable(name = "submission_type", joinColumns = @JoinColumn(name="doc_type"), inverseJoinColumns = @JoinColumn(name="user_group_id") )
-    private Set<UserGroup> submissionUserGroups;
-
-    @ManyToMany//(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    //@JoinTable(name = "review_type", joinColumns = @JoinColumn(name="doc_type"), inverseJoinColumns = @JoinColumn(name="user_group_id") )
-    private Set<UserGroup> reviewUserGroups;
-    */
-
-
-    //Constructors:
 
     public DocumentType() {
     }
@@ -38,44 +19,6 @@ public class DocumentType {
     public DocumentType(String title) {
         this.title = title;
     }
-/*
-    //constructor added at 2019-03-15 for same reason as mentioned above
-    public DocumentType(Long id, String title, List<Document> documents) {
-        this.id = id;
-        this.title = title;
-        this.documents = documents;
-    }
-*/
-    /*
-    public DocumentType(String title,
-                        List<Document> documents,
-                        Set<UserGroup> submissionUserGroups,
-                        Set<UserGroup> reviewUserGroups) {
-        this.title = title;
-        this.submissionUserGroups = submissionUserGroups;
-        this.reviewUserGroups = reviewUserGroups;
-    }
-
-
-    //SUBMISSION GROUP - TYPE (ADD REMOVE)
-    public void addSubmissionUserGroup(UserGroup userGroup) {
-        submissionUserGroups.add(userGroup);
-    }
-    public void removeSubmissionUserGroup(UserGroup userGroup) {
-        submissionUserGroups.remove(userGroup);
-    }
-    //REVIEW GROUP - TYPE (ADD REMOVE)
-    public void addReviewUserGroup(UserGroup userGroup) {
-        reviewUserGroups.add(userGroup);
-    }
-
-    public void removeReviewUserGroup(UserGroup userGroup) {
-        reviewUserGroups.remove(userGroup);
-    }
-*/
-
-    //Getters and Setters:
-
 
     public Long getId() {
         return id;
@@ -92,13 +35,5 @@ public class DocumentType {
     public void setTitle(String title) {
         this.title = title;
     }
-/*
-    public List<Document> getDocuments() {
-        return documents;
-    }
 
-    public void setDocuments(List<Document> documents) {
-        this.documents = documents;
-    }
-    */
 }

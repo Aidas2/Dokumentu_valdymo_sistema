@@ -7,7 +7,6 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name="DOCUMENT")
@@ -16,11 +15,7 @@ public class Document {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    //private String id;
-
-    //@Column(unique = true, nullable = false)
-    //private String prefix;
+    private Long id;    //private String id;
 
     @ElementCollection
     @CollectionTable
@@ -30,28 +25,9 @@ public class Document {
     @OneToMany
     private List<Attachment> attachments;
 
-    //@NotNull //if uncommented doesn't let to create Document with User==null
     @ManyToOne
     @JoinColumn(name="author_id")
-    private User author;    //autoriu kol kas reikia "uzhardcodinti"
-
-    /* ATTENTION
-    To join Document and DocumentType it's enough to write field only in one of entities:
-    private DocumentType documentType   (in Document Entity)
-    or
-    private List<Document> documents    (in DocumentType Entity)
-    You can find all Documents of specific DocumentType by writing command in DocumentRepository:
-    documentRepository.findByDocumentType(documentType)
-
-    ATTENTION
-    In Document you should write 'private DocumentType documentType'
-    (not private List<DocumentType>), because Document cant belong to many DocumetTypes.
-    In DocumentType you should write 'private List<Document> documents'
-    (not private DocumentType documentType), because DocumentType can have many Documents.
-
-    All this logic applies also to User and UserGroup !
-
-     */
+    private User author;
 
     @Column
     private DocumentState documentState;
@@ -140,7 +116,6 @@ public class Document {
         return author;
     }
 
-    //galbut reikia perdaryti i String usernameId
     public void setAuthor(User author) {
         this.author = author;
     }
@@ -184,7 +159,6 @@ public class Document {
     public void setCreationDate(Date creationDate) {
 //        SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd-MM-yy:HH:mm:SS");
 //        this.creationDate = DATE_FORMAT.format(creationDate); // incompatible types (String and object)
-
         this.creationDate = creationDate;
     }
 
@@ -254,38 +228,6 @@ public class Document {
                 '}';
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-    //========================
-    /*
-    public String getPrefix() {
-        return prefix;
-    }
-
-    public void setPrefix(String prefix) {
-        this.prefix = prefix;
-        //this.prefix = "_" + author.getUsername() + "_" + System.currentTimeMillis();
-    }
-
-    public void setReviewDate() {
-        if (this.documentState.equals(DocumentState.CONFIRMED)) {
-            this.confirmationDate = new Date();
-        }
-        else if (this.documentState.equals(DocumentState.REJECTED)) {
-            this.rejectionDate = new Date();
-        }
-    }
-    */
 }
 
 

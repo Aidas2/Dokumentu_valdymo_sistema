@@ -41,71 +41,7 @@ public class DocumentService {
     @Autowired
     private UserGroupRepository userGroupRepository;
 
-    //private  final static Logger logger = LoggerFactory.getLogger(DocumentService.class);
-    //private Logger logger = LoggerFactory.getLogger(this.getClass());
-
-    /*
-    //GET ALL DOCUMENTS V1 (by P.C.) ====================================================================================
-    @Transactional(readOnly = true)
-    public List<DocumentGetCommand> getAllDocuments() {
-        log.info("Gotten all documents");
-
-        List<DocumentGetCommand> allDocuments = new ArrayList<>();
-        for (Document document : documentRepository.findAll()) {
-            String reviewerUsername = null;
-            if (document.getReviewer() != null) {
-                reviewerUsername = document.getReviewer().getUsername();
-            }
-            allDocuments.add(new DocumentGetCommand(
-                    document.getId(),
-                    document.getAuthor().getUsername(),
-                    document.getDocumentState().toString(),
-                    document.getDocumentType().getTitle(),
-                    document.getTitle(),
-                    document.getDescription(),
-                    document.getCreationDate(),
-                    document.getSubmissionDate(),
-                    document.getConfirmationDate(),
-                    document.getRejectionDate(),
-                    reviewerUsername,
-                    document.getRejectionReason(),
-                    document.getPath(),
-                    document.getAttachments()));
-        }
-
-
-//        return documentRepository.findAll()
-//                .stream()
-//                .map((document) -> new DocumentGetCommand(
-//                        document.getId(),
-//                        document.getAuthor().getUsername(),
-//                        document.getDocumentState().toString(),
-//                        document.getDocumentType().getTitle(),
-//                        document.getTitle(),
-//                        document.getDescription(),
-//                        document.getCreationDate(),
-//                        document.getSubmissionDate(),
-//                        document.getConfirmationDate(),
-//                        document.getRejectionDate(),
-//
-//                        document.getReviewer().getUsername(),
-//                        document.getRejectionReason(),
-//                        document.getPath(),
-//                        document.getAttachments()
-//                )).collect(Collectors.toList());
-        return allDocuments;
-
-
-    }
-*/
-    //if there is a need to filter:
-    // version A: insert if (username == current userName) --> then do some action
-    // version B: allDocuments.filter()
-    // version C: use ternary if operator (line 151) and optional use
-    // look in DocumentGetCommand, line 59-63 (separate method getReviewer() );
-
-
-    //GET ALL DOCUMENTS V2 (by G.G.) ===================================================================================
+    //GET ALL DOCUMENTS (using ternary operator) =======================================================================
     @Transactional(readOnly = true)
     public List<DocumentGetCommand> getAllDocuments() {
         log.info("Gotten all documents");
@@ -129,41 +65,11 @@ public class DocumentService {
                 )).collect(Collectors.toList());
     }
 
-    /*
-    //GET BY DOCUMENT_ID V1 (by P.C.) ========================================================================
+    //GET BY DOCUMENT_ID ===============================================================================================
     @Transactional(readOnly = true)
     public DocumentGetCommand getDocumentById(Long id) {
         Document document = documentRepository.findById(id).orElse(null);
         log.info("Gotten all documents by this id: " + id);
-        //logger.error("null "); try/catch; luzimo pvz: skirtingi duomenu tipai (Long ir string)
-        String reviewerUsername = null;
-        if (document.getReviewer() != null) {
-            reviewerUsername = document.getReviewer().getUsername();
-        }
-        return new DocumentGetCommand(
-                document.getId(),
-                document.getAuthor().getUsername(),
-                document.getDocumentState().toString(),
-                document.getDocumentType().getTitle(),
-                document.getTitle(),
-                document.getDescription(),
-                document.getCreationDate(),
-                document.getSubmissionDate(),
-                document.getConfirmationDate(),
-                document.getRejectionDate(),
-                reviewerUsername, document.getRejectionReason(),
-                document.getPath(),
-                document.getAttachments()
-        );
-    }
-*/
-
-    //GET BY DOCUMENT_ID V2 (by G.G.) ========================================================================
-    @Transactional(readOnly = true)
-    public DocumentGetCommand getDocumentById(Long id) {
-        Document document = documentRepository.findById(id).orElse(null);
-        log.info("Gotten all documents by this id: " + id);
-        //logger.error("null "); try/catch; luzimo pvz: skirtingi duomenu tipai (Long ir string)
         return new DocumentGetCommand(
                 document.getId(),
                 document.getAuthor().getUsername(),
@@ -191,7 +97,6 @@ public class DocumentService {
                 .filter(document -> document.getDocumentState().equals(DocumentState.SUBMITTED))
                 .map((document) -> new DocumentGetCommand(
                         document.getId(),
-                        //document.getAuthor(),
                         document.getAuthor().getUsername(),
                         document.getDocumentState().toString(),
                         document.getDocumentType().getTitle(),
@@ -208,7 +113,7 @@ public class DocumentService {
                 )).collect(Collectors.toList());
     }
 
-    //GET BY STATE (CONFIRMED) (with filter) ===========================================================================
+    //GET BY STATE (CONFIRMED) =========================================================================================
     @Transactional(readOnly = true)
     public List<DocumentGetCommand> getConfirmedDocuments() {
         log.info("Gotten all documents by this state: " + DocumentState.CONFIRMED);
@@ -233,7 +138,7 @@ public class DocumentService {
                 )).collect(Collectors.toList());
     }
 
-    //GET BY STATE (REJECTED) (with filter) ============================================================================
+    //GET BY STATE (REJECTED) ==========================================================================================
     @Transactional(readOnly = true)
     public List<DocumentGetCommand> getRejectedDocuments() {
         log.info("Gotten all documents by this state: " + DocumentState.REJECTED);
@@ -258,7 +163,7 @@ public class DocumentService {
                 )).collect(Collectors.toList());
     }
 
-    //GET BY STATE (SPECIFIED) (with filter) ===========================================================================
+    //GET BY STATE (SPECIFIED) =========================================================================================
     @Transactional(readOnly = true)
     public List<DocumentGetCommand> getAllDocumentsByDocumentState(DocumentState documentState) {
         log.info("Gotten all documents by this state: " + documentState);
@@ -283,42 +188,26 @@ public class DocumentService {
                 )).collect(Collectors.toList());
     }
 
-
-//    Kad grąžintu dokumentus tik to tipo, kuriuos useris gali reviewinti ir kurie turi state submitted ir tik submitted
-//    Tada galėsim gauti konkrečiai tuos dokus, kuriuos useris galės approvinti arba rejectinti
-//    Paduodam parametrą username ir pagal jį surandam reikiamus dokus, kuriuos jis managins
-
     //GET BY STATE (SUBMITTED) AND BY USER (SPECIFIED) =================================================================
     @Transactional(readOnly = true)
     public List<DocumentGetCommand> getSubmittedDocumentForReviewing() {
 
-        List<DocumentGetCommand> documentDtoForReviewing = new ArrayList<>();   // is anksto sukuriam DTO Lista i kuri addinsim Documents kaip OBJECT;
-        User reviewingUser = userRepository.findByUsername(getLoggedInUsername());  // pasirinkti useri (is repositorijos ir t.t.)
+        List<DocumentGetCommand> documentDtoForReviewing = new ArrayList<>();
+        User reviewingUser = userRepository.findByUsername(getLoggedInUsername());
         log.info("Gotten current reviewing user: " + reviewingUser.getUsername());
-        Set<UserGroup> userGroupsOfReviewingUser = reviewingUser.getUserGroups(); // gettinam kokios userGroups jam priskirtos, gavom masyva userGroups'u [Administracija, Gamyba];
+        Set<UserGroup> userGroupsOfReviewingUser = reviewingUser.getUserGroups();
         log.info("Gotten list groups belonging to reviewing User: " + userGroupsOfReviewingUser.toString());
-        // einam foreach'u per kiekviena masyvo userGroupsOfReviewingUser elementa
-        // ir gettinam kokios yra reviewDoctype, gaunam antra masyva [Instrukcija, Prasymas, Isakymas]
         for (UserGroup userGroup : userGroupsOfReviewingUser
         ) {
-            Set<DocumentType> documentTypeOfReviewingUser = userGroup.getReviewDocumentType(); //--> [Instrukcija, Prasymas, Isakymas]
+            Set<DocumentType> documentTypeOfReviewingUser = userGroup.getReviewDocumentType();
             log.info("1-st foreach. Gotten list of Document Types belonging to reviewing User: " + documentTypeOfReviewingUser);
 
-            // einam foreach'u per kiekviena masyvo documentTypeOfReviewingUser elementa
-            // ir getinam kokie yra Documents, gaunam trecia masyva [PrasymasAtostogu, PrasymasPakeltiAlga, IsakymasDarboLaiko]
-            for (DocumentType documentType : documentTypeOfReviewingUser
-            ) {
-
-                // cia naudoti repository (o joje irasyti metoda paieskai pagal tipa) !!!
-                //List<Document> documentOfReviewingUser = documentType.getDocuments();   //gavom [PrasymasAtostogu, PrasymasPakeltiAlga, IsakymasDarboLaiko]
-                //kad veiktu .getDocuments() reikejo ideti atitinkama fielda i DocumentsType entity...
+            for (DocumentType documentType : documentTypeOfReviewingUser) {
                 List<Document> documentOfReviewingUser = documentRepository.findByDocumentType(documentType);
 
                 log.info("2-nd foreach. Gotten list of Documents belonging to reviewing User: " + documentOfReviewingUser);
 
-                // einam foreach'u per kiekviena masyvo Document elementa,  gettinam viska (id, author, state, type ir t.t.), ir pridedam i nauja DTO, kuri addinsim i is anksto susikurta  objektu Lista
-                for (Document document : documentOfReviewingUser
-                ) {
+                for (Document document : documentOfReviewingUser) {
                     DocumentGetCommand documentDTO = new DocumentGetCommand(
                             document.getId(),
                             document.getAuthor().getUsername(),
@@ -333,20 +222,16 @@ public class DocumentService {
                             document.getReviewer() != null ? document.getReviewer().getUsername() : null,
                             document.getRejectionReason(),
                             document.getPath(),
-                            document.getAttachments()); // gavom nauja DTO su paduotomis reiksmemis
+                            document.getAttachments());
                     log.info("3-rd foreach. Gotten DTO of document belonging to reviewing User: " + documentDTO);
 
-
-                    //abejotinas sitas if ... gal geriau documentDTO.getDocumentState() ?
                     if (document.getDocumentState().equals(DocumentState.SUBMITTED)) {
                         documentDtoForReviewing.add(documentDTO);
                         log.info("Document DTO added to list: " + documentDtoForReviewing);
                     }
-
                 }
             }
         }
-
         return documentDtoForReviewing;
     }
 
@@ -358,7 +243,6 @@ public class DocumentService {
         return documentRepository.findAll()
                 .stream()
                 .filter(document -> document.getDocumentType().equals(documentType))
-                //.filter(document -> document.getDocumentType().getTitle().equals(documentType.getTitle()))
                 .map((document) -> new DocumentGetCommand(
                         document.getId(),
                         document.getAuthor().getUsername(),
@@ -430,7 +314,6 @@ public class DocumentService {
     }
 
     //GET BY AUTHOR_ID =================================================================================================
-    // (with filter and with filter of permissions (which documents this UserGroup can manage)
     @Transactional(readOnly = true)
     public List<DocumentGetCommand> getAllDocumentsByAuthorUsername(/*String username*/) {
 
@@ -466,16 +349,15 @@ public class DocumentService {
         User user = userRepository.findByUsername(documentCreateCommand.getUsername());
         if (user == null) {
             log.error("User not found (when trying to create document");
-            throw new ResourceNotFoundException("My dear Friend, you entered not existing User (you should create that User first) !");
+            throw new ResourceNotFoundException("You entered not existing User (you should create that User first) !");
         } else {
             newDocument.setAuthor(user);
         }
 
-
         DocumentType documentType = documentTypeRepository.findByTitle(documentCreateCommand.getDocumentTypeTitle());
         if (documentType == null) {
             log.error("DocumentType not found (when trying to create document");
-            throw new ResourceNotFoundException("My dear Friend, you entered not existing DocumentType (you should create that DocumentType first) !");
+            throw new ResourceNotFoundException("You entered not existing DocumentType (you should create that DocumentType first) !");
         } else {
             newDocument.setDocumentType(documentType);
         }
@@ -487,47 +369,40 @@ public class DocumentService {
         log.info("New document created - {} Everything is OK", newDocument.toString());
     }
 
-
-    // This method  still in progress, do not use ! (temporally use Version_02, see below).
-    //SET DOCUMENT STATE. Version_01 (by J.C.) =========================================================================
+    //SET DOCUMENT STATE. Version_01 ===================================================================================
+    // Permissions check is included (allows to change state only according to user permissions).
     @Transactional
     public void setDocumentStateV1(DocumentSetStateCommand documentSetStateCommand) {
 
         Document documentToSetState = documentRepository.getOne(documentSetStateCommand.getDocumentId());
         User reviewerUser = userRepository.findByUsername(documentSetStateCommand.getReviewerUsername());
 
-        // checking if user can set state:
         Set<UserGroup> userGroupsBelongingToUser = reviewerUser.getUserGroups();
 
         boolean canSubmit = false;
         boolean canReview = false;
 
         for (UserGroup userGroup : userGroupsBelongingToUser) {
+
             if (userGroup.getReviewDocumentType().contains(documentToSetState.getDocumentType())) {
-                log.info("Yes, this UserGroup can REVIEW this type of document");
+                log.info("if1. Yes, this UserGroup can REVIEW this type of document");
                 canReview = true;
-                //////Added by Paulius
+
                 if (userGroup.getSubmissionDocumentType().contains(documentToSetState.getDocumentType())) {
-                    log.info("Yes, this UserGroup can  SUBMIT this type of document");
+                    log.info("if2. Yes, this UserGroup can  SUBMIT this type of document");
                     canSubmit = true;
-                } //// end of an add
+
+                }
             } else if (userGroup.getSubmissionDocumentType().contains(documentToSetState.getDocumentType())) {
-                log.info("Yes, this UserGroup can (only) SUBMIT this type of document");
+                log.info("if3. Yes, this UserGroup can (only) SUBMIT this type of document");
                 canSubmit = true;
-            } else {
+
+            } else if(!canReview && !canSubmit){
                 log.info("Non of IF1 proceeded. UserGroup of this User isn't set for Document SUBMITTING or REVIEWING");
-                throw new ResourceNotFoundException("Non of IF1 proceeded. UserGroup of this User isn't set for Document SUBMITTING or REVIEWING");
+                throw new ResourceNotFoundException("Non of IF1 proceeded. UserGroup of this User isn't set for Document " +
+                        " SUBMITTING or REVIEWING");
             }
         }
-
-        // setting state according user  permissions (canSubmit || canReview):
-        // current state:         documentToSetState.getDocumentState()
-        // suggested state:       documentSetStateCommand.getDocumentState()
-
-        //if current state is CREATED -->  proceed only  in case "SUBMITTED"
-        //if current state is SUBMITTED --> proceed only  in case  "REJECTED" or "CONFIRMED"
-        //if current state is REJECTED or ACCEPTED  --> do not proceed at all
-
 
         if (canReview && canSubmit) {
             switch (documentSetStateCommand.getDocumentState()) {
@@ -576,27 +451,12 @@ public class DocumentService {
                 }
                 default:
                     log.info("Non of Switch1 case proceeded. Only CREATED, SUBMITTED, CONFIRMED, REJECTED allowed");
-                    throw new ResourceNotFoundException("Non of Switch1 case proceeded. Only CREATED, SUBMITTED, CONFIRMED, REJECTED allowed");
+                    throw new ResourceNotFoundException("Non of Switch1 case proceeded." +
+                            " Only CREATED, SUBMITTED, CONFIRMED, REJECTED allowed");
             }
 
         } else if (canReview) {
             switch (documentSetStateCommand.getDocumentState()) {
-//                case "CREATED": {
-//                    log.info("Case3. Not proceeded. State CREATED already set during document creation");
-//                    throw new ResourceNotFoundException("Case3. Not proceeded. State CREATED already set during document creation");
-//                }
-//                case "SUBMITTED": {
-//                    if (documentToSetState.getDocumentState().equals(DocumentState.CREATED)) {
-//                        documentToSetState.setDocumentState(DocumentState.SUBMITTED);
-//                        documentToSetState.setSubmissionDate(new Date());
-//                        documentRepository.save(documentToSetState);
-//                        log.info("Case4. Document state set to: " + documentSetStateCommand.getDocumentState());
-//                        break;
-//                    } else {
-//                        log.info("Case4. Not proceeded. Only CREATED document can be set to SUBMITTED");
-//                        throw new ResourceNotFoundException("Case4. Not proceeded. Only CREATED document can be set to SUBMITTED");
-//                    }
-//                }
                 case "REJECTED": {
                     if (documentToSetState.getDocumentState().equals(DocumentState.SUBMITTED)) {
                         documentToSetState.setReviewer(reviewerUser);
@@ -657,9 +517,9 @@ public class DocumentService {
         }
     }
 
-    // This version is temporal, while version above is in progress.
-    // This version allows to change state to anny user (without checking his permisions).
-    //SET DOCUMENT STATE. Version_02 (by J.C.) =========================================================================
+    /*
+    //SET DOCUMENT STATE. Version_02 ===================================================================================
+    // Permissions check isn't included (allows to change state to anny user).
     @Transactional
     public void setDocumentStateV2(DocumentSetStateCommand documentSetStateCommand) {
 
@@ -712,9 +572,11 @@ public class DocumentService {
             }
             default:
                 log.error("Non of Switch case proceeded. Only CREATED, SUBMITTED, CONFIRMED, REJECTED allowed");
-                throw new ResourceNotFoundException("Non of Switch case proceeded. Only CREATED, SUBMITTED, CONFIRMED, REJECTED allowed");
+                throw new ResourceNotFoundException("Non of Switch case proceeded." +
+                        " Only CREATED, SUBMITTED, CONFIRMED, REJECTED allowed");
         }
     }
+    */
 
     //UPDATE ===========================================================================================================
     @Transactional
@@ -738,6 +600,8 @@ public class DocumentService {
         log.info("Document with id = " + id + " was deleted");
     }
 
+
+    //Method to get logged user username ===============================================================================
     public String getLoggedInUsername() {
         Authentication authentication =
                 SecurityContextHolder.getContext().getAuthentication();
@@ -747,37 +611,5 @@ public class DocumentService {
         }
         return "not logged";
     }
-
-/*
-    // commented as not necessary (?);
-    // dar reikia paduoti username kad patikrinti ar jis turi permission'a
-    // tada paduoti setDocumentState
-    //ASSIGN DOCUMENT_TYPE TO DOCUMENT =================================================================================
-    @Transactional
-    public void assignDocumentTypeToDocument(Long id, String title) {
-        //DocumentType documentType = documentTypeRepository.findById(id).orElseThrow(null);
-        DocumentType documentType = documentTypeRepository.findByTitle(title);
-        Document document = documentRepository.findById(id).orElse(null);
-        if (documentType == null) {
-            throw new ResourceNotFoundException("My dear Friend, you entered not existing DocumentType (you should create that DocumentType first) !");
-        } else {
-            //documentType.getDocuments().add(document); //
-            document.setDocumentType(documentType); //jei norim pakeisti tai tiesiog settini is naujo (.remove nereikia).
-        }
-    }
-
-    //DE-ASSIGN DOCUMENT_TYPE TO DOCUMENT ==============================================================================
-    @Transactional
-    public void deassignDocumentTypeToDocument(Long id, String title) {
-        //DocumentType documentType = documentTypeRepository.findById(id).orElseThrow(null);
-        DocumentType documentType = documentTypeRepository.findByTitle(title);
-        Document document = documentRepository.findById(id).orElse(null);
-        if (documentType == null) {
-            throw new ResourceNotFoundException("My dear Friend, you entered not existing DocumentType (you should create that DocymentType first) !");
-        } else {
-            documentType.getDocuments().remove(document);
-        }
-    }
-*/
 
 }
