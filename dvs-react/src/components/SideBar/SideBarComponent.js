@@ -20,7 +20,7 @@ class SideBarComponent extends Component {
                 alt="home"
                 className="sidebar-icon logo"
               />
-              Apžvalga
+              Pradinis puslapis
             </NavLink>
           </li>
 

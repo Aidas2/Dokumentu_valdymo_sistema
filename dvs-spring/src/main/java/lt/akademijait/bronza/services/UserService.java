@@ -98,8 +98,8 @@ public class UserService implements UserDetailsService {
             userGroupsToSet.add(userGroupRepository.findByTitle(userGroupTitle));
         }
 
-        PasswordEncoder encoder =
-                new BCryptPasswordEncoder();
+//        PasswordEncoder encoder =
+//                new BCryptPasswordEncoder();
 //        newUser.setPassword(encoder.encode(password));
 
         User newUser = new User(
@@ -108,10 +108,10 @@ public class UserService implements UserDetailsService {
                 ucc.getHireDate(),
                 ucc.isAdministrator(),
                 ucc.getUsername(),
-                encoder.encode(ucc.getPassword()),
+                new BCryptPasswordEncoder().encode(ucc.getPassword()),
                 ucc.getEmailAddress(),
                 userGroupsToSet,
-                ucc.isAdministrator()? roleRepository.findByTitle("ADMIN"):roleRepository.findByTitle("USER")
+                ucc.isAdministrator() ? roleRepository.findByTitle("ADMIN") : roleRepository.findByTitle("USER")
 //                roleRepository.findByTitle(ucc.getRoleTitle()) != null ? roleRepository.findByTitle(ucc.getRoleTitle())
 //                        : null
         );
@@ -154,7 +154,7 @@ public class UserService implements UserDetailsService {
         userToUpdate.setHireDate(uuc.getHireDate());
         userToUpdate.setAdministrator(uuc.isAdministrator());
 //        userToUpdate.setUsername(uuc.getUsername());
-        userToUpdate.setPassword(uuc.getPassword());
+        userToUpdate.setPassword(new BCryptPasswordEncoder().encode(uuc.getPassword()));
         userToUpdate.setEmailAddress(uuc.getEmailAddress());
         userToUpdate.setUserGroups(userGroupsToSet);
 
