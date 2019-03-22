@@ -10,9 +10,9 @@ class FileUploadContainer extends Component {
     documentTypes: [],
     sth: false,
     createDocumentInfo: {
-      description: "testDesc",
-      documentTypeTitle: "type2",
-      title: "testTytle",
+      description: "",
+      documentTypeTitle: "",
+      title: "",
       username: ""
     }
   };
